@@ -12,7 +12,7 @@
 - [x] Docker-Compose Konfiguration erstellen
 - [x] PostgreSQL Container einrichten
 - [x] Serverpod Backend Container einrichten
-- [ ] Flutter Web Container einrichten (optional für Web-Deployment)
+- [x] Flutter Web Container einrichten (optional für Web-Deployment)
 - [x] .env Datei mit Konfigurationsvariablen erstellen
   - Container-Ports
   - Frontend-URL

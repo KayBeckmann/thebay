@@ -77,6 +77,27 @@ services:
       - bay_uploads:/app/uploads
 
   # =============================================================================
+  # Flutter Web Frontend
+  # =============================================================================
+  frontend:
+    build:
+      context: ./bay_flutter
+      dockerfile: Dockerfile
+    container_name: bay_frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    environment:
+      API_URL: http://serverpod:8080
+    depends_on:
+      - serverpod
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # =============================================================================
   # Test Services (for development/testing)
   # =============================================================================
   postgres_test:
