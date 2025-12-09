@@ -56,6 +56,10 @@ Eine Anzeigenplattform mit Fokus auf Privatsphäre und Sicherheit.
   - Laufzeit (z.B. 3 Tage, 7 Tage, 14 Tage, 30 Tage)
   - Mehrere Varianten können parallel angeboten werden
 - Nach Ablauf der Laufzeit wird das Angebot deaktiviert
+- **Bilder**:
+  - Bis zu 3 Bilder pro Angebot (direkter Upload, keine URLs)
+  - Erstes Bild wird als Mini-Preview in der Übersicht angezeigt
+  - Bildergalerie in der Detailansicht
 
 ### Kategorien
 - Hierarchische Struktur: Kategorien und Subkategorien
@@ -76,6 +80,13 @@ Eine Anzeigenplattform mit Fokus auf Privatsphäre und Sicherheit.
 - Verkaufen
 - Einstellungen
 - Admin-Panel (nur für Admin sichtbar)
+
+### Suchfunktion
+- Volltextsuche
+- Filter:
+  - Kategorie
+  - Subkategorie
+  - Bezahlart (PayPal, Bitcoin)
 
 ### Zahlungsabwicklung
 - Direktzahlung: Käufer zahlt direkt an den Verkäufer
