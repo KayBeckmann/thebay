@@ -1,0 +1,6 @@
+### User roles for authorization
+enum: UserRole
+values:
+  - user
+  - moderator
+  - admin

@@ -1,0 +1,28 @@
+### User model for authentication and user management
+class: User
+table: users
+fields:
+  ### Unique username for login
+  username: String
+  ### Argon2id password hash
+  passwordHash: String
+  ### User role: user, moderator, admin
+  role: UserRole, default=user
+  ### Account creation timestamp
+  createdAt: DateTime
+  ### Last login timestamp
+  lastLoginAt: DateTime?
+  ### Whether the account is active (not banned)
+  isActive: bool, default=true
+  ### Whether the user accepted terms of service
+  acceptedTerms: bool, default=false
+  ### Number of failed login attempts (for rate limiting)
+  failedLoginAttempts: int, default=0
+  ### Lockout end time (for rate limiting)
+  lockedUntil: DateTime?
+  ### Whether "stay logged in" is enabled
+  stayLoggedIn: bool, default=false
+indexes:
+  user_username_idx:
+    fields: username
+    unique: true

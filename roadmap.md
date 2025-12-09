@@ -1,28 +1,28 @@
 # Roadmap - Anzeigenplattform
 
-## Meilenstein 1: Projekt-Setup & Grundstruktur
+## Meilenstein 1: Projekt-Setup & Grundstruktur ✅
 
 ### 1.1 Entwicklungsumgebung
-- [ ] Flutter SDK installieren und konfigurieren
-- [ ] Serverpod CLI installieren
-- [ ] Projekt-Struktur mit Serverpod erstellen (Server, Client, Flutter)
-- [ ] Git Repository initialisieren (falls nicht vorhanden)
+- [x] Flutter SDK installieren und konfigurieren
+- [x] Serverpod CLI installieren
+- [x] Projekt-Struktur mit Serverpod erstellen (Server, Client, Flutter)
+- [x] Git Repository initialisieren (falls nicht vorhanden)
 
 ### 1.2 Docker & Infrastructure
-- [ ] Docker-Compose Konfiguration erstellen
-- [ ] PostgreSQL Container einrichten
-- [ ] Serverpod Backend Container einrichten
+- [x] Docker-Compose Konfiguration erstellen
+- [x] PostgreSQL Container einrichten
+- [x] Serverpod Backend Container einrichten
 - [ ] Flutter Web Container einrichten (optional für Web-Deployment)
-- [ ] .env Datei mit Konfigurationsvariablen erstellen
+- [x] .env Datei mit Konfigurationsvariablen erstellen
   - Container-Ports
   - Frontend-URL
   - Admin-Zugangsdaten
   - Datenbank-Credentials
 
 ### 1.3 Datenbank-Schema (Grundstruktur)
-- [ ] User-Tabelle (id, username, password_hash, role, created_at)
-- [ ] Settings-Tabelle für globale Einstellungen
-- [ ] Migrations einrichten
+- [x] User-Tabelle (id, username, password_hash, role, created_at)
+- [x] Settings-Tabelle für globale Einstellungen
+- [x] Migrations einrichten
 
 ---
 

@@ -1,0 +1,16 @@
+### Global application settings
+class: Settings
+table: settings
+fields:
+  ### Setting key (unique identifier)
+  key: String
+  ### Setting value (stored as JSON string for flexibility)
+  value: String
+  ### Human-readable description
+  description: String?
+  ### Last modification timestamp
+  updatedAt: DateTime
+indexes:
+  settings_key_idx:
+    fields: key
+    unique: true

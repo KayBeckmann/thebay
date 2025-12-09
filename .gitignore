@@ -1,0 +1,44 @@
+# Environment files (contain secrets!)
+.env
+.env.local
+.env.*.local
+
+# Serverpod passwords (contain secrets!)
+bay_server/config/passwords.yaml
+
+# Dart/Flutter
+.dart_tool/
+.packages
+build/
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Flutter specific
+**/flutter_*.lock
+**/pubspec.lock
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+
+# Build outputs
+**/build/
+**/*.g.dart
+
+# IDE
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.log
+
+# Uploads (user content)
+bay_server/uploads/
+
+# Test coverage
+coverage/

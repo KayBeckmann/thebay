@@ -1,0 +1,48 @@
+# This is the configuration file for your production/Docker environment.
+# Database and Redis connect to Docker containers via service names.
+
+# Configuration for the main API server.
+apiServer:
+  port: 8080
+  publicHost: localhost
+  publicPort: 8080
+  publicScheme: http
+
+# Configuration for the Insights server.
+insightsServer:
+  port: 8081
+  publicHost: localhost
+  publicPort: 8081
+  publicScheme: http
+
+# Configuration for the web server.
+webServer:
+  port: 8082
+  publicHost: localhost
+  publicPort: 8082
+  publicScheme: http
+
+# This is the database setup for Docker environment.
+# Uses Docker service name 'postgres' for container communication.
+database:
+  host: postgres
+  port: 5432
+  name: bay
+  user: postgres
+  requireSsl: false
+
+# This is the setup for Redis in Docker.
+# Uses Docker service name 'redis' for container communication.
+redis:
+  enabled: true
+  host: redis
+  port: 6379
+
+maxRequestSize: 524288 # The maximum size of requests allowed in bytes
+
+sessionLogs:
+  persistentEnabled: true
+  consoleEnabled: true
+  consoleLogFormat: json
+
+futureCallExecutionEnabled: true
