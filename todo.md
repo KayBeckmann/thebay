@@ -90,6 +90,12 @@ Eine Anzeigenplattform mit Fokus auf Privatsphäre und Sicherheit.
 - Nach Ablauf der Laufzeit wird das Angebot deaktiviert
 - Slot-Verlängerung möglich
 - **Ablauf-Warnung**: 3 Tage vor Ablauf auf dem Dashboard
+- **Slot-Bezahlung**:
+  - Admin konfiguriert erlaubte Zahlungsmethoden (PayPal und/oder Bitcoin)
+  - Automatische Zahlungsüberwachung:
+    - PayPal: IPN (Instant Payment Notification) Integration
+    - Bitcoin: Blockchain-Überwachung (z.B. via BlockCypher API)
+  - Automatische Slot-Freischaltung nach Zahlungseingang
 - **Angebots-Details**:
   - Titel
   - Beschreibung
@@ -138,6 +144,7 @@ Eine Anzeigenplattform mit Fokus auf Privatsphäre und Sicherheit.
 - Suchen
 - Verkaufen
 - Einstellungen
+- News (nur für Admin sichtbar)
 - Admin-Panel (nur für Admin sichtbar)
 
 ### Benachrichtigungen
@@ -210,6 +217,10 @@ Eine Anzeigenplattform mit Fokus auf Privatsphäre und Sicherheit.
 - Slot-Verwaltung:
   - Slot-Varianten erstellen/bearbeiten/löschen
   - Preis und Laufzeit festlegen
+  - Erlaubte Zahlungsmethoden für Slots konfigurieren (PayPal/Bitcoin)
+- Zahlungseinstellungen:
+  - PayPal-Konto für Slot-Zahlungen hinterlegen
+  - Bitcoin-Wallet für Slot-Zahlungen hinterlegen
 - Kategorie-Verwaltung:
   - Kategorien erstellen/bearbeiten/löschen
   - Subkategorien erstellen/bearbeiten/löschen
@@ -218,6 +229,9 @@ Eine Anzeigenplattform mit Fokus auf Privatsphäre und Sicherheit.
   - User sperren/entsperren
 - News-Verwaltung:
   - News für Dashboard erstellen/bearbeiten/löschen
+  - Lebenszeit pro News (Tage bis automatische Löschung)
+  - Standardwert für Lebenszeit konfigurierbar (Default: 14 Tage)
+  - Automatische Löschung abgelaufener News
 
 ### Moderator-Panel
 - Übersicht gemeldeter Angebote
