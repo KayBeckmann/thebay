@@ -77,34 +77,34 @@
 
 ---
 
-## Meilenstein 4: Kategorien & Admin-Panel (Basis)
+## Meilenstein 4: Kategorien & Admin-Panel (Basis) ✅
 
 ### 4.1 Datenbank-Erweiterung
-- [ ] Kategorien-Tabelle (id, name, parent_id)
-- [ ] News-Tabelle (id, title, content, created_at)
-- [ ] Slot-Varianten-Tabelle (id, name, price, duration_days)
+- [x] Kategorien-Tabelle (id, name, parent_id)
+- [x] News-Tabelle (id, title, content, created_at)
+- [x] Slot-Varianten-Tabelle (id, name, price, duration_days)
 
 ### 4.2 Admin-Panel - Kategorien
-- [ ] Kategorien erstellen/bearbeiten/löschen
-- [ ] Subkategorien erstellen/bearbeiten/löschen
-- [ ] Hierarchische Anzeige
+- [x] Kategorien erstellen/bearbeiten/löschen
+- [x] Subkategorien erstellen/bearbeiten/löschen
+- [x] Hierarchische Anzeige
 
 ### 4.3 Admin-Panel - Slots
-- [ ] Slot-Varianten erstellen/bearbeiten/löschen
-- [ ] Preis und Laufzeit festlegen
-- [ ] Erlaubte Zahlungsmethoden für Slots konfigurieren (PayPal/Bitcoin)
+- [x] Slot-Varianten erstellen/bearbeiten/löschen
+- [x] Preis und Laufzeit festlegen
+- [x] Erlaubte Zahlungsmethoden für Slots konfigurieren (PayPal/Bitcoin)
 
 ### 4.4 Admin-Panel - Zahlungseinstellungen
-- [ ] PayPal-Konto für Slot-Zahlungen hinterlegen
-- [ ] Bitcoin-Wallet für Slot-Zahlungen hinterlegen
+- [x] PayPal-Konto für Slot-Zahlungen hinterlegen
+- [x] Bitcoin-Wallet für Slot-Zahlungen hinterlegen
 
 ### 4.5 Admin-Panel - News
-- [ ] News erstellen/bearbeiten/löschen
-- [ ] Lebenszeit pro News (Tage bis automatische Löschung)
-- [ ] Standardwert für Lebenszeit konfigurierbar (Default: 14 Tage)
-- [ ] Cron-Job für automatische Löschung abgelaufener News
-- [ ] News auf Dashboard anzeigen
-- [ ] Menüpunkt "News" für Admin (zur News-Verwaltung)
+- [x] News erstellen/bearbeiten/löschen
+- [x] Lebenszeit pro News (Tage bis automatische Löschung)
+- [x] Standardwert für Lebenszeit konfigurierbar (Default: 14 Tage)
+- [x] Cron-Job für automatische Löschung abgelaufener News
+- [x] News auf Dashboard anzeigen
+- [x] Menüpunkt "News" für Admin (zur News-Verwaltung)
 
 ---
 

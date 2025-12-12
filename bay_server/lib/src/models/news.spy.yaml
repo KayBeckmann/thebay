@@ -1,0 +1,25 @@
+### News article for dashboard announcements
+class: News
+table: news
+fields:
+  ### News title
+  title: String
+  ### News content (supports markdown)
+  content: String
+  ### Author user ID
+  authorId: int
+  ### Whether news is published
+  isPublished: bool
+  ### Publication date
+  publishedAt: DateTime?
+  ### Expiration date (auto-delete after this date)
+  expiresAt: DateTime?
+  ### Creation timestamp
+  createdAt: DateTime
+  ### Last modification timestamp
+  updatedAt: DateTime
+indexes:
+  news_published_idx:
+    fields: isPublished, publishedAt
+  news_expires_idx:
+    fields: expiresAt

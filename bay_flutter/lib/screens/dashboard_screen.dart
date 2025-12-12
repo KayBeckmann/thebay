@@ -1,5 +1,7 @@
+import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
 import '../services/auth_service.dart';
 
 /// Dashboard screen showing news and recent listings.
@@ -16,6 +18,37 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  List<News> _news = [];
+  bool _isLoadingNews = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadNews();
+  }
+
+  Future<void> _loadNews() async {
+    setState(() => _isLoadingNews = true);
+
+    try {
+      final news = await client.news.getPublished();
+      if (mounted) {
+        setState(() {
+          _news = news;
+          _isLoadingNews = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingNews = false);
+      }
+    }
+  }
+
+  Future<void> _refresh() async {
+    await _loadNews();
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = widget.authService.currentUser;
@@ -61,11 +94,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Future<void> _refresh() async {
-    // TODO: Refresh data from server
-    await Future.delayed(const Duration(milliseconds: 500));
-  }
-
   Widget _buildWelcomeCard(BuildContext context, String? username) {
     return Card(
       child: Padding(
@@ -109,28 +137,71 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildSectionHeader(BuildContext context, String title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-        TextButton(
-          onPressed: () {
-            // TODO: Navigate to full list
-          },
-          child: const Text('Alle anzeigen'),
-        ),
-      ],
+    return Text(
+      title,
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 
   Widget _buildNewsSection(BuildContext context) {
-    // TODO: Load news from server
+    if (_isLoadingNews) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+
+    if (_news.isEmpty) {
+      return Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    Icons.campaign,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Keine Neuigkeiten',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      children: _news.take(3).map((news) => _buildNewsCard(news)).toList(),
+    );
+  }
+
+  Widget _buildNewsCard(News news) {
+    final formattedDate = news.publishedAt != null
+        ? '${news.publishedAt!.day.toString().padLeft(2, '0')}.${news.publishedAt!.month.toString().padLeft(2, '0')}.${news.publishedAt!.year}'
+        : '';
+
     return Card(
+      margin: const EdgeInsets.only(bottom: 8),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -141,19 +212,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 Icon(
                   Icons.campaign,
                   color: Theme.of(context).colorScheme.primary,
+                  size: 20,
                 ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'Keine Neuigkeiten',
-                    style: Theme.of(context).textTheme.titleSmall,
+                    news.title,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
+                ),
+                Text(
+                  formattedDate,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
                 ),
               ],
             ),
             const SizedBox(height: 8),
             Text(
-              'Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!',
+              news.content,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),

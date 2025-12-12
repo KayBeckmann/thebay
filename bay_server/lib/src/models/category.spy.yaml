@@ -1,0 +1,22 @@
+### Category for organizing listings
+class: Category
+table: categories
+fields:
+  ### Category name
+  name: String
+  ### Parent category ID (null for root categories)
+  parentId: int?
+  ### Sort order within parent
+  sortOrder: int
+  ### Whether category is active
+  isActive: bool
+  ### Creation timestamp
+  createdAt: DateTime
+  ### Last modification timestamp
+  updatedAt: DateTime
+indexes:
+  categories_parent_idx:
+    fields: parentId
+  categories_name_parent_idx:
+    fields: name, parentId
+    unique: true

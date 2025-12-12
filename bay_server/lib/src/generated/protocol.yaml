@@ -5,5 +5,35 @@ auth:
   - getCurrentUser:
   - changePassword:
   - deleteAccount:
+category:
+  - getAll:
+  - getActive:
+  - getRootCategories:
+  - getSubcategories:
+  - create:
+  - update:
+  - delete:
+news:
+  - getPublished:
+  - getAll:
+  - getById:
+  - create:
+  - update:
+  - delete:
+  - deleteExpired:
+settings:
+  - get:
+  - getMultiple:
+  - set:
+  - delete:
+  - getPaymentSettings:
+  - updatePaymentSettings:
+slotVariant:
+  - getAll:
+  - getActive:
+  - getById:
+  - create:
+  - update:
+  - delete:
 greeting:
   - hello:

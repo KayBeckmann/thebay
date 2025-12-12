@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'categories_screen.dart';
+import 'slot_variants_screen.dart';
+import 'payment_settings_screen.dart';
+
 /// Admin panel screen for system administration.
 class AdminPanelScreen extends StatelessWidget {
   const AdminPanelScreen({super.key});
@@ -65,7 +69,10 @@ class AdminPanelScreen extends StatelessWidget {
             icon: Icons.category,
             title: 'Kategorien verwalten',
             subtitle: 'Kategorien und Subkategorien erstellen',
-            milestone: 4,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const CategoriesScreen()),
+            ),
           ),
           const SizedBox(height: 16),
 
@@ -75,7 +82,10 @@ class AdminPanelScreen extends StatelessWidget {
             icon: Icons.confirmation_number,
             title: 'Slot-Varianten',
             subtitle: 'Slot-Typen und Preise konfigurieren',
-            milestone: 4,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SlotVariantsScreen()),
+            ),
           ),
           const SizedBox(height: 16),
 
@@ -85,7 +95,10 @@ class AdminPanelScreen extends StatelessWidget {
             icon: Icons.payment,
             title: 'Zahlungseinstellungen',
             subtitle: 'PayPal und Bitcoin für Slot-Käufe',
-            milestone: 4,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const PaymentSettingsScreen()),
+            ),
           ),
           const SizedBox(height: 16),
 
@@ -127,8 +140,11 @@ class AdminPanelScreen extends StatelessWidget {
     required IconData icon,
     required String title,
     required String subtitle,
-    required int milestone,
+    VoidCallback? onTap,
+    int? milestone,
   }) {
+    final isImplemented = onTap != null;
+
     return Card(
       child: ListTile(
         leading: CircleAvatar(
@@ -140,26 +156,30 @@ class AdminPanelScreen extends StatelessWidget {
         ),
         title: Text(title),
         subtitle: Text(subtitle),
-        trailing: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.tertiaryContainer,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            'M$milestone',
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: Theme.of(context).colorScheme.onTertiaryContainer,
+        trailing: milestone != null
+            ? Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.tertiaryContainer,
+                  borderRadius: BorderRadius.circular(12),
                 ),
-          ),
-        ),
-        onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('$title wird in Meilenstein $milestone implementiert.'),
-            ),
-          );
-        },
+                child: Text(
+                  'M$milestone',
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      ),
+                ),
+              )
+            : const Icon(Icons.chevron_right),
+        onTap: isImplemented
+            ? onTap
+            : () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('$title wird in Meilenstein $milestone implementiert.'),
+                  ),
+                );
+              },
       ),
     );
   }

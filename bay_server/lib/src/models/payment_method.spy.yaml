@@ -1,0 +1,5 @@
+### Payment method enum for slots and listings
+enum: PaymentMethod
+values:
+  - paypal
+  - bitcoin

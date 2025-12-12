@@ -1,0 +1,30 @@
+### Slot variant defining pricing and duration for listing slots
+class: SlotVariant
+table: slot_variants
+fields:
+  ### Variant name (e.g., "Basic", "Premium", "30 Days")
+  name: String
+  ### Description of what's included
+  description: String?
+  ### Price in cents (USD)
+  priceUsdCents: int
+  ### Duration in days
+  durationDays: int
+  ### Whether PayPal payment is allowed
+  allowPaypal: bool
+  ### Whether Bitcoin payment is allowed
+  allowBitcoin: bool
+  ### Whether this variant is active and available for purchase
+  isActive: bool
+  ### Sort order for display
+  sortOrder: int
+  ### Creation timestamp
+  createdAt: DateTime
+  ### Last modification timestamp
+  updatedAt: DateTime
+indexes:
+  slot_variants_active_idx:
+    fields: isActive, sortOrder
+  slot_variants_name_idx:
+    fields: name
+    unique: true
