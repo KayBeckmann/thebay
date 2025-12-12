@@ -1,0 +1,25 @@
+### User-Slots - Gekaufte Slots eines Benutzers
+class: UserSlot
+table: user_slots
+fields:
+  userId: int
+  slotVariantId: int
+  listingId: int?        # Verknüpftes Angebot (null = ungenutzt)
+
+  ### Laufzeit
+  purchasedAt: DateTime
+  expiresAt: DateTime
+
+  ### Status
+  isActive: bool         # Aktiv und nutzbar
+  isUsed: bool           # Mit einem Angebot verknüpft
+
+indexes:
+  user_slot_user_idx:
+    fields: userId
+  user_slot_listing_idx:
+    fields: listingId
+  user_slot_expires_idx:
+    fields: expiresAt
+  user_slot_active_idx:
+    fields: userId, isActive

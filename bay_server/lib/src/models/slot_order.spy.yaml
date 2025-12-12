@@ -1,0 +1,27 @@
+### Slot-Bestellungen - Kaufvorgänge für Slots
+class: SlotOrder
+table: slot_orders
+fields:
+  userId: int
+  slotVariantId: int
+
+  ### Zahlung
+  paymentMethod: PaymentMethod
+  amountCents: int           # Betrag in Cents (USD)
+  transactionId: String?     # PayPal/Bitcoin Transaction ID
+
+  ### Status
+  status: OrderStatus
+
+  ### Timestamps
+  createdAt: DateTime
+  paidAt: DateTime?
+  completedAt: DateTime?
+
+indexes:
+  slot_order_user_idx:
+    fields: userId
+  slot_order_status_idx:
+    fields: status
+  slot_order_tx_idx:
+    fields: transactionId

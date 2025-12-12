@@ -13,6 +13,15 @@ category:
   - create:
   - update:
   - delete:
+listing:
+  - create:
+  - update:
+  - delete:
+  - getById:
+  - getActive:
+  - getMyListings:
+  - getByUser:
+  - getAvailableSlotCount:
 news:
   - getPublished:
   - getAll:
@@ -35,5 +44,13 @@ slotVariant:
   - create:
   - update:
   - delete:
+userSlot:
+  - getMySlots:
+  - getAvailableSlots:
+  - getExpiringSoon:
+  - createSlot:
+  - extendSlot:
+  - deactivateExpired:
+  - getSlotStats:
 greeting:
   - hello:

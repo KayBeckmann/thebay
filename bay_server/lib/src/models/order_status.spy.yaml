@@ -1,0 +1,8 @@
+### Bestellstatus für Slot-Käufe
+enum: OrderStatus
+values:
+  - pending      # Warten auf Zahlung
+  - paid         # Bezahlt, wird verarbeitet
+  - completed    # Abgeschlossen, Slot freigeschaltet
+  - cancelled    # Abgebrochen
+  - expired      # Zahlungsfrist abgelaufen

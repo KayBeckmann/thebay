@@ -1,0 +1,17 @@
+### Bilder zu Angeboten
+class: ListingImage
+table: listing_images
+fields:
+  listingId: int
+  fileName: String       # Dateiname auf dem Server
+  originalName: String   # Originaler Dateiname vom Upload
+  mimeType: String       # z.B. image/jpeg
+  sizeBytes: int         # Dateigröße
+  sortOrder: int         # Reihenfolge der Bilder (0 = Hauptbild)
+  createdAt: DateTime
+
+indexes:
+  listing_image_listing_idx:
+    fields: listingId
+  listing_image_sort_idx:
+    fields: listingId, sortOrder

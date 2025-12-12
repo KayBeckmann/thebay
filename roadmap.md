@@ -108,23 +108,35 @@
 
 ---
 
-## Meilenstein 5: Angebote & Slots
+## Meilenstein 5a: Datenbank & Backend für Angebote ✅
 
-### 5.1 Datenbank-Erweiterung
-- [ ] Angebote-Tabelle (alle Felder laut Spezifikation)
-- [ ] Bilder-Tabelle (Referenz zu Angebot, Dateipfad, Sortierung)
-- [ ] User-Slots-Tabelle (gekaufte Slots, Ablaufdatum)
+### 5a.1 Datenbank-Erweiterung
+- [x] Angebote-Tabelle (Listing)
+- [x] Bilder-Tabelle (ListingImage)
+- [x] User-Slots-Tabelle (UserSlot)
+- [x] Slot-Bestellungen-Tabelle (SlotOrder)
 
-### 5.2 Backend - Angebote
-- [ ] CRUD-Endpoints für Angebote
-- [ ] Bild-Upload mit automatischer Komprimierung (max. 300 KB)
+### 5a.2 Backend - Angebote CRUD
+- [x] Listing-Endpoint: erstellen, bearbeiten, löschen, abrufen
+- [x] Slot-Verbrauch bei Angebotserstellung
+- [x] Eigene Angebote abrufen
+
+---
+
+## Meilenstein 5b: Bild-Upload & Dateisystem
+
+### 5b.1 Backend - Bilder
+- [ ] Bild-Upload Endpoint
+- [ ] Automatische Komprimierung (max. 300 KB)
 - [ ] Erlaubte Formate: JPG, PNG, WebP, GIF
 - [ ] Bilder im Dateisystem speichern
-- [ ] Slot-Verbrauch bei Angebotserstellung
-- [ ] Automatische Deaktivierung bei Slot-Ablauf
-- [ ] Slot-Verlängerung
+- [ ] Bilder abrufen/löschen
 
-### 5.3 Frontend - Angebote
+---
+
+## Meilenstein 5c: Frontend - Angebote
+
+### 5c.1 Angebot erstellen/bearbeiten
 - [ ] Angebot erstellen Screen:
   - Titel, Beschreibung
   - Menge, Mengeneinheit (Stück, Kg, Meter, ohne)
@@ -134,26 +146,45 @@
   - Kategorie / Subkategorie Auswahl
   - Bild-Upload (bis zu 3 Bilder)
 - [ ] Angebot bearbeiten Screen
+
+### 5c.2 Angebots-Ansichten
 - [ ] Angebots-Detailansicht mit Bildergalerie
 - [ ] Angebots-Übersicht (Liste mit Mini-Preview)
+- [ ] Eigene Angebote verwalten
 
-### 5.4 Slot-Kauf & Zahlungsintegration
-- [ ] Admin-Einstellungen für Slot-Zahlungen:
-  - PayPal-Konto hinterlegen
-  - Bitcoin-Wallet hinterlegen
-  - Erlaubte Zahlungsmethoden aktivieren/deaktivieren
-- [ ] Slot-Auswahl Screen mit verfügbaren Zahlungsmethoden
-- [ ] PayPal Integration:
-  - [ ] PayPal IPN (Instant Payment Notification) Endpoint
-  - [ ] Zahlungsverifizierung
-  - [ ] Automatische Slot-Freischaltung nach Zahlungseingang
-- [ ] Bitcoin Integration:
-  - [ ] Einzigartige Zahlungsadresse pro Transaktion generieren (oder Memo/Reference)
-  - [ ] Blockchain-Überwachung (z.B. BlockCypher API)
-  - [ ] Bestätigungen abwarten (z.B. 1-3 Confirmations)
-  - [ ] Automatische Slot-Freischaltung nach Zahlungseingang
-- [ ] Slot-Bestellungen Tabelle (user_id, slot_variant, payment_method, status, tx_id)
-- [ ] Ausstehende Zahlungen anzeigen (User-Dashboard)
+---
+
+## Meilenstein 5d: Slot-Kauf & Verwaltung
+
+### 5d.1 User-Slots
+- [ ] Verfügbare Slots anzeigen
+- [ ] Slot-Ablauf-Warnungen
+- [ ] Automatische Deaktivierung bei Slot-Ablauf
+- [ ] Slot-Verlängerung
+
+### 5d.2 Slot-Kauf Screen
+- [ ] Slot-Varianten Auswahl
+- [ ] Zahlungsmethode wählen
+- [ ] Bestellung erstellen
+
+---
+
+## Meilenstein 5e: Zahlungsintegration
+
+### 5e.1 PayPal Integration
+- [ ] PayPal IPN (Instant Payment Notification) Endpoint
+- [ ] Zahlungsverifizierung
+- [ ] Automatische Slot-Freischaltung nach Zahlungseingang
+
+### 5e.2 Bitcoin Integration
+- [ ] Einzigartige Zahlungsadresse pro Transaktion (oder Memo/Reference)
+- [ ] Blockchain-Überwachung (z.B. BlockCypher API)
+- [ ] Bestätigungen abwarten (1-3 Confirmations)
+- [ ] Automatische Slot-Freischaltung nach Zahlungseingang
+
+### 5e.3 Ausstehende Zahlungen
+- [ ] Ausstehende Zahlungen im Dashboard anzeigen
+- [ ] Zahlungsstatus aktualisieren
 
 ---
 

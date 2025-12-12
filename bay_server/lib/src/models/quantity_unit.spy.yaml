@@ -1,0 +1,9 @@
+### Mengeneinheit für Angebote
+enum: QuantityUnit
+values:
+  - piece    # Stück
+  - kg       # Kilogramm
+  - gram     # Gramm
+  - meter    # Meter
+  - liter    # Liter
+  - none     # Ohne Einheit (z.B. für Dienstleistungen)

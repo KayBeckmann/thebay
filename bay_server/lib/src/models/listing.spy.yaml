@@ -1,0 +1,43 @@
+### Angebot/Listing - Haupttabelle für alle Angebote
+class: Listing
+table: listings
+fields:
+  ### Beziehungen
+  userId: int
+  categoryId: int
+
+  ### Basis-Informationen
+  title: String
+  description: String
+
+  ### Menge & Preis
+  quantity: double
+  quantityUnit: QuantityUnit
+  pricePerUnit: int  # in Cents (USD)
+
+  ### Zahlungsoptionen
+  acceptsPaypal: bool
+  acceptsBitcoin: bool
+
+  ### Versand
+  hasShipping: bool
+  shippingMethod: String?
+  shippingCostCents: int?
+
+  ### Status
+  isActive: bool
+  expiresAt: DateTime?
+
+  ### Timestamps
+  createdAt: DateTime
+  updatedAt: DateTime
+
+indexes:
+  listing_user_idx:
+    fields: userId
+  listing_category_idx:
+    fields: categoryId
+  listing_active_idx:
+    fields: isActive
+  listing_expires_idx:
+    fields: expiresAt
