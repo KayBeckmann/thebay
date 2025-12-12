@@ -25,9 +25,11 @@ dependencies:
   flutter:
     sdk: flutter
   serverpod_flutter: 2.9.2
+  serverpod_auth_client: 2.9.2
+  serverpod_auth_shared_flutter: 2.9.2
   bay_client:
     path: ../bay_client
-
+  shared_preferences: ^2.2.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

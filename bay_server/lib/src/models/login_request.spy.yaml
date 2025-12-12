@@ -1,0 +1,9 @@
+### Login request data
+class: LoginRequest
+fields:
+  ### Username
+  username: String
+  ### Password
+  password: String
+  ### Whether to extend session duration ("stay logged in")
+  stayLoggedIn: bool, default=false

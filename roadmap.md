@@ -26,35 +26,35 @@
 
 ---
 
-## Meilenstein 2: Authentifizierung & Benutzerverwaltung
+## Meilenstein 2: Authentifizierung & Benutzerverwaltung ✅
 
 ### 2.1 Backend - Auth-System
-- [ ] Argon2id Passwort-Hashing implementieren
-- [ ] Passwort-Validierung (min. 8 Zeichen, Groß-/Kleinbuchstaben, Ziffern)
-- [ ] Registrierung-Endpoint (ohne Email)
-- [ ] Login-Endpoint
-- [ ] Rate Limiting implementieren (3 Versuche → 60s, dann 10min Sperre)
-- [ ] Session-Management (5 Min Timeout, "Eingeloggt bleiben" Option)
-- [ ] Admin-Account aus .env beim ersten Start erstellen
+- [x] Argon2id Passwort-Hashing implementieren
+- [x] Passwort-Validierung (min. 8 Zeichen, Groß-/Kleinbuchstaben, Ziffern)
+- [x] Registrierung-Endpoint (ohne Email)
+- [x] Login-Endpoint
+- [x] Rate Limiting implementieren (3 Versuche → 60s, dann 10min Sperre)
+- [x] Session-Management (5 Min Timeout, "Eingeloggt bleiben" Option)
+- [x] Admin-Account aus .env beim ersten Start erstellen
 
 ### 2.2 Frontend - Auth-Screens
-- [ ] Login Screen (Material Design)
-- [ ] Registrierung Screen
-- [ ] AGB/Nutzungsbedingungen Anzeige & Akzeptierung
-- [ ] Session-Handling im Frontend
-- [ ] Logout-Funktion
+- [x] Login Screen (Material Design)
+- [x] Registrierung Screen
+- [x] AGB/Nutzungsbedingungen Anzeige & Akzeptierung
+- [x] Session-Handling im Frontend
+- [x] Logout-Funktion
 
 ### 2.3 Benutzerrollen
-- [ ] Rollen-System implementieren (User, Moderator, Admin)
-- [ ] Middleware für Rollen-basierte Zugriffskontrolle
+- [x] Rollen-System implementieren (User, Moderator, Admin)
+- [x] Middleware für Rollen-basierte Zugriffskontrolle
 
 ---
 
-## Meilenstein 3: Navigation & Grundlegende UI
+## Meilenstein 3: Navigation & Grundlegende UI ✅
 
 ### 3.1 App-Struktur
-- [ ] Material Design Theme konfigurieren
-- [ ] Haupt-Navigation implementieren:
+- [x] Material Design Theme konfigurieren
+- [x] Haupt-Navigation implementieren:
   - Dashboard / Startseite
   - Nachrichten
   - Suchen
@@ -62,18 +62,18 @@
   - Einstellungen
   - News (nur für Admin sichtbar)
   - Admin-Panel (nur für Admin sichtbar)
-- [ ] Rollen-basierte Menü-Sichtbarkeit
+- [x] Rollen-basierte Menü-Sichtbarkeit
 
 ### 3.2 Dashboard
-- [ ] News-Bereich (vom Admin)
-- [ ] Neueste Angebote Übersicht
-- [ ] Slot-Ablauf-Warnungen (3 Tage vor Ablauf)
+- [x] News-Bereich (vom Admin)
+- [x] Neueste Angebote Übersicht
+- [x] Slot-Ablauf-Warnungen (3 Tage vor Ablauf)
 
 ### 3.3 Einstellungen-Screen
-- [ ] Zahlungsinformationen verwalten (PayPal, Bitcoin)
-- [ ] Pagination-Einstellung (10, 25, 50, 100, alle)
-- [ ] Anzeigewährung wählen (Standard: USD)
-- [ ] Account-Löschung (mit Sicherheitsabfrage)
+- [x] Zahlungsinformationen verwalten (PayPal, Bitcoin)
+- [x] Pagination-Einstellung (10, 25, 50, 100, alle)
+- [x] Anzeigewährung wählen (Standard: USD)
+- [x] Account-Löschung (mit Sicherheitsabfrage)
 
 ---
 

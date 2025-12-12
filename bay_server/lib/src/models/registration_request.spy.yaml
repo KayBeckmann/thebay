@@ -1,0 +1,9 @@
+### Registration request data
+class: RegistrationRequest
+fields:
+  ### Desired username
+  username: String
+  ### Password (will be hashed server-side)
+  password: String
+  ### Whether user accepted terms of service
+  acceptedTerms: bool

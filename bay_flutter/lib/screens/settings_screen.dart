@@ -1,0 +1,513 @@
+import 'package:flutter/material.dart';
+
+import '../services/auth_service.dart';
+
+/// Settings screen for user preferences and account management.
+class SettingsScreen extends StatefulWidget {
+  final AuthService authService;
+  final VoidCallback onLogout;
+
+  const SettingsScreen({
+    super.key,
+    required this.authService,
+    required this.onLogout,
+  });
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  // User preferences
+  int _paginationSize = 25;
+  String _currency = 'USD';
+
+  // Payment info
+  String? _paypalAddress;
+  String? _bitcoinWallet;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Einstellungen'),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+      ),
+      body: ListView(
+        children: [
+          // Payment information section
+          _buildSectionHeader(context, 'Zahlungsinformationen'),
+          _buildPaymentInfoTile(
+            context,
+            icon: Icons.paypal,
+            title: 'PayPal-Adresse',
+            subtitle: _paypalAddress ?? 'Nicht angegeben',
+            onTap: () => _editPaypalAddress(context),
+          ),
+          _buildPaymentInfoTile(
+            context,
+            icon: Icons.currency_bitcoin,
+            title: 'Bitcoin-Wallet',
+            subtitle: _bitcoinWallet ?? 'Nicht angegeben',
+            onTap: () => _editBitcoinWallet(context),
+          ),
+          const Divider(),
+
+          // Display preferences section
+          _buildSectionHeader(context, 'Anzeige'),
+          ListTile(
+            leading: const Icon(Icons.format_list_numbered),
+            title: const Text('Elemente pro Seite'),
+            subtitle: Text('$_paginationSize Elemente'),
+            onTap: () => _showPaginationDialog(context),
+          ),
+          ListTile(
+            leading: const Icon(Icons.attach_money),
+            title: const Text('Anzeigewährung'),
+            subtitle: Text(_currency),
+            onTap: () => _showCurrencyDialog(context),
+          ),
+          const Divider(),
+
+          // Security section
+          _buildSectionHeader(context, 'Sicherheit'),
+          ListTile(
+            leading: const Icon(Icons.key),
+            title: const Text('PGP-Schlüssel'),
+            subtitle: const Text('Noch nicht eingerichtet'),
+            onTap: () => _showPgpInfoDialog(context),
+          ),
+          ListTile(
+            leading: const Icon(Icons.password),
+            title: const Text('Passwort ändern'),
+            onTap: () => _showChangePasswordDialog(context),
+          ),
+          const Divider(),
+
+          // Account section
+          _buildSectionHeader(context, 'Konto'),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Abmelden'),
+            onTap: () => _confirmLogout(context),
+          ),
+          ListTile(
+            leading: Icon(Icons.delete_forever, color: Theme.of(context).colorScheme.error),
+            title: Text(
+              'Konto löschen',
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
+            ),
+            onTap: () => _confirmDeleteAccount(context),
+          ),
+          const SizedBox(height: 32),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(BuildContext context, String title) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.bold,
+            ),
+      ),
+    );
+  }
+
+  Widget _buildPaymentInfoTile(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      subtitle: Text(
+        subtitle,
+        style: subtitle == 'Nicht angegeben'
+            ? TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant)
+            : null,
+      ),
+      trailing: const Icon(Icons.edit),
+      onTap: onTap,
+    );
+  }
+
+  void _editPaypalAddress(BuildContext context) {
+    final controller = TextEditingController(text: _paypalAddress);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('PayPal-Adresse'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(
+            labelText: 'E-Mail-Adresse',
+            hintText: 'deine@email.com',
+          ),
+          keyboardType: TextInputType.emailAddress,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () {
+              setState(() {
+                _paypalAddress = controller.text.isEmpty ? null : controller.text;
+              });
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('PayPal-Adresse gespeichert')),
+              );
+            },
+            child: const Text('Speichern'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _editBitcoinWallet(BuildContext context) {
+    final controller = TextEditingController(text: _bitcoinWallet);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Bitcoin-Wallet'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(
+            labelText: 'Wallet-Adresse',
+            hintText: 'bc1q...',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () {
+              setState(() {
+                _bitcoinWallet = controller.text.isEmpty ? null : controller.text;
+              });
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Bitcoin-Wallet gespeichert')),
+              );
+            },
+            child: const Text('Speichern'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showPaginationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: const Text('Elemente pro Seite'),
+        children: [10, 25, 50, 100].map((size) {
+          return SimpleDialogOption(
+            onPressed: () {
+              setState(() => _paginationSize = size);
+              Navigator.pop(context);
+            },
+            child: Row(
+              children: [
+                if (_paginationSize == size)
+                  Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
+                else
+                  const SizedBox(width: 24),
+                const SizedBox(width: 12),
+                Text('$size Elemente'),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  void _showCurrencyDialog(BuildContext context) {
+    final currencies = ['USD', 'EUR', 'GBP', 'CHF', 'BTC'];
+
+    showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: const Text('Anzeigewährung'),
+        children: currencies.map((currency) {
+          return SimpleDialogOption(
+            onPressed: () {
+              setState(() => _currency = currency);
+              Navigator.pop(context);
+            },
+            child: Row(
+              children: [
+                if (_currency == currency)
+                  Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
+                else
+                  const SizedBox(width: 24),
+                const SizedBox(width: 12),
+                Text(currency),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  void _showPgpInfoDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(Icons.vpn_key),
+        title: const Text('PGP-Verschlüsselung'),
+        content: const Text(
+          'Die PGP-Schlüsselverwaltung wird in Meilenstein 7 implementiert. '
+          'Mit PGP kannst du Nachrichten Ende-zu-Ende verschlüsseln.',
+        ),
+        actions: [
+          FilledButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showChangePasswordDialog(BuildContext context) {
+    final currentPasswordController = TextEditingController();
+    final newPasswordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+    bool isLoading = false;
+
+    showDialog(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Passwort ändern'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: currentPasswordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Aktuelles Passwort',
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: newPasswordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Neues Passwort',
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: confirmPasswordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Passwort bestätigen',
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: isLoading ? null : () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+            FilledButton(
+              onPressed: isLoading
+                  ? null
+                  : () async {
+                      if (newPasswordController.text !=
+                          confirmPasswordController.text) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Passwörter stimmen nicht überein'),
+                          ),
+                        );
+                        return;
+                      }
+
+                      setDialogState(() => isLoading = true);
+
+                      try {
+                        final response = await widget.authService.changePassword(
+                          currentPassword: currentPasswordController.text,
+                          newPassword: newPasswordController.text,
+                        );
+
+                        if (context.mounted) {
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                response.success
+                                    ? 'Passwort erfolgreich geändert'
+                                    : response.errorMessage ?? 'Fehler beim Ändern des Passworts',
+                              ),
+                            ),
+                          );
+                        }
+                      } catch (e) {
+                        if (context.mounted) {
+                          setDialogState(() => isLoading = false);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Fehler: $e')),
+                          );
+                        }
+                      }
+                    },
+              child: isLoading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Text('Ändern'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _confirmLogout(BuildContext context) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Abmelden'),
+        content: const Text('Möchtest du dich wirklich abmelden?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Abmelden'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      await widget.authService.logout();
+      widget.onLogout();
+    }
+  }
+
+  void _confirmDeleteAccount(BuildContext context) {
+    final passwordController = TextEditingController();
+    bool isLoading = false;
+
+    showDialog(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          icon: Icon(Icons.warning, color: Theme.of(context).colorScheme.error),
+          title: const Text('Konto löschen'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Diese Aktion kann nicht rückgängig gemacht werden. '
+                'Alle deine Daten werden unwiderruflich gelöscht.',
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Passwort zur Bestätigung',
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: isLoading ? null : () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+            FilledButton(
+              onPressed: isLoading
+                  ? null
+                  : () async {
+                      if (passwordController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Bitte gib dein Passwort ein'),
+                          ),
+                        );
+                        return;
+                      }
+
+                      setDialogState(() => isLoading = true);
+
+                      try {
+                        final response = await widget.authService
+                            .deleteAccount(passwordController.text);
+
+                        if (context.mounted) {
+                          Navigator.pop(context);
+                          if (response.success) {
+                            widget.onLogout();
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  response.errorMessage ?? 'Fehler beim Löschen des Kontos',
+                                ),
+                              ),
+                            );
+                          }
+                        }
+                      } catch (e) {
+                        if (context.mounted) {
+                          setDialogState(() => isLoading = false);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Fehler: $e')),
+                          );
+                        }
+                      }
+                    },
+              style: FilledButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.error,
+              ),
+              child: isLoading
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Text('Konto löschen'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

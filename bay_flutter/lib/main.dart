@@ -1,145 +1,142 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
+import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 
-/// Sets up a global client object that can be used to talk to the server from
-/// anywhere in our app. The client is generated from your server code
-/// and is set up to connect to a Serverpod running on a local server on
-/// the default port. You will need to modify this to connect to staging or
-/// production servers.
-/// In a larger app, you may want to use the dependency injection of your choice
-/// instead of using a global client object. This is just a simple example.
+import 'screens/login_screen.dart';
+import 'screens/register_screen.dart';
+import 'screens/main_shell.dart';
+import 'services/auth_service.dart';
+import 'theme/app_theme.dart';
+
+/// Global client object for server communication.
 late final Client client;
 
-late String serverUrl;
+/// Global auth service for authentication management.
+late final AuthService authService;
 
-void main() {
-  // When you are running the app on a physical device, you need to set the
-  // server URL to the IP address of your computer. You can find the IP
-  // address by running `ipconfig` on Windows or `ifconfig` on Mac/Linux.
-  // You can set the variable when running or building your app like this:
-  // E.g. `flutter run --dart-define=SERVER_URL=https://api.example.com/`
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Server URL configuration
+  // Set via: flutter run --dart-define=SERVER_URL=https://api.example.com/
   const serverUrlFromEnv = String.fromEnvironment('SERVER_URL');
   final serverUrl =
       serverUrlFromEnv.isEmpty ? 'http://$localhost:8080/' : serverUrlFromEnv;
 
-  client = Client(serverUrl)
-    ..connectivityMonitor = FlutterConnectivityMonitor();
+  // Initialize client with authentication key manager
+  client = Client(
+    serverUrl,
+    authenticationKeyManager: FlutterAuthenticationKeyManager(),
+  )..connectivityMonitor = FlutterConnectivityMonitor();
 
-  runApp(const MyApp());
+  // Initialize auth service
+  authService = AuthService(client);
+
+  runApp(const BayApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+/// Main application widget.
+class BayApp extends StatelessWidget {
+  const BayApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Serverpod Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: 'Serverpod Example'),
+      title: 'Bay',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const AuthWrapper(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+/// Wrapper widget that handles authentication state and navigation.
+class AuthWrapper extends StatefulWidget {
+  const AuthWrapper({super.key});
 
   @override
-  MyHomePageState createState() => MyHomePageState();
+  State<AuthWrapper> createState() => _AuthWrapperState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
-  /// Holds the last result or null if no result exists yet.
-  String? _resultMessage;
+class _AuthWrapperState extends State<AuthWrapper> {
+  bool _isLoading = true;
+  bool _isAuthenticated = false;
+  bool _showLogin = true;
 
-  /// Holds the last error message that we've received from the server or null
-  /// if no error exists yet.
-  String? _errorMessage;
+  @override
+  void initState() {
+    super.initState();
+    _initializeAuth();
+  }
 
-  final _textEditingController = TextEditingController();
+  Future<void> _initializeAuth() async {
+    await authService.initialize();
 
-  /// Calls the `hello` method of the `greeting` endpoint. Will set either the
-  /// `_resultMessage` or `_errorMessage` field, depending on if the call
-  /// is successful.
-  void _callHello() async {
-    try {
-      final result = await client.greeting.hello(_textEditingController.text);
+    if (mounted) {
       setState(() {
-        _errorMessage = null;
-        _resultMessage = result.message;
-      });
-    } catch (e) {
-      setState(() {
-        _errorMessage = '$e';
+        _isLoading = false;
+        _isAuthenticated = authService.isAuthenticated;
       });
     }
   }
 
+  void _handleLoginSuccess() {
+    setState(() {
+      _isAuthenticated = true;
+    });
+  }
+
+  void _handleLogout() {
+    setState(() {
+      _isAuthenticated = false;
+      _showLogin = true;
+    });
+  }
+
+  void _navigateToRegister() {
+    setState(() {
+      _showLogin = false;
+    });
+  }
+
+  void _navigateToLogin() {
+    setState(() {
+      _showLogin = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: TextField(
-                controller: _textEditingController,
-                decoration: const InputDecoration(hintText: 'Enter your name'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: ElevatedButton(
-                onPressed: _callHello,
-                child: const Text('Send to Server'),
-              ),
-            ),
-            ResultDisplay(
-              resultMessage: _resultMessage,
-              errorMessage: _errorMessage,
-            ),
-          ],
+    if (_isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
         ),
-      ),
-    );
-  }
-}
-
-/// ResultDisplays shows the result of the call. Either the returned result
-/// from the `example.greeting` endpoint method or an error message.
-class ResultDisplay extends StatelessWidget {
-  final String? resultMessage;
-  final String? errorMessage;
-
-  const ResultDisplay({super.key, this.resultMessage, this.errorMessage});
-
-  @override
-  Widget build(BuildContext context) {
-    String text;
-    Color backgroundColor;
-    if (errorMessage != null) {
-      backgroundColor = Colors.red[300]!;
-      text = errorMessage!;
-    } else if (resultMessage != null) {
-      backgroundColor = Colors.green[300]!;
-      text = resultMessage!;
-    } else {
-      backgroundColor = Colors.grey[300]!;
-      text = 'No server response yet.';
+      );
     }
 
-    return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 50),
-      child: Container(
-        color: backgroundColor,
-        child: Center(child: Text(text)),
-      ),
+    if (_isAuthenticated) {
+      return MainShell(
+        authService: authService,
+        onLogout: _handleLogout,
+      );
+    }
+
+    if (_showLogin) {
+      return LoginScreen(
+        authService: authService,
+        onLoginSuccess: _handleLoginSuccess,
+        onNavigateToRegister: _navigateToRegister,
+      );
+    }
+
+    return RegisterScreen(
+      authService: authService,
+      onRegisterSuccess: _handleLoginSuccess,
+      onNavigateToLogin: _navigateToLogin,
     );
   }
 }

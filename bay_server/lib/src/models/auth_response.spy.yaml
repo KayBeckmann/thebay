@@ -1,0 +1,17 @@
+### Authentication response returned after successful login/registration
+class: AuthResponse
+fields:
+  ### Whether the authentication was successful
+  success: bool
+  ### Error message if authentication failed
+  errorMessage: String?
+  ### User ID if authentication was successful
+  userId: int?
+  ### Username if authentication was successful
+  username: String?
+  ### User role if authentication was successful
+  role: UserRole?
+  ### Session key for authenticated requests
+  sessionKey: String?
+  ### Remaining lockout time in seconds (for rate limiting)
+  lockoutSeconds: int?

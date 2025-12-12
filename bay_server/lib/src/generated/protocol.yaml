@@ -1,2 +1,9 @@
+auth:
+  - register:
+  - login:
+  - logout:
+  - getCurrentUser:
+  - changePassword:
+  - deleteAccount:
 greeting:
   - hello:
