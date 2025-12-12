@@ -1,5 +1,6 @@
 # Bay Flutter Web Frontend Dockerfile
 # Multi-stage build for optimized production image
+# NOTE: Build context must be the project root (not bay_flutter)
 
 # =============================================================================
 # Build Stage - Flutter Web
@@ -16,30 +17,32 @@ RUN apt-get update && apt-get install -y \
     libglu1-mesa \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Flutter
-ENV FLUTTER_VERSION=3.24.0
+# Install Flutter (using stable channel for best compatibility)
 ENV FLUTTER_HOME=/opt/flutter
 ENV PATH="${FLUTTER_HOME}/bin:${PATH}"
 
 RUN git clone https://github.com/flutter/flutter.git ${FLUTTER_HOME} \
     && cd ${FLUTTER_HOME} \
-    && git checkout tags/${FLUTTER_VERSION} \
+    && git checkout stable \
     && flutter doctor \
     && flutter config --enable-web
 
 WORKDIR /app
 
-# Copy pubspec files first for better caching
-COPY pubspec.* ./
+# Copy bay_client first (dependency)
+COPY bay_client /app/bay_client
+
+# Copy bay_flutter
+COPY bay_flutter /app/bay_flutter
+
+WORKDIR /app/bay_flutter
 
 # Get dependencies
 RUN flutter pub get
 
-# Copy source code
-COPY . .
-
-# Build web release
-RUN flutter build web --release --web-renderer html
+# Build web release with server URL
+ARG SERVER_URL=http://localhost:8080/
+RUN flutter build web --release --dart-define=SERVER_URL=${SERVER_URL}
 
 # =============================================================================
 # Production Stage - Nginx
@@ -47,10 +50,10 @@ RUN flutter build web --release --web-renderer html
 FROM nginx:alpine
 
 # Copy nginx configuration
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY bay_flutter/nginx.conf /etc/nginx/nginx.conf
 
 # Copy built web app
-COPY --from=build /app/build/web /usr/share/nginx/html
+COPY --from=build /app/bay_flutter/build/web /usr/share/nginx/html
 
 # Add health check script
 RUN apk add --no-cache wget

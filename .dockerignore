@@ -1,0 +1,34 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# Build outputs
+**/build/
+**/.dart_tool/
+
+# Flutter specific
+bay_flutter/android/
+bay_flutter/ios/
+bay_flutter/macos/
+bay_flutter/windows/
+bay_flutter/linux/
+bay_flutter/test/
+bay_flutter/.flutter-plugins
+bay_flutter/.flutter-plugins-dependencies
+
+# Server test files
+bay_server/test/
+
+# Documentation
+*.md
+!bay_flutter/README.md
+
+# Misc
+.env
+.env.*
+*.log

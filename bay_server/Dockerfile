@@ -36,6 +36,7 @@ COPY --from=build /app/bin/server server
 COPY --from=build /app/config/ config/
 COPY --from=build /app/web/ web/
 COPY --from=build /app/migrations/ migrations/
+# Note: passwords.yaml is included in config/ directory
 
 # This file is required to enable the endpoint log filter in Insights.
 COPY --from=build /app/lib/src/generated/protocol.yaml lib/src/generated/protocol.yaml
