@@ -134,10 +134,10 @@
 
 ---
 
-## Meilenstein 5c: Frontend - Angebote
+## Meilenstein 5c: Frontend - Angebote ✅
 
 ### 5c.1 Angebot erstellen/bearbeiten
-- [ ] Angebot erstellen Screen:
+- [x] Angebot erstellen Screen:
   - Titel, Beschreibung
   - Menge, Mengeneinheit (Stück, Kg, Meter, ohne)
   - Preis pro Einheit
@@ -145,12 +145,12 @@
   - Versand (ja/nein), Versandart, Versandkosten
   - Kategorie / Subkategorie Auswahl
   - Bild-Upload (bis zu 3 Bilder)
-- [ ] Angebot bearbeiten Screen
+- [x] Angebot bearbeiten Screen
 
 ### 5c.2 Angebots-Ansichten
-- [ ] Angebots-Detailansicht mit Bildergalerie
-- [ ] Angebots-Übersicht (Liste mit Mini-Preview)
-- [ ] Eigene Angebote verwalten
+- [x] Angebots-Detailansicht mit Bildergalerie
+- [x] Angebots-Übersicht (Liste mit Mini-Preview)
+- [x] Eigene Angebote verwalten
 
 ---
 
