@@ -22,6 +22,15 @@ listing:
   - getMyListings:
   - getByUser:
   - getAvailableSlotCount:
+listingImage:
+  - upload:
+  - getByListing:
+  - getImageData:
+  - getImageDataByPath:
+  - delete:
+  - reorder:
+  - setMainImage:
+  - deleteAllForListing:
 news:
   - getPublished:
   - getAll:

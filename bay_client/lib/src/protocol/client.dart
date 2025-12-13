@@ -17,12 +17,14 @@ import 'package:bay_client/src/protocol/login_request.dart' as _i5;
 import 'package:bay_client/src/protocol/category.dart' as _i6;
 import 'package:bay_client/src/protocol/listing.dart' as _i7;
 import 'package:bay_client/src/protocol/quantity_unit.dart' as _i8;
-import 'package:bay_client/src/protocol/news.dart' as _i9;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i10;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i11;
-import 'package:bay_client/src/protocol/greeting.dart' as _i12;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i13;
-import 'protocol.dart' as _i14;
+import 'package:bay_client/src/protocol/listing_image.dart' as _i9;
+import 'dart:typed_data' as _i10;
+import 'package:bay_client/src/protocol/news.dart' as _i11;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i12;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i13;
+import 'package:bay_client/src/protocol/greeting.dart' as _i14;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i15;
+import 'protocol.dart' as _i16;
 
 /// Authentication endpoint for user registration, login, and logout.
 /// {@category Endpoint}
@@ -302,6 +304,92 @@ class EndpointListing extends _i1.EndpointRef {
       );
 }
 
+/// Endpoint für Listing-Bilder.
+/// {@category Endpoint}
+class EndpointListingImage extends _i1.EndpointRef {
+  EndpointListingImage(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'listingImage';
+
+  /// Lädt ein Bild für ein Listing hoch.
+  /// Gibt das erstellte ListingImage-Objekt zurück.
+  _i2.Future<_i9.ListingImage?> upload({
+    required int listingId,
+    required String originalFileName,
+    required _i10.Uint8List imageData,
+  }) =>
+      caller.callServerEndpoint<_i9.ListingImage?>(
+        'listingImage',
+        'upload',
+        {
+          'listingId': listingId,
+          'originalFileName': originalFileName,
+          'imageData': imageData,
+        },
+      );
+
+  /// Ruft alle Bilder eines Listings ab.
+  _i2.Future<List<_i9.ListingImage>> getByListing(int listingId) =>
+      caller.callServerEndpoint<List<_i9.ListingImage>>(
+        'listingImage',
+        'getByListing',
+        {'listingId': listingId},
+      );
+
+  /// Ruft die Bild-Daten ab (für Anzeige).
+  _i2.Future<_i10.Uint8List?> getImageData(int imageId) =>
+      caller.callServerEndpoint<_i10.Uint8List?>(
+        'listingImage',
+        'getImageData',
+        {'imageId': imageId},
+      );
+
+  /// Ruft die Bild-Daten über den Dateinamen ab.
+  _i2.Future<_i10.Uint8List?> getImageDataByPath(String relativePath) =>
+      caller.callServerEndpoint<_i10.Uint8List?>(
+        'listingImage',
+        'getImageDataByPath',
+        {'relativePath': relativePath},
+      );
+
+  /// Löscht ein Bild.
+  _i2.Future<bool> delete(int imageId) => caller.callServerEndpoint<bool>(
+        'listingImage',
+        'delete',
+        {'imageId': imageId},
+      );
+
+  /// Ändert die Reihenfolge der Bilder.
+  _i2.Future<bool> reorder({
+    required int listingId,
+    required List<int> imageIds,
+  }) =>
+      caller.callServerEndpoint<bool>(
+        'listingImage',
+        'reorder',
+        {
+          'listingId': listingId,
+          'imageIds': imageIds,
+        },
+      );
+
+  /// Setzt das Hauptbild (sortOrder = 0).
+  _i2.Future<bool> setMainImage(int imageId) => caller.callServerEndpoint<bool>(
+        'listingImage',
+        'setMainImage',
+        {'imageId': imageId},
+      );
+
+  /// Löscht alle Bilder eines Listings.
+  _i2.Future<int> deleteAllForListing(int listingId) =>
+      caller.callServerEndpoint<int>(
+        'listingImage',
+        'deleteAllForListing',
+        {'listingId': listingId},
+      );
+}
+
 /// Endpoint for managing news articles.
 /// Admin can create/edit/delete, users can read published news.
 /// {@category Endpoint}
@@ -312,36 +400,37 @@ class EndpointNews extends _i1.EndpointRef {
   String get name => 'news';
 
   /// Get all published and non-expired news (public).
-  _i2.Future<List<_i9.News>> getPublished() =>
-      caller.callServerEndpoint<List<_i9.News>>(
+  _i2.Future<List<_i11.News>> getPublished() =>
+      caller.callServerEndpoint<List<_i11.News>>(
         'news',
         'getPublished',
         {},
       );
 
   /// Get all news including unpublished (admin only).
-  _i2.Future<List<_i9.News>> getAll() =>
-      caller.callServerEndpoint<List<_i9.News>>(
+  _i2.Future<List<_i11.News>> getAll() =>
+      caller.callServerEndpoint<List<_i11.News>>(
         'news',
         'getAll',
         {},
       );
 
   /// Get a single news article by ID.
-  _i2.Future<_i9.News?> getById(int id) => caller.callServerEndpoint<_i9.News?>(
+  _i2.Future<_i11.News?> getById(int id) =>
+      caller.callServerEndpoint<_i11.News?>(
         'news',
         'getById',
         {'id': id},
       );
 
   /// Create a new news article (admin only).
-  _i2.Future<_i9.News?> create({
+  _i2.Future<_i11.News?> create({
     required String title,
     required String content,
     required bool publish,
     int? lifetimeDays,
   }) =>
-      caller.callServerEndpoint<_i9.News?>(
+      caller.callServerEndpoint<_i11.News?>(
         'news',
         'create',
         {
@@ -353,14 +442,14 @@ class EndpointNews extends _i1.EndpointRef {
       );
 
   /// Update a news article (admin only).
-  _i2.Future<_i9.News?> update({
+  _i2.Future<_i11.News?> update({
     required int id,
     required String title,
     required String content,
     required bool isPublished,
     DateTime? expiresAt,
   }) =>
-      caller.callServerEndpoint<_i9.News?>(
+      caller.callServerEndpoint<_i11.News?>(
         'news',
         'update',
         {
@@ -472,31 +561,31 @@ class EndpointSlotVariant extends _i1.EndpointRef {
   String get name => 'slotVariant';
 
   /// Get all slot variants (admin only).
-  _i2.Future<List<_i10.SlotVariant>> getAll() =>
-      caller.callServerEndpoint<List<_i10.SlotVariant>>(
+  _i2.Future<List<_i12.SlotVariant>> getAll() =>
+      caller.callServerEndpoint<List<_i12.SlotVariant>>(
         'slotVariant',
         'getAll',
         {},
       );
 
   /// Get only active slot variants (public).
-  _i2.Future<List<_i10.SlotVariant>> getActive() =>
-      caller.callServerEndpoint<List<_i10.SlotVariant>>(
+  _i2.Future<List<_i12.SlotVariant>> getActive() =>
+      caller.callServerEndpoint<List<_i12.SlotVariant>>(
         'slotVariant',
         'getActive',
         {},
       );
 
   /// Get a single slot variant by ID (public).
-  _i2.Future<_i10.SlotVariant?> getById(int id) =>
-      caller.callServerEndpoint<_i10.SlotVariant?>(
+  _i2.Future<_i12.SlotVariant?> getById(int id) =>
+      caller.callServerEndpoint<_i12.SlotVariant?>(
         'slotVariant',
         'getById',
         {'id': id},
       );
 
   /// Create a new slot variant (admin only).
-  _i2.Future<_i10.SlotVariant?> create({
+  _i2.Future<_i12.SlotVariant?> create({
     required String name,
     String? description,
     required int priceUsdCents,
@@ -505,7 +594,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool allowBitcoin,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i10.SlotVariant?>(
+      caller.callServerEndpoint<_i12.SlotVariant?>(
         'slotVariant',
         'create',
         {
@@ -520,7 +609,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
       );
 
   /// Update a slot variant (admin only).
-  _i2.Future<_i10.SlotVariant?> update({
+  _i2.Future<_i12.SlotVariant?> update({
     required int id,
     required String name,
     String? description,
@@ -531,7 +620,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool isActive,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i10.SlotVariant?>(
+      caller.callServerEndpoint<_i12.SlotVariant?>(
         'slotVariant',
         'update',
         {
@@ -564,24 +653,24 @@ class EndpointUserSlot extends _i1.EndpointRef {
   String get name => 'userSlot';
 
   /// Ruft alle Slots des aktuellen Benutzers ab.
-  _i2.Future<List<_i11.UserSlot>> getMySlots() =>
-      caller.callServerEndpoint<List<_i11.UserSlot>>(
+  _i2.Future<List<_i13.UserSlot>> getMySlots() =>
+      caller.callServerEndpoint<List<_i13.UserSlot>>(
         'userSlot',
         'getMySlots',
         {},
       );
 
   /// Ruft nur verfügbare (ungenutzte, aktive) Slots ab.
-  _i2.Future<List<_i11.UserSlot>> getAvailableSlots() =>
-      caller.callServerEndpoint<List<_i11.UserSlot>>(
+  _i2.Future<List<_i13.UserSlot>> getAvailableSlots() =>
+      caller.callServerEndpoint<List<_i13.UserSlot>>(
         'userSlot',
         'getAvailableSlots',
         {},
       );
 
   /// Ruft Slots ab, die in den nächsten X Tagen ablaufen (für Warnungen).
-  _i2.Future<List<_i11.UserSlot>> getExpiringSoon({required int days}) =>
-      caller.callServerEndpoint<List<_i11.UserSlot>>(
+  _i2.Future<List<_i13.UserSlot>> getExpiringSoon({required int days}) =>
+      caller.callServerEndpoint<List<_i13.UserSlot>>(
         'userSlot',
         'getExpiringSoon',
         {'days': days},
@@ -589,11 +678,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
 
   /// Erstellt einen Slot für einen Benutzer (Admin-Funktion oder nach Zahlung).
   /// Diese Methode wird intern nach erfolgreicher Zahlung aufgerufen.
-  _i2.Future<_i11.UserSlot?> createSlot({
+  _i2.Future<_i13.UserSlot?> createSlot({
     required int userId,
     required int slotVariantId,
   }) =>
-      caller.callServerEndpoint<_i11.UserSlot?>(
+      caller.callServerEndpoint<_i13.UserSlot?>(
         'userSlot',
         'createSlot',
         {
@@ -603,11 +692,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
       );
 
   /// Verlängert einen bestehenden Slot.
-  _i2.Future<_i11.UserSlot?> extendSlot({
+  _i2.Future<_i13.UserSlot?> extendSlot({
     required int slotId,
     required int additionalDays,
   }) =>
-      caller.callServerEndpoint<_i11.UserSlot?>(
+      caller.callServerEndpoint<_i13.UserSlot?>(
         'userSlot',
         'extendSlot',
         {
@@ -643,8 +732,8 @@ class EndpointGreeting extends _i1.EndpointRef {
   String get name => 'greeting';
 
   /// Returns a personalized greeting message: "Hello {name}".
-  _i2.Future<_i12.Greeting> hello(String name) =>
-      caller.callServerEndpoint<_i12.Greeting>(
+  _i2.Future<_i14.Greeting> hello(String name) =>
+      caller.callServerEndpoint<_i14.Greeting>(
         'greeting',
         'hello',
         {'name': name},
@@ -653,10 +742,10 @@ class EndpointGreeting extends _i1.EndpointRef {
 
 class Modules {
   Modules(Client client) {
-    auth = _i13.Caller(client);
+    auth = _i15.Caller(client);
   }
 
-  late final _i13.Caller auth;
+  late final _i15.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -675,7 +764,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i14.Protocol(),
+          _i16.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -688,6 +777,7 @@ class Client extends _i1.ServerpodClientShared {
     auth = EndpointAuth(this);
     category = EndpointCategory(this);
     listing = EndpointListing(this);
+    listingImage = EndpointListingImage(this);
     news = EndpointNews(this);
     settings = EndpointSettings(this);
     slotVariant = EndpointSlotVariant(this);
@@ -701,6 +791,8 @@ class Client extends _i1.ServerpodClientShared {
   late final EndpointCategory category;
 
   late final EndpointListing listing;
+
+  late final EndpointListingImage listingImage;
 
   late final EndpointNews news;
 
@@ -719,6 +811,7 @@ class Client extends _i1.ServerpodClientShared {
         'auth': auth,
         'category': category,
         'listing': listing,
+        'listingImage': listingImage,
         'news': news,
         'settings': settings,
         'slotVariant': slotVariant,

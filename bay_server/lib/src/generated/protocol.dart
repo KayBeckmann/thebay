@@ -31,9 +31,10 @@ import 'user_role.dart' as _i19;
 import 'user_slot.dart' as _i20;
 import 'package:bay_server/src/generated/category.dart' as _i21;
 import 'package:bay_server/src/generated/listing.dart' as _i22;
-import 'package:bay_server/src/generated/news.dart' as _i23;
-import 'package:bay_server/src/generated/slot_variant.dart' as _i24;
-import 'package:bay_server/src/generated/user_slot.dart' as _i25;
+import 'package:bay_server/src/generated/listing_image.dart' as _i23;
+import 'package:bay_server/src/generated/news.dart' as _i24;
+import 'package:bay_server/src/generated/slot_variant.dart' as _i25;
+import 'package:bay_server/src/generated/user_slot.dart' as _i26;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -1229,8 +1230,16 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as List).map((e) => deserialize<_i22.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i23.News>) {
-      return (data as List).map((e) => deserialize<_i23.News>(e)).toList() as T;
+    if (t == List<_i23.ListingImage>) {
+      return (data as List)
+          .map((e) => deserialize<_i23.ListingImage>(e))
+          .toList() as T;
+    }
+    if (t == List<int>) {
+      return (data as List).map((e) => deserialize<int>(e)).toList() as T;
+    }
+    if (t == List<_i24.News>) {
+      return (data as List).map((e) => deserialize<_i24.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -1243,13 +1252,13 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i24.SlotVariant>) {
+    if (t == List<_i25.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i24.SlotVariant>(e))
+          .map((e) => deserialize<_i25.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i25.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i25.UserSlot>(e)).toList()
+    if (t == List<_i26.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i26.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {

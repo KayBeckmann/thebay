@@ -29,10 +29,11 @@ import 'user_role.dart' as _i17;
 import 'user_slot.dart' as _i18;
 import 'package:bay_client/src/protocol/category.dart' as _i19;
 import 'package:bay_client/src/protocol/listing.dart' as _i20;
-import 'package:bay_client/src/protocol/news.dart' as _i21;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i22;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i23;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i24;
+import 'package:bay_client/src/protocol/listing_image.dart' as _i21;
+import 'package:bay_client/src/protocol/news.dart' as _i22;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i23;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i24;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i25;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -176,8 +177,16 @@ class Protocol extends _i1.SerializationManager {
       return (data as List).map((e) => deserialize<_i20.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i21.News>) {
-      return (data as List).map((e) => deserialize<_i21.News>(e)).toList() as T;
+    if (t == List<_i21.ListingImage>) {
+      return (data as List)
+          .map((e) => deserialize<_i21.ListingImage>(e))
+          .toList() as T;
+    }
+    if (t == List<int>) {
+      return (data as List).map((e) => deserialize<int>(e)).toList() as T;
+    }
+    if (t == List<_i22.News>) {
+      return (data as List).map((e) => deserialize<_i22.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -190,13 +199,13 @@ class Protocol extends _i1.SerializationManager {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i22.SlotVariant>) {
+    if (t == List<_i23.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i22.SlotVariant>(e))
+          .map((e) => deserialize<_i23.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i23.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i23.UserSlot>(e)).toList()
+    if (t == List<_i24.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i24.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
@@ -204,7 +213,7 @@ class Protocol extends _i1.SerializationManager {
           (k, v) => MapEntry(deserialize<String>(k), deserialize<int>(v))) as T;
     }
     try {
-      return _i24.Protocol().deserialize<T>(data, t);
+      return _i25.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -264,7 +273,7 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i18.UserSlot) {
       return 'UserSlot';
     }
-    className = _i24.Protocol().getClassNameForObject(data);
+    className = _i25.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -330,7 +339,7 @@ class Protocol extends _i1.SerializationManager {
     }
     if (dataClassName.startsWith('serverpod_auth.')) {
       data['className'] = dataClassName.substring(15);
-      return _i24.Protocol().deserializeByClassName(data);
+      return _i25.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

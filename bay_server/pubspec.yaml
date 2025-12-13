@@ -10,6 +10,10 @@ dependencies:
   serverpod: 2.9.2
   serverpod_auth_server: 2.9.2
   argon2: ^1.0.1
+  image: ^4.5.0
+  mime: ^2.0.0
+  path: ^1.9.0
+  uuid: ^4.5.1
 
 dev_dependencies:
   lints: '>=3.0.0 <7.0.0'

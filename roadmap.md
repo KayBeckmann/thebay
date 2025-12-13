@@ -123,14 +123,14 @@
 
 ---
 
-## Meilenstein 5b: Bild-Upload & Dateisystem
+## Meilenstein 5b: Bild-Upload & Dateisystem ✅
 
 ### 5b.1 Backend - Bilder
-- [ ] Bild-Upload Endpoint
-- [ ] Automatische Komprimierung (max. 300 KB)
-- [ ] Erlaubte Formate: JPG, PNG, WebP, GIF
-- [ ] Bilder im Dateisystem speichern
-- [ ] Bilder abrufen/löschen
+- [x] Bild-Upload Endpoint
+- [x] Automatische Komprimierung (max. 300 KB)
+- [x] Erlaubte Formate: JPG, PNG, WebP, GIF
+- [x] Bilder im Dateisystem speichern
+- [x] Bilder abrufen/löschen
 
 ---
 
