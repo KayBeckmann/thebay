@@ -228,4 +228,38 @@ class UserSlotEndpoint extends Endpoint {
       'expired': expired,
     };
   }
+
+  /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
+  /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
+  /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
+  Future<UserSlot?> createTestSlot(
+    Session session, {
+    required int slotVariantId,
+  }) async {
+    final userId = await _getAuthenticatedUserId(session);
+    if (userId == null) {
+      throw Exception('Nicht authentifiziert');
+    }
+
+    // Hole die Slot-Variante für die Laufzeit
+    final variant = await SlotVariant.db.findById(session, slotVariantId);
+    if (variant == null) {
+      throw Exception('Slot-Variante nicht gefunden');
+    }
+
+    final now = DateTime.now();
+    final expiresAt = now.add(Duration(days: variant.durationDays));
+
+    final slot = UserSlot(
+      userId: userId,
+      slotVariantId: slotVariantId,
+      listingId: null,
+      purchasedAt: now,
+      expiresAt: expiresAt,
+      isActive: true,
+      isUsed: false,
+    );
+
+    return await UserSlot.db.insertRow(session, slot);
+  }
 }

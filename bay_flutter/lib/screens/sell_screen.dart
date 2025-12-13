@@ -600,12 +600,47 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     );
   }
 
-  void _buySlot(SlotVariant variant) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Slot-Kauf wird in Meilenstein 5d/5e implementiert'),
+  Future<void> _buySlot(SlotVariant variant) async {
+    // TEST-FUNKTION: Erstellt direkt einen Slot ohne Zahlung
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(Icons.science),
+        title: const Text('Test-Modus'),
+        content: Text(
+          'Möchtest du einen "${variant.name}" Slot kostenlos aktivieren?\n\n'
+          '(Dies ist eine Test-Funktion. In der Produktion wird hier die Zahlung abgewickelt.)',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Slot aktivieren'),
+          ),
+        ],
       ),
     );
+
+    if (confirmed == true) {
+      try {
+        await client.userSlot.createTestSlot(slotVariantId: variant.id!);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Slot "${variant.name}" aktiviert!')),
+          );
+          _loadData();
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Fehler: $e')),
+          );
+        }
+      }
+    }
   }
 
   String _formatDate(DateTime date) {

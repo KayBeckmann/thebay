@@ -720,6 +720,16 @@ class EndpointUserSlot extends _i1.EndpointRef {
         'getSlotStats',
         {},
       );
+
+  /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
+  /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
+  /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
+  _i2.Future<_i13.UserSlot?> createTestSlot({required int slotVariantId}) =>
+      caller.callServerEndpoint<_i13.UserSlot?>(
+        'userSlot',
+        'createTestSlot',
+        {'slotVariantId': slotVariantId},
+      );
 }
 
 /// This is an example endpoint that returns a greeting message through
