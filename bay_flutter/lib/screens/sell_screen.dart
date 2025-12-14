@@ -282,7 +282,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     return RefreshIndicator(
       onRefresh: _loadMyListings,
       child: ListView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
         itemCount: _myListings.length,
         itemBuilder: (context, index) {
           final listing = _myListings[index];
@@ -307,7 +307,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
         await _loadSlotVariants();
       },
       child: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
         children: [
           // Slot-Statistiken
           _buildSlotStatsCard(),
@@ -451,34 +451,64 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: slot.isUsed
-              ? Theme.of(context).colorScheme.primaryContainer
-              : Colors.green.shade100,
-          child: Icon(
-            slot.isUsed ? Icons.inventory : Icons.check_circle,
-            color: slot.isUsed
-                ? Theme.of(context).colorScheme.onPrimaryContainer
-                : Colors.green,
-          ),
-        ),
-        title: Text(slot.isUsed ? 'Slot genutzt' : 'Slot verfügbar'),
-        subtitle: Text(
-          'Läuft ab: ${_formatDate(slot.expiresAt)}',
-          style: TextStyle(
-            color: isExpiringSoon ? Theme.of(context).colorScheme.error : null,
-          ),
-        ),
-        trailing: isExpiringSoon
-            ? Chip(
-                label: Text('$daysRemaining Tage'),
-                backgroundColor: Theme.of(context).colorScheme.errorContainer,
-                labelStyle: TextStyle(
-                  color: Theme.of(context).colorScheme.onErrorContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: slot.isUsed
+                  ? Theme.of(context).colorScheme.primaryContainer
+                  : Colors.green.shade100,
+              child: Icon(
+                slot.isUsed ? Icons.inventory : Icons.check_circle,
+                color: slot.isUsed
+                    ? Theme.of(context).colorScheme.onPrimaryContainer
+                    : Colors.green,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    slot.isUsed ? 'Slot genutzt' : 'Slot verfügbar',
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'Läuft ab: ${_formatDate(slot.expiresAt)}',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: isExpiringSoon
+                              ? Theme.of(context).colorScheme.error
+                              : Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
+                  ),
+                ],
+              ),
+            ),
+            if (isExpiringSoon)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Chip(
+                  label: Text('$daysRemaining Tage'),
+                  backgroundColor: Theme.of(context).colorScheme.errorContainer,
+                  labelStyle: TextStyle(
+                    color: Theme.of(context).colorScheme.onErrorContainer,
+                    fontSize: 12,
+                  ),
+                  visualDensity: VisualDensity.compact,
                 ),
-              )
-            : null,
+              ),
+            IconButton(
+              onPressed: () => _extendSlot(slot),
+              icon: const Icon(Icons.add_circle_outline),
+              tooltip: 'Verlängern',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -533,53 +563,40 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       margin: const EdgeInsets.only(bottom: 8),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    variant.name,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                  child: Icon(
+                    Icons.confirmation_number,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
-                  if (variant.description != null && variant.description!.isNotEmpty)
-                    Text(
-                      variant.description!,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurfaceVariant,
-                          ),
-                    ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '${variant.durationDays} Tage Laufzeit',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  const SizedBox(height: 4),
-                  Wrap(
-                    spacing: 4,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (variant.allowPaypal)
-                        const Chip(
-                          label: Text('PayPal'),
-                          visualDensity: VisualDensity.compact,
-                        ),
-                      if (variant.allowBitcoin)
-                        const Chip(
-                          label: Text('Bitcoin'),
-                          visualDensity: VisualDensity.compact,
+                      Text(
+                        variant.name,
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      if (variant.description != null && variant.description!.isNotEmpty)
+                        Text(
+                          variant.description!,
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
                         ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 16),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
+                ),
                 Text(
                   '\$${(variant.priceUsdCents / 100).toStringAsFixed(2)}',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -587,12 +604,63 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-                const SizedBox(height: 8),
-                FilledButton(
-                  onPressed: () => _buySlot(variant),
-                  child: const Text('Kaufen'),
-                ),
               ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Icon(
+                  Icons.schedule,
+                  size: 16,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  '${variant.durationDays} Tage Laufzeit',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                ),
+                const SizedBox(width: 16),
+                if (variant.allowPaypal) ...[
+                  Icon(
+                    Icons.payment,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    'PayPal',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
+                  ),
+                  const SizedBox(width: 8),
+                ],
+                if (variant.allowBitcoin) ...[
+                  Icon(
+                    Icons.currency_bitcoin,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    'Bitcoin',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
+                  ),
+                ],
+              ],
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                onPressed: () => _buySlot(variant),
+                icon: const Icon(Icons.add_circle_outline),
+                label: const Text('Slot aktivieren'),
+              ),
             ),
           ],
         ),
@@ -601,15 +669,179 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _buySlot(SlotVariant variant) async {
-    // TEST-FUNKTION: Erstellt direkt einen Slot ohne Zahlung
+    // Bestimme verfügbare Zahlungsmethoden
+    final List<PaymentMethod> availableMethods = [];
+    if (variant.allowPaypal) availableMethods.add(PaymentMethod.paypal);
+    if (variant.allowBitcoin) availableMethods.add(PaymentMethod.bitcoin);
+
+    if (availableMethods.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Keine Zahlungsmethode verfügbar')),
+      );
+      return;
+    }
+
+    // Zeige Kauf-Dialog
+    final result = await showDialog<_SlotPurchaseResult>(
+      context: context,
+      builder: (context) => _SlotPurchaseDialog(
+        variant: variant,
+        availableMethods: availableMethods,
+      ),
+    );
+
+    if (result == null) return;
+
+    try {
+      if (result.isTestMode) {
+        // Test-Modus: Direkt Slot erstellen
+        await client.userSlot.createTestSlot(slotVariantId: variant.id!);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Slot "${variant.name}" aktiviert!')),
+          );
+          _loadData();
+        }
+      } else {
+        // Normale Bestellung erstellen
+        final order = await client.slotOrder.create(
+          slotVariantId: variant.id!,
+          paymentMethod: result.paymentMethod!,
+        );
+
+        if (order != null && mounted) {
+          // Zeige Zahlungsanweisungen
+          _showPaymentInstructions(order, variant, result.paymentMethod!);
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler: $e')),
+        );
+      }
+    }
+  }
+
+  void _showPaymentInstructions(
+    SlotOrder order,
+    SlotVariant variant,
+    PaymentMethod method,
+  ) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: Icon(
+          method == PaymentMethod.paypal ? Icons.payment : Icons.currency_bitcoin,
+        ),
+        title: Text(method == PaymentMethod.paypal ? 'PayPal-Zahlung' : 'Bitcoin-Zahlung'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Bestellung #${order.id}'),
+            const SizedBox(height: 8),
+            Text('Betrag: \$${(order.amountCents / 100).toStringAsFixed(2)}'),
+            const SizedBox(height: 16),
+            if (method == PaymentMethod.paypal)
+              const Text(
+                'Bitte sende den Betrag an die PayPal-Adresse des Administrators. '
+                'Nach Zahlungseingang wird dein Slot automatisch aktiviert.',
+              )
+            else
+              const Text(
+                'Bitte sende den Betrag an die Bitcoin-Adresse des Administrators. '
+                'Nach Zahlungseingang wird dein Slot automatisch aktiviert.',
+              ),
+            const SizedBox(height: 16),
+            const Text(
+              'Hinweis: Im Test-Modus kannst du die Zahlung manuell bestätigen.',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Später'),
+          ),
+          FilledButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              // Test: Direkt als bezahlt markieren
+              try {
+                await client.slotOrder.markAsPaid(orderId: order.id!);
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Slot "${variant.name}" aktiviert!')),
+                  );
+                  _loadData();
+                }
+              } catch (e) {
+                if (mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Fehler: $e')),
+                  );
+                }
+              }
+            },
+            child: const Text('Zahlung bestätigen (Test)'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _extendSlot(UserSlot slot) async {
+    // Finde passende Slot-Variante zum Verlängern
+    if (_slotVariants.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Keine Slot-Varianten verfügbar')),
+      );
+      return;
+    }
+
+    final variant = await showDialog<SlotVariant>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Slot verlängern'),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: _slotVariants.length,
+            itemBuilder: (context, index) {
+              final v = _slotVariants[index];
+              return ListTile(
+                leading: const Icon(Icons.add_circle),
+                title: Text(v.name),
+                subtitle: Text('+${v.durationDays} Tage'),
+                trailing: Text('\$${(v.priceUsdCents / 100).toStringAsFixed(2)}'),
+                onTap: () => Navigator.pop(context, v),
+              );
+            },
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen'),
+          ),
+        ],
+      ),
+    );
+
+    if (variant == null) return;
+
+    // Test-Modus: Direkt verlängern
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        icon: const Icon(Icons.science),
-        title: const Text('Test-Modus'),
+        icon: const Icon(Icons.timer),
+        title: const Text('Slot verlängern'),
         content: Text(
-          'Möchtest du einen "${variant.name}" Slot kostenlos aktivieren?\n\n'
-          '(Dies ist eine Test-Funktion. In der Produktion wird hier die Zahlung abgewickelt.)',
+          'Möchtest du den Slot um ${variant.durationDays} Tage verlängern?\n\n'
+          '(Test-Modus: Kostenlos)',
         ),
         actions: [
           TextButton(
@@ -618,7 +850,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Slot aktivieren'),
+            child: const Text('Verlängern'),
           ),
         ],
       ),
@@ -626,10 +858,13 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
     if (confirmed == true) {
       try {
-        await client.userSlot.createTestSlot(slotVariantId: variant.id!);
+        await client.userSlot.extendSlot(
+          slotId: slot.id!,
+          additionalDays: variant.durationDays,
+        );
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Slot "${variant.name}" aktiviert!')),
+            const SnackBar(content: Text('Slot verlängert!')),
           );
           _loadData();
         }
@@ -645,5 +880,143 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
   String _formatDate(DateTime date) {
     return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
+  }
+}
+
+/// Ergebnis des Slot-Kauf-Dialogs.
+class _SlotPurchaseResult {
+  final bool isTestMode;
+  final PaymentMethod? paymentMethod;
+
+  _SlotPurchaseResult({required this.isTestMode, this.paymentMethod});
+}
+
+/// Dialog für Slot-Kauf mit Zahlungsmethoden-Auswahl.
+class _SlotPurchaseDialog extends StatefulWidget {
+  final SlotVariant variant;
+  final List<PaymentMethod> availableMethods;
+
+  const _SlotPurchaseDialog({
+    required this.variant,
+    required this.availableMethods,
+  });
+
+  @override
+  State<_SlotPurchaseDialog> createState() => _SlotPurchaseDialogState();
+}
+
+class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
+  PaymentMethod? _selectedMethod;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.availableMethods.isNotEmpty) {
+      _selectedMethod = widget.availableMethods.first;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      icon: const Icon(Icons.shopping_cart),
+      title: const Text('Slot kaufen'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Slot-Details
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                    child: Icon(
+                      Icons.confirmation_number,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.variant.name,
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        Text(
+                          '${widget.variant.durationDays} Tage Laufzeit',
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Text(
+                    '\$${(widget.variant.priceUsdCents / 100).toStringAsFixed(2)}',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Zahlungsmethode
+          Text(
+            'Zahlungsmethode',
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(height: 8),
+          ...widget.availableMethods.map((method) {
+            return RadioListTile<PaymentMethod>(
+              value: method,
+              groupValue: _selectedMethod,
+              onChanged: (value) => setState(() => _selectedMethod = value),
+              title: Text(method == PaymentMethod.paypal ? 'PayPal' : 'Bitcoin'),
+              secondary: Icon(
+                method == PaymentMethod.paypal ? Icons.payment : Icons.currency_bitcoin,
+              ),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+            );
+          }),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: const Text('Abbrechen'),
+        ),
+        OutlinedButton(
+          onPressed: () => Navigator.pop(
+            context,
+            _SlotPurchaseResult(isTestMode: true),
+          ),
+          child: const Text('Test-Modus'),
+        ),
+        FilledButton(
+          onPressed: _selectedMethod == null
+              ? null
+              : () => Navigator.pop(
+                    context,
+                    _SlotPurchaseResult(
+                      isTestMode: false,
+                      paymentMethod: _selectedMethod,
+                    ),
+                  ),
+          child: const Text('Kaufen'),
+        ),
+      ],
+    );
   }
 }

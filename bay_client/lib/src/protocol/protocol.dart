@@ -31,9 +31,10 @@ import 'package:bay_client/src/protocol/category.dart' as _i19;
 import 'package:bay_client/src/protocol/listing.dart' as _i20;
 import 'package:bay_client/src/protocol/listing_image.dart' as _i21;
 import 'package:bay_client/src/protocol/news.dart' as _i22;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i23;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i24;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i25;
+import 'package:bay_client/src/protocol/slot_order.dart' as _i23;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i24;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i25;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i26;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -199,13 +200,17 @@ class Protocol extends _i1.SerializationManager {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i23.SlotVariant>) {
+    if (t == List<_i23.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i23.SlotOrder>(e)).toList()
+          as T;
+    }
+    if (t == List<_i24.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i23.SlotVariant>(e))
+          .map((e) => deserialize<_i24.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i24.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i24.UserSlot>(e)).toList()
+    if (t == List<_i25.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i25.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
@@ -213,7 +218,7 @@ class Protocol extends _i1.SerializationManager {
           (k, v) => MapEntry(deserialize<String>(k), deserialize<int>(v))) as T;
     }
     try {
-      return _i25.Protocol().deserialize<T>(data, t);
+      return _i26.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -273,7 +278,7 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i18.UserSlot) {
       return 'UserSlot';
     }
-    className = _i25.Protocol().getClassNameForObject(data);
+    className = _i26.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -339,7 +344,7 @@ class Protocol extends _i1.SerializationManager {
     }
     if (dataClassName.startsWith('serverpod_auth.')) {
       data['className'] = dataClassName.substring(15);
-      return _i25.Protocol().deserializeByClassName(data);
+      return _i26.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

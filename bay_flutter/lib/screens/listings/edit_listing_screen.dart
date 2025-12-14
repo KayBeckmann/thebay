@@ -252,7 +252,7 @@ class _EditListingScreenState extends State<EditListingScreen> {
         await client.listingImage.upload(
           listingId: widget.listing.id!,
           originalFileName: image.name,
-          imageData: image.bytes,
+          imageData: image.bytes.buffer.asByteData(),
         );
       }
 
@@ -361,14 +361,14 @@ class _EditListingScreenState extends State<EditListingScreen> {
       padding: const EdgeInsets.only(right: 8),
       child: Stack(
         children: [
-          FutureBuilder<Uint8List?>(
+          FutureBuilder<ByteData?>(
             future: client.listingImage.getImageData(image.id!),
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.memory(
-                    snapshot.data!,
+                    snapshot.data!.buffer.asUint8List(),
                     width: 120,
                     height: 120,
                     fit: BoxFit.cover,

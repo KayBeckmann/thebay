@@ -213,11 +213,12 @@ class _ListingImageWidgetState extends State<_ListingImageWidget> {
     try {
       final images = await client.listingImage.getByListing(widget.listingId);
       if (images.isNotEmpty && mounted) {
-        final imageData = await client.listingImage.getImageData(images.first.id!);
+        final byteData = await client.listingImage.getImageData(images.first.id!);
         if (mounted) {
           setState(() {
-            _imageData = imageData;
+            _imageData = byteData?.buffer.asUint8List();
             _isLoading = false;
+            _hasError = _imageData == null;
           });
         }
       } else {

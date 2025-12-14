@@ -35,8 +35,10 @@ class ListingImageEndpoint extends Endpoint {
     Session session, {
     required int listingId,
     required String originalFileName,
-    required Uint8List imageData,
+    required ByteData imageData,
   }) async {
+    // Konvertiere ByteData zu Uint8List
+    final imageBytes = imageData.buffer.asUint8List();
     // Prüfe Authentifizierung
     final userId = await _getAuthenticatedUserId(session);
     if (userId == null) {
@@ -66,7 +68,7 @@ class ListingImageEndpoint extends Endpoint {
     }
 
     // Komprimiere das Bild
-    final result = await _imageService.compressImage(imageData, originalFileName);
+    final result = await _imageService.compressImage(imageBytes, originalFileName);
     if (result == null) {
       throw Exception('Bild konnte nicht verarbeitet werden');
     }
@@ -102,18 +104,22 @@ class ListingImageEndpoint extends Endpoint {
   }
 
   /// Ruft die Bild-Daten ab (für Anzeige).
-  Future<Uint8List?> getImageData(Session session, int imageId) async {
+  Future<ByteData?> getImageData(Session session, int imageId) async {
     final image = await ListingImage.db.findById(session, imageId);
     if (image == null) {
       return null;
     }
 
-    return await _imageService.readImage(image.fileName);
+    final bytes = await _imageService.readImage(image.fileName);
+    if (bytes == null) return null;
+    return bytes.buffer.asByteData();
   }
 
   /// Ruft die Bild-Daten über den Dateinamen ab.
-  Future<Uint8List?> getImageDataByPath(Session session, String relativePath) async {
-    return await _imageService.readImage(relativePath);
+  Future<ByteData?> getImageDataByPath(Session session, String relativePath) async {
+    final bytes = await _imageService.readImage(relativePath);
+    if (bytes == null) return null;
+    return bytes.buffer.asByteData();
   }
 
   /// Löscht ein Bild.

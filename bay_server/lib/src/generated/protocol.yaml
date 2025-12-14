@@ -46,6 +46,15 @@ settings:
   - delete:
   - getPaymentSettings:
   - updatePaymentSettings:
+slotOrder:
+  - create:
+  - getMyOrders:
+  - getPendingOrders:
+  - getById:
+  - cancel:
+  - markAsPaid:
+  - getAllOrders:
+  - expireOldOrders:
 slotVariant:
   - getAll:
   - getActive:

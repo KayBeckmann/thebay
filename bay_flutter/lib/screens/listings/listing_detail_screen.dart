@@ -193,14 +193,15 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
           itemCount: _images.length,
           onPageChanged: (index) => setState(() => _currentImageIndex = index),
           itemBuilder: (context, index) {
-            return FutureBuilder<Uint8List?>(
+            return FutureBuilder<ByteData?>(
               future: client.listingImage.getImageData(_images[index].id!),
               builder: (context, snapshot) {
                 if (snapshot.hasData && snapshot.data != null) {
+                  final imageBytes = snapshot.data!.buffer.asUint8List();
                   return GestureDetector(
-                    onTap: () => _showFullScreenImage(snapshot.data!, index),
+                    onTap: () => _showFullScreenImage(imageBytes, index),
                     child: Image.memory(
-                      snapshot.data!,
+                      imageBytes,
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
@@ -545,14 +546,14 @@ class _FullScreenImageViewState extends State<_FullScreenImageView> {
         itemCount: widget.images.length,
         onPageChanged: (index) => setState(() => _currentIndex = index),
         itemBuilder: (context, index) {
-          return FutureBuilder<Uint8List?>(
+          return FutureBuilder<ByteData?>(
             future: client.listingImage.getImageData(widget.images[index].id!),
             builder: (context, snapshot) {
               if (snapshot.hasData && snapshot.data != null) {
                 return InteractiveViewer(
                   child: Center(
                     child: Image.memory(
-                      snapshot.data!,
+                      snapshot.data!.buffer.asUint8List(),
                       fit: BoxFit.contain,
                     ),
                   ),

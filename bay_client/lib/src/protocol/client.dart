@@ -20,11 +20,13 @@ import 'package:bay_client/src/protocol/quantity_unit.dart' as _i8;
 import 'package:bay_client/src/protocol/listing_image.dart' as _i9;
 import 'dart:typed_data' as _i10;
 import 'package:bay_client/src/protocol/news.dart' as _i11;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i12;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i13;
-import 'package:bay_client/src/protocol/greeting.dart' as _i14;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i15;
-import 'protocol.dart' as _i16;
+import 'package:bay_client/src/protocol/slot_order.dart' as _i12;
+import 'package:bay_client/src/protocol/payment_method.dart' as _i13;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i14;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i15;
+import 'package:bay_client/src/protocol/greeting.dart' as _i16;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i17;
+import 'protocol.dart' as _i18;
 
 /// Authentication endpoint for user registration, login, and logout.
 /// {@category Endpoint}
@@ -249,7 +251,7 @@ class EndpointListing extends _i1.EndpointRef {
         },
       );
 
-  /// Löscht ein Angebot (deaktiviert es).
+  /// Löscht ein Angebot vollständig.
   _i2.Future<bool> delete(int id) => caller.callServerEndpoint<bool>(
         'listing',
         'delete',
@@ -317,7 +319,7 @@ class EndpointListingImage extends _i1.EndpointRef {
   _i2.Future<_i9.ListingImage?> upload({
     required int listingId,
     required String originalFileName,
-    required _i10.Uint8List imageData,
+    required _i10.ByteData imageData,
   }) =>
       caller.callServerEndpoint<_i9.ListingImage?>(
         'listingImage',
@@ -338,16 +340,16 @@ class EndpointListingImage extends _i1.EndpointRef {
       );
 
   /// Ruft die Bild-Daten ab (für Anzeige).
-  _i2.Future<_i10.Uint8List?> getImageData(int imageId) =>
-      caller.callServerEndpoint<_i10.Uint8List?>(
+  _i2.Future<_i10.ByteData?> getImageData(int imageId) =>
+      caller.callServerEndpoint<_i10.ByteData?>(
         'listingImage',
         'getImageData',
         {'imageId': imageId},
       );
 
   /// Ruft die Bild-Daten über den Dateinamen ab.
-  _i2.Future<_i10.Uint8List?> getImageDataByPath(String relativePath) =>
-      caller.callServerEndpoint<_i10.Uint8List?>(
+  _i2.Future<_i10.ByteData?> getImageDataByPath(String relativePath) =>
+      caller.callServerEndpoint<_i10.ByteData?>(
         'listingImage',
         'getImageDataByPath',
         {'relativePath': relativePath},
@@ -551,6 +553,90 @@ class EndpointSettings extends _i1.EndpointRef {
       );
 }
 
+/// Endpoint für Slot-Bestellungen (Kaufvorgänge).
+/// {@category Endpoint}
+class EndpointSlotOrder extends _i1.EndpointRef {
+  EndpointSlotOrder(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'slotOrder';
+
+  /// Erstellt eine neue Bestellung für einen Slot.
+  _i2.Future<_i12.SlotOrder?> create({
+    required int slotVariantId,
+    required _i13.PaymentMethod paymentMethod,
+  }) =>
+      caller.callServerEndpoint<_i12.SlotOrder?>(
+        'slotOrder',
+        'create',
+        {
+          'slotVariantId': slotVariantId,
+          'paymentMethod': paymentMethod,
+        },
+      );
+
+  /// Ruft alle Bestellungen des aktuellen Benutzers ab.
+  _i2.Future<List<_i12.SlotOrder>> getMyOrders() =>
+      caller.callServerEndpoint<List<_i12.SlotOrder>>(
+        'slotOrder',
+        'getMyOrders',
+        {},
+      );
+
+  /// Ruft ausstehende Bestellungen des Benutzers ab.
+  _i2.Future<List<_i12.SlotOrder>> getPendingOrders() =>
+      caller.callServerEndpoint<List<_i12.SlotOrder>>(
+        'slotOrder',
+        'getPendingOrders',
+        {},
+      );
+
+  /// Ruft eine einzelne Bestellung ab.
+  _i2.Future<_i12.SlotOrder?> getById(int id) =>
+      caller.callServerEndpoint<_i12.SlotOrder?>(
+        'slotOrder',
+        'getById',
+        {'id': id},
+      );
+
+  /// Storniert eine Bestellung (nur wenn noch pending).
+  _i2.Future<bool> cancel(int id) => caller.callServerEndpoint<bool>(
+        'slotOrder',
+        'cancel',
+        {'id': id},
+      );
+
+  /// Markiert eine Bestellung als bezahlt und aktiviert den Slot.
+  /// In der Produktion wird dies durch die Zahlungs-Webhooks aufgerufen.
+  _i2.Future<_i12.SlotOrder?> markAsPaid({
+    required int orderId,
+    String? transactionId,
+  }) =>
+      caller.callServerEndpoint<_i12.SlotOrder?>(
+        'slotOrder',
+        'markAsPaid',
+        {
+          'orderId': orderId,
+          'transactionId': transactionId,
+        },
+      );
+
+  /// Admin: Ruft alle Bestellungen ab.
+  _i2.Future<List<_i12.SlotOrder>> getAllOrders() =>
+      caller.callServerEndpoint<List<_i12.SlotOrder>>(
+        'slotOrder',
+        'getAllOrders',
+        {},
+      );
+
+  /// Läuft abgelaufene ausstehende Bestellungen ab (älter als 24 Stunden).
+  _i2.Future<int> expireOldOrders() => caller.callServerEndpoint<int>(
+        'slotOrder',
+        'expireOldOrders',
+        {},
+      );
+}
+
 /// Endpoint for managing slot variants.
 /// Most operations require admin privileges.
 /// {@category Endpoint}
@@ -561,31 +647,31 @@ class EndpointSlotVariant extends _i1.EndpointRef {
   String get name => 'slotVariant';
 
   /// Get all slot variants (admin only).
-  _i2.Future<List<_i12.SlotVariant>> getAll() =>
-      caller.callServerEndpoint<List<_i12.SlotVariant>>(
+  _i2.Future<List<_i14.SlotVariant>> getAll() =>
+      caller.callServerEndpoint<List<_i14.SlotVariant>>(
         'slotVariant',
         'getAll',
         {},
       );
 
   /// Get only active slot variants (public).
-  _i2.Future<List<_i12.SlotVariant>> getActive() =>
-      caller.callServerEndpoint<List<_i12.SlotVariant>>(
+  _i2.Future<List<_i14.SlotVariant>> getActive() =>
+      caller.callServerEndpoint<List<_i14.SlotVariant>>(
         'slotVariant',
         'getActive',
         {},
       );
 
   /// Get a single slot variant by ID (public).
-  _i2.Future<_i12.SlotVariant?> getById(int id) =>
-      caller.callServerEndpoint<_i12.SlotVariant?>(
+  _i2.Future<_i14.SlotVariant?> getById(int id) =>
+      caller.callServerEndpoint<_i14.SlotVariant?>(
         'slotVariant',
         'getById',
         {'id': id},
       );
 
   /// Create a new slot variant (admin only).
-  _i2.Future<_i12.SlotVariant?> create({
+  _i2.Future<_i14.SlotVariant?> create({
     required String name,
     String? description,
     required int priceUsdCents,
@@ -594,7 +680,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool allowBitcoin,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i12.SlotVariant?>(
+      caller.callServerEndpoint<_i14.SlotVariant?>(
         'slotVariant',
         'create',
         {
@@ -609,7 +695,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
       );
 
   /// Update a slot variant (admin only).
-  _i2.Future<_i12.SlotVariant?> update({
+  _i2.Future<_i14.SlotVariant?> update({
     required int id,
     required String name,
     String? description,
@@ -620,7 +706,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool isActive,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i12.SlotVariant?>(
+      caller.callServerEndpoint<_i14.SlotVariant?>(
         'slotVariant',
         'update',
         {
@@ -653,24 +739,24 @@ class EndpointUserSlot extends _i1.EndpointRef {
   String get name => 'userSlot';
 
   /// Ruft alle Slots des aktuellen Benutzers ab.
-  _i2.Future<List<_i13.UserSlot>> getMySlots() =>
-      caller.callServerEndpoint<List<_i13.UserSlot>>(
+  _i2.Future<List<_i15.UserSlot>> getMySlots() =>
+      caller.callServerEndpoint<List<_i15.UserSlot>>(
         'userSlot',
         'getMySlots',
         {},
       );
 
   /// Ruft nur verfügbare (ungenutzte, aktive) Slots ab.
-  _i2.Future<List<_i13.UserSlot>> getAvailableSlots() =>
-      caller.callServerEndpoint<List<_i13.UserSlot>>(
+  _i2.Future<List<_i15.UserSlot>> getAvailableSlots() =>
+      caller.callServerEndpoint<List<_i15.UserSlot>>(
         'userSlot',
         'getAvailableSlots',
         {},
       );
 
   /// Ruft Slots ab, die in den nächsten X Tagen ablaufen (für Warnungen).
-  _i2.Future<List<_i13.UserSlot>> getExpiringSoon({required int days}) =>
-      caller.callServerEndpoint<List<_i13.UserSlot>>(
+  _i2.Future<List<_i15.UserSlot>> getExpiringSoon({required int days}) =>
+      caller.callServerEndpoint<List<_i15.UserSlot>>(
         'userSlot',
         'getExpiringSoon',
         {'days': days},
@@ -678,11 +764,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
 
   /// Erstellt einen Slot für einen Benutzer (Admin-Funktion oder nach Zahlung).
   /// Diese Methode wird intern nach erfolgreicher Zahlung aufgerufen.
-  _i2.Future<_i13.UserSlot?> createSlot({
+  _i2.Future<_i15.UserSlot?> createSlot({
     required int userId,
     required int slotVariantId,
   }) =>
-      caller.callServerEndpoint<_i13.UserSlot?>(
+      caller.callServerEndpoint<_i15.UserSlot?>(
         'userSlot',
         'createSlot',
         {
@@ -692,11 +778,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
       );
 
   /// Verlängert einen bestehenden Slot.
-  _i2.Future<_i13.UserSlot?> extendSlot({
+  _i2.Future<_i15.UserSlot?> extendSlot({
     required int slotId,
     required int additionalDays,
   }) =>
-      caller.callServerEndpoint<_i13.UserSlot?>(
+      caller.callServerEndpoint<_i15.UserSlot?>(
         'userSlot',
         'extendSlot',
         {
@@ -724,8 +810,8 @@ class EndpointUserSlot extends _i1.EndpointRef {
   /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
   /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
   /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
-  _i2.Future<_i13.UserSlot?> createTestSlot({required int slotVariantId}) =>
-      caller.callServerEndpoint<_i13.UserSlot?>(
+  _i2.Future<_i15.UserSlot?> createTestSlot({required int slotVariantId}) =>
+      caller.callServerEndpoint<_i15.UserSlot?>(
         'userSlot',
         'createTestSlot',
         {'slotVariantId': slotVariantId},
@@ -742,8 +828,8 @@ class EndpointGreeting extends _i1.EndpointRef {
   String get name => 'greeting';
 
   /// Returns a personalized greeting message: "Hello {name}".
-  _i2.Future<_i14.Greeting> hello(String name) =>
-      caller.callServerEndpoint<_i14.Greeting>(
+  _i2.Future<_i16.Greeting> hello(String name) =>
+      caller.callServerEndpoint<_i16.Greeting>(
         'greeting',
         'hello',
         {'name': name},
@@ -752,10 +838,10 @@ class EndpointGreeting extends _i1.EndpointRef {
 
 class Modules {
   Modules(Client client) {
-    auth = _i15.Caller(client);
+    auth = _i17.Caller(client);
   }
 
-  late final _i15.Caller auth;
+  late final _i17.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -774,7 +860,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i16.Protocol(),
+          _i18.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -790,6 +876,7 @@ class Client extends _i1.ServerpodClientShared {
     listingImage = EndpointListingImage(this);
     news = EndpointNews(this);
     settings = EndpointSettings(this);
+    slotOrder = EndpointSlotOrder(this);
     slotVariant = EndpointSlotVariant(this);
     userSlot = EndpointUserSlot(this);
     greeting = EndpointGreeting(this);
@@ -808,6 +895,8 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointSettings settings;
 
+  late final EndpointSlotOrder slotOrder;
+
   late final EndpointSlotVariant slotVariant;
 
   late final EndpointUserSlot userSlot;
@@ -824,6 +913,7 @@ class Client extends _i1.ServerpodClientShared {
         'listingImage': listingImage,
         'news': news,
         'settings': settings,
+        'slotOrder': slotOrder,
         'slotVariant': slotVariant,
         'userSlot': userSlot,
         'greeting': greeting,

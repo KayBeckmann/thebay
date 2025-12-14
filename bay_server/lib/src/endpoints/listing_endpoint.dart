@@ -149,7 +149,7 @@ class ListingEndpoint extends Endpoint {
     return await Listing.db.updateRow(session, listing);
   }
 
-  /// Löscht ein Angebot (deaktiviert es).
+  /// Löscht ein Angebot vollständig.
   Future<bool> delete(Session session, int id) async {
     final userId = await _getAuthenticatedUserId(session);
     if (userId == null) {
@@ -166,11 +166,6 @@ class ListingEndpoint extends Endpoint {
       throw Exception('Keine Berechtigung');
     }
 
-    // Deaktiviere das Angebot
-    listing.isActive = false;
-    listing.updatedAt = DateTime.now();
-    await Listing.db.updateRow(session, listing);
-
     // Gib den Slot wieder frei
     final slots = await UserSlot.db.find(
       session,
@@ -181,6 +176,18 @@ class ListingEndpoint extends Endpoint {
       slot.isUsed = false;
       await UserSlot.db.updateRow(session, slot);
     }
+
+    // Lösche alle Bilder des Listings
+    final images = await ListingImage.db.find(
+      session,
+      where: (t) => t.listingId.equals(id),
+    );
+    for (final image in images) {
+      await ListingImage.db.deleteRow(session, image);
+    }
+
+    // Lösche das Listing aus der Datenbank
+    await Listing.db.deleteRow(session, listing);
 
     return true;
   }

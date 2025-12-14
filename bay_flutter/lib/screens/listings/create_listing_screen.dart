@@ -186,7 +186,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
         await client.listingImage.upload(
           listingId: listing.id!,
           originalFileName: image.name,
-          imageData: image.bytes,
+          imageData: image.bytes.buffer.asByteData(),
         );
       }
 

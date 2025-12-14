@@ -154,18 +154,18 @@
 
 ---
 
-## Meilenstein 5d: Slot-Kauf & Verwaltung
+## Meilenstein 5d: Slot-Kauf & Verwaltung ✅
 
 ### 5d.1 User-Slots
-- [ ] Verfügbare Slots anzeigen
-- [ ] Slot-Ablauf-Warnungen
-- [ ] Automatische Deaktivierung bei Slot-Ablauf
-- [ ] Slot-Verlängerung
+- [x] Verfügbare Slots anzeigen
+- [x] Slot-Ablauf-Warnungen
+- [x] Automatische Deaktivierung bei Slot-Ablauf
+- [x] Slot-Verlängerung
 
 ### 5d.2 Slot-Kauf Screen
-- [ ] Slot-Varianten Auswahl
-- [ ] Zahlungsmethode wählen
-- [ ] Bestellung erstellen
+- [x] Slot-Varianten Auswahl
+- [x] Zahlungsmethode wählen
+- [x] Bestellung erstellen
 
 ---
 

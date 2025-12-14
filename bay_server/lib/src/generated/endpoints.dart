@@ -16,14 +16,16 @@ import '../endpoints/listing_endpoint.dart' as _i4;
 import '../endpoints/listing_image_endpoint.dart' as _i5;
 import '../endpoints/news_endpoint.dart' as _i6;
 import '../endpoints/settings_endpoint.dart' as _i7;
-import '../endpoints/slot_variant_endpoint.dart' as _i8;
-import '../endpoints/user_slot_endpoint.dart' as _i9;
-import '../greeting_endpoint.dart' as _i10;
-import 'package:bay_server/src/generated/registration_request.dart' as _i11;
-import 'package:bay_server/src/generated/login_request.dart' as _i12;
-import 'package:bay_server/src/generated/quantity_unit.dart' as _i13;
-import 'dart:typed_data' as _i14;
-import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i15;
+import '../endpoints/slot_order_endpoint.dart' as _i8;
+import '../endpoints/slot_variant_endpoint.dart' as _i9;
+import '../endpoints/user_slot_endpoint.dart' as _i10;
+import '../greeting_endpoint.dart' as _i11;
+import 'package:bay_server/src/generated/registration_request.dart' as _i12;
+import 'package:bay_server/src/generated/login_request.dart' as _i13;
+import 'package:bay_server/src/generated/quantity_unit.dart' as _i14;
+import 'dart:typed_data' as _i15;
+import 'package:bay_server/src/generated/payment_method.dart' as _i16;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i17;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -65,19 +67,25 @@ class Endpoints extends _i1.EndpointDispatch {
           'settings',
           null,
         ),
-      'slotVariant': _i8.SlotVariantEndpoint()
+      'slotOrder': _i8.SlotOrderEndpoint()
+        ..initialize(
+          server,
+          'slotOrder',
+          null,
+        ),
+      'slotVariant': _i9.SlotVariantEndpoint()
         ..initialize(
           server,
           'slotVariant',
           null,
         ),
-      'userSlot': _i9.UserSlotEndpoint()
+      'userSlot': _i10.UserSlotEndpoint()
         ..initialize(
           server,
           'userSlot',
           null,
         ),
-      'greeting': _i10.GreetingEndpoint()
+      'greeting': _i11.GreetingEndpoint()
         ..initialize(
           server,
           'greeting',
@@ -93,7 +101,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i11.RegistrationRequest>(),
+              type: _i1.getType<_i12.RegistrationRequest>(),
               nullable: false,
             )
           },
@@ -111,7 +119,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i12.LoginRequest>(),
+              type: _i1.getType<_i13.LoginRequest>(),
               nullable: false,
             )
           },
@@ -358,7 +366,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i13.QuantityUnit>(),
+              type: _i1.getType<_i14.QuantityUnit>(),
               nullable: false,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -441,7 +449,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i13.QuantityUnit?>(),
+              type: _i1.getType<_i14.QuantityUnit?>(),
               nullable: true,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -620,7 +628,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'imageData': _i1.ParameterDescription(
               name: 'imageData',
-              type: _i1.getType<_i14.Uint8List>(),
+              type: _i1.getType<_i15.ByteData>(),
               nullable: false,
             ),
           },
@@ -1058,6 +1066,136 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
+    connectors['slotOrder'] = _i1.EndpointConnector(
+      name: 'slotOrder',
+      endpoint: endpoints['slotOrder']!,
+      methodConnectors: {
+        'create': _i1.MethodConnector(
+          name: 'create',
+          params: {
+            'slotVariantId': _i1.ParameterDescription(
+              name: 'slotVariantId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'paymentMethod': _i1.ParameterDescription(
+              name: 'paymentMethod',
+              type: _i1.getType<_i16.PaymentMethod>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint).create(
+            session,
+            slotVariantId: params['slotVariantId'],
+            paymentMethod: params['paymentMethod'],
+          ),
+        ),
+        'getMyOrders': _i1.MethodConnector(
+          name: 'getMyOrders',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint)
+                  .getMyOrders(session),
+        ),
+        'getPendingOrders': _i1.MethodConnector(
+          name: 'getPendingOrders',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint)
+                  .getPendingOrders(session),
+        ),
+        'getById': _i1.MethodConnector(
+          name: 'getById',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint).getById(
+            session,
+            params['id'],
+          ),
+        ),
+        'cancel': _i1.MethodConnector(
+          name: 'cancel',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint).cancel(
+            session,
+            params['id'],
+          ),
+        ),
+        'markAsPaid': _i1.MethodConnector(
+          name: 'markAsPaid',
+          params: {
+            'orderId': _i1.ParameterDescription(
+              name: 'orderId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'transactionId': _i1.ParameterDescription(
+              name: 'transactionId',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint).markAsPaid(
+            session,
+            orderId: params['orderId'],
+            transactionId: params['transactionId'],
+          ),
+        ),
+        'getAllOrders': _i1.MethodConnector(
+          name: 'getAllOrders',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint)
+                  .getAllOrders(session),
+        ),
+        'expireOldOrders': _i1.MethodConnector(
+          name: 'expireOldOrders',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotOrder'] as _i8.SlotOrderEndpoint)
+                  .expireOldOrders(session),
+        ),
+      },
+    );
     connectors['slotVariant'] = _i1.EndpointConnector(
       name: 'slotVariant',
       endpoint: endpoints['slotVariant']!,
@@ -1069,7 +1207,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i8.SlotVariantEndpoint)
+              (endpoints['slotVariant'] as _i9.SlotVariantEndpoint)
                   .getAll(session),
         ),
         'getActive': _i1.MethodConnector(
@@ -1079,7 +1217,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i8.SlotVariantEndpoint)
+              (endpoints['slotVariant'] as _i9.SlotVariantEndpoint)
                   .getActive(session),
         ),
         'getById': _i1.MethodConnector(
@@ -1095,7 +1233,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i8.SlotVariantEndpoint).getById(
+              (endpoints['slotVariant'] as _i9.SlotVariantEndpoint).getById(
             session,
             params['id'],
           ),
@@ -1143,7 +1281,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i8.SlotVariantEndpoint).create(
+              (endpoints['slotVariant'] as _i9.SlotVariantEndpoint).create(
             session,
             name: params['name'],
             description: params['description'],
@@ -1207,7 +1345,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i8.SlotVariantEndpoint).update(
+              (endpoints['slotVariant'] as _i9.SlotVariantEndpoint).update(
             session,
             id: params['id'],
             name: params['name'],
@@ -1233,7 +1371,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i8.SlotVariantEndpoint).delete(
+              (endpoints['slotVariant'] as _i9.SlotVariantEndpoint).delete(
             session,
             params['id'],
           ),
@@ -1251,7 +1389,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint)
                   .getMySlots(session),
         ),
         'getAvailableSlots': _i1.MethodConnector(
@@ -1261,7 +1399,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint)
                   .getAvailableSlots(session),
         ),
         'getExpiringSoon': _i1.MethodConnector(
@@ -1277,7 +1415,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint).getExpiringSoon(
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint).getExpiringSoon(
             session,
             days: params['days'],
           ),
@@ -1300,7 +1438,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint).createSlot(
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint).createSlot(
             session,
             userId: params['userId'],
             slotVariantId: params['slotVariantId'],
@@ -1324,7 +1462,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint).extendSlot(
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint).extendSlot(
             session,
             slotId: params['slotId'],
             additionalDays: params['additionalDays'],
@@ -1337,7 +1475,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint)
                   .deactivateExpired(session),
         ),
         'getSlotStats': _i1.MethodConnector(
@@ -1347,7 +1485,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint)
                   .getSlotStats(session),
         ),
         'createTestSlot': _i1.MethodConnector(
@@ -1363,7 +1501,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i9.UserSlotEndpoint).createTestSlot(
+              (endpoints['userSlot'] as _i10.UserSlotEndpoint).createTestSlot(
             session,
             slotVariantId: params['slotVariantId'],
           ),
@@ -1387,13 +1525,13 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['greeting'] as _i10.GreetingEndpoint).hello(
+              (endpoints['greeting'] as _i11.GreetingEndpoint).hello(
             session,
             params['name'],
           ),
         )
       },
     );
-    modules['serverpod_auth'] = _i15.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i17.Endpoints()..initializeEndpoints(server);
   }
 }
