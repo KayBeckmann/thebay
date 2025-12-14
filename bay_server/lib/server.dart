@@ -4,6 +4,7 @@ import 'package:serverpod/serverpod.dart';
 import 'package:serverpod_auth_server/serverpod_auth_server.dart' as auth;
 
 import 'package:bay_server/src/web/routes/root.dart';
+import 'package:bay_server/src/web/routes/paypal_ipn.dart';
 import 'package:bay_server/src/services/password_service.dart';
 import 'package:bay_server/src/future_calls/slot_expiration_call.dart'
     show SlotExpirationService;
@@ -27,6 +28,8 @@ void run(List<String> args) async {
   // Setup a default page at the web root.
   pod.webServer.addRoute(RouteRoot(), '/');
   pod.webServer.addRoute(RouteRoot(), '/index.html');
+  // PayPal IPN webhook endpoint
+  pod.webServer.addRoute(RoutePayPalIpn(), '/paypal-ipn');
   // Serve all files in the /static directory.
   pod.webServer.addRoute(
     RouteStaticDirectory(serverDirectory: 'static', basePath: '/'),

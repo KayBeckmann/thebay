@@ -30,6 +30,10 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   List<SlotVariant> _slotVariants = [];
   bool _isLoadingVariants = true;
 
+  // Ausstehende Bestellungen
+  List<SlotOrder> _pendingOrders = [];
+  bool _isLoadingOrders = false;
+
   @override
   void initState() {
     super.initState();
@@ -48,6 +52,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       _loadMyListings(),
       _loadMySlots(),
       _loadSlotVariants(),
+      _loadPendingOrders(),
     ]);
   }
 
@@ -100,6 +105,23 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     } catch (e) {
       if (mounted) {
         setState(() => _isLoadingVariants = false);
+      }
+    }
+  }
+
+  Future<void> _loadPendingOrders() async {
+    setState(() => _isLoadingOrders = true);
+    try {
+      final orders = await client.slotOrder.getPendingOrders();
+      if (mounted) {
+        setState(() {
+          _pendingOrders = orders;
+          _isLoadingOrders = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingOrders = false);
       }
     }
   }
@@ -305,6 +327,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       onRefresh: () async {
         await _loadMySlots();
         await _loadSlotVariants();
+        await _loadPendingOrders();
       },
       child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 100),
@@ -312,6 +335,19 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           // Slot-Statistiken
           _buildSlotStatsCard(),
           const SizedBox(height: 24),
+
+          // Ausstehende Bestellungen
+          if (_pendingOrders.isNotEmpty) ...[
+            Text(
+              'Ausstehende Bestellungen',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            _buildPendingOrdersSection(),
+            const SizedBox(height: 24),
+          ],
 
           // Aktive Slots
           Text(
@@ -441,6 +477,318 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
     return Column(
       children: activeSlots.map((slot) => _buildSlotCard(slot)).toList(),
+    );
+  }
+
+  Widget _buildPendingOrdersSection() {
+    if (_isLoadingOrders) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+
+    return Column(
+      children: _pendingOrders.map((order) => _buildPendingOrderCard(order)).toList(),
+    );
+  }
+
+  Widget _buildPendingOrderCard(SlotOrder order) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      color: Theme.of(context).colorScheme.secondaryContainer.withValues(alpha: 0.5),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                  child: Icon(
+                    order.paymentMethod == PaymentMethod.paypal
+                        ? Icons.payment
+                        : Icons.currency_bitcoin,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Bestellung #${order.id}',
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Text(
+                        order.paymentMethod == PaymentMethod.paypal
+                            ? 'PayPal - Warte auf Zahlung'
+                            : 'Bitcoin - Warte auf Bestätigung',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Theme.of(context).colorScheme.onSurfaceVariant,
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+                Text(
+                  '\$${(order.amountCents / 100).toStringAsFixed(2)}',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Icon(
+                  Icons.schedule,
+                  size: 14,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  'Erstellt: ${_formatDate(order.createdAt)}',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () => _cancelOrder(order),
+                  child: const Text('Stornieren'),
+                ),
+                const SizedBox(width: 8),
+                if (order.paymentMethod == PaymentMethod.bitcoin)
+                  OutlinedButton.icon(
+                    onPressed: () => _enterBitcoinTxId(order),
+                    icon: const Icon(Icons.edit, size: 16),
+                    label: const Text('TX-ID eingeben'),
+                  ),
+                if (order.paymentMethod == PaymentMethod.bitcoin)
+                  const SizedBox(width: 8),
+                FilledButton.icon(
+                  onPressed: () => _viewPaymentDetails(order),
+                  icon: const Icon(Icons.info_outline, size: 16),
+                  label: const Text('Zahlen'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _cancelOrder(SlotOrder order) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Bestellung stornieren'),
+        content: Text(
+          'Möchtest du die Bestellung #${order.id} wirklich stornieren?',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: FilledButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.error,
+            ),
+            child: const Text('Stornieren'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) return;
+
+    try {
+      await client.slotOrder.cancel(order.id!);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Bestellung storniert')),
+        );
+        _loadPendingOrders();
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler: $e')),
+        );
+      }
+    }
+  }
+
+  Future<void> _enterBitcoinTxId(SlotOrder order) async {
+    final controller = TextEditingController(text: order.transactionId ?? '');
+
+    final txId = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(Icons.currency_bitcoin),
+        title: const Text('Bitcoin-Transaktions-ID'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Gib die Bitcoin-Transaktions-ID (TX-Hash) ein, '
+              'nachdem du die Zahlung gesendet hast:',
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                labelText: 'TX-ID / TX-Hash',
+                hintText: 'z.B. abc123def456...',
+                prefixIcon: Icon(Icons.tag),
+              ),
+              autofocus: true,
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, controller.text.trim()),
+            child: const Text('Speichern'),
+          ),
+        ],
+      ),
+    );
+
+    if (txId == null || txId.isEmpty) return;
+
+    try {
+      await client.payment.setBitcoinTransactionId(
+        orderId: order.id!,
+        transactionId: txId,
+      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Transaktions-ID gespeichert')),
+        );
+        _loadPendingOrders();
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler: $e')),
+        );
+      }
+    }
+  }
+
+  Future<void> _viewPaymentDetails(SlotOrder order) async {
+    try {
+      final info = await client.payment.getPaymentInfo(order.id!);
+
+      if (!mounted) return;
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          icon: Icon(
+            order.paymentMethod == PaymentMethod.paypal
+                ? Icons.payment
+                : Icons.currency_bitcoin,
+          ),
+          title: Text(
+            order.paymentMethod == PaymentMethod.paypal
+                ? 'PayPal-Zahlung'
+                : 'Bitcoin-Zahlung',
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (order.paymentMethod == PaymentMethod.paypal) ...[
+                _buildPaymentInfoItem('Empfänger', info['email'] ?? '-'),
+                _buildPaymentInfoItem('Betrag', '\$${info['amount']}'),
+                _buildPaymentInfoItem('Verwendungszweck', 'Order-${order.id}'),
+                const SizedBox(height: 16),
+                const Text(
+                  'Bitte sende den Betrag an die angegebene PayPal-Adresse '
+                  'und gib den Verwendungszweck an.',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ] else ...[
+                _buildPaymentInfoItem('Adresse', info['address'] ?? '-'),
+                _buildPaymentInfoItem('Betrag (USD)', '\$${info['amountUsd']}'),
+                _buildPaymentInfoItem('Betrag (BTC)', '${info['amountBtc']} BTC'),
+                _buildPaymentInfoItem('Memo', info['memo'] ?? '-'),
+                const SizedBox(height: 16),
+                const Text(
+                  'Bitte sende den BTC-Betrag an die angegebene Adresse. '
+                  'Nach der Zahlung, gib die TX-ID ein.',
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ],
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Schließen'),
+            ),
+            if (order.paymentMethod == PaymentMethod.bitcoin)
+              FilledButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _enterBitcoinTxId(order);
+                },
+                child: const Text('TX-ID eingeben'),
+              ),
+          ],
+        ),
+      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler: $e')),
+        );
+      }
+    }
+  }
+
+  Widget _buildPaymentInfoItem(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              '$label:',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          Expanded(
+            child: SelectableText(value),
+          ),
+        ],
+      ),
     );
   }
 

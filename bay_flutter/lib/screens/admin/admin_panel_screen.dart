@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'categories_screen.dart';
 import 'slot_variants_screen.dart';
 import 'payment_settings_screen.dart';
+import 'pending_payments_screen.dart';
 
 /// Admin panel screen for system administration.
 class AdminPanelScreen extends StatelessWidget {
@@ -98,6 +99,16 @@ class AdminPanelScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PaymentSettingsScreen()),
+            ),
+          ),
+          _buildAdminTile(
+            context,
+            icon: Icons.pending_actions,
+            title: 'Ausstehende Zahlungen',
+            subtitle: 'Offene Bestellungen prüfen und bestätigen',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const PendingPaymentsScreen()),
             ),
           ),
           const SizedBox(height: 16),

@@ -220,6 +220,47 @@ class SlotOrderEndpoint extends Endpoint {
     );
   }
 
+  /// Admin: Ruft alle ausstehenden Bestellungen ab.
+  Future<List<SlotOrder>> getAllPendingOrders(Session session) async {
+    final isAdmin = await _isAdmin(session);
+    if (!isAdmin) {
+      throw Exception('Keine Berechtigung');
+    }
+
+    return await SlotOrder.db.find(
+      session,
+      where: (t) => t.status.equals(OrderStatus.pending),
+      orderBy: (t) => t.createdAt,
+      orderDescending: true,
+    );
+  }
+
+  /// Admin: Ruft einen Benutzer zu einer Bestellung ab.
+  Future<User?> getOrderUser(Session session, int orderId) async {
+    final isAdmin = await _isAdmin(session);
+    if (!isAdmin) {
+      throw Exception('Keine Berechtigung');
+    }
+
+    final order = await SlotOrder.db.findById(session, orderId);
+    if (order == null) return null;
+
+    return await User.db.findById(session, order.userId);
+  }
+
+  /// Admin: Ruft die Slot-Variante zu einer Bestellung ab.
+  Future<SlotVariant?> getOrderVariant(Session session, int orderId) async {
+    final isAdmin = await _isAdmin(session);
+    if (!isAdmin) {
+      throw Exception('Keine Berechtigung');
+    }
+
+    final order = await SlotOrder.db.findById(session, orderId);
+    if (order == null) return null;
+
+    return await SlotVariant.db.findById(session, order.slotVariantId);
+  }
+
   /// Läuft abgelaufene ausstehende Bestellungen ab (älter als 24 Stunden).
   Future<int> expireOldOrders(Session session) async {
     final isAdmin = await _isAdmin(session);
