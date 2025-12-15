@@ -13,6 +13,13 @@ category:
   - create:
   - update:
   - delete:
+favorite:
+  - add:
+  - remove:
+  - isFavorite:
+  - getMyFavorites:
+  - getCount:
+  - checkMultiple:
 listing:
   - create:
   - update:
@@ -46,6 +53,10 @@ payment:
   - getPaymentInfo:
   - confirmPaymentManually:
   - getBtcUsdRate:
+search:
+  - search:
+  - quickSearch:
+  - countActive:
 settings:
   - get:
   - getMultiple:

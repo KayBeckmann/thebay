@@ -1,0 +1,13 @@
+### DTO für Suchergebnisse mit Pagination-Metadaten
+class: SearchResult
+fields:
+  ### Liste der gefundenen Listings
+  listings: List<Listing>
+  ### Gesamtanzahl der Treffer
+  totalCount: int
+  ### Aktuelle Seite (0-basiert)
+  page: int
+  ### Anzahl pro Seite
+  pageSize: int
+  ### Gibt es weitere Seiten?
+  hasMore: bool

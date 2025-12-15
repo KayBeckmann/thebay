@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:serverpod/serverpod.dart';
@@ -10,7 +11,7 @@ class RoutePayPalIpn extends WidgetRoute {
   @override
   Future<AbstractWidget> build(Session session, HttpRequest request) async {
     // Lese den POST-Body
-    final body = await request.transform(const SystemEncoding().decoder).join();
+    final body = await utf8.decoder.bind(request).join();
 
     // Parse die IPN-Daten
     final ipnData = <String, String>{};

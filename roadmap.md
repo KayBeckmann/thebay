@@ -169,41 +169,41 @@
 
 ---
 
-## Meilenstein 5e: Zahlungsintegration
+## Meilenstein 5e: Zahlungsintegration ✅
 
 ### 5e.1 PayPal Integration
-- [ ] PayPal IPN (Instant Payment Notification) Endpoint
-- [ ] Zahlungsverifizierung
-- [ ] Automatische Slot-Freischaltung nach Zahlungseingang
+- [x] PayPal IPN (Instant Payment Notification) Endpoint
+- [x] Zahlungsverifizierung
+- [x] Automatische Slot-Freischaltung nach Zahlungseingang
 
 ### 5e.2 Bitcoin Integration
-- [ ] Einzigartige Zahlungsadresse pro Transaktion (oder Memo/Reference)
-- [ ] Blockchain-Überwachung (z.B. BlockCypher API)
-- [ ] Bestätigungen abwarten (1-3 Confirmations)
-- [ ] Automatische Slot-Freischaltung nach Zahlungseingang
+- [x] Einzigartige Zahlungsadresse pro Transaktion (oder Memo/Reference)
+- [x] Blockchain-Überwachung (z.B. BlockCypher API)
+- [x] Bestätigungen abwarten (1-3 Confirmations)
+- [x] Automatische Slot-Freischaltung nach Zahlungseingang
 
 ### 5e.3 Ausstehende Zahlungen
-- [ ] Ausstehende Zahlungen im Dashboard anzeigen
-- [ ] Zahlungsstatus aktualisieren
+- [x] Ausstehende Zahlungen im Dashboard anzeigen
+- [x] Zahlungsstatus aktualisieren
 
 ---
 
-## Meilenstein 6: Suche & Favoriten
+## Meilenstein 6: Suche & Favoriten ✅
 
 ### 6.1 Backend - Suche
-- [ ] Volltextsuche implementieren
-- [ ] Filter: Kategorie, Subkategorie, Bezahlart
-- [ ] Pagination (konfigurierbar)
+- [x] Volltextsuche implementieren
+- [x] Filter: Kategorie, Subkategorie, Bezahlart
+- [x] Pagination (konfigurierbar)
 
 ### 6.2 Frontend - Suche
-- [ ] Such-Screen mit Eingabefeld
-- [ ] Filter-Optionen
-- [ ] Ergebnisliste mit Pagination
+- [x] Such-Screen mit Eingabefeld
+- [x] Filter-Optionen
+- [x] Ergebnisliste mit Pagination
 
 ### 6.3 Favoriten
-- [ ] Favoriten-Tabelle (user_id, listing_id)
-- [ ] Favoriten hinzufügen/entfernen
-- [ ] Favoriten-Übersicht Screen
+- [x] Favoriten-Tabelle (user_id, listing_id)
+- [x] Favoriten hinzufügen/entfernen
+- [x] Favoriten-Übersicht Screen
 
 ---
 
@@ -364,3 +364,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
+*Aktualisiert am: 2025-12-15*

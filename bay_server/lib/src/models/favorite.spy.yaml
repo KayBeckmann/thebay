@@ -1,0 +1,18 @@
+### Favoriten-Tabelle für Benutzer-Lesezeichen
+class: Favorite
+table: favorites
+fields:
+  ### Benutzer, der das Angebot favorisiert hat
+  userId: int
+  ### Das favorisierte Angebot
+  listingId: int
+  ### Zeitstempel der Erstellung
+  createdAt: DateTime
+indexes:
+  favorite_user_idx:
+    fields: userId
+  favorite_listing_idx:
+    fields: listingId
+  favorite_user_listing_idx:
+    fields: userId, listingId
+    unique: true
