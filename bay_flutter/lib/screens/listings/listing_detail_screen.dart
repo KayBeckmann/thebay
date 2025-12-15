@@ -22,11 +22,18 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   bool _isLoading = true;
   String? _error;
   int _currentImageIndex = 0;
+  final PageController _imagePageController = PageController();
 
   @override
   void initState() {
     super.initState();
     _loadData();
+  }
+
+  @override
+  void dispose() {
+    _imagePageController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadData() async {
@@ -188,30 +195,16 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
     }
 
     return Stack(
+      fit: StackFit.expand,
       children: [
         PageView.builder(
+          controller: _imagePageController,
           itemCount: _images.length,
           onPageChanged: (index) => setState(() => _currentImageIndex = index),
           itemBuilder: (context, index) {
-            return FutureBuilder<ByteData?>(
-              future: client.listingImage.getImageData(_images[index].id!),
-              builder: (context, snapshot) {
-                if (snapshot.hasData && snapshot.data != null) {
-                  final imageBytes = snapshot.data!.buffer.asUint8List();
-                  return GestureDetector(
-                    onTap: () => _showFullScreenImage(imageBytes, index),
-                    child: Image.memory(
-                      imageBytes,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                  );
-                }
-                return Container(
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                  child: const Center(child: CircularProgressIndicator()),
-                );
-              },
+            return _ImagePageItem(
+              imageId: _images[index].id!,
+              onTap: (imageBytes) => _showFullScreenImage(imageBytes, index),
             );
           },
         ),
@@ -225,20 +218,76 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(_images.length, (index) {
-                return Container(
-                  width: 8,
-                  height: 8,
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: index == _currentImageIndex
-                        ? Theme.of(context).colorScheme.primary
-                        : Colors.white.withAlpha(128),
+                return GestureDetector(
+                  onTap: () {
+                    _imagePageController.animateToPage(
+                      index,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    );
+                  },
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: index == _currentImageIndex
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.white.withAlpha(128),
+                      border: Border.all(color: Colors.white, width: 1),
+                    ),
                   ),
                 );
               }),
             ),
           ),
+
+        // Pfeil-Navigation für Desktop
+        if (_images.length > 1) ...[
+          Positioned(
+            left: 8,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: IconButton(
+                onPressed: _currentImageIndex > 0
+                    ? () => _imagePageController.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        )
+                    : null,
+                icon: const Icon(Icons.chevron_left, size: 32),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black54,
+                  foregroundColor: Colors.white,
+                  disabledBackgroundColor: Colors.black26,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 8,
+            top: 0,
+            bottom: 0,
+            child: Center(
+              child: IconButton(
+                onPressed: _currentImageIndex < _images.length - 1
+                    ? () => _imagePageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        )
+                    : null,
+                icon: const Icon(Icons.chevron_right, size: 32),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black54,
+                  foregroundColor: Colors.white,
+                  disabledBackgroundColor: Colors.black26,
+                ),
+              ),
+            ),
+          ),
+        ],
       ],
     );
   }
@@ -496,6 +545,91 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
         },
         icon: const Icon(Icons.message),
         label: const Text('Verkäufer kontaktieren'),
+      ),
+    );
+  }
+}
+
+/// Widget für einzelne Bilder in der Galerie mit Caching.
+class _ImagePageItem extends StatefulWidget {
+  final int imageId;
+  final void Function(Uint8List imageBytes) onTap;
+
+  const _ImagePageItem({
+    required this.imageId,
+    required this.onTap,
+  });
+
+  @override
+  State<_ImagePageItem> createState() => _ImagePageItemState();
+}
+
+class _ImagePageItemState extends State<_ImagePageItem> {
+  Uint8List? _imageData;
+  bool _isLoading = true;
+  bool _hasError = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadImage();
+  }
+
+  Future<void> _loadImage() async {
+    try {
+      final data = await client.listingImage.getImageData(widget.imageId);
+      if (mounted && data != null) {
+        setState(() {
+          _imageData = data.buffer.asUint8List();
+          _isLoading = false;
+        });
+      } else {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+            _hasError = true;
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _hasError = true;
+        });
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_isLoading) {
+      return Container(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        child: const Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    if (_hasError || _imageData == null) {
+      return Container(
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        child: Center(
+          child: Icon(
+            Icons.broken_image,
+            size: 48,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+        ),
+      );
+    }
+
+    return GestureDetector(
+      onTap: () => widget.onTap(_imageData!),
+      child: Image.memory(
+        _imageData!,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: double.infinity,
       ),
     );
   }

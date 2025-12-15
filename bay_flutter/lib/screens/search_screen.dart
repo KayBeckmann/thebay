@@ -44,6 +44,8 @@ class _SearchScreenState extends State<SearchScreen> {
     super.initState();
     _loadCategories();
     _scrollController.addListener(_onScroll);
+    // Suche automatisch beim Öffnen ausführen
+    _performSearch();
   }
 
   @override
@@ -382,56 +384,87 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
 
-        // Ergebnisliste
+        // Ergebnisliste (responsiv: Grid auf Desktop, Liste auf Mobile)
         Expanded(
-          child: RefreshIndicator(
-            onRefresh: _performSearch,
-            child: ListView.builder(
-              controller: _scrollController,
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-              itemCount: _results.length + (_hasMore ? 1 : 0),
-              itemBuilder: (context, index) {
-                if (index == _results.length) {
-                  return const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                }
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              // Berechne Spaltenanzahl basierend auf Breite
+              // Mindestbreite pro Card: 280px
+              final crossAxisCount = (constraints.maxWidth / 300).floor().clamp(1, 4);
+              final isGrid = crossAxisCount > 1;
 
-                final listing = _results[index];
-                final isFavorite = _favoriteStatus[listing.id] ?? false;
-
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Stack(
-                    children: [
-                      GestureDetector(
-                        onTap: () => _openListing(listing),
-                        child: ListingCard(listing: listing),
-                      ),
-                      Positioned(
-                        top: 8,
-                        right: 8,
-                        child: IconButton(
-                          icon: Icon(
-                            isFavorite ? Icons.favorite : Icons.favorite_border,
-                            color: isFavorite
-                                ? Theme.of(context).colorScheme.error
-                                : null,
-                          ),
-                          onPressed: () => _toggleFavorite(listing.id!),
-                          style: IconButton.styleFrom(
-                            backgroundColor: Theme.of(context)
-                                .colorScheme
-                                .surface
-                                .withOpacity(0.9),
-                          ),
-                        ),
-                      ),
-                    ],
+              if (isGrid) {
+                return RefreshIndicator(
+                  onRefresh: _performSearch,
+                  child: GridView.builder(
+                    controller: _scrollController,
+                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      childAspectRatio: 0.75, // Höher als breit
+                    ),
+                    itemCount: _results.length + (_hasMore ? 1 : 0),
+                    itemBuilder: (context, index) {
+                      if (index == _results.length) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      return _buildListingItem(_results[index]);
+                    },
                   ),
                 );
-              },
+              }
+
+              // Mobile: ListView
+              return RefreshIndicator(
+                onRefresh: _performSearch,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                  itemCount: _results.length + (_hasMore ? 1 : 0),
+                  itemBuilder: (context, index) {
+                    if (index == _results.length) {
+                      return const Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: _buildListingItem(_results[index]),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildListingItem(Listing listing) {
+    final isFavorite = _favoriteStatus[listing.id] ?? false;
+
+    return Stack(
+      children: [
+        GestureDetector(
+          onTap: () => _openListing(listing),
+          child: ListingCard(listing: listing),
+        ),
+        Positioned(
+          top: 8,
+          right: 8,
+          child: IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: isFavorite ? Theme.of(context).colorScheme.error : null,
+            ),
+            onPressed: () => _toggleFavorite(listing.id!),
+            style: IconButton.styleFrom(
+              backgroundColor:
+                  Theme.of(context).colorScheme.surface.withAlpha(230),
             ),
           ),
         ),
