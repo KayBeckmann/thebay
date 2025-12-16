@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -517,8 +519,11 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }) async {
     setState(() => _isGenerating = true);
 
+    // Zeige Progress-Dialog
+    _showGeneratingProgressDialog();
+
     try {
-      // Generiere Schlüsselpaar
+      // Generiere Schlüsselpaar (läuft im Isolate)
       final keyPair = await widget.pgpKeyService.generateKeyPair(
         name: name,
         email: email,
@@ -540,6 +545,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         keyPair.keySize,
       );
 
+      // Schließe Progress-Dialog
+      if (mounted) Navigator.of(context).pop();
+
       // Status aktualisieren
       await _loadKeyStatus();
 
@@ -552,6 +560,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         );
       }
     } catch (e) {
+      // Schließe Progress-Dialog bei Fehler
+      if (mounted) Navigator.of(context).pop();
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Fehler bei der Generierung: $e')),
@@ -560,6 +571,46 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     } finally {
       setState(() => _isGenerating = false);
     }
+  }
+
+  void _showGeneratingProgressDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => PopScope(
+        canPop: false,
+        child: AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                width: 60,
+                height: 60,
+                child: CircularProgressIndicator(strokeWidth: 3),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Schlüssel wird generiert...',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'RSA-4096 Schlüssel werden erstellt.\n'
+                'Dies kann 1-3 Minuten dauern.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+              const SizedBox(height: 16),
+              const _GeneratingTimer(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> _uploadPublicKey() async {
@@ -787,5 +838,45 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     return '${date.day.toString().padLeft(2, '0')}.'
         '${date.month.toString().padLeft(2, '0')}.'
         '${date.year}';
+  }
+}
+
+/// Widget das die verstrichene Zeit während der Key-Generierung anzeigt.
+class _GeneratingTimer extends StatefulWidget {
+  const _GeneratingTimer();
+
+  @override
+  State<_GeneratingTimer> createState() => _GeneratingTimerState();
+}
+
+class _GeneratingTimerState extends State<_GeneratingTimer> {
+  late Timer _timer;
+  int _seconds = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() => _seconds++);
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final minutes = _seconds ~/ 60;
+    final secs = _seconds % 60;
+    return Text(
+      'Verstrichene Zeit: ${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}',
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            fontFamily: 'monospace',
+            color: Theme.of(context).colorScheme.primary,
+          ),
+    );
   }
 }

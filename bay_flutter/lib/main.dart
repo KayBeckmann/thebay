@@ -144,6 +144,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
 
     return RegisterScreen(
       authService: authService,
+      pgpKeyService: pgpKeyService,
       onRegisterSuccess: _handleLoginSuccess,
       onNavigateToLogin: _navigateToLogin,
     );

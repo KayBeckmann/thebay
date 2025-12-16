@@ -1,6 +1,54 @@
 import 'package:bay_client/bay_client.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:openpgp/openpgp.dart';
+
+/// Parameter für die Isolate-basierte Key-Generierung.
+class _KeyGenParams {
+  final String name;
+  final String email;
+  final String passphrase;
+  final int rsaBits;
+
+  _KeyGenParams({
+    required this.name,
+    required this.email,
+    required this.passphrase,
+    required this.rsaBits,
+  });
+}
+
+/// Ergebnis der Key-Generierung.
+class _KeyGenResult {
+  final String publicKey;
+  final String privateKey;
+  final String fingerprint;
+
+  _KeyGenResult({
+    required this.publicKey,
+    required this.privateKey,
+    required this.fingerprint,
+  });
+}
+
+/// Top-Level Funktion für compute() - generiert Keys im Isolate.
+Future<_KeyGenResult> _generateKeyInIsolate(_KeyGenParams params) async {
+  final options = Options()
+    ..name = params.name
+    ..email = params.email
+    ..passphrase = params.passphrase
+    ..keyOptions = KeyOptions()
+    ..keyOptions!.rsaBits = params.rsaBits;
+
+  final keyPair = await OpenPGP.generate(options: options);
+  final publicKeyMetadata = await OpenPGP.getPublicKeyMetadata(keyPair.publicKey);
+
+  return _KeyGenResult(
+    publicKey: keyPair.publicKey,
+    privateKey: keyPair.privateKey,
+    fingerprint: publicKeyMetadata.fingerprint,
+  );
+}
 
 /// Service für PGP Key Management.
 /// Verwaltet Key-Generierung, sichere Speicherung und Server-Synchronisation.
@@ -43,29 +91,27 @@ class PgpKeyService {
   /// Generiert ein neues PGP Keypair.
   /// [name] und [email] werden als Key-Identität verwendet.
   /// [passphrase] ist optional, aber empfohlen für zusätzliche Sicherheit.
+  /// Die Generierung läuft in einem Isolate, um den Main-Thread nicht zu blockieren.
   Future<PgpKeyPair> generateKeyPair({
     required String name,
     required String email,
     String? passphrase,
     int rsaBits = 4096,
   }) async {
-    final options = Options()
-      ..name = name
-      ..email = email
-      ..passphrase = passphrase ?? ''
-      ..keyOptions = KeyOptions()
-      ..keyOptions!.rsaBits = rsaBits;
+    final params = _KeyGenParams(
+      name: name,
+      email: email,
+      passphrase: passphrase ?? '',
+      rsaBits: rsaBits,
+    );
 
-    final keyPair = await OpenPGP.generate(options: options);
-
-    // Extrahiere Fingerprint aus dem Public Key
-    final publicKeyMetadata = await OpenPGP.getPublicKeyMetadata(keyPair.publicKey);
-    final fingerprint = publicKeyMetadata.fingerprint;
+    // Generiere Keys im Hintergrund-Isolate
+    final result = await compute(_generateKeyInIsolate, params);
 
     return PgpKeyPair(
-      publicKey: keyPair.publicKey,
-      privateKey: keyPair.privateKey,
-      fingerprint: fingerprint,
+      publicKey: result.publicKey,
+      privateKey: result.privateKey,
+      fingerprint: result.fingerprint,
       algorithm: 'RSA',
       keySize: rsaBits,
       identity: '$name <$email>',

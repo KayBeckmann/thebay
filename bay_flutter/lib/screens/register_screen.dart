@@ -1,15 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
+import '../services/pgp_key_service.dart';
 
 /// Registration screen with Material Design.
 class RegisterScreen extends StatefulWidget {
   final AuthService authService;
+  final PgpKeyService pgpKeyService;
   final VoidCallback onRegisterSuccess;
   final VoidCallback onNavigateToLogin;
 
   const RegisterScreen({
     super.key,
     required this.authService,
+    required this.pgpKeyService,
     required this.onRegisterSuccess,
     required this.onNavigateToLogin,
   });
@@ -105,7 +110,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       if (!mounted) return;
 
       if (response.success) {
-        widget.onRegisterSuccess();
+        // Generiere PGP-Schlüssel nach erfolgreicher Registrierung
+        await _generatePgpKeyAfterRegistration(
+          username: _usernameController.text.trim(),
+        );
       } else {
         setState(() {
           _errorMessage = response.errorMessage ?? 'Registration failed';
@@ -123,6 +131,100 @@ class _RegisterScreenState extends State<RegisterScreen> {
         });
       }
     }
+  }
+
+  Future<void> _generatePgpKeyAfterRegistration({
+    required String username,
+  }) async {
+    // Zeige Progress-Dialog für Key-Generierung
+    _showKeyGeneratingDialog();
+
+    try {
+      // Generiere Schlüsselpaar (läuft im Isolate)
+      final keyPair = await widget.pgpKeyService.generateKeyPair(
+        name: username,
+        email: '$username@bay.local',
+      );
+
+      // Speichere Private Key lokal
+      await widget.pgpKeyService.storePrivateKey(
+        keyPair.privateKey,
+        keyPair.fingerprint,
+      );
+
+      // Lade Public Key zum Server hoch
+      await widget.pgpKeyService.uploadPublicKey(
+        keyPair.publicKey,
+        keyPair.identity,
+        keyPair.fingerprint,
+        keyPair.algorithm,
+        keyPair.keySize,
+      );
+
+      // Schließe Progress-Dialog
+      if (mounted) Navigator.of(context).pop();
+
+      // Registrierung erfolgreich abgeschlossen
+      widget.onRegisterSuccess();
+    } catch (e) {
+      // Schließe Progress-Dialog bei Fehler
+      if (mounted) Navigator.of(context).pop();
+
+      // Zeige Fehler, aber fahre trotzdem fort (Key kann später generiert werden)
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Schlüssel konnte nicht generiert werden: $e\n'
+              'Du kannst ihn später in den Einstellungen erstellen.',
+            ),
+            duration: const Duration(seconds: 5),
+          ),
+        );
+        // Trotzdem fortfahren, da Registrierung erfolgreich war
+        widget.onRegisterSuccess();
+      }
+    }
+  }
+
+  void _showKeyGeneratingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => PopScope(
+        canPop: false,
+        child: AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                width: 60,
+                height: 60,
+                child: CircularProgressIndicator(strokeWidth: 3),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Sicherheitsschlüssel wird erstellt...',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Dein persönlicher Verschlüsselungsschlüssel wird generiert.\n'
+                'Dies kann 1-3 Minuten dauern.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+              const SizedBox(height: 16),
+              const _KeyGeneratingTimer(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   void _showTermsDialog() {
@@ -396,6 +498,46 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Widget das die verstrichene Zeit während der Key-Generierung anzeigt.
+class _KeyGeneratingTimer extends StatefulWidget {
+  const _KeyGeneratingTimer();
+
+  @override
+  State<_KeyGeneratingTimer> createState() => _KeyGeneratingTimerState();
+}
+
+class _KeyGeneratingTimerState extends State<_KeyGeneratingTimer> {
+  late Timer _timer;
+  int _seconds = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() => _seconds++);
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final minutes = _seconds ~/ 60;
+    final secs = _seconds % 60;
+    return Text(
+      'Verstrichene Zeit: ${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}',
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            fontFamily: 'monospace',
+            color: Theme.of(context).colorScheme.primary,
+          ),
     );
   }
 }
