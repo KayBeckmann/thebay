@@ -53,6 +53,18 @@ payment:
   - getPaymentInfo:
   - confirmPaymentManually:
   - getBtcUsdRate:
+pgpKey:
+  - uploadPublicKey:
+  - getMyPublicKey:
+  - getPublicKey:
+  - getPublicKeyByUsername:
+  - hasPublicKey:
+  - deactivateKey:
+  - getKeyMetadata:
+  - uploadEncryptedBackup:
+  - downloadEncryptedBackup:
+  - listBackups:
+  - deleteBackup:
 search:
   - search:
   - quickSearch:

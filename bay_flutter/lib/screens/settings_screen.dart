@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 import '../services/auth_service.dart';
+import '../services/pgp_key_service.dart';
+import 'pgp_key_screen.dart';
 
 /// Settings screen for user preferences and account management.
 class SettingsScreen extends StatefulWidget {
   final AuthService authService;
+  final PgpKeyService pgpKeyService;
   final VoidCallback onLogout;
 
   const SettingsScreen({
     super.key,
     required this.authService,
+    required this.pgpKeyService,
     required this.onLogout,
   });
 
@@ -25,6 +29,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
   // Payment info
   String? _paypalAddress;
   String? _bitcoinWallet;
+
+  // PGP Key status
+  bool _hasPgpKey = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPgpKeyStatus();
+  }
+
+  Future<void> _loadPgpKeyStatus() async {
+    try {
+      final status = await widget.pgpKeyService.getKeyStatus();
+      if (mounted) {
+        setState(() {
+          _hasPgpKey = status.isFullyConfigured;
+        });
+      }
+    } catch (e) {
+      // Ignoriere Fehler beim Laden des Status
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,10 +103,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // Security section
           _buildSectionHeader(context, 'Sicherheit'),
           ListTile(
-            leading: const Icon(Icons.key),
+            leading: Icon(
+              Icons.key,
+              color: _hasPgpKey ? Colors.green : null,
+            ),
             title: const Text('PGP-Schlüssel'),
-            subtitle: const Text('Noch nicht eingerichtet'),
-            onTap: () => _showPgpInfoDialog(context),
+            subtitle: Text(_hasPgpKey ? 'Eingerichtet' : 'Noch nicht eingerichtet'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _openPgpKeyScreen(context),
           ),
           ListTile(
             leading: const Icon(Icons.password),
@@ -273,24 +303,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  void _showPgpInfoDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(Icons.vpn_key),
-        title: const Text('PGP-Verschlüsselung'),
-        content: const Text(
-          'Die PGP-Schlüsselverwaltung wird in Meilenstein 7 implementiert. '
-          'Mit PGP kannst du Nachrichten Ende-zu-Ende verschlüsseln.',
+  void _openPgpKeyScreen(BuildContext context) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PgpKeyScreen(
+          pgpKeyService: widget.pgpKeyService,
         ),
-        actions: [
-          FilledButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
       ),
     );
+    // Status nach Rückkehr aktualisieren
+    _loadPgpKeyStatus();
   }
 
   void _showChangePasswordDialog(BuildContext context) {

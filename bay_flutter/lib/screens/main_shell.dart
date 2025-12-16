@@ -2,6 +2,7 @@ import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
 import '../services/auth_service.dart';
+import '../services/pgp_key_service.dart';
 import 'dashboard_screen.dart';
 import 'messages_screen.dart';
 import 'search_screen.dart';
@@ -32,11 +33,13 @@ class NavItem {
 /// Main navigation shell with bottom navigation bar.
 class MainShell extends StatefulWidget {
   final AuthService authService;
+  final PgpKeyService pgpKeyService;
   final VoidCallback onLogout;
 
   const MainShell({
     super.key,
     required this.authService,
+    required this.pgpKeyService,
     required this.onLogout,
   });
 
@@ -82,6 +85,7 @@ class _MainShellState extends State<MainShell> {
         selectedIcon: Icons.settings,
         screen: SettingsScreen(
           authService: widget.authService,
+          pgpKeyService: widget.pgpKeyService,
           onLogout: widget.onLogout,
         ),
       ),

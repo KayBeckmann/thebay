@@ -207,35 +207,64 @@
 
 ---
 
-## Meilenstein 7: PGP-Verschlüsselung & Nachrichten
+## Meilenstein 7a: Datenbank & PGP Key Management ✅
 
-### 7.1 PGP Key Management
-- [ ] Key-Generierung auf dem Endgerät
-- [ ] Public Key Upload zum Server
-- [ ] Private Key Export/Import Funktion
-- [ ] Optional: Verschlüsselter Private Key Upload (mit Sicherheitswarnung)
-- [ ] Private Key Download auf neuen Geräten
+### 7a.1 Datenbank-Erweiterung
+- [x] Public Keys Tabelle (user_id, public_key_armored, fingerprint, algorithm, key_size, is_active)
+- [x] Nachrichten-Tabelle (sender_id, recipient_id, encrypted_subject, encrypted_content, is_read, deleted_by_sender, deleted_by_recipient)
+- [x] Entwürfe-Tabelle (user_id, recipient_id, encrypted_subject, encrypted_content, expires_at)
+- [x] Verschlüsseltes Key-Backup Tabelle (optional)
 
-### 7.2 Datenbank-Erweiterung
-- [ ] Public Keys Tabelle
-- [ ] Nachrichten-Tabelle (verschlüsselt)
-- [ ] Entwürfe-Tabelle (verschlüsselt, mit Ablaufdatum)
+### 7a.2 PGP Key Management - Backend
+- [x] PgpKeyEndpoint: Public Key Upload
+- [x] PgpKeyEndpoint: Public Key abrufen (eigener, per userId, per Username)
+- [x] PgpKeyEndpoint: Key deaktivieren
+- [x] Optional: Verschlüsseltes Backup Upload/Download
 
-### 7.3 Backend - Nachrichten
-- [ ] Nachrichten senden (verschlüsselt speichern)
-- [ ] Nachrichten abrufen
-- [ ] Entwürfe speichern
-- [ ] Automatische Löschung von Entwürfen nach 7 Tagen
-- [ ] Ungelesen-Status verwalten
+### 7a.3 PGP Key Management - Frontend
+- [x] PgpKeyService: Key-Generierung auf dem Endgerät (RSA 4096)
+- [x] PgpKeyService: Private Key lokal speichern (flutter_secure_storage)
+- [x] PgpKeyService: Public Key Upload zum Server
+- [x] PgpKeyService: Private Key Export/Import Funktion
+- [x] PgpKeyScreen: Key-Status Anzeige
+- [x] PgpKeyScreen: Key generieren mit Progress-Anzeige
+- [x] PgpKeyScreen: Key exportieren/importieren
+- [x] Settings-Screen: Integration PGP Key Management
 
-### 7.4 Frontend - Nachrichten
-- [ ] Posteingang
+---
+
+## Meilenstein 7b: Backend - Nachrichten
+
+### 7b.1 Message Endpoint
+- [ ] Nachricht senden (verschlüsselt speichern)
+- [ ] Posteingang abrufen (mit Pagination)
+- [ ] Gesendete Nachrichten abrufen
+- [ ] Nachricht als gelesen markieren
+- [ ] Nachricht löschen (Soft-Delete)
+- [ ] Ungelesene Nachrichten zählen
+
+### 7b.2 Draft Endpoint
+- [ ] Entwurf speichern
+- [ ] Entwurf aktualisieren
+- [ ] Entwürfe abrufen
+- [ ] Entwurf löschen
+- [ ] Automatische Löschung nach 7 Tagen (Cron-Job)
+
+---
+
+## Meilenstein 7c: Frontend - Nachrichten
+
+### 7c.1 Nachrichten-Screens
+- [ ] Posteingang mit Nachrichtenliste
 - [ ] Gesendet-Ordner
 - [ ] Entwürfe-Ordner
-- [ ] Nachricht verfassen (signieren & verschlüsseln vor Senden)
-- [ ] Ungelesene Nachrichten kenntlich machen
-- [ ] "Nachricht senden" Button in Angeboten
-- [ ] "Nachricht senden" Button in Profilen
+- [ ] Nachricht-Detail-Ansicht (Entschlüsselung)
+- [ ] Nachricht verfassen Dialog (Verschlüsselung vor Senden)
+
+### 7c.2 Integration
+- [ ] Ungelesene Nachrichten Badge in Navigation
+- [ ] "Nachricht senden" Button in Angebots-Detailansicht
+- [ ] "Nachricht senden" Button in Profilen (Meilenstein 8)
 
 ---
 

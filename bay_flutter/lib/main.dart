@@ -7,6 +7,7 @@ import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/main_shell.dart';
 import 'services/auth_service.dart';
+import 'services/pgp_key_service.dart';
 import 'theme/app_theme.dart';
 
 /// Global client object for server communication.
@@ -14,6 +15,9 @@ late final Client client;
 
 /// Global auth service for authentication management.
 late final AuthService authService;
+
+/// Global PGP key service for encryption management.
+late final PgpKeyService pgpKeyService;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +36,10 @@ void main() async {
 
   // Initialize auth service
   authService = AuthService(client);
+
+  // Initialize PGP key service
+  pgpKeyService = PgpKeyService(client);
+  await pgpKeyService.initialize();
 
   runApp(const BayApp());
 }
@@ -121,6 +129,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
     if (_isAuthenticated) {
       return MainShell(
         authService: authService,
+        pgpKeyService: pgpKeyService,
         onLogout: _handleLogout,
       );
     }

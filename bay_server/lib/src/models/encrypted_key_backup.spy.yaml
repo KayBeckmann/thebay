@@ -1,0 +1,25 @@
+### Encrypted private key backup (stored encrypted with user's passphrase)
+class: EncryptedKeyBackup
+table: encrypted_key_backups
+fields:
+  ### User who owns this backup
+  userId: int
+  ### Encrypted private key (double-encrypted: PGP passphrase + additional encryption)
+  encryptedPrivateKey: String
+  ### Fingerprint of the backed-up key
+  fingerprint: String
+  ### Salt used for backup encryption
+  encryptionSalt: String
+  ### Key derivation parameters (JSON: iterations, memory, etc.)
+  kdfParams: String
+  ### Creation timestamp
+  createdAt: DateTime
+  ### Whether backup is still valid
+  isActive: bool, default=true
+indexes:
+  backup_user_idx:
+    fields: userId
+  backup_fingerprint_idx:
+    fields: fingerprint
+  backup_user_active_idx:
+    fields: userId, isActive

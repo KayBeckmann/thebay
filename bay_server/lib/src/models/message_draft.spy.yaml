@@ -1,0 +1,29 @@
+### Draft message stored for later sending
+class: MessageDraft
+table: message_drafts
+fields:
+  ### User who owns this draft
+  userId: int
+  ### Intended recipient user ID (optional until selected)
+  recipientId: int?
+  ### Plain text recipient username (for display before sending)
+  recipientUsername: String?
+  ### Encrypted subject (encrypted with user's own public key for storage)
+  encryptedSubject: String?
+  ### Encrypted content (encrypted with user's own public key for storage)
+  encryptedContent: String?
+  ### Creation timestamp
+  createdAt: DateTime
+  ### Last update timestamp
+  updatedAt: DateTime
+  ### Auto-expiration date (7 days after creation)
+  expiresAt: DateTime
+  ### Optional: reference to a listing
+  listingId: int?
+indexes:
+  draft_user_idx:
+    fields: userId
+  draft_expires_idx:
+    fields: expiresAt
+  draft_listing_idx:
+    fields: listingId

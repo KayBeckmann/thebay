@@ -1,0 +1,35 @@
+### Encrypted message between users
+class: Message
+table: messages
+fields:
+  ### Sender user ID
+  senderId: int
+  ### Recipient user ID
+  recipientId: int
+  ### PGP-encrypted subject (encrypted with recipient's public key)
+  encryptedSubject: String
+  ### PGP-encrypted content (encrypted with recipient's public key)
+  encryptedContent: String
+  ### Whether message has been read by recipient
+  isRead: bool, default=false
+  ### Soft delete flag for sender
+  deletedBySender: bool, default=false
+  ### Soft delete flag for recipient
+  deletedByRecipient: bool, default=false
+  ### Timestamp when message was sent
+  createdAt: DateTime
+  ### Optional: reference to a listing (for inquiry messages)
+  listingId: int?
+  ### Parent message ID for threading/replies
+  parentMessageId: int?
+indexes:
+  message_sender_idx:
+    fields: senderId
+  message_recipient_idx:
+    fields: recipientId
+  message_recipient_read_idx:
+    fields: recipientId, isRead
+  message_created_idx:
+    fields: createdAt
+  message_listing_idx:
+    fields: listingId

@@ -1,0 +1,30 @@
+### User PGP Public Key for encrypted messaging
+class: UserPublicKey
+table: user_public_keys
+fields:
+  ### User who owns this key
+  userId: int
+  ### Armored PGP public key (ASCII format)
+  publicKeyArmored: String
+  ### Key fingerprint (40 hex chars for SHA-1 fingerprint)
+  fingerprint: String
+  ### Key algorithm (RSA, ECDSA, etc.)
+  algorithm: String
+  ### Key size in bits (e.g., 4096 for RSA)
+  keySize: int
+  ### Name/email associated with key
+  keyIdentity: String
+  ### Whether this is the user's active key
+  isActive: bool, default=true
+  ### Creation timestamp
+  createdAt: DateTime
+  ### Last update timestamp
+  updatedAt: DateTime
+indexes:
+  user_public_key_user_idx:
+    fields: userId
+  user_public_key_fingerprint_idx:
+    fields: fingerprint
+    unique: true
+  user_public_key_active_idx:
+    fields: userId, isActive
