@@ -238,8 +238,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Erstellt einen neuen RSA-4096 Schlüssel. '
-              'Dies kann einige Sekunden dauern.',
+              'Erstellt einen neuen RSA-2048 Schlüssel. '
+              'Dies dauert ca. 10-30 Sekunden.',
               style: Theme.of(context).textTheme.bodySmall,
             ),
             if (_keyStatus?.hasLocalPrivateKey == true) ...[
@@ -597,8 +597,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'RSA-4096 Schlüssel werden erstellt.\n'
-                'Dies kann 1-3 Minuten dauern.',
+                'RSA-2048 Schlüssel wird erstellt.\n'
+                'Dies dauert ca. 10-30 Sekunden.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,

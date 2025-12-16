@@ -212,7 +212,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 8),
               Text(
                 'Dein persönlicher Verschlüsselungsschlüssel wird generiert.\n'
-                'Dies kann 1-3 Minuten dauern.',
+                'Dies dauert ca. 10-30 Sekunden.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
