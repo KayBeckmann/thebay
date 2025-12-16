@@ -36,13 +36,15 @@ import 'user_public_key.dart' as _i24;
 import 'user_role.dart' as _i25;
 import 'user_slot.dart' as _i26;
 import 'package:bay_server/src/generated/category.dart' as _i27;
-import 'package:bay_server/src/generated/listing.dart' as _i28;
-import 'package:bay_server/src/generated/listing_image.dart' as _i29;
-import 'package:bay_server/src/generated/news.dart' as _i30;
-import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i31;
-import 'package:bay_server/src/generated/slot_order.dart' as _i32;
-import 'package:bay_server/src/generated/slot_variant.dart' as _i33;
-import 'package:bay_server/src/generated/user_slot.dart' as _i34;
+import 'package:bay_server/src/generated/message_draft.dart' as _i28;
+import 'package:bay_server/src/generated/listing.dart' as _i29;
+import 'package:bay_server/src/generated/listing_image.dart' as _i30;
+import 'package:bay_server/src/generated/message.dart' as _i31;
+import 'package:bay_server/src/generated/news.dart' as _i32;
+import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i33;
+import 'package:bay_server/src/generated/slot_order.dart' as _i34;
+import 'package:bay_server/src/generated/slot_variant.dart' as _i35;
+import 'package:bay_server/src/generated/user_slot.dart' as _i36;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -1910,8 +1912,13 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as List).map((e) => deserialize<_i27.Category>(e)).toList()
           as T;
     }
-    if (t == List<_i28.Listing>) {
-      return (data as List).map((e) => deserialize<_i28.Listing>(e)).toList()
+    if (t == List<_i28.MessageDraft>) {
+      return (data as List)
+          .map((e) => deserialize<_i28.MessageDraft>(e))
+          .toList() as T;
+    }
+    if (t == List<_i29.Listing>) {
+      return (data as List).map((e) => deserialize<_i29.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -1921,21 +1928,30 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i29.ListingImage>) {
+    if (t == List<_i30.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i29.ListingImage>(e))
+          .map((e) => deserialize<_i30.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i30.News>) {
-      return (data as List).map((e) => deserialize<_i30.News>(e)).toList() as T;
+    if (t == List<_i31.Message>) {
+      return (data as List).map((e) => deserialize<_i31.Message>(e)).toList()
+          as T;
     }
-    if (t == Map<String, String>) {
-      return (data as Map).map((k, v) =>
-          MapEntry(deserialize<String>(k), deserialize<String>(v))) as T;
+    if (t == List<Map<String, dynamic>>) {
+      return (data as List)
+          .map((e) => deserialize<Map<String, dynamic>>(e))
+          .toList() as T;
     }
     if (t == Map<String, dynamic>) {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
+    }
+    if (t == List<_i32.News>) {
+      return (data as List).map((e) => deserialize<_i32.News>(e)).toList() as T;
+    }
+    if (t == Map<String, String>) {
+      return (data as Map).map((k, v) =>
+          MapEntry(deserialize<String>(k), deserialize<String>(v))) as T;
     }
     if (t == _i1.getType<Map<String, dynamic>?>()) {
       return (data != null
@@ -1943,25 +1959,25 @@ class Protocol extends _i1.SerializationManagerServer {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i31.EncryptedKeyBackup>) {
+    if (t == List<_i33.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i31.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i33.EncryptedKeyBackup>(e))
           .toList() as T;
     }
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i32.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i32.SlotOrder>(e)).toList()
+    if (t == List<_i34.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i34.SlotOrder>(e)).toList()
           as T;
     }
-    if (t == List<_i33.SlotVariant>) {
+    if (t == List<_i35.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i33.SlotVariant>(e))
+          .map((e) => deserialize<_i35.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i34.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i34.UserSlot>(e)).toList()
+    if (t == List<_i36.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i36.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {

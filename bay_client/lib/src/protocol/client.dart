@@ -15,23 +15,25 @@ import 'package:bay_client/src/protocol/auth_response.dart' as _i3;
 import 'package:bay_client/src/protocol/registration_request.dart' as _i4;
 import 'package:bay_client/src/protocol/login_request.dart' as _i5;
 import 'package:bay_client/src/protocol/category.dart' as _i6;
-import 'package:bay_client/src/protocol/favorite.dart' as _i7;
-import 'package:bay_client/src/protocol/listing.dart' as _i8;
-import 'package:bay_client/src/protocol/quantity_unit.dart' as _i9;
-import 'package:bay_client/src/protocol/listing_image.dart' as _i10;
-import 'dart:typed_data' as _i11;
-import 'package:bay_client/src/protocol/news.dart' as _i12;
-import 'package:bay_client/src/protocol/user_public_key.dart' as _i13;
-import 'package:bay_client/src/protocol/encrypted_key_backup.dart' as _i14;
-import 'package:bay_client/src/protocol/search_result.dart' as _i15;
-import 'package:bay_client/src/protocol/slot_order.dart' as _i16;
-import 'package:bay_client/src/protocol/payment_method.dart' as _i17;
-import 'package:bay_client/src/protocol/user.dart' as _i18;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i19;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i20;
-import 'package:bay_client/src/protocol/greeting.dart' as _i21;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i22;
-import 'protocol.dart' as _i23;
+import 'package:bay_client/src/protocol/message_draft.dart' as _i7;
+import 'package:bay_client/src/protocol/favorite.dart' as _i8;
+import 'package:bay_client/src/protocol/listing.dart' as _i9;
+import 'package:bay_client/src/protocol/quantity_unit.dart' as _i10;
+import 'package:bay_client/src/protocol/listing_image.dart' as _i11;
+import 'dart:typed_data' as _i12;
+import 'package:bay_client/src/protocol/message.dart' as _i13;
+import 'package:bay_client/src/protocol/news.dart' as _i14;
+import 'package:bay_client/src/protocol/user_public_key.dart' as _i15;
+import 'package:bay_client/src/protocol/encrypted_key_backup.dart' as _i16;
+import 'package:bay_client/src/protocol/search_result.dart' as _i17;
+import 'package:bay_client/src/protocol/slot_order.dart' as _i18;
+import 'package:bay_client/src/protocol/payment_method.dart' as _i19;
+import 'package:bay_client/src/protocol/user.dart' as _i20;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i21;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i22;
+import 'package:bay_client/src/protocol/greeting.dart' as _i23;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i24;
+import 'protocol.dart' as _i25;
 
 /// Authentication endpoint for user registration, login, and logout.
 /// {@category Endpoint}
@@ -181,6 +183,112 @@ class EndpointCategory extends _i1.EndpointRef {
       );
 }
 
+/// Endpoint für Nachrichten-Entwürfe.
+/// Entwürfe werden mit dem eigenen Public Key verschlüsselt gespeichert
+/// und nach 7 Tagen automatisch gelöscht.
+/// {@category Endpoint}
+class EndpointDraft extends _i1.EndpointRef {
+  EndpointDraft(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'draft';
+
+  /// Speichert einen neuen Entwurf.
+  /// Der Inhalt sollte client-seitig mit dem eigenen Public Key verschlüsselt sein.
+  _i2.Future<_i7.MessageDraft?> save({
+    int? recipientId,
+    String? recipientUsername,
+    String? encryptedSubject,
+    String? encryptedContent,
+    int? listingId,
+  }) =>
+      caller.callServerEndpoint<_i7.MessageDraft?>(
+        'draft',
+        'save',
+        {
+          'recipientId': recipientId,
+          'recipientUsername': recipientUsername,
+          'encryptedSubject': encryptedSubject,
+          'encryptedContent': encryptedContent,
+          'listingId': listingId,
+        },
+      );
+
+  /// Aktualisiert einen vorhandenen Entwurf.
+  _i2.Future<_i7.MessageDraft?> update(
+    int draftId, {
+    int? recipientId,
+    String? recipientUsername,
+    String? encryptedSubject,
+    String? encryptedContent,
+    int? listingId,
+  }) =>
+      caller.callServerEndpoint<_i7.MessageDraft?>(
+        'draft',
+        'update',
+        {
+          'draftId': draftId,
+          'recipientId': recipientId,
+          'recipientUsername': recipientUsername,
+          'encryptedSubject': encryptedSubject,
+          'encryptedContent': encryptedContent,
+          'listingId': listingId,
+        },
+      );
+
+  /// Ruft alle Entwürfe des Benutzers ab.
+  _i2.Future<List<_i7.MessageDraft>> getAll({
+    required int limit,
+    required int offset,
+  }) =>
+      caller.callServerEndpoint<List<_i7.MessageDraft>>(
+        'draft',
+        'getAll',
+        {
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  /// Ruft einen einzelnen Entwurf ab.
+  _i2.Future<_i7.MessageDraft?> getById(int draftId) =>
+      caller.callServerEndpoint<_i7.MessageDraft?>(
+        'draft',
+        'getById',
+        {'draftId': draftId},
+      );
+
+  /// Löscht einen Entwurf.
+  _i2.Future<bool> delete(int draftId) => caller.callServerEndpoint<bool>(
+        'draft',
+        'delete',
+        {'draftId': draftId},
+      );
+
+  /// Zählt die Anzahl der Entwürfe des Benutzers.
+  _i2.Future<int> getCount() => caller.callServerEndpoint<int>(
+        'draft',
+        'getCount',
+        {},
+      );
+
+  /// Ruft den Entwurf für ein bestimmtes Listing ab (falls vorhanden).
+  _i2.Future<_i7.MessageDraft?> getByListing(int listingId) =>
+      caller.callServerEndpoint<_i7.MessageDraft?>(
+        'draft',
+        'getByListing',
+        {'listingId': listingId},
+      );
+
+  /// Ruft den Entwurf für einen bestimmten Empfänger ab (falls vorhanden).
+  _i2.Future<_i7.MessageDraft?> getByRecipient(int recipientId) =>
+      caller.callServerEndpoint<_i7.MessageDraft?>(
+        'draft',
+        'getByRecipient',
+        {'recipientId': recipientId},
+      );
+}
+
 /// Endpoint für Favoriten-Verwaltung.
 /// {@category Endpoint}
 class EndpointFavorite extends _i1.EndpointRef {
@@ -190,8 +298,8 @@ class EndpointFavorite extends _i1.EndpointRef {
   String get name => 'favorite';
 
   /// Fügt ein Angebot zu den Favoriten hinzu.
-  _i2.Future<_i7.Favorite?> add(int listingId) =>
-      caller.callServerEndpoint<_i7.Favorite?>(
+  _i2.Future<_i8.Favorite?> add(int listingId) =>
+      caller.callServerEndpoint<_i8.Favorite?>(
         'favorite',
         'add',
         {'listingId': listingId},
@@ -212,8 +320,8 @@ class EndpointFavorite extends _i1.EndpointRef {
       );
 
   /// Ruft alle Favoriten des Benutzers ab.
-  _i2.Future<List<_i8.Listing>> getMyFavorites() =>
-      caller.callServerEndpoint<List<_i8.Listing>>(
+  _i2.Future<List<_i9.Listing>> getMyFavorites() =>
+      caller.callServerEndpoint<List<_i9.Listing>>(
         'favorite',
         'getMyFavorites',
         {},
@@ -245,12 +353,12 @@ class EndpointListing extends _i1.EndpointRef {
 
   /// Erstellt ein neues Angebot.
   /// Verbraucht automatisch einen verfügbaren Slot.
-  _i2.Future<_i8.Listing?> create({
+  _i2.Future<_i9.Listing?> create({
     required int categoryId,
     required String title,
     required String description,
     required double quantity,
-    required _i9.QuantityUnit quantityUnit,
+    required _i10.QuantityUnit quantityUnit,
     required int pricePerUnit,
     required bool acceptsPaypal,
     required bool acceptsBitcoin,
@@ -258,7 +366,7 @@ class EndpointListing extends _i1.EndpointRef {
     String? shippingMethod,
     int? shippingCostCents,
   }) =>
-      caller.callServerEndpoint<_i8.Listing?>(
+      caller.callServerEndpoint<_i9.Listing?>(
         'listing',
         'create',
         {
@@ -277,13 +385,13 @@ class EndpointListing extends _i1.EndpointRef {
       );
 
   /// Aktualisiert ein bestehendes Angebot.
-  _i2.Future<_i8.Listing?> update({
+  _i2.Future<_i9.Listing?> update({
     required int id,
     int? categoryId,
     String? title,
     String? description,
     double? quantity,
-    _i9.QuantityUnit? quantityUnit,
+    _i10.QuantityUnit? quantityUnit,
     int? pricePerUnit,
     bool? acceptsPaypal,
     bool? acceptsBitcoin,
@@ -291,7 +399,7 @@ class EndpointListing extends _i1.EndpointRef {
     String? shippingMethod,
     int? shippingCostCents,
   }) =>
-      caller.callServerEndpoint<_i8.Listing?>(
+      caller.callServerEndpoint<_i9.Listing?>(
         'listing',
         'update',
         {
@@ -318,20 +426,20 @@ class EndpointListing extends _i1.EndpointRef {
       );
 
   /// Ruft ein einzelnes Angebot ab.
-  _i2.Future<_i8.Listing?> getById(int id) =>
-      caller.callServerEndpoint<_i8.Listing?>(
+  _i2.Future<_i9.Listing?> getById(int id) =>
+      caller.callServerEndpoint<_i9.Listing?>(
         'listing',
         'getById',
         {'id': id},
       );
 
   /// Ruft aktive Angebote ab (mit Pagination).
-  _i2.Future<List<_i8.Listing>> getActive({
+  _i2.Future<List<_i9.Listing>> getActive({
     int? categoryId,
     required int limit,
     required int offset,
   }) =>
-      caller.callServerEndpoint<List<_i8.Listing>>(
+      caller.callServerEndpoint<List<_i9.Listing>>(
         'listing',
         'getActive',
         {
@@ -342,16 +450,16 @@ class EndpointListing extends _i1.EndpointRef {
       );
 
   /// Ruft die eigenen Angebote des Benutzers ab.
-  _i2.Future<List<_i8.Listing>> getMyListings() =>
-      caller.callServerEndpoint<List<_i8.Listing>>(
+  _i2.Future<List<_i9.Listing>> getMyListings() =>
+      caller.callServerEndpoint<List<_i9.Listing>>(
         'listing',
         'getMyListings',
         {},
       );
 
   /// Ruft Angebote eines bestimmten Benutzers ab (nur aktive).
-  _i2.Future<List<_i8.Listing>> getByUser(int userId) =>
-      caller.callServerEndpoint<List<_i8.Listing>>(
+  _i2.Future<List<_i9.Listing>> getByUser(int userId) =>
+      caller.callServerEndpoint<List<_i9.Listing>>(
         'listing',
         'getByUser',
         {'userId': userId},
@@ -375,12 +483,12 @@ class EndpointListingImage extends _i1.EndpointRef {
 
   /// Lädt ein Bild für ein Listing hoch.
   /// Gibt das erstellte ListingImage-Objekt zurück.
-  _i2.Future<_i10.ListingImage?> upload({
+  _i2.Future<_i11.ListingImage?> upload({
     required int listingId,
     required String originalFileName,
-    required _i11.ByteData imageData,
+    required _i12.ByteData imageData,
   }) =>
-      caller.callServerEndpoint<_i10.ListingImage?>(
+      caller.callServerEndpoint<_i11.ListingImage?>(
         'listingImage',
         'upload',
         {
@@ -391,24 +499,24 @@ class EndpointListingImage extends _i1.EndpointRef {
       );
 
   /// Ruft alle Bilder eines Listings ab.
-  _i2.Future<List<_i10.ListingImage>> getByListing(int listingId) =>
-      caller.callServerEndpoint<List<_i10.ListingImage>>(
+  _i2.Future<List<_i11.ListingImage>> getByListing(int listingId) =>
+      caller.callServerEndpoint<List<_i11.ListingImage>>(
         'listingImage',
         'getByListing',
         {'listingId': listingId},
       );
 
   /// Ruft die Bild-Daten ab (für Anzeige).
-  _i2.Future<_i11.ByteData?> getImageData(int imageId) =>
-      caller.callServerEndpoint<_i11.ByteData?>(
+  _i2.Future<_i12.ByteData?> getImageData(int imageId) =>
+      caller.callServerEndpoint<_i12.ByteData?>(
         'listingImage',
         'getImageData',
         {'imageId': imageId},
       );
 
   /// Ruft die Bild-Daten über den Dateinamen ab.
-  _i2.Future<_i11.ByteData?> getImageDataByPath(String relativePath) =>
-      caller.callServerEndpoint<_i11.ByteData?>(
+  _i2.Future<_i12.ByteData?> getImageDataByPath(String relativePath) =>
+      caller.callServerEndpoint<_i12.ByteData?>(
         'listingImage',
         'getImageDataByPath',
         {'relativePath': relativePath},
@@ -451,6 +559,153 @@ class EndpointListingImage extends _i1.EndpointRef {
       );
 }
 
+/// Endpoint für verschlüsselte Nachrichten.
+/// {@category Endpoint}
+class EndpointMessage extends _i1.EndpointRef {
+  EndpointMessage(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'message';
+
+  /// Sendet eine verschlüsselte Nachricht.
+  /// Die Nachricht muss bereits client-seitig verschlüsselt sein.
+  _i2.Future<_i13.Message?> send({
+    required int recipientId,
+    required String encryptedSubject,
+    required String encryptedContent,
+    int? listingId,
+    int? parentMessageId,
+  }) =>
+      caller.callServerEndpoint<_i13.Message?>(
+        'message',
+        'send',
+        {
+          'recipientId': recipientId,
+          'encryptedSubject': encryptedSubject,
+          'encryptedContent': encryptedContent,
+          'listingId': listingId,
+          'parentMessageId': parentMessageId,
+        },
+      );
+
+  /// Ruft den Posteingang des Benutzers ab (empfangene Nachrichten).
+  _i2.Future<List<_i13.Message>> getInbox({
+    required int limit,
+    required int offset,
+    required bool includeDeleted,
+  }) =>
+      caller.callServerEndpoint<List<_i13.Message>>(
+        'message',
+        'getInbox',
+        {
+          'limit': limit,
+          'offset': offset,
+          'includeDeleted': includeDeleted,
+        },
+      );
+
+  /// Ruft gesendete Nachrichten des Benutzers ab.
+  _i2.Future<List<_i13.Message>> getSent({
+    required int limit,
+    required int offset,
+    required bool includeDeleted,
+  }) =>
+      caller.callServerEndpoint<List<_i13.Message>>(
+        'message',
+        'getSent',
+        {
+          'limit': limit,
+          'offset': offset,
+          'includeDeleted': includeDeleted,
+        },
+      );
+
+  /// Ruft eine einzelne Nachricht ab.
+  _i2.Future<_i13.Message?> getById(int messageId) =>
+      caller.callServerEndpoint<_i13.Message?>(
+        'message',
+        'getById',
+        {'messageId': messageId},
+      );
+
+  /// Markiert eine Nachricht als gelesen.
+  _i2.Future<bool> markAsRead(int messageId) => caller.callServerEndpoint<bool>(
+        'message',
+        'markAsRead',
+        {'messageId': messageId},
+      );
+
+  /// Markiert mehrere Nachrichten als gelesen.
+  _i2.Future<int> markMultipleAsRead(List<int> messageIds) =>
+      caller.callServerEndpoint<int>(
+        'message',
+        'markMultipleAsRead',
+        {'messageIds': messageIds},
+      );
+
+  /// Löscht eine Nachricht (Soft-Delete).
+  /// Die Nachricht wird nur für den jeweiligen Benutzer als gelöscht markiert.
+  _i2.Future<bool> delete(int messageId) => caller.callServerEndpoint<bool>(
+        'message',
+        'delete',
+        {'messageId': messageId},
+      );
+
+  /// Zählt ungelesene Nachrichten im Posteingang.
+  _i2.Future<int> getUnreadCount() => caller.callServerEndpoint<int>(
+        'message',
+        'getUnreadCount',
+        {},
+      );
+
+  /// Ruft die Konversation zwischen zwei Benutzern ab.
+  _i2.Future<List<_i13.Message>> getConversation(
+    int otherUserId, {
+    required int limit,
+    required int offset,
+  }) =>
+      caller.callServerEndpoint<List<_i13.Message>>(
+        'message',
+        'getConversation',
+        {
+          'otherUserId': otherUserId,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  /// Ruft den Thread einer Nachricht ab (Antworten).
+  _i2.Future<List<_i13.Message>> getThread(
+    int messageId, {
+    required int limit,
+  }) =>
+      caller.callServerEndpoint<List<_i13.Message>>(
+        'message',
+        'getThread',
+        {
+          'messageId': messageId,
+          'limit': limit,
+        },
+      );
+
+  /// Ruft eine Liste der Konversationspartner mit der letzten Nachricht ab.
+  _i2.Future<List<Map<String, dynamic>>> getConversationList(
+          {required int limit}) =>
+      caller.callServerEndpoint<List<Map<String, dynamic>>>(
+        'message',
+        'getConversationList',
+        {'limit': limit},
+      );
+
+  /// Holt den Benutzernamen für eine Nachricht (für Anzeige).
+  _i2.Future<String?> getSenderUsername(int messageId) =>
+      caller.callServerEndpoint<String?>(
+        'message',
+        'getSenderUsername',
+        {'messageId': messageId},
+      );
+}
+
 /// Endpoint for managing news articles.
 /// Admin can create/edit/delete, users can read published news.
 /// {@category Endpoint}
@@ -461,37 +716,37 @@ class EndpointNews extends _i1.EndpointRef {
   String get name => 'news';
 
   /// Get all published and non-expired news (public).
-  _i2.Future<List<_i12.News>> getPublished() =>
-      caller.callServerEndpoint<List<_i12.News>>(
+  _i2.Future<List<_i14.News>> getPublished() =>
+      caller.callServerEndpoint<List<_i14.News>>(
         'news',
         'getPublished',
         {},
       );
 
   /// Get all news including unpublished (admin only).
-  _i2.Future<List<_i12.News>> getAll() =>
-      caller.callServerEndpoint<List<_i12.News>>(
+  _i2.Future<List<_i14.News>> getAll() =>
+      caller.callServerEndpoint<List<_i14.News>>(
         'news',
         'getAll',
         {},
       );
 
   /// Get a single news article by ID.
-  _i2.Future<_i12.News?> getById(int id) =>
-      caller.callServerEndpoint<_i12.News?>(
+  _i2.Future<_i14.News?> getById(int id) =>
+      caller.callServerEndpoint<_i14.News?>(
         'news',
         'getById',
         {'id': id},
       );
 
   /// Create a new news article (admin only).
-  _i2.Future<_i12.News?> create({
+  _i2.Future<_i14.News?> create({
     required String title,
     required String content,
     required bool publish,
     int? lifetimeDays,
   }) =>
-      caller.callServerEndpoint<_i12.News?>(
+      caller.callServerEndpoint<_i14.News?>(
         'news',
         'create',
         {
@@ -503,14 +758,14 @@ class EndpointNews extends _i1.EndpointRef {
       );
 
   /// Update a news article (admin only).
-  _i2.Future<_i12.News?> update({
+  _i2.Future<_i14.News?> update({
     required int id,
     required String title,
     required String content,
     required bool isPublished,
     DateTime? expiresAt,
   }) =>
-      caller.callServerEndpoint<_i12.News?>(
+      caller.callServerEndpoint<_i14.News?>(
         'news',
         'update',
         {
@@ -619,14 +874,14 @@ class EndpointPgpKey extends _i1.EndpointRef {
 
   /// Lädt den Public Key eines Benutzers zum Server hoch.
   /// Validiert das Key-Format und extrahiert Metadaten.
-  _i2.Future<_i13.UserPublicKey?> uploadPublicKey(
+  _i2.Future<_i15.UserPublicKey?> uploadPublicKey(
     String publicKeyArmored,
     String keyIdentity,
     String fingerprint,
     String algorithm,
     int keySize,
   ) =>
-      caller.callServerEndpoint<_i13.UserPublicKey?>(
+      caller.callServerEndpoint<_i15.UserPublicKey?>(
         'pgpKey',
         'uploadPublicKey',
         {
@@ -639,24 +894,24 @@ class EndpointPgpKey extends _i1.EndpointRef {
       );
 
   /// Ruft den aktiven Public Key des eingeloggten Benutzers ab.
-  _i2.Future<_i13.UserPublicKey?> getMyPublicKey() =>
-      caller.callServerEndpoint<_i13.UserPublicKey?>(
+  _i2.Future<_i15.UserPublicKey?> getMyPublicKey() =>
+      caller.callServerEndpoint<_i15.UserPublicKey?>(
         'pgpKey',
         'getMyPublicKey',
         {},
       );
 
   /// Ruft den Public Key eines Benutzers per User-ID ab.
-  _i2.Future<_i13.UserPublicKey?> getPublicKey(int userId) =>
-      caller.callServerEndpoint<_i13.UserPublicKey?>(
+  _i2.Future<_i15.UserPublicKey?> getPublicKey(int userId) =>
+      caller.callServerEndpoint<_i15.UserPublicKey?>(
         'pgpKey',
         'getPublicKey',
         {'userId': userId},
       );
 
   /// Ruft den Public Key eines Benutzers per Username ab.
-  _i2.Future<_i13.UserPublicKey?> getPublicKeyByUsername(String username) =>
-      caller.callServerEndpoint<_i13.UserPublicKey?>(
+  _i2.Future<_i15.UserPublicKey?> getPublicKeyByUsername(String username) =>
+      caller.callServerEndpoint<_i15.UserPublicKey?>(
         'pgpKey',
         'getPublicKeyByUsername',
         {'username': username},
@@ -687,13 +942,13 @@ class EndpointPgpKey extends _i1.EndpointRef {
   /// Lädt ein verschlüsseltes Private Key Backup hoch.
   /// WARNUNG: Der Server speichert nur den verschlüsselten Key.
   /// Die Entschlüsselung erfolgt ausschließlich auf dem Client.
-  _i2.Future<_i14.EncryptedKeyBackup?> uploadEncryptedBackup(
+  _i2.Future<_i16.EncryptedKeyBackup?> uploadEncryptedBackup(
     String encryptedPrivateKey,
     String fingerprint,
     String encryptionSalt,
     String kdfParams,
   ) =>
-      caller.callServerEndpoint<_i14.EncryptedKeyBackup?>(
+      caller.callServerEndpoint<_i16.EncryptedKeyBackup?>(
         'pgpKey',
         'uploadEncryptedBackup',
         {
@@ -705,17 +960,17 @@ class EndpointPgpKey extends _i1.EndpointRef {
       );
 
   /// Lädt ein verschlüsseltes Private Key Backup herunter.
-  _i2.Future<_i14.EncryptedKeyBackup?> downloadEncryptedBackup(
+  _i2.Future<_i16.EncryptedKeyBackup?> downloadEncryptedBackup(
           String fingerprint) =>
-      caller.callServerEndpoint<_i14.EncryptedKeyBackup?>(
+      caller.callServerEndpoint<_i16.EncryptedKeyBackup?>(
         'pgpKey',
         'downloadEncryptedBackup',
         {'fingerprint': fingerprint},
       );
 
   /// Listet alle aktiven Backups des Benutzers auf.
-  _i2.Future<List<_i14.EncryptedKeyBackup>> listBackups() =>
-      caller.callServerEndpoint<List<_i14.EncryptedKeyBackup>>(
+  _i2.Future<List<_i16.EncryptedKeyBackup>> listBackups() =>
+      caller.callServerEndpoint<List<_i16.EncryptedKeyBackup>>(
         'pgpKey',
         'listBackups',
         {},
@@ -747,7 +1002,7 @@ class EndpointSearch extends _i1.EndpointRef {
   /// [acceptsBitcoin] - Optional: Nur Bitcoin-Angebote
   /// [page] - Seitennummer (0-basiert)
   /// [pageSize] - Anzahl pro Seite (Standard: 25)
-  _i2.Future<_i15.SearchResult> search({
+  _i2.Future<_i17.SearchResult> search({
     String? query,
     int? categoryId,
     int? subcategoryId,
@@ -756,7 +1011,7 @@ class EndpointSearch extends _i1.EndpointRef {
     required int page,
     required int pageSize,
   }) =>
-      caller.callServerEndpoint<_i15.SearchResult>(
+      caller.callServerEndpoint<_i17.SearchResult>(
         'search',
         'search',
         {
@@ -771,11 +1026,11 @@ class EndpointSearch extends _i1.EndpointRef {
       );
 
   /// Schnellsuche - nur Titel, optimiert für Autocomplete.
-  _i2.Future<List<_i8.Listing>> quickSearch(
+  _i2.Future<List<_i9.Listing>> quickSearch(
     String query, {
     required int limit,
   }) =>
-      caller.callServerEndpoint<List<_i8.Listing>>(
+      caller.callServerEndpoint<List<_i9.Listing>>(
         'search',
         'quickSearch',
         {
@@ -875,11 +1130,11 @@ class EndpointSlotOrder extends _i1.EndpointRef {
   String get name => 'slotOrder';
 
   /// Erstellt eine neue Bestellung für einen Slot.
-  _i2.Future<_i16.SlotOrder?> create({
+  _i2.Future<_i18.SlotOrder?> create({
     required int slotVariantId,
-    required _i17.PaymentMethod paymentMethod,
+    required _i19.PaymentMethod paymentMethod,
   }) =>
-      caller.callServerEndpoint<_i16.SlotOrder?>(
+      caller.callServerEndpoint<_i18.SlotOrder?>(
         'slotOrder',
         'create',
         {
@@ -889,24 +1144,24 @@ class EndpointSlotOrder extends _i1.EndpointRef {
       );
 
   /// Ruft alle Bestellungen des aktuellen Benutzers ab.
-  _i2.Future<List<_i16.SlotOrder>> getMyOrders() =>
-      caller.callServerEndpoint<List<_i16.SlotOrder>>(
+  _i2.Future<List<_i18.SlotOrder>> getMyOrders() =>
+      caller.callServerEndpoint<List<_i18.SlotOrder>>(
         'slotOrder',
         'getMyOrders',
         {},
       );
 
   /// Ruft ausstehende Bestellungen des Benutzers ab.
-  _i2.Future<List<_i16.SlotOrder>> getPendingOrders() =>
-      caller.callServerEndpoint<List<_i16.SlotOrder>>(
+  _i2.Future<List<_i18.SlotOrder>> getPendingOrders() =>
+      caller.callServerEndpoint<List<_i18.SlotOrder>>(
         'slotOrder',
         'getPendingOrders',
         {},
       );
 
   /// Ruft eine einzelne Bestellung ab.
-  _i2.Future<_i16.SlotOrder?> getById(int id) =>
-      caller.callServerEndpoint<_i16.SlotOrder?>(
+  _i2.Future<_i18.SlotOrder?> getById(int id) =>
+      caller.callServerEndpoint<_i18.SlotOrder?>(
         'slotOrder',
         'getById',
         {'id': id},
@@ -921,11 +1176,11 @@ class EndpointSlotOrder extends _i1.EndpointRef {
 
   /// Markiert eine Bestellung als bezahlt und aktiviert den Slot.
   /// In der Produktion wird dies durch die Zahlungs-Webhooks aufgerufen.
-  _i2.Future<_i16.SlotOrder?> markAsPaid({
+  _i2.Future<_i18.SlotOrder?> markAsPaid({
     required int orderId,
     String? transactionId,
   }) =>
-      caller.callServerEndpoint<_i16.SlotOrder?>(
+      caller.callServerEndpoint<_i18.SlotOrder?>(
         'slotOrder',
         'markAsPaid',
         {
@@ -935,32 +1190,32 @@ class EndpointSlotOrder extends _i1.EndpointRef {
       );
 
   /// Admin: Ruft alle Bestellungen ab.
-  _i2.Future<List<_i16.SlotOrder>> getAllOrders() =>
-      caller.callServerEndpoint<List<_i16.SlotOrder>>(
+  _i2.Future<List<_i18.SlotOrder>> getAllOrders() =>
+      caller.callServerEndpoint<List<_i18.SlotOrder>>(
         'slotOrder',
         'getAllOrders',
         {},
       );
 
   /// Admin: Ruft alle ausstehenden Bestellungen ab.
-  _i2.Future<List<_i16.SlotOrder>> getAllPendingOrders() =>
-      caller.callServerEndpoint<List<_i16.SlotOrder>>(
+  _i2.Future<List<_i18.SlotOrder>> getAllPendingOrders() =>
+      caller.callServerEndpoint<List<_i18.SlotOrder>>(
         'slotOrder',
         'getAllPendingOrders',
         {},
       );
 
   /// Admin: Ruft einen Benutzer zu einer Bestellung ab.
-  _i2.Future<_i18.User?> getOrderUser(int orderId) =>
-      caller.callServerEndpoint<_i18.User?>(
+  _i2.Future<_i20.User?> getOrderUser(int orderId) =>
+      caller.callServerEndpoint<_i20.User?>(
         'slotOrder',
         'getOrderUser',
         {'orderId': orderId},
       );
 
   /// Admin: Ruft die Slot-Variante zu einer Bestellung ab.
-  _i2.Future<_i19.SlotVariant?> getOrderVariant(int orderId) =>
-      caller.callServerEndpoint<_i19.SlotVariant?>(
+  _i2.Future<_i21.SlotVariant?> getOrderVariant(int orderId) =>
+      caller.callServerEndpoint<_i21.SlotVariant?>(
         'slotOrder',
         'getOrderVariant',
         {'orderId': orderId},
@@ -984,31 +1239,31 @@ class EndpointSlotVariant extends _i1.EndpointRef {
   String get name => 'slotVariant';
 
   /// Get all slot variants (admin only).
-  _i2.Future<List<_i19.SlotVariant>> getAll() =>
-      caller.callServerEndpoint<List<_i19.SlotVariant>>(
+  _i2.Future<List<_i21.SlotVariant>> getAll() =>
+      caller.callServerEndpoint<List<_i21.SlotVariant>>(
         'slotVariant',
         'getAll',
         {},
       );
 
   /// Get only active slot variants (public).
-  _i2.Future<List<_i19.SlotVariant>> getActive() =>
-      caller.callServerEndpoint<List<_i19.SlotVariant>>(
+  _i2.Future<List<_i21.SlotVariant>> getActive() =>
+      caller.callServerEndpoint<List<_i21.SlotVariant>>(
         'slotVariant',
         'getActive',
         {},
       );
 
   /// Get a single slot variant by ID (public).
-  _i2.Future<_i19.SlotVariant?> getById(int id) =>
-      caller.callServerEndpoint<_i19.SlotVariant?>(
+  _i2.Future<_i21.SlotVariant?> getById(int id) =>
+      caller.callServerEndpoint<_i21.SlotVariant?>(
         'slotVariant',
         'getById',
         {'id': id},
       );
 
   /// Create a new slot variant (admin only).
-  _i2.Future<_i19.SlotVariant?> create({
+  _i2.Future<_i21.SlotVariant?> create({
     required String name,
     String? description,
     required int priceUsdCents,
@@ -1017,7 +1272,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool allowBitcoin,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i19.SlotVariant?>(
+      caller.callServerEndpoint<_i21.SlotVariant?>(
         'slotVariant',
         'create',
         {
@@ -1032,7 +1287,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
       );
 
   /// Update a slot variant (admin only).
-  _i2.Future<_i19.SlotVariant?> update({
+  _i2.Future<_i21.SlotVariant?> update({
     required int id,
     required String name,
     String? description,
@@ -1043,7 +1298,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool isActive,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i19.SlotVariant?>(
+      caller.callServerEndpoint<_i21.SlotVariant?>(
         'slotVariant',
         'update',
         {
@@ -1076,24 +1331,24 @@ class EndpointUserSlot extends _i1.EndpointRef {
   String get name => 'userSlot';
 
   /// Ruft alle Slots des aktuellen Benutzers ab.
-  _i2.Future<List<_i20.UserSlot>> getMySlots() =>
-      caller.callServerEndpoint<List<_i20.UserSlot>>(
+  _i2.Future<List<_i22.UserSlot>> getMySlots() =>
+      caller.callServerEndpoint<List<_i22.UserSlot>>(
         'userSlot',
         'getMySlots',
         {},
       );
 
   /// Ruft nur verfügbare (ungenutzte, aktive) Slots ab.
-  _i2.Future<List<_i20.UserSlot>> getAvailableSlots() =>
-      caller.callServerEndpoint<List<_i20.UserSlot>>(
+  _i2.Future<List<_i22.UserSlot>> getAvailableSlots() =>
+      caller.callServerEndpoint<List<_i22.UserSlot>>(
         'userSlot',
         'getAvailableSlots',
         {},
       );
 
   /// Ruft Slots ab, die in den nächsten X Tagen ablaufen (für Warnungen).
-  _i2.Future<List<_i20.UserSlot>> getExpiringSoon({required int days}) =>
-      caller.callServerEndpoint<List<_i20.UserSlot>>(
+  _i2.Future<List<_i22.UserSlot>> getExpiringSoon({required int days}) =>
+      caller.callServerEndpoint<List<_i22.UserSlot>>(
         'userSlot',
         'getExpiringSoon',
         {'days': days},
@@ -1101,11 +1356,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
 
   /// Erstellt einen Slot für einen Benutzer (Admin-Funktion oder nach Zahlung).
   /// Diese Methode wird intern nach erfolgreicher Zahlung aufgerufen.
-  _i2.Future<_i20.UserSlot?> createSlot({
+  _i2.Future<_i22.UserSlot?> createSlot({
     required int userId,
     required int slotVariantId,
   }) =>
-      caller.callServerEndpoint<_i20.UserSlot?>(
+      caller.callServerEndpoint<_i22.UserSlot?>(
         'userSlot',
         'createSlot',
         {
@@ -1115,11 +1370,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
       );
 
   /// Verlängert einen bestehenden Slot.
-  _i2.Future<_i20.UserSlot?> extendSlot({
+  _i2.Future<_i22.UserSlot?> extendSlot({
     required int slotId,
     required int additionalDays,
   }) =>
-      caller.callServerEndpoint<_i20.UserSlot?>(
+      caller.callServerEndpoint<_i22.UserSlot?>(
         'userSlot',
         'extendSlot',
         {
@@ -1147,8 +1402,8 @@ class EndpointUserSlot extends _i1.EndpointRef {
   /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
   /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
   /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
-  _i2.Future<_i20.UserSlot?> createTestSlot({required int slotVariantId}) =>
-      caller.callServerEndpoint<_i20.UserSlot?>(
+  _i2.Future<_i22.UserSlot?> createTestSlot({required int slotVariantId}) =>
+      caller.callServerEndpoint<_i22.UserSlot?>(
         'userSlot',
         'createTestSlot',
         {'slotVariantId': slotVariantId},
@@ -1165,8 +1420,8 @@ class EndpointGreeting extends _i1.EndpointRef {
   String get name => 'greeting';
 
   /// Returns a personalized greeting message: "Hello {name}".
-  _i2.Future<_i21.Greeting> hello(String name) =>
-      caller.callServerEndpoint<_i21.Greeting>(
+  _i2.Future<_i23.Greeting> hello(String name) =>
+      caller.callServerEndpoint<_i23.Greeting>(
         'greeting',
         'hello',
         {'name': name},
@@ -1175,10 +1430,10 @@ class EndpointGreeting extends _i1.EndpointRef {
 
 class Modules {
   Modules(Client client) {
-    auth = _i22.Caller(client);
+    auth = _i24.Caller(client);
   }
 
-  late final _i22.Caller auth;
+  late final _i24.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -1197,7 +1452,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i23.Protocol(),
+          _i25.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -1209,9 +1464,11 @@ class Client extends _i1.ServerpodClientShared {
         ) {
     auth = EndpointAuth(this);
     category = EndpointCategory(this);
+    draft = EndpointDraft(this);
     favorite = EndpointFavorite(this);
     listing = EndpointListing(this);
     listingImage = EndpointListingImage(this);
+    message = EndpointMessage(this);
     news = EndpointNews(this);
     payment = EndpointPayment(this);
     pgpKey = EndpointPgpKey(this);
@@ -1228,11 +1485,15 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointCategory category;
 
+  late final EndpointDraft draft;
+
   late final EndpointFavorite favorite;
 
   late final EndpointListing listing;
 
   late final EndpointListingImage listingImage;
+
+  late final EndpointMessage message;
 
   late final EndpointNews news;
 
@@ -1258,9 +1519,11 @@ class Client extends _i1.ServerpodClientShared {
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
         'auth': auth,
         'category': category,
+        'draft': draft,
         'favorite': favorite,
         'listing': listing,
         'listingImage': listingImage,
+        'message': message,
         'news': news,
         'payment': payment,
         'pgpKey': pgpKey,

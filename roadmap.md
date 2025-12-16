@@ -233,22 +233,22 @@
 
 ---
 
-## Meilenstein 7b: Backend - Nachrichten
+## Meilenstein 7b: Backend - Nachrichten ✅
 
 ### 7b.1 Message Endpoint
-- [ ] Nachricht senden (verschlüsselt speichern)
-- [ ] Posteingang abrufen (mit Pagination)
-- [ ] Gesendete Nachrichten abrufen
-- [ ] Nachricht als gelesen markieren
-- [ ] Nachricht löschen (Soft-Delete)
-- [ ] Ungelesene Nachrichten zählen
+- [x] Nachricht senden (verschlüsselt speichern)
+- [x] Posteingang abrufen (mit Pagination)
+- [x] Gesendete Nachrichten abrufen
+- [x] Nachricht als gelesen markieren
+- [x] Nachricht löschen (Soft-Delete)
+- [x] Ungelesene Nachrichten zählen
 
 ### 7b.2 Draft Endpoint
-- [ ] Entwurf speichern
-- [ ] Entwurf aktualisieren
-- [ ] Entwürfe abrufen
-- [ ] Entwurf löschen
-- [ ] Automatische Löschung nach 7 Tagen (Cron-Job)
+- [x] Entwurf speichern
+- [x] Entwurf aktualisieren
+- [x] Entwürfe abrufen
+- [x] Entwurf löschen
+- [x] Automatische Löschung nach 7 Tagen (Cron-Job)
 
 ---
 
@@ -393,4 +393,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-15*
+*Aktualisiert am: 2025-12-16*

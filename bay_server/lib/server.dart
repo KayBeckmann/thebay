@@ -8,6 +8,8 @@ import 'package:bay_server/src/web/routes/paypal_ipn.dart';
 import 'package:bay_server/src/services/password_service.dart';
 import 'package:bay_server/src/future_calls/slot_expiration_call.dart'
     show SlotExpirationService;
+import 'package:bay_server/src/future_calls/draft_expiration_call.dart'
+    show DraftExpirationService;
 
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
@@ -44,6 +46,9 @@ void run(List<String> args) async {
 
   // Start periodic slot expiration check
   await SlotExpirationService.start(pod);
+
+  // Start periodic draft expiration check
+  await DraftExpirationService.start(pod);
 }
 
 /// Creates the admin account from environment variables if it doesn't exist.

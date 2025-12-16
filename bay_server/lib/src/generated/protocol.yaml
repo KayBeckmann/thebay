@@ -13,6 +13,15 @@ category:
   - create:
   - update:
   - delete:
+draft:
+  - save:
+  - update:
+  - getAll:
+  - getById:
+  - delete:
+  - getCount:
+  - getByListing:
+  - getByRecipient:
 favorite:
   - add:
   - remove:
@@ -38,6 +47,19 @@ listingImage:
   - reorder:
   - setMainImage:
   - deleteAllForListing:
+message:
+  - send:
+  - getInbox:
+  - getSent:
+  - getById:
+  - markAsRead:
+  - markMultipleAsRead:
+  - delete:
+  - getUnreadCount:
+  - getConversation:
+  - getThread:
+  - getConversationList:
+  - getSenderUsername:
 news:
   - getPublished:
   - getAll:
