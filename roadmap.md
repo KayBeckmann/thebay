@@ -252,18 +252,18 @@
 
 ---
 
-## Meilenstein 7c: Frontend - Nachrichten
+## Meilenstein 7c: Frontend - Nachrichten ✅
 
 ### 7c.1 Nachrichten-Screens
-- [ ] Posteingang mit Nachrichtenliste
-- [ ] Gesendet-Ordner
-- [ ] Entwürfe-Ordner
-- [ ] Nachricht-Detail-Ansicht (Entschlüsselung)
-- [ ] Nachricht verfassen Dialog (Verschlüsselung vor Senden)
+- [x] Posteingang mit Nachrichtenliste
+- [x] Gesendet-Ordner
+- [x] Entwürfe-Ordner
+- [x] Nachricht-Detail-Ansicht (Entschlüsselung)
+- [x] Nachricht verfassen Dialog (Verschlüsselung vor Senden)
 
 ### 7c.2 Integration
-- [ ] Ungelesene Nachrichten Badge in Navigation
-- [ ] "Nachricht senden" Button in Angebots-Detailansicht
+- [x] Ungelesene Nachrichten Badge in Navigation
+- [x] "Nachricht senden" Button in Angebots-Detailansicht
 - [ ] "Nachricht senden" Button in Profilen (Meilenstein 8)
 
 ---

@@ -3,7 +3,8 @@ import 'dart:typed_data';
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
+import '../../main.dart' show client, authService;
+import '../messages_screen.dart' show showComposeMessageDialog;
 
 /// Detailansicht für ein Angebot.
 class ListingDetailScreen extends StatefulWidget {
@@ -535,12 +536,22 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildContactButton() {
+    // Prüfe ob es das eigene Angebot ist
+    final currentUserId = authService.currentUser?.userId;
+    final isOwnListing = _listing!.userId == currentUserId;
+
+    if (isOwnListing) {
+      return const SizedBox.shrink();
+    }
+
     return SizedBox(
       width: double.infinity,
       child: FilledButton.icon(
         onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Nachrichten werden in Meilenstein 7 implementiert')),
+          showComposeMessageDialog(
+            context,
+            recipientId: _listing!.userId,
+            listingId: _listing!.id,
           );
         },
         icon: const Icon(Icons.message),

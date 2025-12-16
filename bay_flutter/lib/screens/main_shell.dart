@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
+import '../services/message_service.dart';
 import 'dashboard_screen.dart';
 import 'messages_screen.dart';
 import 'search_screen.dart';
@@ -34,12 +35,14 @@ class NavItem {
 class MainShell extends StatefulWidget {
   final AuthService authService;
   final PgpKeyService pgpKeyService;
+  final MessageService messageService;
   final VoidCallback onLogout;
 
   const MainShell({
     super.key,
     required this.authService,
     required this.pgpKeyService,
+    required this.messageService,
     required this.onLogout,
   });
 
@@ -49,6 +52,29 @@ class MainShell extends StatefulWidget {
 
 class _MainShellState extends State<MainShell> {
   int _selectedIndex = 0;
+  int _unreadCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUnreadCount();
+  }
+
+  Future<void> _loadUnreadCount() async {
+    try {
+      final count = await widget.messageService.getUnreadCount();
+      if (mounted) {
+        setState(() => _unreadCount = count);
+      }
+    } catch (e) {
+      // Ignore errors
+    }
+  }
+
+  /// Aktualisiert den Unread-Counter (wird von MessagesScreen aufgerufen).
+  void refreshUnreadCount() {
+    _loadUnreadCount();
+  }
 
   List<NavItem> get _navItems {
     final user = widget.authService.currentUser;
@@ -65,7 +91,11 @@ class _MainShellState extends State<MainShell> {
         label: 'Nachrichten',
         icon: Icons.mail_outline,
         selectedIcon: Icons.mail,
-        screen: const MessagesScreen(),
+        screen: MessagesScreen(
+          messageService: widget.messageService,
+          pgpKeyService: widget.pgpKeyService,
+          onUnreadCountChanged: _loadUnreadCount,
+        ),
       ),
       NavItem(
         label: 'Suchen',
@@ -136,7 +166,23 @@ class _MainShellState extends State<MainShell> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onItemTapped,
-        destinations: navItems.map((item) {
+        destinations: navItems.asMap().entries.map((entry) {
+          final index = entry.key;
+          final item = entry.value;
+          // Badge für Nachrichten (Index 1)
+          if (index == 1 && _unreadCount > 0) {
+            return NavigationDestination(
+              icon: Badge(
+                label: Text(_unreadCount > 99 ? '99+' : '$_unreadCount'),
+                child: Icon(item.icon),
+              ),
+              selectedIcon: Badge(
+                label: Text(_unreadCount > 99 ? '99+' : '$_unreadCount'),
+                child: Icon(item.selectedIcon),
+              ),
+              label: item.label,
+            );
+          }
           return NavigationDestination(
             icon: Icon(item.icon),
             selectedIcon: Icon(item.selectedIcon),
