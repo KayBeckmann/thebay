@@ -1,0 +1,43 @@
+### Transaktion zwischen Käufer und Verkäufer
+class: Transaction
+table: transactions
+fields:
+  ### Käufer (User-ID)
+  buyerId: int
+  ### Verkäufer (User-ID)
+  sellerId: int
+  ### Angebot das gekauft wird
+  listingId: int
+  ### Aktueller Status der Transaktion
+  status: TransactionStatus, default=open
+  ### Gekaufte Menge
+  quantity: double
+  ### Gesamtpreis in Cents
+  totalPriceCents: int
+  ### Gewählte Zahlungsmethode
+  paymentMethod: PaymentMethod
+  ### Erstellungszeitpunkt
+  createdAt: DateTime
+  ### Letzte Aktualisierung
+  updatedAt: DateTime
+  ### Zeitpunkt als versendet markiert
+  shippedAt: DateTime?
+  ### Zeitpunkt als erhalten markiert
+  receivedAt: DateTime?
+  ### Zeitpunkt des Abschlusses
+  completedAt: DateTime?
+  ### Datum für automatischen Abschluss (14 Tage nach shipped)
+  autoCompleteAt: DateTime?
+  ### Optionale Nachricht vom Käufer
+  buyerNote: String?
+indexes:
+  transaction_buyer_idx:
+    fields: buyerId
+  transaction_seller_idx:
+    fields: sellerId
+  transaction_listing_idx:
+    fields: listingId
+  transaction_status_idx:
+    fields: status
+  transaction_auto_complete_idx:
+    fields: autoCompleteAt

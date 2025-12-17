@@ -1,0 +1,6 @@
+### Status einer Reklamation
+enum: DisputeStatus
+values:
+  - open        # Reklamation offen
+  - resolved    # Reklamation gelöst
+  - closed      # Reklamation geschlossen (ohne Lösung)

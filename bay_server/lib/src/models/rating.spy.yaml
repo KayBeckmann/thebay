@@ -1,0 +1,28 @@
+### Bewertung nach abgeschlossener Transaktion
+class: Rating
+table: ratings
+fields:
+  ### Zugehörige Transaktion
+  transactionId: int
+  ### Benutzer der die Bewertung abgibt
+  fromUserId: int
+  ### Benutzer der bewertet wird
+  toUserId: int
+  ### Bewertungswert (positiv/neutral/negativ)
+  rating: RatingValue
+  ### Optionaler Kommentar (max 500 Zeichen)
+  comment: String?
+  ### Erstellungszeitpunkt
+  createdAt: DateTime
+  ### Ob die Bewertung automatisch erstellt wurde
+  isAutomatic: bool, default=false
+indexes:
+  rating_transaction_idx:
+    fields: transactionId
+  rating_from_user_idx:
+    fields: fromUserId
+  rating_to_user_idx:
+    fields: toUserId
+  rating_transaction_from_unique:
+    fields: transactionId, fromUserId
+    unique: true

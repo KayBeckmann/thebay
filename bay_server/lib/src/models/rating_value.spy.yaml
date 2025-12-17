@@ -1,0 +1,6 @@
+### Bewertungswert für Transaktionen
+enum: RatingValue
+values:
+  - positive    # Gute Bewertung
+  - neutral     # Neutrale Bewertung
+  - negative    # Schlechte Bewertung

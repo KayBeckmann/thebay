@@ -1,0 +1,29 @@
+### Reklamation zu einer Transaktion
+class: Dispute
+table: disputes
+fields:
+  ### Zugehörige Transaktion
+  transactionId: int
+  ### Benutzer der die Reklamation eröffnet hat
+  openedByUserId: int
+  ### Grund für die Reklamation
+  reason: String
+  ### Aktueller Status
+  status: DisputeStatus, default=open
+  ### Lösung/Ergebnis (vom Moderator eingetragen)
+  resolution: String?
+  ### Moderator der die Reklamation bearbeitet
+  moderatorId: int?
+  ### Erstellungszeitpunkt
+  createdAt: DateTime
+  ### Zeitpunkt der Lösung
+  resolvedAt: DateTime?
+indexes:
+  dispute_transaction_idx:
+    fields: transactionId
+  dispute_opened_by_idx:
+    fields: openedByUserId
+  dispute_status_idx:
+    fields: status
+  dispute_moderator_idx:
+    fields: moderatorId

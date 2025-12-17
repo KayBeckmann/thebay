@@ -1,0 +1,9 @@
+### Status einer Transaktion im Handelsablauf
+enum: TransactionStatus
+values:
+  - open        # Transaktion gestartet, warte auf Versand
+  - shipped     # Verkäufer hat als versendet markiert
+  - received    # Käufer hat Erhalt bestätigt
+  - completed   # Transaktion abgeschlossen (manuell oder automatisch)
+  - disputed    # Reklamation offen
+  - cancelled   # Transaktion abgebrochen

@@ -285,10 +285,10 @@
 
 ---
 
-## Meilenstein 9a: Datenbank & Models für Handel
+## Meilenstein 9a: Datenbank & Models für Handel ✅
 
 ### 9a.1 Datenbank-Erweiterung
-- [ ] Transaction-Tabelle:
+- [x] Transaction-Tabelle:
   - id, buyer_id, seller_id, listing_id
   - status (enum: open, shipped, received, completed, disputed, cancelled)
   - quantity, total_price_cents
@@ -296,17 +296,21 @@
   - created_at, updated_at
   - shipped_at, received_at, completed_at
   - auto_complete_at (Datum für automatischen Abschluss)
-- [ ] TransactionStatus Enum erstellen
-- [ ] Rating-Tabelle:
+  - buyer_note (optionale Nachricht vom Käufer)
+- [x] TransactionStatus Enum erstellen
+- [x] Rating-Tabelle:
   - id, transaction_id, from_user_id, to_user_id
   - rating (enum: positive, neutral, negative)
   - comment (optional, max 500 Zeichen)
   - created_at
-- [ ] RatingValue Enum erstellen (positive, neutral, negative)
-- [ ] Dispute-Tabelle (optional für Reklamationen):
+  - is_automatic (für automatische Bewertungen)
+- [x] RatingValue Enum erstellen (positive, neutral, negative)
+- [x] Dispute-Tabelle (für Reklamationen):
   - id, transaction_id, opened_by_user_id
   - reason, status (open, resolved, closed)
+  - resolution, moderator_id
   - created_at, resolved_at
+- [x] DisputeStatus Enum erstellen
 
 ---
 
