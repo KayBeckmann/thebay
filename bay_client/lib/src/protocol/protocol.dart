@@ -30,20 +30,22 @@ import 'settings.dart' as _i18;
 import 'slot_order.dart' as _i19;
 import 'slot_variant.dart' as _i20;
 import 'user.dart' as _i21;
-import 'user_public_key.dart' as _i22;
-import 'user_role.dart' as _i23;
-import 'user_slot.dart' as _i24;
-import 'package:bay_client/src/protocol/category.dart' as _i25;
-import 'package:bay_client/src/protocol/message_draft.dart' as _i26;
-import 'package:bay_client/src/protocol/listing.dart' as _i27;
-import 'package:bay_client/src/protocol/listing_image.dart' as _i28;
-import 'package:bay_client/src/protocol/message.dart' as _i29;
-import 'package:bay_client/src/protocol/news.dart' as _i30;
-import 'package:bay_client/src/protocol/encrypted_key_backup.dart' as _i31;
-import 'package:bay_client/src/protocol/slot_order.dart' as _i32;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i33;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i34;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i35;
+import 'user_payment_info.dart' as _i22;
+import 'user_profile.dart' as _i23;
+import 'user_public_key.dart' as _i24;
+import 'user_role.dart' as _i25;
+import 'user_slot.dart' as _i26;
+import 'package:bay_client/src/protocol/category.dart' as _i27;
+import 'package:bay_client/src/protocol/message_draft.dart' as _i28;
+import 'package:bay_client/src/protocol/listing.dart' as _i29;
+import 'package:bay_client/src/protocol/listing_image.dart' as _i30;
+import 'package:bay_client/src/protocol/message.dart' as _i31;
+import 'package:bay_client/src/protocol/news.dart' as _i32;
+import 'package:bay_client/src/protocol/encrypted_key_backup.dart' as _i33;
+import 'package:bay_client/src/protocol/slot_order.dart' as _i34;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i35;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i36;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i37;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -64,6 +66,8 @@ export 'settings.dart';
 export 'slot_order.dart';
 export 'slot_variant.dart';
 export 'user.dart';
+export 'user_payment_info.dart';
+export 'user_profile.dart';
 export 'user_public_key.dart';
 export 'user_role.dart';
 export 'user_slot.dart';
@@ -142,14 +146,20 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i21.User) {
       return _i21.User.fromJson(data) as T;
     }
-    if (t == _i22.UserPublicKey) {
-      return _i22.UserPublicKey.fromJson(data) as T;
+    if (t == _i22.UserPaymentInfo) {
+      return _i22.UserPaymentInfo.fromJson(data) as T;
     }
-    if (t == _i23.UserRole) {
-      return _i23.UserRole.fromJson(data) as T;
+    if (t == _i23.UserProfile) {
+      return _i23.UserProfile.fromJson(data) as T;
     }
-    if (t == _i24.UserSlot) {
-      return _i24.UserSlot.fromJson(data) as T;
+    if (t == _i24.UserPublicKey) {
+      return _i24.UserPublicKey.fromJson(data) as T;
+    }
+    if (t == _i25.UserRole) {
+      return _i25.UserRole.fromJson(data) as T;
+    }
+    if (t == _i26.UserSlot) {
+      return _i26.UserSlot.fromJson(data) as T;
     }
     if (t == _i1.getType<_i2.Greeting?>()) {
       return (data != null ? _i2.Greeting.fromJson(data) : null) as T;
@@ -212,30 +222,36 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i21.User?>()) {
       return (data != null ? _i21.User.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i22.UserPublicKey?>()) {
-      return (data != null ? _i22.UserPublicKey.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i22.UserPaymentInfo?>()) {
+      return (data != null ? _i22.UserPaymentInfo.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i23.UserRole?>()) {
-      return (data != null ? _i23.UserRole.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i23.UserProfile?>()) {
+      return (data != null ? _i23.UserProfile.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i24.UserSlot?>()) {
-      return (data != null ? _i24.UserSlot.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i24.UserPublicKey?>()) {
+      return (data != null ? _i24.UserPublicKey.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i25.UserRole?>()) {
+      return (data != null ? _i25.UserRole.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i26.UserSlot?>()) {
+      return (data != null ? _i26.UserSlot.fromJson(data) : null) as T;
     }
     if (t == List<_i7.Listing>) {
       return (data as List).map((e) => deserialize<_i7.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i25.Category>) {
-      return (data as List).map((e) => deserialize<_i25.Category>(e)).toList()
+    if (t == List<_i27.Category>) {
+      return (data as List).map((e) => deserialize<_i27.Category>(e)).toList()
           as T;
     }
-    if (t == List<_i26.MessageDraft>) {
+    if (t == List<_i28.MessageDraft>) {
       return (data as List)
-          .map((e) => deserialize<_i26.MessageDraft>(e))
+          .map((e) => deserialize<_i28.MessageDraft>(e))
           .toList() as T;
     }
-    if (t == List<_i27.Listing>) {
-      return (data as List).map((e) => deserialize<_i27.Listing>(e)).toList()
+    if (t == List<_i29.Listing>) {
+      return (data as List).map((e) => deserialize<_i29.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -245,13 +261,13 @@ class Protocol extends _i1.SerializationManager {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i28.ListingImage>) {
+    if (t == List<_i30.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i28.ListingImage>(e))
+          .map((e) => deserialize<_i30.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i29.Message>) {
-      return (data as List).map((e) => deserialize<_i29.Message>(e)).toList()
+    if (t == List<_i31.Message>) {
+      return (data as List).map((e) => deserialize<_i31.Message>(e)).toList()
           as T;
     }
     if (t == List<Map<String, dynamic>>) {
@@ -263,8 +279,8 @@ class Protocol extends _i1.SerializationManager {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i30.News>) {
-      return (data as List).map((e) => deserialize<_i30.News>(e)).toList() as T;
+    if (t == List<_i32.News>) {
+      return (data as List).map((e) => deserialize<_i32.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -276,25 +292,25 @@ class Protocol extends _i1.SerializationManager {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i31.EncryptedKeyBackup>) {
+    if (t == List<_i33.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i31.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i33.EncryptedKeyBackup>(e))
           .toList() as T;
     }
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i32.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i32.SlotOrder>(e)).toList()
+    if (t == List<_i34.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i34.SlotOrder>(e)).toList()
           as T;
     }
-    if (t == List<_i33.SlotVariant>) {
+    if (t == List<_i35.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i33.SlotVariant>(e))
+          .map((e) => deserialize<_i35.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i34.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i34.UserSlot>(e)).toList()
+    if (t == List<_i36.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i36.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
@@ -302,7 +318,7 @@ class Protocol extends _i1.SerializationManager {
           (k, v) => MapEntry(deserialize<String>(k), deserialize<int>(v))) as T;
     }
     try {
-      return _i35.Protocol().deserialize<T>(data, t);
+      return _i37.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -371,16 +387,22 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i21.User) {
       return 'User';
     }
-    if (data is _i22.UserPublicKey) {
+    if (data is _i22.UserPaymentInfo) {
+      return 'UserPaymentInfo';
+    }
+    if (data is _i23.UserProfile) {
+      return 'UserProfile';
+    }
+    if (data is _i24.UserPublicKey) {
       return 'UserPublicKey';
     }
-    if (data is _i23.UserRole) {
+    if (data is _i25.UserRole) {
       return 'UserRole';
     }
-    if (data is _i24.UserSlot) {
+    if (data is _i26.UserSlot) {
       return 'UserSlot';
     }
-    className = _i35.Protocol().getClassNameForObject(data);
+    className = _i37.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -453,18 +475,24 @@ class Protocol extends _i1.SerializationManager {
     if (dataClassName == 'User') {
       return deserialize<_i21.User>(data['data']);
     }
+    if (dataClassName == 'UserPaymentInfo') {
+      return deserialize<_i22.UserPaymentInfo>(data['data']);
+    }
+    if (dataClassName == 'UserProfile') {
+      return deserialize<_i23.UserProfile>(data['data']);
+    }
     if (dataClassName == 'UserPublicKey') {
-      return deserialize<_i22.UserPublicKey>(data['data']);
+      return deserialize<_i24.UserPublicKey>(data['data']);
     }
     if (dataClassName == 'UserRole') {
-      return deserialize<_i23.UserRole>(data['data']);
+      return deserialize<_i25.UserRole>(data['data']);
     }
     if (dataClassName == 'UserSlot') {
-      return deserialize<_i24.UserSlot>(data['data']);
+      return deserialize<_i26.UserSlot>(data['data']);
     }
     if (dataClassName.startsWith('serverpod_auth.')) {
       data['className'] = dataClassName.substring(15);
-      return _i35.Protocol().deserializeByClassName(data);
+      return _i37.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

@@ -1,0 +1,23 @@
+### Public user profile data (no table, used for API responses)
+class: UserProfile
+fields:
+  ### User ID
+  userId: int
+  ### Username
+  username: String
+  ### Account creation date
+  memberSince: DateTime
+  ### Number of active listings
+  activeListingsCount: int
+  ### Rating average (0-100, null if no ratings yet)
+  ratingAverage: int?
+  ### Total number of ratings received
+  ratingCount: int
+  ### Whether the viewing user has exchanged messages with this user
+  hasContact: bool
+  ### PayPal address (only visible if hasContact is true)
+  paypalAddress: String?
+  ### Bitcoin wallet (only visible if hasContact is true)
+  bitcoinWallet: String?
+  ### Whether user has an active PGP key (for messaging)
+  hasPgpKey: bool

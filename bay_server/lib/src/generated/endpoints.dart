@@ -24,14 +24,15 @@ import '../endpoints/search_endpoint.dart' as _i12;
 import '../endpoints/settings_endpoint.dart' as _i13;
 import '../endpoints/slot_order_endpoint.dart' as _i14;
 import '../endpoints/slot_variant_endpoint.dart' as _i15;
-import '../endpoints/user_slot_endpoint.dart' as _i16;
-import '../greeting_endpoint.dart' as _i17;
-import 'package:bay_server/src/generated/registration_request.dart' as _i18;
-import 'package:bay_server/src/generated/login_request.dart' as _i19;
-import 'package:bay_server/src/generated/quantity_unit.dart' as _i20;
-import 'dart:typed_data' as _i21;
-import 'package:bay_server/src/generated/payment_method.dart' as _i22;
-import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i23;
+import '../endpoints/user_profile_endpoint.dart' as _i16;
+import '../endpoints/user_slot_endpoint.dart' as _i17;
+import '../greeting_endpoint.dart' as _i18;
+import 'package:bay_server/src/generated/registration_request.dart' as _i19;
+import 'package:bay_server/src/generated/login_request.dart' as _i20;
+import 'package:bay_server/src/generated/quantity_unit.dart' as _i21;
+import 'dart:typed_data' as _i22;
+import 'package:bay_server/src/generated/payment_method.dart' as _i23;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i24;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -121,13 +122,19 @@ class Endpoints extends _i1.EndpointDispatch {
           'slotVariant',
           null,
         ),
-      'userSlot': _i16.UserSlotEndpoint()
+      'userProfile': _i16.UserProfileEndpoint()
+        ..initialize(
+          server,
+          'userProfile',
+          null,
+        ),
+      'userSlot': _i17.UserSlotEndpoint()
         ..initialize(
           server,
           'userSlot',
           null,
         ),
-      'greeting': _i17.GreetingEndpoint()
+      'greeting': _i18.GreetingEndpoint()
         ..initialize(
           server,
           'greeting',
@@ -143,7 +150,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i18.RegistrationRequest>(),
+              type: _i1.getType<_i19.RegistrationRequest>(),
               nullable: false,
             )
           },
@@ -161,7 +168,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i19.LoginRequest>(),
+              type: _i1.getType<_i20.LoginRequest>(),
               nullable: false,
             )
           },
@@ -706,7 +713,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i20.QuantityUnit>(),
+              type: _i1.getType<_i21.QuantityUnit>(),
               nullable: false,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -789,7 +796,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i20.QuantityUnit?>(),
+              type: _i1.getType<_i21.QuantityUnit?>(),
               nullable: true,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -968,7 +975,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'imageData': _i1.ParameterDescription(
               name: 'imageData',
-              type: _i1.getType<_i21.ByteData>(),
+              type: _i1.getType<_i22.ByteData>(),
               nullable: false,
             ),
           },
@@ -2121,7 +2128,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'paymentMethod': _i1.ParameterDescription(
               name: 'paymentMethod',
-              type: _i1.getType<_i22.PaymentMethod>(),
+              type: _i1.getType<_i23.PaymentMethod>(),
               nullable: false,
             ),
           },
@@ -2466,6 +2473,133 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
+    connectors['userProfile'] = _i1.EndpointConnector(
+      name: 'userProfile',
+      endpoint: endpoints['userProfile']!,
+      methodConnectors: {
+        'getProfile': _i1.MethodConnector(
+          name: 'getProfile',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userProfile'] as _i16.UserProfileEndpoint).getProfile(
+            session,
+            params['userId'],
+          ),
+        ),
+        'getUserListings': _i1.MethodConnector(
+          name: 'getUserListings',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userProfile'] as _i16.UserProfileEndpoint)
+                  .getUserListings(
+            session,
+            params['userId'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
+        'getMyPaymentInfo': _i1.MethodConnector(
+          name: 'getMyPaymentInfo',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userProfile'] as _i16.UserProfileEndpoint)
+                  .getMyPaymentInfo(session),
+        ),
+        'updateMyPaymentInfo': _i1.MethodConnector(
+          name: 'updateMyPaymentInfo',
+          params: {
+            'paypalAddress': _i1.ParameterDescription(
+              name: 'paypalAddress',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+            'bitcoinWallet': _i1.ParameterDescription(
+              name: 'bitcoinWallet',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userProfile'] as _i16.UserProfileEndpoint)
+                  .updateMyPaymentInfo(
+            session,
+            paypalAddress: params['paypalAddress'],
+            bitcoinWallet: params['bitcoinWallet'],
+          ),
+        ),
+        'getUsername': _i1.MethodConnector(
+          name: 'getUsername',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userProfile'] as _i16.UserProfileEndpoint)
+                  .getUsername(
+            session,
+            params['userId'],
+          ),
+        ),
+        'hasContact': _i1.MethodConnector(
+          name: 'hasContact',
+          params: {
+            'otherUserId': _i1.ParameterDescription(
+              name: 'otherUserId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userProfile'] as _i16.UserProfileEndpoint).hasContact(
+            session,
+            params['otherUserId'],
+          ),
+        ),
+      },
+    );
     connectors['userSlot'] = _i1.EndpointConnector(
       name: 'userSlot',
       endpoint: endpoints['userSlot']!,
@@ -2477,7 +2611,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint)
                   .getMySlots(session),
         ),
         'getAvailableSlots': _i1.MethodConnector(
@@ -2487,7 +2621,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint)
                   .getAvailableSlots(session),
         ),
         'getExpiringSoon': _i1.MethodConnector(
@@ -2503,7 +2637,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint).getExpiringSoon(
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint).getExpiringSoon(
             session,
             days: params['days'],
           ),
@@ -2526,7 +2660,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint).createSlot(
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint).createSlot(
             session,
             userId: params['userId'],
             slotVariantId: params['slotVariantId'],
@@ -2550,7 +2684,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint).extendSlot(
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint).extendSlot(
             session,
             slotId: params['slotId'],
             additionalDays: params['additionalDays'],
@@ -2563,7 +2697,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint)
                   .deactivateExpired(session),
         ),
         'getSlotStats': _i1.MethodConnector(
@@ -2573,7 +2707,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint)
                   .getSlotStats(session),
         ),
         'createTestSlot': _i1.MethodConnector(
@@ -2589,7 +2723,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i16.UserSlotEndpoint).createTestSlot(
+              (endpoints['userSlot'] as _i17.UserSlotEndpoint).createTestSlot(
             session,
             slotVariantId: params['slotVariantId'],
           ),
@@ -2613,13 +2747,13 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['greeting'] as _i17.GreetingEndpoint).hello(
+              (endpoints['greeting'] as _i18.GreetingEndpoint).hello(
             session,
             params['name'],
           ),
         )
       },
     );
-    modules['serverpod_auth'] = _i23.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i24.Endpoints()..initializeEndpoints(server);
   }
 }

@@ -1,0 +1,16 @@
+### User payment information for profile display
+class: UserPaymentInfo
+table: user_payment_info
+fields:
+  ### Reference to user
+  userId: int
+  ### PayPal email address (optional)
+  paypalAddress: String?
+  ### Bitcoin wallet address (optional)
+  bitcoinWallet: String?
+  ### Last modification timestamp
+  updatedAt: DateTime
+indexes:
+  user_payment_info_user_idx:
+    fields: userId
+    unique: true

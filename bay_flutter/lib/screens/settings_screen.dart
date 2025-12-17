@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../main.dart' show client;
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
 import 'pgp_key_screen.dart';
@@ -29,6 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   // Payment info
   String? _paypalAddress;
   String? _bitcoinWallet;
+  bool _isLoadingPaymentInfo = true;
 
   // PGP Key status
   bool _hasPgpKey = false;
@@ -36,7 +38,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    _loadPgpKeyStatus();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.wait([
+      _loadPgpKeyStatus(),
+      _loadPaymentInfo(),
+    ]);
   }
 
   Future<void> _loadPgpKeyStatus() async {
@@ -49,6 +58,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
       }
     } catch (e) {
       // Ignoriere Fehler beim Laden des Status
+    }
+  }
+
+  Future<void> _loadPaymentInfo() async {
+    try {
+      final paymentInfo = await client.userProfile.getMyPaymentInfo();
+      if (mounted) {
+        setState(() {
+          _paypalAddress = paymentInfo?.paypalAddress;
+          _bitcoinWallet = paymentInfo?.bitcoinWallet;
+          _isLoadingPaymentInfo = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoadingPaymentInfo = false;
+        });
+      }
+    }
+  }
+
+  Future<void> _savePaymentInfo() async {
+    try {
+      await client.userProfile.updateMyPaymentInfo(
+        paypalAddress: _paypalAddress,
+        bitcoinWallet: _bitcoinWallet,
+      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler beim Speichern: $e')),
+        );
+      }
     }
   }
 
@@ -68,20 +111,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           // Payment information section
           _buildSectionHeader(context, 'Zahlungsinformationen'),
-          _buildPaymentInfoTile(
-            context,
-            icon: Icons.paypal,
-            title: 'PayPal-Adresse',
-            subtitle: _paypalAddress ?? 'Nicht angegeben',
-            onTap: () => _editPaypalAddress(context),
-          ),
-          _buildPaymentInfoTile(
-            context,
-            icon: Icons.currency_bitcoin,
-            title: 'Bitcoin-Wallet',
-            subtitle: _bitcoinWallet ?? 'Nicht angegeben',
-            onTap: () => _editBitcoinWallet(context),
-          ),
+          if (_isLoadingPaymentInfo)
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: Center(child: CircularProgressIndicator()),
+            )
+          else ...[
+            _buildPaymentInfoTile(
+              context,
+              icon: Icons.paypal,
+              title: 'PayPal-Adresse',
+              subtitle: _paypalAddress ?? 'Nicht angegeben',
+              onTap: () => _editPaypalAddress(context),
+            ),
+            _buildPaymentInfoTile(
+              context,
+              icon: Icons.currency_bitcoin,
+              title: 'Bitcoin-Wallet',
+              subtitle: _bitcoinWallet ?? 'Nicht angegeben',
+              onTap: () => _editBitcoinWallet(context),
+            ),
+          ],
           const Divider(),
 
           // Display preferences section
@@ -176,73 +226,107 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   void _editPaypalAddress(BuildContext context) {
     final controller = TextEditingController(text: _paypalAddress);
+    bool isSaving = false;
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('PayPal-Adresse'),
-        content: TextField(
-          controller: controller,
-          decoration: const InputDecoration(
-            labelText: 'E-Mail-Adresse',
-            hintText: 'deine@email.com',
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('PayPal-Adresse'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(
+              labelText: 'E-Mail-Adresse',
+              hintText: 'deine@email.com',
+            ),
+            keyboardType: TextInputType.emailAddress,
           ),
-          keyboardType: TextInputType.emailAddress,
+          actions: [
+            TextButton(
+              onPressed: isSaving ? null : () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+            FilledButton(
+              onPressed: isSaving
+                  ? null
+                  : () async {
+                      setDialogState(() => isSaving = true);
+                      setState(() {
+                        _paypalAddress =
+                            controller.text.isEmpty ? null : controller.text;
+                      });
+                      await _savePaymentInfo();
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('PayPal-Adresse gespeichert')),
+                        );
+                      }
+                    },
+              child: isSaving
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Text('Speichern'),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Abbrechen'),
-          ),
-          FilledButton(
-            onPressed: () {
-              setState(() {
-                _paypalAddress = controller.text.isEmpty ? null : controller.text;
-              });
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('PayPal-Adresse gespeichert')),
-              );
-            },
-            child: const Text('Speichern'),
-          ),
-        ],
       ),
     );
   }
 
   void _editBitcoinWallet(BuildContext context) {
     final controller = TextEditingController(text: _bitcoinWallet);
+    bool isSaving = false;
 
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Bitcoin-Wallet'),
-        content: TextField(
-          controller: controller,
-          decoration: const InputDecoration(
-            labelText: 'Wallet-Adresse',
-            hintText: 'bc1q...',
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Bitcoin-Wallet'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(
+              labelText: 'Wallet-Adresse',
+              hintText: 'bc1q...',
+            ),
           ),
+          actions: [
+            TextButton(
+              onPressed: isSaving ? null : () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+            FilledButton(
+              onPressed: isSaving
+                  ? null
+                  : () async {
+                      setDialogState(() => isSaving = true);
+                      setState(() {
+                        _bitcoinWallet =
+                            controller.text.isEmpty ? null : controller.text;
+                      });
+                      await _savePaymentInfo();
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Bitcoin-Wallet gespeichert')),
+                        );
+                      }
+                    },
+              child: isSaving
+                  ? const SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Text('Speichern'),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Abbrechen'),
-          ),
-          FilledButton(
-            onPressed: () {
-              setState(() {
-                _bitcoinWallet = controller.text.isEmpty ? null : controller.text;
-              });
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Bitcoin-Wallet gespeichert')),
-              );
-            },
-            child: const Text('Speichern'),
-          ),
-        ],
       ),
     );
   }

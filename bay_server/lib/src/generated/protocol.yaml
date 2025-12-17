@@ -117,6 +117,13 @@ slotVariant:
   - create:
   - update:
   - delete:
+userProfile:
+  - getProfile:
+  - getUserListings:
+  - getMyPaymentInfo:
+  - updateMyPaymentInfo:
+  - getUsername:
+  - hasContact:
 userSlot:
   - getMySlots:
   - getAvailableSlots:

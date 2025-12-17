@@ -264,49 +264,132 @@
 ### 7c.2 Integration
 - [x] Ungelesene Nachrichten Badge in Navigation
 - [x] "Nachricht senden" Button in Angebots-Detailansicht
-- [ ] "Nachricht senden" Button in Profilen (Meilenstein 8)
+- [x] "Nachricht senden" Button in Profilen (Meilenstein 8)
 
 ---
 
-## Meilenstein 8: Benutzerprofil & Kontakt
+## Meilenstein 8: Benutzerprofil & Kontakt ✅
 
 ### 8.1 Öffentliches Profil
-- [ ] Profil-Screen:
+- [x] Profil-Screen:
   - Username
-  - Bewertung (Durchschnitt)
-  - Anzahl Bewertungen
+  - Bewertung (Durchschnitt) - Platzhalter für Meilenstein 9
+  - Anzahl Bewertungen - Platzhalter für Meilenstein 9
   - Aktive Angebote
   - "Nachricht senden" Button
-- [ ] Profil-Link in Angeboten
+- [x] Profil-Link in Angeboten
 
 ### 8.2 Zahlungsinformationen
-- [ ] Zahlungsinfos erst nach Kontaktaufnahme sichtbar
-- [ ] PayPal-Adresse / Bitcoin-Wallet im Profil (optional)
+- [x] Zahlungsinfos erst nach Kontaktaufnahme sichtbar
+- [x] PayPal-Adresse / Bitcoin-Wallet im Profil (optional)
 
 ---
 
-## Meilenstein 9: Handelsablauf & Bewertungen
+## Meilenstein 9a: Datenbank & Models für Handel
 
-### 9.1 Datenbank-Erweiterung
-- [ ] Transaktionen-Tabelle (buyer, seller, listing, status, timestamps)
-- [ ] Bewertungen-Tabelle (transaction_id, from_user, to_user, rating)
+### 9a.1 Datenbank-Erweiterung
+- [ ] Transaction-Tabelle:
+  - id, buyer_id, seller_id, listing_id
+  - status (enum: open, shipped, received, completed, disputed, cancelled)
+  - quantity, total_price_cents
+  - payment_method (paypal/bitcoin)
+  - created_at, updated_at
+  - shipped_at, received_at, completed_at
+  - auto_complete_at (Datum für automatischen Abschluss)
+- [ ] TransactionStatus Enum erstellen
+- [ ] Rating-Tabelle:
+  - id, transaction_id, from_user_id, to_user_id
+  - rating (enum: positive, neutral, negative)
+  - comment (optional, max 500 Zeichen)
+  - created_at
+- [ ] RatingValue Enum erstellen (positive, neutral, negative)
+- [ ] Dispute-Tabelle (optional für Reklamationen):
+  - id, transaction_id, opened_by_user_id
+  - reason, status (open, resolved, closed)
+  - created_at, resolved_at
 
-### 9.2 Backend - Handel
-- [ ] Transaktion starten (bei Kontaktaufnahme/Kauf)
-- [ ] Status: Offen → Gesendet → Erhalten/Abgeschlossen
-- [ ] Automatischer Abschluss nach 14 Tagen
-- [ ] Reklamation-Funktion
+---
 
-### 9.3 Backend - Bewertungen
-- [ ] Bewertung abgeben (Gut, Neutral, Schlecht)
+## Meilenstein 9b: Backend - Transaktionen (Handelsablauf)
+
+### 9b.1 TransactionEndpoint
+- [ ] Transaktion starten (Käufer initiiert bei Kaufinteresse)
+- [ ] Transaktion abrufen (getById, getMyTransactions)
+- [ ] Als Verkäufer: Status auf "shipped" setzen
+- [ ] Als Käufer: Status auf "received" setzen → Transaktion abgeschlossen
+- [ ] Transaktion abbrechen (nur wenn Status = open)
+- [ ] Reklamation öffnen (Dispute erstellen)
+
+### 9b.2 Automatisierung (Cron-Jobs)
+- [ ] Automatischer Abschluss nach 14 Tagen ohne Reklamation
+- [ ] Benachrichtigung 3 Tage vor automatischem Abschluss (optional)
+
+### 9b.3 Transaktions-Statistiken
+- [ ] Anzahl abgeschlossener Transaktionen pro User
+- [ ] Offene Transaktionen zählen
+
+---
+
+## Meilenstein 9c: Backend - Bewertungen
+
+### 9c.1 RatingEndpoint
+- [ ] Bewertung abgeben (nur nach abgeschlossener Transaktion)
+- [ ] Bewertung abrufen (für Transaktion, für User)
+- [ ] Prüfung: Jeder kann nur einmal pro Transaktion bewerten
+- [ ] Bewertung nur innerhalb von 14 Tagen nach Abschluss möglich
+
+### 9c.2 Automatisierung
 - [ ] Automatische positive Bewertung nach 14 Tagen ohne Abgabe
-- [ ] Bewertungsdurchschnitt berechnen
+- [ ] Cron-Job für ausstehende Bewertungen
 
-### 9.4 Frontend - Handel & Bewertungen
-- [ ] Transaktions-Übersicht (Käufe/Verkäufe)
-- [ ] Status ändern (Gesendet/Erhalten)
-- [ ] Reklamation einreichen
-- [ ] Bewertung abgeben Screen
+### 9c.3 Bewertungs-Statistiken
+- [ ] Bewertungsdurchschnitt berechnen (für UserProfile)
+- [ ] Anzahl Bewertungen pro User
+- [ ] Aufschlüsselung (positiv/neutral/negativ)
+
+### 9c.4 Integration mit UserProfile
+- [ ] ratingAverage und ratingCount im UserProfile aktualisieren
+- [ ] Bewertungsübersicht im Profil anzeigen
+
+---
+
+## Meilenstein 9d: Frontend - Transaktionen
+
+### 9d.1 Transaktions-Screens
+- [ ] Transaktions-Übersicht Screen (Tabs: Käufe / Verkäufe)
+- [ ] Transaktions-Detail Screen
+- [ ] Transaktion starten Dialog (aus Angebot heraus)
+- [ ] Navigation: Menüpunkt "Transaktionen" hinzufügen
+
+### 9d.2 Status-Änderungen
+- [ ] "Als gesendet markieren" Button (Verkäufer)
+- [ ] "Als erhalten markieren" Button (Käufer)
+- [ ] "Transaktion abbrechen" Option
+- [ ] Status-Timeline Anzeige
+
+### 9d.3 Reklamation
+- [ ] "Reklamation öffnen" Dialog
+- [ ] Reklamations-Status Anzeige
+- [ ] Hinweis auf automatischen Abschluss
+
+---
+
+## Meilenstein 9e: Frontend - Bewertungen
+
+### 9e.1 Bewertungs-UI
+- [ ] Bewertung abgeben Dialog (nach Transaktionsabschluss)
+- [ ] Bewertungs-Auswahl (Gut/Neutral/Schlecht mit Icons)
+- [ ] Optionales Kommentarfeld
+- [ ] Erinnerung an ausstehende Bewertungen
+
+### 9e.2 Bewertungs-Anzeige
+- [ ] Bewertungen im UserProfile anzeigen
+- [ ] Bewertungs-Liste mit Kommentaren
+- [ ] Bewertungs-Badge im Profil (z.B. "95% positiv")
+
+### 9e.3 Integration
+- [ ] Bewertungs-Prompt nach Transaktionsabschluss
+- [ ] Ausstehende Bewertungen auf Dashboard anzeigen
 
 ---
 
@@ -393,4 +476,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-16*
+*Aktualisiert am: 2025-12-17*
