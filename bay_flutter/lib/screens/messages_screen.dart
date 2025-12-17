@@ -310,8 +310,8 @@ class _MessagesScreenState extends State<MessagesScreen>
         itemCount: _inbox.length,
         itemBuilder: (context, index) {
           final message = _inbox[index];
-          final senderName =
-              _usernameCache[message.senderId] ?? 'Benutzer #${message.senderId}';
+          final senderName = _usernameCache[message.senderId] ??
+              'Benutzer #${message.senderId}';
           return _MessageListTile(
             message: message,
             otherUserName: senderName,
@@ -501,7 +501,8 @@ class _MessagesScreenState extends State<MessagesScreen>
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Nachricht löschen?'),
-        content: const Text('Diese Aktion kann nicht rückgängig gemacht werden.'),
+        content:
+            const Text('Diese Aktion kann nicht rückgängig gemacht werden.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -540,7 +541,8 @@ class _MessagesScreenState extends State<MessagesScreen>
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Entwurf löschen?'),
-        content: const Text('Diese Aktion kann nicht rückgängig gemacht werden.'),
+        content:
+            const Text('Diese Aktion kann nicht rückgängig gemacht werden.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -1042,8 +1044,7 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
 
     try {
       print('[ComposeMessage] Suche Empfänger: $username');
-      final userKey =
-          await widget.messageService.findUserByUsername(username);
+      final userKey = await widget.messageService.findUserByUsername(username);
       if (userKey != null) {
         print('[ComposeMessage] Empfänger gefunden: userId=${userKey.userId}');
         setState(() {
@@ -1057,7 +1058,8 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
         setState(() {
           _recipientId = null;
           _recipientHasKey = false;
-          _error = 'Benutzer "$username" nicht gefunden oder hat keinen PGP-Schlüssel';
+          _error =
+              'Benutzer "$username" nicht gefunden oder hat keinen PGP-Schlüssel';
           _isCheckingRecipient = false;
         });
       }
@@ -1073,6 +1075,14 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
   Future<void> _send() async {
     if (_recipientId == null) {
       setState(() => _error = 'Bitte wähle einen Empfänger');
+      return;
+    }
+
+    if (!_recipientHasKey) {
+      setState(
+        () => _error =
+            'Empfänger nicht verifiziert oder kein PGP-Schlüssel vorhanden. Bitte Empfänger prüfen.',
+      );
       return;
     }
 
@@ -1192,16 +1202,22 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                     ),
                     const SizedBox(height: 8),
                     // Zweite Zeile: Buttons
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      alignment: WrapAlignment.end,
                       children: [
                         if (_isSavingDraft)
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
-                            child: SizedBox(
-                              width: 24,
-                              height: 24,
-                              child: CircularProgressIndicator(strokeWidth: 2),
+                          const SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: Center(
+                              child: SizedBox(
+                                width: 24,
+                                height: 24,
+                                child:
+                                    CircularProgressIndicator(strokeWidth: 2),
+                              ),
                             ),
                           )
                         else
@@ -1209,11 +1225,14 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                             onPressed: _saveDraft,
                             icon: const Icon(Icons.save_outlined),
                             label: const Text('Entwurf'),
+                            style: TextButton.styleFrom(
+                              minimumSize: const Size(0, 44),
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              visualDensity: VisualDensity.compact,
+                            ),
                           ),
-                        const SizedBox(width: 8),
                         FilledButton.icon(
-                          onPressed:
-                              _isSending || !_recipientHasKey ? null : _send,
+                          onPressed: _isSending ? null : _send,
                           icon: _isSending
                               ? const SizedBox(
                                   width: 18,
@@ -1225,6 +1244,11 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                                 )
                               : const Icon(Icons.send),
                           label: const Text('Senden'),
+                          style: FilledButton.styleFrom(
+                            minimumSize: const Size(0, 44),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            visualDensity: VisualDensity.compact,
+                          ),
                         ),
                       ],
                     ),
@@ -1296,11 +1320,12 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                           const SizedBox(width: 4),
                           Text(
                             'Nachricht wird verschlüsselt',
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                           ),
                         ],
                       ),
@@ -1313,7 +1338,8 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                           Icon(
                             Icons.info_outline,
                             size: 14,
-                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
                           const SizedBox(width: 4),
                           Text(

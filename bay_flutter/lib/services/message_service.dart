@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bay_client/bay_client.dart';
 
 import 'pgp_key_service.dart';
@@ -90,8 +92,16 @@ class MessageService {
     String? encryptedSubject;
     String? encryptedContent;
 
-    final myPublicKey = await _pgpKeyService.getMyPublicKey();
-    if (myPublicKey != null && (subject != null || content != null)) {
+    final hasContent = (subject != null && subject.isNotEmpty) ||
+        (content != null && content.isNotEmpty);
+    if (hasContent) {
+      final myPublicKey = await _pgpKeyService.getMyPublicKey();
+      if (myPublicKey == null) {
+        throw Exception(
+          'Kein eigener PGP-Schlüssel vorhanden. Bitte lade deinen Public Key hoch.',
+        );
+      }
+
       if (subject != null && subject.isNotEmpty) {
         encryptedSubject = await _pgpKeyService.encryptForRecipient(
           subject,
@@ -149,20 +159,46 @@ class MessageService {
     int? listingId,
     int? parentMessageId,
   }) async {
-    // Hole Public Key des Empfängers
+    // Hole Public Keys
     final recipientKey = await _client.pgpKey.getPublicKey(recipientId);
     if (recipientKey == null) {
       throw Exception('Empfänger hat keinen PGP-Schlüssel');
     }
 
+    final myPublicKey = await _pgpKeyService.getMyPublicKey();
+    if (myPublicKey == null) {
+      throw Exception(
+          'Kein eigener PGP-Schlüssel vorhanden. Bitte lade deinen Public Key hoch.');
+    }
+
     // Verschlüssele Betreff und Inhalt
-    final encryptedSubject = await _pgpKeyService.encryptForRecipient(
+    final encryptedSubjectForRecipient =
+        await _pgpKeyService.encryptForRecipient(
       subject,
       recipientKey.publicKeyArmored,
     );
-    final encryptedContent = await _pgpKeyService.encryptForRecipient(
+    final encryptedContentForRecipient =
+        await _pgpKeyService.encryptForRecipient(
       content,
       recipientKey.publicKeyArmored,
+    );
+    final encryptedSubjectForSender = await _pgpKeyService.encryptForRecipient(
+      subject,
+      myPublicKey.publicKeyArmored,
+    );
+    final encryptedContentForSender = await _pgpKeyService.encryptForRecipient(
+      content,
+      myPublicKey.publicKeyArmored,
+    );
+
+    // Speichere beide Versionen (für Empfänger & Sender) in einem Payload
+    final encryptedSubject = _wrapDualEncryptedPayload(
+      recipientCipher: encryptedSubjectForRecipient,
+      senderCipher: encryptedSubjectForSender,
+    );
+    final encryptedContent = _wrapDualEncryptedPayload(
+      recipientCipher: encryptedContentForRecipient,
+      senderCipher: encryptedContentForSender,
     );
 
     return await _client.message.send(
@@ -182,17 +218,13 @@ class MessageService {
     String? decryptedContent;
 
     try {
-      decryptedSubject = await _pgpKeyService.decryptMessage(
-        message.encryptedSubject,
-      );
+      decryptedSubject = await _decryptField(message.encryptedSubject);
     } catch (e) {
       decryptedSubject = '[Entschlüsselung fehlgeschlagen]';
     }
 
     try {
-      decryptedContent = await _pgpKeyService.decryptMessage(
-        message.encryptedContent,
-      );
+      decryptedContent = await _decryptField(message.encryptedContent);
     } catch (e) {
       decryptedContent = '[Entschlüsselung fehlgeschlagen]';
     }
@@ -211,9 +243,7 @@ class MessageService {
 
     if (draft.encryptedSubject != null) {
       try {
-        decryptedSubject = await _pgpKeyService.decryptMessage(
-          draft.encryptedSubject!,
-        );
+        decryptedSubject = await _decryptField(draft.encryptedSubject!);
       } catch (e) {
         decryptedSubject = '[Entschlüsselung fehlgeschlagen]';
       }
@@ -221,9 +251,7 @@ class MessageService {
 
     if (draft.encryptedContent != null) {
       try {
-        decryptedContent = await _pgpKeyService.decryptMessage(
-          draft.encryptedContent!,
-        );
+        decryptedContent = await _decryptField(draft.encryptedContent!);
       } catch (e) {
         decryptedContent = '[Entschlüsselung fehlgeschlagen]';
       }
@@ -277,6 +305,54 @@ class MessageService {
   /// Sucht einen Benutzer nach Username.
   Future<UserPublicKey?> findUserByUsername(String username) async {
     return await _client.pgpKey.getPublicKeyByUsername(username);
+  }
+
+  // === Interne Helfer ===
+
+  /// Packt die verschlüsselte Nachricht für Empfänger und Sender in einen JSON-Payload.
+  String _wrapDualEncryptedPayload({
+    required String recipientCipher,
+    required String senderCipher,
+  }) {
+    return jsonEncode({
+      'v': 1,
+      'recipient': recipientCipher,
+      'sender': senderCipher,
+    });
+  }
+
+  /// Entschlüsselt einen Wert und unterstützt sowohl Einzel-Cipher als auch den Dual-Payload.
+  Future<String> _decryptField(String encryptedValue) async {
+    final candidates = <String>[];
+    try {
+      final decoded = jsonDecode(encryptedValue);
+      if (decoded is Map<String, dynamic>) {
+        // Neue Struktur mit Kopien für Empfänger & Sender
+        if (decoded['recipient'] is String) {
+          candidates.add(decoded['recipient'] as String);
+        }
+        if (decoded['sender'] is String) {
+          candidates.add(decoded['sender'] as String);
+        }
+      }
+    } catch (_) {
+      // Kein JSON → klassischer einzelner Cipher
+    }
+
+    if (candidates.isEmpty) {
+      candidates.add(encryptedValue);
+    }
+
+    Exception? lastError;
+    for (final cipher in candidates) {
+      try {
+        return await _pgpKeyService.decryptMessage(cipher);
+      } catch (e) {
+        lastError = e is Exception ? e : Exception(e.toString());
+      }
+    }
+
+    throw lastError ?? Exception('Entschlüsselung fehlgeschlagen');
   }
 }
 
