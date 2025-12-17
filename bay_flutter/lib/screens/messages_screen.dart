@@ -1027,7 +1027,13 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
 
   Future<void> _searchRecipient() async {
     final username = _recipientController.text.trim();
-    if (username.isEmpty) return;
+    if (username.isEmpty) {
+      setState(() {
+        _recipientId = null;
+        _recipientHasKey = false;
+      });
+      return;
+    }
 
     setState(() {
       _isCheckingRecipient = true;
@@ -1035,9 +1041,11 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
     });
 
     try {
+      print('[ComposeMessage] Suche Empfänger: $username');
       final userKey =
           await widget.messageService.findUserByUsername(username);
       if (userKey != null) {
+        print('[ComposeMessage] Empfänger gefunden: userId=${userKey.userId}');
         setState(() {
           _recipientId = userKey.userId;
           _recipientName = username;
@@ -1045,14 +1053,16 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
           _isCheckingRecipient = false;
         });
       } else {
+        print('[ComposeMessage] Empfänger nicht gefunden oder hat keinen Key');
         setState(() {
           _recipientId = null;
           _recipientHasKey = false;
-          _error = 'Benutzer nicht gefunden oder hat keinen PGP-Schlüssel';
+          _error = 'Benutzer "$username" nicht gefunden oder hat keinen PGP-Schlüssel';
           _isCheckingRecipient = false;
         });
       }
     } catch (e) {
+      print('[ComposeMessage] Fehler bei der Suche: $e');
       setState(() {
         _error = 'Fehler bei der Suche: $e';
         _isCheckingRecipient = false;
@@ -1152,7 +1162,7 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
             children: [
               // Header
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -1160,45 +1170,63 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                     ),
                   ),
                 ),
-                child: Row(
+                child: Column(
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: () => Navigator.pop(context),
+                    // Erste Zeile: Schließen + Titel
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.close),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            widget.existingDraftId != null
+                                ? 'Entwurf bearbeiten'
+                                : 'Neue Nachricht',
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 8),
-                    Text(
-                      widget.existingDraftId != null
-                          ? 'Entwurf bearbeiten'
-                          : 'Neue Nachricht',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    const Spacer(),
-                    if (_isSavingDraft)
-                      const SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    else
-                      TextButton(
-                        onPressed: _saveDraft,
-                        child: const Text('Entwurf'),
-                      ),
-                    const SizedBox(width: 8),
-                    FilledButton(
-                      onPressed:
-                          _isSending || !_recipientHasKey ? null : _send,
-                      child: _isSending
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: Colors.white,
-                              ),
-                            )
-                          : const Text('Senden'),
+                    const SizedBox(height: 8),
+                    // Zweite Zeile: Buttons
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        if (_isSavingDraft)
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            child: SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                          )
+                        else
+                          TextButton.icon(
+                            onPressed: _saveDraft,
+                            icon: const Icon(Icons.save_outlined),
+                            label: const Text('Entwurf'),
+                          ),
+                        const SizedBox(width: 8),
+                        FilledButton.icon(
+                          onPressed:
+                              _isSending || !_recipientHasKey ? null : _send,
+                          icon: _isSending
+                              ? const SizedBox(
+                                  width: 18,
+                                  height: 18,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : const Icon(Icons.send),
+                          label: const Text('Senden'),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -1272,6 +1300,29 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                                 Theme.of(context).textTheme.bodySmall?.copyWith(
                                       color:
                                           Theme.of(context).colorScheme.primary,
+                                    ),
+                          ),
+                        ],
+                      ),
+                    ] else if (!_isCheckingRecipient &&
+                        _recipientController.text.isNotEmpty &&
+                        widget.recipientId == null) ...[
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.info_outline,
+                            size: 14,
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            'Klicke auf das Such-Icon um den Empfänger zu prüfen',
+                            style:
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurfaceVariant,
                                     ),
                           ),
                         ],

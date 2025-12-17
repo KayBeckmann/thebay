@@ -136,23 +136,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _generatePgpKeyAfterRegistration({
     required String username,
   }) async {
+    print('[RegisterScreen] _generatePgpKeyAfterRegistration() gestartet');
     // Zeige Progress-Dialog für Key-Generierung
     _showKeyGeneratingDialog();
 
     try {
-      // Generiere Schlüsselpaar (läuft im Isolate)
+      // Generiere Schlüsselpaar
+      print('[RegisterScreen] Rufe pgpKeyService.generateKeyPair() auf...');
       final keyPair = await widget.pgpKeyService.generateKeyPair(
         name: username,
         email: '$username@bay.local',
       );
+      print('[RegisterScreen] generateKeyPair() zurückgekehrt');
 
       // Speichere Private Key lokal
+      print('[RegisterScreen] Speichere Private Key...');
       await widget.pgpKeyService.storePrivateKey(
         keyPair.privateKey,
         keyPair.fingerprint,
       );
+      print('[RegisterScreen] Private Key gespeichert');
 
       // Lade Public Key zum Server hoch
+      print('[RegisterScreen] Lade Public Key zum Server...');
       await widget.pgpKeyService.uploadPublicKey(
         keyPair.publicKey,
         keyPair.identity,
@@ -160,13 +166,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
         keyPair.algorithm,
         keyPair.keySize,
       );
+      print('[RegisterScreen] Public Key hochgeladen');
 
       // Schließe Progress-Dialog
       if (mounted) Navigator.of(context).pop();
 
       // Registrierung erfolgreich abgeschlossen
+      print('[RegisterScreen] _generatePgpKeyAfterRegistration() erfolgreich');
       widget.onRegisterSuccess();
     } catch (e) {
+      print('[RegisterScreen] FEHLER in _generatePgpKeyAfterRegistration(): $e');
       // Schließe Progress-Dialog bei Fehler
       if (mounted) Navigator.of(context).pop();
 
@@ -212,7 +221,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: 8),
               Text(
                 'Dein persönlicher Verschlüsselungsschlüssel wird generiert.\n'
-                'Dies dauert ca. 10-30 Sekunden.',
+                'Dies dauert nur wenige Sekunden.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,

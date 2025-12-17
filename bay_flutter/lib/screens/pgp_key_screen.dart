@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:openpgp/openpgp.dart';
 
 import '../services/pgp_key_service.dart';
 
@@ -67,6 +69,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                     _buildKeyInfoCard(),
                     const SizedBox(height: 16),
                     _buildExportCard(),
+                    const SizedBox(height: 16),
+                    _buildServerBackupCard(),
                     const SizedBox(height: 16),
                   ],
                   _buildGenerateCard(),
@@ -238,8 +242,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Erstellt einen neuen RSA-2048 Schlüssel. '
-              'Dies dauert ca. 10-30 Sekunden.',
+              'Erstellt einen neuen Ed25519/Curve25519 Schlüssel. '
+              'Dies dauert nur wenige Sekunden.',
               style: Theme.of(context).textTheme.bodySmall,
             ),
             if (_keyStatus?.hasLocalPrivateKey == true) ...[
@@ -363,7 +367,16 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               child: OutlinedButton.icon(
                 onPressed: _showImportDialog,
                 icon: const Icon(Icons.file_upload),
-                label: const Text('Private Key importieren'),
+                label: const Text('Private Key einfügen'),
+              ),
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: _showDownloadBackupDialog,
+                icon: const Icon(Icons.cloud_download),
+                label: const Text('Vom Server-Backup laden'),
               ),
             ),
           ],
@@ -422,6 +435,540 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         style: Theme.of(context).textTheme.bodySmall,
       ),
     );
+  }
+
+  Widget _buildServerBackupCard() {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.cloud_upload),
+                const SizedBox(width: 8),
+                Text(
+                  'Server-Backup',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Speichere deinen Private Key verschlüsselt auf dem Server. '
+              'So kannst du ihn auf einem anderen Gerät wiederherstellen.',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: _showBackupWarningDialog,
+                icon: const Icon(Icons.backup),
+                label: const Text('Verschlüsseltes Backup erstellen'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showBackupWarningDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: Icon(
+          Icons.warning_amber_rounded,
+          size: 48,
+          color: Theme.of(context).colorScheme.error,
+        ),
+        title: const Text('Sicherheitshinweis'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Du bist dabei, deinen Private Key auf dem Server zu speichern.',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Der Key wird mit einem Passwort verschlüsselt, bevor er hochgeladen wird. '
+              'Trotzdem solltest du folgendes beachten:',
+            ),
+            const SizedBox(height: 12),
+            _buildWarningItem(
+              'Wähle ein starkes, einzigartiges Passwort',
+            ),
+            _buildWarningItem(
+              'Dieses Passwort kann NICHT zurückgesetzt werden',
+            ),
+            _buildWarningItem(
+              'Ohne Passwort ist das Backup wertlos',
+            ),
+            _buildWarningItem(
+              'Der Server-Betreiber könnte versuchen, das Passwort zu erraten',
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen'),
+          ),
+          FilledButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _showBackupPasswordDialog();
+            },
+            child: const Text('Ich verstehe, fortfahren'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildWarningItem(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.arrow_right,
+            size: 20,
+            color: Theme.of(context).colorScheme.error,
+          ),
+          const SizedBox(width: 4),
+          Expanded(
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showBackupPasswordDialog() {
+    final passwordController = TextEditingController();
+    final confirmController = TextEditingController();
+    bool obscurePassword = true;
+    bool obscureConfirm = true;
+    String? error;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Backup-Passwort festlegen'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Wähle ein starkes Passwort für dein Backup. '
+                  'Du brauchst es, um den Key wiederherzustellen.',
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: passwordController,
+                  obscureText: obscurePassword,
+                  decoration: InputDecoration(
+                    labelText: 'Passwort',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscurePassword
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      ),
+                      onPressed: () {
+                        setDialogState(() => obscurePassword = !obscurePassword);
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: confirmController,
+                  obscureText: obscureConfirm,
+                  decoration: InputDecoration(
+                    labelText: 'Passwort bestätigen',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscureConfirm
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      ),
+                      onPressed: () {
+                        setDialogState(() => obscureConfirm = !obscureConfirm);
+                      },
+                    ),
+                  ),
+                ),
+                if (error != null) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    error!,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+            FilledButton(
+              onPressed: () {
+                final password = passwordController.text;
+                final confirm = confirmController.text;
+
+                if (password.length < 8) {
+                  setDialogState(() {
+                    error = 'Passwort muss mindestens 8 Zeichen haben';
+                  });
+                  return;
+                }
+
+                if (password != confirm) {
+                  setDialogState(() {
+                    error = 'Passwörter stimmen nicht überein';
+                  });
+                  return;
+                }
+
+                Navigator.pop(context);
+                _uploadEncryptedBackup(password);
+              },
+              child: const Text('Backup erstellen'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _uploadEncryptedBackup(String password) async {
+    setState(() => _isLoading = true);
+
+    try {
+      final privateKey = await widget.pgpKeyService.getPrivateKey();
+      if (privateKey == null) {
+        throw Exception('Kein Private Key vorhanden');
+      }
+
+      final fingerprint = await widget.pgpKeyService.getFingerprint();
+      if (fingerprint == null) {
+        throw Exception('Kein Fingerprint vorhanden');
+      }
+
+      // Verschlüssele den Private Key symmetrisch mit dem Passwort
+      print('[PgpKeyScreen] Verschlüssele Private Key für Backup...');
+      final encryptedKey = await OpenPGP.encryptSymmetric(
+        privateKey,
+        password,
+      );
+
+      // Generiere Salt für KDF-Dokumentation
+      final salt = DateTime.now().millisecondsSinceEpoch.toRadixString(16);
+
+      // Lade zum Server hoch
+      print('[PgpKeyScreen] Lade verschlüsseltes Backup hoch...');
+      await widget.pgpKeyService.uploadEncryptedBackup(
+        encryptedPrivateKey: encryptedKey,
+        fingerprint: fingerprint,
+        salt: salt,
+        kdfParams: 'AES-256-PGP-SYMMETRIC',
+      );
+
+      print('[PgpKeyScreen] Backup erfolgreich hochgeladen');
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Backup erfolgreich auf Server gespeichert!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      print('[PgpKeyScreen] Fehler beim Backup: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler beim Backup: $e')),
+        );
+      }
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  void _showDownloadBackupDialog() async {
+    // Zeige Ladeindikator während wir prüfen, ob Backups existieren
+    setState(() => _isLoading = true);
+
+    try {
+      // Prüfe, ob Backups vorhanden sind
+      print('[PgpKeyScreen] Lade Liste der Backups...');
+      final backups = await widget.pgpKeyService.listBackups();
+
+      setState(() => _isLoading = false);
+
+      if (!mounted) return;
+
+      if (backups.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Kein Backup auf dem Server gefunden.'),
+          ),
+        );
+        return;
+      }
+
+      // Zeige Dialog zur Auswahl des Backups (falls mehrere)
+      _showSelectBackupDialog(backups);
+    } catch (e) {
+      setState(() => _isLoading = false);
+      print('[PgpKeyScreen] Fehler beim Laden der Backups: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler beim Laden: $e')),
+        );
+      }
+    }
+  }
+
+  void _showSelectBackupDialog(List<EncryptedKeyBackup> backups) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Backup auswählen'),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Wähle das Backup aus, das du wiederherstellen möchtest:',
+              ),
+              const SizedBox(height: 16),
+              ...backups.map((backup) => Card(
+                    child: ListTile(
+                      leading: const Icon(Icons.vpn_key),
+                      title: Text(
+                        'Fingerprint: ${_formatFingerprintShort(backup.fingerprint)}',
+                        style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
+                      ),
+                      subtitle: Text(
+                        'Erstellt: ${_formatBackupDate(backup.createdAt)}',
+                      ),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _showRestorePasswordDialog(backup);
+                      },
+                    ),
+                  )),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Abbrechen'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showRestorePasswordDialog(EncryptedKeyBackup backup) {
+    final passwordController = TextEditingController();
+    bool obscurePassword = true;
+    String? error;
+    bool isRestoring = false;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Backup entschlüsseln'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Fingerprint: ${_formatFingerprintShort(backup.fingerprint)}',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontFamily: 'monospace',
+                      ),
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'Gib das Passwort ein, mit dem du das Backup verschlüsselt hast:',
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: passwordController,
+                  obscureText: obscurePassword,
+                  enabled: !isRestoring,
+                  decoration: InputDecoration(
+                    labelText: 'Backup-Passwort',
+                    border: const OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        obscurePassword
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                      ),
+                      onPressed: () {
+                        setDialogState(() => obscurePassword = !obscurePassword);
+                      },
+                    ),
+                  ),
+                ),
+                if (error != null) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    error!,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+                if (isRestoring) ...[
+                  const SizedBox(height: 16),
+                  const Row(
+                    children: [
+                      SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                      SizedBox(width: 12),
+                      Text('Entschlüssele und importiere...'),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: isRestoring ? null : () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+            FilledButton(
+              onPressed: isRestoring
+                  ? null
+                  : () async {
+                      final password = passwordController.text;
+
+                      if (password.isEmpty) {
+                        setDialogState(() {
+                          error = 'Bitte gib das Passwort ein';
+                        });
+                        return;
+                      }
+
+                      setDialogState(() {
+                        isRestoring = true;
+                        error = null;
+                      });
+
+                      try {
+                        await _restoreFromBackup(backup, password);
+                        if (context.mounted) {
+                          Navigator.pop(context);
+                        }
+                      } catch (e) {
+                        setDialogState(() {
+                          isRestoring = false;
+                          error = 'Entschlüsselung fehlgeschlagen. '
+                              'Falsches Passwort?';
+                        });
+                      }
+                    },
+              child: const Text('Wiederherstellen'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _restoreFromBackup(
+    EncryptedKeyBackup backup,
+    String password,
+  ) async {
+    print('[PgpKeyScreen] Starte Wiederherstellung aus Backup...');
+
+    // Entschlüssele den Private Key
+    print('[PgpKeyScreen] Entschlüssele Private Key...');
+    final decryptedKey = await OpenPGP.decryptSymmetric(
+      backup.encryptedPrivateKey,
+      password,
+    );
+
+    // Validiere, dass es ein gültiger PGP Key ist
+    if (!decryptedKey.contains('-----BEGIN PGP PRIVATE KEY BLOCK-----')) {
+      throw Exception('Ungültiger Key nach Entschlüsselung');
+    }
+
+    print('[PgpKeyScreen] Entschlüsselung erfolgreich, importiere Key...');
+
+    // Importiere den Key
+    final success = await widget.pgpKeyService.importPrivateKey(decryptedKey);
+    if (!success) {
+      throw Exception('Import fehlgeschlagen');
+    }
+
+    print('[PgpKeyScreen] Key erfolgreich importiert');
+
+    // Aktualisiere Status
+    await _loadKeyStatus();
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Schlüssel erfolgreich wiederhergestellt!'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    }
+  }
+
+  String _formatFingerprintShort(String fingerprint) {
+    final clean = fingerprint.replaceAll(' ', '').toUpperCase();
+    if (clean.length > 16) {
+      return '${clean.substring(0, 8)}...${clean.substring(clean.length - 8)}';
+    }
+    return clean;
+  }
+
+  String _formatBackupDate(DateTime date) {
+    return '${date.day.toString().padLeft(2, '0')}.'
+        '${date.month.toString().padLeft(2, '0')}.'
+        '${date.year}';
   }
 
   void _showGenerateDialog() {
@@ -517,26 +1064,32 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     required String email,
     String? passphrase,
   }) async {
+    print('[PgpKeyScreen] _generateKey() gestartet');
     setState(() => _isGenerating = true);
 
     // Zeige Progress-Dialog
     _showGeneratingProgressDialog();
 
     try {
-      // Generiere Schlüsselpaar (läuft im Isolate)
+      // Generiere Schlüsselpaar
+      print('[PgpKeyScreen] Rufe pgpKeyService.generateKeyPair() auf...');
       final keyPair = await widget.pgpKeyService.generateKeyPair(
         name: name,
         email: email,
         passphrase: passphrase,
       );
+      print('[PgpKeyScreen] generateKeyPair() zurückgekehrt');
 
       // Speichere Private Key lokal
+      print('[PgpKeyScreen] Speichere Private Key...');
       await widget.pgpKeyService.storePrivateKey(
         keyPair.privateKey,
         keyPair.fingerprint,
       );
+      print('[PgpKeyScreen] Private Key gespeichert');
 
       // Lade Public Key zum Server hoch
+      print('[PgpKeyScreen] Lade Public Key zum Server...');
       await widget.pgpKeyService.uploadPublicKey(
         keyPair.publicKey,
         keyPair.identity,
@@ -544,11 +1097,13 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         keyPair.algorithm,
         keyPair.keySize,
       );
+      print('[PgpKeyScreen] Public Key hochgeladen');
 
       // Schließe Progress-Dialog
       if (mounted) Navigator.of(context).pop();
 
       // Status aktualisieren
+      print('[PgpKeyScreen] Aktualisiere Status...');
       await _loadKeyStatus();
 
       if (mounted) {
@@ -559,7 +1114,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
           ),
         );
       }
+      print('[PgpKeyScreen] _generateKey() erfolgreich abgeschlossen');
     } catch (e) {
+      print('[PgpKeyScreen] FEHLER in _generateKey(): $e');
       // Schließe Progress-Dialog bei Fehler
       if (mounted) Navigator.of(context).pop();
 
@@ -597,8 +1154,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'RSA-2048 Schlüssel wird erstellt.\n'
-                'Dies dauert ca. 10-30 Sekunden.',
+                'Ed25519/Curve25519 Schlüssel wird erstellt.\n'
+                'Dies dauert nur wenige Sekunden.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -622,22 +1179,39 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         throw Exception('Kein Private Key vorhanden');
       }
 
-      // Extrahiere Public Key und Metadaten aus Private Key
-      // Dies wird vom PgpKeyService intern gehandhabt
-      final serverKey = await widget.pgpKeyService.getMyPublicKey();
+      final fingerprint = await widget.pgpKeyService.getFingerprint();
+      if (fingerprint == null) {
+        throw Exception('Kein Fingerprint vorhanden');
+      }
 
-      if (serverKey != null) {
-        await _loadKeyStatus();
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Public Key erfolgreich hochgeladen!'),
-              backgroundColor: Colors.green,
-            ),
-          );
-        }
+      // Extrahiere Public Key aus Private Key
+      final publicKey = await OpenPGP.convertPrivateKeyToPublicKey(privateKey);
+      final metadata = await OpenPGP.getPublicKeyMetadata(publicKey);
+
+      // Lade Public Key zum Server hoch
+      print('[PgpKeyScreen] Lade Public Key zum Server hoch...');
+      await widget.pgpKeyService.uploadPublicKey(
+        publicKey,
+        metadata.identities.isNotEmpty
+            ? '${metadata.identities.first.name} <${metadata.identities.first.email}>'
+            : 'Unknown',
+        fingerprint,
+        metadata.algorithm,
+        256, // ECC key size
+      );
+      print('[PgpKeyScreen] Public Key hochgeladen');
+
+      await _loadKeyStatus();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Public Key erfolgreich hochgeladen!'),
+            backgroundColor: Colors.green,
+          ),
+        );
       }
     } catch (e) {
+      print('[PgpKeyScreen] Fehler beim Hochladen: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Fehler beim Hochladen: $e')),

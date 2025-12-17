@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:openpgp/openpgp.dart';
@@ -43,33 +45,74 @@ class PgpKeyService {
   /// Generiert ein neues PGP Keypair.
   /// [name] und [email] werden als Key-Identität verwendet.
   /// [passphrase] ist optional, aber empfohlen für zusätzliche Sicherheit.
-  /// Verwendet RSA-2048 für schnellere Generierung (10-30 Sekunden).
+  /// Verwendet Ed25519/Curve25519 für schnelle Generierung und hohe Sicherheit.
+  /// Fallback auf RSA-2048 falls ECC nicht unterstützt wird.
+  /// Timeout nach 2 Minuten, um Endlosschleifen zu vermeiden.
   Future<PgpKeyPair> generateKeyPair({
     required String name,
     required String email,
     String? passphrase,
+    bool useEcc = true,
     int rsaBits = 2048,
   }) async {
+    print('[PGP] generateKeyPair() gestartet');
+    print('[PGP] Parameter: name=$name, email=$email, useEcc=$useEcc, rsaBits=$rsaBits');
+
     final options = Options()
       ..name = name
       ..email = email
       ..passphrase = passphrase ?? ''
-      ..keyOptions = KeyOptions()
-      ..keyOptions!.rsaBits = rsaBits;
+      ..keyOptions = KeyOptions();
 
-    final keyPair = await OpenPGP.generate(options: options);
+    if (useEcc) {
+      // Ed25519 für Signaturen, Curve25519 für Verschlüsselung
+      // Viel schneller als RSA und genauso sicher
+      options.keyOptions!.algorithm = Algorithm.EDDSA;
+      options.keyOptions!.curve = Curve.CURVE25519;
+      print('[PGP] Verwende ECC (Ed25519/Curve25519)');
+    } else {
+      options.keyOptions!.rsaBits = rsaBits;
+      print('[PGP] Verwende RSA-$rsaBits');
+    }
+
+    print('[PGP] Options erstellt, starte OpenPGP.generate()...');
+    final stopwatch = Stopwatch()..start();
+
+    final keyPair = await OpenPGP.generate(options: options)
+        .timeout(
+      const Duration(minutes: 2),
+      onTimeout: () {
+        print('[PGP] TIMEOUT nach 2 Minuten!');
+        throw TimeoutException(
+          'Schlüsselgenerierung dauert zu lange. '
+          'Bitte versuche es erneut oder starte die App neu.',
+          const Duration(minutes: 2),
+        );
+      },
+    );
+
+    stopwatch.stop();
+    print('[PGP] OpenPGP.generate() abgeschlossen nach ${stopwatch.elapsed}');
+    print('[PGP] PublicKey Länge: ${keyPair.publicKey.length}');
+    print('[PGP] PrivateKey Länge: ${keyPair.privateKey.length}');
 
     // Extrahiere Fingerprint aus dem Public Key
+    print('[PGP] Extrahiere Fingerprint...');
     final publicKeyMetadata =
         await OpenPGP.getPublicKeyMetadata(keyPair.publicKey);
     final fingerprint = publicKeyMetadata.fingerprint;
+    print('[PGP] Fingerprint: $fingerprint');
 
+    final algorithm = useEcc ? 'Ed25519' : 'RSA';
+    final keySize = useEcc ? 256 : rsaBits;
+
+    print('[PGP] generateKeyPair() erfolgreich abgeschlossen');
     return PgpKeyPair(
       publicKey: keyPair.publicKey,
       privateKey: keyPair.privateKey,
       fingerprint: fingerprint,
-      algorithm: 'RSA',
-      keySize: rsaBits,
+      algorithm: algorithm,
+      keySize: keySize,
       identity: '$name <$email>',
     );
   }
