@@ -476,6 +476,7 @@
 ### Geplant
 - [ ] 2FA (Zwei-Faktor-Authentifizierung)
 - [ ] Registrierungsgebühr (Admin-konfigurierbar)
+- [ ] Kostenlose Promotion-Slots ohne Abrechnung
 
 ### Mögliche Erweiterungen
 - [ ] Push-Benachrichtigungen
