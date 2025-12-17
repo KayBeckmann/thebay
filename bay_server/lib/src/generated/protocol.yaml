@@ -13,6 +13,15 @@ category:
   - create:
   - update:
   - delete:
+dispute:
+  - getById:
+  - getByTransaction:
+  - getOpenDisputes:
+  - getOpenCount:
+  - assignToMe:
+  - resolve:
+  - close:
+  - getMyDisputes:
 draft:
   - save:
   - update:
@@ -117,6 +126,18 @@ slotVariant:
   - create:
   - update:
   - delete:
+transaction:
+  - create:
+  - getById:
+  - getMyTransactions:
+  - markAsShipped:
+  - markAsReceived:
+  - cancel:
+  - openDispute:
+  - getOpenCount:
+  - getCompletedCount:
+  - autoCompleteExpired:
+  - getUpcomingAutoComplete:
 userProfile:
   - getProfile:
   - getUserListings:

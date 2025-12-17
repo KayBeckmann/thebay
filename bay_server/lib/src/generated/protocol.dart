@@ -44,15 +44,17 @@ import 'user_public_key.dart' as _i32;
 import 'user_role.dart' as _i33;
 import 'user_slot.dart' as _i34;
 import 'package:bay_server/src/generated/category.dart' as _i35;
-import 'package:bay_server/src/generated/message_draft.dart' as _i36;
-import 'package:bay_server/src/generated/listing.dart' as _i37;
-import 'package:bay_server/src/generated/listing_image.dart' as _i38;
-import 'package:bay_server/src/generated/message.dart' as _i39;
-import 'package:bay_server/src/generated/news.dart' as _i40;
-import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i41;
-import 'package:bay_server/src/generated/slot_order.dart' as _i42;
-import 'package:bay_server/src/generated/slot_variant.dart' as _i43;
-import 'package:bay_server/src/generated/user_slot.dart' as _i44;
+import 'package:bay_server/src/generated/dispute.dart' as _i36;
+import 'package:bay_server/src/generated/message_draft.dart' as _i37;
+import 'package:bay_server/src/generated/listing.dart' as _i38;
+import 'package:bay_server/src/generated/listing_image.dart' as _i39;
+import 'package:bay_server/src/generated/message.dart' as _i40;
+import 'package:bay_server/src/generated/news.dart' as _i41;
+import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i42;
+import 'package:bay_server/src/generated/slot_order.dart' as _i43;
+import 'package:bay_server/src/generated/slot_variant.dart' as _i44;
+import 'package:bay_server/src/generated/transaction.dart' as _i45;
+import 'package:bay_server/src/generated/user_slot.dart' as _i46;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -2491,13 +2493,17 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as List).map((e) => deserialize<_i35.Category>(e)).toList()
           as T;
     }
-    if (t == List<_i36.MessageDraft>) {
+    if (t == List<_i36.Dispute>) {
+      return (data as List).map((e) => deserialize<_i36.Dispute>(e)).toList()
+          as T;
+    }
+    if (t == List<_i37.MessageDraft>) {
       return (data as List)
-          .map((e) => deserialize<_i36.MessageDraft>(e))
+          .map((e) => deserialize<_i37.MessageDraft>(e))
           .toList() as T;
     }
-    if (t == List<_i37.Listing>) {
-      return (data as List).map((e) => deserialize<_i37.Listing>(e)).toList()
+    if (t == List<_i38.Listing>) {
+      return (data as List).map((e) => deserialize<_i38.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -2507,13 +2513,13 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i38.ListingImage>) {
+    if (t == List<_i39.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i38.ListingImage>(e))
+          .map((e) => deserialize<_i39.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i39.Message>) {
-      return (data as List).map((e) => deserialize<_i39.Message>(e)).toList()
+    if (t == List<_i40.Message>) {
+      return (data as List).map((e) => deserialize<_i40.Message>(e)).toList()
           as T;
     }
     if (t == List<Map<String, dynamic>>) {
@@ -2525,8 +2531,8 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i40.News>) {
-      return (data as List).map((e) => deserialize<_i40.News>(e)).toList() as T;
+    if (t == List<_i41.News>) {
+      return (data as List).map((e) => deserialize<_i41.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -2538,25 +2544,30 @@ class Protocol extends _i1.SerializationManagerServer {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i41.EncryptedKeyBackup>) {
+    if (t == List<_i42.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i41.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i42.EncryptedKeyBackup>(e))
           .toList() as T;
     }
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i42.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i42.SlotOrder>(e)).toList()
+    if (t == List<_i43.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i43.SlotOrder>(e)).toList()
           as T;
     }
-    if (t == List<_i43.SlotVariant>) {
+    if (t == List<_i44.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i43.SlotVariant>(e))
+          .map((e) => deserialize<_i44.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i44.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i44.UserSlot>(e)).toList()
+    if (t == List<_i45.Transaction>) {
+      return (data as List)
+          .map((e) => deserialize<_i45.Transaction>(e))
+          .toList() as T;
+    }
+    if (t == List<_i46.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i46.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {

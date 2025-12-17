@@ -314,23 +314,29 @@
 
 ---
 
-## Meilenstein 9b: Backend - Transaktionen (Handelsablauf)
+## Meilenstein 9b: Backend - Transaktionen (Handelsablauf) ✅
 
 ### 9b.1 TransactionEndpoint
-- [ ] Transaktion starten (Käufer initiiert bei Kaufinteresse)
-- [ ] Transaktion abrufen (getById, getMyTransactions)
-- [ ] Als Verkäufer: Status auf "shipped" setzen
-- [ ] Als Käufer: Status auf "received" setzen → Transaktion abgeschlossen
-- [ ] Transaktion abbrechen (nur wenn Status = open)
-- [ ] Reklamation öffnen (Dispute erstellen)
+- [x] Transaktion starten (Käufer initiiert bei Kaufinteresse)
+- [x] Transaktion abrufen (getById, getMyTransactions)
+- [x] Als Verkäufer: Status auf "shipped" setzen
+- [x] Als Käufer: Status auf "received" setzen → Transaktion abgeschlossen
+- [x] Transaktion abbrechen (nur wenn Status = open)
+- [x] Reklamation öffnen (Dispute erstellen)
 
 ### 9b.2 Automatisierung (Cron-Jobs)
-- [ ] Automatischer Abschluss nach 14 Tagen ohne Reklamation
-- [ ] Benachrichtigung 3 Tage vor automatischem Abschluss (optional)
+- [x] Automatischer Abschluss nach 14 Tagen ohne Reklamation
+- [x] Benachrichtigung 3 Tage vor automatischem Abschluss (getUpcomingAutoComplete)
 
 ### 9b.3 Transaktions-Statistiken
-- [ ] Anzahl abgeschlossener Transaktionen pro User
-- [ ] Offene Transaktionen zählen
+- [x] Anzahl abgeschlossener Transaktionen pro User (getCompletedCount)
+- [x] Offene Transaktionen zählen (getOpenCount)
+
+### 9b.4 DisputeEndpoint (Bonus)
+- [x] Reklamation abrufen (getById, getByTransaction, getMyDisputes)
+- [x] Offene Reklamationen für Moderatoren (getOpenDisputes, getOpenCount)
+- [x] Reklamation übernehmen (assignToMe)
+- [x] Reklamation lösen/schließen (resolve, close)
 
 ---
 
