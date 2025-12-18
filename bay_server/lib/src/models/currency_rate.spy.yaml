@@ -1,0 +1,16 @@
+### Currency exchange rate cache
+class: CurrencyRate
+table: currency_rates
+fields:
+  ### Base currency (e.g., 'USD', 'EUR')
+  baseCurrency: String
+  ### Target currency (e.g., 'BTC', 'USD')
+  targetCurrency: String
+  ### Exchange rate (how much target currency equals 1 base currency)
+  rate: double
+  ### Last update timestamp
+  updatedAt: DateTime
+indexes:
+  currency_pair_idx:
+    fields: baseCurrency, targetCurrency
+    unique: true

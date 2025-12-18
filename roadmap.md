@@ -403,15 +403,15 @@
 
 ---
 
-## Meilenstein 10: Währung & Umrechnung
+## Meilenstein 10: Währung & Umrechnung ✅
 
 ### 10.1 Backend
-- [ ] Währungs-API Integration (z.B. für BTC/USD Kurs)
-- [ ] Umrechnungs-Endpoint
+- [x] Währungs-API Integration (z.B. für BTC/USD Kurs)
+- [x] Umrechnungs-Endpoint
 
 ### 10.2 Frontend
-- [ ] Preisanzeige in User-Währung
-- [ ] Währung in Angeboten (Verkäufer-Währung bei PayPal, BTC bei Bitcoin)
+- [x] Preisanzeige in User-Währung
+- [x] Währung in Angeboten (Verkäufer-Währung bei PayPal, BTC bei Bitcoin)
 
 ---
 
@@ -487,4 +487,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-17*
+*Aktualisiert am: 2025-12-18*
