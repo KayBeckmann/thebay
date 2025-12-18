@@ -415,27 +415,75 @@
 
 ---
 
-## Meilenstein 11: Melden-Funktion & Moderation
+## Meilenstein 11a: Melden-System (Reports)
 
-### 11.1 Datenbank-Erweiterung
-- [ ] Meldungen-Tabelle (reporter, reported_user/listing, reason, status)
+### 11a.1 Datenbank-Erweiterung
+- [ ] Report-Tabelle (reporter_id, target_type, target_id, reason, status, created_at)
+- [ ] ReportTargetType Enum (listing, user)
+- [ ] ReportStatus Enum (open, reviewing, resolved, dismissed)
+- [ ] ReportReason Enum (spam, inappropriate, scam, other)
 
-### 11.2 Backend
-- [ ] Angebot melden
-- [ ] User melden
-- [ ] Meldungen abrufen (für Moderatoren)
-- [ ] Meldung bearbeiten/schließen
+### 11a.2 Backend - Report-Endpoints
+- [ ] Angebot melden (createListingReport)
+- [ ] User melden (createUserReport)
+- [ ] Eigene Meldungen abrufen (getMyReports)
+- [ ] Meldung abrufen nach ID (getById)
+- [ ] Prüfung: Ein User kann dasselbe Ziel nur einmal melden
 
-### 11.3 Moderator-Panel
-- [ ] Übersicht gemeldeter Angebote
-- [ ] Übersicht gemeldeter User
-- [ ] Angebot entfernen
-- [ ] Streitschlichtung (Kommunikation mit beiden Parteien)
+### 11a.3 Frontend - Melden-Funktionalität
+- [ ] "Melden"-Button in Angebots-Detailansicht
+- [ ] "Melden"-Button in User-Profilen
+- [ ] Melde-Dialog mit Grund-Auswahl
+- [ ] Bestätigungs-Dialog nach erfolgreicher Meldung
+- [ ] Eigene Meldungen anzeigen (optional)
 
-### 11.4 Admin-Panel - Benutzerverwaltung
-- [ ] User zu Moderator ernennen
-- [ ] User sperren/entsperren
-- [ ] Bei Sperre: Angebote sperren, offene Transaktionen abschließen
+---
+
+## Meilenstein 11b: Moderator-Panel
+
+### 11b.1 Backend - Moderator-Funktionen
+- [ ] Alle offenen Meldungen abrufen (getOpenReports - für Moderatoren)
+- [ ] Meldungen nach Typ filtern (listing/user)
+- [ ] Anzahl offener Meldungen (getOpenCount)
+- [ ] Meldung übernehmen (assignToMe)
+- [ ] Meldung Status ändern (updateStatus - reviewing/resolved/dismissed)
+- [ ] Gemeldetes Angebot deaktivieren
+- [ ] Notiz zu Meldung hinzufügen
+
+### 11b.2 Frontend - Moderator-Dashboard
+- [ ] Moderator-Panel Menüpunkt (nur für Moderator/Admin sichtbar)
+- [ ] Übersicht offener Meldungen (mit Tabs: Angebote/User/Alle)
+- [ ] Meldungs-Detail-Ansicht
+- [ ] Filter- und Sortier-Optionen
+- [ ] Badge mit Anzahl offener Meldungen
+- [ ] Actions: Status ändern, Angebot deaktivieren
+- [ ] Notiz-Funktion für interne Kommunikation
+
+---
+
+## Meilenstein 11c: Admin-Benutzerverwaltung
+
+### 11c.1 Datenbank-Erweiterung
+- [ ] User-Tabelle erweitern: isBanned, bannedAt, bannedReason, bannedBy
+- [ ] UserBanLog-Tabelle (für Historie)
+
+### 11c.2 Backend - User-Verwaltung
+- [ ] User-Rolle ändern (updateUserRole - nur Admin)
+- [ ] User sperren (banUser)
+- [ ] User entsperren (unbanUser)
+- [ ] Bei Sperre: Alle Angebote deaktivieren
+- [ ] Bei Sperre: Laufende Transaktionen behandeln (Auto-Cancel oder Info)
+- [ ] Gesperrte User auflisten
+- [ ] Ban-Historie abrufen
+
+### 11c.3 Frontend - Admin-Panel Benutzerverwaltung
+- [ ] Benutzerverwaltungs-Screen im Admin-Panel
+- [ ] User-Liste mit Such- und Filter-Funktion
+- [ ] User-Detail mit Rollen-Auswahl
+- [ ] "Sperren"-Dialog mit Grund-Angabe
+- [ ] Gesperrte User verwalten
+- [ ] Ban-Historie anzeigen
+- [ ] Warnung bei kritischen Aktionen (Moderator ernennen, Sperren)
 
 ---
 
