@@ -12,7 +12,7 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
 import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i3;
-import 'greeting.dart' as _i4;
+import 'message_draft.dart' as _i4;
 import 'auth_response.dart' as _i5;
 import 'category.dart' as _i6;
 import 'currency_rate.dart' as _i7;
@@ -24,7 +24,7 @@ import 'listing.dart' as _i12;
 import 'listing_image.dart' as _i13;
 import 'login_request.dart' as _i14;
 import 'message.dart' as _i15;
-import 'message_draft.dart' as _i16;
+import 'greeting.dart' as _i16;
 import 'news.dart' as _i17;
 import 'order_status.dart' as _i18;
 import 'payment_method.dart' as _i19;
@@ -33,31 +33,36 @@ import 'rating.dart' as _i21;
 import 'rating_stats.dart' as _i22;
 import 'rating_value.dart' as _i23;
 import 'registration_request.dart' as _i24;
-import 'search_result.dart' as _i25;
-import 'settings.dart' as _i26;
-import 'slot_order.dart' as _i27;
-import 'slot_variant.dart' as _i28;
-import 'transaction.dart' as _i29;
-import 'transaction_status.dart' as _i30;
-import 'user.dart' as _i31;
-import 'user_payment_info.dart' as _i32;
-import 'user_profile.dart' as _i33;
-import 'user_public_key.dart' as _i34;
-import 'user_role.dart' as _i35;
-import 'user_slot.dart' as _i36;
-import 'package:bay_server/src/generated/category.dart' as _i37;
-import 'package:bay_server/src/generated/dispute.dart' as _i38;
-import 'package:bay_server/src/generated/message_draft.dart' as _i39;
-import 'package:bay_server/src/generated/listing.dart' as _i40;
-import 'package:bay_server/src/generated/listing_image.dart' as _i41;
-import 'package:bay_server/src/generated/message.dart' as _i42;
-import 'package:bay_server/src/generated/news.dart' as _i43;
-import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i44;
-import 'package:bay_server/src/generated/rating.dart' as _i45;
-import 'package:bay_server/src/generated/transaction.dart' as _i46;
-import 'package:bay_server/src/generated/slot_order.dart' as _i47;
-import 'package:bay_server/src/generated/slot_variant.dart' as _i48;
-import 'package:bay_server/src/generated/user_slot.dart' as _i49;
+import 'report.dart' as _i25;
+import 'report_reason.dart' as _i26;
+import 'report_status.dart' as _i27;
+import 'user_slot.dart' as _i28;
+import 'search_result.dart' as _i29;
+import 'settings.dart' as _i30;
+import 'slot_order.dart' as _i31;
+import 'slot_variant.dart' as _i32;
+import 'transaction.dart' as _i33;
+import 'transaction_status.dart' as _i34;
+import 'user.dart' as _i35;
+import 'user_payment_info.dart' as _i36;
+import 'user_profile.dart' as _i37;
+import 'user_public_key.dart' as _i38;
+import 'user_role.dart' as _i39;
+import 'report_target_type.dart' as _i40;
+import 'package:bay_server/src/generated/category.dart' as _i41;
+import 'package:bay_server/src/generated/dispute.dart' as _i42;
+import 'package:bay_server/src/generated/message_draft.dart' as _i43;
+import 'package:bay_server/src/generated/listing.dart' as _i44;
+import 'package:bay_server/src/generated/listing_image.dart' as _i45;
+import 'package:bay_server/src/generated/message.dart' as _i46;
+import 'package:bay_server/src/generated/news.dart' as _i47;
+import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i48;
+import 'package:bay_server/src/generated/rating.dart' as _i49;
+import 'package:bay_server/src/generated/transaction.dart' as _i50;
+import 'package:bay_server/src/generated/report.dart' as _i51;
+import 'package:bay_server/src/generated/slot_order.dart' as _i52;
+import 'package:bay_server/src/generated/slot_variant.dart' as _i53;
+import 'package:bay_server/src/generated/user_slot.dart' as _i54;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -79,6 +84,10 @@ export 'rating.dart';
 export 'rating_stats.dart';
 export 'rating_value.dart';
 export 'registration_request.dart';
+export 'report.dart';
+export 'report_reason.dart';
+export 'report_status.dart';
+export 'report_target_type.dart';
 export 'search_result.dart';
 export 'settings.dart';
 export 'slot_order.dart';
@@ -1430,6 +1439,192 @@ class Protocol extends _i1.SerializationManagerServer {
       managed: true,
     ),
     _i2.TableDefinition(
+      name: 'reports',
+      dartName: 'Report',
+      schema: 'public',
+      module: 'bay',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'reports_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'reporterId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'targetType',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'protocol:ReportTargetType',
+        ),
+        _i2.ColumnDefinition(
+          name: 'targetId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'reason',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'protocol:ReportReason',
+        ),
+        _i2.ColumnDefinition(
+          name: 'details',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'status',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'protocol:ReportStatus',
+          columnDefault: '0',
+        ),
+        _i2.ColumnDefinition(
+          name: 'assignedModeratorId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: true,
+          dartType: 'int?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'moderatorNotes',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'createdAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+          columnDefault: 'CURRENT_TIMESTAMP',
+        ),
+        _i2.ColumnDefinition(
+          name: 'updatedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+          columnDefault: 'CURRENT_TIMESTAMP',
+        ),
+        _i2.ColumnDefinition(
+          name: 'resolvedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: true,
+          dartType: 'DateTime?',
+        ),
+      ],
+      foreignKeys: [
+        _i2.ForeignKeyDefinition(
+          constraintName: 'reports_fk_0',
+          columns: ['reporterId'],
+          referenceTable: 'users',
+          referenceTableSchema: 'public',
+          referenceColumns: ['id'],
+          onUpdate: _i2.ForeignKeyAction.noAction,
+          onDelete: _i2.ForeignKeyAction.cascade,
+          matchType: null,
+        ),
+        _i2.ForeignKeyDefinition(
+          constraintName: 'reports_fk_1',
+          columns: ['assignedModeratorId'],
+          referenceTable: 'users',
+          referenceTableSchema: 'public',
+          referenceColumns: ['id'],
+          onUpdate: _i2.ForeignKeyAction.noAction,
+          onDelete: _i2.ForeignKeyAction.setNull,
+          matchType: null,
+        ),
+      ],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'reports_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        ),
+        _i2.IndexDefinition(
+          indexName: 'reports_reporter_idx',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'reporterId',
+            )
+          ],
+          type: 'btree',
+          isUnique: false,
+          isPrimary: false,
+        ),
+        _i2.IndexDefinition(
+          indexName: 'reports_target_idx',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'targetType',
+            ),
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'targetId',
+            ),
+          ],
+          type: 'btree',
+          isUnique: false,
+          isPrimary: false,
+        ),
+        _i2.IndexDefinition(
+          indexName: 'reports_status_idx',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'status',
+            )
+          ],
+          type: 'btree',
+          isUnique: false,
+          isPrimary: false,
+        ),
+        _i2.IndexDefinition(
+          indexName: 'reports_unique_target_per_user',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'reporterId',
+            ),
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'targetType',
+            ),
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'targetId',
+            ),
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: false,
+        ),
+      ],
+      managed: true,
+    ),
+    _i2.TableDefinition(
       name: 'settings',
       dartName: 'Settings',
       schema: 'public',
@@ -2376,8 +2571,8 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-    if (t == _i4.Greeting) {
-      return _i4.Greeting.fromJson(data) as T;
+    if (t == _i4.MessageDraft) {
+      return _i4.MessageDraft.fromJson(data) as T;
     }
     if (t == _i5.AuthResponse) {
       return _i5.AuthResponse.fromJson(data) as T;
@@ -2412,8 +2607,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i15.Message) {
       return _i15.Message.fromJson(data) as T;
     }
-    if (t == _i16.MessageDraft) {
-      return _i16.MessageDraft.fromJson(data) as T;
+    if (t == _i16.Greeting) {
+      return _i16.Greeting.fromJson(data) as T;
     }
     if (t == _i17.News) {
       return _i17.News.fromJson(data) as T;
@@ -2439,44 +2634,56 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i24.RegistrationRequest) {
       return _i24.RegistrationRequest.fromJson(data) as T;
     }
-    if (t == _i25.SearchResult) {
-      return _i25.SearchResult.fromJson(data) as T;
+    if (t == _i25.Report) {
+      return _i25.Report.fromJson(data) as T;
     }
-    if (t == _i26.Settings) {
-      return _i26.Settings.fromJson(data) as T;
+    if (t == _i26.ReportReason) {
+      return _i26.ReportReason.fromJson(data) as T;
     }
-    if (t == _i27.SlotOrder) {
-      return _i27.SlotOrder.fromJson(data) as T;
+    if (t == _i27.ReportStatus) {
+      return _i27.ReportStatus.fromJson(data) as T;
     }
-    if (t == _i28.SlotVariant) {
-      return _i28.SlotVariant.fromJson(data) as T;
+    if (t == _i28.UserSlot) {
+      return _i28.UserSlot.fromJson(data) as T;
     }
-    if (t == _i29.Transaction) {
-      return _i29.Transaction.fromJson(data) as T;
+    if (t == _i29.SearchResult) {
+      return _i29.SearchResult.fromJson(data) as T;
     }
-    if (t == _i30.TransactionStatus) {
-      return _i30.TransactionStatus.fromJson(data) as T;
+    if (t == _i30.Settings) {
+      return _i30.Settings.fromJson(data) as T;
     }
-    if (t == _i31.User) {
-      return _i31.User.fromJson(data) as T;
+    if (t == _i31.SlotOrder) {
+      return _i31.SlotOrder.fromJson(data) as T;
     }
-    if (t == _i32.UserPaymentInfo) {
-      return _i32.UserPaymentInfo.fromJson(data) as T;
+    if (t == _i32.SlotVariant) {
+      return _i32.SlotVariant.fromJson(data) as T;
     }
-    if (t == _i33.UserProfile) {
-      return _i33.UserProfile.fromJson(data) as T;
+    if (t == _i33.Transaction) {
+      return _i33.Transaction.fromJson(data) as T;
     }
-    if (t == _i34.UserPublicKey) {
-      return _i34.UserPublicKey.fromJson(data) as T;
+    if (t == _i34.TransactionStatus) {
+      return _i34.TransactionStatus.fromJson(data) as T;
     }
-    if (t == _i35.UserRole) {
-      return _i35.UserRole.fromJson(data) as T;
+    if (t == _i35.User) {
+      return _i35.User.fromJson(data) as T;
     }
-    if (t == _i36.UserSlot) {
-      return _i36.UserSlot.fromJson(data) as T;
+    if (t == _i36.UserPaymentInfo) {
+      return _i36.UserPaymentInfo.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i4.Greeting?>()) {
-      return (data != null ? _i4.Greeting.fromJson(data) : null) as T;
+    if (t == _i37.UserProfile) {
+      return _i37.UserProfile.fromJson(data) as T;
+    }
+    if (t == _i38.UserPublicKey) {
+      return _i38.UserPublicKey.fromJson(data) as T;
+    }
+    if (t == _i39.UserRole) {
+      return _i39.UserRole.fromJson(data) as T;
+    }
+    if (t == _i40.ReportTargetType) {
+      return _i40.ReportTargetType.fromJson(data) as T;
+    }
+    if (t == _i1.getType<_i4.MessageDraft?>()) {
+      return (data != null ? _i4.MessageDraft.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i5.AuthResponse?>()) {
       return (data != null ? _i5.AuthResponse.fromJson(data) : null) as T;
@@ -2512,8 +2719,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i15.Message?>()) {
       return (data != null ? _i15.Message.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i16.MessageDraft?>()) {
-      return (data != null ? _i16.MessageDraft.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i16.Greeting?>()) {
+      return (data != null ? _i16.Greeting.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i17.News?>()) {
       return (data != null ? _i17.News.fromJson(data) : null) as T;
@@ -2540,48 +2747,60 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data != null ? _i24.RegistrationRequest.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i25.SearchResult?>()) {
-      return (data != null ? _i25.SearchResult.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i25.Report?>()) {
+      return (data != null ? _i25.Report.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i26.Settings?>()) {
-      return (data != null ? _i26.Settings.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i26.ReportReason?>()) {
+      return (data != null ? _i26.ReportReason.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i27.SlotOrder?>()) {
-      return (data != null ? _i27.SlotOrder.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i27.ReportStatus?>()) {
+      return (data != null ? _i27.ReportStatus.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i28.SlotVariant?>()) {
-      return (data != null ? _i28.SlotVariant.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i28.UserSlot?>()) {
+      return (data != null ? _i28.UserSlot.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i29.Transaction?>()) {
-      return (data != null ? _i29.Transaction.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i29.SearchResult?>()) {
+      return (data != null ? _i29.SearchResult.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i30.TransactionStatus?>()) {
-      return (data != null ? _i30.TransactionStatus.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i30.Settings?>()) {
+      return (data != null ? _i30.Settings.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i31.User?>()) {
-      return (data != null ? _i31.User.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i31.SlotOrder?>()) {
+      return (data != null ? _i31.SlotOrder.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i32.UserPaymentInfo?>()) {
-      return (data != null ? _i32.UserPaymentInfo.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i32.SlotVariant?>()) {
+      return (data != null ? _i32.SlotVariant.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i33.UserProfile?>()) {
-      return (data != null ? _i33.UserProfile.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i33.Transaction?>()) {
+      return (data != null ? _i33.Transaction.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i34.UserPublicKey?>()) {
-      return (data != null ? _i34.UserPublicKey.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i34.TransactionStatus?>()) {
+      return (data != null ? _i34.TransactionStatus.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i35.UserRole?>()) {
-      return (data != null ? _i35.UserRole.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i35.User?>()) {
+      return (data != null ? _i35.User.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i36.UserSlot?>()) {
-      return (data != null ? _i36.UserSlot.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i36.UserPaymentInfo?>()) {
+      return (data != null ? _i36.UserPaymentInfo.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i37.UserProfile?>()) {
+      return (data != null ? _i37.UserProfile.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i38.UserPublicKey?>()) {
+      return (data != null ? _i38.UserPublicKey.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i39.UserRole?>()) {
+      return (data != null ? _i39.UserRole.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i40.ReportTargetType?>()) {
+      return (data != null ? _i40.ReportTargetType.fromJson(data) : null) as T;
     }
     if (t == List<_i12.Listing>) {
       return (data as List).map((e) => deserialize<_i12.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i37.Category>) {
-      return (data as List).map((e) => deserialize<_i37.Category>(e)).toList()
+    if (t == List<_i41.Category>) {
+      return (data as List).map((e) => deserialize<_i41.Category>(e)).toList()
           as T;
     }
     if (t == Map<String, double>) {
@@ -2591,17 +2810,17 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i38.Dispute>) {
-      return (data as List).map((e) => deserialize<_i38.Dispute>(e)).toList()
+    if (t == List<_i42.Dispute>) {
+      return (data as List).map((e) => deserialize<_i42.Dispute>(e)).toList()
           as T;
     }
-    if (t == List<_i39.MessageDraft>) {
+    if (t == List<_i43.MessageDraft>) {
       return (data as List)
-          .map((e) => deserialize<_i39.MessageDraft>(e))
+          .map((e) => deserialize<_i43.MessageDraft>(e))
           .toList() as T;
     }
-    if (t == List<_i40.Listing>) {
-      return (data as List).map((e) => deserialize<_i40.Listing>(e)).toList()
+    if (t == List<_i44.Listing>) {
+      return (data as List).map((e) => deserialize<_i44.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -2611,13 +2830,13 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i41.ListingImage>) {
+    if (t == List<_i45.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i41.ListingImage>(e))
+          .map((e) => deserialize<_i45.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i42.Message>) {
-      return (data as List).map((e) => deserialize<_i42.Message>(e)).toList()
+    if (t == List<_i46.Message>) {
+      return (data as List).map((e) => deserialize<_i46.Message>(e)).toList()
           as T;
     }
     if (t == List<Map<String, dynamic>>) {
@@ -2629,8 +2848,8 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i43.News>) {
-      return (data as List).map((e) => deserialize<_i43.News>(e)).toList() as T;
+    if (t == List<_i47.News>) {
+      return (data as List).map((e) => deserialize<_i47.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -2642,31 +2861,35 @@ class Protocol extends _i1.SerializationManagerServer {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i44.EncryptedKeyBackup>) {
+    if (t == List<_i48.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i44.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i48.EncryptedKeyBackup>(e))
           .toList() as T;
     }
-    if (t == List<_i45.Rating>) {
-      return (data as List).map((e) => deserialize<_i45.Rating>(e)).toList()
+    if (t == List<_i49.Rating>) {
+      return (data as List).map((e) => deserialize<_i49.Rating>(e)).toList()
           as T;
     }
-    if (t == List<_i46.Transaction>) {
+    if (t == List<_i50.Transaction>) {
       return (data as List)
-          .map((e) => deserialize<_i46.Transaction>(e))
+          .map((e) => deserialize<_i50.Transaction>(e))
           .toList() as T;
     }
-    if (t == List<_i47.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i47.SlotOrder>(e)).toList()
+    if (t == List<_i51.Report>) {
+      return (data as List).map((e) => deserialize<_i51.Report>(e)).toList()
           as T;
     }
-    if (t == List<_i48.SlotVariant>) {
+    if (t == List<_i52.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i52.SlotOrder>(e)).toList()
+          as T;
+    }
+    if (t == List<_i53.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i48.SlotVariant>(e))
+          .map((e) => deserialize<_i53.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i49.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i49.UserSlot>(e)).toList()
+    if (t == List<_i54.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i54.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
@@ -2686,8 +2909,8 @@ class Protocol extends _i1.SerializationManagerServer {
   String? getClassNameForObject(Object? data) {
     String? className = super.getClassNameForObject(data);
     if (className != null) return className;
-    if (data is _i4.Greeting) {
-      return 'Greeting';
+    if (data is _i4.MessageDraft) {
+      return 'MessageDraft';
     }
     if (data is _i5.AuthResponse) {
       return 'AuthResponse';
@@ -2722,8 +2945,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i15.Message) {
       return 'Message';
     }
-    if (data is _i16.MessageDraft) {
-      return 'MessageDraft';
+    if (data is _i16.Greeting) {
+      return 'Greeting';
     }
     if (data is _i17.News) {
       return 'News';
@@ -2749,41 +2972,53 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i24.RegistrationRequest) {
       return 'RegistrationRequest';
     }
-    if (data is _i25.SearchResult) {
+    if (data is _i25.Report) {
+      return 'Report';
+    }
+    if (data is _i26.ReportReason) {
+      return 'ReportReason';
+    }
+    if (data is _i27.ReportStatus) {
+      return 'ReportStatus';
+    }
+    if (data is _i28.UserSlot) {
+      return 'UserSlot';
+    }
+    if (data is _i29.SearchResult) {
       return 'SearchResult';
     }
-    if (data is _i26.Settings) {
+    if (data is _i30.Settings) {
       return 'Settings';
     }
-    if (data is _i27.SlotOrder) {
+    if (data is _i31.SlotOrder) {
       return 'SlotOrder';
     }
-    if (data is _i28.SlotVariant) {
+    if (data is _i32.SlotVariant) {
       return 'SlotVariant';
     }
-    if (data is _i29.Transaction) {
+    if (data is _i33.Transaction) {
       return 'Transaction';
     }
-    if (data is _i30.TransactionStatus) {
+    if (data is _i34.TransactionStatus) {
       return 'TransactionStatus';
     }
-    if (data is _i31.User) {
+    if (data is _i35.User) {
       return 'User';
     }
-    if (data is _i32.UserPaymentInfo) {
+    if (data is _i36.UserPaymentInfo) {
       return 'UserPaymentInfo';
     }
-    if (data is _i33.UserProfile) {
+    if (data is _i37.UserProfile) {
       return 'UserProfile';
     }
-    if (data is _i34.UserPublicKey) {
+    if (data is _i38.UserPublicKey) {
       return 'UserPublicKey';
     }
-    if (data is _i35.UserRole) {
+    if (data is _i39.UserRole) {
       return 'UserRole';
     }
-    if (data is _i36.UserSlot) {
-      return 'UserSlot';
+    if (data is _i40.ReportTargetType) {
+      return 'ReportTargetType';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
@@ -2802,8 +3037,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName is! String) {
       return super.deserializeByClassName(data);
     }
-    if (dataClassName == 'Greeting') {
-      return deserialize<_i4.Greeting>(data['data']);
+    if (dataClassName == 'MessageDraft') {
+      return deserialize<_i4.MessageDraft>(data['data']);
     }
     if (dataClassName == 'AuthResponse') {
       return deserialize<_i5.AuthResponse>(data['data']);
@@ -2838,8 +3073,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'Message') {
       return deserialize<_i15.Message>(data['data']);
     }
-    if (dataClassName == 'MessageDraft') {
-      return deserialize<_i16.MessageDraft>(data['data']);
+    if (dataClassName == 'Greeting') {
+      return deserialize<_i16.Greeting>(data['data']);
     }
     if (dataClassName == 'News') {
       return deserialize<_i17.News>(data['data']);
@@ -2865,41 +3100,53 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'RegistrationRequest') {
       return deserialize<_i24.RegistrationRequest>(data['data']);
     }
-    if (dataClassName == 'SearchResult') {
-      return deserialize<_i25.SearchResult>(data['data']);
+    if (dataClassName == 'Report') {
+      return deserialize<_i25.Report>(data['data']);
     }
-    if (dataClassName == 'Settings') {
-      return deserialize<_i26.Settings>(data['data']);
+    if (dataClassName == 'ReportReason') {
+      return deserialize<_i26.ReportReason>(data['data']);
     }
-    if (dataClassName == 'SlotOrder') {
-      return deserialize<_i27.SlotOrder>(data['data']);
-    }
-    if (dataClassName == 'SlotVariant') {
-      return deserialize<_i28.SlotVariant>(data['data']);
-    }
-    if (dataClassName == 'Transaction') {
-      return deserialize<_i29.Transaction>(data['data']);
-    }
-    if (dataClassName == 'TransactionStatus') {
-      return deserialize<_i30.TransactionStatus>(data['data']);
-    }
-    if (dataClassName == 'User') {
-      return deserialize<_i31.User>(data['data']);
-    }
-    if (dataClassName == 'UserPaymentInfo') {
-      return deserialize<_i32.UserPaymentInfo>(data['data']);
-    }
-    if (dataClassName == 'UserProfile') {
-      return deserialize<_i33.UserProfile>(data['data']);
-    }
-    if (dataClassName == 'UserPublicKey') {
-      return deserialize<_i34.UserPublicKey>(data['data']);
-    }
-    if (dataClassName == 'UserRole') {
-      return deserialize<_i35.UserRole>(data['data']);
+    if (dataClassName == 'ReportStatus') {
+      return deserialize<_i27.ReportStatus>(data['data']);
     }
     if (dataClassName == 'UserSlot') {
-      return deserialize<_i36.UserSlot>(data['data']);
+      return deserialize<_i28.UserSlot>(data['data']);
+    }
+    if (dataClassName == 'SearchResult') {
+      return deserialize<_i29.SearchResult>(data['data']);
+    }
+    if (dataClassName == 'Settings') {
+      return deserialize<_i30.Settings>(data['data']);
+    }
+    if (dataClassName == 'SlotOrder') {
+      return deserialize<_i31.SlotOrder>(data['data']);
+    }
+    if (dataClassName == 'SlotVariant') {
+      return deserialize<_i32.SlotVariant>(data['data']);
+    }
+    if (dataClassName == 'Transaction') {
+      return deserialize<_i33.Transaction>(data['data']);
+    }
+    if (dataClassName == 'TransactionStatus') {
+      return deserialize<_i34.TransactionStatus>(data['data']);
+    }
+    if (dataClassName == 'User') {
+      return deserialize<_i35.User>(data['data']);
+    }
+    if (dataClassName == 'UserPaymentInfo') {
+      return deserialize<_i36.UserPaymentInfo>(data['data']);
+    }
+    if (dataClassName == 'UserProfile') {
+      return deserialize<_i37.UserProfile>(data['data']);
+    }
+    if (dataClassName == 'UserPublicKey') {
+      return deserialize<_i38.UserPublicKey>(data['data']);
+    }
+    if (dataClassName == 'UserRole') {
+      return deserialize<_i39.UserRole>(data['data']);
+    }
+    if (dataClassName == 'ReportTargetType') {
+      return deserialize<_i40.ReportTargetType>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);
@@ -2943,28 +3190,30 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i13.ListingImage.t;
       case _i15.Message:
         return _i15.Message.t;
-      case _i16.MessageDraft:
-        return _i16.MessageDraft.t;
+      case _i4.MessageDraft:
+        return _i4.MessageDraft.t;
       case _i17.News:
         return _i17.News.t;
       case _i21.Rating:
         return _i21.Rating.t;
-      case _i26.Settings:
-        return _i26.Settings.t;
-      case _i27.SlotOrder:
-        return _i27.SlotOrder.t;
-      case _i28.SlotVariant:
-        return _i28.SlotVariant.t;
-      case _i29.Transaction:
-        return _i29.Transaction.t;
-      case _i31.User:
-        return _i31.User.t;
-      case _i32.UserPaymentInfo:
-        return _i32.UserPaymentInfo.t;
-      case _i34.UserPublicKey:
-        return _i34.UserPublicKey.t;
-      case _i36.UserSlot:
-        return _i36.UserSlot.t;
+      case _i25.Report:
+        return _i25.Report.t;
+      case _i30.Settings:
+        return _i30.Settings.t;
+      case _i31.SlotOrder:
+        return _i31.SlotOrder.t;
+      case _i32.SlotVariant:
+        return _i32.SlotVariant.t;
+      case _i33.Transaction:
+        return _i33.Transaction.t;
+      case _i35.User:
+        return _i35.User.t;
+      case _i36.UserPaymentInfo:
+        return _i36.UserPaymentInfo.t;
+      case _i38.UserPublicKey:
+        return _i38.UserPublicKey.t;
+      case _i28.UserSlot:
+        return _i28.UserSlot.t;
     }
     return null;
   }

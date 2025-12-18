@@ -23,23 +23,25 @@ import '../endpoints/news_endpoint.dart' as _i11;
 import '../endpoints/payment_endpoint.dart' as _i12;
 import '../endpoints/pgp_key_endpoint.dart' as _i13;
 import '../endpoints/rating_endpoint.dart' as _i14;
-import '../endpoints/search_endpoint.dart' as _i15;
-import '../endpoints/settings_endpoint.dart' as _i16;
-import '../endpoints/slot_order_endpoint.dart' as _i17;
-import '../endpoints/slot_variant_endpoint.dart' as _i18;
-import '../endpoints/transaction_endpoint.dart' as _i19;
-import '../endpoints/user_profile_endpoint.dart' as _i20;
-import '../endpoints/user_slot_endpoint.dart' as _i21;
-import '../greeting_endpoint.dart' as _i22;
-import 'package:bay_server/src/generated/registration_request.dart' as _i23;
-import 'package:bay_server/src/generated/login_request.dart' as _i24;
-import 'package:bay_server/src/generated/dispute_status.dart' as _i25;
-import 'package:bay_server/src/generated/quantity_unit.dart' as _i26;
-import 'dart:typed_data' as _i27;
-import 'package:bay_server/src/generated/rating_value.dart' as _i28;
-import 'package:bay_server/src/generated/payment_method.dart' as _i29;
-import 'package:bay_server/src/generated/transaction_status.dart' as _i30;
-import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i31;
+import '../endpoints/report_endpoint.dart' as _i15;
+import '../endpoints/search_endpoint.dart' as _i16;
+import '../endpoints/settings_endpoint.dart' as _i17;
+import '../endpoints/slot_order_endpoint.dart' as _i18;
+import '../endpoints/slot_variant_endpoint.dart' as _i19;
+import '../endpoints/transaction_endpoint.dart' as _i20;
+import '../endpoints/user_profile_endpoint.dart' as _i21;
+import '../endpoints/user_slot_endpoint.dart' as _i22;
+import '../greeting_endpoint.dart' as _i23;
+import 'package:bay_server/src/generated/registration_request.dart' as _i24;
+import 'package:bay_server/src/generated/login_request.dart' as _i25;
+import 'package:bay_server/src/generated/dispute_status.dart' as _i26;
+import 'package:bay_server/src/generated/quantity_unit.dart' as _i27;
+import 'dart:typed_data' as _i28;
+import 'package:bay_server/src/generated/rating_value.dart' as _i29;
+import 'package:bay_server/src/generated/report_reason.dart' as _i30;
+import 'package:bay_server/src/generated/payment_method.dart' as _i31;
+import 'package:bay_server/src/generated/transaction_status.dart' as _i32;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i33;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -123,49 +125,55 @@ class Endpoints extends _i1.EndpointDispatch {
           'rating',
           null,
         ),
-      'search': _i15.SearchEndpoint()
+      'report': _i15.ReportEndpoint()
+        ..initialize(
+          server,
+          'report',
+          null,
+        ),
+      'search': _i16.SearchEndpoint()
         ..initialize(
           server,
           'search',
           null,
         ),
-      'settings': _i16.SettingsEndpoint()
+      'settings': _i17.SettingsEndpoint()
         ..initialize(
           server,
           'settings',
           null,
         ),
-      'slotOrder': _i17.SlotOrderEndpoint()
+      'slotOrder': _i18.SlotOrderEndpoint()
         ..initialize(
           server,
           'slotOrder',
           null,
         ),
-      'slotVariant': _i18.SlotVariantEndpoint()
+      'slotVariant': _i19.SlotVariantEndpoint()
         ..initialize(
           server,
           'slotVariant',
           null,
         ),
-      'transaction': _i19.TransactionEndpoint()
+      'transaction': _i20.TransactionEndpoint()
         ..initialize(
           server,
           'transaction',
           null,
         ),
-      'userProfile': _i20.UserProfileEndpoint()
+      'userProfile': _i21.UserProfileEndpoint()
         ..initialize(
           server,
           'userProfile',
           null,
         ),
-      'userSlot': _i21.UserSlotEndpoint()
+      'userSlot': _i22.UserSlotEndpoint()
         ..initialize(
           server,
           'userSlot',
           null,
         ),
-      'greeting': _i22.GreetingEndpoint()
+      'greeting': _i23.GreetingEndpoint()
         ..initialize(
           server,
           'greeting',
@@ -181,7 +189,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i23.RegistrationRequest>(),
+              type: _i1.getType<_i24.RegistrationRequest>(),
               nullable: false,
             )
           },
@@ -199,7 +207,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i24.LoginRequest>(),
+              type: _i1.getType<_i25.LoginRequest>(),
               nullable: false,
             )
           },
@@ -676,7 +684,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'status': _i1.ParameterDescription(
               name: 'status',
-              type: _i1.getType<_i25.DisputeStatus?>(),
+              type: _i1.getType<_i26.DisputeStatus?>(),
               nullable: true,
             ),
             'limit': _i1.ParameterDescription(
@@ -1030,7 +1038,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i26.QuantityUnit>(),
+              type: _i1.getType<_i27.QuantityUnit>(),
               nullable: false,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -1113,7 +1121,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i26.QuantityUnit?>(),
+              type: _i1.getType<_i27.QuantityUnit?>(),
               nullable: true,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -1292,7 +1300,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'imageData': _i1.ParameterDescription(
               name: 'imageData',
-              type: _i1.getType<_i27.ByteData>(),
+              type: _i1.getType<_i28.ByteData>(),
               nullable: false,
             ),
           },
@@ -2216,7 +2224,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'rating': _i1.ParameterDescription(
               name: 'rating',
-              type: _i1.getType<_i28.RatingValue>(),
+              type: _i1.getType<_i29.RatingValue>(),
               nullable: false,
             ),
             'comment': _i1.ParameterDescription(
@@ -2418,6 +2426,185 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
+    connectors['report'] = _i1.EndpointConnector(
+      name: 'report',
+      endpoint: endpoints['report']!,
+      methodConnectors: {
+        'createListingReport': _i1.MethodConnector(
+          name: 'createListingReport',
+          params: {
+            'listingId': _i1.ParameterDescription(
+              name: 'listingId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'reason': _i1.ParameterDescription(
+              name: 'reason',
+              type: _i1.getType<_i30.ReportReason>(),
+              nullable: false,
+            ),
+            'details': _i1.ParameterDescription(
+              name: 'details',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).createListingReport(
+            session,
+            params['listingId'],
+            params['reason'],
+            params['details'],
+          ),
+        ),
+        'createUserReport': _i1.MethodConnector(
+          name: 'createUserReport',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'reason': _i1.ParameterDescription(
+              name: 'reason',
+              type: _i1.getType<_i30.ReportReason>(),
+              nullable: false,
+            ),
+            'details': _i1.ParameterDescription(
+              name: 'details',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).createUserReport(
+            session,
+            params['userId'],
+            params['reason'],
+            params['details'],
+          ),
+        ),
+        'getMyReports': _i1.MethodConnector(
+          name: 'getMyReports',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint)
+                  .getMyReports(session),
+        ),
+        'getById': _i1.MethodConnector(
+          name: 'getById',
+          params: {
+            'reportId': _i1.ParameterDescription(
+              name: 'reportId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).getById(
+            session,
+            params['reportId'],
+          ),
+        ),
+        'getMyReportCount': _i1.MethodConnector(
+          name: 'getMyReportCount',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint)
+                  .getMyReportCount(session),
+        ),
+        'deleteReport': _i1.MethodConnector(
+          name: 'deleteReport',
+          params: {
+            'reportId': _i1.ParameterDescription(
+              name: 'reportId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).deleteReport(
+            session,
+            params['reportId'],
+          ),
+        ),
+        'getAuthenticatedUser': _i1.MethodConnector(
+          name: 'getAuthenticatedUser',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint)
+                  .getAuthenticatedUser(session),
+        ),
+        'requireUser': _i1.MethodConnector(
+          name: 'requireUser',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).requireUser(session),
+        ),
+        'requireAdmin': _i1.MethodConnector(
+          name: 'requireAdmin',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint)
+                  .requireAdmin(session),
+        ),
+        'requireModerator': _i1.MethodConnector(
+          name: 'requireModerator',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint)
+                  .requireModerator(session),
+        ),
+        'isAdmin': _i1.MethodConnector(
+          name: 'isAdmin',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).isAdmin(session),
+        ),
+        'isModerator': _i1.MethodConnector(
+          name: 'isModerator',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).isModerator(session),
+        ),
+      },
+    );
     connectors['search'] = _i1.EndpointConnector(
       name: 'search',
       endpoint: endpoints['search']!,
@@ -2465,7 +2652,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['search'] as _i15.SearchEndpoint).search(
+              (endpoints['search'] as _i16.SearchEndpoint).search(
             session,
             query: params['query'],
             categoryId: params['categoryId'],
@@ -2494,7 +2681,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['search'] as _i15.SearchEndpoint).quickSearch(
+              (endpoints['search'] as _i16.SearchEndpoint).quickSearch(
             session,
             params['query'],
             limit: params['limit'],
@@ -2507,7 +2694,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['search'] as _i15.SearchEndpoint).countActive(session),
+              (endpoints['search'] as _i16.SearchEndpoint).countActive(session),
         ),
       },
     );
@@ -2528,7 +2715,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['settings'] as _i16.SettingsEndpoint).get(
+              (endpoints['settings'] as _i17.SettingsEndpoint).get(
             session,
             params['key'],
           ),
@@ -2546,7 +2733,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['settings'] as _i16.SettingsEndpoint).getMultiple(
+              (endpoints['settings'] as _i17.SettingsEndpoint).getMultiple(
             session,
             params['keys'],
           ),
@@ -2574,7 +2761,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['settings'] as _i16.SettingsEndpoint).set(
+              (endpoints['settings'] as _i17.SettingsEndpoint).set(
             session,
             params['key'],
             params['value'],
@@ -2594,7 +2781,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['settings'] as _i16.SettingsEndpoint).delete(
+              (endpoints['settings'] as _i17.SettingsEndpoint).delete(
             session,
             params['key'],
           ),
@@ -2606,7 +2793,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['settings'] as _i16.SettingsEndpoint)
+              (endpoints['settings'] as _i17.SettingsEndpoint)
                   .getPaymentSettings(session),
         ),
         'updatePaymentSettings': _i1.MethodConnector(
@@ -2637,7 +2824,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['settings'] as _i16.SettingsEndpoint)
+              (endpoints['settings'] as _i17.SettingsEndpoint)
                   .updatePaymentSettings(
             session,
             paypalEmail: params['paypalEmail'],
@@ -2662,7 +2849,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'paymentMethod': _i1.ParameterDescription(
               name: 'paymentMethod',
-              type: _i1.getType<_i29.PaymentMethod>(),
+              type: _i1.getType<_i31.PaymentMethod>(),
               nullable: false,
             ),
           },
@@ -2670,7 +2857,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint).create(
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint).create(
             session,
             slotVariantId: params['slotVariantId'],
             paymentMethod: params['paymentMethod'],
@@ -2683,7 +2870,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint)
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint)
                   .getMyOrders(session),
         ),
         'getPendingOrders': _i1.MethodConnector(
@@ -2693,7 +2880,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint)
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint)
                   .getPendingOrders(session),
         ),
         'getById': _i1.MethodConnector(
@@ -2709,7 +2896,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint).getById(
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint).getById(
             session,
             params['id'],
           ),
@@ -2727,7 +2914,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint).cancel(
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint).cancel(
             session,
             params['id'],
           ),
@@ -2750,7 +2937,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint).markAsPaid(
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint).markAsPaid(
             session,
             orderId: params['orderId'],
             transactionId: params['transactionId'],
@@ -2763,7 +2950,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint)
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint)
                   .getAllOrders(session),
         ),
         'getAllPendingOrders': _i1.MethodConnector(
@@ -2773,7 +2960,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint)
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint)
                   .getAllPendingOrders(session),
         ),
         'getOrderUser': _i1.MethodConnector(
@@ -2789,7 +2976,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint).getOrderUser(
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint).getOrderUser(
             session,
             params['orderId'],
           ),
@@ -2807,7 +2994,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint)
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint)
                   .getOrderVariant(
             session,
             params['orderId'],
@@ -2820,7 +3007,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotOrder'] as _i17.SlotOrderEndpoint)
+              (endpoints['slotOrder'] as _i18.SlotOrderEndpoint)
                   .expireOldOrders(session),
         ),
       },
@@ -2836,7 +3023,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i18.SlotVariantEndpoint)
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint)
                   .getAll(session),
         ),
         'getActive': _i1.MethodConnector(
@@ -2846,7 +3033,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i18.SlotVariantEndpoint)
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint)
                   .getActive(session),
         ),
         'getById': _i1.MethodConnector(
@@ -2862,7 +3049,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i18.SlotVariantEndpoint).getById(
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint).getById(
             session,
             params['id'],
           ),
@@ -2910,7 +3097,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i18.SlotVariantEndpoint).create(
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint).create(
             session,
             name: params['name'],
             description: params['description'],
@@ -2974,7 +3161,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i18.SlotVariantEndpoint).update(
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint).update(
             session,
             id: params['id'],
             name: params['name'],
@@ -3000,7 +3187,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['slotVariant'] as _i18.SlotVariantEndpoint).delete(
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint).delete(
             session,
             params['id'],
           ),
@@ -3034,7 +3221,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint).create(
+              (endpoints['transaction'] as _i20.TransactionEndpoint).create(
             session,
             listingId: params['listingId'],
             quantity: params['quantity'],
@@ -3054,7 +3241,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint).getById(
+              (endpoints['transaction'] as _i20.TransactionEndpoint).getById(
             session,
             params['transactionId'],
           ),
@@ -3064,7 +3251,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'status': _i1.ParameterDescription(
               name: 'status',
-              type: _i1.getType<_i30.TransactionStatus?>(),
+              type: _i1.getType<_i32.TransactionStatus?>(),
               nullable: true,
             ),
             'asBuyer': _i1.ParameterDescription(
@@ -3092,7 +3279,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .getMyTransactions(
             session,
             status: params['status'],
@@ -3115,7 +3302,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .markAsShipped(
             session,
             params['transactionId'],
@@ -3134,7 +3321,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .markAsReceived(
             session,
             params['transactionId'],
@@ -3153,7 +3340,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint).cancel(
+              (endpoints['transaction'] as _i20.TransactionEndpoint).cancel(
             session,
             params['transactionId'],
           ),
@@ -3176,7 +3363,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .openDispute(
             session,
             params['transactionId'],
@@ -3190,7 +3377,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .getOpenCount(session),
         ),
         'getCompletedCount': _i1.MethodConnector(
@@ -3206,7 +3393,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .getCompletedCount(
             session,
             params['userId'],
@@ -3219,7 +3406,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .autoCompleteExpired(session),
         ),
         'getUpcomingAutoComplete': _i1.MethodConnector(
@@ -3235,7 +3422,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['transaction'] as _i19.TransactionEndpoint)
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
                   .getUpcomingAutoComplete(
             session,
             daysAhead: params['daysAhead'],
@@ -3260,7 +3447,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i20.UserProfileEndpoint).getProfile(
+              (endpoints['userProfile'] as _i21.UserProfileEndpoint).getProfile(
             session,
             params['userId'],
           ),
@@ -3288,7 +3475,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i20.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
                   .getUserListings(
             session,
             params['userId'],
@@ -3303,7 +3490,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i20.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
                   .getMyPaymentInfo(session),
         ),
         'updateMyPaymentInfo': _i1.MethodConnector(
@@ -3324,7 +3511,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i20.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
                   .updateMyPaymentInfo(
             session,
             paypalAddress: params['paypalAddress'],
@@ -3344,7 +3531,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i20.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
                   .getUsername(
             session,
             params['userId'],
@@ -3363,7 +3550,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i20.UserProfileEndpoint).hasContact(
+              (endpoints['userProfile'] as _i21.UserProfileEndpoint).hasContact(
             session,
             params['otherUserId'],
           ),
@@ -3381,7 +3568,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
                   .getMySlots(session),
         ),
         'getAvailableSlots': _i1.MethodConnector(
@@ -3391,7 +3578,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
                   .getAvailableSlots(session),
         ),
         'getExpiringSoon': _i1.MethodConnector(
@@ -3407,7 +3594,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint).getExpiringSoon(
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint).getExpiringSoon(
             session,
             days: params['days'],
           ),
@@ -3430,7 +3617,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint).createSlot(
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint).createSlot(
             session,
             userId: params['userId'],
             slotVariantId: params['slotVariantId'],
@@ -3454,7 +3641,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint).extendSlot(
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint).extendSlot(
             session,
             slotId: params['slotId'],
             additionalDays: params['additionalDays'],
@@ -3467,7 +3654,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
                   .deactivateExpired(session),
         ),
         'getSlotStats': _i1.MethodConnector(
@@ -3477,7 +3664,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
                   .getSlotStats(session),
         ),
         'createTestSlot': _i1.MethodConnector(
@@ -3493,7 +3680,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i21.UserSlotEndpoint).createTestSlot(
+              (endpoints['userSlot'] as _i22.UserSlotEndpoint).createTestSlot(
             session,
             slotVariantId: params['slotVariantId'],
           ),
@@ -3517,13 +3704,13 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['greeting'] as _i22.GreetingEndpoint).hello(
+              (endpoints['greeting'] as _i23.GreetingEndpoint).hello(
             session,
             params['name'],
           ),
         )
       },
     );
-    modules['serverpod_auth'] = _i31.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i33.Endpoints()..initializeEndpoints(server);
   }
 }

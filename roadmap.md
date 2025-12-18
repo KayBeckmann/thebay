@@ -415,27 +415,27 @@
 
 ---
 
-## Meilenstein 11a: Melden-System (Reports)
+## Meilenstein 11a: Melden-System (Reports) ✅
 
 ### 11a.1 Datenbank-Erweiterung
-- [ ] Report-Tabelle (reporter_id, target_type, target_id, reason, status, created_at)
-- [ ] ReportTargetType Enum (listing, user)
-- [ ] ReportStatus Enum (open, reviewing, resolved, dismissed)
-- [ ] ReportReason Enum (spam, inappropriate, scam, other)
+- [x] Report-Tabelle (reporter_id, target_type, target_id, reason, status, created_at)
+- [x] ReportTargetType Enum (listing, user)
+- [x] ReportStatus Enum (open, reviewing, resolved, dismissed)
+- [x] ReportReason Enum (spam, inappropriate, scam, fraud, harassment, other)
 
 ### 11a.2 Backend - Report-Endpoints
-- [ ] Angebot melden (createListingReport)
-- [ ] User melden (createUserReport)
-- [ ] Eigene Meldungen abrufen (getMyReports)
-- [ ] Meldung abrufen nach ID (getById)
-- [ ] Prüfung: Ein User kann dasselbe Ziel nur einmal melden
+- [x] Angebot melden (createListingReport)
+- [x] User melden (createUserReport)
+- [x] Eigene Meldungen abrufen (getMyReports)
+- [x] Meldung abrufen nach ID (getById)
+- [x] Prüfung: Ein User kann dasselbe Ziel nur einmal melden
+- [x] Meldung löschen (deleteReport - nur wenn status=open)
 
 ### 11a.3 Frontend - Melden-Funktionalität
-- [ ] "Melden"-Button in Angebots-Detailansicht
-- [ ] "Melden"-Button in User-Profilen
-- [ ] Melde-Dialog mit Grund-Auswahl
-- [ ] Bestätigungs-Dialog nach erfolgreicher Meldung
-- [ ] Eigene Meldungen anzeigen (optional)
+- [x] "Melden"-Button in Angebots-Detailansicht
+- [x] "Melden"-Button in User-Profilen
+- [x] Melde-Dialog mit Grund-Auswahl
+- [x] Bestätigungs-Feedback nach erfolgreicher Meldung
 
 ---
 

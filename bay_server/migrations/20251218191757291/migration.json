@@ -1,0 +1,196 @@
+{
+  "actions": [
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "reports",
+        "dartName": "Report",
+        "module": "bay",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 6,
+            "isNullable": false,
+            "columnDefault": "nextval('reports_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "reporterId",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "targetType",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "protocol:ReportTargetType"
+          },
+          {
+            "name": "targetId",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "int"
+          },
+          {
+            "name": "reason",
+            "columnType": 6,
+            "isNullable": false,
+            "dartType": "protocol:ReportReason"
+          },
+          {
+            "name": "details",
+            "columnType": 0,
+            "isNullable": true,
+            "dartType": "String?"
+          },
+          {
+            "name": "status",
+            "columnType": 6,
+            "isNullable": false,
+            "columnDefault": "0",
+            "dartType": "protocol:ReportStatus"
+          },
+          {
+            "name": "assignedModeratorId",
+            "columnType": 6,
+            "isNullable": true,
+            "dartType": "int?"
+          },
+          {
+            "name": "moderatorNotes",
+            "columnType": 0,
+            "isNullable": true,
+            "dartType": "String?"
+          },
+          {
+            "name": "createdAt",
+            "columnType": 4,
+            "isNullable": false,
+            "columnDefault": "CURRENT_TIMESTAMP",
+            "dartType": "DateTime"
+          },
+          {
+            "name": "updatedAt",
+            "columnType": 4,
+            "isNullable": false,
+            "columnDefault": "CURRENT_TIMESTAMP",
+            "dartType": "DateTime"
+          },
+          {
+            "name": "resolvedAt",
+            "columnType": 4,
+            "isNullable": true,
+            "dartType": "DateTime?"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "constraintName": "reports_fk_0",
+            "columns": [
+              "reporterId"
+            ],
+            "referenceTable": "users",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 4
+          },
+          {
+            "constraintName": "reports_fk_1",
+            "columns": [
+              "assignedModeratorId"
+            ],
+            "referenceTable": "users",
+            "referenceTableSchema": "public",
+            "referenceColumns": [
+              "id"
+            ],
+            "onUpdate": 3,
+            "onDelete": 0
+          }
+        ],
+        "indexes": [
+          {
+            "indexName": "reports_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          },
+          {
+            "indexName": "reports_reporter_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "reporterId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          },
+          {
+            "indexName": "reports_target_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "targetType"
+              },
+              {
+                "type": 0,
+                "definition": "targetId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          },
+          {
+            "indexName": "reports_status_idx",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "status"
+              }
+            ],
+            "type": "btree",
+            "isUnique": false,
+            "isPrimary": false
+          },
+          {
+            "indexName": "reports_unique_target_per_user",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "reporterId"
+              },
+              {
+                "type": 0,
+                "definition": "targetType"
+              },
+              {
+                "type": 0,
+                "definition": "targetId"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": false
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [],
+  "migrationApiVersion": 1
+}

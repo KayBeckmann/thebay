@@ -2,6 +2,7 @@ import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart' show client, authService;
+import '../widgets/report_dialog.dart';
 import 'listings/listing_card.dart';
 import 'messages_screen.dart' show showComposeMessageDialog;
 import 'ratings/ratings_list_widget.dart';
@@ -116,6 +117,13 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     return Scaffold(
       appBar: AppBar(
         title: Text(_profile?.username ?? 'Profil'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.flag),
+            tooltip: 'Benutzer melden',
+            onPressed: _profile != null ? () => _showReportDialog() : null,
+          ),
+        ],
       ),
       body: _buildBody(),
     );
@@ -565,6 +573,19 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     showComposeMessageDialog(
       context,
       recipientId: widget.userId,
+    );
+  }
+
+  Future<void> _showReportDialog() async {
+    if (_profile == null) return;
+
+    await showDialog(
+      context: context,
+      builder: (context) => ReportDialog(
+        targetType: ReportTargetType.user,
+        targetId: widget.userId,
+        targetName: _profile!.username,
+      ),
     );
   }
 

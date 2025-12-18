@@ -113,6 +113,19 @@ rating:
   - createAutomaticRatings:
   - getPendingRatingTransactions:
   - getPendingRatingCount:
+report:
+  - createListingReport:
+  - createUserReport:
+  - getMyReports:
+  - getById:
+  - getMyReportCount:
+  - deleteReport:
+  - getAuthenticatedUser:
+  - requireUser:
+  - requireAdmin:
+  - requireModerator:
+  - isAdmin:
+  - isModerator:
 search:
   - search:
   - quickSearch:

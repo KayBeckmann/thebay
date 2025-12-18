@@ -1,0 +1,7 @@
+### Status of a report
+enum: ReportStatus
+values:
+  - open
+  - reviewing
+  - resolved
+  - dismissed

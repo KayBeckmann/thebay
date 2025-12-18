@@ -1,0 +1,9 @@
+### Reason for reporting
+enum: ReportReason
+values:
+  - spam
+  - inappropriate
+  - scam
+  - fraud
+  - harassment
+  - other

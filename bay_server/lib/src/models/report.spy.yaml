@@ -1,0 +1,36 @@
+### Report for listings or users
+class: Report
+table: reports
+fields:
+  ### User who created the report
+  reporterId: int, relation(parent=users, onDelete=cascade)
+  ### Type of entity being reported (listing or user)
+  targetType: ReportTargetType
+  ### ID of the reported entity
+  targetId: int
+  ### Reason for the report
+  reason: ReportReason
+  ### Additional details provided by reporter
+  details: String?
+  ### Current status of the report
+  status: ReportStatus, default=open
+  ### Moderator who is handling this report
+  assignedModeratorId: int?, relation(parent=users, onDelete=setNull)
+  ### Internal notes from moderators
+  moderatorNotes: String?
+  ### When the report was created
+  createdAt: DateTime, default=now
+  ### When the report status was last updated
+  updatedAt: DateTime, default=now
+  ### When the report was resolved
+  resolvedAt: DateTime?
+indexes:
+  reports_reporter_idx:
+    fields: reporterId
+  reports_target_idx:
+    fields: targetType, targetId
+  reports_status_idx:
+    fields: status
+  reports_unique_target_per_user:
+    fields: reporterId, targetType, targetId
+    unique: true

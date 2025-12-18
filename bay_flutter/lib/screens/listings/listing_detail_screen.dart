@@ -4,6 +4,7 @@ import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart' show client, authService;
+import '../../widgets/report_dialog.dart';
 import '../messages_screen.dart' show showComposeMessageDialog;
 import '../user_profile_screen.dart';
 import '../transactions/start_transaction_dialog.dart';
@@ -142,6 +143,13 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
           flexibleSpace: FlexibleSpaceBar(
             background: _buildImageGallery(),
           ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.flag),
+              tooltip: 'Angebot melden',
+              onPressed: () => _showReportDialog(),
+            ),
+          ],
         ),
 
         // Inhalt
@@ -474,6 +482,19 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => UserProfileScreen(userId: _listing!.userId),
+      ),
+    );
+  }
+
+  Future<void> _showReportDialog() async {
+    if (_listing == null) return;
+
+    await showDialog(
+      context: context,
+      builder: (context) => ReportDialog(
+        targetType: ReportTargetType.listing,
+        targetId: _listing!.id!,
+        targetName: _listing!.title,
       ),
     );
   }

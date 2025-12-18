@@ -1,0 +1,5 @@
+### Type of entity being reported
+enum: ReportTargetType
+values:
+  - listing
+  - user
