@@ -340,26 +340,26 @@
 
 ---
 
-## Meilenstein 9c: Backend - Bewertungen
+## Meilenstein 9c: Backend - Bewertungen ✅
 
 ### 9c.1 RatingEndpoint
-- [ ] Bewertung abgeben (nur nach abgeschlossener Transaktion)
-- [ ] Bewertung abrufen (für Transaktion, für User)
-- [ ] Prüfung: Jeder kann nur einmal pro Transaktion bewerten
-- [ ] Bewertung nur innerhalb von 14 Tagen nach Abschluss möglich
+- [x] Bewertung abgeben (nur nach abgeschlossener Transaktion)
+- [x] Bewertung abrufen (für Transaktion, für User)
+- [x] Prüfung: Jeder kann nur einmal pro Transaktion bewerten
+- [x] Bewertung nur innerhalb von 14 Tagen nach Abschluss möglich
 
 ### 9c.2 Automatisierung
-- [ ] Automatische positive Bewertung nach 14 Tagen ohne Abgabe
-- [ ] Cron-Job für ausstehende Bewertungen
+- [x] Automatische positive Bewertung nach 14 Tagen ohne Abgabe
+- [x] Cron-Job für ausstehende Bewertungen
 
 ### 9c.3 Bewertungs-Statistiken
-- [ ] Bewertungsdurchschnitt berechnen (für UserProfile)
-- [ ] Anzahl Bewertungen pro User
-- [ ] Aufschlüsselung (positiv/neutral/negativ)
+- [x] Bewertungsdurchschnitt berechnen (für UserProfile)
+- [x] Anzahl Bewertungen pro User
+- [x] Aufschlüsselung (positiv/neutral/negativ)
 
 ### 9c.4 Integration mit UserProfile
-- [ ] ratingAverage und ratingCount im UserProfile aktualisieren
-- [ ] Bewertungsübersicht im Profil anzeigen
+- [x] ratingAverage und ratingCount im UserProfile aktualisieren
+- [x] Bewertungsübersicht im Profil anzeigen
 
 ---
 

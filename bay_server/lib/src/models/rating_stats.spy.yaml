@@ -1,0 +1,13 @@
+### Rating statistics for a user (no table, used for API responses)
+class: RatingStats
+fields:
+  ### Total number of ratings received
+  totalCount: int
+  ### Number of positive ratings
+  positiveCount: int
+  ### Number of neutral ratings
+  neutralCount: int
+  ### Number of negative ratings
+  negativeCount: int
+  ### Percentage of positive ratings (0-100, null if no ratings)
+  positivePercentage: double?

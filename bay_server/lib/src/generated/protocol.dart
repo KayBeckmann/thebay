@@ -29,32 +29,34 @@ import 'order_status.dart' as _i17;
 import 'payment_method.dart' as _i18;
 import 'quantity_unit.dart' as _i19;
 import 'rating.dart' as _i20;
-import 'rating_value.dart' as _i21;
-import 'registration_request.dart' as _i22;
-import 'search_result.dart' as _i23;
-import 'settings.dart' as _i24;
-import 'slot_order.dart' as _i25;
-import 'slot_variant.dart' as _i26;
-import 'transaction.dart' as _i27;
-import 'transaction_status.dart' as _i28;
-import 'user.dart' as _i29;
-import 'user_payment_info.dart' as _i30;
-import 'user_profile.dart' as _i31;
-import 'user_public_key.dart' as _i32;
-import 'user_role.dart' as _i33;
-import 'user_slot.dart' as _i34;
-import 'package:bay_server/src/generated/category.dart' as _i35;
-import 'package:bay_server/src/generated/dispute.dart' as _i36;
-import 'package:bay_server/src/generated/message_draft.dart' as _i37;
-import 'package:bay_server/src/generated/listing.dart' as _i38;
-import 'package:bay_server/src/generated/listing_image.dart' as _i39;
-import 'package:bay_server/src/generated/message.dart' as _i40;
-import 'package:bay_server/src/generated/news.dart' as _i41;
-import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i42;
-import 'package:bay_server/src/generated/slot_order.dart' as _i43;
-import 'package:bay_server/src/generated/slot_variant.dart' as _i44;
+import 'rating_stats.dart' as _i21;
+import 'rating_value.dart' as _i22;
+import 'registration_request.dart' as _i23;
+import 'search_result.dart' as _i24;
+import 'settings.dart' as _i25;
+import 'slot_order.dart' as _i26;
+import 'slot_variant.dart' as _i27;
+import 'transaction.dart' as _i28;
+import 'transaction_status.dart' as _i29;
+import 'user.dart' as _i30;
+import 'user_payment_info.dart' as _i31;
+import 'user_profile.dart' as _i32;
+import 'user_public_key.dart' as _i33;
+import 'user_role.dart' as _i34;
+import 'user_slot.dart' as _i35;
+import 'package:bay_server/src/generated/category.dart' as _i36;
+import 'package:bay_server/src/generated/dispute.dart' as _i37;
+import 'package:bay_server/src/generated/message_draft.dart' as _i38;
+import 'package:bay_server/src/generated/listing.dart' as _i39;
+import 'package:bay_server/src/generated/listing_image.dart' as _i40;
+import 'package:bay_server/src/generated/message.dart' as _i41;
+import 'package:bay_server/src/generated/news.dart' as _i42;
+import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i43;
+import 'package:bay_server/src/generated/rating.dart' as _i44;
 import 'package:bay_server/src/generated/transaction.dart' as _i45;
-import 'package:bay_server/src/generated/user_slot.dart' as _i46;
+import 'package:bay_server/src/generated/slot_order.dart' as _i46;
+import 'package:bay_server/src/generated/slot_variant.dart' as _i47;
+import 'package:bay_server/src/generated/user_slot.dart' as _i48;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -72,6 +74,7 @@ export 'order_status.dart';
 export 'payment_method.dart';
 export 'quantity_unit.dart';
 export 'rating.dart';
+export 'rating_stats.dart';
 export 'rating_value.dart';
 export 'registration_request.dart';
 export 'search_result.dart';
@@ -2349,47 +2352,50 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i20.Rating) {
       return _i20.Rating.fromJson(data) as T;
     }
-    if (t == _i21.RatingValue) {
-      return _i21.RatingValue.fromJson(data) as T;
+    if (t == _i21.RatingStats) {
+      return _i21.RatingStats.fromJson(data) as T;
     }
-    if (t == _i22.RegistrationRequest) {
-      return _i22.RegistrationRequest.fromJson(data) as T;
+    if (t == _i22.RatingValue) {
+      return _i22.RatingValue.fromJson(data) as T;
     }
-    if (t == _i23.SearchResult) {
-      return _i23.SearchResult.fromJson(data) as T;
+    if (t == _i23.RegistrationRequest) {
+      return _i23.RegistrationRequest.fromJson(data) as T;
     }
-    if (t == _i24.Settings) {
-      return _i24.Settings.fromJson(data) as T;
+    if (t == _i24.SearchResult) {
+      return _i24.SearchResult.fromJson(data) as T;
     }
-    if (t == _i25.SlotOrder) {
-      return _i25.SlotOrder.fromJson(data) as T;
+    if (t == _i25.Settings) {
+      return _i25.Settings.fromJson(data) as T;
     }
-    if (t == _i26.SlotVariant) {
-      return _i26.SlotVariant.fromJson(data) as T;
+    if (t == _i26.SlotOrder) {
+      return _i26.SlotOrder.fromJson(data) as T;
     }
-    if (t == _i27.Transaction) {
-      return _i27.Transaction.fromJson(data) as T;
+    if (t == _i27.SlotVariant) {
+      return _i27.SlotVariant.fromJson(data) as T;
     }
-    if (t == _i28.TransactionStatus) {
-      return _i28.TransactionStatus.fromJson(data) as T;
+    if (t == _i28.Transaction) {
+      return _i28.Transaction.fromJson(data) as T;
     }
-    if (t == _i29.User) {
-      return _i29.User.fromJson(data) as T;
+    if (t == _i29.TransactionStatus) {
+      return _i29.TransactionStatus.fromJson(data) as T;
     }
-    if (t == _i30.UserPaymentInfo) {
-      return _i30.UserPaymentInfo.fromJson(data) as T;
+    if (t == _i30.User) {
+      return _i30.User.fromJson(data) as T;
     }
-    if (t == _i31.UserProfile) {
-      return _i31.UserProfile.fromJson(data) as T;
+    if (t == _i31.UserPaymentInfo) {
+      return _i31.UserPaymentInfo.fromJson(data) as T;
     }
-    if (t == _i32.UserPublicKey) {
-      return _i32.UserPublicKey.fromJson(data) as T;
+    if (t == _i32.UserProfile) {
+      return _i32.UserProfile.fromJson(data) as T;
     }
-    if (t == _i33.UserRole) {
-      return _i33.UserRole.fromJson(data) as T;
+    if (t == _i33.UserPublicKey) {
+      return _i33.UserPublicKey.fromJson(data) as T;
     }
-    if (t == _i34.UserSlot) {
-      return _i34.UserSlot.fromJson(data) as T;
+    if (t == _i34.UserRole) {
+      return _i34.UserRole.fromJson(data) as T;
+    }
+    if (t == _i35.UserSlot) {
+      return _i35.UserSlot.fromJson(data) as T;
     }
     if (t == _i1.getType<_i4.Greeting?>()) {
       return (data != null ? _i4.Greeting.fromJson(data) : null) as T;
@@ -2442,68 +2448,71 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i20.Rating?>()) {
       return (data != null ? _i20.Rating.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i21.RatingValue?>()) {
-      return (data != null ? _i21.RatingValue.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i21.RatingStats?>()) {
+      return (data != null ? _i21.RatingStats.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i22.RegistrationRequest?>()) {
-      return (data != null ? _i22.RegistrationRequest.fromJson(data) : null)
+    if (t == _i1.getType<_i22.RatingValue?>()) {
+      return (data != null ? _i22.RatingValue.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i23.RegistrationRequest?>()) {
+      return (data != null ? _i23.RegistrationRequest.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i23.SearchResult?>()) {
-      return (data != null ? _i23.SearchResult.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i24.SearchResult?>()) {
+      return (data != null ? _i24.SearchResult.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i24.Settings?>()) {
-      return (data != null ? _i24.Settings.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i25.Settings?>()) {
+      return (data != null ? _i25.Settings.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i25.SlotOrder?>()) {
-      return (data != null ? _i25.SlotOrder.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i26.SlotOrder?>()) {
+      return (data != null ? _i26.SlotOrder.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i26.SlotVariant?>()) {
-      return (data != null ? _i26.SlotVariant.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i27.SlotVariant?>()) {
+      return (data != null ? _i27.SlotVariant.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i27.Transaction?>()) {
-      return (data != null ? _i27.Transaction.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i28.Transaction?>()) {
+      return (data != null ? _i28.Transaction.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i28.TransactionStatus?>()) {
-      return (data != null ? _i28.TransactionStatus.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i29.TransactionStatus?>()) {
+      return (data != null ? _i29.TransactionStatus.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i29.User?>()) {
-      return (data != null ? _i29.User.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i30.User?>()) {
+      return (data != null ? _i30.User.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i30.UserPaymentInfo?>()) {
-      return (data != null ? _i30.UserPaymentInfo.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i31.UserPaymentInfo?>()) {
+      return (data != null ? _i31.UserPaymentInfo.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i31.UserProfile?>()) {
-      return (data != null ? _i31.UserProfile.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i32.UserProfile?>()) {
+      return (data != null ? _i32.UserProfile.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i32.UserPublicKey?>()) {
-      return (data != null ? _i32.UserPublicKey.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i33.UserPublicKey?>()) {
+      return (data != null ? _i33.UserPublicKey.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i33.UserRole?>()) {
-      return (data != null ? _i33.UserRole.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i34.UserRole?>()) {
+      return (data != null ? _i34.UserRole.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i34.UserSlot?>()) {
-      return (data != null ? _i34.UserSlot.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i35.UserSlot?>()) {
+      return (data != null ? _i35.UserSlot.fromJson(data) : null) as T;
     }
     if (t == List<_i11.Listing>) {
       return (data as List).map((e) => deserialize<_i11.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i35.Category>) {
-      return (data as List).map((e) => deserialize<_i35.Category>(e)).toList()
+    if (t == List<_i36.Category>) {
+      return (data as List).map((e) => deserialize<_i36.Category>(e)).toList()
           as T;
     }
-    if (t == List<_i36.Dispute>) {
-      return (data as List).map((e) => deserialize<_i36.Dispute>(e)).toList()
+    if (t == List<_i37.Dispute>) {
+      return (data as List).map((e) => deserialize<_i37.Dispute>(e)).toList()
           as T;
     }
-    if (t == List<_i37.MessageDraft>) {
+    if (t == List<_i38.MessageDraft>) {
       return (data as List)
-          .map((e) => deserialize<_i37.MessageDraft>(e))
+          .map((e) => deserialize<_i38.MessageDraft>(e))
           .toList() as T;
     }
-    if (t == List<_i38.Listing>) {
-      return (data as List).map((e) => deserialize<_i38.Listing>(e)).toList()
+    if (t == List<_i39.Listing>) {
+      return (data as List).map((e) => deserialize<_i39.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -2513,13 +2522,13 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i39.ListingImage>) {
+    if (t == List<_i40.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i39.ListingImage>(e))
+          .map((e) => deserialize<_i40.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i40.Message>) {
-      return (data as List).map((e) => deserialize<_i40.Message>(e)).toList()
+    if (t == List<_i41.Message>) {
+      return (data as List).map((e) => deserialize<_i41.Message>(e)).toList()
           as T;
     }
     if (t == List<Map<String, dynamic>>) {
@@ -2531,8 +2540,8 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i41.News>) {
-      return (data as List).map((e) => deserialize<_i41.News>(e)).toList() as T;
+    if (t == List<_i42.News>) {
+      return (data as List).map((e) => deserialize<_i42.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -2544,30 +2553,34 @@ class Protocol extends _i1.SerializationManagerServer {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i42.EncryptedKeyBackup>) {
+    if (t == List<_i43.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i42.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i43.EncryptedKeyBackup>(e))
           .toList() as T;
     }
-    if (t == List<String>) {
-      return (data as List).map((e) => deserialize<String>(e)).toList() as T;
-    }
-    if (t == List<_i43.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i43.SlotOrder>(e)).toList()
+    if (t == List<_i44.Rating>) {
+      return (data as List).map((e) => deserialize<_i44.Rating>(e)).toList()
           as T;
-    }
-    if (t == List<_i44.SlotVariant>) {
-      return (data as List)
-          .map((e) => deserialize<_i44.SlotVariant>(e))
-          .toList() as T;
     }
     if (t == List<_i45.Transaction>) {
       return (data as List)
           .map((e) => deserialize<_i45.Transaction>(e))
           .toList() as T;
     }
-    if (t == List<_i46.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i46.UserSlot>(e)).toList()
+    if (t == List<String>) {
+      return (data as List).map((e) => deserialize<String>(e)).toList() as T;
+    }
+    if (t == List<_i46.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i46.SlotOrder>(e)).toList()
+          as T;
+    }
+    if (t == List<_i47.SlotVariant>) {
+      return (data as List)
+          .map((e) => deserialize<_i47.SlotVariant>(e))
+          .toList() as T;
+    }
+    if (t == List<_i48.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i48.UserSlot>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
@@ -2638,46 +2651,49 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i20.Rating) {
       return 'Rating';
     }
-    if (data is _i21.RatingValue) {
+    if (data is _i21.RatingStats) {
+      return 'RatingStats';
+    }
+    if (data is _i22.RatingValue) {
       return 'RatingValue';
     }
-    if (data is _i22.RegistrationRequest) {
+    if (data is _i23.RegistrationRequest) {
       return 'RegistrationRequest';
     }
-    if (data is _i23.SearchResult) {
+    if (data is _i24.SearchResult) {
       return 'SearchResult';
     }
-    if (data is _i24.Settings) {
+    if (data is _i25.Settings) {
       return 'Settings';
     }
-    if (data is _i25.SlotOrder) {
+    if (data is _i26.SlotOrder) {
       return 'SlotOrder';
     }
-    if (data is _i26.SlotVariant) {
+    if (data is _i27.SlotVariant) {
       return 'SlotVariant';
     }
-    if (data is _i27.Transaction) {
+    if (data is _i28.Transaction) {
       return 'Transaction';
     }
-    if (data is _i28.TransactionStatus) {
+    if (data is _i29.TransactionStatus) {
       return 'TransactionStatus';
     }
-    if (data is _i29.User) {
+    if (data is _i30.User) {
       return 'User';
     }
-    if (data is _i30.UserPaymentInfo) {
+    if (data is _i31.UserPaymentInfo) {
       return 'UserPaymentInfo';
     }
-    if (data is _i31.UserProfile) {
+    if (data is _i32.UserProfile) {
       return 'UserProfile';
     }
-    if (data is _i32.UserPublicKey) {
+    if (data is _i33.UserPublicKey) {
       return 'UserPublicKey';
     }
-    if (data is _i33.UserRole) {
+    if (data is _i34.UserRole) {
       return 'UserRole';
     }
-    if (data is _i34.UserSlot) {
+    if (data is _i35.UserSlot) {
       return 'UserSlot';
     }
     className = _i2.Protocol().getClassNameForObject(data);
@@ -2748,47 +2764,50 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'Rating') {
       return deserialize<_i20.Rating>(data['data']);
     }
+    if (dataClassName == 'RatingStats') {
+      return deserialize<_i21.RatingStats>(data['data']);
+    }
     if (dataClassName == 'RatingValue') {
-      return deserialize<_i21.RatingValue>(data['data']);
+      return deserialize<_i22.RatingValue>(data['data']);
     }
     if (dataClassName == 'RegistrationRequest') {
-      return deserialize<_i22.RegistrationRequest>(data['data']);
+      return deserialize<_i23.RegistrationRequest>(data['data']);
     }
     if (dataClassName == 'SearchResult') {
-      return deserialize<_i23.SearchResult>(data['data']);
+      return deserialize<_i24.SearchResult>(data['data']);
     }
     if (dataClassName == 'Settings') {
-      return deserialize<_i24.Settings>(data['data']);
+      return deserialize<_i25.Settings>(data['data']);
     }
     if (dataClassName == 'SlotOrder') {
-      return deserialize<_i25.SlotOrder>(data['data']);
+      return deserialize<_i26.SlotOrder>(data['data']);
     }
     if (dataClassName == 'SlotVariant') {
-      return deserialize<_i26.SlotVariant>(data['data']);
+      return deserialize<_i27.SlotVariant>(data['data']);
     }
     if (dataClassName == 'Transaction') {
-      return deserialize<_i27.Transaction>(data['data']);
+      return deserialize<_i28.Transaction>(data['data']);
     }
     if (dataClassName == 'TransactionStatus') {
-      return deserialize<_i28.TransactionStatus>(data['data']);
+      return deserialize<_i29.TransactionStatus>(data['data']);
     }
     if (dataClassName == 'User') {
-      return deserialize<_i29.User>(data['data']);
+      return deserialize<_i30.User>(data['data']);
     }
     if (dataClassName == 'UserPaymentInfo') {
-      return deserialize<_i30.UserPaymentInfo>(data['data']);
+      return deserialize<_i31.UserPaymentInfo>(data['data']);
     }
     if (dataClassName == 'UserProfile') {
-      return deserialize<_i31.UserProfile>(data['data']);
+      return deserialize<_i32.UserProfile>(data['data']);
     }
     if (dataClassName == 'UserPublicKey') {
-      return deserialize<_i32.UserPublicKey>(data['data']);
+      return deserialize<_i33.UserPublicKey>(data['data']);
     }
     if (dataClassName == 'UserRole') {
-      return deserialize<_i33.UserRole>(data['data']);
+      return deserialize<_i34.UserRole>(data['data']);
     }
     if (dataClassName == 'UserSlot') {
-      return deserialize<_i34.UserSlot>(data['data']);
+      return deserialize<_i35.UserSlot>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);
@@ -2836,22 +2855,22 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i16.News.t;
       case _i20.Rating:
         return _i20.Rating.t;
-      case _i24.Settings:
-        return _i24.Settings.t;
-      case _i25.SlotOrder:
-        return _i25.SlotOrder.t;
-      case _i26.SlotVariant:
-        return _i26.SlotVariant.t;
-      case _i27.Transaction:
-        return _i27.Transaction.t;
-      case _i29.User:
-        return _i29.User.t;
-      case _i30.UserPaymentInfo:
-        return _i30.UserPaymentInfo.t;
-      case _i32.UserPublicKey:
-        return _i32.UserPublicKey.t;
-      case _i34.UserSlot:
-        return _i34.UserSlot.t;
+      case _i25.Settings:
+        return _i25.Settings.t;
+      case _i26.SlotOrder:
+        return _i26.SlotOrder.t;
+      case _i27.SlotVariant:
+        return _i27.SlotVariant.t;
+      case _i28.Transaction:
+        return _i28.Transaction.t;
+      case _i30.User:
+        return _i30.User.t;
+      case _i31.UserPaymentInfo:
+        return _i31.UserPaymentInfo.t;
+      case _i33.UserPublicKey:
+        return _i33.UserPublicKey.t;
+      case _i35.UserSlot:
+        return _i35.UserSlot.t;
     }
     return null;
   }

@@ -96,6 +96,18 @@ pgpKey:
   - downloadEncryptedBackup:
   - listBackups:
   - deleteBackup:
+rating:
+  - submitRating:
+  - getById:
+  - getByTransaction:
+  - getByUser:
+  - getMyGivenRatings:
+  - getMyReceivedRatings:
+  - canRateTransaction:
+  - getUserStats:
+  - createAutomaticRatings:
+  - getPendingRatingTransactions:
+  - getPendingRatingCount:
 search:
   - search:
   - quickSearch:

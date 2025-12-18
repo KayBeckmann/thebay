@@ -75,10 +75,25 @@ class UserProfileEndpoint extends Endpoint {
       where: (t) => t.userId.equals(userId) & t.isActive.equals(true),
     );
 
-    // TODO: Bewertungen werden in Meilenstein 9 implementiert
-    // Für jetzt: Platzhalter-Werte
-    const ratingAverage = null;
-    const ratingCount = 0;
+    // Lade Bewertungsstatistiken
+    final ratings = await Rating.db.find(
+      session,
+      where: (r) => r.toUserId.equals(userId),
+    );
+
+    int? ratingAverage;
+    final ratingCount = ratings.length;
+
+    if (ratings.isNotEmpty) {
+      int positiveCount = 0;
+      for (final rating in ratings) {
+        if (rating.rating == RatingValue.positive) {
+          positiveCount++;
+        }
+      }
+      // Berechne Prozentsatz positiver Bewertungen (0-100)
+      ratingAverage = ((positiveCount / ratingCount) * 100).round();
+    }
 
     return UserProfile(
       userId: userId,
