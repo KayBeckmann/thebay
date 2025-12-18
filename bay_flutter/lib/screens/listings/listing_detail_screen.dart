@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../main.dart' show client, authService;
 import '../messages_screen.dart' show showComposeMessageDialog;
 import '../user_profile_screen.dart';
+import '../transactions/start_transaction_dialog.dart';
 
 /// Detailansicht für ein Angebot.
 class ListingDetailScreen extends StatefulWidget {
@@ -645,19 +646,31 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
       return const SizedBox.shrink();
     }
 
-    return SizedBox(
-      width: double.infinity,
-      child: FilledButton.icon(
-        onPressed: () {
-          showComposeMessageDialog(
-            context,
-            recipientId: _listing!.userId,
-            listingId: _listing!.id,
-          );
-        },
-        icon: const Icon(Icons.message),
-        label: const Text('Verkäufer kontaktieren'),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // Buy Button
+        FilledButton.icon(
+          onPressed: () {
+            showStartTransactionDialog(context, listing: _listing!);
+          },
+          icon: const Icon(Icons.shopping_cart),
+          label: const Text('Buy Now'),
+        ),
+        const SizedBox(height: 12),
+        // Contact Button
+        OutlinedButton.icon(
+          onPressed: () {
+            showComposeMessageDialog(
+              context,
+              recipientId: _listing!.userId,
+              listingId: _listing!.id,
+            );
+          },
+          icon: const Icon(Icons.message),
+          label: const Text('Contact Seller'),
+        ),
+      ],
     );
   }
 }

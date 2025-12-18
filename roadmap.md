@@ -363,24 +363,24 @@
 
 ---
 
-## Meilenstein 9d: Frontend - Transaktionen
+## Meilenstein 9d: Frontend - Transaktionen ✅
 
 ### 9d.1 Transaktions-Screens
-- [ ] Transaktions-Übersicht Screen (Tabs: Käufe / Verkäufe)
-- [ ] Transaktions-Detail Screen
-- [ ] Transaktion starten Dialog (aus Angebot heraus)
-- [ ] Navigation: Menüpunkt "Transaktionen" hinzufügen
+- [x] Transaktions-Übersicht Screen (Tabs: Käufe / Verkäufe)
+- [x] Transaktions-Detail Screen
+- [x] Transaktion starten Dialog (aus Angebot heraus)
+- [x] Navigation: Menüpunkt "Transaktionen" hinzufügen
 
 ### 9d.2 Status-Änderungen
-- [ ] "Als gesendet markieren" Button (Verkäufer)
-- [ ] "Als erhalten markieren" Button (Käufer)
-- [ ] "Transaktion abbrechen" Option
-- [ ] Status-Timeline Anzeige
+- [x] "Als gesendet markieren" Button (Verkäufer)
+- [x] "Als erhalten markieren" Button (Käufer)
+- [x] "Transaktion abbrechen" Option
+- [x] Status-Timeline Anzeige
 
 ### 9d.3 Reklamation
-- [ ] "Reklamation öffnen" Dialog
-- [ ] Reklamations-Status Anzeige
-- [ ] Hinweis auf automatischen Abschluss
+- [x] "Reklamation öffnen" Dialog
+- [x] Reklamations-Status Anzeige
+- [x] Hinweis auf automatischen Abschluss
 
 ---
 

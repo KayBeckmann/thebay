@@ -9,6 +9,7 @@ import 'messages_screen.dart';
 import 'search_screen.dart';
 import 'sell_screen.dart';
 import 'settings_screen.dart';
+import 'transactions/transactions_screen.dart';
 import 'admin/news_screen.dart';
 import 'admin/admin_panel_screen.dart';
 
@@ -108,6 +109,12 @@ class _MainShellState extends State<MainShell> {
         icon: Icons.add_circle_outline,
         selectedIcon: Icons.add_circle,
         screen: const SellScreen(),
+      ),
+      NavItem(
+        label: 'Transaktionen',
+        icon: Icons.receipt_long_outlined,
+        selectedIcon: Icons.receipt_long,
+        screen: const TransactionsScreen(),
       ),
       NavItem(
         label: 'Einstellungen',
@@ -243,7 +250,7 @@ class _MainShellState extends State<MainShell> {
           padding: EdgeInsets.fromLTRB(28, 8, 28, 8),
           child: Divider(),
         ),
-        ..._navItems.take(5).map((item) => NavigationDrawerDestination(
+        ..._navItems.take(6).map((item) => NavigationDrawerDestination(
               icon: Icon(item.icon),
               selectedIcon: Icon(item.selectedIcon),
               label: Text(item.label),
@@ -262,7 +269,7 @@ class _MainShellState extends State<MainShell> {
                   ),
             ),
           ),
-          ..._navItems.skip(5).map((item) => NavigationDrawerDestination(
+          ..._navItems.skip(6).map((item) => NavigationDrawerDestination(
                 icon: Icon(item.icon),
                 selectedIcon: Icon(item.selectedIcon),
                 label: Text(item.label),
