@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../services/auth_service.dart';
+import 'transactions/transaction_detail_screen.dart';
 
 /// Dashboard screen showing news and recent listings.
 class DashboardScreen extends StatefulWidget {
@@ -19,12 +20,21 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   List<News> _news = [];
+  List<Transaction> _pendingRatings = [];
   bool _isLoadingNews = true;
+  bool _isLoadingRatings = true;
 
   @override
   void initState() {
     super.initState();
-    _loadNews();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    await Future.wait([
+      _loadNews(),
+      _loadPendingRatings(),
+    ]);
   }
 
   Future<void> _loadNews() async {
@@ -45,8 +55,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
+  Future<void> _loadPendingRatings() async {
+    setState(() => _isLoadingRatings = true);
+
+    try {
+      final transactions = await client.rating.getPendingRatingTransactions();
+      if (mounted) {
+        setState(() {
+          _pendingRatings = transactions;
+          _isLoadingRatings = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingRatings = false);
+      }
+    }
+  }
+
   Future<void> _refresh() async {
-    await _loadNews();
+    await _loadData();
   }
 
   @override
@@ -72,20 +100,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
             _buildWelcomeCard(context, user?.username),
             const SizedBox(height: 16),
 
+            // Pending ratings section
+            if (_pendingRatings.isNotEmpty) ...[
+              _buildSectionHeader(context, 'Pending Ratings'),
+              const SizedBox(height: 8),
+              _buildPendingRatingsSection(context),
+              const SizedBox(height: 24),
+            ],
+
             // News section
-            _buildSectionHeader(context, 'Neuigkeiten'),
+            _buildSectionHeader(context, 'News'),
             const SizedBox(height: 8),
             _buildNewsSection(context),
             const SizedBox(height: 24),
 
             // Slot warnings section
-            _buildSectionHeader(context, 'Slot-Warnungen'),
+            _buildSectionHeader(context, 'Slot Warnings'),
             const SizedBox(height: 8),
             _buildSlotWarningsSection(context),
             const SizedBox(height: 24),
 
             // Recent listings section
-            _buildSectionHeader(context, 'Neueste Angebote'),
+            _buildSectionHeader(context, 'Recent Listings'),
             const SizedBox(height: 8),
             _buildRecentListingsSection(context),
           ],
@@ -240,6 +276,99 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPendingRatingsSection(BuildContext context) {
+    if (_isLoadingRatings) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+
+    return Card(
+      color: Theme.of(context).colorScheme.tertiaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Theme.of(context).colorScheme.onTertiaryContainer,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'You have ${_pendingRatings.length} pending rating${_pendingRatings.length == 1 ? '' : 's'}',
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onTertiaryContainer,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            ..._pendingRatings.take(3).map((transaction) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TransactionDetailScreen(
+                          transactionId: transaction.id!,
+                          onStatusChanged: _loadPendingRatings,
+                        ),
+                      ),
+                    );
+                  },
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.receipt_long, size: 20),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Transaction #${transaction.id}',
+                            style: const TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        Icon(
+                          Icons.chevron_right,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            }),
+            if (_pendingRatings.length > 3)
+              Center(
+                child: TextButton(
+                  onPressed: () {
+                    // Navigate to transactions screen
+                  },
+                  child: Text('View all ${_pendingRatings.length} pending ratings'),
+                ),
+              ),
           ],
         ),
       ),

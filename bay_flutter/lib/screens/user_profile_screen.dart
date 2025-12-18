@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../main.dart' show client, authService;
 import 'listings/listing_card.dart';
 import 'messages_screen.dart' show showComposeMessageDialog;
+import 'ratings/ratings_list_widget.dart';
 
 /// Screen für öffentliche Benutzerprofile.
 class UserProfileScreen extends StatefulWidget {
@@ -15,7 +16,8 @@ class UserProfileScreen extends StatefulWidget {
   State<UserProfileScreen> createState() => _UserProfileScreenState();
 }
 
-class _UserProfileScreenState extends State<UserProfileScreen> {
+class _UserProfileScreenState extends State<UserProfileScreen>
+    with SingleTickerProviderStateMixin {
   UserProfile? _profile;
   List<Listing> _listings = [];
   bool _isLoading = true;
@@ -24,11 +26,19 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   int _offset = 0;
   static const int _limit = 10;
   bool _hasMore = true;
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
     _loadData();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadData() async {
@@ -142,10 +152,9 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       return const Center(child: Text('Benutzer nicht gefunden'));
     }
 
-    return RefreshIndicator(
-      onRefresh: _loadData,
-      child: CustomScrollView(
-        slivers: [
+    return NestedScrollView(
+      headerSliverBuilder: (context, innerBoxIsScrolled) {
+        return [
           // Profil-Header
           SliverToBoxAdapter(
             child: _buildProfileHeader(),
@@ -168,67 +177,95 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             child: _buildActions(),
           ),
 
-          // Angebote-Header
+          // Tab Bar
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
-              child: Text(
-                'Aktive Angebote',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-            ),
-          ),
-
-          // Angebote-Liste
-          if (_listings.isEmpty)
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(32),
-                child: Center(
-                  child: Column(
-                    children: [
-                      Icon(Icons.inventory_2_outlined, size: 48, color: Colors.grey),
-                      SizedBox(height: 16),
-                      Text('Keine aktiven Angebote'),
-                    ],
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+              child: TabBar(
+                controller: _tabController,
+                tabs: [
+                  Tab(
+                    icon: const Icon(Icons.inventory_2),
+                    text: 'Listings (${_profile!.activeListingsCount})',
                   ),
-                ),
-              ),
-            )
-          else
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    if (index < _listings.length) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: ListingCard(listing: _listings[index]),
-                      );
-                    }
-                    // Lade-Indikator am Ende
-                    if (_hasMore) {
-                      _loadMore();
-                      return const Padding(
-                        padding: EdgeInsets.all(16),
-                        child: Center(child: CircularProgressIndicator()),
-                      );
-                    }
-                    return null;
-                  },
-                  childCount: _listings.length + (_hasMore ? 1 : 0),
-                ),
+                  Tab(
+                    icon: const Icon(Icons.star),
+                    text: 'Ratings (${_profile!.ratingCount})',
+                  ),
+                ],
               ),
             ),
-
-          // Abstand am Ende
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 32),
           ),
+        ];
+      },
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          // Listings Tab
+          _buildListingsTab(),
+          // Ratings Tab
+          _buildRatingsTab(),
         ],
+      ),
+    );
+  }
+
+  Widget _buildListingsTab() {
+    if (_listings.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.inventory_2_outlined,
+              size: 64,
+              color: Theme.of(context).colorScheme.onSurfaceVariant,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'No active listings',
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return RefreshIndicator(
+      onRefresh: _loadData,
+      child: ListView.builder(
+        padding: const EdgeInsets.all(16),
+        itemCount: _listings.length + (_hasMore ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index < _listings.length) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: ListingCard(listing: _listings[index]),
+            );
+          }
+          // Load more indicator
+          if (_hasMore) {
+            _loadMore();
+            return const Padding(
+              padding: EdgeInsets.all(16),
+              child: Center(child: CircularProgressIndicator()),
+            );
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
+  Widget _buildRatingsTab() {
+    return RefreshIndicator(
+      onRefresh: _loadData,
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(16),
+        child: RatingsListWidget(userId: widget.userId),
       ),
     );
   }
@@ -322,6 +359,17 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   }
 
   Widget _buildStats() {
+    final ratingPercentage = _profile!.ratingAverage;
+    final ratingColor = ratingPercentage != null
+        ? (ratingPercentage >= 90
+            ? Colors.green
+            : ratingPercentage >= 70
+                ? Colors.lightGreen
+                : ratingPercentage >= 50
+                    ? Colors.orange
+                    : Colors.red)
+        : Theme.of(context).colorScheme.onSurfaceVariant;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Card(
@@ -333,7 +381,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 child: _buildStatItem(
                   icon: Icons.inventory_2,
                   value: _profile!.activeListingsCount.toString(),
-                  label: 'Angebote',
+                  label: 'Listings',
                 ),
               ),
               Container(
@@ -342,12 +390,48 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 color: Theme.of(context).colorScheme.outlineVariant,
               ),
               Expanded(
-                child: _buildStatItem(
-                  icon: Icons.star,
-                  value: _profile!.ratingAverage != null
-                      ? '${(_profile!.ratingAverage! / 20).toStringAsFixed(1)}/5'
-                      : '-',
-                  label: '${_profile!.ratingCount} Bewertungen',
+                child: InkWell(
+                  onTap: () => _tabController.animateTo(1),
+                  borderRadius: BorderRadius.circular(8),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            ratingPercentage != null && ratingPercentage >= 70
+                                ? Icons.thumb_up
+                                : Icons.star,
+                            color: ratingColor,
+                          ),
+                          if (ratingPercentage != null) ...[
+                            const SizedBox(width: 4),
+                            Text(
+                              '${ratingPercentage.toStringAsFixed(0)}%',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: ratingColor,
+                                  ),
+                            ),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        _profile!.ratingCount == 0
+                            ? 'No ratings'
+                            : '${_profile!.ratingCount} rating${_profile!.ratingCount == 1 ? '' : 's'}',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurfaceVariant,
+                            ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

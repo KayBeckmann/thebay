@@ -384,22 +384,22 @@
 
 ---
 
-## Meilenstein 9e: Frontend - Bewertungen
+## Meilenstein 9e: Frontend - Bewertungen ✅
 
 ### 9e.1 Bewertungs-UI
-- [ ] Bewertung abgeben Dialog (nach Transaktionsabschluss)
-- [ ] Bewertungs-Auswahl (Gut/Neutral/Schlecht mit Icons)
-- [ ] Optionales Kommentarfeld
-- [ ] Erinnerung an ausstehende Bewertungen
+- [x] Bewertung abgeben Dialog (nach Transaktionsabschluss)
+- [x] Bewertungs-Auswahl (Gut/Neutral/Schlecht mit Icons)
+- [x] Optionales Kommentarfeld
+- [x] Erinnerung an ausstehende Bewertungen
 
 ### 9e.2 Bewertungs-Anzeige
-- [ ] Bewertungen im UserProfile anzeigen
-- [ ] Bewertungs-Liste mit Kommentaren
-- [ ] Bewertungs-Badge im Profil (z.B. "95% positiv")
+- [x] Bewertungen im UserProfile anzeigen
+- [x] Bewertungs-Liste mit Kommentaren
+- [x] Bewertungs-Badge im Profil (z.B. "95% positiv")
 
 ### 9e.3 Integration
-- [ ] Bewertungs-Prompt nach Transaktionsabschluss
-- [ ] Ausstehende Bewertungen auf Dashboard anzeigen
+- [x] Bewertungs-Prompt nach Transaktionsabschluss
+- [x] Ausstehende Bewertungen auf Dashboard anzeigen
 
 ---
 

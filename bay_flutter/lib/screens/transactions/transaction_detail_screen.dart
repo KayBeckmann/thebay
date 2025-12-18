@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../main.dart' show client, authService;
 import '../user_profile_screen.dart';
 import '../listings/listing_detail_screen.dart';
+import '../ratings/submit_rating_dialog.dart';
 
 /// Detailansicht für eine Transaktion.
 class TransactionDetailScreen extends StatefulWidget {
@@ -30,6 +31,8 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   bool _isLoading = true;
   bool _isActionLoading = false;
   String? _error;
+  bool _canRate = false;
+  bool _hasRated = false;
 
   int? get _currentUserId => authService.currentUser?.userId;
   bool get _isBuyer => _transaction?.buyerId == _currentUserId;
@@ -79,6 +82,16 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       final sellerUsername =
           await client.userProfile.getUsername(transaction.sellerId);
 
+      // Check if user can rate this transaction
+      bool canRate = false;
+      bool hasRated = false;
+      if (transaction.status == TransactionStatus.completed) {
+        try {
+          canRate = await client.rating.canRateTransaction(transaction.id!);
+          hasRated = !canRate;
+        } catch (_) {}
+      }
+
       if (mounted) {
         setState(() {
           _transaction = transaction;
@@ -86,6 +99,8 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           _dispute = dispute;
           _buyerUsername = buyerUsername;
           _sellerUsername = sellerUsername;
+          _canRate = canRate;
+          _hasRated = hasRated;
           _isLoading = false;
         });
       }
@@ -155,6 +170,14 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           _buildStatusCard(),
           const SizedBox(height: 16),
 
+          // Rating Prompt (for completed transactions)
+          if (_transaction!.status == TransactionStatus.completed && _canRate)
+            _buildRatingPrompt(),
+
+          // Already Rated Info
+          if (_transaction!.status == TransactionStatus.completed && _hasRated)
+            _buildAlreadyRatedCard(),
+
           // Timeline
           _buildTimeline(),
           const SizedBox(height: 16),
@@ -198,6 +221,99 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         ],
       ),
     );
+  }
+
+  Widget _buildRatingPrompt() {
+    final partnerUsername = _isBuyer ? _sellerUsername : _buyerUsername;
+
+    return Card(
+      color: Theme.of(context).colorScheme.primaryContainer,
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Rate this transaction',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Share your experience with ${partnerUsername ?? 'the other party'}',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+            ),
+            const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                onPressed: _openRatingDialog,
+                icon: const Icon(Icons.rate_review),
+                label: const Text('Rate Now'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAlreadyRatedCard() {
+    return Card(
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Colors.green,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                'You have already rated this transaction',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _openRatingDialog() async {
+    final partnerUsername = _isBuyer ? _sellerUsername : _buyerUsername;
+
+    final result = await showSubmitRatingDialog(
+      context,
+      transactionId: _transaction!.id!,
+      partnerUsername: partnerUsername ?? 'Unknown',
+      isBuyer: _isBuyer,
+    );
+
+    if (result != null) {
+      await _loadData();
+    }
   }
 
   Widget _buildStatusCard() {
