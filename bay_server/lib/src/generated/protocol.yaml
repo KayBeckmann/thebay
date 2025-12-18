@@ -13,6 +13,11 @@ category:
   - create:
   - update:
   - delete:
+currency:
+  - getExchangeRate:
+  - convert:
+  - getMultipleRates:
+  - getCachedRate:
 dispute:
   - getById:
   - getByTransaction:

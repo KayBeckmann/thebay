@@ -4,6 +4,7 @@ import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
+import '../../widgets/price_display.dart';
 import 'listing_detail_screen.dart';
 
 /// Kompakte Karte für ein Angebot in Listen.
@@ -13,6 +14,7 @@ class ListingCard extends StatelessWidget {
   final VoidCallback? onEdit;
   final VoidCallback? onDelete;
   final bool showActions;
+  final String? userCurrency;
 
   const ListingCard({
     super.key,
@@ -21,6 +23,7 @@ class ListingCard extends StatelessWidget {
     this.onEdit,
     this.onDelete,
     this.showActions = false,
+    this.userCurrency,
   });
 
   String _formatPrice(int cents) {
@@ -77,24 +80,18 @@ class ListingCard extends StatelessWidget {
                   const SizedBox(height: 4),
 
                   // Preis
-                  Row(
-                    children: [
-                      Text(
-                        _formatPrice(listing.pricePerUnit),
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      if (_getQuantityUnitLabel(listing.quantityUnit).isNotEmpty) ...[
-                        Text(
-                          ' / ${_getQuantityUnitLabel(listing.quantityUnit)}',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                color: Theme.of(context).colorScheme.onSurfaceVariant,
-                              ),
+                  PricePerUnitDisplay(
+                    priceInCents: listing.pricePerUnit,
+                    priceCurrency: listing.acceptsBitcoin && !listing.acceptsPaypal ? 'BTC' : 'USD',
+                    quantityUnit: listing.quantityUnit,
+                    userCurrency: userCurrency,
+                    priceStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    ],
+                    unitStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                   ),
                   const SizedBox(height: 8),
 
@@ -275,6 +272,7 @@ class ListingListTile extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onEdit;
   final VoidCallback? onDelete;
+  final String? userCurrency;
 
   const ListingListTile({
     super.key,
@@ -282,11 +280,8 @@ class ListingListTile extends StatelessWidget {
     this.onTap,
     this.onEdit,
     this.onDelete,
+    this.userCurrency,
   });
-
-  String _formatPrice(int cents) {
-    return '\$${(cents / 100).toStringAsFixed(2)}';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -312,12 +307,15 @@ class ListingListTile extends StatelessWidget {
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
-        subtitle: Text(
-          _formatPrice(listing.pricePerUnit),
+        subtitle: PriceDisplay(
+          priceInCents: listing.pricePerUnit,
+          priceCurrency: listing.acceptsBitcoin && !listing.acceptsPaypal ? 'BTC' : 'USD',
+          userCurrency: userCurrency,
           style: TextStyle(
             color: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.bold,
           ),
+          compact: true,
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,

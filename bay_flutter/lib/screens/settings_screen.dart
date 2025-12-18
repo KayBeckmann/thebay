@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../main.dart' show client;
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
+import '../services/user_preferences_service.dart';
 import 'pgp_key_screen.dart';
 
 /// Settings screen for user preferences and account management.
@@ -23,6 +24,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  final _preferencesService = UserPreferencesService();
+
   // User preferences
   int _paginationSize = 25;
   String _currency = 'USD';
@@ -45,7 +48,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
     await Future.wait([
       _loadPgpKeyStatus(),
       _loadPaymentInfo(),
+      _loadPreferences(),
     ]);
+  }
+
+  Future<void> _loadPreferences() async {
+    try {
+      final currency = await _preferencesService.getCurrency();
+      final paginationSize = await _preferencesService.getPaginationSize();
+
+      if (mounted) {
+        setState(() {
+          _currency = currency;
+          _paginationSize = paginationSize;
+        });
+      }
+    } catch (e) {
+      // Ignore errors, use default values
+    }
   }
 
   Future<void> _loadPgpKeyStatus() async {
@@ -338,9 +358,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: const Text('Elemente pro Seite'),
         children: [10, 25, 50, 100].map((size) {
           return SimpleDialogOption(
-            onPressed: () {
+            onPressed: () async {
               setState(() => _paginationSize = size);
-              Navigator.pop(context);
+              await _preferencesService.setPaginationSize(size);
+              if (context.mounted) Navigator.pop(context);
             },
             child: Row(
               children: [
@@ -367,9 +388,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         title: const Text('Anzeigewährung'),
         children: currencies.map((currency) {
           return SimpleDialogOption(
-            onPressed: () {
+            onPressed: () async {
               setState(() => _currency = currency);
-              Navigator.pop(context);
+              await _preferencesService.setCurrency(currency);
+              if (context.mounted) Navigator.pop(context);
             },
             child: Row(
               children: [
