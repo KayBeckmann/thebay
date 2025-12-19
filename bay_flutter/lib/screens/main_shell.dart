@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart' show client;
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
 import '../services/message_service.dart';
@@ -12,6 +13,7 @@ import 'settings_screen.dart';
 import 'transactions/transactions_screen.dart';
 import 'admin/news_screen.dart';
 import 'admin/admin_panel_screen.dart';
+import 'moderator/moderator_panel_screen.dart';
 
 /// Navigation item configuration.
 class NavItem {
@@ -54,11 +56,13 @@ class MainShell extends StatefulWidget {
 class _MainShellState extends State<MainShell> {
   int _selectedIndex = 0;
   int _unreadCount = 0;
+  int _openReportsCount = 0;
 
   @override
   void initState() {
     super.initState();
     _loadUnreadCount();
+    _loadOpenReportsCount();
   }
 
   Future<void> _loadUnreadCount() async {
@@ -66,6 +70,22 @@ class _MainShellState extends State<MainShell> {
       final count = await widget.messageService.getUnreadCount();
       if (mounted) {
         setState(() => _unreadCount = count);
+      }
+    } catch (e) {
+      // Ignore errors
+    }
+  }
+
+  Future<void> _loadOpenReportsCount() async {
+    final user = widget.authService.currentUser;
+    final isModerator = user?.role == UserRole.moderator || user?.role == UserRole.admin;
+
+    if (!isModerator) return;
+
+    try {
+      final count = await client.report.getOpenCount();
+      if (mounted) {
+        setState(() => _openReportsCount = count);
       }
     } catch (e) {
       // Ignore errors
@@ -80,6 +100,7 @@ class _MainShellState extends State<MainShell> {
   List<NavItem> get _navItems {
     final user = widget.authService.currentUser;
     final isAdmin = user?.role == UserRole.admin;
+    final isModerator = user?.role == UserRole.moderator || isAdmin;
 
     final items = <NavItem>[
       NavItem(
@@ -127,6 +148,17 @@ class _MainShellState extends State<MainShell> {
         ),
       ),
     ];
+
+    // Moderator and Admin items
+    if (isModerator) {
+      items.add(NavItem(
+        label: 'Moderation',
+        icon: Icons.shield_outlined,
+        selectedIcon: Icons.shield,
+        screen: const ModeratorPanelScreen(),
+        moderatorOnly: true,
+      ));
+    }
 
     // Admin-only items
     if (isAdmin) {
@@ -176,6 +208,7 @@ class _MainShellState extends State<MainShell> {
         destinations: navItems.asMap().entries.map((entry) {
           final index = entry.key;
           final item = entry.value;
+
           // Badge für Nachrichten (Index 1)
           if (index == 1 && _unreadCount > 0) {
             return NavigationDestination(
@@ -190,6 +223,22 @@ class _MainShellState extends State<MainShell> {
               label: item.label,
             );
           }
+
+          // Badge für Moderation (moderatorOnly items)
+          if (item.moderatorOnly && _openReportsCount > 0) {
+            return NavigationDestination(
+              icon: Badge(
+                label: Text(_openReportsCount > 99 ? '99+' : '$_openReportsCount'),
+                child: Icon(item.icon),
+              ),
+              selectedIcon: Badge(
+                label: Text(_openReportsCount > 99 ? '99+' : '$_openReportsCount'),
+                child: Icon(item.selectedIcon),
+              ),
+              label: item.label,
+            );
+          }
+
           return NavigationDestination(
             icon: Icon(item.icon),
             selectedIcon: Icon(item.selectedIcon),
@@ -203,6 +252,12 @@ class _MainShellState extends State<MainShell> {
 
   Widget _buildDrawer(BuildContext context, AuthResponse? user) {
     final isAdmin = user?.role == UserRole.admin;
+    final isModerator = user?.role == UserRole.moderator || isAdmin;
+
+    // Separate items by type
+    final basicItems = _navItems.take(6).toList();
+    final moderatorItems = _navItems.skip(6).where((item) => item.moderatorOnly && !item.adminOnly).toList();
+    final adminItems = _navItems.where((item) => item.adminOnly).toList();
 
     return NavigationDrawer(
       selectedIndex: _selectedIndex,
@@ -250,12 +305,32 @@ class _MainShellState extends State<MainShell> {
           padding: EdgeInsets.fromLTRB(28, 8, 28, 8),
           child: Divider(),
         ),
-        ..._navItems.take(6).map((item) => NavigationDrawerDestination(
+        ...basicItems.map((item) => NavigationDrawerDestination(
               icon: Icon(item.icon),
               selectedIcon: Icon(item.selectedIcon),
               label: Text(item.label),
             )),
-        if (isAdmin) ...[
+        if (isModerator && moderatorItems.isNotEmpty) ...[
+          const Padding(
+            padding: EdgeInsets.fromLTRB(28, 16, 28, 8),
+            child: Divider(),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(28, 0, 16, 8),
+            child: Text(
+              'Moderation',
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+            ),
+          ),
+          ...moderatorItems.map((item) => NavigationDrawerDestination(
+                icon: Icon(item.icon),
+                selectedIcon: Icon(item.selectedIcon),
+                label: Text(item.label),
+              )),
+        ],
+        if (isAdmin && adminItems.isNotEmpty) ...[
           const Padding(
             padding: EdgeInsets.fromLTRB(28, 16, 28, 8),
             child: Divider(),
@@ -269,7 +344,7 @@ class _MainShellState extends State<MainShell> {
                   ),
             ),
           ),
-          ..._navItems.skip(6).map((item) => NavigationDrawerDestination(
+          ...adminItems.map((item) => NavigationDrawerDestination(
                 icon: Icon(item.icon),
                 selectedIcon: Icon(item.selectedIcon),
                 label: Text(item.label),

@@ -39,9 +39,11 @@ import 'package:bay_server/src/generated/quantity_unit.dart' as _i27;
 import 'dart:typed_data' as _i28;
 import 'package:bay_server/src/generated/rating_value.dart' as _i29;
 import 'package:bay_server/src/generated/report_reason.dart' as _i30;
-import 'package:bay_server/src/generated/payment_method.dart' as _i31;
-import 'package:bay_server/src/generated/transaction_status.dart' as _i32;
-import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i33;
+import 'package:bay_server/src/generated/report_target_type.dart' as _i31;
+import 'package:bay_server/src/generated/report_status.dart' as _i32;
+import 'package:bay_server/src/generated/payment_method.dart' as _i33;
+import 'package:bay_server/src/generated/transaction_status.dart' as _i34;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i35;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -2546,6 +2548,175 @@ class Endpoints extends _i1.EndpointDispatch {
             params['reportId'],
           ),
         ),
+        'getOpenReports': _i1.MethodConnector(
+          name: 'getOpenReports',
+          params: {
+            'targetType': _i1.ParameterDescription(
+              name: 'targetType',
+              type: _i1.getType<_i31.ReportTargetType?>(),
+              nullable: true,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).getOpenReports(
+            session,
+            targetType: params['targetType'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
+        'getAllReports': _i1.MethodConnector(
+          name: 'getAllReports',
+          params: {
+            'targetType': _i1.ParameterDescription(
+              name: 'targetType',
+              type: _i1.getType<_i31.ReportTargetType?>(),
+              nullable: true,
+            ),
+            'status': _i1.ParameterDescription(
+              name: 'status',
+              type: _i1.getType<_i32.ReportStatus?>(),
+              nullable: true,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).getAllReports(
+            session,
+            targetType: params['targetType'],
+            status: params['status'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
+        'getOpenCount': _i1.MethodConnector(
+          name: 'getOpenCount',
+          params: {
+            'targetType': _i1.ParameterDescription(
+              name: 'targetType',
+              type: _i1.getType<_i31.ReportTargetType?>(),
+              nullable: true,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).getOpenCount(
+            session,
+            targetType: params['targetType'],
+          ),
+        ),
+        'assignToMe': _i1.MethodConnector(
+          name: 'assignToMe',
+          params: {
+            'reportId': _i1.ParameterDescription(
+              name: 'reportId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).assignToMe(
+            session,
+            params['reportId'],
+          ),
+        ),
+        'updateStatus': _i1.MethodConnector(
+          name: 'updateStatus',
+          params: {
+            'reportId': _i1.ParameterDescription(
+              name: 'reportId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'newStatus': _i1.ParameterDescription(
+              name: 'newStatus',
+              type: _i1.getType<_i32.ReportStatus>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).updateStatus(
+            session,
+            params['reportId'],
+            params['newStatus'],
+          ),
+        ),
+        'addModeratorNote': _i1.MethodConnector(
+          name: 'addModeratorNote',
+          params: {
+            'reportId': _i1.ParameterDescription(
+              name: 'reportId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'note': _i1.ParameterDescription(
+              name: 'note',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint).addModeratorNote(
+            session,
+            params['reportId'],
+            params['note'],
+          ),
+        ),
+        'deactivateReportedListing': _i1.MethodConnector(
+          name: 'deactivateReportedListing',
+          params: {
+            'reportId': _i1.ParameterDescription(
+              name: 'reportId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['report'] as _i15.ReportEndpoint)
+                  .deactivateReportedListing(
+            session,
+            params['reportId'],
+          ),
+        ),
         'getAuthenticatedUser': _i1.MethodConnector(
           name: 'getAuthenticatedUser',
           params: {},
@@ -2849,7 +3020,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'paymentMethod': _i1.ParameterDescription(
               name: 'paymentMethod',
-              type: _i1.getType<_i31.PaymentMethod>(),
+              type: _i1.getType<_i33.PaymentMethod>(),
               nullable: false,
             ),
           },
@@ -3251,7 +3422,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'status': _i1.ParameterDescription(
               name: 'status',
-              type: _i1.getType<_i32.TransactionStatus?>(),
+              type: _i1.getType<_i34.TransactionStatus?>(),
               nullable: true,
             ),
             'asBuyer': _i1.ParameterDescription(
@@ -3711,6 +3882,6 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
-    modules['serverpod_auth'] = _i33.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i35.Endpoints()..initializeEndpoints(server);
   }
 }

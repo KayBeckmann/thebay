@@ -34,18 +34,20 @@ import 'package:bay_client/src/protocol/rating_stats.dart' as _i22;
 import 'package:bay_client/src/protocol/transaction.dart' as _i23;
 import 'package:bay_client/src/protocol/report.dart' as _i24;
 import 'package:bay_client/src/protocol/report_reason.dart' as _i25;
-import 'package:bay_client/src/protocol/user.dart' as _i26;
-import 'package:bay_client/src/protocol/search_result.dart' as _i27;
-import 'package:bay_client/src/protocol/slot_order.dart' as _i28;
-import 'package:bay_client/src/protocol/payment_method.dart' as _i29;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i30;
-import 'package:bay_client/src/protocol/transaction_status.dart' as _i31;
-import 'package:bay_client/src/protocol/user_profile.dart' as _i32;
-import 'package:bay_client/src/protocol/user_payment_info.dart' as _i33;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i34;
-import 'package:bay_client/src/protocol/greeting.dart' as _i35;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i36;
-import 'protocol.dart' as _i37;
+import 'package:bay_client/src/protocol/report_target_type.dart' as _i26;
+import 'package:bay_client/src/protocol/report_status.dart' as _i27;
+import 'package:bay_client/src/protocol/user.dart' as _i28;
+import 'package:bay_client/src/protocol/search_result.dart' as _i29;
+import 'package:bay_client/src/protocol/slot_order.dart' as _i30;
+import 'package:bay_client/src/protocol/payment_method.dart' as _i31;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i32;
+import 'package:bay_client/src/protocol/transaction_status.dart' as _i33;
+import 'package:bay_client/src/protocol/user_profile.dart' as _i34;
+import 'package:bay_client/src/protocol/user_payment_info.dart' as _i35;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i36;
+import 'package:bay_client/src/protocol/greeting.dart' as _i37;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i38;
+import 'protocol.dart' as _i39;
 
 /// Authentication endpoint for user registration, login, and logout.
 /// {@category Endpoint}
@@ -1373,31 +1375,117 @@ class EndpointReport extends _i1.EndpointRef {
         {'reportId': reportId},
       );
 
+  /// Get all open reports (for moderators/admins)
+  _i2.Future<List<_i24.Report>> getOpenReports({
+    _i26.ReportTargetType? targetType,
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<List<_i24.Report>>(
+        'report',
+        'getOpenReports',
+        {
+          'targetType': targetType,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  /// Get all reports with any status (for moderators/admins)
+  _i2.Future<List<_i24.Report>> getAllReports({
+    _i26.ReportTargetType? targetType,
+    _i27.ReportStatus? status,
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<List<_i24.Report>>(
+        'report',
+        'getAllReports',
+        {
+          'targetType': targetType,
+          'status': status,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  /// Get count of open reports
+  _i2.Future<int> getOpenCount({_i26.ReportTargetType? targetType}) =>
+      caller.callServerEndpoint<int>(
+        'report',
+        'getOpenCount',
+        {'targetType': targetType},
+      );
+
+  /// Assign report to current moderator
+  _i2.Future<_i24.Report> assignToMe(int reportId) =>
+      caller.callServerEndpoint<_i24.Report>(
+        'report',
+        'assignToMe',
+        {'reportId': reportId},
+      );
+
+  /// Update report status
+  _i2.Future<_i24.Report> updateStatus(
+    int reportId,
+    _i27.ReportStatus newStatus,
+  ) =>
+      caller.callServerEndpoint<_i24.Report>(
+        'report',
+        'updateStatus',
+        {
+          'reportId': reportId,
+          'newStatus': newStatus,
+        },
+      );
+
+  /// Add or update moderator note
+  _i2.Future<_i24.Report> addModeratorNote(
+    int reportId,
+    String note,
+  ) =>
+      caller.callServerEndpoint<_i24.Report>(
+        'report',
+        'addModeratorNote',
+        {
+          'reportId': reportId,
+          'note': note,
+        },
+      );
+
+  /// Deactivate a reported listing (moderator action)
+  _i2.Future<bool> deactivateReportedListing(int reportId) =>
+      caller.callServerEndpoint<bool>(
+        'report',
+        'deactivateReportedListing',
+        {'reportId': reportId},
+      );
+
   /// Gets the current authenticated user from the database.
-  _i2.Future<_i26.User?> getAuthenticatedUser() =>
-      caller.callServerEndpoint<_i26.User?>(
+  _i2.Future<_i28.User?> getAuthenticatedUser() =>
+      caller.callServerEndpoint<_i28.User?>(
         'report',
         'getAuthenticatedUser',
         {},
       );
 
   /// Throws an exception if the user is not authenticated.
-  _i2.Future<_i26.User> requireUser() => caller.callServerEndpoint<_i26.User>(
+  _i2.Future<_i28.User> requireUser() => caller.callServerEndpoint<_i28.User>(
         'report',
         'requireUser',
         {},
       );
 
   /// Throws an exception if the user is not an admin.
-  _i2.Future<_i26.User> requireAdmin() => caller.callServerEndpoint<_i26.User>(
+  _i2.Future<_i28.User> requireAdmin() => caller.callServerEndpoint<_i28.User>(
         'report',
         'requireAdmin',
         {},
       );
 
   /// Throws an exception if the user is not a moderator or admin.
-  _i2.Future<_i26.User> requireModerator() =>
-      caller.callServerEndpoint<_i26.User>(
+  _i2.Future<_i28.User> requireModerator() =>
+      caller.callServerEndpoint<_i28.User>(
         'report',
         'requireModerator',
         {},
@@ -1435,7 +1523,7 @@ class EndpointSearch extends _i1.EndpointRef {
   /// [acceptsBitcoin] - Optional: Nur Bitcoin-Angebote
   /// [page] - Seitennummer (0-basiert)
   /// [pageSize] - Anzahl pro Seite (Standard: 25)
-  _i2.Future<_i27.SearchResult> search({
+  _i2.Future<_i29.SearchResult> search({
     String? query,
     int? categoryId,
     int? subcategoryId,
@@ -1444,7 +1532,7 @@ class EndpointSearch extends _i1.EndpointRef {
     required int page,
     required int pageSize,
   }) =>
-      caller.callServerEndpoint<_i27.SearchResult>(
+      caller.callServerEndpoint<_i29.SearchResult>(
         'search',
         'search',
         {
@@ -1563,11 +1651,11 @@ class EndpointSlotOrder extends _i1.EndpointRef {
   String get name => 'slotOrder';
 
   /// Erstellt eine neue Bestellung für einen Slot.
-  _i2.Future<_i28.SlotOrder?> create({
+  _i2.Future<_i30.SlotOrder?> create({
     required int slotVariantId,
-    required _i29.PaymentMethod paymentMethod,
+    required _i31.PaymentMethod paymentMethod,
   }) =>
-      caller.callServerEndpoint<_i28.SlotOrder?>(
+      caller.callServerEndpoint<_i30.SlotOrder?>(
         'slotOrder',
         'create',
         {
@@ -1577,24 +1665,24 @@ class EndpointSlotOrder extends _i1.EndpointRef {
       );
 
   /// Ruft alle Bestellungen des aktuellen Benutzers ab.
-  _i2.Future<List<_i28.SlotOrder>> getMyOrders() =>
-      caller.callServerEndpoint<List<_i28.SlotOrder>>(
+  _i2.Future<List<_i30.SlotOrder>> getMyOrders() =>
+      caller.callServerEndpoint<List<_i30.SlotOrder>>(
         'slotOrder',
         'getMyOrders',
         {},
       );
 
   /// Ruft ausstehende Bestellungen des Benutzers ab.
-  _i2.Future<List<_i28.SlotOrder>> getPendingOrders() =>
-      caller.callServerEndpoint<List<_i28.SlotOrder>>(
+  _i2.Future<List<_i30.SlotOrder>> getPendingOrders() =>
+      caller.callServerEndpoint<List<_i30.SlotOrder>>(
         'slotOrder',
         'getPendingOrders',
         {},
       );
 
   /// Ruft eine einzelne Bestellung ab.
-  _i2.Future<_i28.SlotOrder?> getById(int id) =>
-      caller.callServerEndpoint<_i28.SlotOrder?>(
+  _i2.Future<_i30.SlotOrder?> getById(int id) =>
+      caller.callServerEndpoint<_i30.SlotOrder?>(
         'slotOrder',
         'getById',
         {'id': id},
@@ -1609,11 +1697,11 @@ class EndpointSlotOrder extends _i1.EndpointRef {
 
   /// Markiert eine Bestellung als bezahlt und aktiviert den Slot.
   /// In der Produktion wird dies durch die Zahlungs-Webhooks aufgerufen.
-  _i2.Future<_i28.SlotOrder?> markAsPaid({
+  _i2.Future<_i30.SlotOrder?> markAsPaid({
     required int orderId,
     String? transactionId,
   }) =>
-      caller.callServerEndpoint<_i28.SlotOrder?>(
+      caller.callServerEndpoint<_i30.SlotOrder?>(
         'slotOrder',
         'markAsPaid',
         {
@@ -1623,32 +1711,32 @@ class EndpointSlotOrder extends _i1.EndpointRef {
       );
 
   /// Admin: Ruft alle Bestellungen ab.
-  _i2.Future<List<_i28.SlotOrder>> getAllOrders() =>
-      caller.callServerEndpoint<List<_i28.SlotOrder>>(
+  _i2.Future<List<_i30.SlotOrder>> getAllOrders() =>
+      caller.callServerEndpoint<List<_i30.SlotOrder>>(
         'slotOrder',
         'getAllOrders',
         {},
       );
 
   /// Admin: Ruft alle ausstehenden Bestellungen ab.
-  _i2.Future<List<_i28.SlotOrder>> getAllPendingOrders() =>
-      caller.callServerEndpoint<List<_i28.SlotOrder>>(
+  _i2.Future<List<_i30.SlotOrder>> getAllPendingOrders() =>
+      caller.callServerEndpoint<List<_i30.SlotOrder>>(
         'slotOrder',
         'getAllPendingOrders',
         {},
       );
 
   /// Admin: Ruft einen Benutzer zu einer Bestellung ab.
-  _i2.Future<_i26.User?> getOrderUser(int orderId) =>
-      caller.callServerEndpoint<_i26.User?>(
+  _i2.Future<_i28.User?> getOrderUser(int orderId) =>
+      caller.callServerEndpoint<_i28.User?>(
         'slotOrder',
         'getOrderUser',
         {'orderId': orderId},
       );
 
   /// Admin: Ruft die Slot-Variante zu einer Bestellung ab.
-  _i2.Future<_i30.SlotVariant?> getOrderVariant(int orderId) =>
-      caller.callServerEndpoint<_i30.SlotVariant?>(
+  _i2.Future<_i32.SlotVariant?> getOrderVariant(int orderId) =>
+      caller.callServerEndpoint<_i32.SlotVariant?>(
         'slotOrder',
         'getOrderVariant',
         {'orderId': orderId},
@@ -1672,31 +1760,31 @@ class EndpointSlotVariant extends _i1.EndpointRef {
   String get name => 'slotVariant';
 
   /// Get all slot variants (admin only).
-  _i2.Future<List<_i30.SlotVariant>> getAll() =>
-      caller.callServerEndpoint<List<_i30.SlotVariant>>(
+  _i2.Future<List<_i32.SlotVariant>> getAll() =>
+      caller.callServerEndpoint<List<_i32.SlotVariant>>(
         'slotVariant',
         'getAll',
         {},
       );
 
   /// Get only active slot variants (public).
-  _i2.Future<List<_i30.SlotVariant>> getActive() =>
-      caller.callServerEndpoint<List<_i30.SlotVariant>>(
+  _i2.Future<List<_i32.SlotVariant>> getActive() =>
+      caller.callServerEndpoint<List<_i32.SlotVariant>>(
         'slotVariant',
         'getActive',
         {},
       );
 
   /// Get a single slot variant by ID (public).
-  _i2.Future<_i30.SlotVariant?> getById(int id) =>
-      caller.callServerEndpoint<_i30.SlotVariant?>(
+  _i2.Future<_i32.SlotVariant?> getById(int id) =>
+      caller.callServerEndpoint<_i32.SlotVariant?>(
         'slotVariant',
         'getById',
         {'id': id},
       );
 
   /// Create a new slot variant (admin only).
-  _i2.Future<_i30.SlotVariant?> create({
+  _i2.Future<_i32.SlotVariant?> create({
     required String name,
     String? description,
     required int priceUsdCents,
@@ -1705,7 +1793,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool allowBitcoin,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i30.SlotVariant?>(
+      caller.callServerEndpoint<_i32.SlotVariant?>(
         'slotVariant',
         'create',
         {
@@ -1720,7 +1808,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
       );
 
   /// Update a slot variant (admin only).
-  _i2.Future<_i30.SlotVariant?> update({
+  _i2.Future<_i32.SlotVariant?> update({
     required int id,
     required String name,
     String? description,
@@ -1731,7 +1819,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool isActive,
     required int sortOrder,
   }) =>
-      caller.callServerEndpoint<_i30.SlotVariant?>(
+      caller.callServerEndpoint<_i32.SlotVariant?>(
         'slotVariant',
         'update',
         {
@@ -1789,7 +1877,7 @@ class EndpointTransaction extends _i1.EndpointRef {
 
   /// Ruft alle Transaktionen des Benutzers ab.
   _i2.Future<List<_i23.Transaction>> getMyTransactions({
-    _i31.TransactionStatus? status,
+    _i33.TransactionStatus? status,
     required bool asBuyer,
     required bool asSeller,
     required int limit,
@@ -1890,8 +1978,8 @@ class EndpointUserProfile extends _i1.EndpointRef {
   String get name => 'userProfile';
 
   /// Ruft das öffentliche Profil eines Benutzers ab.
-  _i2.Future<_i32.UserProfile?> getProfile(int userId) =>
-      caller.callServerEndpoint<_i32.UserProfile?>(
+  _i2.Future<_i34.UserProfile?> getProfile(int userId) =>
+      caller.callServerEndpoint<_i34.UserProfile?>(
         'userProfile',
         'getProfile',
         {'userId': userId},
@@ -1914,19 +2002,19 @@ class EndpointUserProfile extends _i1.EndpointRef {
       );
 
   /// Ruft die eigenen Zahlungsinformationen ab.
-  _i2.Future<_i33.UserPaymentInfo?> getMyPaymentInfo() =>
-      caller.callServerEndpoint<_i33.UserPaymentInfo?>(
+  _i2.Future<_i35.UserPaymentInfo?> getMyPaymentInfo() =>
+      caller.callServerEndpoint<_i35.UserPaymentInfo?>(
         'userProfile',
         'getMyPaymentInfo',
         {},
       );
 
   /// Speichert die eigenen Zahlungsinformationen.
-  _i2.Future<_i33.UserPaymentInfo> updateMyPaymentInfo({
+  _i2.Future<_i35.UserPaymentInfo> updateMyPaymentInfo({
     String? paypalAddress,
     String? bitcoinWallet,
   }) =>
-      caller.callServerEndpoint<_i33.UserPaymentInfo>(
+      caller.callServerEndpoint<_i35.UserPaymentInfo>(
         'userProfile',
         'updateMyPaymentInfo',
         {
@@ -1961,24 +2049,24 @@ class EndpointUserSlot extends _i1.EndpointRef {
   String get name => 'userSlot';
 
   /// Ruft alle Slots des aktuellen Benutzers ab.
-  _i2.Future<List<_i34.UserSlot>> getMySlots() =>
-      caller.callServerEndpoint<List<_i34.UserSlot>>(
+  _i2.Future<List<_i36.UserSlot>> getMySlots() =>
+      caller.callServerEndpoint<List<_i36.UserSlot>>(
         'userSlot',
         'getMySlots',
         {},
       );
 
   /// Ruft nur verfügbare (ungenutzte, aktive) Slots ab.
-  _i2.Future<List<_i34.UserSlot>> getAvailableSlots() =>
-      caller.callServerEndpoint<List<_i34.UserSlot>>(
+  _i2.Future<List<_i36.UserSlot>> getAvailableSlots() =>
+      caller.callServerEndpoint<List<_i36.UserSlot>>(
         'userSlot',
         'getAvailableSlots',
         {},
       );
 
   /// Ruft Slots ab, die in den nächsten X Tagen ablaufen (für Warnungen).
-  _i2.Future<List<_i34.UserSlot>> getExpiringSoon({required int days}) =>
-      caller.callServerEndpoint<List<_i34.UserSlot>>(
+  _i2.Future<List<_i36.UserSlot>> getExpiringSoon({required int days}) =>
+      caller.callServerEndpoint<List<_i36.UserSlot>>(
         'userSlot',
         'getExpiringSoon',
         {'days': days},
@@ -1986,11 +2074,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
 
   /// Erstellt einen Slot für einen Benutzer (Admin-Funktion oder nach Zahlung).
   /// Diese Methode wird intern nach erfolgreicher Zahlung aufgerufen.
-  _i2.Future<_i34.UserSlot?> createSlot({
+  _i2.Future<_i36.UserSlot?> createSlot({
     required int userId,
     required int slotVariantId,
   }) =>
-      caller.callServerEndpoint<_i34.UserSlot?>(
+      caller.callServerEndpoint<_i36.UserSlot?>(
         'userSlot',
         'createSlot',
         {
@@ -2000,11 +2088,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
       );
 
   /// Verlängert einen bestehenden Slot.
-  _i2.Future<_i34.UserSlot?> extendSlot({
+  _i2.Future<_i36.UserSlot?> extendSlot({
     required int slotId,
     required int additionalDays,
   }) =>
-      caller.callServerEndpoint<_i34.UserSlot?>(
+      caller.callServerEndpoint<_i36.UserSlot?>(
         'userSlot',
         'extendSlot',
         {
@@ -2032,8 +2120,8 @@ class EndpointUserSlot extends _i1.EndpointRef {
   /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
   /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
   /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
-  _i2.Future<_i34.UserSlot?> createTestSlot({required int slotVariantId}) =>
-      caller.callServerEndpoint<_i34.UserSlot?>(
+  _i2.Future<_i36.UserSlot?> createTestSlot({required int slotVariantId}) =>
+      caller.callServerEndpoint<_i36.UserSlot?>(
         'userSlot',
         'createTestSlot',
         {'slotVariantId': slotVariantId},
@@ -2050,8 +2138,8 @@ class EndpointGreeting extends _i1.EndpointRef {
   String get name => 'greeting';
 
   /// Returns a personalized greeting message: "Hello {name}".
-  _i2.Future<_i35.Greeting> hello(String name) =>
-      caller.callServerEndpoint<_i35.Greeting>(
+  _i2.Future<_i37.Greeting> hello(String name) =>
+      caller.callServerEndpoint<_i37.Greeting>(
         'greeting',
         'hello',
         {'name': name},
@@ -2060,10 +2148,10 @@ class EndpointGreeting extends _i1.EndpointRef {
 
 class Modules {
   Modules(Client client) {
-    auth = _i36.Caller(client);
+    auth = _i38.Caller(client);
   }
 
-  late final _i36.Caller auth;
+  late final _i38.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -2082,7 +2170,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i37.Protocol(),
+          _i39.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,

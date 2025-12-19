@@ -439,25 +439,25 @@
 
 ---
 
-## Meilenstein 11b: Moderator-Panel
+## Meilenstein 11b: Moderator-Panel ✅
 
 ### 11b.1 Backend - Moderator-Funktionen
-- [ ] Alle offenen Meldungen abrufen (getOpenReports - für Moderatoren)
-- [ ] Meldungen nach Typ filtern (listing/user)
-- [ ] Anzahl offener Meldungen (getOpenCount)
-- [ ] Meldung übernehmen (assignToMe)
-- [ ] Meldung Status ändern (updateStatus - reviewing/resolved/dismissed)
-- [ ] Gemeldetes Angebot deaktivieren
-- [ ] Notiz zu Meldung hinzufügen
+- [x] Alle offenen Meldungen abrufen (getOpenReports - für Moderatoren)
+- [x] Meldungen nach Typ filtern (listing/user)
+- [x] Anzahl offener Meldungen (getOpenCount)
+- [x] Meldung übernehmen (assignToMe)
+- [x] Meldung Status ändern (updateStatus - reviewing/resolved/dismissed)
+- [x] Gemeldetes Angebot deaktivieren
+- [x] Notiz zu Meldung hinzufügen
 
 ### 11b.2 Frontend - Moderator-Dashboard
-- [ ] Moderator-Panel Menüpunkt (nur für Moderator/Admin sichtbar)
-- [ ] Übersicht offener Meldungen (mit Tabs: Angebote/User/Alle)
-- [ ] Meldungs-Detail-Ansicht
-- [ ] Filter- und Sortier-Optionen
-- [ ] Badge mit Anzahl offener Meldungen
-- [ ] Actions: Status ändern, Angebot deaktivieren
-- [ ] Notiz-Funktion für interne Kommunikation
+- [x] Moderator-Panel Menüpunkt (nur für Moderator/Admin sichtbar)
+- [x] Übersicht offener Meldungen (mit Tabs: Angebote/User/Alle)
+- [x] Meldungs-Detail-Ansicht
+- [x] Filter- und Sortier-Optionen
+- [x] Badge mit Anzahl offener Meldungen
+- [x] Actions: Status ändern, Angebot deaktivieren
+- [x] Notiz-Funktion für interne Kommunikation
 
 ---
 
@@ -535,4 +535,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-18*
+*Aktualisiert am: 2025-12-19*

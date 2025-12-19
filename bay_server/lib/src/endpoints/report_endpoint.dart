@@ -162,4 +162,187 @@ class ReportEndpoint extends AuthenticatedEndpoint {
     await Report.db.deleteRow(session, report);
     return true;
   }
+
+  // ========== Moderator Functions ==========
+
+  /// Get all open reports (for moderators/admins)
+  Future<List<Report>> getOpenReports(
+    Session session, {
+    ReportTargetType? targetType,
+    int? limit,
+    int? offset,
+  }) async {
+    await requireModerator(session);
+
+    var query = Report.db.find(
+      session,
+      where: (t) {
+        var condition = t.status.equals(ReportStatus.open);
+        if (targetType != null) {
+          condition = condition & t.targetType.equals(targetType);
+        }
+        return condition;
+      },
+      orderBy: (t) => t.createdAt,
+      orderDescending: true,
+    );
+
+    if (limit != null) {
+      query = query.then((results) => results.take(limit).toList());
+    }
+
+    return query;
+  }
+
+  /// Get all reports with any status (for moderators/admins)
+  Future<List<Report>> getAllReports(
+    Session session, {
+    ReportTargetType? targetType,
+    ReportStatus? status,
+    int? limit,
+    int? offset,
+  }) async {
+    await requireModerator(session);
+
+    // Fetch all reports with optional filters
+    final allReports = await Report.db.find(
+      session,
+      orderBy: (t) => t.createdAt,
+      orderDescending: true,
+    );
+
+    // Apply filters in Dart if specified
+    var filtered = allReports;
+    if (targetType != null) {
+      filtered = filtered.where((r) => r.targetType == targetType).toList();
+    }
+    if (status != null) {
+      filtered = filtered.where((r) => r.status == status).toList();
+    }
+
+    // Apply pagination
+    if (offset != null) {
+      filtered = filtered.skip(offset).toList();
+    }
+    if (limit != null) {
+      filtered = filtered.take(limit).toList();
+    }
+
+    return filtered;
+  }
+
+  /// Get count of open reports
+  Future<int> getOpenCount(
+    Session session, {
+    ReportTargetType? targetType,
+  }) async {
+    await requireModerator(session);
+
+    return await Report.db.count(
+      session,
+      where: (t) {
+        var condition = t.status.equals(ReportStatus.open);
+        if (targetType != null) {
+          condition = condition & t.targetType.equals(targetType);
+        }
+        return condition;
+      },
+    );
+  }
+
+  /// Assign report to current moderator
+  Future<Report> assignToMe(Session session, int reportId) async {
+    final user = await requireModerator(session);
+    final report = await Report.db.findById(session, reportId);
+
+    if (report == null) {
+      throw Exception('Report not found');
+    }
+
+    // Update report with assigned moderator
+    final updated = report.copyWith(
+      assignedModeratorId: user.id,
+      status: ReportStatus.reviewing,
+      updatedAt: DateTime.now(),
+    );
+
+    return await Report.db.updateRow(session, updated);
+  }
+
+  /// Update report status
+  Future<Report> updateStatus(
+    Session session,
+    int reportId,
+    ReportStatus newStatus,
+  ) async {
+    await requireModerator(session);
+    final report = await Report.db.findById(session, reportId);
+
+    if (report == null) {
+      throw Exception('Report not found');
+    }
+
+    final updated = report.copyWith(
+      status: newStatus,
+      updatedAt: DateTime.now(),
+      resolvedAt: (newStatus == ReportStatus.resolved ||
+              newStatus == ReportStatus.dismissed)
+          ? DateTime.now()
+          : null,
+    );
+
+    return await Report.db.updateRow(session, updated);
+  }
+
+  /// Add or update moderator note
+  Future<Report> addModeratorNote(
+    Session session,
+    int reportId,
+    String note,
+  ) async {
+    await requireModerator(session);
+    final report = await Report.db.findById(session, reportId);
+
+    if (report == null) {
+      throw Exception('Report not found');
+    }
+
+    final updated = report.copyWith(
+      moderatorNotes: note,
+      updatedAt: DateTime.now(),
+    );
+
+    return await Report.db.updateRow(session, updated);
+  }
+
+  /// Deactivate a reported listing (moderator action)
+  Future<bool> deactivateReportedListing(
+    Session session,
+    int reportId,
+  ) async {
+    await requireModerator(session);
+    final report = await Report.db.findById(session, reportId);
+
+    if (report == null) {
+      throw Exception('Report not found');
+    }
+
+    if (report.targetType != ReportTargetType.listing) {
+      throw Exception('Report is not for a listing');
+    }
+
+    final listing = await Listing.db.findById(session, report.targetId);
+    if (listing == null) {
+      throw Exception('Listing not found');
+    }
+
+    // Deactivate the listing
+    final updated = listing.copyWith(isActive: false);
+    await Listing.db.updateRow(session, updated);
+
+    // Update report status to resolved
+    await updateStatus(session, reportId, ReportStatus.resolved);
+
+    return true;
+  }
 }

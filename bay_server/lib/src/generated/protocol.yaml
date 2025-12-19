@@ -120,6 +120,13 @@ report:
   - getById:
   - getMyReportCount:
   - deleteReport:
+  - getOpenReports:
+  - getAllReports:
+  - getOpenCount:
+  - assignToMe:
+  - updateStatus:
+  - addModeratorNote:
+  - deactivateReportedListing:
   - getAuthenticatedUser:
   - requireUser:
   - requireAdmin:
