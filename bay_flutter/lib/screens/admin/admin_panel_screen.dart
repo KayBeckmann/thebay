@@ -4,6 +4,7 @@ import 'categories_screen.dart';
 import 'slot_variants_screen.dart';
 import 'payment_settings_screen.dart';
 import 'pending_payments_screen.dart';
+import 'user_management_screen.dart';
 
 /// Admin panel screen for system administration.
 class AdminPanelScreen extends StatelessWidget {
@@ -119,14 +120,10 @@ class AdminPanelScreen extends StatelessWidget {
             icon: Icons.people,
             title: 'Benutzerverwaltung',
             subtitle: 'Benutzer verwalten und Rollen zuweisen',
-            milestone: 11,
-          ),
-          _buildAdminTile(
-            context,
-            icon: Icons.report,
-            title: 'Meldungen',
-            subtitle: 'Gemeldete Angebote und Benutzer',
-            milestone: 11,
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const UserManagementScreen()),
+            ),
           ),
         ],
       ),

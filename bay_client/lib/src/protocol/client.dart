@@ -42,12 +42,14 @@ import 'package:bay_client/src/protocol/slot_order.dart' as _i30;
 import 'package:bay_client/src/protocol/payment_method.dart' as _i31;
 import 'package:bay_client/src/protocol/slot_variant.dart' as _i32;
 import 'package:bay_client/src/protocol/transaction_status.dart' as _i33;
-import 'package:bay_client/src/protocol/user_profile.dart' as _i34;
-import 'package:bay_client/src/protocol/user_payment_info.dart' as _i35;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i36;
-import 'package:bay_client/src/protocol/greeting.dart' as _i37;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i38;
-import 'protocol.dart' as _i39;
+import 'package:bay_client/src/protocol/user_role.dart' as _i34;
+import 'package:bay_client/src/protocol/user_ban_log.dart' as _i35;
+import 'package:bay_client/src/protocol/user_profile.dart' as _i36;
+import 'package:bay_client/src/protocol/user_payment_info.dart' as _i37;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i38;
+import 'package:bay_client/src/protocol/greeting.dart' as _i39;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i40;
+import 'protocol.dart' as _i41;
 
 /// Authentication endpoint for user registration, login, and logout.
 /// {@category Endpoint}
@@ -1969,6 +1971,160 @@ class EndpointTransaction extends _i1.EndpointRef {
       );
 }
 
+/// Endpoint for user management (admin only)
+/// {@category Endpoint}
+class EndpointUserManagement extends _i1.EndpointRef {
+  EndpointUserManagement(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'userManagement';
+
+  /// Get all users with optional filters
+  _i2.Future<List<_i28.User>> getAllUsers({
+    String? searchQuery,
+    _i34.UserRole? role,
+    bool? isBanned,
+    int? limit,
+    int? offset,
+  }) =>
+      caller.callServerEndpoint<List<_i28.User>>(
+        'userManagement',
+        'getAllUsers',
+        {
+          'searchQuery': searchQuery,
+          'role': role,
+          'isBanned': isBanned,
+          'limit': limit,
+          'offset': offset,
+        },
+      );
+
+  /// Get a user by ID
+  _i2.Future<_i28.User?> getUserById(int userId) =>
+      caller.callServerEndpoint<_i28.User?>(
+        'userManagement',
+        'getUserById',
+        {'userId': userId},
+      );
+
+  /// Update user role
+  _i2.Future<_i28.User> updateUserRole(
+    int userId,
+    _i34.UserRole newRole,
+  ) =>
+      caller.callServerEndpoint<_i28.User>(
+        'userManagement',
+        'updateUserRole',
+        {
+          'userId': userId,
+          'newRole': newRole,
+        },
+      );
+
+  /// Ban a user
+  _i2.Future<_i28.User> banUser(
+    int userId,
+    String reason,
+  ) =>
+      caller.callServerEndpoint<_i28.User>(
+        'userManagement',
+        'banUser',
+        {
+          'userId': userId,
+          'reason': reason,
+        },
+      );
+
+  /// Unban a user
+  _i2.Future<_i28.User> unbanUser(
+    int userId,
+    String? reason,
+  ) =>
+      caller.callServerEndpoint<_i28.User>(
+        'userManagement',
+        'unbanUser',
+        {
+          'userId': userId,
+          'reason': reason,
+        },
+      );
+
+  /// Get all banned users
+  _i2.Future<List<_i28.User>> getBannedUsers() =>
+      caller.callServerEndpoint<List<_i28.User>>(
+        'userManagement',
+        'getBannedUsers',
+        {},
+      );
+
+  /// Get ban history for a user
+  _i2.Future<List<_i35.UserBanLog>> getBanHistory(int userId) =>
+      caller.callServerEndpoint<List<_i35.UserBanLog>>(
+        'userManagement',
+        'getBanHistory',
+        {'userId': userId},
+      );
+
+  /// Get count of users by role
+  _i2.Future<Map<String, int>> getUserCountByRole() =>
+      caller.callServerEndpoint<Map<String, int>>(
+        'userManagement',
+        'getUserCountByRole',
+        {},
+      );
+
+  /// Get count of total users
+  _i2.Future<int> getTotalUserCount() => caller.callServerEndpoint<int>(
+        'userManagement',
+        'getTotalUserCount',
+        {},
+      );
+
+  /// Gets the current authenticated user from the database.
+  _i2.Future<_i28.User?> getAuthenticatedUser() =>
+      caller.callServerEndpoint<_i28.User?>(
+        'userManagement',
+        'getAuthenticatedUser',
+        {},
+      );
+
+  /// Throws an exception if the user is not authenticated.
+  _i2.Future<_i28.User> requireUser() => caller.callServerEndpoint<_i28.User>(
+        'userManagement',
+        'requireUser',
+        {},
+      );
+
+  /// Throws an exception if the user is not an admin.
+  _i2.Future<_i28.User> requireAdmin() => caller.callServerEndpoint<_i28.User>(
+        'userManagement',
+        'requireAdmin',
+        {},
+      );
+
+  /// Throws an exception if the user is not a moderator or admin.
+  _i2.Future<_i28.User> requireModerator() =>
+      caller.callServerEndpoint<_i28.User>(
+        'userManagement',
+        'requireModerator',
+        {},
+      );
+
+  /// Checks if the current user has admin role.
+  _i2.Future<bool> isAdmin() => caller.callServerEndpoint<bool>(
+        'userManagement',
+        'isAdmin',
+        {},
+      );
+
+  /// Checks if the current user has moderator or admin role.
+  _i2.Future<bool> isModerator() => caller.callServerEndpoint<bool>(
+        'userManagement',
+        'isModerator',
+        {},
+      );
+}
+
 /// Endpoint für öffentliche Benutzerprofile und Zahlungsinformationen.
 /// {@category Endpoint}
 class EndpointUserProfile extends _i1.EndpointRef {
@@ -1978,8 +2134,8 @@ class EndpointUserProfile extends _i1.EndpointRef {
   String get name => 'userProfile';
 
   /// Ruft das öffentliche Profil eines Benutzers ab.
-  _i2.Future<_i34.UserProfile?> getProfile(int userId) =>
-      caller.callServerEndpoint<_i34.UserProfile?>(
+  _i2.Future<_i36.UserProfile?> getProfile(int userId) =>
+      caller.callServerEndpoint<_i36.UserProfile?>(
         'userProfile',
         'getProfile',
         {'userId': userId},
@@ -2002,19 +2158,19 @@ class EndpointUserProfile extends _i1.EndpointRef {
       );
 
   /// Ruft die eigenen Zahlungsinformationen ab.
-  _i2.Future<_i35.UserPaymentInfo?> getMyPaymentInfo() =>
-      caller.callServerEndpoint<_i35.UserPaymentInfo?>(
+  _i2.Future<_i37.UserPaymentInfo?> getMyPaymentInfo() =>
+      caller.callServerEndpoint<_i37.UserPaymentInfo?>(
         'userProfile',
         'getMyPaymentInfo',
         {},
       );
 
   /// Speichert die eigenen Zahlungsinformationen.
-  _i2.Future<_i35.UserPaymentInfo> updateMyPaymentInfo({
+  _i2.Future<_i37.UserPaymentInfo> updateMyPaymentInfo({
     String? paypalAddress,
     String? bitcoinWallet,
   }) =>
-      caller.callServerEndpoint<_i35.UserPaymentInfo>(
+      caller.callServerEndpoint<_i37.UserPaymentInfo>(
         'userProfile',
         'updateMyPaymentInfo',
         {
@@ -2049,24 +2205,24 @@ class EndpointUserSlot extends _i1.EndpointRef {
   String get name => 'userSlot';
 
   /// Ruft alle Slots des aktuellen Benutzers ab.
-  _i2.Future<List<_i36.UserSlot>> getMySlots() =>
-      caller.callServerEndpoint<List<_i36.UserSlot>>(
+  _i2.Future<List<_i38.UserSlot>> getMySlots() =>
+      caller.callServerEndpoint<List<_i38.UserSlot>>(
         'userSlot',
         'getMySlots',
         {},
       );
 
   /// Ruft nur verfügbare (ungenutzte, aktive) Slots ab.
-  _i2.Future<List<_i36.UserSlot>> getAvailableSlots() =>
-      caller.callServerEndpoint<List<_i36.UserSlot>>(
+  _i2.Future<List<_i38.UserSlot>> getAvailableSlots() =>
+      caller.callServerEndpoint<List<_i38.UserSlot>>(
         'userSlot',
         'getAvailableSlots',
         {},
       );
 
   /// Ruft Slots ab, die in den nächsten X Tagen ablaufen (für Warnungen).
-  _i2.Future<List<_i36.UserSlot>> getExpiringSoon({required int days}) =>
-      caller.callServerEndpoint<List<_i36.UserSlot>>(
+  _i2.Future<List<_i38.UserSlot>> getExpiringSoon({required int days}) =>
+      caller.callServerEndpoint<List<_i38.UserSlot>>(
         'userSlot',
         'getExpiringSoon',
         {'days': days},
@@ -2074,11 +2230,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
 
   /// Erstellt einen Slot für einen Benutzer (Admin-Funktion oder nach Zahlung).
   /// Diese Methode wird intern nach erfolgreicher Zahlung aufgerufen.
-  _i2.Future<_i36.UserSlot?> createSlot({
+  _i2.Future<_i38.UserSlot?> createSlot({
     required int userId,
     required int slotVariantId,
   }) =>
-      caller.callServerEndpoint<_i36.UserSlot?>(
+      caller.callServerEndpoint<_i38.UserSlot?>(
         'userSlot',
         'createSlot',
         {
@@ -2088,11 +2244,11 @@ class EndpointUserSlot extends _i1.EndpointRef {
       );
 
   /// Verlängert einen bestehenden Slot.
-  _i2.Future<_i36.UserSlot?> extendSlot({
+  _i2.Future<_i38.UserSlot?> extendSlot({
     required int slotId,
     required int additionalDays,
   }) =>
-      caller.callServerEndpoint<_i36.UserSlot?>(
+      caller.callServerEndpoint<_i38.UserSlot?>(
         'userSlot',
         'extendSlot',
         {
@@ -2120,8 +2276,8 @@ class EndpointUserSlot extends _i1.EndpointRef {
   /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
   /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
   /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
-  _i2.Future<_i36.UserSlot?> createTestSlot({required int slotVariantId}) =>
-      caller.callServerEndpoint<_i36.UserSlot?>(
+  _i2.Future<_i38.UserSlot?> createTestSlot({required int slotVariantId}) =>
+      caller.callServerEndpoint<_i38.UserSlot?>(
         'userSlot',
         'createTestSlot',
         {'slotVariantId': slotVariantId},
@@ -2138,8 +2294,8 @@ class EndpointGreeting extends _i1.EndpointRef {
   String get name => 'greeting';
 
   /// Returns a personalized greeting message: "Hello {name}".
-  _i2.Future<_i37.Greeting> hello(String name) =>
-      caller.callServerEndpoint<_i37.Greeting>(
+  _i2.Future<_i39.Greeting> hello(String name) =>
+      caller.callServerEndpoint<_i39.Greeting>(
         'greeting',
         'hello',
         {'name': name},
@@ -2148,10 +2304,10 @@ class EndpointGreeting extends _i1.EndpointRef {
 
 class Modules {
   Modules(Client client) {
-    auth = _i38.Caller(client);
+    auth = _i40.Caller(client);
   }
 
-  late final _i38.Caller auth;
+  late final _i40.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -2170,7 +2326,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i39.Protocol(),
+          _i41.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -2199,6 +2355,7 @@ class Client extends _i1.ServerpodClientShared {
     slotOrder = EndpointSlotOrder(this);
     slotVariant = EndpointSlotVariant(this);
     transaction = EndpointTransaction(this);
+    userManagement = EndpointUserManagement(this);
     userProfile = EndpointUserProfile(this);
     userSlot = EndpointUserSlot(this);
     greeting = EndpointGreeting(this);
@@ -2243,6 +2400,8 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointTransaction transaction;
 
+  late final EndpointUserManagement userManagement;
+
   late final EndpointUserProfile userProfile;
 
   late final EndpointUserSlot userSlot;
@@ -2272,6 +2431,7 @@ class Client extends _i1.ServerpodClientShared {
         'slotOrder': slotOrder,
         'slotVariant': slotVariant,
         'transaction': transaction,
+        'userManagement': userManagement,
         'userProfile': userProfile,
         'userSlot': userSlot,
         'greeting': greeting,

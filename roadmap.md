@@ -461,29 +461,29 @@
 
 ---
 
-## Meilenstein 11c: Admin-Benutzerverwaltung
+## Meilenstein 11c: Admin-Benutzerverwaltung ✅
 
 ### 11c.1 Datenbank-Erweiterung
-- [ ] User-Tabelle erweitern: isBanned, bannedAt, bannedReason, bannedBy
-- [ ] UserBanLog-Tabelle (für Historie)
+- [x] User-Tabelle erweitern: isBanned, bannedAt, bannedReason, bannedBy
+- [x] UserBanLog-Tabelle (für Historie)
 
 ### 11c.2 Backend - User-Verwaltung
-- [ ] User-Rolle ändern (updateUserRole - nur Admin)
-- [ ] User sperren (banUser)
-- [ ] User entsperren (unbanUser)
-- [ ] Bei Sperre: Alle Angebote deaktivieren
-- [ ] Bei Sperre: Laufende Transaktionen behandeln (Auto-Cancel oder Info)
-- [ ] Gesperrte User auflisten
-- [ ] Ban-Historie abrufen
+- [x] User-Rolle ändern (updateUserRole - nur Admin)
+- [x] User sperren (banUser)
+- [x] User entsperren (unbanUser)
+- [x] Bei Sperre: Alle Angebote deaktivieren
+- [x] Bei Sperre: Laufende Transaktionen behandeln (Auto-Cancel oder Info)
+- [x] Gesperrte User auflisten
+- [x] Ban-Historie abrufen
 
 ### 11c.3 Frontend - Admin-Panel Benutzerverwaltung
-- [ ] Benutzerverwaltungs-Screen im Admin-Panel
-- [ ] User-Liste mit Such- und Filter-Funktion
-- [ ] User-Detail mit Rollen-Auswahl
-- [ ] "Sperren"-Dialog mit Grund-Angabe
-- [ ] Gesperrte User verwalten
-- [ ] Ban-Historie anzeigen
-- [ ] Warnung bei kritischen Aktionen (Moderator ernennen, Sperren)
+- [x] Benutzerverwaltungs-Screen im Admin-Panel
+- [x] User-Liste mit Such- und Filter-Funktion
+- [x] User-Detail mit Rollen-Auswahl
+- [x] "Sperren"-Dialog mit Grund-Angabe
+- [x] Gesperrte User verwalten
+- [x] Ban-Historie anzeigen
+- [x] Warnung bei kritischen Aktionen (Moderator ernennen, Sperren)
 
 ---
 

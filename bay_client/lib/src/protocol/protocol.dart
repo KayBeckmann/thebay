@@ -42,26 +42,29 @@ import 'slot_variant.dart' as _i30;
 import 'transaction.dart' as _i31;
 import 'transaction_status.dart' as _i32;
 import 'user.dart' as _i33;
-import 'user_payment_info.dart' as _i34;
-import 'user_profile.dart' as _i35;
-import 'user_public_key.dart' as _i36;
-import 'user_role.dart' as _i37;
-import 'report_target_type.dart' as _i38;
-import 'package:bay_client/src/protocol/category.dart' as _i39;
-import 'package:bay_client/src/protocol/dispute.dart' as _i40;
-import 'package:bay_client/src/protocol/message_draft.dart' as _i41;
-import 'package:bay_client/src/protocol/listing.dart' as _i42;
-import 'package:bay_client/src/protocol/listing_image.dart' as _i43;
-import 'package:bay_client/src/protocol/message.dart' as _i44;
-import 'package:bay_client/src/protocol/news.dart' as _i45;
-import 'package:bay_client/src/protocol/encrypted_key_backup.dart' as _i46;
-import 'package:bay_client/src/protocol/rating.dart' as _i47;
-import 'package:bay_client/src/protocol/transaction.dart' as _i48;
-import 'package:bay_client/src/protocol/report.dart' as _i49;
-import 'package:bay_client/src/protocol/slot_order.dart' as _i50;
-import 'package:bay_client/src/protocol/slot_variant.dart' as _i51;
-import 'package:bay_client/src/protocol/user_slot.dart' as _i52;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i53;
+import 'user_ban_log.dart' as _i34;
+import 'user_payment_info.dart' as _i35;
+import 'user_profile.dart' as _i36;
+import 'user_public_key.dart' as _i37;
+import 'user_role.dart' as _i38;
+import 'report_target_type.dart' as _i39;
+import 'package:bay_client/src/protocol/category.dart' as _i40;
+import 'package:bay_client/src/protocol/dispute.dart' as _i41;
+import 'package:bay_client/src/protocol/message_draft.dart' as _i42;
+import 'package:bay_client/src/protocol/listing.dart' as _i43;
+import 'package:bay_client/src/protocol/listing_image.dart' as _i44;
+import 'package:bay_client/src/protocol/message.dart' as _i45;
+import 'package:bay_client/src/protocol/news.dart' as _i46;
+import 'package:bay_client/src/protocol/encrypted_key_backup.dart' as _i47;
+import 'package:bay_client/src/protocol/rating.dart' as _i48;
+import 'package:bay_client/src/protocol/transaction.dart' as _i49;
+import 'package:bay_client/src/protocol/report.dart' as _i50;
+import 'package:bay_client/src/protocol/slot_order.dart' as _i51;
+import 'package:bay_client/src/protocol/slot_variant.dart' as _i52;
+import 'package:bay_client/src/protocol/user.dart' as _i53;
+import 'package:bay_client/src/protocol/user_ban_log.dart' as _i54;
+import 'package:bay_client/src/protocol/user_slot.dart' as _i55;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i56;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -94,6 +97,7 @@ export 'slot_variant.dart';
 export 'transaction.dart';
 export 'transaction_status.dart';
 export 'user.dart';
+export 'user_ban_log.dart';
 export 'user_payment_info.dart';
 export 'user_profile.dart';
 export 'user_public_key.dart';
@@ -210,20 +214,23 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i33.User) {
       return _i33.User.fromJson(data) as T;
     }
-    if (t == _i34.UserPaymentInfo) {
-      return _i34.UserPaymentInfo.fromJson(data) as T;
+    if (t == _i34.UserBanLog) {
+      return _i34.UserBanLog.fromJson(data) as T;
     }
-    if (t == _i35.UserProfile) {
-      return _i35.UserProfile.fromJson(data) as T;
+    if (t == _i35.UserPaymentInfo) {
+      return _i35.UserPaymentInfo.fromJson(data) as T;
     }
-    if (t == _i36.UserPublicKey) {
-      return _i36.UserPublicKey.fromJson(data) as T;
+    if (t == _i36.UserProfile) {
+      return _i36.UserProfile.fromJson(data) as T;
     }
-    if (t == _i37.UserRole) {
-      return _i37.UserRole.fromJson(data) as T;
+    if (t == _i37.UserPublicKey) {
+      return _i37.UserPublicKey.fromJson(data) as T;
     }
-    if (t == _i38.ReportTargetType) {
-      return _i38.ReportTargetType.fromJson(data) as T;
+    if (t == _i38.UserRole) {
+      return _i38.UserRole.fromJson(data) as T;
+    }
+    if (t == _i39.ReportTargetType) {
+      return _i39.ReportTargetType.fromJson(data) as T;
     }
     if (t == _i1.getType<_i2.MessageDraft?>()) {
       return (data != null ? _i2.MessageDraft.fromJson(data) : null) as T;
@@ -322,27 +329,30 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i33.User?>()) {
       return (data != null ? _i33.User.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i34.UserPaymentInfo?>()) {
-      return (data != null ? _i34.UserPaymentInfo.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i34.UserBanLog?>()) {
+      return (data != null ? _i34.UserBanLog.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i35.UserProfile?>()) {
-      return (data != null ? _i35.UserProfile.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i35.UserPaymentInfo?>()) {
+      return (data != null ? _i35.UserPaymentInfo.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i36.UserPublicKey?>()) {
-      return (data != null ? _i36.UserPublicKey.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i36.UserProfile?>()) {
+      return (data != null ? _i36.UserProfile.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i37.UserRole?>()) {
-      return (data != null ? _i37.UserRole.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i37.UserPublicKey?>()) {
+      return (data != null ? _i37.UserPublicKey.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i38.ReportTargetType?>()) {
-      return (data != null ? _i38.ReportTargetType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i38.UserRole?>()) {
+      return (data != null ? _i38.UserRole.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i39.ReportTargetType?>()) {
+      return (data != null ? _i39.ReportTargetType.fromJson(data) : null) as T;
     }
     if (t == List<_i10.Listing>) {
       return (data as List).map((e) => deserialize<_i10.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i39.Category>) {
-      return (data as List).map((e) => deserialize<_i39.Category>(e)).toList()
+    if (t == List<_i40.Category>) {
+      return (data as List).map((e) => deserialize<_i40.Category>(e)).toList()
           as T;
     }
     if (t == Map<String, double>) {
@@ -352,17 +362,17 @@ class Protocol extends _i1.SerializationManager {
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i40.Dispute>) {
-      return (data as List).map((e) => deserialize<_i40.Dispute>(e)).toList()
+    if (t == List<_i41.Dispute>) {
+      return (data as List).map((e) => deserialize<_i41.Dispute>(e)).toList()
           as T;
     }
-    if (t == List<_i41.MessageDraft>) {
+    if (t == List<_i42.MessageDraft>) {
       return (data as List)
-          .map((e) => deserialize<_i41.MessageDraft>(e))
+          .map((e) => deserialize<_i42.MessageDraft>(e))
           .toList() as T;
     }
-    if (t == List<_i42.Listing>) {
-      return (data as List).map((e) => deserialize<_i42.Listing>(e)).toList()
+    if (t == List<_i43.Listing>) {
+      return (data as List).map((e) => deserialize<_i43.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -372,13 +382,13 @@ class Protocol extends _i1.SerializationManager {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i43.ListingImage>) {
+    if (t == List<_i44.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i43.ListingImage>(e))
+          .map((e) => deserialize<_i44.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i44.Message>) {
-      return (data as List).map((e) => deserialize<_i44.Message>(e)).toList()
+    if (t == List<_i45.Message>) {
+      return (data as List).map((e) => deserialize<_i45.Message>(e)).toList()
           as T;
     }
     if (t == List<Map<String, dynamic>>) {
@@ -390,8 +400,8 @@ class Protocol extends _i1.SerializationManager {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i45.News>) {
-      return (data as List).map((e) => deserialize<_i45.News>(e)).toList() as T;
+    if (t == List<_i46.News>) {
+      return (data as List).map((e) => deserialize<_i46.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -403,43 +413,50 @@ class Protocol extends _i1.SerializationManager {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i46.EncryptedKeyBackup>) {
+    if (t == List<_i47.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i46.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i47.EncryptedKeyBackup>(e))
           .toList() as T;
     }
-    if (t == List<_i47.Rating>) {
-      return (data as List).map((e) => deserialize<_i47.Rating>(e)).toList()
+    if (t == List<_i48.Rating>) {
+      return (data as List).map((e) => deserialize<_i48.Rating>(e)).toList()
           as T;
     }
-    if (t == List<_i48.Transaction>) {
+    if (t == List<_i49.Transaction>) {
       return (data as List)
-          .map((e) => deserialize<_i48.Transaction>(e))
+          .map((e) => deserialize<_i49.Transaction>(e))
           .toList() as T;
     }
-    if (t == List<_i49.Report>) {
-      return (data as List).map((e) => deserialize<_i49.Report>(e)).toList()
+    if (t == List<_i50.Report>) {
+      return (data as List).map((e) => deserialize<_i50.Report>(e)).toList()
           as T;
     }
-    if (t == List<_i50.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i50.SlotOrder>(e)).toList()
+    if (t == List<_i51.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i51.SlotOrder>(e)).toList()
           as T;
     }
-    if (t == List<_i51.SlotVariant>) {
+    if (t == List<_i52.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i51.SlotVariant>(e))
+          .map((e) => deserialize<_i52.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i52.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i52.UserSlot>(e)).toList()
+    if (t == List<_i53.User>) {
+      return (data as List).map((e) => deserialize<_i53.User>(e)).toList() as T;
+    }
+    if (t == List<_i54.UserBanLog>) {
+      return (data as List).map((e) => deserialize<_i54.UserBanLog>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
       return (data as Map).map(
           (k, v) => MapEntry(deserialize<String>(k), deserialize<int>(v))) as T;
     }
+    if (t == List<_i55.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i55.UserSlot>(e)).toList()
+          as T;
+    }
     try {
-      return _i53.Protocol().deserialize<T>(data, t);
+      return _i56.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -544,22 +561,25 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i33.User) {
       return 'User';
     }
-    if (data is _i34.UserPaymentInfo) {
+    if (data is _i34.UserBanLog) {
+      return 'UserBanLog';
+    }
+    if (data is _i35.UserPaymentInfo) {
       return 'UserPaymentInfo';
     }
-    if (data is _i35.UserProfile) {
+    if (data is _i36.UserProfile) {
       return 'UserProfile';
     }
-    if (data is _i36.UserPublicKey) {
+    if (data is _i37.UserPublicKey) {
       return 'UserPublicKey';
     }
-    if (data is _i37.UserRole) {
+    if (data is _i38.UserRole) {
       return 'UserRole';
     }
-    if (data is _i38.ReportTargetType) {
+    if (data is _i39.ReportTargetType) {
       return 'ReportTargetType';
     }
-    className = _i53.Protocol().getClassNameForObject(data);
+    className = _i56.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -668,24 +688,27 @@ class Protocol extends _i1.SerializationManager {
     if (dataClassName == 'User') {
       return deserialize<_i33.User>(data['data']);
     }
+    if (dataClassName == 'UserBanLog') {
+      return deserialize<_i34.UserBanLog>(data['data']);
+    }
     if (dataClassName == 'UserPaymentInfo') {
-      return deserialize<_i34.UserPaymentInfo>(data['data']);
+      return deserialize<_i35.UserPaymentInfo>(data['data']);
     }
     if (dataClassName == 'UserProfile') {
-      return deserialize<_i35.UserProfile>(data['data']);
+      return deserialize<_i36.UserProfile>(data['data']);
     }
     if (dataClassName == 'UserPublicKey') {
-      return deserialize<_i36.UserPublicKey>(data['data']);
+      return deserialize<_i37.UserPublicKey>(data['data']);
     }
     if (dataClassName == 'UserRole') {
-      return deserialize<_i37.UserRole>(data['data']);
+      return deserialize<_i38.UserRole>(data['data']);
     }
     if (dataClassName == 'ReportTargetType') {
-      return deserialize<_i38.ReportTargetType>(data['data']);
+      return deserialize<_i39.ReportTargetType>(data['data']);
     }
     if (dataClassName.startsWith('serverpod_auth.')) {
       data['className'] = dataClassName.substring(15);
-      return _i53.Protocol().deserializeByClassName(data);
+      return _i56.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

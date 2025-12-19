@@ -175,6 +175,22 @@ transaction:
   - getCompletedCount:
   - autoCompleteExpired:
   - getUpcomingAutoComplete:
+userManagement:
+  - getAllUsers:
+  - getUserById:
+  - updateUserRole:
+  - banUser:
+  - unbanUser:
+  - getBannedUsers:
+  - getBanHistory:
+  - getUserCountByRole:
+  - getTotalUserCount:
+  - getAuthenticatedUser:
+  - requireUser:
+  - requireAdmin:
+  - requireModerator:
+  - isAdmin:
+  - isModerator:
 userProfile:
   - getProfile:
   - getUserListings:

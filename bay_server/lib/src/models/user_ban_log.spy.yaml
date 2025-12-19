@@ -1,0 +1,17 @@
+### Log entry for user ban/unban actions
+class: UserBanLog
+table: user_ban_log
+fields:
+  ### User who was banned/unbanned
+  userId: int, relation(parent=users, onDelete=cascade)
+  ### Admin who performed the action
+  adminId: int, relation(parent=users, onDelete=setNull)
+  ### Action type: ban or unban
+  action: String
+  ### Reason for the action
+  reason: String?
+  ### Timestamp of the action
+  createdAt: DateTime, default=now
+indexes:
+  user_ban_log_user_idx:
+    fields: userId

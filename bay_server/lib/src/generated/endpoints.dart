@@ -29,21 +29,23 @@ import '../endpoints/settings_endpoint.dart' as _i17;
 import '../endpoints/slot_order_endpoint.dart' as _i18;
 import '../endpoints/slot_variant_endpoint.dart' as _i19;
 import '../endpoints/transaction_endpoint.dart' as _i20;
-import '../endpoints/user_profile_endpoint.dart' as _i21;
-import '../endpoints/user_slot_endpoint.dart' as _i22;
-import '../greeting_endpoint.dart' as _i23;
-import 'package:bay_server/src/generated/registration_request.dart' as _i24;
-import 'package:bay_server/src/generated/login_request.dart' as _i25;
-import 'package:bay_server/src/generated/dispute_status.dart' as _i26;
-import 'package:bay_server/src/generated/quantity_unit.dart' as _i27;
-import 'dart:typed_data' as _i28;
-import 'package:bay_server/src/generated/rating_value.dart' as _i29;
-import 'package:bay_server/src/generated/report_reason.dart' as _i30;
-import 'package:bay_server/src/generated/report_target_type.dart' as _i31;
-import 'package:bay_server/src/generated/report_status.dart' as _i32;
-import 'package:bay_server/src/generated/payment_method.dart' as _i33;
-import 'package:bay_server/src/generated/transaction_status.dart' as _i34;
-import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i35;
+import '../endpoints/user_management_endpoint.dart' as _i21;
+import '../endpoints/user_profile_endpoint.dart' as _i22;
+import '../endpoints/user_slot_endpoint.dart' as _i23;
+import '../greeting_endpoint.dart' as _i24;
+import 'package:bay_server/src/generated/registration_request.dart' as _i25;
+import 'package:bay_server/src/generated/login_request.dart' as _i26;
+import 'package:bay_server/src/generated/dispute_status.dart' as _i27;
+import 'package:bay_server/src/generated/quantity_unit.dart' as _i28;
+import 'dart:typed_data' as _i29;
+import 'package:bay_server/src/generated/rating_value.dart' as _i30;
+import 'package:bay_server/src/generated/report_reason.dart' as _i31;
+import 'package:bay_server/src/generated/report_target_type.dart' as _i32;
+import 'package:bay_server/src/generated/report_status.dart' as _i33;
+import 'package:bay_server/src/generated/payment_method.dart' as _i34;
+import 'package:bay_server/src/generated/transaction_status.dart' as _i35;
+import 'package:bay_server/src/generated/user_role.dart' as _i36;
+import 'package:serverpod_auth_server/serverpod_auth_server.dart' as _i37;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -163,19 +165,25 @@ class Endpoints extends _i1.EndpointDispatch {
           'transaction',
           null,
         ),
-      'userProfile': _i21.UserProfileEndpoint()
+      'userManagement': _i21.UserManagementEndpoint()
+        ..initialize(
+          server,
+          'userManagement',
+          null,
+        ),
+      'userProfile': _i22.UserProfileEndpoint()
         ..initialize(
           server,
           'userProfile',
           null,
         ),
-      'userSlot': _i22.UserSlotEndpoint()
+      'userSlot': _i23.UserSlotEndpoint()
         ..initialize(
           server,
           'userSlot',
           null,
         ),
-      'greeting': _i23.GreetingEndpoint()
+      'greeting': _i24.GreetingEndpoint()
         ..initialize(
           server,
           'greeting',
@@ -191,7 +199,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i24.RegistrationRequest>(),
+              type: _i1.getType<_i25.RegistrationRequest>(),
               nullable: false,
             )
           },
@@ -209,7 +217,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'request': _i1.ParameterDescription(
               name: 'request',
-              type: _i1.getType<_i25.LoginRequest>(),
+              type: _i1.getType<_i26.LoginRequest>(),
               nullable: false,
             )
           },
@@ -686,7 +694,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'status': _i1.ParameterDescription(
               name: 'status',
-              type: _i1.getType<_i26.DisputeStatus?>(),
+              type: _i1.getType<_i27.DisputeStatus?>(),
               nullable: true,
             ),
             'limit': _i1.ParameterDescription(
@@ -1040,7 +1048,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i27.QuantityUnit>(),
+              type: _i1.getType<_i28.QuantityUnit>(),
               nullable: false,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -1123,7 +1131,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'quantityUnit': _i1.ParameterDescription(
               name: 'quantityUnit',
-              type: _i1.getType<_i27.QuantityUnit?>(),
+              type: _i1.getType<_i28.QuantityUnit?>(),
               nullable: true,
             ),
             'pricePerUnit': _i1.ParameterDescription(
@@ -1302,7 +1310,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'imageData': _i1.ParameterDescription(
               name: 'imageData',
-              type: _i1.getType<_i28.ByteData>(),
+              type: _i1.getType<_i29.ByteData>(),
               nullable: false,
             ),
           },
@@ -2226,7 +2234,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'rating': _i1.ParameterDescription(
               name: 'rating',
-              type: _i1.getType<_i29.RatingValue>(),
+              type: _i1.getType<_i30.RatingValue>(),
               nullable: false,
             ),
             'comment': _i1.ParameterDescription(
@@ -2442,7 +2450,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'reason': _i1.ParameterDescription(
               name: 'reason',
-              type: _i1.getType<_i30.ReportReason>(),
+              type: _i1.getType<_i31.ReportReason>(),
               nullable: false,
             ),
             'details': _i1.ParameterDescription(
@@ -2472,7 +2480,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'reason': _i1.ParameterDescription(
               name: 'reason',
-              type: _i1.getType<_i30.ReportReason>(),
+              type: _i1.getType<_i31.ReportReason>(),
               nullable: false,
             ),
             'details': _i1.ParameterDescription(
@@ -2553,7 +2561,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'targetType': _i1.ParameterDescription(
               name: 'targetType',
-              type: _i1.getType<_i31.ReportTargetType?>(),
+              type: _i1.getType<_i32.ReportTargetType?>(),
               nullable: true,
             ),
             'limit': _i1.ParameterDescription(
@@ -2583,12 +2591,12 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'targetType': _i1.ParameterDescription(
               name: 'targetType',
-              type: _i1.getType<_i31.ReportTargetType?>(),
+              type: _i1.getType<_i32.ReportTargetType?>(),
               nullable: true,
             ),
             'status': _i1.ParameterDescription(
               name: 'status',
-              type: _i1.getType<_i32.ReportStatus?>(),
+              type: _i1.getType<_i33.ReportStatus?>(),
               nullable: true,
             ),
             'limit': _i1.ParameterDescription(
@@ -2619,7 +2627,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'targetType': _i1.ParameterDescription(
               name: 'targetType',
-              type: _i1.getType<_i31.ReportTargetType?>(),
+              type: _i1.getType<_i32.ReportTargetType?>(),
               nullable: true,
             )
           },
@@ -2660,7 +2668,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'newStatus': _i1.ParameterDescription(
               name: 'newStatus',
-              type: _i1.getType<_i32.ReportStatus>(),
+              type: _i1.getType<_i33.ReportStatus>(),
               nullable: false,
             ),
           },
@@ -3020,7 +3028,7 @@ class Endpoints extends _i1.EndpointDispatch {
             ),
             'paymentMethod': _i1.ParameterDescription(
               name: 'paymentMethod',
-              type: _i1.getType<_i33.PaymentMethod>(),
+              type: _i1.getType<_i34.PaymentMethod>(),
               nullable: false,
             ),
           },
@@ -3422,7 +3430,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'status': _i1.ParameterDescription(
               name: 'status',
-              type: _i1.getType<_i34.TransactionStatus?>(),
+              type: _i1.getType<_i35.TransactionStatus?>(),
               nullable: true,
             ),
             'asBuyer': _i1.ParameterDescription(
@@ -3601,6 +3609,258 @@ class Endpoints extends _i1.EndpointDispatch {
         ),
       },
     );
+    connectors['userManagement'] = _i1.EndpointConnector(
+      name: 'userManagement',
+      endpoint: endpoints['userManagement']!,
+      methodConnectors: {
+        'getAllUsers': _i1.MethodConnector(
+          name: 'getAllUsers',
+          params: {
+            'searchQuery': _i1.ParameterDescription(
+              name: 'searchQuery',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+            'role': _i1.ParameterDescription(
+              name: 'role',
+              type: _i1.getType<_i36.UserRole?>(),
+              nullable: true,
+            ),
+            'isBanned': _i1.ParameterDescription(
+              name: 'isBanned',
+              type: _i1.getType<bool?>(),
+              nullable: true,
+            ),
+            'limit': _i1.ParameterDescription(
+              name: 'limit',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+            'offset': _i1.ParameterDescription(
+              name: 'offset',
+              type: _i1.getType<int?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getAllUsers(
+            session,
+            searchQuery: params['searchQuery'],
+            role: params['role'],
+            isBanned: params['isBanned'],
+            limit: params['limit'],
+            offset: params['offset'],
+          ),
+        ),
+        'getUserById': _i1.MethodConnector(
+          name: 'getUserById',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getUserById(
+            session,
+            params['userId'],
+          ),
+        ),
+        'updateUserRole': _i1.MethodConnector(
+          name: 'updateUserRole',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'newRole': _i1.ParameterDescription(
+              name: 'newRole',
+              type: _i1.getType<_i36.UserRole>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .updateUserRole(
+            session,
+            params['userId'],
+            params['newRole'],
+          ),
+        ),
+        'banUser': _i1.MethodConnector(
+          name: 'banUser',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'reason': _i1.ParameterDescription(
+              name: 'reason',
+              type: _i1.getType<String>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .banUser(
+            session,
+            params['userId'],
+            params['reason'],
+          ),
+        ),
+        'unbanUser': _i1.MethodConnector(
+          name: 'unbanUser',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'reason': _i1.ParameterDescription(
+              name: 'reason',
+              type: _i1.getType<String?>(),
+              nullable: true,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .unbanUser(
+            session,
+            params['userId'],
+            params['reason'],
+          ),
+        ),
+        'getBannedUsers': _i1.MethodConnector(
+          name: 'getBannedUsers',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getBannedUsers(session),
+        ),
+        'getBanHistory': _i1.MethodConnector(
+          name: 'getBanHistory',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getBanHistory(
+            session,
+            params['userId'],
+          ),
+        ),
+        'getUserCountByRole': _i1.MethodConnector(
+          name: 'getUserCountByRole',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getUserCountByRole(session),
+        ),
+        'getTotalUserCount': _i1.MethodConnector(
+          name: 'getTotalUserCount',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getTotalUserCount(session),
+        ),
+        'getAuthenticatedUser': _i1.MethodConnector(
+          name: 'getAuthenticatedUser',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .getAuthenticatedUser(session),
+        ),
+        'requireUser': _i1.MethodConnector(
+          name: 'requireUser',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .requireUser(session),
+        ),
+        'requireAdmin': _i1.MethodConnector(
+          name: 'requireAdmin',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .requireAdmin(session),
+        ),
+        'requireModerator': _i1.MethodConnector(
+          name: 'requireModerator',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .requireModerator(session),
+        ),
+        'isAdmin': _i1.MethodConnector(
+          name: 'isAdmin',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .isAdmin(session),
+        ),
+        'isModerator': _i1.MethodConnector(
+          name: 'isModerator',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userManagement'] as _i21.UserManagementEndpoint)
+                  .isModerator(session),
+        ),
+      },
+    );
     connectors['userProfile'] = _i1.EndpointConnector(
       name: 'userProfile',
       endpoint: endpoints['userProfile']!,
@@ -3618,7 +3878,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i21.UserProfileEndpoint).getProfile(
+              (endpoints['userProfile'] as _i22.UserProfileEndpoint).getProfile(
             session,
             params['userId'],
           ),
@@ -3646,7 +3906,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i22.UserProfileEndpoint)
                   .getUserListings(
             session,
             params['userId'],
@@ -3661,7 +3921,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i22.UserProfileEndpoint)
                   .getMyPaymentInfo(session),
         ),
         'updateMyPaymentInfo': _i1.MethodConnector(
@@ -3682,7 +3942,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i22.UserProfileEndpoint)
                   .updateMyPaymentInfo(
             session,
             paypalAddress: params['paypalAddress'],
@@ -3702,7 +3962,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i21.UserProfileEndpoint)
+              (endpoints['userProfile'] as _i22.UserProfileEndpoint)
                   .getUsername(
             session,
             params['userId'],
@@ -3721,7 +3981,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userProfile'] as _i21.UserProfileEndpoint).hasContact(
+              (endpoints['userProfile'] as _i22.UserProfileEndpoint).hasContact(
             session,
             params['otherUserId'],
           ),
@@ -3739,7 +3999,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint)
                   .getMySlots(session),
         ),
         'getAvailableSlots': _i1.MethodConnector(
@@ -3749,7 +4009,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint)
                   .getAvailableSlots(session),
         ),
         'getExpiringSoon': _i1.MethodConnector(
@@ -3765,7 +4025,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint).getExpiringSoon(
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint).getExpiringSoon(
             session,
             days: params['days'],
           ),
@@ -3788,7 +4048,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint).createSlot(
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint).createSlot(
             session,
             userId: params['userId'],
             slotVariantId: params['slotVariantId'],
@@ -3812,7 +4072,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint).extendSlot(
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint).extendSlot(
             session,
             slotId: params['slotId'],
             additionalDays: params['additionalDays'],
@@ -3825,7 +4085,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint)
                   .deactivateExpired(session),
         ),
         'getSlotStats': _i1.MethodConnector(
@@ -3835,7 +4095,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint)
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint)
                   .getSlotStats(session),
         ),
         'createTestSlot': _i1.MethodConnector(
@@ -3851,7 +4111,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['userSlot'] as _i22.UserSlotEndpoint).createTestSlot(
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint).createTestSlot(
             session,
             slotVariantId: params['slotVariantId'],
           ),
@@ -3875,13 +4135,13 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['greeting'] as _i23.GreetingEndpoint).hello(
+              (endpoints['greeting'] as _i24.GreetingEndpoint).hello(
             session,
             params['name'],
           ),
         )
       },
     );
-    modules['serverpod_auth'] = _i35.Endpoints()..initializeEndpoints(server);
+    modules['serverpod_auth'] = _i37.Endpoints()..initializeEndpoints(server);
   }
 }

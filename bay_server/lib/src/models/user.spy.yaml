@@ -22,6 +22,14 @@ fields:
   lockedUntil: DateTime?
   ### Whether "stay logged in" is enabled
   stayLoggedIn: bool, default=false
+  ### Whether the user is banned
+  isBanned: bool, default=false
+  ### Ban timestamp
+  bannedAt: DateTime?
+  ### Reason for ban
+  bannedReason: String?
+  ### Admin who banned the user
+  bannedBy: int?, relation(parent=users, onDelete=setNull)
 indexes:
   user_username_idx:
     fields: username

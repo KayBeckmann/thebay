@@ -26,11 +26,16 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
     int? failedLoginAttempts,
     this.lockedUntil,
     bool? stayLoggedIn,
+    bool? isBanned,
+    this.bannedAt,
+    this.bannedReason,
+    this.bannedBy,
   })  : role = role ?? _i2.UserRole.user,
         isActive = isActive ?? true,
         acceptedTerms = acceptedTerms ?? false,
         failedLoginAttempts = failedLoginAttempts ?? 0,
-        stayLoggedIn = stayLoggedIn ?? false;
+        stayLoggedIn = stayLoggedIn ?? false,
+        isBanned = isBanned ?? false;
 
   factory User({
     int? id,
@@ -44,6 +49,10 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
     int? failedLoginAttempts,
     DateTime? lockedUntil,
     bool? stayLoggedIn,
+    bool? isBanned,
+    DateTime? bannedAt,
+    String? bannedReason,
+    int? bannedBy,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -66,6 +75,12 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
           : _i1.DateTimeJsonExtension.fromJson(
               jsonSerialization['lockedUntil']),
       stayLoggedIn: jsonSerialization['stayLoggedIn'] as bool,
+      isBanned: jsonSerialization['isBanned'] as bool,
+      bannedAt: jsonSerialization['bannedAt'] == null
+          ? null
+          : _i1.DateTimeJsonExtension.fromJson(jsonSerialization['bannedAt']),
+      bannedReason: jsonSerialization['bannedReason'] as String?,
+      bannedBy: jsonSerialization['bannedBy'] as int?,
     );
   }
 
@@ -106,6 +121,18 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
   /// Whether "stay logged in" is enabled
   bool stayLoggedIn;
 
+  /// Whether the user is banned
+  bool isBanned;
+
+  /// Ban timestamp
+  DateTime? bannedAt;
+
+  /// Reason for ban
+  String? bannedReason;
+
+  /// Admin who banned the user
+  int? bannedBy;
+
   @override
   _i1.Table<int?> get table => t;
 
@@ -124,6 +151,10 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
     int? failedLoginAttempts,
     DateTime? lockedUntil,
     bool? stayLoggedIn,
+    bool? isBanned,
+    DateTime? bannedAt,
+    String? bannedReason,
+    int? bannedBy,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -139,6 +170,10 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
       'failedLoginAttempts': failedLoginAttempts,
       if (lockedUntil != null) 'lockedUntil': lockedUntil?.toJson(),
       'stayLoggedIn': stayLoggedIn,
+      'isBanned': isBanned,
+      if (bannedAt != null) 'bannedAt': bannedAt?.toJson(),
+      if (bannedReason != null) 'bannedReason': bannedReason,
+      if (bannedBy != null) 'bannedBy': bannedBy,
     };
   }
 
@@ -156,6 +191,10 @@ abstract class User implements _i1.TableRow<int?>, _i1.ProtocolSerialization {
       'failedLoginAttempts': failedLoginAttempts,
       if (lockedUntil != null) 'lockedUntil': lockedUntil?.toJson(),
       'stayLoggedIn': stayLoggedIn,
+      'isBanned': isBanned,
+      if (bannedAt != null) 'bannedAt': bannedAt?.toJson(),
+      if (bannedReason != null) 'bannedReason': bannedReason,
+      if (bannedBy != null) 'bannedBy': bannedBy,
     };
   }
 
@@ -204,6 +243,10 @@ class _UserImpl extends User {
     int? failedLoginAttempts,
     DateTime? lockedUntil,
     bool? stayLoggedIn,
+    bool? isBanned,
+    DateTime? bannedAt,
+    String? bannedReason,
+    int? bannedBy,
   }) : super._(
           id: id,
           username: username,
@@ -216,6 +259,10 @@ class _UserImpl extends User {
           failedLoginAttempts: failedLoginAttempts,
           lockedUntil: lockedUntil,
           stayLoggedIn: stayLoggedIn,
+          isBanned: isBanned,
+          bannedAt: bannedAt,
+          bannedReason: bannedReason,
+          bannedBy: bannedBy,
         );
 
   /// Returns a shallow copy of this [User]
@@ -234,6 +281,10 @@ class _UserImpl extends User {
     int? failedLoginAttempts,
     Object? lockedUntil = _Undefined,
     bool? stayLoggedIn,
+    bool? isBanned,
+    Object? bannedAt = _Undefined,
+    Object? bannedReason = _Undefined,
+    Object? bannedBy = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -247,6 +298,10 @@ class _UserImpl extends User {
       failedLoginAttempts: failedLoginAttempts ?? this.failedLoginAttempts,
       lockedUntil: lockedUntil is DateTime? ? lockedUntil : this.lockedUntil,
       stayLoggedIn: stayLoggedIn ?? this.stayLoggedIn,
+      isBanned: isBanned ?? this.isBanned,
+      bannedAt: bannedAt is DateTime? ? bannedAt : this.bannedAt,
+      bannedReason: bannedReason is String? ? bannedReason : this.bannedReason,
+      bannedBy: bannedBy is int? ? bannedBy : this.bannedBy,
     );
   }
 }
@@ -299,6 +354,23 @@ class UserTable extends _i1.Table<int?> {
       this,
       hasDefault: true,
     );
+    isBanned = _i1.ColumnBool(
+      'isBanned',
+      this,
+      hasDefault: true,
+    );
+    bannedAt = _i1.ColumnDateTime(
+      'bannedAt',
+      this,
+    );
+    bannedReason = _i1.ColumnString(
+      'bannedReason',
+      this,
+    );
+    bannedBy = _i1.ColumnInt(
+      'bannedBy',
+      this,
+    );
   }
 
   /// Unique username for login
@@ -331,6 +403,18 @@ class UserTable extends _i1.Table<int?> {
   /// Whether "stay logged in" is enabled
   late final _i1.ColumnBool stayLoggedIn;
 
+  /// Whether the user is banned
+  late final _i1.ColumnBool isBanned;
+
+  /// Ban timestamp
+  late final _i1.ColumnDateTime bannedAt;
+
+  /// Reason for ban
+  late final _i1.ColumnString bannedReason;
+
+  /// Admin who banned the user
+  late final _i1.ColumnInt bannedBy;
+
   @override
   List<_i1.Column> get columns => [
         id,
@@ -344,6 +428,10 @@ class UserTable extends _i1.Table<int?> {
         failedLoginAttempts,
         lockedUntil,
         stayLoggedIn,
+        isBanned,
+        bannedAt,
+        bannedReason,
+        bannedBy,
       ];
 }
 

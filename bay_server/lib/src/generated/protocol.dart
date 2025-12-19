@@ -44,25 +44,28 @@ import 'slot_variant.dart' as _i32;
 import 'transaction.dart' as _i33;
 import 'transaction_status.dart' as _i34;
 import 'user.dart' as _i35;
-import 'user_payment_info.dart' as _i36;
-import 'user_profile.dart' as _i37;
-import 'user_public_key.dart' as _i38;
-import 'user_role.dart' as _i39;
-import 'report_target_type.dart' as _i40;
-import 'package:bay_server/src/generated/category.dart' as _i41;
-import 'package:bay_server/src/generated/dispute.dart' as _i42;
-import 'package:bay_server/src/generated/message_draft.dart' as _i43;
-import 'package:bay_server/src/generated/listing.dart' as _i44;
-import 'package:bay_server/src/generated/listing_image.dart' as _i45;
-import 'package:bay_server/src/generated/message.dart' as _i46;
-import 'package:bay_server/src/generated/news.dart' as _i47;
-import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i48;
-import 'package:bay_server/src/generated/rating.dart' as _i49;
-import 'package:bay_server/src/generated/transaction.dart' as _i50;
-import 'package:bay_server/src/generated/report.dart' as _i51;
-import 'package:bay_server/src/generated/slot_order.dart' as _i52;
-import 'package:bay_server/src/generated/slot_variant.dart' as _i53;
-import 'package:bay_server/src/generated/user_slot.dart' as _i54;
+import 'user_ban_log.dart' as _i36;
+import 'user_payment_info.dart' as _i37;
+import 'user_profile.dart' as _i38;
+import 'user_public_key.dart' as _i39;
+import 'user_role.dart' as _i40;
+import 'report_target_type.dart' as _i41;
+import 'package:bay_server/src/generated/category.dart' as _i42;
+import 'package:bay_server/src/generated/dispute.dart' as _i43;
+import 'package:bay_server/src/generated/message_draft.dart' as _i44;
+import 'package:bay_server/src/generated/listing.dart' as _i45;
+import 'package:bay_server/src/generated/listing_image.dart' as _i46;
+import 'package:bay_server/src/generated/message.dart' as _i47;
+import 'package:bay_server/src/generated/news.dart' as _i48;
+import 'package:bay_server/src/generated/encrypted_key_backup.dart' as _i49;
+import 'package:bay_server/src/generated/rating.dart' as _i50;
+import 'package:bay_server/src/generated/transaction.dart' as _i51;
+import 'package:bay_server/src/generated/report.dart' as _i52;
+import 'package:bay_server/src/generated/slot_order.dart' as _i53;
+import 'package:bay_server/src/generated/slot_variant.dart' as _i54;
+import 'package:bay_server/src/generated/user.dart' as _i55;
+import 'package:bay_server/src/generated/user_ban_log.dart' as _i56;
+import 'package:bay_server/src/generated/user_slot.dart' as _i57;
 export 'greeting.dart';
 export 'auth_response.dart';
 export 'category.dart';
@@ -95,6 +98,7 @@ export 'slot_variant.dart';
 export 'transaction.dart';
 export 'transaction_status.dart';
 export 'user.dart';
+export 'user_ban_log.dart';
 export 'user_payment_info.dart';
 export 'user_profile.dart';
 export 'user_public_key.dart';
@@ -2123,6 +2127,103 @@ class Protocol extends _i1.SerializationManagerServer {
       managed: true,
     ),
     _i2.TableDefinition(
+      name: 'user_ban_log',
+      dartName: 'UserBanLog',
+      schema: 'public',
+      module: 'bay',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'user_ban_log_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'userId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'adminId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'action',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'reason',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'createdAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+          columnDefault: 'CURRENT_TIMESTAMP',
+        ),
+      ],
+      foreignKeys: [
+        _i2.ForeignKeyDefinition(
+          constraintName: 'user_ban_log_fk_0',
+          columns: ['userId'],
+          referenceTable: 'users',
+          referenceTableSchema: 'public',
+          referenceColumns: ['id'],
+          onUpdate: _i2.ForeignKeyAction.noAction,
+          onDelete: _i2.ForeignKeyAction.cascade,
+          matchType: null,
+        ),
+        _i2.ForeignKeyDefinition(
+          constraintName: 'user_ban_log_fk_1',
+          columns: ['adminId'],
+          referenceTable: 'users',
+          referenceTableSchema: 'public',
+          referenceColumns: ['id'],
+          onUpdate: _i2.ForeignKeyAction.noAction,
+          onDelete: _i2.ForeignKeyAction.setNull,
+          matchType: null,
+        ),
+      ],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'user_ban_log_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        ),
+        _i2.IndexDefinition(
+          indexName: 'user_ban_log_user_idx',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'userId',
+            )
+          ],
+          type: 'btree',
+          isUnique: false,
+          isPrimary: false,
+        ),
+      ],
+      managed: true,
+    ),
+    _i2.TableDefinition(
       name: 'user_payment_info',
       dartName: 'UserPaymentInfo',
       schema: 'public',
@@ -2529,8 +2630,44 @@ class Protocol extends _i1.SerializationManagerServer {
           dartType: 'bool',
           columnDefault: 'false',
         ),
+        _i2.ColumnDefinition(
+          name: 'isBanned',
+          columnType: _i2.ColumnType.boolean,
+          isNullable: false,
+          dartType: 'bool',
+          columnDefault: 'false',
+        ),
+        _i2.ColumnDefinition(
+          name: 'bannedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: true,
+          dartType: 'DateTime?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'bannedReason',
+          columnType: _i2.ColumnType.text,
+          isNullable: true,
+          dartType: 'String?',
+        ),
+        _i2.ColumnDefinition(
+          name: 'bannedBy',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: true,
+          dartType: 'int?',
+        ),
       ],
-      foreignKeys: [],
+      foreignKeys: [
+        _i2.ForeignKeyDefinition(
+          constraintName: 'users_fk_0',
+          columns: ['bannedBy'],
+          referenceTable: 'users',
+          referenceTableSchema: 'public',
+          referenceColumns: ['id'],
+          onUpdate: _i2.ForeignKeyAction.noAction,
+          onDelete: _i2.ForeignKeyAction.setNull,
+          matchType: null,
+        )
+      ],
       indexes: [
         _i2.IndexDefinition(
           indexName: 'users_pkey',
@@ -2667,20 +2804,23 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i35.User) {
       return _i35.User.fromJson(data) as T;
     }
-    if (t == _i36.UserPaymentInfo) {
-      return _i36.UserPaymentInfo.fromJson(data) as T;
+    if (t == _i36.UserBanLog) {
+      return _i36.UserBanLog.fromJson(data) as T;
     }
-    if (t == _i37.UserProfile) {
-      return _i37.UserProfile.fromJson(data) as T;
+    if (t == _i37.UserPaymentInfo) {
+      return _i37.UserPaymentInfo.fromJson(data) as T;
     }
-    if (t == _i38.UserPublicKey) {
-      return _i38.UserPublicKey.fromJson(data) as T;
+    if (t == _i38.UserProfile) {
+      return _i38.UserProfile.fromJson(data) as T;
     }
-    if (t == _i39.UserRole) {
-      return _i39.UserRole.fromJson(data) as T;
+    if (t == _i39.UserPublicKey) {
+      return _i39.UserPublicKey.fromJson(data) as T;
     }
-    if (t == _i40.ReportTargetType) {
-      return _i40.ReportTargetType.fromJson(data) as T;
+    if (t == _i40.UserRole) {
+      return _i40.UserRole.fromJson(data) as T;
+    }
+    if (t == _i41.ReportTargetType) {
+      return _i41.ReportTargetType.fromJson(data) as T;
     }
     if (t == _i1.getType<_i4.MessageDraft?>()) {
       return (data != null ? _i4.MessageDraft.fromJson(data) : null) as T;
@@ -2780,27 +2920,30 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i35.User?>()) {
       return (data != null ? _i35.User.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i36.UserPaymentInfo?>()) {
-      return (data != null ? _i36.UserPaymentInfo.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i36.UserBanLog?>()) {
+      return (data != null ? _i36.UserBanLog.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i37.UserProfile?>()) {
-      return (data != null ? _i37.UserProfile.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i37.UserPaymentInfo?>()) {
+      return (data != null ? _i37.UserPaymentInfo.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i38.UserPublicKey?>()) {
-      return (data != null ? _i38.UserPublicKey.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i38.UserProfile?>()) {
+      return (data != null ? _i38.UserProfile.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i39.UserRole?>()) {
-      return (data != null ? _i39.UserRole.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i39.UserPublicKey?>()) {
+      return (data != null ? _i39.UserPublicKey.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i40.ReportTargetType?>()) {
-      return (data != null ? _i40.ReportTargetType.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i40.UserRole?>()) {
+      return (data != null ? _i40.UserRole.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i41.ReportTargetType?>()) {
+      return (data != null ? _i41.ReportTargetType.fromJson(data) : null) as T;
     }
     if (t == List<_i12.Listing>) {
       return (data as List).map((e) => deserialize<_i12.Listing>(e)).toList()
           as T;
     }
-    if (t == List<_i41.Category>) {
-      return (data as List).map((e) => deserialize<_i41.Category>(e)).toList()
+    if (t == List<_i42.Category>) {
+      return (data as List).map((e) => deserialize<_i42.Category>(e)).toList()
           as T;
     }
     if (t == Map<String, double>) {
@@ -2810,17 +2953,17 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<String>) {
       return (data as List).map((e) => deserialize<String>(e)).toList() as T;
     }
-    if (t == List<_i42.Dispute>) {
-      return (data as List).map((e) => deserialize<_i42.Dispute>(e)).toList()
+    if (t == List<_i43.Dispute>) {
+      return (data as List).map((e) => deserialize<_i43.Dispute>(e)).toList()
           as T;
     }
-    if (t == List<_i43.MessageDraft>) {
+    if (t == List<_i44.MessageDraft>) {
       return (data as List)
-          .map((e) => deserialize<_i43.MessageDraft>(e))
+          .map((e) => deserialize<_i44.MessageDraft>(e))
           .toList() as T;
     }
-    if (t == List<_i44.Listing>) {
-      return (data as List).map((e) => deserialize<_i44.Listing>(e)).toList()
+    if (t == List<_i45.Listing>) {
+      return (data as List).map((e) => deserialize<_i45.Listing>(e)).toList()
           as T;
     }
     if (t == Map<int, bool>) {
@@ -2830,13 +2973,13 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == List<int>) {
       return (data as List).map((e) => deserialize<int>(e)).toList() as T;
     }
-    if (t == List<_i45.ListingImage>) {
+    if (t == List<_i46.ListingImage>) {
       return (data as List)
-          .map((e) => deserialize<_i45.ListingImage>(e))
+          .map((e) => deserialize<_i46.ListingImage>(e))
           .toList() as T;
     }
-    if (t == List<_i46.Message>) {
-      return (data as List).map((e) => deserialize<_i46.Message>(e)).toList()
+    if (t == List<_i47.Message>) {
+      return (data as List).map((e) => deserialize<_i47.Message>(e)).toList()
           as T;
     }
     if (t == List<Map<String, dynamic>>) {
@@ -2848,8 +2991,8 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<dynamic>(v))) as T;
     }
-    if (t == List<_i47.News>) {
-      return (data as List).map((e) => deserialize<_i47.News>(e)).toList() as T;
+    if (t == List<_i48.News>) {
+      return (data as List).map((e) => deserialize<_i48.News>(e)).toList() as T;
     }
     if (t == Map<String, String>) {
       return (data as Map).map((k, v) =>
@@ -2861,40 +3004,47 @@ class Protocol extends _i1.SerializationManagerServer {
               MapEntry(deserialize<String>(k), deserialize<dynamic>(v)))
           : null) as T;
     }
-    if (t == List<_i48.EncryptedKeyBackup>) {
+    if (t == List<_i49.EncryptedKeyBackup>) {
       return (data as List)
-          .map((e) => deserialize<_i48.EncryptedKeyBackup>(e))
+          .map((e) => deserialize<_i49.EncryptedKeyBackup>(e))
           .toList() as T;
     }
-    if (t == List<_i49.Rating>) {
-      return (data as List).map((e) => deserialize<_i49.Rating>(e)).toList()
+    if (t == List<_i50.Rating>) {
+      return (data as List).map((e) => deserialize<_i50.Rating>(e)).toList()
           as T;
     }
-    if (t == List<_i50.Transaction>) {
+    if (t == List<_i51.Transaction>) {
       return (data as List)
-          .map((e) => deserialize<_i50.Transaction>(e))
+          .map((e) => deserialize<_i51.Transaction>(e))
           .toList() as T;
     }
-    if (t == List<_i51.Report>) {
-      return (data as List).map((e) => deserialize<_i51.Report>(e)).toList()
+    if (t == List<_i52.Report>) {
+      return (data as List).map((e) => deserialize<_i52.Report>(e)).toList()
           as T;
     }
-    if (t == List<_i52.SlotOrder>) {
-      return (data as List).map((e) => deserialize<_i52.SlotOrder>(e)).toList()
+    if (t == List<_i53.SlotOrder>) {
+      return (data as List).map((e) => deserialize<_i53.SlotOrder>(e)).toList()
           as T;
     }
-    if (t == List<_i53.SlotVariant>) {
+    if (t == List<_i54.SlotVariant>) {
       return (data as List)
-          .map((e) => deserialize<_i53.SlotVariant>(e))
+          .map((e) => deserialize<_i54.SlotVariant>(e))
           .toList() as T;
     }
-    if (t == List<_i54.UserSlot>) {
-      return (data as List).map((e) => deserialize<_i54.UserSlot>(e)).toList()
+    if (t == List<_i55.User>) {
+      return (data as List).map((e) => deserialize<_i55.User>(e)).toList() as T;
+    }
+    if (t == List<_i56.UserBanLog>) {
+      return (data as List).map((e) => deserialize<_i56.UserBanLog>(e)).toList()
           as T;
     }
     if (t == Map<String, int>) {
       return (data as Map).map(
           (k, v) => MapEntry(deserialize<String>(k), deserialize<int>(v))) as T;
+    }
+    if (t == List<_i57.UserSlot>) {
+      return (data as List).map((e) => deserialize<_i57.UserSlot>(e)).toList()
+          as T;
     }
     try {
       return _i3.Protocol().deserialize<T>(data, t);
@@ -3005,19 +3155,22 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i35.User) {
       return 'User';
     }
-    if (data is _i36.UserPaymentInfo) {
+    if (data is _i36.UserBanLog) {
+      return 'UserBanLog';
+    }
+    if (data is _i37.UserPaymentInfo) {
       return 'UserPaymentInfo';
     }
-    if (data is _i37.UserProfile) {
+    if (data is _i38.UserProfile) {
       return 'UserProfile';
     }
-    if (data is _i38.UserPublicKey) {
+    if (data is _i39.UserPublicKey) {
       return 'UserPublicKey';
     }
-    if (data is _i39.UserRole) {
+    if (data is _i40.UserRole) {
       return 'UserRole';
     }
-    if (data is _i40.ReportTargetType) {
+    if (data is _i41.ReportTargetType) {
       return 'ReportTargetType';
     }
     className = _i2.Protocol().getClassNameForObject(data);
@@ -3133,20 +3286,23 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'User') {
       return deserialize<_i35.User>(data['data']);
     }
+    if (dataClassName == 'UserBanLog') {
+      return deserialize<_i36.UserBanLog>(data['data']);
+    }
     if (dataClassName == 'UserPaymentInfo') {
-      return deserialize<_i36.UserPaymentInfo>(data['data']);
+      return deserialize<_i37.UserPaymentInfo>(data['data']);
     }
     if (dataClassName == 'UserProfile') {
-      return deserialize<_i37.UserProfile>(data['data']);
+      return deserialize<_i38.UserProfile>(data['data']);
     }
     if (dataClassName == 'UserPublicKey') {
-      return deserialize<_i38.UserPublicKey>(data['data']);
+      return deserialize<_i39.UserPublicKey>(data['data']);
     }
     if (dataClassName == 'UserRole') {
-      return deserialize<_i39.UserRole>(data['data']);
+      return deserialize<_i40.UserRole>(data['data']);
     }
     if (dataClassName == 'ReportTargetType') {
-      return deserialize<_i40.ReportTargetType>(data['data']);
+      return deserialize<_i41.ReportTargetType>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);
@@ -3208,10 +3364,12 @@ class Protocol extends _i1.SerializationManagerServer {
         return _i33.Transaction.t;
       case _i35.User:
         return _i35.User.t;
-      case _i36.UserPaymentInfo:
-        return _i36.UserPaymentInfo.t;
-      case _i38.UserPublicKey:
-        return _i38.UserPublicKey.t;
+      case _i36.UserBanLog:
+        return _i36.UserBanLog.t;
+      case _i37.UserPaymentInfo:
+        return _i37.UserPaymentInfo.t;
+      case _i39.UserPublicKey:
+        return _i39.UserPublicKey.t;
       case _i28.UserSlot:
         return _i28.UserSlot.t;
     }
