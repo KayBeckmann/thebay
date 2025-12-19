@@ -45,10 +45,10 @@ import 'package:bay_server/src/generated/slot_order.dart' as _i31;
 import 'package:bay_server/src/generated/payment_method.dart' as _i32;
 import 'package:bay_server/src/generated/slot_variant.dart' as _i33;
 import 'package:bay_server/src/generated/transaction_status.dart' as _i34;
-import 'package:bay_server/src/generated/user_role.dart' as _i35;
-import 'package:bay_server/src/generated/user_ban_log.dart' as _i36;
-import 'package:bay_server/src/generated/user_profile.dart' as _i37;
-import 'package:bay_server/src/generated/user_payment_info.dart' as _i38;
+import 'package:bay_server/src/generated/user_payment_info.dart' as _i35;
+import 'package:bay_server/src/generated/user_role.dart' as _i36;
+import 'package:bay_server/src/generated/user_ban_log.dart' as _i37;
+import 'package:bay_server/src/generated/user_profile.dart' as _i38;
 import 'package:bay_server/src/generated/user_slot.dart' as _i39;
 import 'package:bay_server/src/generated/greeting.dart' as _i40;
 import 'package:bay_server/src/generated/protocol.dart';
@@ -5345,6 +5345,35 @@ class _TransactionEndpoint {
       }
     });
   }
+
+  _i3.Future<_i35.UserPaymentInfo?> getSellerPaymentInfo(
+    _i1.TestSessionBuilder sessionBuilder,
+    int transactionId,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'transaction',
+        method: 'getSellerPaymentInfo',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'transaction',
+          methodName: 'getSellerPaymentInfo',
+          parameters: _i1.testObjectToJson({'transactionId': transactionId}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<_i35.UserPaymentInfo?>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
 }
 
 class _UserManagementEndpoint {
@@ -5360,7 +5389,7 @@ class _UserManagementEndpoint {
   _i3.Future<List<_i29.User>> getAllUsers(
     _i1.TestSessionBuilder sessionBuilder, {
     String? searchQuery,
-    _i35.UserRole? role,
+    _i36.UserRole? role,
     bool? isBanned,
     int? limit,
     int? offset,
@@ -5428,7 +5457,7 @@ class _UserManagementEndpoint {
   _i3.Future<_i29.User> updateUserRole(
     _i1.TestSessionBuilder sessionBuilder,
     int userId,
-    _i35.UserRole newRole,
+    _i36.UserRole newRole,
   ) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
@@ -5551,7 +5580,7 @@ class _UserManagementEndpoint {
     });
   }
 
-  _i3.Future<List<_i36.UserBanLog>> getBanHistory(
+  _i3.Future<List<_i37.UserBanLog>> getBanHistory(
     _i1.TestSessionBuilder sessionBuilder,
     int userId,
   ) async {
@@ -5572,7 +5601,7 @@ class _UserManagementEndpoint {
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<List<_i36.UserBanLog>>);
+        ) as _i3.Future<List<_i37.UserBanLog>>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();
@@ -5805,7 +5834,7 @@ class _UserProfileEndpoint {
 
   final _i2.SerializationManager _serializationManager;
 
-  _i3.Future<_i37.UserProfile?> getProfile(
+  _i3.Future<_i38.UserProfile?> getProfile(
     _i1.TestSessionBuilder sessionBuilder,
     int userId,
   ) async {
@@ -5826,7 +5855,7 @@ class _UserProfileEndpoint {
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<_i37.UserProfile?>);
+        ) as _i3.Future<_i38.UserProfile?>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();
@@ -5869,7 +5898,7 @@ class _UserProfileEndpoint {
     });
   }
 
-  _i3.Future<_i38.UserPaymentInfo?> getMyPaymentInfo(
+  _i3.Future<_i35.UserPaymentInfo?> getMyPaymentInfo(
       _i1.TestSessionBuilder sessionBuilder) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
@@ -5888,7 +5917,7 @@ class _UserProfileEndpoint {
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<_i38.UserPaymentInfo?>);
+        ) as _i3.Future<_i35.UserPaymentInfo?>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();
@@ -5896,7 +5925,7 @@ class _UserProfileEndpoint {
     });
   }
 
-  _i3.Future<_i38.UserPaymentInfo> updateMyPaymentInfo(
+  _i3.Future<_i35.UserPaymentInfo> updateMyPaymentInfo(
     _i1.TestSessionBuilder sessionBuilder, {
     String? paypalAddress,
     String? bitcoinWallet,
@@ -5921,7 +5950,7 @@ class _UserProfileEndpoint {
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<_i38.UserPaymentInfo>);
+        ) as _i3.Future<_i35.UserPaymentInfo>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

@@ -42,10 +42,10 @@ import 'package:bay_client/src/protocol/slot_order.dart' as _i30;
 import 'package:bay_client/src/protocol/payment_method.dart' as _i31;
 import 'package:bay_client/src/protocol/slot_variant.dart' as _i32;
 import 'package:bay_client/src/protocol/transaction_status.dart' as _i33;
-import 'package:bay_client/src/protocol/user_role.dart' as _i34;
-import 'package:bay_client/src/protocol/user_ban_log.dart' as _i35;
-import 'package:bay_client/src/protocol/user_profile.dart' as _i36;
-import 'package:bay_client/src/protocol/user_payment_info.dart' as _i37;
+import 'package:bay_client/src/protocol/user_payment_info.dart' as _i34;
+import 'package:bay_client/src/protocol/user_role.dart' as _i35;
+import 'package:bay_client/src/protocol/user_ban_log.dart' as _i36;
+import 'package:bay_client/src/protocol/user_profile.dart' as _i37;
 import 'package:bay_client/src/protocol/user_slot.dart' as _i38;
 import 'package:bay_client/src/protocol/greeting.dart' as _i39;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i40;
@@ -1905,6 +1905,14 @@ class EndpointTransaction extends _i1.EndpointRef {
         {'transactionId': transactionId},
       );
 
+  /// Markiert eine Transaktion als bezahlt (nur Käufer).
+  _i2.Future<_i23.Transaction> markAsPaid(int transactionId) =>
+      caller.callServerEndpoint<_i23.Transaction>(
+        'transaction',
+        'markAsPaid',
+        {'transactionId': transactionId},
+      );
+
   /// Markiert eine Transaktion als erhalten (nur Käufer).
   /// Schließt die Transaktion ab.
   _i2.Future<_i23.Transaction> markAsReceived(int transactionId) =>
@@ -1969,6 +1977,15 @@ class EndpointTransaction extends _i1.EndpointRef {
         'getUpcomingAutoComplete',
         {'daysAhead': daysAhead},
       );
+
+  /// Ruft die Zahlungsinformationen des Verkäufers für eine Transaktion ab.
+  /// Nur für den Käufer zugänglich.
+  _i2.Future<_i34.UserPaymentInfo?> getSellerPaymentInfo(int transactionId) =>
+      caller.callServerEndpoint<_i34.UserPaymentInfo?>(
+        'transaction',
+        'getSellerPaymentInfo',
+        {'transactionId': transactionId},
+      );
 }
 
 /// Endpoint for user management (admin only)
@@ -1982,7 +1999,7 @@ class EndpointUserManagement extends _i1.EndpointRef {
   /// Get all users with optional filters
   _i2.Future<List<_i28.User>> getAllUsers({
     String? searchQuery,
-    _i34.UserRole? role,
+    _i35.UserRole? role,
     bool? isBanned,
     int? limit,
     int? offset,
@@ -2010,7 +2027,7 @@ class EndpointUserManagement extends _i1.EndpointRef {
   /// Update user role
   _i2.Future<_i28.User> updateUserRole(
     int userId,
-    _i34.UserRole newRole,
+    _i35.UserRole newRole,
   ) =>
       caller.callServerEndpoint<_i28.User>(
         'userManagement',
@@ -2058,8 +2075,8 @@ class EndpointUserManagement extends _i1.EndpointRef {
       );
 
   /// Get ban history for a user
-  _i2.Future<List<_i35.UserBanLog>> getBanHistory(int userId) =>
-      caller.callServerEndpoint<List<_i35.UserBanLog>>(
+  _i2.Future<List<_i36.UserBanLog>> getBanHistory(int userId) =>
+      caller.callServerEndpoint<List<_i36.UserBanLog>>(
         'userManagement',
         'getBanHistory',
         {'userId': userId},
@@ -2134,8 +2151,8 @@ class EndpointUserProfile extends _i1.EndpointRef {
   String get name => 'userProfile';
 
   /// Ruft das öffentliche Profil eines Benutzers ab.
-  _i2.Future<_i36.UserProfile?> getProfile(int userId) =>
-      caller.callServerEndpoint<_i36.UserProfile?>(
+  _i2.Future<_i37.UserProfile?> getProfile(int userId) =>
+      caller.callServerEndpoint<_i37.UserProfile?>(
         'userProfile',
         'getProfile',
         {'userId': userId},
@@ -2158,19 +2175,19 @@ class EndpointUserProfile extends _i1.EndpointRef {
       );
 
   /// Ruft die eigenen Zahlungsinformationen ab.
-  _i2.Future<_i37.UserPaymentInfo?> getMyPaymentInfo() =>
-      caller.callServerEndpoint<_i37.UserPaymentInfo?>(
+  _i2.Future<_i34.UserPaymentInfo?> getMyPaymentInfo() =>
+      caller.callServerEndpoint<_i34.UserPaymentInfo?>(
         'userProfile',
         'getMyPaymentInfo',
         {},
       );
 
   /// Speichert die eigenen Zahlungsinformationen.
-  _i2.Future<_i37.UserPaymentInfo> updateMyPaymentInfo({
+  _i2.Future<_i34.UserPaymentInfo> updateMyPaymentInfo({
     String? paypalAddress,
     String? bitcoinWallet,
   }) =>
-      caller.callServerEndpoint<_i37.UserPaymentInfo>(
+      caller.callServerEndpoint<_i34.UserPaymentInfo>(
         'userProfile',
         'updateMyPaymentInfo',
         {

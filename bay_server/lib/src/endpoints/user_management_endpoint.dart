@@ -138,7 +138,8 @@ class UserManagementEndpoint extends AuthenticatedEndpoint {
       session,
       where: (t) =>
           (t.buyerId.equals(userId) | t.sellerId.equals(userId)) &
-          t.status.equals(TransactionStatus.open),
+          (t.status.equals(TransactionStatus.open) |
+              t.status.equals(TransactionStatus.paid)),
     );
 
     for (final transaction in openTransactions) {

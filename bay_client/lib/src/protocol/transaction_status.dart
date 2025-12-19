@@ -18,7 +18,8 @@ enum TransactionStatus implements _i1.SerializableModel {
   received,
   completed,
   disputed,
-  cancelled;
+  cancelled,
+  paid;
 
   static TransactionStatus fromJson(int index) {
     switch (index) {
@@ -34,6 +35,8 @@ enum TransactionStatus implements _i1.SerializableModel {
         return TransactionStatus.disputed;
       case 5:
         return TransactionStatus.cancelled;
+      case 6:
+        return TransactionStatus.paid;
       default:
         throw ArgumentError(
             'Value "$index" cannot be converted to "TransactionStatus"');

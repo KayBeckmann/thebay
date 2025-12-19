@@ -7,3 +7,4 @@ values:
   - completed   # Transaktion abgeschlossen (manuell oder automatisch)
   - disputed    # Reklamation offen
   - cancelled   # Transaktion abgebrochen
+  - paid        # Zahlung vom Käufer bestätigt

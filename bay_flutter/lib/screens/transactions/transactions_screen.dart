@@ -388,6 +388,12 @@ class _TransactionCard extends StatelessWidget {
           icon: Icons.hourglass_empty,
           color: Colors.orange,
         );
+      case TransactionStatus.paid:
+        return _StatusInfo(
+          label: 'Paid',
+          icon: Icons.attach_money,
+          color: Colors.green,
+        );
       case TransactionStatus.shipped:
         return _StatusInfo(
           label: 'Shipped',

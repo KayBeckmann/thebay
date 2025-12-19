@@ -3487,6 +3487,24 @@ class Endpoints extends _i1.EndpointDispatch {
             params['transactionId'],
           ),
         ),
+        'markAsPaid': _i1.MethodConnector(
+          name: 'markAsPaid',
+          params: {
+            'transactionId': _i1.ParameterDescription(
+              name: 'transactionId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['transaction'] as _i20.TransactionEndpoint).markAsPaid(
+            session,
+            params['transactionId'],
+          ),
+        ),
         'markAsReceived': _i1.MethodConnector(
           name: 'markAsReceived',
           params: {
@@ -3605,6 +3623,25 @@ class Endpoints extends _i1.EndpointDispatch {
                   .getUpcomingAutoComplete(
             session,
             daysAhead: params['daysAhead'],
+          ),
+        ),
+        'getSellerPaymentInfo': _i1.MethodConnector(
+          name: 'getSellerPaymentInfo',
+          params: {
+            'transactionId': _i1.ParameterDescription(
+              name: 'transactionId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['transaction'] as _i20.TransactionEndpoint)
+                  .getSellerPaymentInfo(
+            session,
+            params['transactionId'],
           ),
         ),
       },

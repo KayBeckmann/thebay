@@ -28,6 +28,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   Dispute? _dispute;
   String? _buyerUsername;
   String? _sellerUsername;
+  UserPaymentInfo? _sellerPaymentInfo;
   bool _isLoading = true;
   bool _isActionLoading = false;
   String? _error;
@@ -92,6 +93,20 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         } catch (_) {}
       }
 
+      // Load seller payment info for buyer when transaction is open or paid
+      UserPaymentInfo? sellerPaymentInfo;
+      final isBuyer = transaction.buyerId == _currentUserId;
+      if (isBuyer &&
+          (transaction.status == TransactionStatus.open ||
+              transaction.status == TransactionStatus.paid)) {
+        try {
+          sellerPaymentInfo = await client.transaction
+              .getSellerPaymentInfo(widget.transactionId);
+        } catch (_) {
+          // Payment info might not be available
+        }
+      }
+
       if (mounted) {
         setState(() {
           _transaction = transaction;
@@ -99,6 +114,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           _dispute = dispute;
           _buyerUsername = buyerUsername;
           _sellerUsername = sellerUsername;
+          _sellerPaymentInfo = sellerPaymentInfo;
           _canRate = canRate;
           _hasRated = hasRated;
           _isLoading = false;
@@ -191,6 +207,15 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           if (_transaction!.status == TransactionStatus.disputed &&
               _dispute != null) ...[
             _buildDisputeCard(),
+            const SizedBox(height: 16),
+          ],
+
+          // Payment Information (for buyer when transaction is open or paid)
+          if (_isBuyer &&
+              (_transaction!.status == TransactionStatus.open ||
+                  _transaction!.status == TransactionStatus.paid) &&
+              _sellerPaymentInfo != null) ...[
+            _buildPaymentInfoCard(),
             const SizedBox(height: 16),
           ],
 
@@ -366,12 +391,23 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildTimeline() {
+    final isPaid = _transaction!.status == TransactionStatus.paid ||
+        _transaction!.status == TransactionStatus.shipped ||
+        _transaction!.status == TransactionStatus.received ||
+        _transaction!.status == TransactionStatus.completed ||
+        _transaction!.status == TransactionStatus.disputed;
     final steps = <_TimelineStep>[
       _TimelineStep(
         title: 'Created',
         subtitle: _formatDateTime(_transaction!.createdAt),
         isCompleted: true,
         icon: Icons.add_circle,
+      ),
+      _TimelineStep(
+        title: 'Paid',
+        subtitle: isPaid ? 'Payment sent' : 'Waiting for buyer',
+        isCompleted: isPaid,
+        icon: Icons.attach_money,
       ),
       _TimelineStep(
         title: 'Shipped',
@@ -612,12 +648,23 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
     final actions = <Widget>[];
 
     // Seller: Mark as shipped
-    if (_isSeller && status == TransactionStatus.open) {
+    if (_isSeller && status == TransactionStatus.paid) {
       actions.add(
         FilledButton.icon(
           onPressed: _isActionLoading ? null : _markAsShipped,
           icon: const Icon(Icons.local_shipping),
           label: const Text('Mark as Shipped'),
+        ),
+      );
+    }
+
+    // Buyer: Mark as paid
+    if (_isBuyer && status == TransactionStatus.open) {
+      actions.add(
+        FilledButton.icon(
+          onPressed: _isActionLoading ? null : _markAsPaid,
+          icon: const Icon(Icons.attach_money),
+          label: const Text('Mark as Paid'),
         ),
       );
     }
@@ -721,6 +768,53 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Transaction marked as shipped')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isActionLoading = false);
+      }
+    }
+  }
+
+  Future<void> _markAsPaid() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Mark as Paid'),
+        content: const Text(
+          'Confirm that you have sent the payment to the seller.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Confirm'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true) return;
+
+    setState(() => _isActionLoading = true);
+
+    try {
+      await client.transaction.markAsPaid(widget.transactionId);
+      widget.onStatusChanged?.call();
+      await _loadData();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Payment marked as sent')),
         );
       }
     } catch (e) {
@@ -1178,14 +1272,146 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
     );
   }
 
+  Widget _buildPaymentInfoCard() {
+    final paymentMethod = _transaction!.paymentMethod;
+    final paymentInfo = _sellerPaymentInfo!;
+
+    return Card(
+      color: Theme.of(context).colorScheme.primaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.payment,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    'Payment Information',
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Please send the payment to the seller using the following details:',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.outline,
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        paymentMethod == PaymentMethod.paypal
+                            ? Icons.account_balance
+                            : Icons.currency_bitcoin,
+                        size: 20,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        paymentMethod == PaymentMethod.paypal
+                            ? 'PayPal'
+                            : 'Bitcoin',
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  if (paymentMethod == PaymentMethod.paypal &&
+                      paymentInfo.paypalAddress != null)
+                    SelectableText(
+                      paymentInfo.paypalAddress!,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'monospace',
+                          ),
+                    ),
+                  if (paymentMethod == PaymentMethod.bitcoin &&
+                      paymentInfo.bitcoinWallet != null)
+                    SelectableText(
+                      paymentInfo.bitcoinWallet!,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'monospace',
+                          ),
+                    ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.tertiaryContainer,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info_outline,
+                    size: 20,
+                    color: Theme.of(context).colorScheme.onTertiaryContainer,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'The seller will ship the item once payment is received. Please include your transaction ID in the payment note.',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color:
+                                Theme.of(context).colorScheme.onTertiaryContainer,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   _StatusInfo _getStatusInfo(TransactionStatus status) {
     switch (status) {
       case TransactionStatus.open:
         return _StatusInfo(
           label: 'Open',
-          description: 'Waiting for seller to ship the item',
+          description: 'Waiting for buyer payment',
           icon: Icons.hourglass_empty,
           color: Colors.orange,
+        );
+      case TransactionStatus.paid:
+        return _StatusInfo(
+          label: 'Paid',
+          description: 'Payment sent, waiting for seller to ship',
+          icon: Icons.attach_money,
+          color: Colors.green,
         );
       case TransactionStatus.shipped:
         return _StatusInfo(

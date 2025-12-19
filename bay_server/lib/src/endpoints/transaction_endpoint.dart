@@ -187,7 +187,7 @@ class TransactionEndpoint extends Endpoint {
     }
 
     // Prüfe Status
-    if (transaction.status != TransactionStatus.open) {
+    if (transaction.status != TransactionStatus.paid) {
       throw Exception('Transaktion kann nicht als versendet markiert werden (Status: ${transaction.status})');
     }
 
@@ -197,6 +197,34 @@ class TransactionEndpoint extends Endpoint {
     transaction.updatedAt = now;
     // Setze automatischen Abschluss auf 14 Tage nach Versand
     transaction.autoCompleteAt = now.add(const Duration(days: 14));
+
+    return await Transaction.db.updateRow(session, transaction);
+  }
+
+  /// Markiert eine Transaktion als bezahlt (nur Käufer).
+  Future<Transaction> markAsPaid(Session session, int transactionId) async {
+    final userId = await _getAuthenticatedUserId(session);
+    if (userId == null) {
+      throw Exception('Nicht authentifiziert');
+    }
+
+    final transaction = await Transaction.db.findById(session, transactionId);
+    if (transaction == null) {
+      throw Exception('Transaktion nicht gefunden');
+    }
+
+    // Nur Käufer darf als bezahlt markieren
+    if (transaction.buyerId != userId) {
+      throw Exception('Nur der Käufer kann als bezahlt markieren');
+    }
+
+    // Prüfe Status
+    if (transaction.status != TransactionStatus.open) {
+      throw Exception('Transaktion kann nicht als bezahlt markiert werden (Status: ${transaction.status})');
+    }
+
+    transaction.status = TransactionStatus.paid;
+    transaction.updatedAt = DateTime.now();
 
     return await Transaction.db.updateRow(session, transaction);
   }
@@ -329,6 +357,7 @@ class TransactionEndpoint extends Endpoint {
       where: (t) =>
           (t.buyerId.equals(userId) | t.sellerId.equals(userId)) &
           (t.status.equals(TransactionStatus.open) |
+              t.status.equals(TransactionStatus.paid) |
               t.status.equals(TransactionStatus.shipped)),
     );
 
@@ -420,5 +449,35 @@ class TransactionEndpoint extends Endpoint {
       return t.autoCompleteAt!.isBefore(threshold) &&
           t.autoCompleteAt!.isAfter(now);
     }).toList();
+  }
+
+  /// Ruft die Zahlungsinformationen des Verkäufers für eine Transaktion ab.
+  /// Nur für den Käufer zugänglich.
+  Future<UserPaymentInfo?> getSellerPaymentInfo(
+    Session session,
+    int transactionId,
+  ) async {
+    final userId = await _getAuthenticatedUserId(session);
+    if (userId == null) {
+      throw Exception('Nicht authentifiziert');
+    }
+
+    final transaction = await Transaction.db.findById(session, transactionId);
+    if (transaction == null) {
+      throw Exception('Transaktion nicht gefunden');
+    }
+
+    // Nur der Käufer darf die Zahlungsinformationen des Verkäufers sehen
+    if (transaction.buyerId != userId) {
+      throw Exception('Nur der Käufer kann Zahlungsinformationen einsehen');
+    }
+
+    // Lade die Zahlungsinformationen des Verkäufers
+    final paymentInfo = await UserPaymentInfo.db.findFirstRow(
+      session,
+      where: (p) => p.userId.equals(transaction.sellerId),
+    );
+
+    return paymentInfo;
   }
 }
