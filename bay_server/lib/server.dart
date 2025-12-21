@@ -10,6 +10,12 @@ import 'package:bay_server/src/future_calls/slot_expiration_call.dart'
     show SlotExpirationService;
 import 'package:bay_server/src/future_calls/draft_expiration_call.dart'
     show DraftExpirationService;
+import 'package:bay_server/src/future_calls/news_expiration_call.dart'
+    show NewsExpirationService;
+import 'package:bay_server/src/future_calls/transaction_auto_complete_call.dart'
+    show TransactionAutoCompleteService;
+import 'package:bay_server/src/future_calls/rating_auto_creation_call.dart'
+    show RatingAutoCreationService;
 
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
@@ -49,6 +55,15 @@ void run(List<String> args) async {
 
   // Start periodic draft expiration check
   await DraftExpirationService.start(pod);
+
+  // Start periodic news expiration check
+  await NewsExpirationService.start(pod);
+
+  // Start periodic transaction auto-complete check
+  await TransactionAutoCompleteService.start(pod);
+
+  // Start periodic rating auto-creation check
+  await RatingAutoCreationService.start(pod);
 }
 
 /// Creates the admin account from environment variables if it doesn't exist.

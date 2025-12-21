@@ -487,19 +487,40 @@
 
 ---
 
-## Meilenstein 12: Backup & Wartung
+## Meilenstein 12a: Wartungs-Automatisierung ✅
 
-### 12.1 BorgBackup Setup
+### 12a.1 Bestehende Services
+- [x] Cron: Abgelaufene Slots deaktivieren (SlotExpirationService - läuft stündlich)
+- [x] Cron: Entwürfe nach 7 Tagen löschen (DraftExpirationService - läuft alle 6h)
+
+### 12a.2 Automatisierungs-Services
+- [x] Cron: Abgelaufene News automatisch löschen (NewsExpirationService - läuft täglich)
+- [x] Cron: Automatischer Handelsabschluss nach 14 Tagen (TransactionAutoCompleteService - läuft alle 6h)
+- [x] Cron: Automatische Bewertungen nach 14 Tagen (RatingAutoCreationService - läuft alle 12h)
+
+### 12a.3 Service-Integration
+- [x] Alle Services im Server-Start registrieren
+- [x] Logging und Fehlerbehandlung geprüft
+- [ ] Service-Status im Admin-Panel anzeigen (optional - für spätere Erweiterung)
+
+---
+
+## Meilenstein 12b: Backup-System
+
+### 12b.1 BorgBackup Setup
 - [ ] BorgBackup im Docker-Setup integrieren
+- [ ] Backup-Container konfigurieren
+- [ ] Repository initialisieren
+
+### 12b.2 Backup-Automatisierung
 - [ ] Cron-Job für automatische Backups
 - [ ] Konfiguration für externes Backup-Ziel
 - [ ] Backup-Rotation (täglich, wöchentlich, monatlich)
 
-### 12.2 Wartungs-Tasks
-- [ ] Cron: Abgelaufene Slots deaktivieren
-- [ ] Cron: Entwürfe nach 7 Tagen löschen
-- [ ] Cron: Automatischer Handelsabschluss nach 14 Tagen
-- [ ] Cron: Automatische Bewertungen nach 14 Tagen
+### 12b.3 Backup-Verwaltung
+- [ ] Restore-Prozedur dokumentieren
+- [ ] Backup-Monitoring einrichten
+- [ ] Testweise Restore durchführen
 
 ---
 
@@ -535,4 +556,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-19*
+*Aktualisiert am: 2025-12-21*
