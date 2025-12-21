@@ -96,6 +96,48 @@ services:
       retries: 3
 
   # =============================================================================
+  # Backup Service (BorgBackup)
+  # =============================================================================
+  backup:
+    build:
+      context: ./backup-scripts
+      dockerfile: Dockerfile
+    container_name: bay_backup
+    restart: unless-stopped
+    environment:
+      BORG_REPO: /backups/repo
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-bay}
+      # Passphrase for Borg encryption (CHANGE THIS!)
+      BORG_PASSPHRASE: ${BORG_PASSPHRASE:-CHANGE_THIS_PASSPHRASE}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      # Backup repository (should be mounted to external storage in production)
+      - bay_backups:/backups
+      # Access to PostgreSQL data
+      - bay_postgres_data:/var/lib/postgresql/data:ro
+      # Access to uploads
+      - bay_uploads:/app/uploads:ro
+      # Backup logs
+      - bay_backup_logs:/var/log
+    command: >
+      sh -c "
+        echo 'Backup container started. Waiting for services...';
+        sleep 30;
+        echo 'Installing cron...';
+        apk add --no-cache dcron;
+        echo 'Setting up crontab...';
+        crontab /backup-scripts/crontab;
+        echo 'Starting crond...';
+        crond -f -l 2
+      "
+
+  # =============================================================================
   # Test Services (for development/testing)
   # =============================================================================
   postgres_test:
@@ -128,6 +170,8 @@ volumes:
   bay_redis_data:
   bay_postgres_test_data:
   bay_uploads:
+  bay_backups:
+  bay_backup_logs:
 
 networks:
   default:

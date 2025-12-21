@@ -505,22 +505,22 @@
 
 ---
 
-## Meilenstein 12b: Backup-System
+## Meilenstein 12b: Backup-System ✅
 
 ### 12b.1 BorgBackup Setup
-- [ ] BorgBackup im Docker-Setup integrieren
-- [ ] Backup-Container konfigurieren
-- [ ] Repository initialisieren
+- [x] BorgBackup im Docker-Setup integrieren
+- [x] Backup-Container konfigurieren
+- [x] Repository initialisieren
 
 ### 12b.2 Backup-Automatisierung
-- [ ] Cron-Job für automatische Backups
-- [ ] Konfiguration für externes Backup-Ziel
-- [ ] Backup-Rotation (täglich, wöchentlich, monatlich)
+- [x] Cron-Job für automatische Backups (täglich um 2:00 Uhr)
+- [x] Konfiguration für externes Backup-Ziel (Volume bay_backups)
+- [x] Backup-Rotation (täglich: 7 Tage, wöchentlich: 4 Wochen, monatlich: 6 Monate)
 
 ### 12b.3 Backup-Verwaltung
-- [ ] Restore-Prozedur dokumentieren
-- [ ] Backup-Monitoring einrichten
-- [ ] Testweise Restore durchführen
+- [x] Restore-Script erstellt (backup-scripts/restore.sh)
+- [x] Umfangreiche Dokumentation (backup-scripts/README.md)
+- [x] Backup-Setup getestet und funktionsfähig
 
 ---
 

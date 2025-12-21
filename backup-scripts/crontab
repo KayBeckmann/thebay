@@ -1,0 +1,15 @@
+# BorgBackup crontab for Bay platform
+# Format: minute hour day month weekday command
+
+# Daily backup at 2:00 AM
+0 2 * * * /backup-scripts/backup.sh >> /var/log/backup.log 2>&1
+
+# Alternative schedule options (comment/uncomment as needed):
+# Every 6 hours:
+# 0 */6 * * * /backup-scripts/backup.sh >> /var/log/backup.log 2>&1
+
+# Every 12 hours:
+# 0 */12 * * * /backup-scripts/backup.sh >> /var/log/backup.log 2>&1
+
+# Weekly on Sunday at 3:00 AM:
+# 0 3 * * 0 /backup-scripts/backup.sh >> /var/log/backup.log 2>&1
