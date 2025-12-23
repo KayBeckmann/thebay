@@ -4853,6 +4853,33 @@ class _SlotVariantEndpoint {
     });
   }
 
+  _i3.Future<List<_i33.SlotVariant>> getFreeVariants(
+      _i1.TestSessionBuilder sessionBuilder) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'slotVariant',
+        method: 'getFreeVariants',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'slotVariant',
+          methodName: 'getFreeVariants',
+          parameters: _i1.testObjectToJson({}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<List<_i33.SlotVariant>>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
   _i3.Future<_i33.SlotVariant?> getById(
     _i1.TestSessionBuilder sessionBuilder,
     int id,
@@ -4891,6 +4918,7 @@ class _SlotVariantEndpoint {
     required bool allowPaypal,
     required bool allowBitcoin,
     required int sortOrder,
+    required bool isFree,
   }) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
@@ -4911,6 +4939,7 @@ class _SlotVariantEndpoint {
             'allowPaypal': allowPaypal,
             'allowBitcoin': allowBitcoin,
             'sortOrder': sortOrder,
+            'isFree': isFree,
           }),
           serializationManager: _serializationManager,
         );
@@ -4935,6 +4964,7 @@ class _SlotVariantEndpoint {
     required bool allowPaypal,
     required bool allowBitcoin,
     required bool isActive,
+    required bool isFree,
     required int sortOrder,
   }) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
@@ -4957,6 +4987,7 @@ class _SlotVariantEndpoint {
             'allowPaypal': allowPaypal,
             'allowBitcoin': allowBitcoin,
             'isActive': isActive,
+            'isFree': isFree,
             'sortOrder': sortOrder,
           }),
           serializationManager: _serializationManager,
@@ -5130,6 +5161,35 @@ class _TransactionEndpoint {
           createSessionCallback: (_) => _localUniqueSession,
           endpointPath: 'transaction',
           methodName: 'markAsShipped',
+          parameters: _i1.testObjectToJson({'transactionId': transactionId}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<_i24.Transaction>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<_i24.Transaction> markAsPaid(
+    _i1.TestSessionBuilder sessionBuilder,
+    int transactionId,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'transaction',
+        method: 'markAsPaid',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'transaction',
+          methodName: 'markAsPaid',
           parameters: _i1.testObjectToJson({'transactionId': transactionId}),
           serializationManager: _serializationManager,
         );
@@ -6246,6 +6306,39 @@ class _UserSlotEndpoint {
           endpointPath: 'userSlot',
           methodName: 'createTestSlot',
           parameters: _i1.testObjectToJson({'slotVariantId': slotVariantId}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<_i39.UserSlot?>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
+  _i3.Future<_i39.UserSlot?> grantFreeSlot(
+    _i1.TestSessionBuilder sessionBuilder, {
+    required int userId,
+    required int slotVariantId,
+  }) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'userSlot',
+        method: 'grantFreeSlot',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'userSlot',
+          methodName: 'grantFreeSlot',
+          parameters: _i1.testObjectToJson({
+            'userId': userId,
+            'slotVariantId': slotVariantId,
+          }),
           serializationManager: _serializationManager,
         );
         var _localReturnValue = await (_localCallContext.method.call(

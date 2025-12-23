@@ -3215,6 +3215,16 @@ class Endpoints extends _i1.EndpointDispatch {
               (endpoints['slotVariant'] as _i19.SlotVariantEndpoint)
                   .getActive(session),
         ),
+        'getFreeVariants': _i1.MethodConnector(
+          name: 'getFreeVariants',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['slotVariant'] as _i19.SlotVariantEndpoint)
+                  .getFreeVariants(session),
+        ),
         'getById': _i1.MethodConnector(
           name: 'getById',
           params: {
@@ -3271,6 +3281,11 @@ class Endpoints extends _i1.EndpointDispatch {
               type: _i1.getType<int>(),
               nullable: false,
             ),
+            'isFree': _i1.ParameterDescription(
+              name: 'isFree',
+              type: _i1.getType<bool>(),
+              nullable: false,
+            ),
           },
           call: (
             _i1.Session session,
@@ -3285,6 +3300,7 @@ class Endpoints extends _i1.EndpointDispatch {
             allowPaypal: params['allowPaypal'],
             allowBitcoin: params['allowBitcoin'],
             sortOrder: params['sortOrder'],
+            isFree: params['isFree'],
           ),
         ),
         'update': _i1.MethodConnector(
@@ -3330,6 +3346,11 @@ class Endpoints extends _i1.EndpointDispatch {
               type: _i1.getType<bool>(),
               nullable: false,
             ),
+            'isFree': _i1.ParameterDescription(
+              name: 'isFree',
+              type: _i1.getType<bool>(),
+              nullable: false,
+            ),
             'sortOrder': _i1.ParameterDescription(
               name: 'sortOrder',
               type: _i1.getType<int>(),
@@ -3350,6 +3371,7 @@ class Endpoints extends _i1.EndpointDispatch {
             allowPaypal: params['allowPaypal'],
             allowBitcoin: params['allowBitcoin'],
             isActive: params['isActive'],
+            isFree: params['isFree'],
             sortOrder: params['sortOrder'],
           ),
         ),
@@ -4150,6 +4172,30 @@ class Endpoints extends _i1.EndpointDispatch {
           ) async =>
               (endpoints['userSlot'] as _i23.UserSlotEndpoint).createTestSlot(
             session,
+            slotVariantId: params['slotVariantId'],
+          ),
+        ),
+        'grantFreeSlot': _i1.MethodConnector(
+          name: 'grantFreeSlot',
+          params: {
+            'userId': _i1.ParameterDescription(
+              name: 'userId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+            'slotVariantId': _i1.ParameterDescription(
+              name: 'slotVariantId',
+              type: _i1.getType<int>(),
+              nullable: false,
+            ),
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['userSlot'] as _i23.UserSlotEndpoint).grantFreeSlot(
+            session,
+            userId: params['userId'],
             slotVariantId: params['slotVariantId'],
           ),
         ),

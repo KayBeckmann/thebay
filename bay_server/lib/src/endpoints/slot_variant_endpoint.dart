@@ -18,10 +18,25 @@ class SlotVariantEndpoint extends Endpoint {
   }
 
   /// Get only active slot variants (public).
+  /// Free promotional slots are excluded from this list.
   Future<List<SlotVariant>> getActive(Session session) async {
     return await SlotVariant.db.find(
       session,
-      where: (t) => t.isActive.equals(true),
+      where: (t) => t.isActive.equals(true) & t.isFree.equals(false),
+      orderBy: (t) => t.sortOrder,
+    );
+  }
+
+  /// Get all free slot variants (admin only).
+  /// These are used for promotional purposes.
+  Future<List<SlotVariant>> getFreeVariants(Session session) async {
+    if (!await _isAdmin(session)) {
+      return [];
+    }
+
+    return await SlotVariant.db.find(
+      session,
+      where: (t) => t.isFree.equals(true),
       orderBy: (t) => t.sortOrder,
     );
   }
@@ -41,19 +56,23 @@ class SlotVariantEndpoint extends Endpoint {
     required bool allowPaypal,
     required bool allowBitcoin,
     required int sortOrder,
+    bool isFree = false,
   }) async {
     // Check admin permission
     if (!await _isAdmin(session)) {
       return null;
     }
 
-    // Validate at least one payment method
-    if (!allowPaypal && !allowBitcoin) {
+    // Validate at least one payment method (not required for free slots)
+    if (!isFree && !allowPaypal && !allowBitcoin) {
       return null;
     }
 
     // Validate price and duration
-    if (priceUsdCents < 0 || durationDays <= 0) {
+    if (!isFree && priceUsdCents < 0) {
+      return null;
+    }
+    if (durationDays <= 0) {
       return null;
     }
 
@@ -61,11 +80,12 @@ class SlotVariantEndpoint extends Endpoint {
     final variant = SlotVariant(
       name: name,
       description: description,
-      priceUsdCents: priceUsdCents,
+      priceUsdCents: isFree ? 0 : priceUsdCents,
       durationDays: durationDays,
       allowPaypal: allowPaypal,
       allowBitcoin: allowBitcoin,
       isActive: true,
+      isFree: isFree,
       sortOrder: sortOrder,
       createdAt: now,
       updatedAt: now,
@@ -85,6 +105,7 @@ class SlotVariantEndpoint extends Endpoint {
     required bool allowPaypal,
     required bool allowBitcoin,
     required bool isActive,
+    required bool isFree,
     required int sortOrder,
   }) async {
     // Check admin permission
@@ -97,23 +118,27 @@ class SlotVariantEndpoint extends Endpoint {
       return null;
     }
 
-    // Validate at least one payment method
-    if (!allowPaypal && !allowBitcoin) {
+    // Validate at least one payment method (not required for free slots)
+    if (!isFree && !allowPaypal && !allowBitcoin) {
       return null;
     }
 
     // Validate price and duration
-    if (priceUsdCents < 0 || durationDays <= 0) {
+    if (!isFree && priceUsdCents < 0) {
+      return null;
+    }
+    if (durationDays <= 0) {
       return null;
     }
 
     variant.name = name;
     variant.description = description;
-    variant.priceUsdCents = priceUsdCents;
+    variant.priceUsdCents = isFree ? 0 : priceUsdCents;
     variant.durationDays = durationDays;
     variant.allowPaypal = allowPaypal;
     variant.allowBitcoin = allowBitcoin;
     variant.isActive = isActive;
+    variant.isFree = isFree;
     variant.sortOrder = sortOrder;
     variant.updatedAt = DateTime.now();
 

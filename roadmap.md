@@ -545,12 +545,34 @@
 
 ---
 
+## Meilenstein 14: Kostenlose Promotion-Slots ✅
+
+### 14.1 Datenbank & Backend
+- [x] SlotVariant Model um `isFree` boolean erweitert
+- [x] Migration erstellt und angewendet (20251223194755707)
+- [x] SlotVariant create/update Endpoints angepasst (isFree Parameter)
+- [x] `grantFreeSlot()` Admin-Endpoint erstellt (UserSlotEndpoint)
+- [x] `getFreeVariants()` Methode für Admin (SlotVariantEndpoint)
+- [x] Kostenlose Slots von öffentlicher Liste ausgeschlossen
+
+### 14.2 Funktionalität
+- [x] Admins können kostenlose Slot-Varianten erstellen
+- [x] Admins können Benutzern direkt kostenlose Slots zuweisen
+- [x] Kostenlose Slots erscheinen nicht im Kaufprozess
+- [x] Validation: Nur als "free" markierte Varianten können kostenlos vergeben werden
+
+### 14.3 Frontend (für zukünftige Implementierung)
+- [ ] Admin-UI zum Erstellen kostenloser Slot-Varianten
+- [ ] Admin-UI zum Vergeben kostenloser Slots an Benutzer
+- [ ] Anzeige kostenloser Slots in Benutzer-Slot-Verwaltung
+
+---
+
 ## Zukünftige Erweiterungen (nach MVP)
 
 ### Geplant
 - [ ] 2FA (Zwei-Faktor-Authentifizierung)
 - [ ] Registrierungsgebühr (Admin-konfigurierbar)
-- [ ] Kostenlose Promotion-Slots ohne Abrechnung
 
 ### Mögliche Erweiterungen
 - [ ] Push-Benachrichtigungen
@@ -561,4 +583,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-21*
+*Aktualisiert am: 2025-12-23*

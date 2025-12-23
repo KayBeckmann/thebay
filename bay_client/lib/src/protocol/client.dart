@@ -1770,10 +1770,20 @@ class EndpointSlotVariant extends _i1.EndpointRef {
       );
 
   /// Get only active slot variants (public).
+  /// Free promotional slots are excluded from this list.
   _i2.Future<List<_i32.SlotVariant>> getActive() =>
       caller.callServerEndpoint<List<_i32.SlotVariant>>(
         'slotVariant',
         'getActive',
+        {},
+      );
+
+  /// Get all free slot variants (admin only).
+  /// These are used for promotional purposes.
+  _i2.Future<List<_i32.SlotVariant>> getFreeVariants() =>
+      caller.callServerEndpoint<List<_i32.SlotVariant>>(
+        'slotVariant',
+        'getFreeVariants',
         {},
       );
 
@@ -1794,6 +1804,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool allowPaypal,
     required bool allowBitcoin,
     required int sortOrder,
+    required bool isFree,
   }) =>
       caller.callServerEndpoint<_i32.SlotVariant?>(
         'slotVariant',
@@ -1806,6 +1817,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
           'allowPaypal': allowPaypal,
           'allowBitcoin': allowBitcoin,
           'sortOrder': sortOrder,
+          'isFree': isFree,
         },
       );
 
@@ -1819,6 +1831,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
     required bool allowPaypal,
     required bool allowBitcoin,
     required bool isActive,
+    required bool isFree,
     required int sortOrder,
   }) =>
       caller.callServerEndpoint<_i32.SlotVariant?>(
@@ -1833,6 +1846,7 @@ class EndpointSlotVariant extends _i1.EndpointRef {
           'allowPaypal': allowPaypal,
           'allowBitcoin': allowBitcoin,
           'isActive': isActive,
+          'isFree': isFree,
           'sortOrder': sortOrder,
         },
       );
@@ -2298,6 +2312,21 @@ class EndpointUserSlot extends _i1.EndpointRef {
         'userSlot',
         'createTestSlot',
         {'slotVariantId': slotVariantId},
+      );
+
+  /// Admin: Grant a free promotional slot to a user.
+  /// This method allows admins to directly grant free slots without payment.
+  _i2.Future<_i38.UserSlot?> grantFreeSlot({
+    required int userId,
+    required int slotVariantId,
+  }) =>
+      caller.callServerEndpoint<_i38.UserSlot?>(
+        'userSlot',
+        'grantFreeSlot',
+        {
+          'userId': userId,
+          'slotVariantId': slotVariantId,
+        },
       );
 }
 

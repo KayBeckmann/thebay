@@ -159,6 +159,7 @@ slotOrder:
 slotVariant:
   - getAll:
   - getActive:
+  - getFreeVariants:
   - getById:
   - create:
   - update:
@@ -209,5 +210,6 @@ userSlot:
   - deactivateExpired:
   - getSlotStats:
   - createTestSlot:
+  - grantFreeSlot:
 greeting:
   - hello:

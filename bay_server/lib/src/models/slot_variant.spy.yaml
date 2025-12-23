@@ -16,6 +16,8 @@ fields:
   allowBitcoin: bool
   ### Whether this variant is active and available for purchase
   isActive: bool
+  ### Whether this is a free promotion slot (no payment required)
+  isFree: bool, default=false
   ### Sort order for display
   sortOrder: int
   ### Creation timestamp

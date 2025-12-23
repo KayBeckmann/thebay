@@ -262,4 +262,50 @@ class UserSlotEndpoint extends Endpoint {
 
     return await UserSlot.db.insertRow(session, slot);
   }
+
+  /// Admin: Grant a free promotional slot to a user.
+  /// This method allows admins to directly grant free slots without payment.
+  Future<UserSlot?> grantFreeSlot(
+    Session session, {
+    required int userId,
+    required int slotVariantId,
+  }) async {
+    // Only admins can grant free slots
+    if (!await _isAdmin(session)) {
+      throw Exception('Nur Administratoren können kostenlose Slots vergeben');
+    }
+
+    // Get the slot variant
+    final variant = await SlotVariant.db.findById(session, slotVariantId);
+    if (variant == null) {
+      throw Exception('Slot-Variante nicht gefunden');
+    }
+
+    // Verify it's a free slot
+    if (!variant.isFree) {
+      throw Exception('Diese Slot-Variante ist nicht als kostenlos markiert');
+    }
+
+    // Check if user exists
+    final user = await User.db.findById(session, userId);
+    if (user == null) {
+      throw Exception('Benutzer nicht gefunden');
+    }
+
+    // Create the slot
+    final now = DateTime.now();
+    final expiresAt = now.add(Duration(days: variant.durationDays));
+
+    final slot = UserSlot(
+      userId: userId,
+      slotVariantId: slotVariantId,
+      listingId: null,
+      purchasedAt: now,
+      expiresAt: expiresAt,
+      isActive: true,
+      isUsed: false,
+    );
+
+    return await UserSlot.db.insertRow(session, slot);
+  }
 }

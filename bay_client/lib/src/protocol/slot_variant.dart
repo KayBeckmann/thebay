@@ -22,10 +22,11 @@ abstract class SlotVariant implements _i1.SerializableModel {
     required this.allowPaypal,
     required this.allowBitcoin,
     required this.isActive,
+    bool? isFree,
     required this.sortOrder,
     required this.createdAt,
     required this.updatedAt,
-  });
+  }) : isFree = isFree ?? false;
 
   factory SlotVariant({
     int? id,
@@ -36,6 +37,7 @@ abstract class SlotVariant implements _i1.SerializableModel {
     required bool allowPaypal,
     required bool allowBitcoin,
     required bool isActive,
+    bool? isFree,
     required int sortOrder,
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -51,6 +53,7 @@ abstract class SlotVariant implements _i1.SerializableModel {
       allowPaypal: jsonSerialization['allowPaypal'] as bool,
       allowBitcoin: jsonSerialization['allowBitcoin'] as bool,
       isActive: jsonSerialization['isActive'] as bool,
+      isFree: jsonSerialization['isFree'] as bool,
       sortOrder: jsonSerialization['sortOrder'] as int,
       createdAt:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
@@ -85,6 +88,9 @@ abstract class SlotVariant implements _i1.SerializableModel {
   /// Whether this variant is active and available for purchase
   bool isActive;
 
+  /// Whether this is a free promotion slot (no payment required)
+  bool isFree;
+
   /// Sort order for display
   int sortOrder;
 
@@ -106,6 +112,7 @@ abstract class SlotVariant implements _i1.SerializableModel {
     bool? allowPaypal,
     bool? allowBitcoin,
     bool? isActive,
+    bool? isFree,
     int? sortOrder,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -121,6 +128,7 @@ abstract class SlotVariant implements _i1.SerializableModel {
       'allowPaypal': allowPaypal,
       'allowBitcoin': allowBitcoin,
       'isActive': isActive,
+      'isFree': isFree,
       'sortOrder': sortOrder,
       'createdAt': createdAt.toJson(),
       'updatedAt': updatedAt.toJson(),
@@ -145,6 +153,7 @@ class _SlotVariantImpl extends SlotVariant {
     required bool allowPaypal,
     required bool allowBitcoin,
     required bool isActive,
+    bool? isFree,
     required int sortOrder,
     required DateTime createdAt,
     required DateTime updatedAt,
@@ -157,6 +166,7 @@ class _SlotVariantImpl extends SlotVariant {
           allowPaypal: allowPaypal,
           allowBitcoin: allowBitcoin,
           isActive: isActive,
+          isFree: isFree,
           sortOrder: sortOrder,
           createdAt: createdAt,
           updatedAt: updatedAt,
@@ -175,6 +185,7 @@ class _SlotVariantImpl extends SlotVariant {
     bool? allowPaypal,
     bool? allowBitcoin,
     bool? isActive,
+    bool? isFree,
     int? sortOrder,
     DateTime? createdAt,
     DateTime? updatedAt,
@@ -188,6 +199,7 @@ class _SlotVariantImpl extends SlotVariant {
       allowPaypal: allowPaypal ?? this.allowPaypal,
       allowBitcoin: allowBitcoin ?? this.allowBitcoin,
       isActive: isActive ?? this.isActive,
+      isFree: isFree ?? this.isFree,
       sortOrder: sortOrder ?? this.sortOrder,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
