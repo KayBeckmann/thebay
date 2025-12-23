@@ -400,6 +400,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
             allowPaypal: allowPaypal,
             allowBitcoin: allowBitcoin,
             isActive: isActive,
+            isFree: variant.isFree, // Preserve existing value
             sortOrder: sortOrder,
           );
         } else {
@@ -411,6 +412,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
             allowPaypal: allowPaypal,
             allowBitcoin: allowBitcoin,
             sortOrder: sortOrder,
+            isFree: false, // Normal paid slot
           );
         }
         _loadVariants();
