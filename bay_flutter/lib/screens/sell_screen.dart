@@ -309,10 +309,9 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
         itemBuilder: (context, index) {
           final listing = _myListings[index];
           return Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: ListingCard(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: ListingListTile(
               listing: listing,
-              showActions: true,
               onEdit: () => _editListing(listing),
               onDelete: () => _deleteListing(listing),
             ),
