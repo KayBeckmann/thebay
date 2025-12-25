@@ -781,7 +781,7 @@ class _ImagePageItemState extends State<_ImagePageItem> {
   }
 }
 
-/// Vollbild-Ansicht für Bilder.
+/// Vollbild-Ansicht für Bilder mit Swipe-Unterstützung.
 class _FullScreenImageView extends StatefulWidget {
   final List<ListingImage> images;
   final int initialIndex;
@@ -798,18 +798,69 @@ class _FullScreenImageView extends StatefulWidget {
 class _FullScreenImageViewState extends State<_FullScreenImageView> {
   late int _currentIndex;
   late PageController _pageController;
+  final Map<int, Uint8List> _imageCache = {};
+  bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndex;
     _pageController = PageController(initialPage: widget.initialIndex);
+    _preloadImages();
   }
 
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  /// Lädt das aktuelle Bild und die benachbarten vor.
+  Future<void> _preloadImages() async {
+    setState(() => _isLoading = true);
+
+    // Lade das aktuelle Bild zuerst
+    await _loadImage(_currentIndex);
+
+    // Lade benachbarte Bilder im Hintergrund
+    if (_currentIndex > 0) {
+      _loadImage(_currentIndex - 1);
+    }
+    if (_currentIndex < widget.images.length - 1) {
+      _loadImage(_currentIndex + 1);
+    }
+
+    if (mounted) {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  /// Lädt ein einzelnes Bild und speichert es im Cache.
+  Future<void> _loadImage(int index) async {
+    if (_imageCache.containsKey(index)) return;
+
+    try {
+      final data = await client.listingImage.getImageData(widget.images[index].id!);
+      if (data != null && mounted) {
+        setState(() {
+          _imageCache[index] = data.buffer.asUint8List();
+        });
+      }
+    } catch (e) {
+      // Fehler beim Laden ignorieren
+    }
+  }
+
+  void _onPageChanged(int index) {
+    setState(() => _currentIndex = index);
+
+    // Preload nächste/vorherige Bilder
+    if (index > 0 && !_imageCache.containsKey(index - 1)) {
+      _loadImage(index - 1);
+    }
+    if (index < widget.images.length - 1 && !_imageCache.containsKey(index + 1)) {
+      _loadImage(index + 1);
+    }
   }
 
   @override
@@ -821,30 +872,70 @@ class _FullScreenImageViewState extends State<_FullScreenImageView> {
         foregroundColor: Colors.white,
         title: Text('${_currentIndex + 1} / ${widget.images.length}'),
       ),
-      body: PageView.builder(
-        controller: _pageController,
-        itemCount: widget.images.length,
-        onPageChanged: (index) => setState(() => _currentIndex = index),
-        itemBuilder: (context, index) {
-          return FutureBuilder<ByteData?>(
-            future: client.listingImage.getImageData(widget.images[index].id!),
-            builder: (context, snapshot) {
-              if (snapshot.hasData && snapshot.data != null) {
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            itemCount: widget.images.length,
+            onPageChanged: _onPageChanged,
+            itemBuilder: (context, index) {
+              final imageData = _imageCache[index];
+
+              if (imageData != null) {
                 return InteractiveViewer(
+                  minScale: 0.5,
+                  maxScale: 4.0,
                   child: Center(
                     child: Image.memory(
-                      snapshot.data!.buffer.asUint8List(),
+                      imageData,
                       fit: BoxFit.contain,
                     ),
                   ),
                 );
               }
+
               return const Center(
                 child: CircularProgressIndicator(color: Colors.white),
               );
             },
-          );
-        },
+          ),
+
+          // Swipe-Hinweise für Desktop
+          if (widget.images.length > 1) ...[
+            if (_currentIndex > 0)
+              Positioned(
+                left: 0,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: IconButton(
+                    onPressed: () => _pageController.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    ),
+                    icon: const Icon(Icons.chevron_left, size: 48),
+                    color: Colors.white.withAlpha(179),
+                  ),
+                ),
+              ),
+            if (_currentIndex < widget.images.length - 1)
+              Positioned(
+                right: 0,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: IconButton(
+                    onPressed: () => _pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                    ),
+                    icon: const Icon(Icons.chevron_right, size: 48),
+                    color: Colors.white.withAlpha(179),
+                  ),
+                ),
+              ),
+          ],
+        ],
       ),
     );
   }
