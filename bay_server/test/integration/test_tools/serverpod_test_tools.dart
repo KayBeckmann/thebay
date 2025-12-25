@@ -6290,35 +6290,6 @@ class _UserSlotEndpoint {
     });
   }
 
-  _i3.Future<_i39.UserSlot?> createTestSlot(
-    _i1.TestSessionBuilder sessionBuilder, {
-    required int slotVariantId,
-  }) async {
-    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
-      var _localUniqueSession =
-          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
-        endpoint: 'userSlot',
-        method: 'createTestSlot',
-      );
-      try {
-        var _localCallContext = await _endpointDispatch.getMethodCallContext(
-          createSessionCallback: (_) => _localUniqueSession,
-          endpointPath: 'userSlot',
-          methodName: 'createTestSlot',
-          parameters: _i1.testObjectToJson({'slotVariantId': slotVariantId}),
-          serializationManager: _serializationManager,
-        );
-        var _localReturnValue = await (_localCallContext.method.call(
-          _localUniqueSession,
-          _localCallContext.arguments,
-        ) as _i3.Future<_i39.UserSlot?>);
-        return _localReturnValue;
-      } finally {
-        await _localUniqueSession.close();
-      }
-    });
-  }
-
   _i3.Future<_i39.UserSlot?> grantFreeSlot(
     _i1.TestSessionBuilder sessionBuilder, {
     required int userId,

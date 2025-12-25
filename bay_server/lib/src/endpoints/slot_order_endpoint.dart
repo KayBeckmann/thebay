@@ -141,28 +141,21 @@ class SlotOrderEndpoint extends Endpoint {
   }
 
   /// Markiert eine Bestellung als bezahlt und aktiviert den Slot.
-  /// In der Produktion wird dies durch die Zahlungs-Webhooks aufgerufen.
+  /// Diese Methode kann nur von Admins aufgerufen werden.
+  /// In der Produktion wird dies automatisch durch Zahlungs-Webhooks aufgerufen.
   Future<SlotOrder?> markAsPaid(
     Session session, {
     required int orderId,
     String? transactionId,
   }) async {
-    // Für Test-Zwecke: Benutzer kann selbst bezahlen markieren
-    // In Produktion: Nur durch Webhook oder Admin
-    final userId = await _getAuthenticatedUserId(session);
-    if (userId == null) {
-      throw Exception('Nicht authentifiziert');
+    // Nur Admins dürfen manuell als bezahlt markieren
+    if (!await _isAdmin(session)) {
+      throw Exception('Nur Administratoren können Bestellungen manuell als bezahlt markieren');
     }
 
     final order = await SlotOrder.db.findById(session, orderId);
     if (order == null) {
       throw Exception('Bestellung nicht gefunden');
-    }
-
-    // Prüfe Berechtigung (eigene Bestellung oder Admin)
-    final isAdmin = await _isAdmin(session);
-    if (order.userId != userId && !isAdmin) {
-      throw Exception('Keine Berechtigung');
     }
 
     if (order.status != OrderStatus.pending) {

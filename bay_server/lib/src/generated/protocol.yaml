@@ -209,7 +209,6 @@ userSlot:
   - extendSlot:
   - deactivateExpired:
   - getSlotStats:
-  - createTestSlot:
   - grantFreeSlot:
 greeting:
   - hello:

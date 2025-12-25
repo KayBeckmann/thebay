@@ -1698,7 +1698,8 @@ class EndpointSlotOrder extends _i1.EndpointRef {
       );
 
   /// Markiert eine Bestellung als bezahlt und aktiviert den Slot.
-  /// In der Produktion wird dies durch die Zahlungs-Webhooks aufgerufen.
+  /// Diese Methode kann nur von Admins aufgerufen werden.
+  /// In der Produktion wird dies automatisch durch Zahlungs-Webhooks aufgerufen.
   _i2.Future<_i30.SlotOrder?> markAsPaid({
     required int orderId,
     String? transactionId,
@@ -2302,16 +2303,6 @@ class EndpointUserSlot extends _i1.EndpointRef {
         'userSlot',
         'getSlotStats',
         {},
-      );
-
-  /// TEST-FUNKTION: Erstellt einen Slot für den aktuellen Benutzer.
-  /// Diese Methode ist nur für Entwicklungszwecke gedacht und sollte
-  /// in der Produktion entfernt oder durch Zahlungsintegration ersetzt werden.
-  _i2.Future<_i38.UserSlot?> createTestSlot({required int slotVariantId}) =>
-      caller.callServerEndpoint<_i38.UserSlot?>(
-        'userSlot',
-        'createTestSlot',
-        {'slotVariantId': slotVariantId},
       );
 
   /// Admin: Grant a free promotional slot to a user.

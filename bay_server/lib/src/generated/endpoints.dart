@@ -4157,24 +4157,6 @@ class Endpoints extends _i1.EndpointDispatch {
               (endpoints['userSlot'] as _i23.UserSlotEndpoint)
                   .getSlotStats(session),
         ),
-        'createTestSlot': _i1.MethodConnector(
-          name: 'createTestSlot',
-          params: {
-            'slotVariantId': _i1.ParameterDescription(
-              name: 'slotVariantId',
-              type: _i1.getType<int>(),
-              nullable: false,
-            )
-          },
-          call: (
-            _i1.Session session,
-            Map<String, dynamic> params,
-          ) async =>
-              (endpoints['userSlot'] as _i23.UserSlotEndpoint).createTestSlot(
-            session,
-            slotVariantId: params['slotVariantId'],
-          ),
-        ),
         'grantFreeSlot': _i1.MethodConnector(
           name: 'grantFreeSlot',
           params: {

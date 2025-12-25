@@ -1,5 +1,6 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../main.dart';
 import 'listings/create_listing_screen.dart';
@@ -1029,7 +1030,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     }
 
     // Zeige Kauf-Dialog
-    final result = await showDialog<_SlotPurchaseResult>(
+    final selectedMethod = await showDialog<PaymentMethod>(
       context: context,
       builder: (context) => _SlotPurchaseDialog(
         variant: variant,
@@ -1037,29 +1038,18 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       ),
     );
 
-    if (result == null) return;
+    if (selectedMethod == null) return;
 
     try {
-      if (result.isTestMode) {
-        // Test-Modus: Direkt Slot erstellen
-        await client.userSlot.createTestSlot(slotVariantId: variant.id!);
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Slot "${variant.name}" aktiviert!')),
-          );
-          _loadData();
-        }
-      } else {
-        // Normale Bestellung erstellen
-        final order = await client.slotOrder.create(
-          slotVariantId: variant.id!,
-          paymentMethod: result.paymentMethod!,
-        );
+      // Erstelle Bestellung
+      final order = await client.slotOrder.create(
+        slotVariantId: variant.id!,
+        paymentMethod: selectedMethod,
+      );
 
-        if (order != null && mounted) {
-          // Zeige Zahlungsanweisungen
-          _showPaymentInstructions(order, variant, result.paymentMethod!);
-        }
+      if (order != null && mounted) {
+        // Zeige Zahlungsanweisungen
+        _showPaymentInstructions(order, variant, selectedMethod);
       }
     } catch (e) {
       if (mounted) {
@@ -1070,77 +1060,109 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     }
   }
 
-  void _showPaymentInstructions(
+  Future<void> _showPaymentInstructions(
     SlotOrder order,
     SlotVariant variant,
     PaymentMethod method,
-  ) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: Icon(
-          method == PaymentMethod.paypal ? Icons.payment : Icons.currency_bitcoin,
-        ),
-        title: Text(method == PaymentMethod.paypal ? 'PayPal-Zahlung' : 'Bitcoin-Zahlung'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Bestellung #${order.id}'),
-            const SizedBox(height: 8),
-            Text('Betrag: \$${(order.amountCents / 100).toStringAsFixed(2)}'),
-            const SizedBox(height: 16),
-            if (method == PaymentMethod.paypal)
-              const Text(
-                'Bitte sende den Betrag an die PayPal-Adresse des Administrators. '
-                'Nach Zahlungseingang wird dein Slot automatisch aktiviert.',
-              )
-            else
-              const Text(
-                'Bitte sende den Betrag an die Bitcoin-Adresse des Administrators. '
-                'Nach Zahlungseingang wird dein Slot automatisch aktiviert.',
+  ) async {
+    try {
+      final info = await client.payment.getPaymentInfo(order.id!);
+
+      if (!mounted) return;
+
+      await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          icon: Icon(
+            method == PaymentMethod.paypal ? Icons.payment : Icons.currency_bitcoin,
+          ),
+          title: Text(method == PaymentMethod.paypal ? 'PayPal-Zahlung' : 'Bitcoin-Zahlung'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Bestellung #${order.id}',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                Text('Betrag: \$${info['amount'] ?? (order.amountCents / 100).toStringAsFixed(2)}'),
+                const Divider(height: 32),
+
+                if (method == PaymentMethod.paypal) ...[
+                  _buildPaymentInfoItem('PayPal-Adresse', info['email'] ?? '-'),
+                  _buildPaymentInfoItem('Verwendungszweck', 'Order-${order.id}'),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Bitte sende den Betrag an die angegebene PayPal-Adresse '
+                    'und gib den Verwendungszweck an. Nach Zahlungseingang wird '
+                    'dein Slot automatisch aktiviert.',
+                    style: TextStyle(fontStyle: FontStyle.italic, fontSize: 12),
+                  ),
+                ] else ...[
+                  // Bitcoin QR-Code
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: QrImageView(
+                        data: info['address'] ?? '',
+                        version: QrVersions.auto,
+                        size: 200.0,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  _buildPaymentInfoItem('Bitcoin-Adresse', info['address'] ?? '-'),
+                  _buildPaymentInfoItem('Betrag (USD)', '\$${info['amountUsd'] ?? '-'}'),
+                  _buildPaymentInfoItem('Betrag (BTC)', '${info['amountBtc'] ?? '-'} BTC'),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Scanne den QR-Code oder sende den BTC-Betrag an die angegebene '
+                    'Adresse. Nach mindestens 1 Bestätigung auf der Blockchain wird '
+                    'dein Slot automatisch aktiviert.',
+                    style: TextStyle(fontStyle: FontStyle.italic, fontSize: 12),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          actions: [
+            if (method == PaymentMethod.bitcoin)
+              TextButton.icon(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _enterBitcoinTxId(order);
+                },
+                icon: const Icon(Icons.edit, size: 18),
+                label: const Text('TX-ID eingeben'),
               ),
-            const SizedBox(height: 16),
-            const Text(
-              'Hinweis: Im Test-Modus kannst du die Zahlung manuell bestätigen.',
-              style: TextStyle(fontStyle: FontStyle.italic),
+            FilledButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Schließen'),
             ),
           ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Später'),
-          ),
-          FilledButton(
-            onPressed: () async {
-              Navigator.pop(context);
-              // Test: Direkt als bezahlt markieren
-              try {
-                await client.slotOrder.markAsPaid(orderId: order.id!);
-                if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Slot "${variant.name}" aktiviert!')),
-                  );
-                  _loadData();
-                }
-              } catch (e) {
-                if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Fehler: $e')),
-                  );
-                }
-              }
-            },
-            child: const Text('Zahlung bestätigen (Test)'),
-          ),
-        ],
-      ),
-    );
+      );
+
+      // Lade die Daten neu, falls zwischenzeitlich bezahlt wurde
+      _loadData();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Fehler beim Laden der Zahlungsinformationen: $e')),
+        );
+      }
+    }
   }
 
   Future<void> _extendSlot(UserSlot slot) async {
-    // Finde passende Slot-Variante zum Verlängern
+    // Verlängerung funktioniert wie ein normaler Kauf
+    // Wähle eine Slot-Variante aus
     if (_slotVariants.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Keine Slot-Varianten verfügbar')),
@@ -1154,19 +1176,31 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
         title: const Text('Slot verlängern'),
         content: SizedBox(
           width: double.maxFinite,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: _slotVariants.length,
-            itemBuilder: (context, index) {
-              final v = _slotVariants[index];
-              return ListTile(
-                leading: const Icon(Icons.add_circle),
-                title: Text(v.name),
-                subtitle: Text('+${v.durationDays} Tage'),
-                trailing: Text('\$${(v.priceUsdCents / 100).toStringAsFixed(2)}'),
-                onTap: () => Navigator.pop(context, v),
-              );
-            },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Wähle eine Slot-Variante, um deinen Slot zu verlängern. '
+                'Die Laufzeit wird zum aktuellen Ablaufdatum hinzugefügt.',
+              ),
+              const SizedBox(height: 16),
+              Flexible(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _slotVariants.length,
+                  itemBuilder: (context, index) {
+                    final v = _slotVariants[index];
+                    return ListTile(
+                      leading: const Icon(Icons.add_circle),
+                      title: Text(v.name),
+                      subtitle: Text('+${v.durationDays} Tage'),
+                      trailing: Text('\$${(v.priceUsdCents / 100).toStringAsFixed(2)}'),
+                      onTap: () => Navigator.pop(context, v),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
         actions: [
@@ -1178,64 +1212,15 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       ),
     );
 
-    if (variant == null) return;
-
-    // Test-Modus: Direkt verlängern
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        icon: const Icon(Icons.timer),
-        title: const Text('Slot verlängern'),
-        content: Text(
-          'Möchtest du den Slot um ${variant.durationDays} Tage verlängern?\n\n'
-          '(Test-Modus: Kostenlos)',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: const Text('Verlängern'),
-          ),
-        ],
-      ),
-    );
-
-    if (confirmed == true) {
-      try {
-        await client.userSlot.extendSlot(
-          slotId: slot.id!,
-          additionalDays: variant.durationDays,
-        );
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Slot verlängert!')),
-          );
-          _loadData();
-        }
-      } catch (e) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler: $e')),
-          );
-        }
-      }
+    if (variant != null) {
+      // Kaufe einen neuen Slot mit dieser Variante (funktioniert wie normaler Kauf)
+      _buySlot(variant);
     }
   }
 
   String _formatDate(DateTime date) {
     return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
-}
-
-/// Ergebnis des Slot-Kauf-Dialogs.
-class _SlotPurchaseResult {
-  final bool isTestMode;
-  final PaymentMethod? paymentMethod;
-
-  _SlotPurchaseResult({required this.isTestMode, this.paymentMethod});
 }
 
 /// Dialog für Slot-Kauf mit Zahlungsmethoden-Auswahl.
@@ -1344,23 +1329,10 @@ class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
           onPressed: () => Navigator.pop(context),
           child: const Text('Abbrechen'),
         ),
-        OutlinedButton(
-          onPressed: () => Navigator.pop(
-            context,
-            _SlotPurchaseResult(isTestMode: true),
-          ),
-          child: const Text('Test-Modus'),
-        ),
         FilledButton(
           onPressed: _selectedMethod == null
               ? null
-              : () => Navigator.pop(
-                    context,
-                    _SlotPurchaseResult(
-                      isTestMode: false,
-                      paymentMethod: _selectedMethod,
-                    ),
-                  ),
+              : () => Navigator.pop(context, _selectedMethod),
           child: const Text('Kaufen'),
         ),
       ],
