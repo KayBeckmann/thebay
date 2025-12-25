@@ -16,6 +16,8 @@ import 'package:bay_server/src/future_calls/transaction_auto_complete_call.dart'
     show TransactionAutoCompleteService;
 import 'package:bay_server/src/future_calls/rating_auto_creation_call.dart'
     show RatingAutoCreationService;
+import 'package:bay_server/src/future_calls/bitcoin_payment_check_call.dart'
+    show BitcoinPaymentCheckService;
 
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
@@ -64,6 +66,9 @@ void run(List<String> args) async {
 
   // Start periodic rating auto-creation check
   await RatingAutoCreationService.start(pod);
+
+  // Start periodic Bitcoin payment verification
+  await BitcoinPaymentCheckService.start(pod);
 }
 
 /// Creates the admin account from environment variables if it doesn't exist.
