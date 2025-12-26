@@ -46,6 +46,17 @@ class BitcoinPaymentCheckService {
       final processedCount = await PaymentService.checkPendingBitcoinPayments(
         session,
         blockCypherToken: blockCypherToken,
+        electrumHost: Platform.environment['ELECTRUM_HOST'],
+        electrumPort: int.tryParse(Platform.environment['ELECTRUM_PORT'] ?? ''),
+        electrumUseSsl:
+            (Platform.environment['ELECTRUM_SSL'] ?? 'false').toLowerCase() ==
+                'true',
+        electrumTimeout: Duration(
+          milliseconds: int.tryParse(
+                Platform.environment['ELECTRUM_TIMEOUT_MS'] ?? '',
+              ) ??
+              10000,
+        ),
       );
 
       if (processedCount > 0) {

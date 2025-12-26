@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:serverpod/serverpod.dart';
 
 import '../generated/protocol.dart';
@@ -108,6 +110,17 @@ class PaymentEndpoint extends Endpoint {
     final processed = await PaymentService.checkPendingBitcoinPayments(
       session,
       blockCypherToken: tokenSetting?.value,
+      electrumHost: Platform.environment['ELECTRUM_HOST'],
+      electrumPort: int.tryParse(Platform.environment['ELECTRUM_PORT'] ?? ''),
+      electrumUseSsl:
+          (Platform.environment['ELECTRUM_SSL'] ?? 'false').toLowerCase() ==
+              'true',
+      electrumTimeout: Duration(
+        milliseconds: int.tryParse(
+              Platform.environment['ELECTRUM_TIMEOUT_MS'] ?? '',
+            ) ??
+            10000,
+      ),
     );
 
     session.log('Bitcoin-Zahlungen geprüft: $processed verarbeitet');

@@ -116,7 +116,7 @@ class SettingsEndpoint extends Endpoint {
   }
 
   /// Get all payment settings (admin only).
-  Future<Map<String, dynamic>> getPaymentSettings(Session session) async {
+  Future<Map<String, String>> getPaymentSettings(Session session) async {
     if (!await _isAdmin(session)) {
       return {};
     }
@@ -133,10 +133,8 @@ class SettingsEndpoint extends Endpoint {
     return {
       'paypalEmail': settings[SettingsKeys.paypalEmail] ?? '',
       'bitcoinWallet': settings[SettingsKeys.bitcoinWallet] ?? '',
-      'paypalEnabled':
-          settings[SettingsKeys.slotPaypalEnabled]?.toLowerCase() == 'true',
-      'bitcoinEnabled':
-          settings[SettingsKeys.slotBitcoinEnabled]?.toLowerCase() == 'true',
+      'paypalEnabled': settings[SettingsKeys.slotPaypalEnabled] ?? 'false',
+      'bitcoinEnabled': settings[SettingsKeys.slotBitcoinEnabled] ?? 'false',
     };
   }
 

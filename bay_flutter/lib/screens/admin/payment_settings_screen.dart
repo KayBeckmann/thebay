@@ -46,10 +46,10 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
       final settings = await client.settings.getPaymentSettings();
       if (mounted) {
         setState(() {
-          _paypalEmail = (settings['paypalEmail'] as String?) ?? '';
-          _bitcoinWallet = (settings['bitcoinWallet'] as String?) ?? '';
-          _paypalEnabled = (settings['paypalEnabled'] as bool?) ?? false;
-          _bitcoinEnabled = (settings['bitcoinEnabled'] as bool?) ?? false;
+          _paypalEmail = settings['paypalEmail'] ?? '';
+          _bitcoinWallet = settings['bitcoinWallet'] ?? '';
+          _paypalEnabled = settings['paypalEnabled'] == 'true';
+          _bitcoinEnabled = settings['bitcoinEnabled'] == 'true';
 
           _paypalController.text = _paypalEmail;
           _bitcoinController.text = _bitcoinWallet;

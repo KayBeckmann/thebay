@@ -4397,7 +4397,7 @@ class _SettingsEndpoint {
     });
   }
 
-  _i3.Future<Map<String, dynamic>> getPaymentSettings(
+  _i3.Future<Map<String, String>> getPaymentSettings(
       _i1.TestSessionBuilder sessionBuilder) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
@@ -4416,7 +4416,7 @@ class _SettingsEndpoint {
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<Map<String, dynamic>>);
+        ) as _i3.Future<Map<String, String>>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

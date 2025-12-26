@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:serverpod/serverpod.dart';
@@ -121,7 +122,24 @@ class PaymentService {
   static Future<Map<String, dynamic>?> checkBitcoinTransaction(
     String txHash, {
     String? apiToken,
+    String? electrumHost,
+    int? electrumPort,
+    bool electrumUseSsl = false,
+    Duration timeout = const Duration(seconds: 10),
   }) async {
+    if (electrumHost != null && electrumPort != null) {
+      final electrumResult = await _checkBitcoinTransactionViaElectrum(
+        txHash,
+        host: electrumHost,
+        port: electrumPort,
+        useSsl: electrumUseSsl,
+        timeout: timeout,
+      );
+      if (electrumResult != null) {
+        return electrumResult;
+      }
+    }
+
     try {
       var url = '$blockCypherBaseUrl/txs/$txHash';
       if (apiToken != null) {
@@ -142,6 +160,10 @@ class PaymentService {
   static Future<int> checkPendingBitcoinPayments(
     Session session, {
     String? blockCypherToken,
+    String? electrumHost,
+    int? electrumPort,
+    bool electrumUseSsl = false,
+    Duration electrumTimeout = const Duration(seconds: 10),
   }) async {
     // Hole alle ausstehenden Bitcoin-Bestellungen
     final pendingOrders = await SlotOrder.db.find(
@@ -163,6 +185,10 @@ class PaymentService {
       final txInfo = await checkBitcoinTransaction(
         order.transactionId!,
         apiToken: blockCypherToken,
+        electrumHost: electrumHost,
+        electrumPort: electrumPort,
+        electrumUseSsl: electrumUseSsl,
+        timeout: electrumTimeout,
       );
 
       if (txInfo == null) {
@@ -176,7 +202,7 @@ class PaymentService {
       }
 
       // Prüfe ob die Transaktion erfolgreich war
-      final confirmed = txInfo['confirmed'] != null;
+      final confirmed = txInfo['confirmed'] != null && txInfo['confirmed'] != false;
       if (!confirmed) {
         continue;
       }
@@ -269,6 +295,54 @@ class PaymentService {
 
     // Fallback-Preis (sollte in Produktion nicht verwendet werden)
     return usd / 40000;
+  }
+
+  static Future<Map<String, dynamic>?> _checkBitcoinTransactionViaElectrum(
+    String txHash, {
+    required String host,
+    required int port,
+    required bool useSsl,
+    required Duration timeout,
+  }) async {
+    try {
+      final request = {
+        'id': 1,
+        'method': 'blockchain.transaction.get',
+        'params': [txHash, true],
+      };
+      final socket = useSsl
+          ? await SecureSocket.connect(host, port, timeout: timeout)
+          : await Socket.connect(host, port, timeout: timeout);
+      socket.write('${jsonEncode(request)}\n');
+      await socket.flush();
+
+      final responseLine = await socket
+          .cast<List<int>>()
+          .transform(utf8.decoder)
+          .transform(const LineSplitter())
+          .first
+          .timeout(timeout);
+      socket.destroy();
+
+      final response = jsonDecode(responseLine) as Map<String, dynamic>;
+      if (response['error'] != null) {
+        return null;
+      }
+
+      final result = response['result'];
+      if (result is! Map<String, dynamic>) {
+        return null;
+      }
+
+      final confirmations = result['confirmations'] as int? ?? 0;
+      return {
+        'confirmations': confirmations,
+        'confirmed': confirmations > 0,
+        'source': 'electrum',
+      };
+    } catch (e) {
+      return null;
+    }
   }
 
   /// Schließt eine Bestellung ab und erstellt den Slot.

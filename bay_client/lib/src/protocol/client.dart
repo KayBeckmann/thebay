@@ -1618,8 +1618,8 @@ class EndpointSettings extends _i1.EndpointRef {
       );
 
   /// Get all payment settings (admin only).
-  _i2.Future<Map<String, dynamic>> getPaymentSettings() =>
-      caller.callServerEndpoint<Map<String, dynamic>>(
+  _i2.Future<Map<String, String>> getPaymentSettings() =>
+      caller.callServerEndpoint<Map<String, String>>(
         'settings',
         'getPaymentSettings',
         {},
