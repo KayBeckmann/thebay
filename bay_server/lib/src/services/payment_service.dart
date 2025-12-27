@@ -223,7 +223,7 @@ class PaymentService {
   }
 
   /// Generiert Zahlungsinformationen für eine Bestellung.
-  static Future<Map<String, dynamic>> getPaymentInfo(
+  static Future<Map<String, String>> getPaymentInfo(
     Session session,
     SlotOrder order,
   ) async {
@@ -236,7 +236,7 @@ class PaymentService {
         'email': paypalEmail ?? '',
         'amount': (order.amountCents / 100).toStringAsFixed(2),
         'currency': 'USD',
-        'orderId': order.id,
+        'orderId': order.id?.toString() ?? '',
         'description': variant?.name ?? 'Slot',
       };
     } else {
@@ -248,7 +248,7 @@ class PaymentService {
         'address': bitcoinWallet ?? '',
         'amountUsd': (order.amountCents / 100).toStringAsFixed(2),
         'amountBtc': btcAmount.toStringAsFixed(8),
-        'orderId': order.id,
+        'orderId': order.id?.toString() ?? '',
         'memo': 'Order-${order.id}',
         'description': variant?.name ?? 'Slot',
       };

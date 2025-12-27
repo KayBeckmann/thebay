@@ -1028,8 +1028,8 @@ class EndpointPayment extends _i1.EndpointRef {
       );
 
   /// Holt Zahlungsinformationen für eine Bestellung.
-  _i2.Future<Map<String, dynamic>> getPaymentInfo(int orderId) =>
-      caller.callServerEndpoint<Map<String, dynamic>>(
+  _i2.Future<Map<String, String>> getPaymentInfo(int orderId) =>
+      caller.callServerEndpoint<Map<String, String>>(
         'payment',
         'getPaymentInfo',
         {'orderId': orderId},

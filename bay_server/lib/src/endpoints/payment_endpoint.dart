@@ -128,7 +128,7 @@ class PaymentEndpoint extends Endpoint {
   }
 
   /// Holt Zahlungsinformationen für eine Bestellung.
-  Future<Map<String, dynamic>> getPaymentInfo(
+  Future<Map<String, String>> getPaymentInfo(
     Session session,
     int orderId,
   ) async {

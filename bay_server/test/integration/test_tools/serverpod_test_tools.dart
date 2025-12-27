@@ -2801,7 +2801,7 @@ class _PaymentEndpoint {
     });
   }
 
-  _i3.Future<Map<String, dynamic>> getPaymentInfo(
+  _i3.Future<Map<String, String>> getPaymentInfo(
     _i1.TestSessionBuilder sessionBuilder,
     int orderId,
   ) async {
@@ -2822,7 +2822,7 @@ class _PaymentEndpoint {
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<Map<String, dynamic>>);
+        ) as _i3.Future<Map<String, String>>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

@@ -739,8 +739,9 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 _buildPaymentInfoItem('Memo', info['memo'] ?? '-'),
                 const SizedBox(height: 16),
                 const Text(
-                  'Bitte sende den BTC-Betrag an die angegebene Adresse. '
-                  'Nach der Zahlung, gib die TX-ID ein.',
+                  'Bitte sende den BTC-Betrag an die angegebene Adresse '
+                  'und gib die Referenz (Memo) an. Nach der Zahlung, '
+                  'gib die TX-ID ein.',
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ],
@@ -769,6 +770,33 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
         );
       }
     }
+  }
+
+  String _buildBitcoinQrData(Map<String, String> info) {
+    final address = info['address'] ?? '';
+    if (address.isEmpty) return '';
+
+    final params = <String, String>{};
+    final amountBtc = info['amountBtc'];
+    final memo = info['memo'];
+
+    if (amountBtc != null && amountBtc.isNotEmpty) {
+      params['amount'] = amountBtc;
+    }
+    if (memo != null && memo.isNotEmpty) {
+      params['message'] = memo;
+      params['label'] = memo;
+    }
+
+    if (params.isEmpty) {
+      return 'bitcoin:$address';
+    }
+
+    final query = params.entries
+        .map((entry) =>
+            '${Uri.encodeComponent(entry.key)}=${Uri.encodeComponent(entry.value)}')
+        .join('&');
+    return 'bitcoin:$address?$query';
   }
 
   Widget _buildPaymentInfoItem(String label, String value) {
@@ -1110,7 +1138,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: QrImageView(
-                        data: info['address'] ?? '',
+                        data: _buildBitcoinQrData(info),
                         version: QrVersions.auto,
                         size: 200.0,
                       ),
@@ -1120,11 +1148,12 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                   _buildPaymentInfoItem('Bitcoin-Adresse', info['address'] ?? '-'),
                   _buildPaymentInfoItem('Betrag (USD)', '\$${info['amountUsd'] ?? '-'}'),
                   _buildPaymentInfoItem('Betrag (BTC)', '${info['amountBtc'] ?? '-'} BTC'),
+                  _buildPaymentInfoItem('Referenz (Memo)', info['memo'] ?? '-'),
                   const SizedBox(height: 16),
                   const Text(
                     'Scanne den QR-Code oder sende den BTC-Betrag an die angegebene '
-                    'Adresse. Nach mindestens 1 Bestätigung auf der Blockchain wird '
-                    'dein Slot automatisch aktiviert.',
+                    'Adresse und gib die Referenz (Memo) an. Nach mindestens 1 '
+                    'Bestätigung auf der Blockchain wird dein Slot automatisch aktiviert.',
                     style: TextStyle(fontStyle: FontStyle.italic, fontSize: 12),
                   ),
                 ],
