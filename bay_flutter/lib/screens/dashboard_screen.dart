@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../services/auth_service.dart';
+import 'listings/listing_card.dart';
 import 'transactions/transaction_detail_screen.dart';
 
 /// Dashboard screen showing news and recent listings.
@@ -21,8 +22,12 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   List<News> _news = [];
   List<Transaction> _pendingRatings = [];
+  List<UserSlot> _expiringSlots = [];
+  List<Listing> _recentListings = [];
   bool _isLoadingNews = true;
   bool _isLoadingRatings = true;
+  bool _isLoadingSlots = true;
+  bool _isLoadingListings = true;
 
   @override
   void initState() {
@@ -34,6 +39,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     await Future.wait([
       _loadNews(),
       _loadPendingRatings(),
+      _loadSlotWarnings(),
+      _loadRecentListings(),
     ]);
   }
 
@@ -69,6 +76,42 @@ class _DashboardScreenState extends State<DashboardScreen> {
     } catch (e) {
       if (mounted) {
         setState(() => _isLoadingRatings = false);
+      }
+    }
+  }
+
+  Future<void> _loadSlotWarnings() async {
+    setState(() => _isLoadingSlots = true);
+
+    try {
+      final slots = await client.userSlot.getExpiringSoon(days: 3);
+      if (mounted) {
+        setState(() {
+          _expiringSlots = slots;
+          _isLoadingSlots = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingSlots = false);
+      }
+    }
+  }
+
+  Future<void> _loadRecentListings() async {
+    setState(() => _isLoadingListings = true);
+
+    try {
+      final listings = await client.listing.getActive(limit: 3, offset: 0);
+      if (mounted) {
+        setState(() {
+          _recentListings = listings;
+          _isLoadingListings = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoadingListings = false);
       }
     }
   }
@@ -376,23 +419,114 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildSlotWarningsSection(BuildContext context) {
-    // TODO: Load slot warnings from server
+    if (_isLoadingSlots) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Center(child: CircularProgressIndicator()),
+        ),
+      );
+    }
+
+    if (_expiringSlots.isEmpty) {
+      return Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  'Keine Slots laufen in den nächsten 3 Tagen ab.',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Card(
+      color: Theme.of(context).colorScheme.errorContainer,
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              Icons.check_circle,
-              color: Theme.of(context).colorScheme.primary,
+            Row(
+              children: [
+                Icon(
+                  Icons.warning_amber,
+                  color: Theme.of(context).colorScheme.onErrorContainer,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    '${_expiringSlots.length} Slot${_expiringSlots.length == 1 ? '' : 's'} laufen bald ab',
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color:
+                              Theme.of(context).colorScheme.onErrorContainer,
+                        ),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                'Keine Slots laufen in den nächsten 3 Tagen ab.',
-                style: Theme.of(context).textTheme.bodyMedium,
+            const SizedBox(height: 12),
+            ..._expiringSlots.take(3).map((slot) {
+              final daysLeft =
+                  slot.expiresAt.difference(DateTime.now()).inDays;
+              final listingInfo = slot.listingId != null
+                  ? 'Listing #${slot.listingId}'
+                  : 'Kein Listing verknüpft';
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.timer_outlined,
+                      size: 18,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onErrorContainer,
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'Slot #${slot.id} • $listingInfo • ${_formatDate(slot.expiresAt)}',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onErrorContainer,
+                            ),
+                      ),
+                    ),
+                    Text(
+                      '${daysLeft < 0 ? 0 : daysLeft}d',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onErrorContainer,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+            if (_expiringSlots.length > 3)
+              Text(
+                '+${_expiringSlots.length - 3} weitere',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: Theme.of(context).colorScheme.onErrorContainer,
+                    ),
               ),
-            ),
           ],
         ),
       ),
@@ -400,33 +534,53 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildRecentListingsSection(BuildContext context) {
-    // TODO: Load recent listings from server
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Icon(
-              Icons.inventory_2_outlined,
-              size: 48,
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              'Noch keine Angebote',
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Hier werden die neuesten Angebote angezeigt.',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+    if (_isLoadingListings) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(24),
+          child: Center(child: CircularProgressIndicator()),
         ),
-      ),
+      );
+    }
+
+    if (_recentListings.isEmpty) {
+      return Card(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Icon(
+                Icons.inventory_2_outlined,
+                size: 48,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+              const SizedBox(height: 12),
+              Text(
+                'Noch keine Angebote',
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Hier werden die neuesten Angebote angezeigt.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      children: _recentListings
+          .map((listing) => ListingCard(listing: listing))
+          .toList(),
     );
+  }
+
+  String _formatDate(DateTime date) {
+    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 }
