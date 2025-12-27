@@ -274,12 +274,13 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       color: isOld ? Theme.of(context).colorScheme.errorContainer : null,
-      child: InkWell(
-        onTap: () => _showPaymentDetails(order),
-        borderRadius: BorderRadius.circular(12),
-        child: Stack(
-          children: [
-            Padding(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          InkWell(
+            onTap: () => _showPaymentDetails(order),
+            borderRadius: BorderRadius.circular(12),
+            child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -393,21 +394,23 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
                     ),
                   ],
 
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
-            Positioned(
-              right: 12,
-              bottom: 12,
+          ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: FilledButton.icon(
                 onPressed: () => _confirmPayment(order),
                 icon: const Icon(Icons.check),
                 label: const Text('Bestätigen'),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
