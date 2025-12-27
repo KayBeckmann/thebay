@@ -499,11 +499,14 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       color: Theme.of(context).colorScheme.secondaryContainer.withValues(alpha: 0.5),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      child: InkWell(
+        onTap: () => _viewPaymentDetails(order),
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             Row(
               children: [
                 CircleAvatar(
@@ -587,7 +590,8 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 ),
               ],
             ),
-          ],
+            ],
+          ),
         ),
       ),
     );
