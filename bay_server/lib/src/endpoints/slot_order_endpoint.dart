@@ -58,7 +58,37 @@ class SlotOrderEndpoint extends Endpoint {
       createdAt: now,
     );
 
-    return await SlotOrder.db.insertRow(session, order);
+    final createdOrder = await SlotOrder.db.insertRow(session, order);
+
+    // Automatisch aktivieren für 0€-Slots (kostenlose Promotion-Slots)
+    if (variant.priceUsdCents == 0) {
+      session.log('0€-Bestellung erkannt, aktiviere Slot automatisch für Bestellung ${createdOrder.id}');
+
+      // Erstelle den Slot sofort
+      final expiresAt = now.add(Duration(days: variant.durationDays));
+      final slot = UserSlot(
+        userId: userId,
+        slotVariantId: slotVariantId,
+        listingId: null,
+        purchasedAt: now,
+        expiresAt: expiresAt,
+        isActive: true,
+        isUsed: false,
+      );
+      await UserSlot.db.insertRow(session, slot);
+
+      // Markiere Bestellung als bezahlt und abgeschlossen
+      createdOrder.status = OrderStatus.paid;
+      createdOrder.paidAt = now;
+      createdOrder.transactionId = 'free_promo';
+      createdOrder.completedAt = now;
+      createdOrder.status = OrderStatus.completed;
+      await SlotOrder.db.updateRow(session, createdOrder);
+
+      session.log('0€-Bestellung ${createdOrder.id} automatisch abgeschlossen');
+    }
+
+    return createdOrder;
   }
 
   /// Ruft alle Bestellungen des aktuellen Benutzers ab.
