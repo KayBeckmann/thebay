@@ -274,127 +274,137 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       color: isOld ? Theme.of(context).colorScheme.errorContainer : null,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: InkWell(
+        onTap: () => _showPaymentDetails(order),
+        borderRadius: BorderRadius.circular(12),
+        child: Stack(
           children: [
-            // Header
-            Row(
-              children: [
-                CircleAvatar(
-                  backgroundColor:
-                      Theme.of(context).colorScheme.primaryContainer,
-                  child: Icon(
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor:
+                            Theme.of(context).colorScheme.primaryContainer,
+                        child: Icon(
+                          order.paymentMethod == PaymentMethod.paypal
+                              ? Icons.paypal
+                              : Icons.currency_bitcoin,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Bestellung #${order.id}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            Text(
+                              _formatDateTime(order.createdAt),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      if (isOld)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.error,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Text(
+                            '>24h',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.onError,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  const Divider(height: 24),
+
+                  // Details
+                  _buildDetailRow(
+                    context,
+                    'Benutzer',
+                    user?.username ?? 'Unbekannt',
+                    Icons.person,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildDetailRow(
+                    context,
+                    'Variante',
+                    variant?.name ?? 'Unbekannt',
+                    Icons.confirmation_number,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildDetailRow(
+                    context,
+                    'Betrag',
+                    '\$${(order.amountCents / 100).toStringAsFixed(2)}',
+                    Icons.attach_money,
+                  ),
+                  const SizedBox(height: 8),
+                  _buildDetailRow(
+                    context,
+                    'Methode',
+                    order.paymentMethod == PaymentMethod.paypal
+                        ? 'PayPal'
+                        : 'Bitcoin',
                     order.paymentMethod == PaymentMethod.paypal
                         ? Icons.paypal
                         : Icons.currency_bitcoin,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Bestellung #${order.id}',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                      Text(
-                        _formatDateTime(order.createdAt),
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurfaceVariant,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-                if (isOld)
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.error,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      '>24h',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onError,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            const Divider(height: 24),
 
-            // Details
-            _buildDetailRow(
-              context,
-              'Benutzer',
-              user?.username ?? 'Unbekannt',
-              Icons.person,
-            ),
-            const SizedBox(height: 8),
-            _buildDetailRow(
-              context,
-              'Variante',
-              variant?.name ?? 'Unbekannt',
-              Icons.confirmation_number,
-            ),
-            const SizedBox(height: 8),
-            _buildDetailRow(
-              context,
-              'Betrag',
-              '\$${(order.amountCents / 100).toStringAsFixed(2)}',
-              Icons.attach_money,
-            ),
-            const SizedBox(height: 8),
-            _buildDetailRow(
-              context,
-              'Methode',
-              order.paymentMethod == PaymentMethod.paypal ? 'PayPal' : 'Bitcoin',
-              order.paymentMethod == PaymentMethod.paypal
-                  ? Icons.paypal
-                  : Icons.currency_bitcoin,
-            ),
+                  if (order.transactionId != null &&
+                      order.transactionId!.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    _buildDetailRow(
+                      context,
+                      'TX-ID',
+                      order.transactionId!,
+                      Icons.tag,
+                    ),
+                  ],
 
-            if (order.transactionId != null &&
-                order.transactionId!.isNotEmpty) ...[
-              const SizedBox(height: 8),
-              _buildDetailRow(
-                context,
-                'TX-ID',
-                order.transactionId!,
-                Icons.tag,
+                  const SizedBox(height: 32),
+                ],
               ),
-            ],
-
-            const SizedBox(height: 16),
-
-            // Actions
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                OutlinedButton.icon(
-                  onPressed: () => _showPaymentDetails(order),
-                  icon: const Icon(Icons.info_outline),
-                  label: const Text('Details'),
-                ),
-                const SizedBox(width: 8),
-                FilledButton.icon(
-                  onPressed: () => _confirmPayment(order),
-                  icon: const Icon(Icons.check),
-                  label: const Text('Bestätigen'),
-                ),
-              ],
+            ),
+            Positioned(
+              right: 12,
+              bottom: 12,
+              child: FilledButton.icon(
+                onPressed: () => _confirmPayment(order),
+                icon: const Icon(Icons.check),
+                label: const Text('Bestätigen'),
+              ),
             ),
           ],
         ),
