@@ -29,6 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   // User preferences
   int _paginationSize = 25;
   String _currency = 'USD';
+  String _language = 'en';
 
   // Payment info
   String? _paypalAddress;
@@ -56,11 +57,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     try {
       final currency = await _preferencesService.getCurrency();
       final paginationSize = await _preferencesService.getPaginationSize();
+      final language = await _preferencesService.getLanguage();
 
       if (mounted) {
         setState(() {
           _currency = currency;
           _paginationSize = paginationSize;
+          _language = language;
         });
       }
     } catch (e) {
@@ -167,6 +170,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: const Text('Anzeigewährung'),
             subtitle: Text(_currency),
             onTap: () => _showCurrencyDialog(context),
+          ),
+          ListTile(
+            leading: const Icon(Icons.language),
+            title: const Text('Sprache'),
+            subtitle: Text(_languageLabel(_language)),
+            onTap: () => _showLanguageDialog(context),
           ),
           const Divider(),
 
@@ -407,6 +416,55 @@ class _SettingsScreenState extends State<SettingsScreen> {
         }).toList(),
       ),
     );
+  }
+
+  void _showLanguageDialog(BuildContext context) {
+    const languages = {
+      'en': 'English',
+      'de': 'Deutsch',
+      'fr': 'Francais',
+      'es': 'Espanol',
+    };
+
+    showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: const Text('Sprache'),
+        children: languages.entries.map((entry) {
+          return SimpleDialogOption(
+            onPressed: () async {
+              setState(() => _language = entry.key);
+              await _preferencesService.setLanguage(entry.key);
+              if (context.mounted) Navigator.pop(context);
+            },
+            child: Row(
+              children: [
+                if (_language == entry.key)
+                  Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
+                else
+                  const SizedBox(width: 24),
+                const SizedBox(width: 12),
+                Text(entry.value),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  String _languageLabel(String code) {
+    switch (code) {
+      case 'de':
+        return 'Deutsch';
+      case 'fr':
+        return 'Francais';
+      case 'es':
+        return 'Espanol';
+      case 'en':
+      default:
+        return 'English';
+    }
   }
 
   void _openPgpKeyScreen(BuildContext context) async {

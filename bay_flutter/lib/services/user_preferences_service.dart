@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserPreferencesService {
   static const String _currencyPref = 'user_currency';
   static const String _paginationSizePref = 'pagination_size';
+  static const String _languagePref = 'user_language';
 
   /// Get the user's preferred currency
   Future<String> getCurrency() async {
@@ -29,10 +30,23 @@ class UserPreferencesService {
     await prefs.setInt(_paginationSizePref, size);
   }
 
+  /// Get the user's preferred language (ISO code)
+  Future<String> getLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_languagePref) ?? 'en';
+  }
+
+  /// Set the user's preferred language (ISO code)
+  Future<void> setLanguage(String languageCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_languagePref, languageCode);
+  }
+
   /// Clear all preferences
   Future<void> clearAll() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_currencyPref);
     await prefs.remove(_paginationSizePref);
+    await prefs.remove(_languagePref);
   }
 }
