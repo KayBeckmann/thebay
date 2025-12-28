@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../main.dart';
 import '../services/auth_service.dart';
-import 'listings/listing_card.dart';
+import 'listings/listing_detail_screen.dart';
 import 'transactions/transaction_detail_screen.dart';
 
 /// Dashboard screen showing news and recent listings.
@@ -20,6 +20,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  static const int _recentListingsLimit = 6;
   List<News> _news = [];
   List<Transaction> _pendingRatings = [];
   List<UserSlot> _expiringSlots = [];
@@ -102,7 +103,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     setState(() => _isLoadingListings = true);
 
     try {
-      final listings = await client.listing.getActive(limit: 3, offset: 0);
+      final listings =
+          await client.listing.getActive(limit: _recentListingsLimit, offset: 0);
       if (mounted) {
         setState(() {
           _recentListings = listings;
@@ -574,13 +576,81 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
 
     return Column(
-      children: _recentListings
-          .map((listing) => ListingCard(listing: listing))
-          .toList(),
+      children:
+          _recentListings.map((listing) => _buildRecentListingRow(listing)).toList(),
     );
   }
 
   String _formatDate(DateTime date) {
     return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
+  }
+
+  Widget _buildRecentListingRow(Listing listing) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 8),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        leading: Icon(
+          Icons.inventory_2_outlined,
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+        title: Text(
+          listing.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+        ),
+        subtitle: Text(
+          _formatListingPrice(listing),
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+              ),
+        ),
+        trailing: Icon(
+          Icons.chevron_right,
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+        onTap: () => _openListingDetail(listing.id!),
+      ),
+    );
+  }
+
+  String _formatListingPrice(Listing listing) {
+    final currency =
+        listing.acceptsBitcoin && !listing.acceptsPaypal ? 'BTC' : 'USD';
+    final price = listing.pricePerUnit / 100;
+    final unitLabel = _quantityUnitLabel(listing.quantityUnit);
+    if (unitLabel.isEmpty) {
+      return '${price.toStringAsFixed(2)} $currency';
+    }
+    return '${price.toStringAsFixed(2)} $currency/$unitLabel';
+  }
+
+  String _quantityUnitLabel(QuantityUnit unit) {
+    switch (unit) {
+      case QuantityUnit.piece:
+        return 'piece';
+      case QuantityUnit.kg:
+        return 'kg';
+      case QuantityUnit.gram:
+        return 'g';
+      case QuantityUnit.meter:
+        return 'm';
+      case QuantityUnit.liter:
+        return 'L';
+      case QuantityUnit.none:
+        return '';
+    }
+  }
+
+  void _openListingDetail(int listingId) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ListingDetailScreen(listingId: listingId),
+      ),
+    );
   }
 }
