@@ -570,15 +570,15 @@
 
 ## Meilenstein 15: Multilingualer Support (i18n)
 
-### 15.0 Infrastruktur-Setup
-- [ ] Flutter intl & flutter_localizations Pakete hinzufügen
-- [ ] l10n.yaml Konfigurationsdatei erstellen
-- [ ] Initiale ARB-Dateien erstellen (de, en, fr, es)
-- [ ] MaterialApp mit Localization Delegates wrappen
-- [ ] UserPreferencesService mit Locale-Switching verbinden
-- [ ] State-Management für Sprachwechsel implementieren
-- [ ] Code-Generierung testen (flutter gen-l10n)
-- [ ] Test-String verifizieren
+### 15.0 Infrastruktur-Setup ✅
+- [x] Flutter intl & flutter_localizations Pakete hinzufügen
+- [x] l10n.yaml Konfigurationsdatei erstellen
+- [x] Initiale ARB-Dateien erstellen (de, en, fr, es)
+- [x] MaterialApp mit Localization Delegates wrappen
+- [x] UserPreferencesService mit Locale-Switching verbinden
+- [x] State-Management für Sprachwechsel implementieren
+- [x] Code-Generierung testen (flutter gen-l10n)
+- [x] Test-String verifizieren
 
 ### 15.1 Authentifizierung
 - [ ] login_screen.dart übersetzen (~8 Strings)
