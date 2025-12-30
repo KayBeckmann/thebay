@@ -587,11 +587,11 @@
 - [x] ARB-Dateien mit Übersetzungen füllen
 - [x] Tests mit allen Sprachen
 
-### 15.2 Kern-Navigation
-- [ ] main_shell.dart Navigation-Labels übersetzen
-- [ ] Bottom Navigation Bar übersetzen
-- [ ] Drawer und Rollen-Namen übersetzen
-- [ ] App-Titel und Headers übersetzen
+### 15.2 Kern-Navigation ✅
+- [x] main_shell.dart Navigation-Labels übersetzen
+- [x] Bottom Navigation Bar übersetzen
+- [x] Drawer und Rollen-Namen übersetzen
+- [x] App-Titel und Headers übersetzen
 
 ### 15.3 Einstellungen & Profil
 - [ ] settings_screen.dart übersetzen (~47 Strings)

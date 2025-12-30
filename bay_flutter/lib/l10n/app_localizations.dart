@@ -329,6 +329,96 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Verstrichene Zeit: {time}'**
   String elapsedTime(String time);
+
+  /// Dashboard Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Dashboard'**
+  String get navDashboard;
+
+  /// Nachrichten Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Nachrichten'**
+  String get navMessages;
+
+  /// Suchen Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Suchen'**
+  String get navSearch;
+
+  /// Verkaufen Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Verkaufen'**
+  String get navSell;
+
+  /// Transaktionen Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktionen'**
+  String get navTransactions;
+
+  /// Einstellungen Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Einstellungen'**
+  String get navSettings;
+
+  /// Moderation Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Moderation'**
+  String get navModeration;
+
+  /// News Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'News'**
+  String get navNews;
+
+  /// Admin Navigation Label
+  ///
+  /// In de, this message translates to:
+  /// **'Admin'**
+  String get navAdmin;
+
+  /// Drawer Benutzer Fallback Name
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get drawerUserFallback;
+
+  /// Drawer Moderation Section Header
+  ///
+  /// In de, this message translates to:
+  /// **'Moderation'**
+  String get drawerModerationSection;
+
+  /// Drawer Administration Section Header
+  ///
+  /// In de, this message translates to:
+  /// **'Administration'**
+  String get drawerAdminSection;
+
+  /// Administrator Rolle
+  ///
+  /// In de, this message translates to:
+  /// **'Administrator'**
+  String get roleAdmin;
+
+  /// Moderator Rolle
+  ///
+  /// In de, this message translates to:
+  /// **'Moderator'**
+  String get roleModerator;
+
+  /// Benutzer Rolle
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get roleUser;
 }
 
 class _AppLocalizationsDelegate

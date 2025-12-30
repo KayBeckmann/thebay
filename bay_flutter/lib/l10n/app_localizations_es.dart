@@ -136,4 +136,49 @@ class AppLocalizationsEs extends AppLocalizations {
   String elapsedTime(String time) {
     return 'Tiempo transcurrido: $time';
   }
+
+  @override
+  String get navDashboard => 'Panel';
+
+  @override
+  String get navMessages => 'Mensajes';
+
+  @override
+  String get navSearch => 'Buscar';
+
+  @override
+  String get navSell => 'Vender';
+
+  @override
+  String get navTransactions => 'Transacciones';
+
+  @override
+  String get navSettings => 'Configuración';
+
+  @override
+  String get navModeration => 'Moderación';
+
+  @override
+  String get navNews => 'Noticias';
+
+  @override
+  String get navAdmin => 'Administración';
+
+  @override
+  String get drawerUserFallback => 'Usuario';
+
+  @override
+  String get drawerModerationSection => 'Moderación';
+
+  @override
+  String get drawerAdminSection => 'Administración';
+
+  @override
+  String get roleAdmin => 'Administrador';
+
+  @override
+  String get roleModerator => 'Moderador';
+
+  @override
+  String get roleUser => 'Usuario';
 }

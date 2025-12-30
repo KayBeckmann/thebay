@@ -38,5 +38,21 @@
   "generatingKey": "Génération de la clé de sécurité...",
   "generatingKeyMessage": "Votre clé de chiffrement personnelle est en cours de génération.\nCela ne prendra que quelques secondes.",
   "keyGenerationFailed": "La clé n'a pas pu être générée : {error}\nVous pouvez la créer plus tard dans les paramètres.",
-  "elapsedTime": "Temps écoulé : {time}"
+  "elapsedTime": "Temps écoulé : {time}",
+
+  "navDashboard": "Tableau de bord",
+  "navMessages": "Messages",
+  "navSearch": "Rechercher",
+  "navSell": "Vendre",
+  "navTransactions": "Transactions",
+  "navSettings": "Paramètres",
+  "navModeration": "Modération",
+  "navNews": "Actualités",
+  "navAdmin": "Administration",
+  "drawerUserFallback": "Utilisateur",
+  "drawerModerationSection": "Modération",
+  "drawerAdminSection": "Administration",
+  "roleAdmin": "Administrateur",
+  "roleModerator": "Modérateur",
+  "roleUser": "Utilisateur"
 }

@@ -38,5 +38,21 @@
   "generatingKey": "Generating security key...",
   "generatingKeyMessage": "Your personal encryption key is being generated.\nThis will only take a few seconds.",
   "keyGenerationFailed": "Key could not be generated: {error}\nYou can create it later in settings.",
-  "elapsedTime": "Elapsed time: {time}"
+  "elapsedTime": "Elapsed time: {time}",
+
+  "navDashboard": "Dashboard",
+  "navMessages": "Messages",
+  "navSearch": "Search",
+  "navSell": "Sell",
+  "navTransactions": "Transactions",
+  "navSettings": "Settings",
+  "navModeration": "Moderation",
+  "navNews": "News",
+  "navAdmin": "Admin",
+  "drawerUserFallback": "User",
+  "drawerModerationSection": "Moderation",
+  "drawerAdminSection": "Administration",
+  "roleAdmin": "Administrator",
+  "roleModerator": "Moderator",
+  "roleUser": "User"
 }

@@ -38,5 +38,21 @@
   "generatingKey": "Generando clave de seguridad...",
   "generatingKeyMessage": "Tu clave de cifrado personal está siendo generada.\nEsto solo tomará unos segundos.",
   "keyGenerationFailed": "No se pudo generar la clave: {error}\nPuedes crearla más tarde en la configuración.",
-  "elapsedTime": "Tiempo transcurrido: {time}"
+  "elapsedTime": "Tiempo transcurrido: {time}",
+
+  "navDashboard": "Panel",
+  "navMessages": "Mensajes",
+  "navSearch": "Buscar",
+  "navSell": "Vender",
+  "navTransactions": "Transacciones",
+  "navSettings": "Configuración",
+  "navModeration": "Moderación",
+  "navNews": "Noticias",
+  "navAdmin": "Administración",
+  "drawerUserFallback": "Usuario",
+  "drawerModerationSection": "Moderación",
+  "drawerAdminSection": "Administración",
+  "roleAdmin": "Administrador",
+  "roleModerator": "Moderador",
+  "roleUser": "Usuario"
 }

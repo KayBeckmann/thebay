@@ -135,4 +135,49 @@ class AppLocalizationsFr extends AppLocalizations {
   String elapsedTime(String time) {
     return 'Temps écoulé : $time';
   }
+
+  @override
+  String get navDashboard => 'Tableau de bord';
+
+  @override
+  String get navMessages => 'Messages';
+
+  @override
+  String get navSearch => 'Rechercher';
+
+  @override
+  String get navSell => 'Vendre';
+
+  @override
+  String get navTransactions => 'Transactions';
+
+  @override
+  String get navSettings => 'Paramètres';
+
+  @override
+  String get navModeration => 'Modération';
+
+  @override
+  String get navNews => 'Actualités';
+
+  @override
+  String get navAdmin => 'Administration';
+
+  @override
+  String get drawerUserFallback => 'Utilisateur';
+
+  @override
+  String get drawerModerationSection => 'Modération';
+
+  @override
+  String get drawerAdminSection => 'Administration';
+
+  @override
+  String get roleAdmin => 'Administrateur';
+
+  @override
+  String get roleModerator => 'Modérateur';
+
+  @override
+  String get roleUser => 'Utilisateur';
 }

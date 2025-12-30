@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart' show client;
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
@@ -97,20 +98,21 @@ class _MainShellState extends State<MainShell> {
     _loadUnreadCount();
   }
 
-  List<NavItem> get _navItems {
+  List<NavItem> _getNavItems(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final user = widget.authService.currentUser;
     final isAdmin = user?.role == UserRole.admin;
     final isModerator = user?.role == UserRole.moderator || isAdmin;
 
     final items = <NavItem>[
       NavItem(
-        label: 'Dashboard',
+        label: l10n.navDashboard,
         icon: Icons.dashboard_outlined,
         selectedIcon: Icons.dashboard,
         screen: DashboardScreen(authService: widget.authService),
       ),
       NavItem(
-        label: 'Nachrichten',
+        label: l10n.navMessages,
         icon: Icons.mail_outline,
         selectedIcon: Icons.mail,
         screen: MessagesScreen(
@@ -120,25 +122,25 @@ class _MainShellState extends State<MainShell> {
         ),
       ),
       NavItem(
-        label: 'Suchen',
+        label: l10n.navSearch,
         icon: Icons.search_outlined,
         selectedIcon: Icons.search,
         screen: const SearchScreen(),
       ),
       NavItem(
-        label: 'Verkaufen',
+        label: l10n.navSell,
         icon: Icons.add_circle_outline,
         selectedIcon: Icons.add_circle,
         screen: const SellScreen(),
       ),
       NavItem(
-        label: 'Transaktionen',
+        label: l10n.navTransactions,
         icon: Icons.receipt_long_outlined,
         selectedIcon: Icons.receipt_long,
         screen: const TransactionsScreen(),
       ),
       NavItem(
-        label: 'Einstellungen',
+        label: l10n.navSettings,
         icon: Icons.settings_outlined,
         selectedIcon: Icons.settings,
         screen: SettingsScreen(
@@ -152,7 +154,7 @@ class _MainShellState extends State<MainShell> {
     // Moderator and Admin items
     if (isModerator) {
       items.add(NavItem(
-        label: 'Moderation',
+        label: l10n.navModeration,
         icon: Icons.shield_outlined,
         selectedIcon: Icons.shield,
         screen: const ModeratorPanelScreen(),
@@ -163,14 +165,14 @@ class _MainShellState extends State<MainShell> {
     // Admin-only items
     if (isAdmin) {
       items.add(NavItem(
-        label: 'News',
+        label: l10n.navNews,
         icon: Icons.newspaper_outlined,
         selectedIcon: Icons.newspaper,
         screen: const NewsManagementScreen(),
         adminOnly: true,
       ));
       items.add(NavItem(
-        label: 'Admin',
+        label: l10n.navAdmin,
         icon: Icons.admin_panel_settings_outlined,
         selectedIcon: Icons.admin_panel_settings,
         screen: const AdminPanelScreen(),
@@ -189,7 +191,7 @@ class _MainShellState extends State<MainShell> {
 
   @override
   Widget build(BuildContext context) {
-    final navItems = _navItems;
+    final navItems = _getNavItems(context);
     final user = widget.authService.currentUser;
 
     // Ensure selected index is valid
@@ -251,13 +253,15 @@ class _MainShellState extends State<MainShell> {
   }
 
   Widget _buildDrawer(BuildContext context, AuthResponse? user) {
+    final l10n = AppLocalizations.of(context)!;
     final isAdmin = user?.role == UserRole.admin;
     final isModerator = user?.role == UserRole.moderator || isAdmin;
 
     // Separate items by type
-    final basicItems = _navItems.take(6).toList();
-    final moderatorItems = _navItems.skip(6).where((item) => item.moderatorOnly && !item.adminOnly).toList();
-    final adminItems = _navItems.where((item) => item.adminOnly).toList();
+    final navItems = _getNavItems(context);
+    final basicItems = navItems.take(6).toList();
+    final moderatorItems = navItems.skip(6).where((item) => item.moderatorOnly && !item.adminOnly).toList();
+    final adminItems = navItems.where((item) => item.adminOnly).toList();
 
     return NavigationDrawer(
       selectedIndex: _selectedIndex,
@@ -284,13 +288,13 @@ class _MainShellState extends State<MainShell> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      user?.username ?? 'User',
+                      user?.username ?? l10n.drawerUserFallback,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                     ),
                     Text(
-                      _getRoleName(user?.role),
+                      _getRoleName(context, user?.role),
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
@@ -318,7 +322,7 @@ class _MainShellState extends State<MainShell> {
           Padding(
             padding: const EdgeInsets.fromLTRB(28, 0, 16, 8),
             child: Text(
-              'Moderation',
+              l10n.drawerModerationSection,
               style: Theme.of(context).textTheme.labelMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -338,7 +342,7 @@ class _MainShellState extends State<MainShell> {
           Padding(
             padding: const EdgeInsets.fromLTRB(28, 0, 16, 8),
             child: Text(
-              'Administration',
+              l10n.drawerAdminSection,
               style: Theme.of(context).textTheme.labelMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -354,15 +358,16 @@ class _MainShellState extends State<MainShell> {
     );
   }
 
-  String _getRoleName(UserRole? role) {
+  String _getRoleName(BuildContext context, UserRole? role) {
+    final l10n = AppLocalizations.of(context)!;
     switch (role) {
       case UserRole.admin:
-        return 'Administrator';
+        return l10n.roleAdmin;
       case UserRole.moderator:
-        return 'Moderator';
+        return l10n.roleModerator;
       case UserRole.user:
       default:
-        return 'Benutzer';
+        return l10n.roleUser;
     }
   }
 }

@@ -207,5 +207,80 @@
         "example": "01:23"
       }
     }
+  },
+
+  "navDashboard": "Dashboard",
+  "@navDashboard": {
+    "description": "Dashboard Navigation Label"
+  },
+
+  "navMessages": "Nachrichten",
+  "@navMessages": {
+    "description": "Nachrichten Navigation Label"
+  },
+
+  "navSearch": "Suchen",
+  "@navSearch": {
+    "description": "Suchen Navigation Label"
+  },
+
+  "navSell": "Verkaufen",
+  "@navSell": {
+    "description": "Verkaufen Navigation Label"
+  },
+
+  "navTransactions": "Transaktionen",
+  "@navTransactions": {
+    "description": "Transaktionen Navigation Label"
+  },
+
+  "navSettings": "Einstellungen",
+  "@navSettings": {
+    "description": "Einstellungen Navigation Label"
+  },
+
+  "navModeration": "Moderation",
+  "@navModeration": {
+    "description": "Moderation Navigation Label"
+  },
+
+  "navNews": "News",
+  "@navNews": {
+    "description": "News Navigation Label"
+  },
+
+  "navAdmin": "Admin",
+  "@navAdmin": {
+    "description": "Admin Navigation Label"
+  },
+
+  "drawerUserFallback": "Benutzer",
+  "@drawerUserFallback": {
+    "description": "Drawer Benutzer Fallback Name"
+  },
+
+  "drawerModerationSection": "Moderation",
+  "@drawerModerationSection": {
+    "description": "Drawer Moderation Section Header"
+  },
+
+  "drawerAdminSection": "Administration",
+  "@drawerAdminSection": {
+    "description": "Drawer Administration Section Header"
+  },
+
+  "roleAdmin": "Administrator",
+  "@roleAdmin": {
+    "description": "Administrator Rolle"
+  },
+
+  "roleModerator": "Moderator",
+  "@roleModerator": {
+    "description": "Moderator Rolle"
+  },
+
+  "roleUser": "Benutzer",
+  "@roleUser": {
+    "description": "Benutzer Rolle"
   }
 }
