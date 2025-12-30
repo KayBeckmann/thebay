@@ -94,6 +94,111 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
     }
   }
 
+  Future<void> _grantFreeSlot() async {
+    try {
+      // Lade kostenlose Slot-Varianten
+      final freeVariants = await client.slotVariant.getAll();
+      final freeOnly = freeVariants.where((v) => v.isFree && v.isActive).toList();
+
+      if (!mounted) return;
+
+      if (freeOnly.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Keine kostenlosen Slot-Varianten verfügbar. Erstelle zuerst eine kostenlose Variante.'),
+          ),
+        );
+        return;
+      }
+
+      // Zeige Auswahl-Dialog
+      final selectedVariant = await showDialog<SlotVariant>(
+        context: context,
+        builder: (context) => AlertDialog(
+          icon: const Icon(Icons.card_giftcard),
+          title: const Text('Kostenlosen Slot vergeben'),
+          content: SizedBox(
+            width: double.maxFinite,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Wähle eine kostenlose Slot-Variante für ${_user.username}:',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                const SizedBox(height: 16),
+                Flexible(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: freeOnly.length,
+                    itemBuilder: (context, index) {
+                      final variant = freeOnly[index];
+                      return Card(
+                        child: ListTile(
+                          leading: const Icon(Icons.confirmation_number, color: Colors.green),
+                          title: Text(variant.name),
+                          subtitle: Text('${variant.durationDays} Tage Laufzeit'),
+                          trailing: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.green.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              'KOSTENLOS',
+                              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                                    color: Colors.green.shade700,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ),
+                          onTap: () => Navigator.pop(context, variant),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Abbrechen'),
+            ),
+          ],
+        ),
+      );
+
+      if (selectedVariant == null) return;
+
+      // Vergebe kostenlosen Slot
+      await client.userSlot.grantFreeSlot(
+        userId: _user.id!,
+        slotVariantId: selectedVariant.id!,
+      );
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Kostenloser Slot "${selectedVariant.name}" wurde an ${_user.username} vergeben'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Fehler: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   Future<void> _banUser() async {
     final reason = await showDialog<String>(
       context: context,
@@ -373,6 +478,15 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                   ),
             ),
             const SizedBox(height: 12),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton.icon(
+                onPressed: _grantFreeSlot,
+                icon: const Icon(Icons.card_giftcard),
+                label: const Text('Kostenlosen Slot vergeben'),
+              ),
+            ),
+            const SizedBox(height: 8),
             if (_user.isBanned)
               SizedBox(
                 width: double.infinity,

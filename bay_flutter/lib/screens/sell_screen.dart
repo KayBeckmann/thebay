@@ -31,6 +31,9 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   List<SlotVariant> _slotVariants = [];
   bool _isLoadingVariants = true;
 
+  // Alle Slot-Varianten (für Zuordnung)
+  Map<int, SlotVariant> _allVariantsMap = {};
+
   // Ausstehende Bestellungen
   List<SlotOrder> _pendingOrders = [];
   bool _isLoadingOrders = false;
@@ -96,10 +99,12 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   Future<void> _loadSlotVariants() async {
     setState(() => _isLoadingVariants = true);
     try {
-      final variants = await client.slotVariant.getActive();
+      final activeVariants = await client.slotVariant.getActive();
+      final allVariants = await client.slotVariant.getAll();
       if (mounted) {
         setState(() {
-          _slotVariants = variants;
+          _slotVariants = activeVariants;
+          _allVariantsMap = {for (var v in allVariants) v.id!: v};
           _isLoadingVariants = false;
         });
       }
@@ -828,6 +833,8 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     final now = DateTime.now();
     final daysRemaining = slot.expiresAt.difference(now).inDays;
     final isExpiringSoon = daysRemaining <= 3 && daysRemaining >= 0;
+    final slotVariant = _allVariantsMap[slot.slotVariantId];
+    final isFreeSlot = slotVariant?.isFree ?? false;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
@@ -869,6 +876,20 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 ],
               ),
             ),
+            if (isFreeSlot)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Chip(
+                  label: const Text('KOSTENLOS'),
+                  backgroundColor: Colors.green.withOpacity(0.2),
+                  labelStyle: TextStyle(
+                    color: Colors.green.shade700,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  visualDensity: VisualDensity.compact,
+                ),
+              ),
             if (isExpiringSoon)
               Padding(
                 padding: const EdgeInsets.only(right: 8),

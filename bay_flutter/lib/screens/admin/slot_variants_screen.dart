@@ -175,10 +175,27 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                     ],
                   ),
                 ),
+                if (variant.isFree)
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.green.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Text(
+                      'KOSTENLOS',
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                            color: Colors.green.shade700,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ),
                 if (!variant.isActive)
                   Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    margin: EdgeInsets.only(left: variant.isFree ? 8 : 0),
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(4),
@@ -193,12 +210,14 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
             const SizedBox(height: 16),
             Row(
               children: [
-                _buildInfoChip(
-                  context,
-                  Icons.attach_money,
-                  _formatPrice(variant.priceUsdCents),
-                ),
-                const SizedBox(width: 8),
+                if (!variant.isFree) ...[
+                  _buildInfoChip(
+                    context,
+                    Icons.attach_money,
+                    _formatPrice(variant.priceUsdCents),
+                  ),
+                  const SizedBox(width: 8),
+                ],
                 _buildInfoChip(
                   context,
                   Icons.schedule,
@@ -273,6 +292,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
     bool allowPaypal = variant?.allowPaypal ?? true;
     bool allowBitcoin = variant?.allowBitcoin ?? true;
     bool isActive = variant?.isActive ?? true;
+    bool isFree = variant?.isFree ?? false;
 
     final result = await showDialog<bool>(
       context: context,
@@ -310,6 +330,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                           prefixText: '\$ ',
                         ),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        enabled: !isFree,
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -343,6 +364,19 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                   title: const Text('Bitcoin'),
                   value: allowBitcoin,
                   onChanged: (value) => setDialogState(() => allowBitcoin = value ?? true),
+                ),
+                SwitchListTile(
+                  title: const Text('Kostenlos'),
+                  subtitle: const Text('Variante ist gratis (für Promotion-Slots)'),
+                  value: isFree,
+                  onChanged: (value) {
+                    setDialogState(() {
+                      isFree = value;
+                      if (isFree) {
+                        priceController.text = '0';
+                      }
+                    });
+                  },
                 ),
                 SwitchListTile(
                   title: const Text('Aktiv'),
@@ -395,24 +429,24 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
             id: variant.id!,
             name: name,
             description: description.isEmpty ? null : description,
-            priceUsdCents: priceInCents,
+            priceUsdCents: isFree ? 0 : priceInCents,
             durationDays: duration,
             allowPaypal: allowPaypal,
             allowBitcoin: allowBitcoin,
             isActive: isActive,
-            isFree: variant.isFree, // Preserve existing value
+            isFree: isFree,
             sortOrder: sortOrder,
           );
         } else {
           await client.slotVariant.create(
             name: name,
             description: description.isEmpty ? null : description,
-            priceUsdCents: priceInCents,
+            priceUsdCents: isFree ? 0 : priceInCents,
             durationDays: duration,
             allowPaypal: allowPaypal,
             allowBitcoin: allowBitcoin,
             sortOrder: sortOrder,
-            isFree: false, // Normal paid slot
+            isFree: isFree,
           );
         }
         _loadVariants();

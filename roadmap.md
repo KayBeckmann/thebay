@@ -561,10 +561,90 @@
 - [x] Kostenlose Slots erscheinen nicht im Kaufprozess
 - [x] Validation: Nur als "free" markierte Varianten können kostenlos vergeben werden
 
-### 14.3 Frontend (für zukünftige Implementierung)
-- [ ] Admin-UI zum Erstellen kostenloser Slot-Varianten
-- [ ] Admin-UI zum Vergeben kostenloser Slots an Benutzer
-- [ ] Anzeige kostenloser Slots in Benutzer-Slot-Verwaltung
+### 14.3 Frontend ✅
+- [x] Admin-UI zum Erstellen kostenloser Slot-Varianten
+- [x] Admin-UI zum Vergeben kostenloser Slots an Benutzer
+- [x] Anzeige kostenloser Slots in Benutzer-Slot-Verwaltung
+
+---
+
+## Meilenstein 15: Multilingualer Support (i18n)
+
+### 15.0 Infrastruktur-Setup
+- [ ] Flutter intl & flutter_localizations Pakete hinzufügen
+- [ ] l10n.yaml Konfigurationsdatei erstellen
+- [ ] Initiale ARB-Dateien erstellen (de, en, fr, es)
+- [ ] MaterialApp mit Localization Delegates wrappen
+- [ ] UserPreferencesService mit Locale-Switching verbinden
+- [ ] State-Management für Sprachwechsel implementieren
+- [ ] Code-Generierung testen (flutter gen-l10n)
+- [ ] Test-String verifizieren
+
+### 15.1 Authentifizierung
+- [ ] login_screen.dart übersetzen (~8 Strings)
+- [ ] register_screen.dart übersetzen (~16 Strings)
+- [ ] Auth-Fehlermeldungen übersetzen
+- [ ] ARB-Dateien mit Übersetzungen füllen
+- [ ] Tests mit allen Sprachen
+
+### 15.2 Kern-Navigation
+- [ ] main_shell.dart Navigation-Labels übersetzen
+- [ ] Bottom Navigation Bar übersetzen
+- [ ] Drawer und Rollen-Namen übersetzen
+- [ ] App-Titel und Headers übersetzen
+
+### 15.3 Einstellungen & Profil
+- [ ] settings_screen.dart übersetzen (~47 Strings)
+- [ ] User-Profil-Verwaltung übersetzen
+- [ ] Zahlungsinformations-Dialoge übersetzen
+
+### 15.4 Marketplace Features
+- [ ] dashboard_screen.dart übersetzen
+- [ ] search_screen.dart übersetzen
+- [ ] Listing Cards übersetzen
+- [ ] listing_detail_screen.dart übersetzen
+- [ ] create_listing_screen.dart übersetzen
+- [ ] edit_listing_screen.dart übersetzen
+
+### 15.5 Transaktionen & Nachrichten
+- [ ] transactions_screen.dart übersetzen (~12 Strings)
+- [ ] transaction_detail_screen.dart übersetzen (~74 Strings)
+- [ ] messages_screen.dart übersetzen (~41 Strings)
+- [ ] Transaktions-Dialoge übersetzen
+
+### 15.6 PGP & Sicherheit
+- [ ] pgp_key_screen.dart übersetzen (~80 Strings)
+- [ ] Sicherheits-Dialoge übersetzen
+- [ ] Verschlüsselungs-Fehlermeldungen übersetzen
+
+### 15.7 Admin & Moderation
+- [ ] admin_panel_screen.dart übersetzen
+- [ ] moderator_panel_screen.dart übersetzen
+- [ ] news_management_screen.dart übersetzen (~32 Strings)
+- [ ] user_management_screen.dart übersetzen
+- [ ] categories_screen.dart übersetzen
+- [ ] payment_settings_screen.dart übersetzen
+- [ ] pending_payments_screen.dart übersetzen
+- [ ] slot_variants_screen.dart übersetzen
+
+### 15.8 Feinschliff & Completion
+- [ ] favorites_screen.dart übersetzen
+- [ ] user_profile_screen.dart übersetzen
+- [ ] Rating-Dialoge übersetzen
+- [ ] Report-Dialoge übersetzen
+- [ ] Alle übersehenen Widgets übersetzen
+- [ ] Übersetzungen auf Konsistenz prüfen
+- [ ] Native Speaker Reviews durchführen
+- [ ] Alle Sprach-Kombinationen testen
+- [ ] Dokumentation aktualisieren
+
+### 15.9 Qualitätssicherung
+- [ ] Text-Overflow Tests (deutsche Wörter sind länger)
+- [ ] Datum/Zeit Formatierung überprüfen
+- [ ] Währungs-Formatierung überprüfen
+- [ ] Screenshot-Vergleiche für alle Sprachen
+- [ ] Performance-Tests beim Sprachwechsel
+- [ ] Beta-Testing mit nativen Sprechern
 
 ---
 
@@ -583,4 +663,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2025-12-23*
+*Aktualisiert am: 2025-12-30*
