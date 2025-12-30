@@ -435,7 +435,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onPressed: () async {
               setState(() => _language = entry.key);
               await _preferencesService.setLanguage(entry.key);
-              if (context.mounted) Navigator.pop(context);
+              if (context.mounted) {
+                Navigator.pop(context);
+                // Show message to restart app for language change
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Sprache geändert. Bitte starte die App neu, um die Änderung zu übernehmen.'),
+                    duration: Duration(seconds: 4),
+                  ),
+                );
+              }
             },
             child: Row(
               children: [

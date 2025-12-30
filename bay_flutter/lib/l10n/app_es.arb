@@ -1,0 +1,11 @@
+{
+  "@@locale": "es",
+  "appTitle": "Bay",
+  "@appTitle": {
+    "description": "El título de la aplicación"
+  },
+  "testString": "Hola Mundo",
+  "@testString": {
+    "description": "Cadena de prueba para verificar la localización"
+  }
+}

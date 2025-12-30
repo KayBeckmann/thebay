@@ -24,6 +24,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
   serverpod_flutter: 2.9.2
   serverpod_auth_client: 2.9.2
   serverpod_auth_shared_flutter: 2.9.2
@@ -49,6 +52,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -1,14 +1,17 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:serverpod_flutter/serverpod_flutter.dart';
 import 'package:serverpod_auth_shared_flutter/serverpod_auth_shared_flutter.dart';
 
+import 'l10n/app_localizations.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/main_shell.dart';
 import 'services/auth_service.dart';
 import 'services/pgp_key_service.dart';
 import 'services/message_service.dart';
+import 'services/user_preferences_service.dart';
 import 'theme/app_theme.dart';
 
 /// Global client object for server communication.
@@ -22,6 +25,9 @@ late final PgpKeyService pgpKeyService;
 
 /// Global message service for encrypted messaging.
 late final MessageService messageService;
+
+/// Global user preferences service for settings management.
+late final UserPreferencesService userPreferencesService;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,18 +54,57 @@ void main() async {
   // Initialize message service
   messageService = MessageService(client, pgpKeyService);
 
+  // Initialize user preferences service
+  userPreferencesService = UserPreferencesService();
+
   runApp(const BayApp());
 }
 
 /// Main application widget.
-class BayApp extends StatelessWidget {
+class BayApp extends StatefulWidget {
   const BayApp({super.key});
+
+  @override
+  State<BayApp> createState() => _BayAppState();
+}
+
+class _BayAppState extends State<BayApp> {
+  Locale _locale = const Locale('de'); // Default to German
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLocale();
+  }
+
+  Future<void> _loadLocale() async {
+    final languageCode = await userPreferencesService.getLanguage();
+    setState(() {
+      _locale = Locale(languageCode);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bay',
       debugShowCheckedModeBanner: false,
+
+      // Localization configuration
+      locale: _locale,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('de'), // German
+        Locale('en'), // English
+        Locale('fr'), // French
+        Locale('es'), // Spanish
+      ],
+
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
