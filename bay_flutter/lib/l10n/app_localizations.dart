@@ -108,11 +108,227 @@ abstract class AppLocalizations {
   /// **'Bay'**
   String get appTitle;
 
-  /// Test-String um die Lokalisierung zu verifizieren
+  /// Login-Bildschirm Titel
   ///
   /// In de, this message translates to:
-  /// **'Hallo Welt'**
-  String get testString;
+  /// **'Willkommen zurück'**
+  String get loginTitle;
+
+  /// Login-Bildschirm Untertitel
+  ///
+  /// In de, this message translates to:
+  /// **'Melde dich an um fortzufahren'**
+  String get loginSubtitle;
+
+  /// Benutzername Label
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzername'**
+  String get username;
+
+  /// Benutzername erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib deinen Benutzernamen ein'**
+  String get usernameRequired;
+
+  /// Passwort Label
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort'**
+  String get password;
+
+  /// Passwort erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib dein Passwort ein'**
+  String get passwordRequired;
+
+  /// Angemeldet bleiben Checkbox
+  ///
+  /// In de, this message translates to:
+  /// **'Angemeldet bleiben'**
+  String get stayLoggedIn;
+
+  /// Anmelden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Anmelden'**
+  String get signIn;
+
+  /// Registrierung Link Text
+  ///
+  /// In de, this message translates to:
+  /// **'Noch kein Konto? '**
+  String get dontHaveAccount;
+
+  /// Registrieren Link
+  ///
+  /// In de, this message translates to:
+  /// **'Registrieren'**
+  String get signUp;
+
+  /// Login fehlgeschlagen Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Anmeldung fehlgeschlagen'**
+  String get loginFailed;
+
+  /// Verbindungsfehler Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Verbindungsfehler. Bitte versuche es erneut.'**
+  String get connectionError;
+
+  /// Rate-Limit Fehlermeldung
+  ///
+  /// In de, this message translates to:
+  /// **'Versuche es in {seconds} Sekunden erneut'**
+  String tryAgainInSeconds(int seconds);
+
+  /// Registrierung Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Konto erstellen'**
+  String get registerTitle;
+
+  /// Registrierung Untertitel
+  ///
+  /// In de, this message translates to:
+  /// **'Registriere dich um loszulegen'**
+  String get registerSubtitle;
+
+  /// Benutzername Hilfetext
+  ///
+  /// In de, this message translates to:
+  /// **'3-20 Zeichen, Buchstaben, Zahlen, Unterstriche'**
+  String get usernameHelper;
+
+  /// Benutzername zu kurz Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzername muss mindestens 3 Zeichen lang sein'**
+  String get usernameMinLength;
+
+  /// Benutzername zu lang Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzername darf maximal 20 Zeichen lang sein'**
+  String get usernameMaxLength;
+
+  /// Ungültige Zeichen im Benutzernamen
+  ///
+  /// In de, this message translates to:
+  /// **'Nur Buchstaben, Zahlen und Unterstriche erlaubt'**
+  String get usernameInvalidChars;
+
+  /// Passwort Hilfetext
+  ///
+  /// In de, this message translates to:
+  /// **'Mind. 8 Zeichen, Großbuchst., Kleinbuchst., Ziffer'**
+  String get passwordHelper;
+
+  /// Passwort zu kurz Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort muss mindestens 8 Zeichen lang sein'**
+  String get passwordMinLength;
+
+  /// Passwort benötigt Großbuchstaben
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort muss einen Großbuchstaben enthalten'**
+  String get passwordNeedsUppercase;
+
+  /// Passwort benötigt Kleinbuchstaben
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort muss einen Kleinbuchstaben enthalten'**
+  String get passwordNeedsLowercase;
+
+  /// Passwort benötigt Ziffer
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort muss eine Ziffer enthalten'**
+  String get passwordNeedsDigit;
+
+  /// Passwort bestätigen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort bestätigen'**
+  String get confirmPassword;
+
+  /// Passwörter stimmen nicht überein Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Passwörter stimmen nicht überein'**
+  String get passwordsDoNotMatch;
+
+  /// AGBs akzeptieren Text
+  ///
+  /// In de, this message translates to:
+  /// **'Ich stimme den '**
+  String get agreeToTerms;
+
+  /// Nutzungsbedingungen Link
+  ///
+  /// In de, this message translates to:
+  /// **'Nutzungsbedingungen'**
+  String get termsOfService;
+
+  /// Schließen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Schließen'**
+  String get close;
+
+  /// Konto erstellen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Konto erstellen'**
+  String get createAccount;
+
+  /// Login Link Text
+  ///
+  /// In de, this message translates to:
+  /// **'Bereits ein Konto? '**
+  String get alreadyHaveAccount;
+
+  /// AGBs müssen akzeptiert werden Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Du musst die Nutzungsbedingungen akzeptieren'**
+  String get mustAcceptTerms;
+
+  /// Registrierung fehlgeschlagen Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Registrierung fehlgeschlagen'**
+  String get registrationFailed;
+
+  /// Schlüsselgenerierung Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherheitsschlüssel wird erstellt...'**
+  String get generatingKey;
+
+  /// Schlüsselgenerierung Dialog Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Dein persönlicher Verschlüsselungsschlüssel wird generiert.\nDies dauert nur wenige Sekunden.'**
+  String get generatingKeyMessage;
+
+  /// Schlüsselgenerierung fehlgeschlagen Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel konnte nicht generiert werden: {error}\nDu kannst ihn später in den Einstellungen erstellen.'**
+  String keyGenerationFailed(String error);
+
+  /// Verstrichene Zeit Label
+  ///
+  /// In de, this message translates to:
+  /// **'Verstrichene Zeit: {time}'**
+  String elapsedTime(String time);
 }
 
 class _AppLocalizationsDelegate

@@ -580,12 +580,12 @@
 - [x] Code-Generierung testen (flutter gen-l10n)
 - [x] Test-String verifizieren
 
-### 15.1 Authentifizierung
-- [ ] login_screen.dart übersetzen (~8 Strings)
-- [ ] register_screen.dart übersetzen (~16 Strings)
-- [ ] Auth-Fehlermeldungen übersetzen
-- [ ] ARB-Dateien mit Übersetzungen füllen
-- [ ] Tests mit allen Sprachen
+### 15.1 Authentifizierung ✅
+- [x] login_screen.dart übersetzen (~8 Strings)
+- [x] register_screen.dart übersetzen (~16 Strings)
+- [x] Auth-Fehlermeldungen übersetzen
+- [x] ARB-Dateien mit Übersetzungen füllen
+- [x] Tests mit allen Sprachen
 
 ### 15.2 Kern-Navigation
 - [ ] main_shell.dart Navigation-Labels übersetzen

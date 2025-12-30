@@ -1,11 +1,42 @@
 {
   "@@locale": "en",
+
   "appTitle": "Bay",
-  "@appTitle": {
-    "description": "The application title"
-  },
-  "testString": "Hello World",
-  "@testString": {
-    "description": "Test string to verify localization"
-  }
+  "loginTitle": "Welcome Back",
+  "loginSubtitle": "Sign in to continue",
+  "username": "Username",
+  "usernameRequired": "Please enter your username",
+  "password": "Password",
+  "passwordRequired": "Please enter your password",
+  "stayLoggedIn": "Stay logged in",
+  "signIn": "Sign In",
+  "dontHaveAccount": "Don't have an account? ",
+  "signUp": "Sign Up",
+  "loginFailed": "Login failed",
+  "connectionError": "Connection error. Please try again.",
+  "tryAgainInSeconds": "Try again in {seconds} seconds",
+  "registerTitle": "Create Account",
+  "registerSubtitle": "Sign up to get started",
+  "usernameHelper": "3-20 characters, letters, numbers, underscores",
+  "usernameMinLength": "Username must be at least 3 characters",
+  "usernameMaxLength": "Username must be at most 20 characters",
+  "usernameInvalidChars": "Only letters, numbers, and underscores allowed",
+  "passwordHelper": "Min 8 chars, uppercase, lowercase, digit",
+  "passwordMinLength": "Password must be at least 8 characters",
+  "passwordNeedsUppercase": "Password must contain an uppercase letter",
+  "passwordNeedsLowercase": "Password must contain a lowercase letter",
+  "passwordNeedsDigit": "Password must contain a digit",
+  "confirmPassword": "Confirm Password",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "agreeToTerms": "I agree to the ",
+  "termsOfService": "Terms of Service",
+  "close": "Close",
+  "createAccount": "Create Account",
+  "alreadyHaveAccount": "Already have an account? ",
+  "mustAcceptTerms": "You must accept the terms of service",
+  "registrationFailed": "Registration failed",
+  "generatingKey": "Generating security key...",
+  "generatingKeyMessage": "Your personal encryption key is being generated.\nThis will only take a few seconds.",
+  "keyGenerationFailed": "Key could not be generated: {error}\nYou can create it later in settings.",
+  "elapsedTime": "Elapsed time: {time}"
 }

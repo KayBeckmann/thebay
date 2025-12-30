@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
 
@@ -44,43 +45,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   String? _validateUsername(String? value) {
+    final l10n = AppLocalizations.of(context)!;
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter a username';
+      return l10n.usernameRequired;
     }
     if (value.length < 3) {
-      return 'Username must be at least 3 characters';
+      return l10n.usernameMinLength;
     }
     if (value.length > 20) {
-      return 'Username must be at most 20 characters';
+      return l10n.usernameMaxLength;
     }
     if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(value)) {
-      return 'Only letters, numbers, and underscores allowed';
+      return l10n.usernameInvalidChars;
     }
     return null;
   }
 
   String? _validatePassword(String? value) {
+    final l10n = AppLocalizations.of(context)!;
     if (value == null || value.isEmpty) {
-      return 'Please enter a password';
+      return l10n.passwordRequired;
     }
     if (value.length < 8) {
-      return 'Password must be at least 8 characters';
+      return l10n.passwordMinLength;
     }
     if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain an uppercase letter';
+      return l10n.passwordNeedsUppercase;
     }
     if (!value.contains(RegExp(r'[a-z]'))) {
-      return 'Password must contain a lowercase letter';
+      return l10n.passwordNeedsLowercase;
     }
     if (!value.contains(RegExp(r'[0-9]'))) {
-      return 'Password must contain a digit';
+      return l10n.passwordNeedsDigit;
     }
     return null;
   }
 
   String? _validateConfirmPassword(String? value) {
     if (value != _passwordController.text) {
-      return 'Passwords do not match';
+      return AppLocalizations.of(context)!.passwordsDoNotMatch;
     }
     return null;
   }
@@ -90,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     if (!_acceptedTerms) {
       setState(() {
-        _errorMessage = 'You must accept the terms of service';
+        _errorMessage = AppLocalizations.of(context)!.mustAcceptTerms;
       });
       return;
     }
@@ -116,13 +119,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
       } else {
         setState(() {
-          _errorMessage = response.errorMessage ?? 'Registration failed';
+          _errorMessage = response.errorMessage ?? AppLocalizations.of(context)!.registrationFailed;
         });
       }
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _errorMessage = 'Connection error. Please try again.';
+        _errorMessage = AppLocalizations.of(context)!.connectionError;
       });
     } finally {
       if (mounted) {
@@ -184,8 +187,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              'Schlüssel konnte nicht generiert werden: $e\n'
-              'Du kannst ihn später in den Einstellungen erstellen.',
+              AppLocalizations.of(context)!.keyGenerationFailed(e.toString()),
             ),
             duration: const Duration(seconds: 5),
           ),
@@ -213,15 +215,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const SizedBox(height: 24),
               Text(
-                'Sicherheitsschlüssel wird erstellt...',
+                AppLocalizations.of(context)!.generatingKey,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Dein persönlicher Verschlüsselungsschlüssel wird generiert.\n'
-                'Dies dauert nur wenige Sekunden.',
+                AppLocalizations.of(context)!.generatingKeyMessage,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -240,7 +241,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Terms of Service'),
+        title: Text(AppLocalizations.of(context)!.termsOfService),
         content: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -274,7 +275,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Close'),
+            child: Text(AppLocalizations.of(context)!.close),
           ),
         ],
       ),
@@ -304,7 +305,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Create Account',
+                      AppLocalizations.of(context)!.registerTitle,
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -312,7 +313,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Sign up to get started',
+                      AppLocalizations.of(context)!.registerSubtitle,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: Colors.grey[600],
                           ),
@@ -348,11 +349,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     // Username field
                     TextFormField(
                       controller: _usernameController,
-                      decoration: const InputDecoration(
-                        labelText: 'Username',
-                        prefixIcon: Icon(Icons.person_outline),
-                        border: OutlineInputBorder(),
-                        helperText: '3-20 characters, letters, numbers, underscores',
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.username,
+                        prefixIcon: const Icon(Icons.person_outline),
+                        border: const OutlineInputBorder(),
+                        helperText: AppLocalizations.of(context)!.usernameHelper,
                       ),
                       textInputAction: TextInputAction.next,
                       autocorrect: false,
@@ -364,10 +365,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     TextFormField(
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        labelText: 'Password',
+                        labelText: AppLocalizations.of(context)!.password,
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: const OutlineInputBorder(),
-                        helperText: 'Min 8 chars, uppercase, lowercase, digit',
+                        helperText: AppLocalizations.of(context)!.passwordHelper,
                         suffixIcon: IconButton(
                           icon: Icon(
                             _obscurePassword
@@ -391,7 +392,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     TextFormField(
                       controller: _confirmPasswordController,
                       decoration: InputDecoration(
-                        labelText: 'Confirm Password',
+                        labelText: AppLocalizations.of(context)!.confirmPassword,
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -443,11 +444,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               padding: const EdgeInsets.only(top: 12),
                               child: Wrap(
                                 children: [
-                                  const Text('I agree to the '),
+                                  Text(AppLocalizations.of(context)!.agreeToTerms),
                                   GestureDetector(
                                     onTap: _showTermsDialog,
                                     child: Text(
-                                      'Terms of Service',
+                                      AppLocalizations.of(context)!.termsOfService,
                                       style: TextStyle(
                                         color: Theme.of(context).colorScheme.primary,
                                         decoration: TextDecoration.underline,
@@ -479,9 +480,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     AlwaysStoppedAnimation<Color>(Colors.white),
                               ),
                             )
-                          : const Text(
-                              'Create Account',
-                              style: TextStyle(fontSize: 16),
+                          : Text(
+                              AppLocalizations.of(context)!.createAccount,
+                              style: const TextStyle(fontSize: 16),
                             ),
                     ),
                     const SizedBox(height: 16),
@@ -491,12 +492,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Already have an account? ',
+                          AppLocalizations.of(context)!.alreadyHaveAccount,
                           style: TextStyle(color: Colors.grey[600]),
                         ),
                         TextButton(
                           onPressed: widget.onNavigateToLogin,
-                          child: const Text('Sign In'),
+                          child: Text(AppLocalizations.of(context)!.signIn),
                         ),
                       ],
                     ),
@@ -541,8 +542,9 @@ class _KeyGeneratingTimerState extends State<_KeyGeneratingTimer> {
   Widget build(BuildContext context) {
     final minutes = _seconds ~/ 60;
     final secs = _seconds % 60;
+    final formattedTime = '${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}';
     return Text(
-      'Verstrichene Zeit: ${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}',
+      AppLocalizations.of(context)!.elapsedTime(formattedTime),
       style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontFamily: 'monospace',
             color: Theme.of(context).colorScheme.primary,

@@ -59,14 +59,14 @@ class _LoginScreenState extends State<LoginScreen> {
         widget.onLoginSuccess();
       } else {
         setState(() {
-          _errorMessage = response.errorMessage ?? 'Login failed';
+          _errorMessage = response.errorMessage ?? AppLocalizations.of(context)!.loginFailed;
           _lockoutSeconds = response.lockoutSeconds;
         });
       }
     } catch (e) {
       if (!mounted) return;
       setState(() {
-        _errorMessage = 'Connection error. Please try again.';
+        _errorMessage = AppLocalizations.of(context)!.connectionError;
       });
     } finally {
       if (mounted) {
@@ -100,16 +100,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      AppLocalizations.of(context)!.testString,
+                      AppLocalizations.of(context)!.loginTitle,
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      'Sign in to continue',
-                      style: TextStyle(color: Colors.grey),
+                    Text(
+                      AppLocalizations.of(context)!.loginSubtitle,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.grey[600],
+                          ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 32),
@@ -137,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                   if (_lockoutSeconds != null && _lockoutSeconds! > 0)
                                     Text(
-                                      'Try again in $_lockoutSeconds seconds',
+                                      AppLocalizations.of(context)!.tryAgainInSeconds(_lockoutSeconds!),
                                       style: TextStyle(
                                         color: Colors.red[700],
                                         fontSize: 12,
@@ -155,16 +157,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Username field
                     TextFormField(
                       controller: _usernameController,
-                      decoration: const InputDecoration(
-                        labelText: 'Username',
-                        prefixIcon: Icon(Icons.person_outline),
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.username,
+                        prefixIcon: const Icon(Icons.person_outline),
+                        border: const OutlineInputBorder(),
                       ),
                       textInputAction: TextInputAction.next,
                       autocorrect: false,
                       validator: (value) {
                         if (value == null || value.trim().isEmpty) {
-                          return 'Please enter your username';
+                          return AppLocalizations.of(context)!.usernameRequired;
                         }
                         return null;
                       },
@@ -175,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormField(
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        labelText: 'Password',
+                        labelText: AppLocalizations.of(context)!.password,
                         prefixIcon: const Icon(Icons.lock_outline),
                         border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
@@ -196,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onFieldSubmitted: (_) => _handleLogin(),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
+                          return AppLocalizations.of(context)!.passwordRequired;
                         }
                         return null;
                       },
@@ -220,7 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               _stayLoggedIn = !_stayLoggedIn;
                             });
                           },
-                          child: const Text('Stay logged in'),
+                          child: Text(AppLocalizations.of(context)!.stayLoggedIn),
                         ),
                       ],
                     ),
@@ -242,9 +244,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     AlwaysStoppedAnimation<Color>(Colors.white),
                               ),
                             )
-                          : const Text(
-                              'Sign In',
-                              style: TextStyle(fontSize: 16),
+                          : Text(
+                              AppLocalizations.of(context)!.signIn,
+                              style: const TextStyle(fontSize: 16),
                             ),
                     ),
                     const SizedBox(height: 16),
@@ -254,12 +256,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account? ",
+                          AppLocalizations.of(context)!.dontHaveAccount,
                           style: TextStyle(color: Colors.grey[600]),
                         ),
                         TextButton(
                           onPressed: widget.onNavigateToRegister,
-                          child: const Text('Sign Up'),
+                          child: Text(AppLocalizations.of(context)!.signUp),
                         ),
                       ],
                     ),

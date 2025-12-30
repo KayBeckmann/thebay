@@ -1,11 +1,211 @@
 {
   "@@locale": "de",
+
   "appTitle": "Bay",
   "@appTitle": {
     "description": "Der Anwendungstitel"
   },
-  "testString": "Hallo Welt",
-  "@testString": {
-    "description": "Test-String um die Lokalisierung zu verifizieren"
+
+  "loginTitle": "Willkommen zurück",
+  "@loginTitle": {
+    "description": "Login-Bildschirm Titel"
+  },
+
+  "loginSubtitle": "Melde dich an um fortzufahren",
+  "@loginSubtitle": {
+    "description": "Login-Bildschirm Untertitel"
+  },
+
+  "username": "Benutzername",
+  "@username": {
+    "description": "Benutzername Label"
+  },
+
+  "usernameRequired": "Bitte gib deinen Benutzernamen ein",
+  "@usernameRequired": {
+    "description": "Benutzername erforderlich Validierung"
+  },
+
+  "password": "Passwort",
+  "@password": {
+    "description": "Passwort Label"
+  },
+
+  "passwordRequired": "Bitte gib dein Passwort ein",
+  "@passwordRequired": {
+    "description": "Passwort erforderlich Validierung"
+  },
+
+  "stayLoggedIn": "Angemeldet bleiben",
+  "@stayLoggedIn": {
+    "description": "Angemeldet bleiben Checkbox"
+  },
+
+  "signIn": "Anmelden",
+  "@signIn": {
+    "description": "Anmelden Button"
+  },
+
+  "dontHaveAccount": "Noch kein Konto? ",
+  "@dontHaveAccount": {
+    "description": "Registrierung Link Text"
+  },
+
+  "signUp": "Registrieren",
+  "@signUp": {
+    "description": "Registrieren Link"
+  },
+
+  "loginFailed": "Anmeldung fehlgeschlagen",
+  "@loginFailed": {
+    "description": "Login fehlgeschlagen Fehler"
+  },
+
+  "connectionError": "Verbindungsfehler. Bitte versuche es erneut.",
+  "@connectionError": {
+    "description": "Verbindungsfehler Nachricht"
+  },
+
+  "tryAgainInSeconds": "Versuche es in {seconds} Sekunden erneut",
+  "@tryAgainInSeconds": {
+    "description": "Rate-Limit Fehlermeldung",
+    "placeholders": {
+      "seconds": {
+        "type": "int",
+        "example": "30"
+      }
+    }
+  },
+
+  "registerTitle": "Konto erstellen",
+  "@registerTitle": {
+    "description": "Registrierung Titel"
+  },
+
+  "registerSubtitle": "Registriere dich um loszulegen",
+  "@registerSubtitle": {
+    "description": "Registrierung Untertitel"
+  },
+
+  "usernameHelper": "3-20 Zeichen, Buchstaben, Zahlen, Unterstriche",
+  "@usernameHelper": {
+    "description": "Benutzername Hilfetext"
+  },
+
+  "usernameMinLength": "Benutzername muss mindestens 3 Zeichen lang sein",
+  "@usernameMinLength": {
+    "description": "Benutzername zu kurz Validierung"
+  },
+
+  "usernameMaxLength": "Benutzername darf maximal 20 Zeichen lang sein",
+  "@usernameMaxLength": {
+    "description": "Benutzername zu lang Validierung"
+  },
+
+  "usernameInvalidChars": "Nur Buchstaben, Zahlen und Unterstriche erlaubt",
+  "@usernameInvalidChars": {
+    "description": "Ungültige Zeichen im Benutzernamen"
+  },
+
+  "passwordHelper": "Mind. 8 Zeichen, Großbuchst., Kleinbuchst., Ziffer",
+  "@passwordHelper": {
+    "description": "Passwort Hilfetext"
+  },
+
+  "passwordMinLength": "Passwort muss mindestens 8 Zeichen lang sein",
+  "@passwordMinLength": {
+    "description": "Passwort zu kurz Validierung"
+  },
+
+  "passwordNeedsUppercase": "Passwort muss einen Großbuchstaben enthalten",
+  "@passwordNeedsUppercase": {
+    "description": "Passwort benötigt Großbuchstaben"
+  },
+
+  "passwordNeedsLowercase": "Passwort muss einen Kleinbuchstaben enthalten",
+  "@passwordNeedsLowercase": {
+    "description": "Passwort benötigt Kleinbuchstaben"
+  },
+
+  "passwordNeedsDigit": "Passwort muss eine Ziffer enthalten",
+  "@passwordNeedsDigit": {
+    "description": "Passwort benötigt Ziffer"
+  },
+
+  "confirmPassword": "Passwort bestätigen",
+  "@confirmPassword": {
+    "description": "Passwort bestätigen Label"
+  },
+
+  "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+  "@passwordsDoNotMatch": {
+    "description": "Passwörter stimmen nicht überein Validierung"
+  },
+
+  "agreeToTerms": "Ich stimme den ",
+  "@agreeToTerms": {
+    "description": "AGBs akzeptieren Text"
+  },
+
+  "termsOfService": "Nutzungsbedingungen",
+  "@termsOfService": {
+    "description": "Nutzungsbedingungen Link"
+  },
+
+  "close": "Schließen",
+  "@close": {
+    "description": "Schließen Button"
+  },
+
+  "createAccount": "Konto erstellen",
+  "@createAccount": {
+    "description": "Konto erstellen Button"
+  },
+
+  "alreadyHaveAccount": "Bereits ein Konto? ",
+  "@alreadyHaveAccount": {
+    "description": "Login Link Text"
+  },
+
+  "mustAcceptTerms": "Du musst die Nutzungsbedingungen akzeptieren",
+  "@mustAcceptTerms": {
+    "description": "AGBs müssen akzeptiert werden Fehler"
+  },
+
+  "registrationFailed": "Registrierung fehlgeschlagen",
+  "@registrationFailed": {
+    "description": "Registrierung fehlgeschlagen Fehler"
+  },
+
+  "generatingKey": "Sicherheitsschlüssel wird erstellt...",
+  "@generatingKey": {
+    "description": "Schlüsselgenerierung Dialog Titel"
+  },
+
+  "generatingKeyMessage": "Dein persönlicher Verschlüsselungsschlüssel wird generiert.\nDies dauert nur wenige Sekunden.",
+  "@generatingKeyMessage": {
+    "description": "Schlüsselgenerierung Dialog Nachricht"
+  },
+
+  "keyGenerationFailed": "Schlüssel konnte nicht generiert werden: {error}\nDu kannst ihn später in den Einstellungen erstellen.",
+  "@keyGenerationFailed": {
+    "description": "Schlüsselgenerierung fehlgeschlagen Nachricht",
+    "placeholders": {
+      "error": {
+        "type": "String",
+        "example": "Network error"
+      }
+    }
+  },
+
+  "elapsedTime": "Verstrichene Zeit: {time}",
+  "@elapsedTime": {
+    "description": "Verstrichene Zeit Label",
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "01:23"
+      }
+    }
   }
 }

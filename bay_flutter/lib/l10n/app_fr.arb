@@ -1,11 +1,42 @@
 {
   "@@locale": "fr",
+
   "appTitle": "Bay",
-  "@appTitle": {
-    "description": "Le titre de l'application"
-  },
-  "testString": "Bonjour le monde",
-  "@testString": {
-    "description": "Chaîne de test pour vérifier la localisation"
-  }
+  "loginTitle": "Bienvenue",
+  "loginSubtitle": "Connectez-vous pour continuer",
+  "username": "Nom d'utilisateur",
+  "usernameRequired": "Veuillez entrer votre nom d'utilisateur",
+  "password": "Mot de passe",
+  "passwordRequired": "Veuillez entrer votre mot de passe",
+  "stayLoggedIn": "Rester connecté",
+  "signIn": "Se connecter",
+  "dontHaveAccount": "Vous n'avez pas de compte ? ",
+  "signUp": "S'inscrire",
+  "loginFailed": "Connexion échouée",
+  "connectionError": "Erreur de connexion. Veuillez réessayer.",
+  "tryAgainInSeconds": "Réessayez dans {seconds} secondes",
+  "registerTitle": "Créer un compte",
+  "registerSubtitle": "Inscrivez-vous pour commencer",
+  "usernameHelper": "3-20 caractères, lettres, chiffres, tirets bas",
+  "usernameMinLength": "Le nom d'utilisateur doit contenir au moins 3 caractères",
+  "usernameMaxLength": "Le nom d'utilisateur ne peut pas dépasser 20 caractères",
+  "usernameInvalidChars": "Seuls les lettres, chiffres et tirets bas sont autorisés",
+  "passwordHelper": "Min 8 car., majuscule, minuscule, chiffre",
+  "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères",
+  "passwordNeedsUppercase": "Le mot de passe doit contenir une majuscule",
+  "passwordNeedsLowercase": "Le mot de passe doit contenir une minuscule",
+  "passwordNeedsDigit": "Le mot de passe doit contenir un chiffre",
+  "confirmPassword": "Confirmer le mot de passe",
+  "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+  "agreeToTerms": "J'accepte les ",
+  "termsOfService": "Conditions d'utilisation",
+  "close": "Fermer",
+  "createAccount": "Créer un compte",
+  "alreadyHaveAccount": "Vous avez déjà un compte ? ",
+  "mustAcceptTerms": "Vous devez accepter les conditions d'utilisation",
+  "registrationFailed": "Inscription échouée",
+  "generatingKey": "Génération de la clé de sécurité...",
+  "generatingKeyMessage": "Votre clé de chiffrement personnelle est en cours de génération.\nCela ne prendra que quelques secondes.",
+  "keyGenerationFailed": "La clé n'a pas pu être générée : {error}\nVous pouvez la créer plus tard dans les paramètres.",
+  "elapsedTime": "Temps écoulé : {time}"
 }

@@ -1,11 +1,42 @@
 {
   "@@locale": "es",
+
   "appTitle": "Bay",
-  "@appTitle": {
-    "description": "El título de la aplicación"
-  },
-  "testString": "Hola Mundo",
-  "@testString": {
-    "description": "Cadena de prueba para verificar la localización"
-  }
+  "loginTitle": "Bienvenido de nuevo",
+  "loginSubtitle": "Inicia sesión para continuar",
+  "username": "Nombre de usuario",
+  "usernameRequired": "Por favor ingresa tu nombre de usuario",
+  "password": "Contraseña",
+  "passwordRequired": "Por favor ingresa tu contraseña",
+  "stayLoggedIn": "Mantener sesión iniciada",
+  "signIn": "Iniciar sesión",
+  "dontHaveAccount": "¿No tienes una cuenta? ",
+  "signUp": "Registrarse",
+  "loginFailed": "Inicio de sesión fallido",
+  "connectionError": "Error de conexión. Por favor intenta de nuevo.",
+  "tryAgainInSeconds": "Intenta de nuevo en {seconds} segundos",
+  "registerTitle": "Crear cuenta",
+  "registerSubtitle": "Regístrate para comenzar",
+  "usernameHelper": "3-20 caracteres, letras, números, guiones bajos",
+  "usernameMinLength": "El nombre de usuario debe tener al menos 3 caracteres",
+  "usernameMaxLength": "El nombre de usuario no puede tener más de 20 caracteres",
+  "usernameInvalidChars": "Solo se permiten letras, números y guiones bajos",
+  "passwordHelper": "Mín 8 car., mayúscula, minúscula, dígito",
+  "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+  "passwordNeedsUppercase": "La contraseña debe contener una letra mayúscula",
+  "passwordNeedsLowercase": "La contraseña debe contener una letra minúscula",
+  "passwordNeedsDigit": "La contraseña debe contener un dígito",
+  "confirmPassword": "Confirmar contraseña",
+  "passwordsDoNotMatch": "Las contraseñas no coinciden",
+  "agreeToTerms": "Acepto los ",
+  "termsOfService": "Términos de servicio",
+  "close": "Cerrar",
+  "createAccount": "Crear cuenta",
+  "alreadyHaveAccount": "¿Ya tienes una cuenta? ",
+  "mustAcceptTerms": "Debes aceptar los términos de servicio",
+  "registrationFailed": "Registro fallido",
+  "generatingKey": "Generando clave de seguridad...",
+  "generatingKeyMessage": "Tu clave de cifrado personal está siendo generada.\nEsto solo tomará unos segundos.",
+  "keyGenerationFailed": "No se pudo generar la clave: {error}\nPuedes crearla más tarde en la configuración.",
+  "elapsedTime": "Tiempo transcurrido: {time}"
 }
