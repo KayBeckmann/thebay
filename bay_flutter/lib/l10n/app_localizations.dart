@@ -419,6 +419,270 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Benutzer'**
   String get roleUser;
+
+  /// Einstellungen Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Einstellungen'**
+  String get settingsTitle;
+
+  /// Zahlungsinformationen Section Header
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlungsinformationen'**
+  String get sectionPaymentInfo;
+
+  /// Anzeige Section Header
+  ///
+  /// In de, this message translates to:
+  /// **'Anzeige'**
+  String get sectionDisplay;
+
+  /// Sicherheit Section Header
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherheit'**
+  String get sectionSecurity;
+
+  /// Konto Section Header
+  ///
+  /// In de, this message translates to:
+  /// **'Konto'**
+  String get sectionAccount;
+
+  /// PayPal-Adresse Label
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal-Adresse'**
+  String get paypalAddress;
+
+  /// Bitcoin-Wallet Label
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Wallet'**
+  String get bitcoinWallet;
+
+  /// Nicht angegeben Text
+  ///
+  /// In de, this message translates to:
+  /// **'Nicht angegeben'**
+  String get notSpecified;
+
+  /// E-Mail-Adresse Label
+  ///
+  /// In de, this message translates to:
+  /// **'E-Mail-Adresse'**
+  String get emailAddress;
+
+  /// E-Mail Hint
+  ///
+  /// In de, this message translates to:
+  /// **'deine@email.com'**
+  String get emailHint;
+
+  /// Wallet-Adresse Label
+  ///
+  /// In de, this message translates to:
+  /// **'Wallet-Adresse'**
+  String get walletAddress;
+
+  /// Wallet Hint
+  ///
+  /// In de, this message translates to:
+  /// **'bc1q...'**
+  String get walletHint;
+
+  /// Abbrechen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Abbrechen'**
+  String get cancel;
+
+  /// Speichern Button
+  ///
+  /// In de, this message translates to:
+  /// **'Speichern'**
+  String get save;
+
+  /// PayPal-Adresse gespeichert Message
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal-Adresse gespeichert'**
+  String get paypalAddressSaved;
+
+  /// Bitcoin-Wallet gespeichert Message
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Wallet gespeichert'**
+  String get bitcoinWalletSaved;
+
+  /// Fehler beim Speichern Message
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Speichern: {error}'**
+  String errorSaving(String error);
+
+  /// Elemente pro Seite Label
+  ///
+  /// In de, this message translates to:
+  /// **'Elemente pro Seite'**
+  String get itemsPerPage;
+
+  /// Elemente Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'{count} Elemente'**
+  String itemsCount(int count);
+
+  /// Anzeigewährung Label
+  ///
+  /// In de, this message translates to:
+  /// **'Anzeigewährung'**
+  String get displayCurrency;
+
+  /// Sprache Label
+  ///
+  /// In de, this message translates to:
+  /// **'Sprache'**
+  String get language;
+
+  /// Sprache geändert Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Sprache geändert. Bitte starte die App neu, um die Änderung zu übernehmen.'**
+  String get languageChanged;
+
+  /// Englisch Sprach-Label
+  ///
+  /// In de, this message translates to:
+  /// **'English'**
+  String get langEnglish;
+
+  /// Deutsch Sprach-Label
+  ///
+  /// In de, this message translates to:
+  /// **'Deutsch'**
+  String get langGerman;
+
+  /// Französisch Sprach-Label
+  ///
+  /// In de, this message translates to:
+  /// **'Français'**
+  String get langFrench;
+
+  /// Spanisch Sprach-Label
+  ///
+  /// In de, this message translates to:
+  /// **'Español'**
+  String get langSpanish;
+
+  /// PGP-Schlüssel Label
+  ///
+  /// In de, this message translates to:
+  /// **'PGP-Schlüssel'**
+  String get pgpKey;
+
+  /// Eingerichtet Status
+  ///
+  /// In de, this message translates to:
+  /// **'Eingerichtet'**
+  String get configured;
+
+  /// Noch nicht eingerichtet Status
+  ///
+  /// In de, this message translates to:
+  /// **'Noch nicht eingerichtet'**
+  String get notConfigured;
+
+  /// Passwort ändern Label
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort ändern'**
+  String get changePassword;
+
+  /// Aktuelles Passwort Label
+  ///
+  /// In de, this message translates to:
+  /// **'Aktuelles Passwort'**
+  String get currentPassword;
+
+  /// Neues Passwort Label
+  ///
+  /// In de, this message translates to:
+  /// **'Neues Passwort'**
+  String get newPassword;
+
+  /// Passwörter stimmen nicht überein Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Passwörter stimmen nicht überein'**
+  String get passwordsMismatch;
+
+  /// Passwort erfolgreich geändert
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort erfolgreich geändert'**
+  String get passwordChangeSuccess;
+
+  /// Fehler beim Ändern des Passworts
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Ändern des Passworts'**
+  String get passwordChangeError;
+
+  /// Ändern Button
+  ///
+  /// In de, this message translates to:
+  /// **'Ändern'**
+  String get changeButton;
+
+  /// Abmelden Label
+  ///
+  /// In de, this message translates to:
+  /// **'Abmelden'**
+  String get logout;
+
+  /// Abmelden Bestätigungstext
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du dich wirklich abmelden?'**
+  String get logoutConfirm;
+
+  /// Konto löschen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Konto löschen'**
+  String get deleteAccount;
+
+  /// Konto löschen Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden unwiderruflich gelöscht.'**
+  String get deleteAccountWarning;
+
+  /// Passwort zur Bestätigung Label
+  ///
+  /// In de, this message translates to:
+  /// **'Passwort zur Bestätigung'**
+  String get passwordConfirmation;
+
+  /// Bitte gib dein Passwort ein Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib dein Passwort ein'**
+  String get pleaseEnterPassword;
+
+  /// Fehler beim Löschen des Kontos
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Löschen des Kontos'**
+  String get deleteAccountError;
+
+  /// Allgemeiner Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler: {error}'**
+  String genericError(String error);
 }
 
 class _AppLocalizationsDelegate

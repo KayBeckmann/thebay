@@ -176,4 +176,144 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get roleUser => 'User';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get sectionPaymentInfo => 'Payment Information';
+
+  @override
+  String get sectionDisplay => 'Display';
+
+  @override
+  String get sectionSecurity => 'Security';
+
+  @override
+  String get sectionAccount => 'Account';
+
+  @override
+  String get paypalAddress => 'PayPal Address';
+
+  @override
+  String get bitcoinWallet => 'Bitcoin Wallet';
+
+  @override
+  String get notSpecified => 'Not specified';
+
+  @override
+  String get emailAddress => 'Email Address';
+
+  @override
+  String get emailHint => 'your@email.com';
+
+  @override
+  String get walletAddress => 'Wallet Address';
+
+  @override
+  String get walletHint => 'bc1q...';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get paypalAddressSaved => 'PayPal address saved';
+
+  @override
+  String get bitcoinWalletSaved => 'Bitcoin wallet saved';
+
+  @override
+  String errorSaving(String error) {
+    return 'Error saving: $error';
+  }
+
+  @override
+  String get itemsPerPage => 'Items per page';
+
+  @override
+  String itemsCount(int count) {
+    return '$count items';
+  }
+
+  @override
+  String get displayCurrency => 'Display Currency';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get languageChanged =>
+      'Language changed. Please restart the app to apply the change.';
+
+  @override
+  String get langEnglish => 'English';
+
+  @override
+  String get langGerman => 'Deutsch';
+
+  @override
+  String get langFrench => 'Français';
+
+  @override
+  String get langSpanish => 'Español';
+
+  @override
+  String get pgpKey => 'PGP Key';
+
+  @override
+  String get configured => 'Configured';
+
+  @override
+  String get notConfigured => 'Not configured yet';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get newPassword => 'New Password';
+
+  @override
+  String get passwordsMismatch => 'Passwords do not match';
+
+  @override
+  String get passwordChangeSuccess => 'Password changed successfully';
+
+  @override
+  String get passwordChangeError => 'Error changing password';
+
+  @override
+  String get changeButton => 'Change';
+
+  @override
+  String get logout => 'Log Out';
+
+  @override
+  String get logoutConfirm => 'Do you really want to log out?';
+
+  @override
+  String get deleteAccount => 'Delete Account';
+
+  @override
+  String get deleteAccountWarning =>
+      'This action cannot be undone. All your data will be permanently deleted.';
+
+  @override
+  String get passwordConfirmation => 'Password for confirmation';
+
+  @override
+  String get pleaseEnterPassword => 'Please enter your password';
+
+  @override
+  String get deleteAccountError => 'Error deleting account';
+
+  @override
+  String genericError(String error) {
+    return 'Error: $error';
+  }
 }

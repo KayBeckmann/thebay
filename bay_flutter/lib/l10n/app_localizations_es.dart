@@ -181,4 +181,144 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get roleUser => 'Usuario';
+
+  @override
+  String get settingsTitle => 'Configuración';
+
+  @override
+  String get sectionPaymentInfo => 'Información de pago';
+
+  @override
+  String get sectionDisplay => 'Visualización';
+
+  @override
+  String get sectionSecurity => 'Seguridad';
+
+  @override
+  String get sectionAccount => 'Cuenta';
+
+  @override
+  String get paypalAddress => 'Dirección PayPal';
+
+  @override
+  String get bitcoinWallet => 'Billetera Bitcoin';
+
+  @override
+  String get notSpecified => 'No especificado';
+
+  @override
+  String get emailAddress => 'Dirección de correo electrónico';
+
+  @override
+  String get emailHint => 'tu@email.com';
+
+  @override
+  String get walletAddress => 'Dirección de billetera';
+
+  @override
+  String get walletHint => 'bc1q...';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get save => 'Guardar';
+
+  @override
+  String get paypalAddressSaved => 'Dirección PayPal guardada';
+
+  @override
+  String get bitcoinWalletSaved => 'Billetera Bitcoin guardada';
+
+  @override
+  String errorSaving(String error) {
+    return 'Error al guardar: $error';
+  }
+
+  @override
+  String get itemsPerPage => 'Elementos por página';
+
+  @override
+  String itemsCount(int count) {
+    return '$count elementos';
+  }
+
+  @override
+  String get displayCurrency => 'Moneda de visualización';
+
+  @override
+  String get language => 'Idioma';
+
+  @override
+  String get languageChanged =>
+      'Idioma cambiado. Por favor reinicia la aplicación para aplicar el cambio.';
+
+  @override
+  String get langEnglish => 'English';
+
+  @override
+  String get langGerman => 'Deutsch';
+
+  @override
+  String get langFrench => 'Français';
+
+  @override
+  String get langSpanish => 'Español';
+
+  @override
+  String get pgpKey => 'Clave PGP';
+
+  @override
+  String get configured => 'Configurado';
+
+  @override
+  String get notConfigured => 'Aún no configurado';
+
+  @override
+  String get changePassword => 'Cambiar contraseña';
+
+  @override
+  String get currentPassword => 'Contraseña actual';
+
+  @override
+  String get newPassword => 'Nueva contraseña';
+
+  @override
+  String get passwordsMismatch => 'Las contraseñas no coinciden';
+
+  @override
+  String get passwordChangeSuccess => 'Contraseña cambiada exitosamente';
+
+  @override
+  String get passwordChangeError => 'Error al cambiar la contraseña';
+
+  @override
+  String get changeButton => 'Cambiar';
+
+  @override
+  String get logout => 'Cerrar sesión';
+
+  @override
+  String get logoutConfirm => '¿Realmente quieres cerrar sesión?';
+
+  @override
+  String get deleteAccount => 'Eliminar cuenta';
+
+  @override
+  String get deleteAccountWarning =>
+      'Esta acción no se puede deshacer. Todos tus datos serán eliminados permanentemente.';
+
+  @override
+  String get passwordConfirmation => 'Contraseña para confirmación';
+
+  @override
+  String get pleaseEnterPassword => 'Por favor ingresa tu contraseña';
+
+  @override
+  String get deleteAccountError => 'Error al eliminar la cuenta';
+
+  @override
+  String genericError(String error) {
+    return 'Error: $error';
+  }
 }

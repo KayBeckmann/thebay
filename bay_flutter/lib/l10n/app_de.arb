@@ -282,5 +282,240 @@
   "roleUser": "Benutzer",
   "@roleUser": {
     "description": "Benutzer Rolle"
+  },
+
+  "settingsTitle": "Einstellungen",
+  "@settingsTitle": {
+    "description": "Einstellungen Screen Titel"
+  },
+
+  "sectionPaymentInfo": "Zahlungsinformationen",
+  "@sectionPaymentInfo": {
+    "description": "Zahlungsinformationen Section Header"
+  },
+
+  "sectionDisplay": "Anzeige",
+  "@sectionDisplay": {
+    "description": "Anzeige Section Header"
+  },
+
+  "sectionSecurity": "Sicherheit",
+  "@sectionSecurity": {
+    "description": "Sicherheit Section Header"
+  },
+
+  "sectionAccount": "Konto",
+  "@sectionAccount": {
+    "description": "Konto Section Header"
+  },
+
+  "paypalAddress": "PayPal-Adresse",
+  "@paypalAddress": {
+    "description": "PayPal-Adresse Label"
+  },
+
+  "bitcoinWallet": "Bitcoin-Wallet",
+  "@bitcoinWallet": {
+    "description": "Bitcoin-Wallet Label"
+  },
+
+  "notSpecified": "Nicht angegeben",
+  "@notSpecified": {
+    "description": "Nicht angegeben Text"
+  },
+
+  "emailAddress": "E-Mail-Adresse",
+  "@emailAddress": {
+    "description": "E-Mail-Adresse Label"
+  },
+
+  "emailHint": "deine@email.com",
+  "@emailHint": {
+    "description": "E-Mail Hint"
+  },
+
+  "walletAddress": "Wallet-Adresse",
+  "@walletAddress": {
+    "description": "Wallet-Adresse Label"
+  },
+
+  "walletHint": "bc1q...",
+  "@walletHint": {
+    "description": "Wallet Hint"
+  },
+
+  "cancel": "Abbrechen",
+  "@cancel": {
+    "description": "Abbrechen Button"
+  },
+
+  "save": "Speichern",
+  "@save": {
+    "description": "Speichern Button"
+  },
+
+  "paypalAddressSaved": "PayPal-Adresse gespeichert",
+  "@paypalAddressSaved": {
+    "description": "PayPal-Adresse gespeichert Message"
+  },
+
+  "bitcoinWalletSaved": "Bitcoin-Wallet gespeichert",
+  "@bitcoinWalletSaved": {
+    "description": "Bitcoin-Wallet gespeichert Message"
+  },
+
+  "errorSaving": "Fehler beim Speichern: {error}",
+  "@errorSaving": {
+    "description": "Fehler beim Speichern Message",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "itemsPerPage": "Elemente pro Seite",
+  "@itemsPerPage": {
+    "description": "Elemente pro Seite Label"
+  },
+
+  "itemsCount": "{count} Elemente",
+  "@itemsCount": {
+    "description": "Elemente Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "displayCurrency": "Anzeigewährung",
+  "@displayCurrency": {
+    "description": "Anzeigewährung Label"
+  },
+
+  "language": "Sprache",
+  "@language": {
+    "description": "Sprache Label"
+  },
+
+  "languageChanged": "Sprache geändert. Bitte starte die App neu, um die Änderung zu übernehmen.",
+  "@languageChanged": {
+    "description": "Sprache geändert Nachricht"
+  },
+
+  "langEnglish": "English",
+  "@langEnglish": {
+    "description": "Englisch Sprach-Label"
+  },
+
+  "langGerman": "Deutsch",
+  "@langGerman": {
+    "description": "Deutsch Sprach-Label"
+  },
+
+  "langFrench": "Français",
+  "@langFrench": {
+    "description": "Französisch Sprach-Label"
+  },
+
+  "langSpanish": "Español",
+  "@langSpanish": {
+    "description": "Spanisch Sprach-Label"
+  },
+
+  "pgpKey": "PGP-Schlüssel",
+  "@pgpKey": {
+    "description": "PGP-Schlüssel Label"
+  },
+
+  "configured": "Eingerichtet",
+  "@configured": {
+    "description": "Eingerichtet Status"
+  },
+
+  "notConfigured": "Noch nicht eingerichtet",
+  "@notConfigured": {
+    "description": "Noch nicht eingerichtet Status"
+  },
+
+  "changePassword": "Passwort ändern",
+  "@changePassword": {
+    "description": "Passwort ändern Label"
+  },
+
+  "currentPassword": "Aktuelles Passwort",
+  "@currentPassword": {
+    "description": "Aktuelles Passwort Label"
+  },
+
+  "newPassword": "Neues Passwort",
+  "@newPassword": {
+    "description": "Neues Passwort Label"
+  },
+
+  "passwordsMismatch": "Passwörter stimmen nicht überein",
+  "@passwordsMismatch": {
+    "description": "Passwörter stimmen nicht überein Fehler"
+  },
+
+  "passwordChangeSuccess": "Passwort erfolgreich geändert",
+  "@passwordChangeSuccess": {
+    "description": "Passwort erfolgreich geändert"
+  },
+
+  "passwordChangeError": "Fehler beim Ändern des Passworts",
+  "@passwordChangeError": {
+    "description": "Fehler beim Ändern des Passworts"
+  },
+
+  "changeButton": "Ändern",
+  "@changeButton": {
+    "description": "Ändern Button"
+  },
+
+  "logout": "Abmelden",
+  "@logout": {
+    "description": "Abmelden Label"
+  },
+
+  "logoutConfirm": "Möchtest du dich wirklich abmelden?",
+  "@logoutConfirm": {
+    "description": "Abmelden Bestätigungstext"
+  },
+
+  "deleteAccount": "Konto löschen",
+  "@deleteAccount": {
+    "description": "Konto löschen Label"
+  },
+
+  "deleteAccountWarning": "Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden unwiderruflich gelöscht.",
+  "@deleteAccountWarning": {
+    "description": "Konto löschen Warnung"
+  },
+
+  "passwordConfirmation": "Passwort zur Bestätigung",
+  "@passwordConfirmation": {
+    "description": "Passwort zur Bestätigung Label"
+  },
+
+  "pleaseEnterPassword": "Bitte gib dein Passwort ein",
+  "@pleaseEnterPassword": {
+    "description": "Bitte gib dein Passwort ein Fehler"
+  },
+
+  "deleteAccountError": "Fehler beim Löschen des Kontos",
+  "@deleteAccountError": {
+    "description": "Fehler beim Löschen des Kontos"
+  },
+
+  "genericError": "Fehler: {error}",
+  "@genericError": {
+    "description": "Allgemeiner Fehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   }
 }

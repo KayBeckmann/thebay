@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart' show client;
 import '../services/auth_service.dart';
 import '../services/pgp_key_service.dart';
@@ -111,8 +112,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       );
     } catch (e) {
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Speichern: $e')),
+          SnackBar(content: Text(l10n.errorSaving(e.toString()))),
         );
       }
     }
@@ -120,9 +122,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Einstellungen'),
+        title: Text(l10n.settingsTitle),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
@@ -133,7 +136,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: ListView(
         children: [
           // Payment information section
-          _buildSectionHeader(context, 'Zahlungsinformationen'),
+          _buildSectionHeader(context, l10n.sectionPaymentInfo),
           if (_isLoadingPaymentInfo)
             const Padding(
               padding: EdgeInsets.all(16),
@@ -143,72 +146,72 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _buildPaymentInfoTile(
               context,
               icon: Icons.paypal,
-              title: 'PayPal-Adresse',
-              subtitle: _paypalAddress ?? 'Nicht angegeben',
+              title: l10n.paypalAddress,
+              subtitle: _paypalAddress ?? l10n.notSpecified,
               onTap: () => _editPaypalAddress(context),
             ),
             _buildPaymentInfoTile(
               context,
               icon: Icons.currency_bitcoin,
-              title: 'Bitcoin-Wallet',
-              subtitle: _bitcoinWallet ?? 'Nicht angegeben',
+              title: l10n.bitcoinWallet,
+              subtitle: _bitcoinWallet ?? l10n.notSpecified,
               onTap: () => _editBitcoinWallet(context),
             ),
           ],
           const Divider(),
 
           // Display preferences section
-          _buildSectionHeader(context, 'Anzeige'),
+          _buildSectionHeader(context, l10n.sectionDisplay),
           ListTile(
             leading: const Icon(Icons.format_list_numbered),
-            title: const Text('Elemente pro Seite'),
-            subtitle: Text('$_paginationSize Elemente'),
+            title: Text(l10n.itemsPerPage),
+            subtitle: Text(l10n.itemsCount(_paginationSize)),
             onTap: () => _showPaginationDialog(context),
           ),
           ListTile(
             leading: const Icon(Icons.attach_money),
-            title: const Text('Anzeigewährung'),
+            title: Text(l10n.displayCurrency),
             subtitle: Text(_currency),
             onTap: () => _showCurrencyDialog(context),
           ),
           ListTile(
             leading: const Icon(Icons.language),
-            title: const Text('Sprache'),
-            subtitle: Text(_languageLabel(_language)),
+            title: Text(l10n.language),
+            subtitle: Text(_languageLabel(context, _language)),
             onTap: () => _showLanguageDialog(context),
           ),
           const Divider(),
 
           // Security section
-          _buildSectionHeader(context, 'Sicherheit'),
+          _buildSectionHeader(context, l10n.sectionSecurity),
           ListTile(
             leading: Icon(
               Icons.key,
               color: _hasPgpKey ? Colors.green : null,
             ),
-            title: const Text('PGP-Schlüssel'),
-            subtitle: Text(_hasPgpKey ? 'Eingerichtet' : 'Noch nicht eingerichtet'),
+            title: Text(l10n.pgpKey),
+            subtitle: Text(_hasPgpKey ? l10n.configured : l10n.notConfigured),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _openPgpKeyScreen(context),
           ),
           ListTile(
             leading: const Icon(Icons.password),
-            title: const Text('Passwort ändern'),
+            title: Text(l10n.changePassword),
             onTap: () => _showChangePasswordDialog(context),
           ),
           const Divider(),
 
           // Account section
-          _buildSectionHeader(context, 'Konto'),
+          _buildSectionHeader(context, l10n.sectionAccount),
           ListTile(
             leading: const Icon(Icons.logout),
-            title: const Text('Abmelden'),
+            title: Text(l10n.logout),
             onTap: () => _confirmLogout(context),
           ),
           ListTile(
             leading: Icon(Icons.delete_forever, color: Theme.of(context).colorScheme.error),
             title: Text(
-              'Konto löschen',
+              l10n.deleteAccount,
               style: TextStyle(color: Theme.of(context).colorScheme.error),
             ),
             onTap: () => _confirmDeleteAccount(context),
@@ -239,12 +242,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required String subtitle,
     required VoidCallback onTap,
   }) {
+    final l10n = AppLocalizations.of(context)!;
     return ListTile(
       leading: Icon(icon),
       title: Text(title),
       subtitle: Text(
         subtitle,
-        style: subtitle == 'Nicht angegeben'
+        style: subtitle == l10n.notSpecified
             ? TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant)
             : null,
       ),
@@ -254,6 +258,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _editPaypalAddress(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: _paypalAddress);
     bool isSaving = false;
 
@@ -261,19 +266,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('PayPal-Adresse'),
+          title: Text(l10n.paypalAddress),
           content: TextField(
             controller: controller,
-            decoration: const InputDecoration(
-              labelText: 'E-Mail-Adresse',
-              hintText: 'deine@email.com',
+            decoration: InputDecoration(
+              labelText: l10n.emailAddress,
+              hintText: l10n.emailHint,
             ),
             keyboardType: TextInputType.emailAddress,
           ),
           actions: [
             TextButton(
               onPressed: isSaving ? null : () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: isSaving
@@ -288,8 +293,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       if (context.mounted) {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('PayPal-Adresse gespeichert')),
+                          SnackBar(
+                              content: Text(l10n.paypalAddressSaved)),
                         );
                       }
                     },
@@ -299,7 +304,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       height: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Speichern'),
+                  : Text(l10n.save),
             ),
           ],
         ),
@@ -308,6 +313,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _editBitcoinWallet(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: _bitcoinWallet);
     bool isSaving = false;
 
@@ -315,18 +321,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Bitcoin-Wallet'),
+          title: Text(l10n.bitcoinWallet),
           content: TextField(
             controller: controller,
-            decoration: const InputDecoration(
-              labelText: 'Wallet-Adresse',
-              hintText: 'bc1q...',
+            decoration: InputDecoration(
+              labelText: l10n.walletAddress,
+              hintText: l10n.walletHint,
             ),
           ),
           actions: [
             TextButton(
               onPressed: isSaving ? null : () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: isSaving
@@ -341,8 +347,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       if (context.mounted) {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('Bitcoin-Wallet gespeichert')),
+                          SnackBar(
+                              content: Text(l10n.bitcoinWalletSaved)),
                         );
                       }
                     },
@@ -352,7 +358,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       height: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Speichern'),
+                  : Text(l10n.save),
             ),
           ],
         ),
@@ -361,10 +367,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showPaginationDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => SimpleDialog(
-        title: const Text('Elemente pro Seite'),
+        title: Text(l10n.itemsPerPage),
         children: [10, 25, 50, 100].map((size) {
           return SimpleDialogOption(
             onPressed: () async {
@@ -379,7 +386,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 else
                   const SizedBox(width: 24),
                 const SizedBox(width: 12),
-                Text('$size Elemente'),
+                Text(l10n.itemsCount(size)),
               ],
             ),
           );
@@ -389,12 +396,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showCurrencyDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final currencies = ['USD', 'EUR', 'GBP', 'CHF', 'BTC'];
 
     showDialog(
       context: context,
       builder: (context) => SimpleDialog(
-        title: const Text('Anzeigewährung'),
+        title: Text(l10n.displayCurrency),
         children: currencies.map((currency) {
           return SimpleDialogOption(
             onPressed: () async {
@@ -419,17 +427,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showLanguageDialog(BuildContext context) {
-    const languages = {
-      'en': 'English',
-      'de': 'Deutsch',
-      'fr': 'Francais',
-      'es': 'Espanol',
+    final l10n = AppLocalizations.of(context)!;
+    final languages = {
+      'en': l10n.langEnglish,
+      'de': l10n.langGerman,
+      'fr': l10n.langFrench,
+      'es': l10n.langSpanish,
     };
 
     showDialog(
       context: context,
       builder: (context) => SimpleDialog(
-        title: const Text('Sprache'),
+        title: Text(l10n.language),
         children: languages.entries.map((entry) {
           return SimpleDialogOption(
             onPressed: () async {
@@ -439,9 +448,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Navigator.pop(context);
                 // Show message to restart app for language change
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Sprache geändert. Bitte starte die App neu, um die Änderung zu übernehmen.'),
-                    duration: Duration(seconds: 4),
+                  SnackBar(
+                    content: Text(l10n.languageChanged),
+                    duration: const Duration(seconds: 4),
                   ),
                 );
               }
@@ -462,17 +471,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  String _languageLabel(String code) {
+  String _languageLabel(BuildContext context, String code) {
+    final l10n = AppLocalizations.of(context)!;
     switch (code) {
       case 'de':
-        return 'Deutsch';
+        return l10n.langGerman;
       case 'fr':
-        return 'Francais';
+        return l10n.langFrench;
       case 'es':
-        return 'Espanol';
+        return l10n.langSpanish;
       case 'en':
       default:
-        return 'English';
+        return l10n.langEnglish;
     }
   }
 
@@ -490,6 +500,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _showChangePasswordDialog(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final currentPasswordController = TextEditingController();
     final newPasswordController = TextEditingController();
     final confirmPasswordController = TextEditingController();
@@ -499,31 +510,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Passwort ändern'),
+          title: Text(l10n.changePassword),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: currentPasswordController,
                 obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Aktuelles Passwort',
+                decoration: InputDecoration(
+                  labelText: l10n.currentPassword,
                 ),
               ),
               const SizedBox(height: 16),
               TextField(
                 controller: newPasswordController,
                 obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Neues Passwort',
+                decoration: InputDecoration(
+                  labelText: l10n.newPassword,
                 ),
               ),
               const SizedBox(height: 16),
               TextField(
                 controller: confirmPasswordController,
                 obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Passwort bestätigen',
+                decoration: InputDecoration(
+                  labelText: l10n.confirmPassword,
                 ),
               ),
             ],
@@ -531,7 +542,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           actions: [
             TextButton(
               onPressed: isLoading ? null : () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: isLoading
@@ -540,8 +551,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       if (newPasswordController.text !=
                           confirmPasswordController.text) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Passwörter stimmen nicht überein'),
+                          SnackBar(
+                            content: Text(l10n.passwordsMismatch),
                           ),
                         );
                         return;
@@ -561,8 +572,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             SnackBar(
                               content: Text(
                                 response.success
-                                    ? 'Passwort erfolgreich geändert'
-                                    : response.errorMessage ?? 'Fehler beim Ändern des Passworts',
+                                    ? l10n.passwordChangeSuccess
+                                    : response.errorMessage ?? l10n.passwordChangeError,
                               ),
                             ),
                           );
@@ -571,7 +582,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         if (context.mounted) {
                           setDialogState(() => isLoading = false);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Fehler: $e')),
+                            SnackBar(content: Text(l10n.genericError(e.toString()))),
                           );
                         }
                       }
@@ -582,7 +593,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       height: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Ändern'),
+                  : Text(l10n.changeButton),
             ),
           ],
         ),
@@ -591,19 +602,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _confirmLogout(BuildContext context) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Abmelden'),
-        content: const Text('Möchtest du dich wirklich abmelden?'),
+        title: Text(l10n.logout),
+        content: Text(l10n.logoutConfirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Abmelden'),
+            child: Text(l10n.logout),
           ),
         ],
       ),
@@ -616,6 +628,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   void _confirmDeleteAccount(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final passwordController = TextEditingController();
     bool isLoading = false;
 
@@ -624,21 +637,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
           icon: Icon(Icons.warning, color: Theme.of(context).colorScheme.error),
-          title: const Text('Konto löschen'),
+          title: Text(l10n.deleteAccount),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Diese Aktion kann nicht rückgängig gemacht werden. '
-                'Alle deine Daten werden unwiderruflich gelöscht.',
-              ),
+              Text(l10n.deleteAccountWarning),
               const SizedBox(height: 16),
               TextField(
                 controller: passwordController,
                 obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Passwort zur Bestätigung',
+                decoration: InputDecoration(
+                  labelText: l10n.passwordConfirmation,
                 ),
               ),
             ],
@@ -646,7 +656,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           actions: [
             TextButton(
               onPressed: isLoading ? null : () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: isLoading
@@ -654,8 +664,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   : () async {
                       if (passwordController.text.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Bitte gib dein Passwort ein'),
+                          SnackBar(
+                            content: Text(l10n.pleaseEnterPassword),
                           ),
                         );
                         return;
@@ -675,7 +685,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  response.errorMessage ?? 'Fehler beim Löschen des Kontos',
+                                  response.errorMessage ?? l10n.deleteAccountError,
                                 ),
                               ),
                             );
@@ -685,7 +695,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         if (context.mounted) {
                           setDialogState(() => isLoading = false);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Fehler: $e')),
+                            SnackBar(content: Text(l10n.genericError(e.toString()))),
                           );
                         }
                       }
@@ -699,7 +709,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       height: 20,
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
-                  : const Text('Konto löschen'),
+                  : Text(l10n.deleteAccount),
             ),
           ],
         ),

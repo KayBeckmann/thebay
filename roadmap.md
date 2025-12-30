@@ -593,10 +593,10 @@
 - [x] Drawer und Rollen-Namen übersetzen
 - [x] App-Titel und Headers übersetzen
 
-### 15.3 Einstellungen & Profil
-- [ ] settings_screen.dart übersetzen (~47 Strings)
-- [ ] User-Profil-Verwaltung übersetzen
-- [ ] Zahlungsinformations-Dialoge übersetzen
+### 15.3 Einstellungen & Profil ✅
+- [x] settings_screen.dart übersetzen (~60 Strings)
+- [x] User-Profil-Verwaltung übersetzen
+- [x] Zahlungsinformations-Dialoge übersetzen
 
 ### 15.4 Marketplace Features
 - [ ] dashboard_screen.dart übersetzen
