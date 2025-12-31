@@ -990,7 +990,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noSavedDrafts => 'No tienes borradores guardados.';
 
   @override
-  String get errorLoading => 'Error al cargar';
+  String get errorLoadingTitle => 'Error al cargar';
 
   @override
   String from(String username) {
@@ -1134,4 +1134,314 @@ class AppLocalizationsEs extends AppLocalizations {
   String errorSavingDraft(String error) {
     return 'Error al guardar: $error';
   }
+
+  @override
+  String get pgpKeys => 'Claves PGP';
+
+  @override
+  String get keyInformation => 'Información de la clave';
+
+  @override
+  String get generateNewKey => 'Generar nueva clave';
+
+  @override
+  String get exportKey => 'Exportar clave';
+
+  @override
+  String get importKey => 'Importar clave';
+
+  @override
+  String get serverBackup => 'Backup del servidor';
+
+  @override
+  String get securityNotices => 'Avisos de seguridad';
+
+  @override
+  String get setBackupPassword => 'Establecer contraseña de backup';
+
+  @override
+  String get generateKey => 'Generar clave';
+
+  @override
+  String get privateKeyExport => 'Exportar Private Key';
+
+  @override
+  String get importPrivateKey => 'Importar Private Key';
+
+  @override
+  String get keyConfigured => 'Clave configurada';
+
+  @override
+  String get keyIncomplete => 'Clave incompleta';
+
+  @override
+  String get canSendEncryptedMessages =>
+      'Puedes enviar y recibir mensajes cifrados.';
+
+  @override
+  String get generateOrImportKey =>
+      'Genera una nueva clave o importa una existente.';
+
+  @override
+  String get privateKeyLocalPublicKeyMissing =>
+      'Private Key presente localmente, pero Public Key no está en el servidor.';
+
+  @override
+  String get publicKeyOnServerPrivateKeyMissing =>
+      'Public Key en el servidor, pero Private Key falta localmente.';
+
+  @override
+  String get keysMismatch => 'Las claves no coinciden.';
+
+  @override
+  String get exportPrivateKeyForBackup =>
+      'Exporta tu Private Key para hacer backup. ¡Guárdala de forma segura!';
+
+  @override
+  String get importExistingPrivateKey =>
+      'Importa una Private Key existente (por ejemplo, desde un backup u otro dispositivo).';
+
+  @override
+  String get storePrivateKeyEncryptedOnServer =>
+      'Almacena tu Private Key cifrada en el servidor. Esto te permite restaurarla en otro dispositivo.';
+
+  @override
+  String get securityWarning => 'Advertencia de seguridad';
+
+  @override
+  String get aboutToStorePrivateKeyOnServer =>
+      'Estás a punto de almacenar tu Private Key en el servidor.';
+
+  @override
+  String get keyWillBeEncryptedBeforeUpload =>
+      'La clave se cifrará con una contraseña antes de subirla. Sin embargo, debes tener en cuenta lo siguiente:';
+
+  @override
+  String get chooseStrongUniquePassword =>
+      'Elige una contraseña fuerte y única';
+
+  @override
+  String get passwordCannotBeReset =>
+      'Esta contraseña NO puede ser restablecida';
+
+  @override
+  String get backupWorthlessWithoutPassword =>
+      'Sin la contraseña, el backup no sirve';
+
+  @override
+  String get serverOperatorMightGuessPassword =>
+      'El operador del servidor podría intentar adivinar la contraseña';
+
+  @override
+  String get chooseStrongPasswordForBackup =>
+      'Elige una contraseña fuerte para tu backup. La necesitarás para restaurar la clave.';
+
+  @override
+  String get passwordsDontMatch => 'Las contraseñas no coinciden';
+
+  @override
+  String get pleaseEnterName => 'Por favor ingresa un nombre';
+
+  @override
+  String get enterPasswordForBackup =>
+      'Ingresa la contraseña que usaste para cifrar el backup:';
+
+  @override
+  String get decryptingAndImporting => 'Descifrando e importando...';
+
+  @override
+  String get decryptionFailedWrongPassword =>
+      'Descifrado fallido. ¿Contraseña incorrecta?';
+
+  @override
+  String get understandProceed => 'Entiendo, proceder';
+
+  @override
+  String get uploadPublicKey => 'Subir Public Key';
+
+  @override
+  String get generating => 'Generando...';
+
+  @override
+  String get exportPrivateKey => 'Exportar Private Key';
+
+  @override
+  String get pastePrivateKey => 'Pegar Private Key';
+
+  @override
+  String get loadFromServerBackup => 'Cargar desde backup del servidor';
+
+  @override
+  String get createEncryptedBackup => 'Crear backup cifrado';
+
+  @override
+  String get copyFingerprint => 'Copiar Fingerprint';
+
+  @override
+  String get createBackup => 'Crear backup';
+
+  @override
+  String get restore => 'Restaurar';
+
+  @override
+  String errorLoading(String error) {
+    return 'Error al cargar';
+  }
+
+  @override
+  String get existingKeyWillBeReplaced =>
+      '¡La clave existente será reemplazada!';
+
+  @override
+  String get invalidKeyAfterDecryption =>
+      'Clave inválida después del descifrado';
+
+  @override
+  String get noPrivateKey => 'No hay Private Key disponible';
+
+  @override
+  String get noFingerprint => 'No hay fingerprint disponible';
+
+  @override
+  String get backupSuccessfullySaved =>
+      '¡Backup guardado exitosamente en el servidor!';
+
+  @override
+  String errorBackup(String error) {
+    return 'Error durante el backup: $error';
+  }
+
+  @override
+  String get noBackupOnServer => 'No se encontró backup en el servidor.';
+
+  @override
+  String errorGeneration(String error) {
+    return 'Error durante la generación: $error';
+  }
+
+  @override
+  String get keySuccessfullyGenerated =>
+      '¡Clave generada y subida exitosamente!';
+
+  @override
+  String errorUploading(String error) {
+    return 'Error al subir: $error';
+  }
+
+  @override
+  String get privateKeyNeverLeavesDevice =>
+      'Tu Private Key nunca sale de este dispositivo';
+
+  @override
+  String get onlyPublicKeyStoredOnServer =>
+      'Solo la Public Key se almacena en el servidor';
+
+  @override
+  String get regularBackupsRecommended =>
+      'Crea backups regulares de tu Private Key';
+
+  @override
+  String get lostKeyCannotDecryptOldMessages =>
+      'Si pierdes tu clave, los mensajes antiguos no podrán ser descifrados';
+
+  @override
+  String get createsNewEd25519Key =>
+      'Crea una nueva clave Ed25519/Curve25519. Esto solo toma unos segundos.';
+
+  @override
+  String get generatingEd25519Key =>
+      'Creando clave Ed25519/Curve25519. Esto solo toma unos segundos.';
+
+  @override
+  String get keySuccessfullyRestored => '¡Clave restaurada exitosamente!';
+
+  @override
+  String get protectWithPassphrase => 'Proteger con passphrase';
+
+  @override
+  String get recommendedForSecurity => 'Recomendado para seguridad adicional';
+
+  @override
+  String get passphrase => 'Passphrase';
+
+  @override
+  String get enterSecurePassphrase => 'Ingresa una passphrase segura';
+
+  @override
+  String get name => 'Nombre';
+
+  @override
+  String get yourName => 'Tu nombre';
+
+  @override
+  String get emailOptional => 'Email (opcional)';
+
+  @override
+  String get yourEmailCom => 'tu@email.com';
+
+  @override
+  String get fingerprint => 'Fingerprint';
+
+  @override
+  String get algorithm => 'Algoritmo';
+
+  @override
+  String get keySize => 'Tamaño de clave';
+
+  @override
+  String get identity => 'Identidad';
+
+  @override
+  String get keepKeySafe =>
+      '¡Guarda esta clave de forma segura! Nunca la compartas con otros.';
+
+  @override
+  String get pastePrivateKeyInPgpFormat =>
+      'Pega tu Private Key en formato PGP armor:';
+
+  @override
+  String get beginPgpPrivateKeyBlock => '-----BEGIN PGP PRIVATE KEY BLOCK-----';
+
+  @override
+  String get pleasePasteKey => 'Por favor pega una clave';
+
+  @override
+  String get invalidKeyFormat => 'Formato de clave inválido';
+
+  @override
+  String get privateKeySuccessfullyImported =>
+      '¡Private Key importada exitosamente!';
+
+  @override
+  String get selectBackupToRestore =>
+      'Selecciona el backup que deseas restaurar:';
+
+  @override
+  String get selectBackup => 'Seleccionar backup';
+
+  @override
+  String get decryptBackup => 'Descifrar backup';
+
+  @override
+  String copiedToClipboard(String label) {
+    return '$label copiado al portapapeles';
+  }
+
+  @override
+  String get publicKeySuccessfullyUploaded =>
+      '¡Public Key subida exitosamente!';
+
+  @override
+  String get backupPassword => 'Contraseña de backup';
+
+  @override
+  String get keyGenerationTooLong =>
+      'La generación de la clave está tardando demasiado. Por favor intenta de nuevo o reinicia la aplicación.';
+
+  @override
+  String get noOwnPgpKey =>
+      'No hay clave PGP propia disponible. Por favor sube tu Public Key.';
+
+  @override
+  String get recipientHasNoPgpKey => 'El destinatario no tiene clave PGP';
 }

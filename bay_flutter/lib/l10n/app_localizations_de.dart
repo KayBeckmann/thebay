@@ -78,8 +78,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Mind. 8 Zeichen, Großbuchst., Kleinbuchst., Ziffer';
 
   @override
-  String get passwordMinLength =>
-      'Passwort muss mindestens 8 Zeichen lang sein';
+  String get passwordMinLength => 'Passwort muss mindestens 8 Zeichen haben';
 
   @override
   String get passwordNeedsUppercase =>
@@ -120,7 +119,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get registrationFailed => 'Registrierung fehlgeschlagen';
 
   @override
-  String get generatingKey => 'Sicherheitsschlüssel wird erstellt...';
+  String get generatingKey => 'Schlüssel wird generiert...';
 
   @override
   String get generatingKeyMessage =>
@@ -311,7 +310,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get passwordConfirmation => 'Passwort zur Bestätigung';
 
   @override
-  String get pleaseEnterPassword => 'Bitte gib dein Passwort ein';
+  String get pleaseEnterPassword => 'Bitte gib das Passwort ein';
 
   @override
   String get deleteAccountError => 'Fehler beim Löschen des Kontos';
@@ -994,7 +993,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get noSavedDrafts => 'Du hast keine gespeicherten Entwürfe.';
 
   @override
-  String get errorLoading => 'Fehler beim Laden';
+  String get errorLoadingTitle => 'Fehler beim Laden';
 
   @override
   String from(String username) {
@@ -1060,7 +1059,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get decryptingMessage => 'Nachricht wird entschlüsselt...';
 
   @override
-  String get decryptionFailed => 'Entschlüsselung fehlgeschlagen';
+  String get decryptionFailed => '[Entschlüsselung fehlgeschlagen]';
 
   @override
   String get endToEndEncrypted => 'Ende-zu-Ende verschlüsselt';
@@ -1139,4 +1138,314 @@ class AppLocalizationsDe extends AppLocalizations {
   String errorSavingDraft(String error) {
     return 'Fehler beim Speichern: $error';
   }
+
+  @override
+  String get pgpKeys => 'PGP-Schlüssel';
+
+  @override
+  String get keyInformation => 'Schlüssel-Informationen';
+
+  @override
+  String get generateNewKey => 'Neuen Schlüssel generieren';
+
+  @override
+  String get exportKey => 'Schlüssel exportieren';
+
+  @override
+  String get importKey => 'Schlüssel importieren';
+
+  @override
+  String get serverBackup => 'Server-Backup';
+
+  @override
+  String get securityNotices => 'Sicherheitshinweise';
+
+  @override
+  String get setBackupPassword => 'Backup-Passwort festlegen';
+
+  @override
+  String get generateKey => 'Schlüssel generieren';
+
+  @override
+  String get privateKeyExport => 'Private Key Export';
+
+  @override
+  String get importPrivateKey => 'Private Key importieren';
+
+  @override
+  String get keyConfigured => 'Schlüssel eingerichtet';
+
+  @override
+  String get keyIncomplete => 'Schlüssel nicht vollständig';
+
+  @override
+  String get canSendEncryptedMessages =>
+      'Du kannst verschlüsselte Nachrichten senden und empfangen.';
+
+  @override
+  String get generateOrImportKey =>
+      'Generiere einen neuen Schlüssel oder importiere einen vorhandenen.';
+
+  @override
+  String get privateKeyLocalPublicKeyMissing =>
+      'Private Key vorhanden, aber Public Key nicht auf dem Server.';
+
+  @override
+  String get publicKeyOnServerPrivateKeyMissing =>
+      'Public Key auf Server, aber Private Key fehlt lokal.';
+
+  @override
+  String get keysMismatch => 'Schlüssel stimmen nicht überein.';
+
+  @override
+  String get exportPrivateKeyForBackup =>
+      'Exportiere deinen Private Key für ein Backup. Bewahre ihn sicher auf!';
+
+  @override
+  String get importExistingPrivateKey =>
+      'Importiere einen vorhandenen Private Key (z.B. von einem Backup oder anderem Gerät).';
+
+  @override
+  String get storePrivateKeyEncryptedOnServer =>
+      'Speichere deinen Private Key verschlüsselt auf dem Server. So kannst du ihn auf einem anderen Gerät wiederherstellen.';
+
+  @override
+  String get securityWarning => 'Sicherheitshinweis';
+
+  @override
+  String get aboutToStorePrivateKeyOnServer =>
+      'Du bist dabei, deinen Private Key auf dem Server zu speichern.';
+
+  @override
+  String get keyWillBeEncryptedBeforeUpload =>
+      'Der Key wird mit einem Passwort verschlüsselt, bevor er hochgeladen wird. Trotzdem solltest du folgendes beachten:';
+
+  @override
+  String get chooseStrongUniquePassword =>
+      'Wähle ein starkes, einzigartiges Passwort';
+
+  @override
+  String get passwordCannotBeReset =>
+      'Dieses Passwort kann NICHT zurückgesetzt werden';
+
+  @override
+  String get backupWorthlessWithoutPassword =>
+      'Ohne Passwort ist das Backup wertlos';
+
+  @override
+  String get serverOperatorMightGuessPassword =>
+      'Der Server-Betreiber könnte versuchen, das Passwort zu erraten';
+
+  @override
+  String get chooseStrongPasswordForBackup =>
+      'Wähle ein starkes Passwort für dein Backup. Du brauchst es, um den Key wiederherzustellen.';
+
+  @override
+  String get passwordsDontMatch => 'Passwörter stimmen nicht überein';
+
+  @override
+  String get pleaseEnterName => 'Bitte gib einen Namen ein';
+
+  @override
+  String get enterPasswordForBackup =>
+      'Gib das Passwort ein, mit dem du das Backup verschlüsselt hast:';
+
+  @override
+  String get decryptingAndImporting => 'Entschlüssele und importiere...';
+
+  @override
+  String get decryptionFailedWrongPassword =>
+      'Entschlüsselung fehlgeschlagen. Falsches Passwort?';
+
+  @override
+  String get understandProceed => 'Ich verstehe, fortfahren';
+
+  @override
+  String get uploadPublicKey => 'Public Key hochladen';
+
+  @override
+  String get generating => 'Generiere...';
+
+  @override
+  String get exportPrivateKey => 'Private Key exportieren';
+
+  @override
+  String get pastePrivateKey => 'Private Key einfügen';
+
+  @override
+  String get loadFromServerBackup => 'Vom Server-Backup laden';
+
+  @override
+  String get createEncryptedBackup => 'Verschlüsseltes Backup erstellen';
+
+  @override
+  String get copyFingerprint => 'Fingerprint kopieren';
+
+  @override
+  String get createBackup => 'Backup erstellen';
+
+  @override
+  String get restore => 'Wiederherstellen';
+
+  @override
+  String errorLoading(String error) {
+    return 'Fehler beim Laden: $error';
+  }
+
+  @override
+  String get existingKeyWillBeReplaced =>
+      'Der vorhandene Schlüssel wird ersetzt!';
+
+  @override
+  String get invalidKeyAfterDecryption => 'Ungültiger Key nach Entschlüsselung';
+
+  @override
+  String get noPrivateKey => 'Kein Private Key vorhanden';
+
+  @override
+  String get noFingerprint => 'Kein Fingerprint vorhanden';
+
+  @override
+  String get backupSuccessfullySaved =>
+      'Backup erfolgreich auf Server gespeichert!';
+
+  @override
+  String errorBackup(String error) {
+    return 'Fehler beim Backup: $error';
+  }
+
+  @override
+  String get noBackupOnServer => 'Kein Backup auf dem Server gefunden.';
+
+  @override
+  String errorGeneration(String error) {
+    return 'Fehler bei der Generierung: $error';
+  }
+
+  @override
+  String get keySuccessfullyGenerated =>
+      'Schlüssel erfolgreich generiert und hochgeladen!';
+
+  @override
+  String errorUploading(String error) {
+    return 'Fehler beim Hochladen: $error';
+  }
+
+  @override
+  String get privateKeyNeverLeavesDevice =>
+      'Dein Private Key verlässt niemals dieses Gerät';
+
+  @override
+  String get onlyPublicKeyStoredOnServer =>
+      'Nur der Public Key wird auf dem Server gespeichert';
+
+  @override
+  String get regularBackupsRecommended =>
+      'Erstelle regelmäßig Backups deines Private Keys';
+
+  @override
+  String get lostKeyCannotDecryptOldMessages =>
+      'Bei Verlust des Keys können alte Nachrichten nicht entschlüsselt werden';
+
+  @override
+  String get createsNewEd25519Key =>
+      'Erstellt einen neuen Ed25519/Curve25519 Schlüssel. Dies dauert nur wenige Sekunden.';
+
+  @override
+  String get generatingEd25519Key =>
+      'Ed25519/Curve25519 Schlüssel wird erstellt. Dies dauert nur wenige Sekunden.';
+
+  @override
+  String get keySuccessfullyRestored =>
+      'Schlüssel erfolgreich wiederhergestellt!';
+
+  @override
+  String get protectWithPassphrase => 'Mit Passphrase schützen';
+
+  @override
+  String get recommendedForSecurity => 'Empfohlen für zusätzliche Sicherheit';
+
+  @override
+  String get passphrase => 'Passphrase';
+
+  @override
+  String get enterSecurePassphrase => 'Sichere Passphrase eingeben';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get yourName => 'Dein Name';
+
+  @override
+  String get emailOptional => 'E-Mail (optional)';
+
+  @override
+  String get yourEmailCom => 'deine@email.com';
+
+  @override
+  String get fingerprint => 'Fingerprint';
+
+  @override
+  String get algorithm => 'Algorithmus';
+
+  @override
+  String get keySize => 'Schlüsselgröße';
+
+  @override
+  String get identity => 'Identität';
+
+  @override
+  String get keepKeySafe =>
+      'Bewahre diesen Schlüssel sicher auf! Teile ihn niemals mit anderen.';
+
+  @override
+  String get pastePrivateKeyInPgpFormat =>
+      'Füge deinen Private Key im PGP-Armor Format ein:';
+
+  @override
+  String get beginPgpPrivateKeyBlock => '-----BEGIN PGP PRIVATE KEY BLOCK-----';
+
+  @override
+  String get pleasePasteKey => 'Bitte füge einen Key ein';
+
+  @override
+  String get invalidKeyFormat => 'Ungültiges Key-Format';
+
+  @override
+  String get privateKeySuccessfullyImported =>
+      'Private Key erfolgreich importiert!';
+
+  @override
+  String get selectBackupToRestore =>
+      'Wähle das Backup aus, das du wiederherstellen möchtest:';
+
+  @override
+  String get selectBackup => 'Backup auswählen';
+
+  @override
+  String get decryptBackup => 'Backup entschlüsseln';
+
+  @override
+  String copiedToClipboard(String label) {
+    return '$label in die Zwischenablage kopiert';
+  }
+
+  @override
+  String get publicKeySuccessfullyUploaded =>
+      'Public Key erfolgreich hochgeladen!';
+
+  @override
+  String get backupPassword => 'Backup-Passwort';
+
+  @override
+  String get keyGenerationTooLong =>
+      'Schlüsselgenerierung dauert zu lange. Bitte versuche es erneut oder starte die App neu.';
+
+  @override
+  String get noOwnPgpKey =>
+      'Kein eigener PGP-Schlüssel vorhanden. Bitte lade deinen Public Key hoch.';
+
+  @override
+  String get recipientHasNoPgpKey => 'Empfänger hat keinen PGP-Schlüssel';
 }

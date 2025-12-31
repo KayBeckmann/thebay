@@ -446,7 +446,7 @@ class _MessagesScreenState extends State<MessagesScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              l10n.errorLoading,
+              l10n.errorLoadingTitle,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),

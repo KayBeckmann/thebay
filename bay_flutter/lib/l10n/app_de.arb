@@ -1599,8 +1599,8 @@
     "description": "Keine gespeicherten Entwürfe Nachricht"
   },
 
-  "errorLoading": "Fehler beim Laden",
-  "@errorLoading": {
+  "errorLoadingTitle": "Fehler beim Laden",
+  "@errorLoadingTitle": {
     "description": "Fehler beim Laden Titel"
   },
 
@@ -1862,5 +1862,515 @@
         "type": "String"
       }
     }
+  },
+
+  "pgpKeys": "PGP-Schlüssel",
+  "@pgpKeys": {
+    "description": "PGP-Schlüssel Titel"
+  },
+
+  "keyInformation": "Schlüssel-Informationen",
+  "@keyInformation": {
+    "description": "Schlüsselinformationen Titel"
+  },
+
+  "generateNewKey": "Neuen Schlüssel generieren",
+  "@generateNewKey": {
+    "description": "Schlüssel generieren Titel"
+  },
+
+  "exportKey": "Schlüssel exportieren",
+  "@exportKey": {
+    "description": "Schlüssel exportieren Titel"
+  },
+
+  "importKey": "Schlüssel importieren",
+  "@importKey": {
+    "description": "Schlüssel importieren Titel"
+  },
+
+  "serverBackup": "Server-Backup",
+  "@serverBackup": {
+    "description": "Server-Backup Titel"
+  },
+
+  "securityNotices": "Sicherheitshinweise",
+  "@securityNotices": {
+    "description": "Sicherheitshinweise Titel"
+  },
+
+  "setBackupPassword": "Backup-Passwort festlegen",
+  "@setBackupPassword": {
+    "description": "Backup-Passwort Dialog Titel"
+  },
+
+  "generateKey": "Schlüssel generieren",
+  "@generateKey": {
+    "description": "Schlüssel generieren Aktion"
+  },
+
+  "privateKeyExport": "Private Key Export",
+  "@privateKeyExport": {
+    "description": "Private Key Export Titel"
+  },
+
+  "importPrivateKey": "Private Key importieren",
+  "@importPrivateKey": {
+    "description": "Private Key importieren Titel"
+  },
+
+  "keyConfigured": "Schlüssel eingerichtet",
+  "@keyConfigured": {
+    "description": "Schlüssel eingerichtet Status"
+  },
+
+  "keyIncomplete": "Schlüssel nicht vollständig",
+  "@keyIncomplete": {
+    "description": "Schlüssel nicht vollständig Status"
+  },
+
+  "canSendEncryptedMessages": "Du kannst verschlüsselte Nachrichten senden und empfangen.",
+  "@canSendEncryptedMessages": {
+    "description": "Kann Nachrichten senden"
+  },
+
+  "generateOrImportKey": "Generiere einen neuen Schlüssel oder importiere einen vorhandenen.",
+  "@generateOrImportKey": {
+    "description": "Schlüssel generieren oder importieren"
+  },
+
+  "privateKeyLocalPublicKeyMissing": "Private Key vorhanden, aber Public Key nicht auf dem Server.",
+  "@privateKeyLocalPublicKeyMissing": {
+    "description": "Private Key lokal, Public Key fehlt"
+  },
+
+  "publicKeyOnServerPrivateKeyMissing": "Public Key auf Server, aber Private Key fehlt lokal.",
+  "@publicKeyOnServerPrivateKeyMissing": {
+    "description": "Public Key auf Server, Private Key fehlt"
+  },
+
+  "keysMismatch": "Schlüssel stimmen nicht überein.",
+  "@keysMismatch": {
+    "description": "Schlüssel stimmen nicht überein"
+  },
+
+  "exportPrivateKeyForBackup": "Exportiere deinen Private Key für ein Backup. Bewahre ihn sicher auf!",
+  "@exportPrivateKeyForBackup": {
+    "description": "Private Key exportieren Beschreibung"
+  },
+
+  "importExistingPrivateKey": "Importiere einen vorhandenen Private Key (z.B. von einem Backup oder anderem Gerät).",
+  "@importExistingPrivateKey": {
+    "description": "Private Key importieren Beschreibung"
+  },
+
+  "storePrivateKeyEncryptedOnServer": "Speichere deinen Private Key verschlüsselt auf dem Server. So kannst du ihn auf einem anderen Gerät wiederherstellen.",
+  "@storePrivateKeyEncryptedOnServer": {
+    "description": "Server-Backup Beschreibung"
+  },
+
+  "securityWarning": "Sicherheitshinweis",
+  "@securityWarning": {
+    "description": "Sicherheitshinweis Dialog Titel"
+  },
+
+  "aboutToStorePrivateKeyOnServer": "Du bist dabei, deinen Private Key auf dem Server zu speichern.",
+  "@aboutToStorePrivateKeyOnServer": {
+    "description": "Private Key auf Server speichern Warnung"
+  },
+
+  "keyWillBeEncryptedBeforeUpload": "Der Key wird mit einem Passwort verschlüsselt, bevor er hochgeladen wird. Trotzdem solltest du folgendes beachten:",
+  "@keyWillBeEncryptedBeforeUpload": {
+    "description": "Verschlüsselung vor Upload Hinweis"
+  },
+
+  "chooseStrongUniquePassword": "Wähle ein starkes, einzigartiges Passwort",
+  "@chooseStrongUniquePassword": {
+    "description": "Starkes Passwort wählen"
+  },
+
+  "passwordCannotBeReset": "Dieses Passwort kann NICHT zurückgesetzt werden",
+  "@passwordCannotBeReset": {
+    "description": "Passwort kann nicht zurückgesetzt werden"
+  },
+
+  "backupWorthlessWithoutPassword": "Ohne Passwort ist das Backup wertlos",
+  "@backupWorthlessWithoutPassword": {
+    "description": "Backup ohne Passwort wertlos"
+  },
+
+  "serverOperatorMightGuessPassword": "Der Server-Betreiber könnte versuchen, das Passwort zu erraten",
+  "@serverOperatorMightGuessPassword": {
+    "description": "Server-Betreiber könnte Passwort erraten"
+  },
+
+  "chooseStrongPasswordForBackup": "Wähle ein starkes Passwort für dein Backup. Du brauchst es, um den Key wiederherzustellen.",
+  "@chooseStrongPasswordForBackup": {
+    "description": "Starkes Passwort für Backup"
+  },
+
+  "confirmPassword": "Passwort bestätigen",
+  "@confirmPassword": {
+    "description": "Passwort bestätigen Label"
+  },
+
+  "passwordsDontMatch": "Passwörter stimmen nicht überein",
+  "@passwordsDontMatch": {
+    "description": "Passwörter stimmen nicht überein Fehler"
+  },
+
+  "pleaseEnterName": "Bitte gib einen Namen ein",
+  "@pleaseEnterName": {
+    "description": "Namen eingeben Validierung"
+  },
+
+  "enterPasswordForBackup": "Gib das Passwort ein, mit dem du das Backup verschlüsselt hast:",
+  "@enterPasswordForBackup": {
+    "description": "Backup-Passwort eingeben"
+  },
+
+  "decryptingAndImporting": "Entschlüssele und importiere...",
+  "@decryptingAndImporting": {
+    "description": "Entschlüsselung und Import läuft"
+  },
+
+  "decryptionFailedWrongPassword": "Entschlüsselung fehlgeschlagen. Falsches Passwort?",
+  "@decryptionFailedWrongPassword": {
+    "description": "Entschlüsselung fehlgeschlagen Fehler"
+  },
+
+  "understandProceed": "Ich verstehe, fortfahren",
+  "@understandProceed": {
+    "description": "Ich verstehe, fortfahren Button"
+  },
+
+  "uploadPublicKey": "Public Key hochladen",
+  "@uploadPublicKey": {
+    "description": "Public Key hochladen Button"
+  },
+
+  "generating": "Generiere...",
+  "@generating": {
+    "description": "Generiere läuft"
+  },
+
+  "exportPrivateKey": "Private Key exportieren",
+  "@exportPrivateKey": {
+    "description": "Private Key exportieren Button"
+  },
+
+  "pastePrivateKey": "Private Key einfügen",
+  "@pastePrivateKey": {
+    "description": "Private Key einfügen Button"
+  },
+
+  "loadFromServerBackup": "Vom Server-Backup laden",
+  "@loadFromServerBackup": {
+    "description": "Vom Server-Backup laden Button"
+  },
+
+  "createEncryptedBackup": "Verschlüsseltes Backup erstellen",
+  "@createEncryptedBackup": {
+    "description": "Verschlüsseltes Backup erstellen Button"
+  },
+
+  "copyFingerprint": "Fingerprint kopieren",
+  "@copyFingerprint": {
+    "description": "Fingerprint kopieren Button"
+  },
+
+  "createBackup": "Backup erstellen",
+  "@createBackup": {
+    "description": "Backup erstellen Button"
+  },
+
+  "restore": "Wiederherstellen",
+  "@restore": {
+    "description": "Wiederherstellen Button"
+  },
+
+  "close": "Schließen",
+  "@close": {
+    "description": "Schließen Button"
+  },
+
+  "errorLoading": "Fehler beim Laden: {error}",
+  "@errorLoading": {
+    "description": "Fehler beim Laden",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "existingKeyWillBeReplaced": "Der vorhandene Schlüssel wird ersetzt!",
+  "@existingKeyWillBeReplaced": {
+    "description": "Schlüssel wird ersetzt Warnung"
+  },
+
+  "invalidKeyAfterDecryption": "Ungültiger Key nach Entschlüsselung",
+  "@invalidKeyAfterDecryption": {
+    "description": "Ungültiger Key Fehler"
+  },
+
+  "noPrivateKey": "Kein Private Key vorhanden",
+  "@noPrivateKey": {
+    "description": "Kein Private Key Fehler"
+  },
+
+  "noFingerprint": "Kein Fingerprint vorhanden",
+  "@noFingerprint": {
+    "description": "Kein Fingerprint Fehler"
+  },
+
+  "backupSuccessfullySaved": "Backup erfolgreich auf Server gespeichert!",
+  "@backupSuccessfullySaved": {
+    "description": "Backup gespeichert Erfolg"
+  },
+
+  "errorBackup": "Fehler beim Backup: {error}",
+  "@errorBackup": {
+    "description": "Backup Fehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noBackupOnServer": "Kein Backup auf dem Server gefunden.",
+  "@noBackupOnServer": {
+    "description": "Kein Backup gefunden"
+  },
+
+  "errorGeneration": "Fehler bei der Generierung: {error}",
+  "@errorGeneration": {
+    "description": "Generierung Fehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "keySuccessfullyGenerated": "Schlüssel erfolgreich generiert und hochgeladen!",
+  "@keySuccessfullyGenerated": {
+    "description": "Schlüssel generiert Erfolg"
+  },
+
+  "errorUploading": "Fehler beim Hochladen: {error}",
+  "@errorUploading": {
+    "description": "Upload Fehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "privateKeyNeverLeavesDevice": "Dein Private Key verlässt niemals dieses Gerät",
+  "@privateKeyNeverLeavesDevice": {
+    "description": "Private Key verlässt Gerät nie"
+  },
+
+  "onlyPublicKeyStoredOnServer": "Nur der Public Key wird auf dem Server gespeichert",
+  "@onlyPublicKeyStoredOnServer": {
+    "description": "Nur Public Key auf Server"
+  },
+
+  "regularBackupsRecommended": "Erstelle regelmäßig Backups deines Private Keys",
+  "@regularBackupsRecommended": {
+    "description": "Regelmäßige Backups empfohlen"
+  },
+
+  "lostKeyCannotDecryptOldMessages": "Bei Verlust des Keys können alte Nachrichten nicht entschlüsselt werden",
+  "@lostKeyCannotDecryptOldMessages": {
+    "description": "Verlorener Key kann Nachrichten nicht entschlüsseln"
+  },
+
+  "createsNewEd25519Key": "Erstellt einen neuen Ed25519/Curve25519 Schlüssel. Dies dauert nur wenige Sekunden.",
+  "@createsNewEd25519Key": {
+    "description": "Ed25519 Schlüssel erstellen Beschreibung"
+  },
+
+  "generatingEd25519Key": "Ed25519/Curve25519 Schlüssel wird erstellt. Dies dauert nur wenige Sekunden.",
+  "@generatingEd25519Key": {
+    "description": "Ed25519 Schlüssel wird erstellt"
+  },
+
+  "keySuccessfullyRestored": "Schlüssel erfolgreich wiederhergestellt!",
+  "@keySuccessfullyRestored": {
+    "description": "Schlüssel wiederhergestellt Erfolg"
+  },
+
+  "password": "Passwort",
+  "@password": {
+    "description": "Passwort Label"
+  },
+
+  "protectWithPassphrase": "Mit Passphrase schützen",
+  "@protectWithPassphrase": {
+    "description": "Mit Passphrase schützen Checkbox"
+  },
+
+  "recommendedForSecurity": "Empfohlen für zusätzliche Sicherheit",
+  "@recommendedForSecurity": {
+    "description": "Empfohlen für Sicherheit"
+  },
+
+  "passphrase": "Passphrase",
+  "@passphrase": {
+    "description": "Passphrase Label"
+  },
+
+  "enterSecurePassphrase": "Sichere Passphrase eingeben",
+  "@enterSecurePassphrase": {
+    "description": "Sichere Passphrase eingeben Hint"
+  },
+
+  "name": "Name",
+  "@name": {
+    "description": "Name Label"
+  },
+
+  "yourName": "Dein Name",
+  "@yourName": {
+    "description": "Dein Name Hint"
+  },
+
+  "emailOptional": "E-Mail (optional)",
+  "@emailOptional": {
+    "description": "E-Mail optional Label"
+  },
+
+  "yourEmailCom": "deine@email.com",
+  "@yourEmailCom": {
+    "description": "E-Mail Hint"
+  },
+
+  "fingerprint": "Fingerprint",
+  "@fingerprint": {
+    "description": "Fingerprint Label"
+  },
+
+  "algorithm": "Algorithmus",
+  "@algorithm": {
+    "description": "Algorithmus Label"
+  },
+
+  "keySize": "Schlüsselgröße",
+  "@keySize": {
+    "description": "Schlüsselgröße Label"
+  },
+
+  "identity": "Identität",
+  "@identity": {
+    "description": "Identität Label"
+  },
+
+  "created": "Erstellt",
+  "@created": {
+    "description": "Erstellt Label"
+  },
+
+  "keepKeySafe": "Bewahre diesen Schlüssel sicher auf! Teile ihn niemals mit anderen.",
+  "@keepKeySafe": {
+    "description": "Schlüssel sicher aufbewahren Warnung"
+  },
+
+  "pastePrivateKeyInPgpFormat": "Füge deinen Private Key im PGP-Armor Format ein:",
+  "@pastePrivateKeyInPgpFormat": {
+    "description": "Private Key einfügen Anleitung"
+  },
+
+  "beginPgpPrivateKeyBlock": "-----BEGIN PGP PRIVATE KEY BLOCK-----",
+  "@beginPgpPrivateKeyBlock": {
+    "description": "PGP Private Key Block Anfang"
+  },
+
+  "pleasePasteKey": "Bitte füge einen Key ein",
+  "@pleasePasteKey": {
+    "description": "Key einfügen Validierung"
+  },
+
+  "invalidKeyFormat": "Ungültiges Key-Format",
+  "@invalidKeyFormat": {
+    "description": "Ungültiges Key-Format Fehler"
+  },
+
+  "privateKeySuccessfullyImported": "Private Key erfolgreich importiert!",
+  "@privateKeySuccessfullyImported": {
+    "description": "Private Key importiert Erfolg"
+  },
+
+  "selectBackupToRestore": "Wähle das Backup aus, das du wiederherstellen möchtest:",
+  "@selectBackupToRestore": {
+    "description": "Backup auswählen Anleitung"
+  },
+
+  "selectBackup": "Backup auswählen",
+  "@selectBackup": {
+    "description": "Backup auswählen Titel"
+  },
+
+  "decryptBackup": "Backup entschlüsseln",
+  "@decryptBackup": {
+    "description": "Backup entschlüsseln Titel"
+  },
+
+  "copiedToClipboard": "{label} in die Zwischenablage kopiert",
+  "@copiedToClipboard": {
+    "description": "In Zwischenablage kopiert Nachricht",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+
+  "generatingKey": "Schlüssel wird generiert...",
+  "@generatingKey": {
+    "description": "Schlüssel wird generiert Status"
+  },
+
+  "publicKeySuccessfullyUploaded": "Public Key erfolgreich hochgeladen!",
+  "@publicKeySuccessfullyUploaded": {
+    "description": "Public Key hochgeladen Erfolg"
+  },
+
+  "passwordMinLength": "Passwort muss mindestens 8 Zeichen haben",
+  "@passwordMinLength": {
+    "description": "Passwort Mindestlänge Validierung"
+  },
+
+  "pleaseEnterPassword": "Bitte gib das Passwort ein",
+  "@pleaseEnterPassword": {
+    "description": "Passwort eingeben Validierung"
+  },
+
+  "backupPassword": "Backup-Passwort",
+  "@backupPassword": {
+    "description": "Backup-Passwort Label"
+  },
+
+  "keyGenerationTooLong": "Schlüsselgenerierung dauert zu lange. Bitte versuche es erneut oder starte die App neu.",
+  "@keyGenerationTooLong": {
+    "description": "Schlüsselgenerierung Timeout Fehler"
+  },
+
+  "noOwnPgpKey": "Kein eigener PGP-Schlüssel vorhanden. Bitte lade deinen Public Key hoch.",
+  "@noOwnPgpKey": {
+    "description": "Kein eigener PGP-Schlüssel Fehler"
+  },
+
+  "recipientHasNoPgpKey": "Empfänger hat keinen PGP-Schlüssel",
+  "@recipientHasNoPgpKey": {
+    "description": "Empfänger hat keinen PGP-Schlüssel Fehler"
+  },
+
+  "decryptionFailed": "[Entschlüsselung fehlgeschlagen]",
+  "@decryptionFailed": {
+    "description": "Entschlüsselung fehlgeschlagen Fallback"
   }
 }

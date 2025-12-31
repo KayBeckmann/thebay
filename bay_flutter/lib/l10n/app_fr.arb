@@ -715,6 +715,11 @@
     "description": "Titre Erreur de chargement"
   },
 
+  "errorLoadingTitle": "Erreur de chargement",
+  "@errorLoadingTitle": {
+    "description": "Titre erreur de chargement"
+  },
+
   "from": "De : {username}",
   "@from": {
     "description": "Étiquette De",
@@ -973,5 +978,465 @@
         "type": "String"
       }
     }
+  },
+
+  "pgpKeys": "Clés PGP",
+  "@pgpKeys": {
+    "description": "Titre clés PGP"
+  },
+
+  "keyInformation": "Informations sur la clé",
+  "@keyInformation": {
+    "description": "Titre informations sur la clé"
+  },
+
+  "generateNewKey": "Générer une nouvelle clé",
+  "@generateNewKey": {
+    "description": "Titre générer une clé"
+  },
+
+  "exportKey": "Exporter la clé",
+  "@exportKey": {
+    "description": "Titre exporter la clé"
+  },
+
+  "importKey": "Importer la clé",
+  "@importKey": {
+    "description": "Titre importer la clé"
+  },
+
+  "serverBackup": "Sauvegarde serveur",
+  "@serverBackup": {
+    "description": "Titre sauvegarde serveur"
+  },
+
+  "securityNotices": "Avis de sécurité",
+  "@securityNotices": {
+    "description": "Titre avis de sécurité"
+  },
+
+  "setBackupPassword": "Définir le mot de passe de sauvegarde",
+  "@setBackupPassword": {
+    "description": "Titre dialogue mot de passe de sauvegarde"
+  },
+
+  "generateKey": "Générer la clé",
+  "@generateKey": {
+    "description": "Action générer la clé"
+  },
+
+  "privateKeyExport": "Export de Private Key",
+  "@privateKeyExport": {
+    "description": "Titre export de Private Key"
+  },
+
+  "importPrivateKey": "Importer Private Key",
+  "@importPrivateKey": {
+    "description": "Titre importer Private Key"
+  },
+
+  "keyConfigured": "Clé configurée",
+  "@keyConfigured": {
+    "description": "Statut clé configurée"
+  },
+
+  "keyIncomplete": "Clé incomplète",
+  "@keyIncomplete": {
+    "description": "Statut clé incomplète"
+  },
+
+  "canSendEncryptedMessages": "Vous pouvez envoyer et recevoir des messages chiffrés.",
+  "@canSendEncryptedMessages": {
+    "description": "Peut envoyer des messages"
+  },
+
+  "generateOrImportKey": "Générez une nouvelle clé ou importez-en une existante.",
+  "@generateOrImportKey": {
+    "description": "Générer ou importer une clé"
+  },
+
+  "privateKeyLocalPublicKeyMissing": "Private Key présente localement, mais Public Key absente du serveur.",
+  "@privateKeyLocalPublicKeyMissing": {
+    "description": "Private Key locale, Public Key manquante"
+  },
+
+  "publicKeyOnServerPrivateKeyMissing": "Public Key sur le serveur, mais Private Key manquante localement.",
+  "@publicKeyOnServerPrivateKeyMissing": {
+    "description": "Public Key sur le serveur, Private Key manquante"
+  },
+
+  "keysMismatch": "Les clés ne correspondent pas.",
+  "@keysMismatch": {
+    "description": "Les clés ne correspondent pas"
+  },
+
+  "exportPrivateKeyForBackup": "Exportez votre Private Key pour la sauvegarder. Conservez-la en sécurité !",
+  "@exportPrivateKeyForBackup": {
+    "description": "Description exporter Private Key"
+  },
+
+  "importExistingPrivateKey": "Importez une Private Key existante (par ex. depuis une sauvegarde ou un autre appareil).",
+  "@importExistingPrivateKey": {
+    "description": "Description importer Private Key"
+  },
+
+  "storePrivateKeyEncryptedOnServer": "Stockez votre Private Key chiffrée sur le serveur. Cela vous permet de la restaurer sur un autre appareil.",
+  "@storePrivateKeyEncryptedOnServer": {
+    "description": "Description sauvegarde serveur"
+  },
+
+  "securityWarning": "Avertissement de sécurité",
+  "@securityWarning": {
+    "description": "Titre dialogue avertissement de sécurité"
+  },
+
+  "aboutToStorePrivateKeyOnServer": "Vous êtes sur le point de stocker votre Private Key sur le serveur.",
+  "@aboutToStorePrivateKeyOnServer": {
+    "description": "Avertissement stockage Private Key sur serveur"
+  },
+
+  "keyWillBeEncryptedBeforeUpload": "La clé sera chiffrée avec un mot de passe avant l'envoi. Cependant, vous devez noter ce qui suit :",
+  "@keyWillBeEncryptedBeforeUpload": {
+    "description": "Avis chiffrement avant envoi"
+  },
+
+  "chooseStrongUniquePassword": "Choisissez un mot de passe fort et unique",
+  "@chooseStrongUniquePassword": {
+    "description": "Choisir un mot de passe fort"
+  },
+
+  "passwordCannotBeReset": "Ce mot de passe NE PEUT PAS être réinitialisé",
+  "@passwordCannotBeReset": {
+    "description": "Le mot de passe ne peut pas être réinitialisé"
+  },
+
+  "backupWorthlessWithoutPassword": "Sans le mot de passe, la sauvegarde est inutile",
+  "@backupWorthlessWithoutPassword": {
+    "description": "Sauvegarde inutile sans mot de passe"
+  },
+
+  "serverOperatorMightGuessPassword": "L'opérateur du serveur pourrait tenter de deviner le mot de passe",
+  "@serverOperatorMightGuessPassword": {
+    "description": "L'opérateur du serveur pourrait deviner le mot de passe"
+  },
+
+  "chooseStrongPasswordForBackup": "Choisissez un mot de passe fort pour votre sauvegarde. Vous en aurez besoin pour restaurer la clé.",
+  "@chooseStrongPasswordForBackup": {
+    "description": "Mot de passe fort pour la sauvegarde"
+  },
+
+  "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+  "@passwordsDontMatch": {
+    "description": "Erreur les mots de passe ne correspondent pas"
+  },
+
+  "pleaseEnterName": "Veuillez entrer un nom",
+  "@pleaseEnterName": {
+    "description": "Validation entrer un nom"
+  },
+
+  "enterPasswordForBackup": "Entrez le mot de passe que vous avez utilisé pour chiffrer la sauvegarde :",
+  "@enterPasswordForBackup": {
+    "description": "Entrer le mot de passe de sauvegarde"
+  },
+
+  "decryptingAndImporting": "Déchiffrement et importation...",
+  "@decryptingAndImporting": {
+    "description": "Déchiffrement et importation en cours"
+  },
+
+  "decryptionFailedWrongPassword": "Échec du déchiffrement. Mauvais mot de passe ?",
+  "@decryptionFailedWrongPassword": {
+    "description": "Erreur échec du déchiffrement"
+  },
+
+  "understandProceed": "Je comprends, continuer",
+  "@understandProceed": {
+    "description": "Bouton je comprends, continuer"
+  },
+
+  "uploadPublicKey": "Téléverser Public Key",
+  "@uploadPublicKey": {
+    "description": "Bouton téléverser Public Key"
+  },
+
+  "generating": "Génération...",
+  "@generating": {
+    "description": "Génération en cours"
+  },
+
+  "exportPrivateKey": "Exporter Private Key",
+  "@exportPrivateKey": {
+    "description": "Bouton exporter Private Key"
+  },
+
+  "pastePrivateKey": "Coller Private Key",
+  "@pastePrivateKey": {
+    "description": "Bouton coller Private Key"
+  },
+
+  "loadFromServerBackup": "Charger depuis la sauvegarde serveur",
+  "@loadFromServerBackup": {
+    "description": "Bouton charger depuis la sauvegarde serveur"
+  },
+
+  "createEncryptedBackup": "Créer une sauvegarde chiffrée",
+  "@createEncryptedBackup": {
+    "description": "Bouton créer une sauvegarde chiffrée"
+  },
+
+  "copyFingerprint": "Copier Fingerprint",
+  "@copyFingerprint": {
+    "description": "Bouton copier fingerprint"
+  },
+
+  "createBackup": "Créer une sauvegarde",
+  "@createBackup": {
+    "description": "Bouton créer une sauvegarde"
+  },
+
+  "restore": "Restaurer",
+  "@restore": {
+    "description": "Bouton restaurer"
+  },
+
+  "existingKeyWillBeReplaced": "La clé existante sera remplacée !",
+  "@existingKeyWillBeReplaced": {
+    "description": "Avertissement la clé sera remplacée"
+  },
+
+  "invalidKeyAfterDecryption": "Clé invalide après déchiffrement",
+  "@invalidKeyAfterDecryption": {
+    "description": "Erreur clé invalide"
+  },
+
+  "noPrivateKey": "Aucune Private Key disponible",
+  "@noPrivateKey": {
+    "description": "Erreur aucune Private Key"
+  },
+
+  "noFingerprint": "Aucun fingerprint disponible",
+  "@noFingerprint": {
+    "description": "Erreur aucun fingerprint"
+  },
+
+  "backupSuccessfullySaved": "Sauvegarde enregistrée avec succès sur le serveur !",
+  "@backupSuccessfullySaved": {
+    "description": "Succès sauvegarde enregistrée"
+  },
+
+  "errorBackup": "Erreur lors de la sauvegarde : {error}",
+  "@errorBackup": {
+    "description": "Erreur de sauvegarde",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noBackupOnServer": "Aucune sauvegarde trouvée sur le serveur.",
+  "@noBackupOnServer": {
+    "description": "Aucune sauvegarde trouvée"
+  },
+
+  "errorGeneration": "Erreur lors de la génération : {error}",
+  "@errorGeneration": {
+    "description": "Erreur de génération",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "keySuccessfullyGenerated": "Clé générée et téléversée avec succès !",
+  "@keySuccessfullyGenerated": {
+    "description": "Succès clé générée"
+  },
+
+  "errorUploading": "Erreur lors du téléversement : {error}",
+  "@errorUploading": {
+    "description": "Erreur de téléversement",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "privateKeyNeverLeavesDevice": "Votre Private Key ne quitte jamais cet appareil",
+  "@privateKeyNeverLeavesDevice": {
+    "description": "Private Key ne quitte jamais l'appareil"
+  },
+
+  "onlyPublicKeyStoredOnServer": "Seule la Public Key est stockée sur le serveur",
+  "@onlyPublicKeyStoredOnServer": {
+    "description": "Seule la Public Key sur le serveur"
+  },
+
+  "regularBackupsRecommended": "Créez des sauvegardes régulières de votre Private Key",
+  "@regularBackupsRecommended": {
+    "description": "Sauvegardes régulières recommandées"
+  },
+
+  "lostKeyCannotDecryptOldMessages": "Si vous perdez votre clé, les anciens messages ne pourront pas être déchiffrés",
+  "@lostKeyCannotDecryptOldMessages": {
+    "description": "Clé perdue ne peut pas déchiffrer les messages"
+  },
+
+  "createsNewEd25519Key": "Crée une nouvelle clé Ed25519/Curve25519. Cela ne prend que quelques secondes.",
+  "@createsNewEd25519Key": {
+    "description": "Description créer une clé Ed25519"
+  },
+
+  "generatingEd25519Key": "Création d'une clé Ed25519/Curve25519. Cela ne prend que quelques secondes.",
+  "@generatingEd25519Key": {
+    "description": "Création d'une clé Ed25519"
+  },
+
+  "keySuccessfullyRestored": "Clé restaurée avec succès !",
+  "@keySuccessfullyRestored": {
+    "description": "Succès clé restaurée"
+  },
+
+  "protectWithPassphrase": "Protéger avec une passphrase",
+  "@protectWithPassphrase": {
+    "description": "Case protéger avec une passphrase"
+  },
+
+  "recommendedForSecurity": "Recommandé pour une sécurité supplémentaire",
+  "@recommendedForSecurity": {
+    "description": "Recommandé pour la sécurité"
+  },
+
+  "passphrase": "Passphrase",
+  "@passphrase": {
+    "description": "Étiquette passphrase"
+  },
+
+  "enterSecurePassphrase": "Entrez une passphrase sécurisée",
+  "@enterSecurePassphrase": {
+    "description": "Suggestion entrer une passphrase sécurisée"
+  },
+
+  "name": "Nom",
+  "@name": {
+    "description": "Étiquette nom"
+  },
+
+  "yourName": "Votre nom",
+  "@yourName": {
+    "description": "Suggestion votre nom"
+  },
+
+  "emailOptional": "Email (facultatif)",
+  "@emailOptional": {
+    "description": "Étiquette email facultatif"
+  },
+
+  "yourEmailCom": "votre@email.com",
+  "@yourEmailCom": {
+    "description": "Suggestion email"
+  },
+
+  "fingerprint": "Fingerprint",
+  "@fingerprint": {
+    "description": "Étiquette fingerprint"
+  },
+
+  "algorithm": "Algorithme",
+  "@algorithm": {
+    "description": "Étiquette algorithme"
+  },
+
+  "keySize": "Taille de clé",
+  "@keySize": {
+    "description": "Étiquette taille de clé"
+  },
+
+  "identity": "Identité",
+  "@identity": {
+    "description": "Étiquette identité"
+  },
+
+  "keepKeySafe": "Conservez cette clé en sécurité ! Ne la partagez jamais avec d'autres.",
+  "@keepKeySafe": {
+    "description": "Avertissement conserver la clé en sécurité"
+  },
+
+  "pastePrivateKeyInPgpFormat": "Collez votre Private Key au format PGP armor :",
+  "@pastePrivateKeyInPgpFormat": {
+    "description": "Instruction coller Private Key"
+  },
+
+  "beginPgpPrivateKeyBlock": "-----BEGIN PGP PRIVATE KEY BLOCK-----",
+  "@beginPgpPrivateKeyBlock": {
+    "description": "Début bloc PGP Private Key"
+  },
+
+  "pleasePasteKey": "Veuillez coller une clé",
+  "@pleasePasteKey": {
+    "description": "Validation coller une clé"
+  },
+
+  "invalidKeyFormat": "Format de clé invalide",
+  "@invalidKeyFormat": {
+    "description": "Erreur format de clé invalide"
+  },
+
+  "privateKeySuccessfullyImported": "Private Key importée avec succès !",
+  "@privateKeySuccessfullyImported": {
+    "description": "Succès Private Key importée"
+  },
+
+  "selectBackupToRestore": "Sélectionnez la sauvegarde que vous souhaitez restaurer :",
+  "@selectBackupToRestore": {
+    "description": "Instruction sélectionner une sauvegarde"
+  },
+
+  "selectBackup": "Sélectionner une sauvegarde",
+  "@selectBackup": {
+    "description": "Titre sélectionner une sauvegarde"
+  },
+
+  "decryptBackup": "Déchiffrer la sauvegarde",
+  "@decryptBackup": {
+    "description": "Titre déchiffrer la sauvegarde"
+  },
+
+  "copiedToClipboard": "{label} copié dans le presse-papiers",
+  "@copiedToClipboard": {
+    "description": "Message copié dans le presse-papiers",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+
+  "publicKeySuccessfullyUploaded": "Public Key téléversée avec succès !",
+  "@publicKeySuccessfullyUploaded": {
+    "description": "Succès Public Key téléversée"
+  },
+
+  "backupPassword": "Mot de passe de sauvegarde",
+  "@backupPassword": {
+    "description": "Étiquette mot de passe de sauvegarde"
+  },
+
+  "keyGenerationTooLong": "La génération de clé prend trop de temps. Veuillez réessayer ou redémarrer l'application.",
+  "@keyGenerationTooLong": {
+    "description": "Erreur timeout génération de clé"
+  },
+
+  "noOwnPgpKey": "Aucune clé PGP personnelle disponible. Veuillez téléverser votre Public Key.",
+  "@noOwnPgpKey": {
+    "description": "Erreur aucune clé PGP personnelle"
+  },
+
+  "recipientHasNoPgpKey": "Le destinataire n'a pas de clé PGP",
+  "@recipientHasNoPgpKey": {
+    "description": "Erreur le destinataire n'a pas de clé PGP"
   }
 }

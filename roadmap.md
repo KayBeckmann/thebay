@@ -613,9 +613,9 @@
 - [x] Transaktions-Dialoge übersetzen
 
 ### 15.6 PGP & Sicherheit
-- [ ] pgp_key_screen.dart übersetzen (~80 Strings)
-- [ ] Sicherheits-Dialoge übersetzen
-- [ ] Verschlüsselungs-Fehlermeldungen übersetzen
+- [x] pgp_key_screen.dart übersetzen (~90 Strings)
+- [x] Sicherheits-Dialoge übersetzen
+- [x] Verschlüsselungs-Fehlermeldungen übersetzen
 
 ### 15.7 Admin & Moderation
 - [ ] admin_panel_screen.dart übersetzen

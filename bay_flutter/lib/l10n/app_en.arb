@@ -715,6 +715,11 @@
     "description": "Error loading title"
   },
 
+  "errorLoadingTitle": "Error loading",
+  "@errorLoadingTitle": {
+    "description": "Error loading title"
+  },
+
   "from": "From: {username}",
   "@from": {
     "description": "From label",
@@ -973,5 +978,465 @@
         "type": "String"
       }
     }
+  },
+
+  "pgpKeys": "PGP Keys",
+  "@pgpKeys": {
+    "description": "PGP Keys title"
+  },
+
+  "keyInformation": "Key Information",
+  "@keyInformation": {
+    "description": "Key information title"
+  },
+
+  "generateNewKey": "Generate New Key",
+  "@generateNewKey": {
+    "description": "Generate key title"
+  },
+
+  "exportKey": "Export Key",
+  "@exportKey": {
+    "description": "Export key title"
+  },
+
+  "importKey": "Import Key",
+  "@importKey": {
+    "description": "Import key title"
+  },
+
+  "serverBackup": "Server Backup",
+  "@serverBackup": {
+    "description": "Server backup title"
+  },
+
+  "securityNotices": "Security Notices",
+  "@securityNotices": {
+    "description": "Security notices title"
+  },
+
+  "setBackupPassword": "Set Backup Password",
+  "@setBackupPassword": {
+    "description": "Backup password dialog title"
+  },
+
+  "generateKey": "Generate Key",
+  "@generateKey": {
+    "description": "Generate key action"
+  },
+
+  "privateKeyExport": "Private Key Export",
+  "@privateKeyExport": {
+    "description": "Private Key export title"
+  },
+
+  "importPrivateKey": "Import Private Key",
+  "@importPrivateKey": {
+    "description": "Import Private Key title"
+  },
+
+  "keyConfigured": "Key Configured",
+  "@keyConfigured": {
+    "description": "Key configured status"
+  },
+
+  "keyIncomplete": "Key Incomplete",
+  "@keyIncomplete": {
+    "description": "Key incomplete status"
+  },
+
+  "canSendEncryptedMessages": "You can send and receive encrypted messages.",
+  "@canSendEncryptedMessages": {
+    "description": "Can send messages"
+  },
+
+  "generateOrImportKey": "Generate a new key or import an existing one.",
+  "@generateOrImportKey": {
+    "description": "Generate or import key"
+  },
+
+  "privateKeyLocalPublicKeyMissing": "Private Key exists locally, but Public Key not on server.",
+  "@privateKeyLocalPublicKeyMissing": {
+    "description": "Private Key local, Public Key missing"
+  },
+
+  "publicKeyOnServerPrivateKeyMissing": "Public Key on server, but Private Key missing locally.",
+  "@publicKeyOnServerPrivateKeyMissing": {
+    "description": "Public Key on server, Private Key missing"
+  },
+
+  "keysMismatch": "Keys do not match.",
+  "@keysMismatch": {
+    "description": "Keys do not match"
+  },
+
+  "exportPrivateKeyForBackup": "Export your Private Key for backup. Keep it safe!",
+  "@exportPrivateKeyForBackup": {
+    "description": "Export Private Key description"
+  },
+
+  "importExistingPrivateKey": "Import an existing Private Key (e.g., from a backup or another device).",
+  "@importExistingPrivateKey": {
+    "description": "Import Private Key description"
+  },
+
+  "storePrivateKeyEncryptedOnServer": "Store your Private Key encrypted on the server. This allows you to restore it on another device.",
+  "@storePrivateKeyEncryptedOnServer": {
+    "description": "Server backup description"
+  },
+
+  "securityWarning": "Security Warning",
+  "@securityWarning": {
+    "description": "Security warning dialog title"
+  },
+
+  "aboutToStorePrivateKeyOnServer": "You are about to store your Private Key on the server.",
+  "@aboutToStorePrivateKeyOnServer": {
+    "description": "Store Private Key on server warning"
+  },
+
+  "keyWillBeEncryptedBeforeUpload": "The key will be encrypted with a password before upload. However, you should note the following:",
+  "@keyWillBeEncryptedBeforeUpload": {
+    "description": "Encryption before upload notice"
+  },
+
+  "chooseStrongUniquePassword": "Choose a strong, unique password",
+  "@chooseStrongUniquePassword": {
+    "description": "Choose strong password"
+  },
+
+  "passwordCannotBeReset": "This password CANNOT be reset",
+  "@passwordCannotBeReset": {
+    "description": "Password cannot be reset"
+  },
+
+  "backupWorthlessWithoutPassword": "Without the password, the backup is worthless",
+  "@backupWorthlessWithoutPassword": {
+    "description": "Backup worthless without password"
+  },
+
+  "serverOperatorMightGuessPassword": "The server operator might attempt to guess the password",
+  "@serverOperatorMightGuessPassword": {
+    "description": "Server operator might guess password"
+  },
+
+  "chooseStrongPasswordForBackup": "Choose a strong password for your backup. You will need it to restore the key.",
+  "@chooseStrongPasswordForBackup": {
+    "description": "Strong password for backup"
+  },
+
+  "passwordsDontMatch": "Passwords do not match",
+  "@passwordsDontMatch": {
+    "description": "Passwords do not match error"
+  },
+
+  "pleaseEnterName": "Please enter a name",
+  "@pleaseEnterName": {
+    "description": "Enter name validation"
+  },
+
+  "enterPasswordForBackup": "Enter the password you used to encrypt the backup:",
+  "@enterPasswordForBackup": {
+    "description": "Enter backup password"
+  },
+
+  "decryptingAndImporting": "Decrypting and importing...",
+  "@decryptingAndImporting": {
+    "description": "Decryption and import in progress"
+  },
+
+  "decryptionFailedWrongPassword": "Decryption failed. Wrong password?",
+  "@decryptionFailedWrongPassword": {
+    "description": "Decryption failed error"
+  },
+
+  "understandProceed": "I understand, proceed",
+  "@understandProceed": {
+    "description": "I understand, proceed button"
+  },
+
+  "uploadPublicKey": "Upload Public Key",
+  "@uploadPublicKey": {
+    "description": "Upload Public Key button"
+  },
+
+  "generating": "Generating...",
+  "@generating": {
+    "description": "Generating in progress"
+  },
+
+  "exportPrivateKey": "Export Private Key",
+  "@exportPrivateKey": {
+    "description": "Export Private Key button"
+  },
+
+  "pastePrivateKey": "Paste Private Key",
+  "@pastePrivateKey": {
+    "description": "Paste Private Key button"
+  },
+
+  "loadFromServerBackup": "Load from Server Backup",
+  "@loadFromServerBackup": {
+    "description": "Load from server backup button"
+  },
+
+  "createEncryptedBackup": "Create Encrypted Backup",
+  "@createEncryptedBackup": {
+    "description": "Create encrypted backup button"
+  },
+
+  "copyFingerprint": "Copy Fingerprint",
+  "@copyFingerprint": {
+    "description": "Copy fingerprint button"
+  },
+
+  "createBackup": "Create Backup",
+  "@createBackup": {
+    "description": "Create backup button"
+  },
+
+  "restore": "Restore",
+  "@restore": {
+    "description": "Restore button"
+  },
+
+  "existingKeyWillBeReplaced": "The existing key will be replaced!",
+  "@existingKeyWillBeReplaced": {
+    "description": "Key will be replaced warning"
+  },
+
+  "invalidKeyAfterDecryption": "Invalid key after decryption",
+  "@invalidKeyAfterDecryption": {
+    "description": "Invalid key error"
+  },
+
+  "noPrivateKey": "No Private Key available",
+  "@noPrivateKey": {
+    "description": "No Private Key error"
+  },
+
+  "noFingerprint": "No fingerprint available",
+  "@noFingerprint": {
+    "description": "No fingerprint error"
+  },
+
+  "backupSuccessfullySaved": "Backup successfully saved to server!",
+  "@backupSuccessfullySaved": {
+    "description": "Backup saved success"
+  },
+
+  "errorBackup": "Error during backup: {error}",
+  "@errorBackup": {
+    "description": "Backup error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noBackupOnServer": "No backup found on server.",
+  "@noBackupOnServer": {
+    "description": "No backup found"
+  },
+
+  "errorGeneration": "Error during generation: {error}",
+  "@errorGeneration": {
+    "description": "Generation error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "keySuccessfullyGenerated": "Key successfully generated and uploaded!",
+  "@keySuccessfullyGenerated": {
+    "description": "Key generated success"
+  },
+
+  "errorUploading": "Error uploading: {error}",
+  "@errorUploading": {
+    "description": "Upload error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "privateKeyNeverLeavesDevice": "Your Private Key never leaves this device",
+  "@privateKeyNeverLeavesDevice": {
+    "description": "Private Key never leaves device"
+  },
+
+  "onlyPublicKeyStoredOnServer": "Only the Public Key is stored on the server",
+  "@onlyPublicKeyStoredOnServer": {
+    "description": "Only Public Key on server"
+  },
+
+  "regularBackupsRecommended": "Create regular backups of your Private Key",
+  "@regularBackupsRecommended": {
+    "description": "Regular backups recommended"
+  },
+
+  "lostKeyCannotDecryptOldMessages": "If you lose your key, old messages cannot be decrypted",
+  "@lostKeyCannotDecryptOldMessages": {
+    "description": "Lost key cannot decrypt messages"
+  },
+
+  "createsNewEd25519Key": "Creates a new Ed25519/Curve25519 key. This takes only a few seconds.",
+  "@createsNewEd25519Key": {
+    "description": "Create Ed25519 key description"
+  },
+
+  "generatingEd25519Key": "Creating Ed25519/Curve25519 key. This takes only a few seconds.",
+  "@generatingEd25519Key": {
+    "description": "Creating Ed25519 key"
+  },
+
+  "keySuccessfullyRestored": "Key successfully restored!",
+  "@keySuccessfullyRestored": {
+    "description": "Key restored success"
+  },
+
+  "protectWithPassphrase": "Protect with passphrase",
+  "@protectWithPassphrase": {
+    "description": "Protect with passphrase checkbox"
+  },
+
+  "recommendedForSecurity": "Recommended for additional security",
+  "@recommendedForSecurity": {
+    "description": "Recommended for security"
+  },
+
+  "passphrase": "Passphrase",
+  "@passphrase": {
+    "description": "Passphrase label"
+  },
+
+  "enterSecurePassphrase": "Enter a secure passphrase",
+  "@enterSecurePassphrase": {
+    "description": "Enter secure passphrase hint"
+  },
+
+  "name": "Name",
+  "@name": {
+    "description": "Name label"
+  },
+
+  "yourName": "Your name",
+  "@yourName": {
+    "description": "Your name hint"
+  },
+
+  "emailOptional": "Email (optional)",
+  "@emailOptional": {
+    "description": "Email optional label"
+  },
+
+  "yourEmailCom": "your@email.com",
+  "@yourEmailCom": {
+    "description": "Email hint"
+  },
+
+  "fingerprint": "Fingerprint",
+  "@fingerprint": {
+    "description": "Fingerprint label"
+  },
+
+  "algorithm": "Algorithm",
+  "@algorithm": {
+    "description": "Algorithm label"
+  },
+
+  "keySize": "Key Size",
+  "@keySize": {
+    "description": "Key size label"
+  },
+
+  "identity": "Identity",
+  "@identity": {
+    "description": "Identity label"
+  },
+
+  "keepKeySafe": "Keep this key safe! Never share it with others.",
+  "@keepKeySafe": {
+    "description": "Keep key safe warning"
+  },
+
+  "pastePrivateKeyInPgpFormat": "Paste your Private Key in PGP armor format:",
+  "@pastePrivateKeyInPgpFormat": {
+    "description": "Paste Private Key instruction"
+  },
+
+  "beginPgpPrivateKeyBlock": "-----BEGIN PGP PRIVATE KEY BLOCK-----",
+  "@beginPgpPrivateKeyBlock": {
+    "description": "PGP Private Key Block begin"
+  },
+
+  "pleasePasteKey": "Please paste a key",
+  "@pleasePasteKey": {
+    "description": "Paste key validation"
+  },
+
+  "invalidKeyFormat": "Invalid key format",
+  "@invalidKeyFormat": {
+    "description": "Invalid key format error"
+  },
+
+  "privateKeySuccessfullyImported": "Private Key successfully imported!",
+  "@privateKeySuccessfullyImported": {
+    "description": "Private Key imported success"
+  },
+
+  "selectBackupToRestore": "Select the backup you want to restore:",
+  "@selectBackupToRestore": {
+    "description": "Select backup instruction"
+  },
+
+  "selectBackup": "Select Backup",
+  "@selectBackup": {
+    "description": "Select backup title"
+  },
+
+  "decryptBackup": "Decrypt Backup",
+  "@decryptBackup": {
+    "description": "Decrypt backup title"
+  },
+
+  "copiedToClipboard": "{label} copied to clipboard",
+  "@copiedToClipboard": {
+    "description": "Copied to clipboard message",
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+
+  "publicKeySuccessfullyUploaded": "Public Key successfully uploaded!",
+  "@publicKeySuccessfullyUploaded": {
+    "description": "Public Key uploaded success"
+  },
+
+  "backupPassword": "Backup Password",
+  "@backupPassword": {
+    "description": "Backup password label"
+  },
+
+  "keyGenerationTooLong": "Key generation is taking too long. Please try again or restart the app.",
+  "@keyGenerationTooLong": {
+    "description": "Key generation timeout error"
+  },
+
+  "noOwnPgpKey": "No own PGP key available. Please upload your Public Key.",
+  "@noOwnPgpKey": {
+    "description": "No own PGP key error"
+  },
+
+  "recipientHasNoPgpKey": "Recipient has no PGP key",
+  "@recipientHasNoPgpKey": {
+    "description": "Recipient has no PGP key error"
   }
 }

@@ -228,10 +228,10 @@ abstract class AppLocalizations {
   /// **'Mind. 8 Zeichen, Großbuchst., Kleinbuchst., Ziffer'**
   String get passwordHelper;
 
-  /// Passwort zu kurz Validierung
+  /// Passwort Mindestlänge Validierung
   ///
   /// In de, this message translates to:
-  /// **'Passwort muss mindestens 8 Zeichen lang sein'**
+  /// **'Passwort muss mindestens 8 Zeichen haben'**
   String get passwordMinLength;
 
   /// Passwort benötigt Großbuchstaben
@@ -306,10 +306,10 @@ abstract class AppLocalizations {
   /// **'Registrierung fehlgeschlagen'**
   String get registrationFailed;
 
-  /// Schlüsselgenerierung Dialog Titel
+  /// Schlüssel wird generiert Status
   ///
   /// In de, this message translates to:
-  /// **'Sicherheitsschlüssel wird erstellt...'**
+  /// **'Schlüssel wird generiert...'**
   String get generatingKey;
 
   /// Schlüsselgenerierung Dialog Nachricht
@@ -666,10 +666,10 @@ abstract class AppLocalizations {
   /// **'Passwort zur Bestätigung'**
   String get passwordConfirmation;
 
-  /// Bitte gib dein Passwort ein Fehler
+  /// Passwort eingeben Validierung
   ///
   /// In de, this message translates to:
-  /// **'Bitte gib dein Passwort ein'**
+  /// **'Bitte gib das Passwort ein'**
   String get pleaseEnterPassword;
 
   /// Fehler beim Löschen des Kontos
@@ -1870,7 +1870,7 @@ abstract class AppLocalizations {
   ///
   /// In de, this message translates to:
   /// **'Fehler beim Laden'**
-  String get errorLoading;
+  String get errorLoadingTitle;
 
   /// Von Label
   ///
@@ -1980,10 +1980,10 @@ abstract class AppLocalizations {
   /// **'Nachricht wird entschlüsselt...'**
   String get decryptingMessage;
 
-  /// Entschlüsselung fehlgeschlagen Fehler
+  /// Entschlüsselung fehlgeschlagen Fallback
   ///
   /// In de, this message translates to:
-  /// **'Entschlüsselung fehlgeschlagen'**
+  /// **'[Entschlüsselung fehlgeschlagen]'**
   String get decryptionFailed;
 
   /// Ende-zu-Ende verschlüsselt Label
@@ -2117,6 +2117,540 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Fehler beim Speichern: {error}'**
   String errorSavingDraft(String error);
+
+  /// PGP-Schlüssel Titel
+  ///
+  /// In de, this message translates to:
+  /// **'PGP-Schlüssel'**
+  String get pgpKeys;
+
+  /// Schlüsselinformationen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel-Informationen'**
+  String get keyInformation;
+
+  /// Schlüssel generieren Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Neuen Schlüssel generieren'**
+  String get generateNewKey;
+
+  /// Schlüssel exportieren Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel exportieren'**
+  String get exportKey;
+
+  /// Schlüssel importieren Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel importieren'**
+  String get importKey;
+
+  /// Server-Backup Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Server-Backup'**
+  String get serverBackup;
+
+  /// Sicherheitshinweise Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherheitshinweise'**
+  String get securityNotices;
+
+  /// Backup-Passwort Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Backup-Passwort festlegen'**
+  String get setBackupPassword;
+
+  /// Schlüssel generieren Aktion
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel generieren'**
+  String get generateKey;
+
+  /// Private Key Export Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Private Key Export'**
+  String get privateKeyExport;
+
+  /// Private Key importieren Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Private Key importieren'**
+  String get importPrivateKey;
+
+  /// Schlüssel eingerichtet Status
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel eingerichtet'**
+  String get keyConfigured;
+
+  /// Schlüssel nicht vollständig Status
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel nicht vollständig'**
+  String get keyIncomplete;
+
+  /// Kann Nachrichten senden
+  ///
+  /// In de, this message translates to:
+  /// **'Du kannst verschlüsselte Nachrichten senden und empfangen.'**
+  String get canSendEncryptedMessages;
+
+  /// Schlüssel generieren oder importieren
+  ///
+  /// In de, this message translates to:
+  /// **'Generiere einen neuen Schlüssel oder importiere einen vorhandenen.'**
+  String get generateOrImportKey;
+
+  /// Private Key lokal, Public Key fehlt
+  ///
+  /// In de, this message translates to:
+  /// **'Private Key vorhanden, aber Public Key nicht auf dem Server.'**
+  String get privateKeyLocalPublicKeyMissing;
+
+  /// Public Key auf Server, Private Key fehlt
+  ///
+  /// In de, this message translates to:
+  /// **'Public Key auf Server, aber Private Key fehlt lokal.'**
+  String get publicKeyOnServerPrivateKeyMissing;
+
+  /// Schlüssel stimmen nicht überein
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel stimmen nicht überein.'**
+  String get keysMismatch;
+
+  /// Private Key exportieren Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Exportiere deinen Private Key für ein Backup. Bewahre ihn sicher auf!'**
+  String get exportPrivateKeyForBackup;
+
+  /// Private Key importieren Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Importiere einen vorhandenen Private Key (z.B. von einem Backup oder anderem Gerät).'**
+  String get importExistingPrivateKey;
+
+  /// Server-Backup Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Speichere deinen Private Key verschlüsselt auf dem Server. So kannst du ihn auf einem anderen Gerät wiederherstellen.'**
+  String get storePrivateKeyEncryptedOnServer;
+
+  /// Sicherheitshinweis Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Sicherheitshinweis'**
+  String get securityWarning;
+
+  /// Private Key auf Server speichern Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Du bist dabei, deinen Private Key auf dem Server zu speichern.'**
+  String get aboutToStorePrivateKeyOnServer;
+
+  /// Verschlüsselung vor Upload Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Der Key wird mit einem Passwort verschlüsselt, bevor er hochgeladen wird. Trotzdem solltest du folgendes beachten:'**
+  String get keyWillBeEncryptedBeforeUpload;
+
+  /// Starkes Passwort wählen
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle ein starkes, einzigartiges Passwort'**
+  String get chooseStrongUniquePassword;
+
+  /// Passwort kann nicht zurückgesetzt werden
+  ///
+  /// In de, this message translates to:
+  /// **'Dieses Passwort kann NICHT zurückgesetzt werden'**
+  String get passwordCannotBeReset;
+
+  /// Backup ohne Passwort wertlos
+  ///
+  /// In de, this message translates to:
+  /// **'Ohne Passwort ist das Backup wertlos'**
+  String get backupWorthlessWithoutPassword;
+
+  /// Server-Betreiber könnte Passwort erraten
+  ///
+  /// In de, this message translates to:
+  /// **'Der Server-Betreiber könnte versuchen, das Passwort zu erraten'**
+  String get serverOperatorMightGuessPassword;
+
+  /// Starkes Passwort für Backup
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle ein starkes Passwort für dein Backup. Du brauchst es, um den Key wiederherzustellen.'**
+  String get chooseStrongPasswordForBackup;
+
+  /// Passwörter stimmen nicht überein Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Passwörter stimmen nicht überein'**
+  String get passwordsDontMatch;
+
+  /// Namen eingeben Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib einen Namen ein'**
+  String get pleaseEnterName;
+
+  /// Backup-Passwort eingeben
+  ///
+  /// In de, this message translates to:
+  /// **'Gib das Passwort ein, mit dem du das Backup verschlüsselt hast:'**
+  String get enterPasswordForBackup;
+
+  /// Entschlüsselung und Import läuft
+  ///
+  /// In de, this message translates to:
+  /// **'Entschlüssele und importiere...'**
+  String get decryptingAndImporting;
+
+  /// Entschlüsselung fehlgeschlagen Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Entschlüsselung fehlgeschlagen. Falsches Passwort?'**
+  String get decryptionFailedWrongPassword;
+
+  /// Ich verstehe, fortfahren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Ich verstehe, fortfahren'**
+  String get understandProceed;
+
+  /// Public Key hochladen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Public Key hochladen'**
+  String get uploadPublicKey;
+
+  /// Generiere läuft
+  ///
+  /// In de, this message translates to:
+  /// **'Generiere...'**
+  String get generating;
+
+  /// Private Key exportieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Private Key exportieren'**
+  String get exportPrivateKey;
+
+  /// Private Key einfügen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Private Key einfügen'**
+  String get pastePrivateKey;
+
+  /// Vom Server-Backup laden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Vom Server-Backup laden'**
+  String get loadFromServerBackup;
+
+  /// Verschlüsseltes Backup erstellen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Verschlüsseltes Backup erstellen'**
+  String get createEncryptedBackup;
+
+  /// Fingerprint kopieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Fingerprint kopieren'**
+  String get copyFingerprint;
+
+  /// Backup erstellen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Backup erstellen'**
+  String get createBackup;
+
+  /// Wiederherstellen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Wiederherstellen'**
+  String get restore;
+
+  /// Fehler beim Laden
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Laden: {error}'**
+  String errorLoading(String error);
+
+  /// Schlüssel wird ersetzt Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Der vorhandene Schlüssel wird ersetzt!'**
+  String get existingKeyWillBeReplaced;
+
+  /// Ungültiger Key Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültiger Key nach Entschlüsselung'**
+  String get invalidKeyAfterDecryption;
+
+  /// Kein Private Key Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Private Key vorhanden'**
+  String get noPrivateKey;
+
+  /// Kein Fingerprint Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Fingerprint vorhanden'**
+  String get noFingerprint;
+
+  /// Backup gespeichert Erfolg
+  ///
+  /// In de, this message translates to:
+  /// **'Backup erfolgreich auf Server gespeichert!'**
+  String get backupSuccessfullySaved;
+
+  /// Backup Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Backup: {error}'**
+  String errorBackup(String error);
+
+  /// Kein Backup gefunden
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Backup auf dem Server gefunden.'**
+  String get noBackupOnServer;
+
+  /// Generierung Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler bei der Generierung: {error}'**
+  String errorGeneration(String error);
+
+  /// Schlüssel generiert Erfolg
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel erfolgreich generiert und hochgeladen!'**
+  String get keySuccessfullyGenerated;
+
+  /// Upload Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Hochladen: {error}'**
+  String errorUploading(String error);
+
+  /// Private Key verlässt Gerät nie
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Private Key verlässt niemals dieses Gerät'**
+  String get privateKeyNeverLeavesDevice;
+
+  /// Nur Public Key auf Server
+  ///
+  /// In de, this message translates to:
+  /// **'Nur der Public Key wird auf dem Server gespeichert'**
+  String get onlyPublicKeyStoredOnServer;
+
+  /// Regelmäßige Backups empfohlen
+  ///
+  /// In de, this message translates to:
+  /// **'Erstelle regelmäßig Backups deines Private Keys'**
+  String get regularBackupsRecommended;
+
+  /// Verlorener Key kann Nachrichten nicht entschlüsseln
+  ///
+  /// In de, this message translates to:
+  /// **'Bei Verlust des Keys können alte Nachrichten nicht entschlüsselt werden'**
+  String get lostKeyCannotDecryptOldMessages;
+
+  /// Ed25519 Schlüssel erstellen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Erstellt einen neuen Ed25519/Curve25519 Schlüssel. Dies dauert nur wenige Sekunden.'**
+  String get createsNewEd25519Key;
+
+  /// Ed25519 Schlüssel wird erstellt
+  ///
+  /// In de, this message translates to:
+  /// **'Ed25519/Curve25519 Schlüssel wird erstellt. Dies dauert nur wenige Sekunden.'**
+  String get generatingEd25519Key;
+
+  /// Schlüssel wiederhergestellt Erfolg
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüssel erfolgreich wiederhergestellt!'**
+  String get keySuccessfullyRestored;
+
+  /// Mit Passphrase schützen Checkbox
+  ///
+  /// In de, this message translates to:
+  /// **'Mit Passphrase schützen'**
+  String get protectWithPassphrase;
+
+  /// Empfohlen für Sicherheit
+  ///
+  /// In de, this message translates to:
+  /// **'Empfohlen für zusätzliche Sicherheit'**
+  String get recommendedForSecurity;
+
+  /// Passphrase Label
+  ///
+  /// In de, this message translates to:
+  /// **'Passphrase'**
+  String get passphrase;
+
+  /// Sichere Passphrase eingeben Hint
+  ///
+  /// In de, this message translates to:
+  /// **'Sichere Passphrase eingeben'**
+  String get enterSecurePassphrase;
+
+  /// Name Label
+  ///
+  /// In de, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// Dein Name Hint
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Name'**
+  String get yourName;
+
+  /// E-Mail optional Label
+  ///
+  /// In de, this message translates to:
+  /// **'E-Mail (optional)'**
+  String get emailOptional;
+
+  /// E-Mail Hint
+  ///
+  /// In de, this message translates to:
+  /// **'deine@email.com'**
+  String get yourEmailCom;
+
+  /// Fingerprint Label
+  ///
+  /// In de, this message translates to:
+  /// **'Fingerprint'**
+  String get fingerprint;
+
+  /// Algorithmus Label
+  ///
+  /// In de, this message translates to:
+  /// **'Algorithmus'**
+  String get algorithm;
+
+  /// Schlüsselgröße Label
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüsselgröße'**
+  String get keySize;
+
+  /// Identität Label
+  ///
+  /// In de, this message translates to:
+  /// **'Identität'**
+  String get identity;
+
+  /// Schlüssel sicher aufbewahren Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Bewahre diesen Schlüssel sicher auf! Teile ihn niemals mit anderen.'**
+  String get keepKeySafe;
+
+  /// Private Key einfügen Anleitung
+  ///
+  /// In de, this message translates to:
+  /// **'Füge deinen Private Key im PGP-Armor Format ein:'**
+  String get pastePrivateKeyInPgpFormat;
+
+  /// PGP Private Key Block Anfang
+  ///
+  /// In de, this message translates to:
+  /// **'-----BEGIN PGP PRIVATE KEY BLOCK-----'**
+  String get beginPgpPrivateKeyBlock;
+
+  /// Key einfügen Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte füge einen Key ein'**
+  String get pleasePasteKey;
+
+  /// Ungültiges Key-Format Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültiges Key-Format'**
+  String get invalidKeyFormat;
+
+  /// Private Key importiert Erfolg
+  ///
+  /// In de, this message translates to:
+  /// **'Private Key erfolgreich importiert!'**
+  String get privateKeySuccessfullyImported;
+
+  /// Backup auswählen Anleitung
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle das Backup aus, das du wiederherstellen möchtest:'**
+  String get selectBackupToRestore;
+
+  /// Backup auswählen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Backup auswählen'**
+  String get selectBackup;
+
+  /// Backup entschlüsseln Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Backup entschlüsseln'**
+  String get decryptBackup;
+
+  /// In Zwischenablage kopiert Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'{label} in die Zwischenablage kopiert'**
+  String copiedToClipboard(String label);
+
+  /// Public Key hochgeladen Erfolg
+  ///
+  /// In de, this message translates to:
+  /// **'Public Key erfolgreich hochgeladen!'**
+  String get publicKeySuccessfullyUploaded;
+
+  /// Backup-Passwort Label
+  ///
+  /// In de, this message translates to:
+  /// **'Backup-Passwort'**
+  String get backupPassword;
+
+  /// Schlüsselgenerierung Timeout Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Schlüsselgenerierung dauert zu lange. Bitte versuche es erneut oder starte die App neu.'**
+  String get keyGenerationTooLong;
+
+  /// Kein eigener PGP-Schlüssel Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Kein eigener PGP-Schlüssel vorhanden. Bitte lade deinen Public Key hoch.'**
+  String get noOwnPgpKey;
+
+  /// Empfänger hat keinen PGP-Schlüssel Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Empfänger hat keinen PGP-Schlüssel'**
+  String get recipientHasNoPgpKey;
 }
 
 class _AppLocalizationsDelegate

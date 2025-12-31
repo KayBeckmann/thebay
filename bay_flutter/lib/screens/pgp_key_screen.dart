@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:openpgp/openpgp.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/pgp_key_service.dart';
 
 /// Screen für PGP Key Management.
@@ -43,8 +44,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     } catch (e) {
       setState(() => _isLoading = false);
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Laden: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }
@@ -52,9 +54,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PGP-Schlüssel'),
+        title: Text(l10n.pgpKeys),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -85,6 +88,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Widget _buildStatusCard() {
+    final l10n = AppLocalizations.of(context)!;
     final isConfigured = _keyStatus?.isFullyConfigured ?? false;
     final hasLocal = _keyStatus?.hasLocalPrivateKey ?? false;
     final hasServer = _keyStatus?.hasServerPublicKey ?? false;
@@ -109,15 +113,15 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                     children: [
                       Text(
                         isConfigured
-                            ? 'Schlüssel eingerichtet'
-                            : 'Schlüssel nicht vollständig',
+                            ? l10n.keyConfigured
+                            : l10n.keyIncomplete,
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                       ),
                       Text(
                         isConfigured
-                            ? 'Du kannst verschlüsselte Nachrichten senden und empfangen.'
+                            ? l10n.canSendEncryptedMessages
                             : _getStatusMessage(hasLocal, hasServer),
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
@@ -133,7 +137,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 child: FilledButton.icon(
                   onPressed: _uploadPublicKey,
                   icon: const Icon(Icons.cloud_upload),
-                  label: const Text('Public Key hochladen'),
+                  label: Text(l10n.uploadPublicKey),
                 ),
               ),
             ],
@@ -144,17 +148,19 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   String _getStatusMessage(bool hasLocal, bool hasServer) {
+    final l10n = AppLocalizations.of(context)!;
     if (!hasLocal && !hasServer) {
-      return 'Generiere einen neuen Schlüssel oder importiere einen vorhandenen.';
+      return l10n.generateOrImportKey;
     } else if (hasLocal && !hasServer) {
-      return 'Private Key vorhanden, aber Public Key nicht auf dem Server.';
+      return l10n.privateKeyLocalPublicKeyMissing;
     } else if (!hasLocal && hasServer) {
-      return 'Public Key auf Server, aber Private Key fehlt lokal.';
+      return l10n.publicKeyOnServerPrivateKeyMissing;
     }
-    return 'Schlüssel stimmen nicht überein.';
+    return l10n.keysMismatch;
   }
 
   Widget _buildKeyInfoCard() {
+    final l10n = AppLocalizations.of(context)!;
     final fingerprint = _keyStatus?.localFingerprint ?? '';
     final serverKey = _keyStatus?.serverKey;
 
@@ -165,27 +171,27 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Schlüssel-Informationen',
+              l10n.keyInformation,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 16),
-            _buildInfoRow('Fingerprint', _formatFingerprint(fingerprint)),
+            _buildInfoRow(l10n.fingerprint, _formatFingerprint(fingerprint)),
             if (serverKey != null) ...[
-              _buildInfoRow('Algorithmus', serverKey.algorithm),
-              _buildInfoRow('Schlüsselgröße', '${serverKey.keySize} Bit'),
-              _buildInfoRow('Identität', serverKey.keyIdentity),
+              _buildInfoRow(l10n.algorithm, serverKey.algorithm),
+              _buildInfoRow(l10n.keySize, '${serverKey.keySize} Bit'),
+              _buildInfoRow(l10n.identity, serverKey.keyIdentity),
               _buildInfoRow(
-                'Erstellt',
+                l10n.created,
                 _formatDate(serverKey.createdAt),
               ),
             ],
             const SizedBox(height: 8),
             TextButton.icon(
-              onPressed: () => _copyToClipboard(fingerprint, 'Fingerprint'),
+              onPressed: () => _copyToClipboard(fingerprint, l10n.fingerprint),
               icon: const Icon(Icons.copy, size: 18),
-              label: const Text('Fingerprint kopieren'),
+              label: Text(l10n.copyFingerprint),
             ),
           ],
         ),
@@ -222,6 +228,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Widget _buildGenerateCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -233,7 +240,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 const Icon(Icons.add_circle_outline),
                 const SizedBox(width: 8),
                 Text(
-                  'Neuen Schlüssel generieren',
+                  l10n.generateNewKey,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -242,8 +249,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Erstellt einen neuen Ed25519/Curve25519 Schlüssel. '
-              'Dies dauert nur wenige Sekunden.',
+              l10n.createsNewEd25519Key,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             if (_keyStatus?.hasLocalPrivateKey == true) ...[
@@ -264,7 +270,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Der vorhandene Schlüssel wird ersetzt!',
+                        l10n.existingKeyWillBeReplaced,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onErrorContainer,
                           fontSize: 12,
@@ -287,7 +293,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : const Icon(Icons.vpn_key),
-                label: Text(_isGenerating ? 'Generiere...' : 'Schlüssel generieren'),
+                label: Text(_isGenerating ? l10n.generating : l10n.generateKey),
               ),
             ),
           ],
@@ -297,6 +303,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Widget _buildExportCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -308,7 +315,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 const Icon(Icons.download),
                 const SizedBox(width: 8),
                 Text(
-                  'Schlüssel exportieren',
+                  l10n.exportKey,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -317,8 +324,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Exportiere deinen Private Key für ein Backup. '
-              'Bewahre ihn sicher auf!',
+              l10n.exportPrivateKeyForBackup,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 16),
@@ -327,7 +333,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               child: OutlinedButton.icon(
                 onPressed: _showExportDialog,
                 icon: const Icon(Icons.key),
-                label: const Text('Private Key exportieren'),
+                label: Text(l10n.exportPrivateKey),
               ),
             ),
           ],
@@ -337,6 +343,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Widget _buildImportCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -348,7 +355,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 const Icon(Icons.upload),
                 const SizedBox(width: 8),
                 Text(
-                  'Schlüssel importieren',
+                  l10n.importKey,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -357,8 +364,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Importiere einen vorhandenen Private Key '
-              '(z.B. von einem Backup oder anderem Gerät).',
+              l10n.importExistingPrivateKey,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 16),
@@ -367,7 +373,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               child: OutlinedButton.icon(
                 onPressed: _showImportDialog,
                 icon: const Icon(Icons.file_upload),
-                label: const Text('Private Key einfügen'),
+                label: Text(l10n.pastePrivateKey),
               ),
             ),
             const SizedBox(height: 8),
@@ -376,7 +382,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               child: OutlinedButton.icon(
                 onPressed: _showDownloadBackupDialog,
                 icon: const Icon(Icons.cloud_download),
-                label: const Text('Vom Server-Backup laden'),
+                label: Text(l10n.loadFromServerBackup),
               ),
             ),
           ],
@@ -386,6 +392,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Widget _buildSecurityInfoCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       color: Theme.of(context).colorScheme.surfaceContainerHighest,
       child: Padding(
@@ -401,7 +408,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Sicherheitshinweise',
+                  l10n.securityNotices,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -410,16 +417,16 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 12),
             _buildSecurityItem(
-              '• Dein Private Key verlässt niemals dieses Gerät',
+              '• ${l10n.privateKeyNeverLeavesDevice}',
             ),
             _buildSecurityItem(
-              '• Nur der Public Key wird auf dem Server gespeichert',
+              '• ${l10n.onlyPublicKeyStoredOnServer}',
             ),
             _buildSecurityItem(
-              '• Erstelle regelmäßig Backups deines Private Keys',
+              '• ${l10n.regularBackupsRecommended}',
             ),
             _buildSecurityItem(
-              '• Bei Verlust des Keys können alte Nachrichten nicht entschlüsselt werden',
+              '• ${l10n.lostKeyCannotDecryptOldMessages}',
             ),
           ],
         ),
@@ -438,6 +445,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Widget _buildServerBackupCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -449,7 +457,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 const Icon(Icons.cloud_upload),
                 const SizedBox(width: 8),
                 Text(
-                  'Server-Backup',
+                  l10n.serverBackup,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -458,8 +466,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Speichere deinen Private Key verschlüsselt auf dem Server. '
-              'So kannst du ihn auf einem anderen Gerät wiederherstellen.',
+              l10n.storePrivateKeyEncryptedOnServer,
               style: Theme.of(context).textTheme.bodySmall,
             ),
             const SizedBox(height: 16),
@@ -468,7 +475,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               child: OutlinedButton.icon(
                 onPressed: _showBackupWarningDialog,
                 icon: const Icon(Icons.backup),
-                label: const Text('Verschlüsseltes Backup erstellen'),
+                label: Text(l10n.createEncryptedBackup),
               ),
             ),
           ],
@@ -478,6 +485,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showBackupWarningDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -486,48 +494,47 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
           size: 48,
           color: Theme.of(context).colorScheme.error,
         ),
-        title: const Text('Sicherheitshinweis'),
+        title: Text(l10n.securityWarning),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Du bist dabei, deinen Private Key auf dem Server zu speichern.',
+              l10n.aboutToStorePrivateKeyOnServer,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Der Key wird mit einem Passwort verschlüsselt, bevor er hochgeladen wird. '
-              'Trotzdem solltest du folgendes beachten:',
+            Text(
+              l10n.keyWillBeEncryptedBeforeUpload,
             ),
             const SizedBox(height: 12),
             _buildWarningItem(
-              'Wähle ein starkes, einzigartiges Passwort',
+              l10n.chooseStrongUniquePassword,
             ),
             _buildWarningItem(
-              'Dieses Passwort kann NICHT zurückgesetzt werden',
+              l10n.passwordCannotBeReset,
             ),
             _buildWarningItem(
-              'Ohne Passwort ist das Backup wertlos',
+              l10n.backupWorthlessWithoutPassword,
             ),
             _buildWarningItem(
-              'Der Server-Betreiber könnte versuchen, das Passwort zu erraten',
+              l10n.serverOperatorMightGuessPassword,
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () {
               Navigator.pop(context);
               _showBackupPasswordDialog();
             },
-            child: const Text('Ich verstehe, fortfahren'),
+            child: Text(l10n.understandProceed),
           ),
         ],
       ),
@@ -558,6 +565,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showBackupPasswordDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final passwordController = TextEditingController();
     final confirmController = TextEditingController();
     bool obscurePassword = true;
@@ -569,21 +577,20 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       barrierDismissible: false,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Backup-Passwort festlegen'),
+          title: Text(l10n.setBackupPassword),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Wähle ein starkes Passwort für dein Backup. '
-                  'Du brauchst es, um den Key wiederherzustellen.',
+                Text(
+                  l10n.chooseStrongPasswordForBackup,
                 ),
                 const SizedBox(height: 16),
                 TextField(
                   controller: passwordController,
                   obscureText: obscurePassword,
                   decoration: InputDecoration(
-                    labelText: 'Passwort',
+                    labelText: l10n.password,
                     border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -602,7 +609,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                   controller: confirmController,
                   obscureText: obscureConfirm,
                   decoration: InputDecoration(
-                    labelText: 'Passwort bestätigen',
+                    labelText: l10n.confirmPassword,
                     border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -632,7 +639,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: () {
@@ -641,14 +648,14 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
 
                 if (password.length < 8) {
                   setDialogState(() {
-                    error = 'Passwort muss mindestens 8 Zeichen haben';
+                    error = l10n.passwordMinLength;
                   });
                   return;
                 }
 
                 if (password != confirm) {
                   setDialogState(() {
-                    error = 'Passwörter stimmen nicht überein';
+                    error = l10n.passwordsDontMatch;
                   });
                   return;
                 }
@@ -656,7 +663,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 Navigator.pop(context);
                 _uploadEncryptedBackup(password);
               },
-              child: const Text('Backup erstellen'),
+              child: Text(l10n.createBackup),
             ),
           ],
         ),
@@ -665,17 +672,18 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Future<void> _uploadEncryptedBackup(String password) async {
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
 
     try {
       final privateKey = await widget.pgpKeyService.getPrivateKey();
       if (privateKey == null) {
-        throw Exception('Kein Private Key vorhanden');
+        throw Exception(l10n.noPrivateKey);
       }
 
       final fingerprint = await widget.pgpKeyService.getFingerprint();
       if (fingerprint == null) {
-        throw Exception('Kein Fingerprint vorhanden');
+        throw Exception(l10n.noFingerprint);
       }
 
       // Verschlüssele den Private Key symmetrisch mit dem Passwort
@@ -700,9 +708,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       print('[PgpKeyScreen] Backup erfolgreich hochgeladen');
 
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Backup erfolgreich auf Server gespeichert!'),
+          SnackBar(
+            content: Text(l10n.backupSuccessfullySaved),
             backgroundColor: Colors.green,
           ),
         );
@@ -710,8 +719,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     } catch (e) {
       print('[PgpKeyScreen] Fehler beim Backup: $e');
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Backup: $e')),
+          SnackBar(content: Text(l10n.errorBackup(e.toString()))),
         );
       }
     } finally {
@@ -733,9 +743,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       if (!mounted) return;
 
       if (backups.isEmpty) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Kein Backup auf dem Server gefunden.'),
+          SnackBar(
+            content: Text(l10n.noBackupOnServer),
           ),
         );
         return;
@@ -747,25 +758,27 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       setState(() => _isLoading = false);
       print('[PgpKeyScreen] Fehler beim Laden der Backups: $e');
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Laden: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }
   }
 
   void _showSelectBackupDialog(List<EncryptedKeyBackup> backups) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Backup auswählen'),
+        title: Text(l10n.selectBackup),
         content: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Wähle das Backup aus, das du wiederherstellen möchtest:',
+              Text(
+                l10n.selectBackupToRestore,
               ),
               const SizedBox(height: 16),
               ...backups.map((backup) => Card(
@@ -791,7 +804,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
         ],
       ),
@@ -799,6 +812,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showRestorePasswordDialog(EncryptedKeyBackup backup) {
+    final l10n = AppLocalizations.of(context)!;
     final passwordController = TextEditingController();
     bool obscurePassword = true;
     String? error;
@@ -809,7 +823,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       barrierDismissible: false,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Backup entschlüsseln'),
+          title: Text(l10n.decryptBackup),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -822,8 +836,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                       ),
                 ),
                 const SizedBox(height: 16),
-                const Text(
-                  'Gib das Passwort ein, mit dem du das Backup verschlüsselt hast:',
+                Text(
+                  l10n.enterPasswordForBackup,
                 ),
                 const SizedBox(height: 16),
                 TextField(
@@ -831,7 +845,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                   obscureText: obscurePassword,
                   enabled: !isRestoring,
                   decoration: InputDecoration(
-                    labelText: 'Backup-Passwort',
+                    labelText: l10n.backupPassword,
                     border: const OutlineInputBorder(),
                     suffixIcon: IconButton(
                       icon: Icon(
@@ -857,15 +871,15 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                 ],
                 if (isRestoring) ...[
                   const SizedBox(height: 16),
-                  const Row(
+                  Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                         height: 20,
                         child: CircularProgressIndicator(strokeWidth: 2),
                       ),
-                      SizedBox(width: 12),
-                      Text('Entschlüssele und importiere...'),
+                      const SizedBox(width: 12),
+                      Text(l10n.decryptingAndImporting),
                     ],
                   ),
                 ],
@@ -875,7 +889,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
           actions: [
             TextButton(
               onPressed: isRestoring ? null : () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: isRestoring
@@ -885,7 +899,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
 
                       if (password.isEmpty) {
                         setDialogState(() {
-                          error = 'Bitte gib das Passwort ein';
+                          error = l10n.pleaseEnterPassword;
                         });
                         return;
                       }
@@ -903,12 +917,11 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                       } catch (e) {
                         setDialogState(() {
                           isRestoring = false;
-                          error = 'Entschlüsselung fehlgeschlagen. '
-                              'Falsches Passwort?';
+                          error = l10n.decryptionFailedWrongPassword;
                         });
                       }
                     },
-              child: const Text('Wiederherstellen'),
+              child: Text(l10n.restore),
             ),
           ],
         ),
@@ -931,7 +944,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
 
     // Validiere, dass es ein gültiger PGP Key ist
     if (!decryptedKey.contains('-----BEGIN PGP PRIVATE KEY BLOCK-----')) {
-      throw Exception('Ungültiger Key nach Entschlüsselung');
+      final l10n = AppLocalizations.of(context)!;
+      throw Exception(l10n.invalidKeyAfterDecryption);
     }
 
     print('[PgpKeyScreen] Entschlüsselung erfolgreich, importiere Key...');
@@ -948,9 +962,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     await _loadKeyStatus();
 
     if (mounted) {
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Schlüssel erfolgreich wiederhergestellt!'),
+        SnackBar(
+          content: Text(l10n.keySuccessfullyRestored),
           backgroundColor: Colors.green,
         ),
       );
@@ -972,6 +987,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showGenerateDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final nameController = TextEditingController();
     final emailController = TextEditingController();
     final passphraseController = TextEditingController();
@@ -982,7 +998,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       barrierDismissible: false,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Schlüssel generieren'),
+          title: Text(l10n.generateKey),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -990,17 +1006,17 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               children: [
                 TextField(
                   controller: nameController,
-                  decoration: const InputDecoration(
-                    labelText: 'Name',
-                    hintText: 'Dein Name',
+                  decoration: InputDecoration(
+                    labelText: l10n.name,
+                    hintText: l10n.yourName,
                   ),
                 ),
                 const SizedBox(height: 16),
                 TextField(
                   controller: emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'E-Mail (optional)',
-                    hintText: 'deine@email.com',
+                  decoration: InputDecoration(
+                    labelText: l10n.emailOptional,
+                    hintText: l10n.yourEmailCom,
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -1010,8 +1026,8 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                   onChanged: (value) {
                     setDialogState(() => usePassphrase = value ?? false);
                   },
-                  title: const Text('Mit Passphrase schützen'),
-                  subtitle: const Text('Empfohlen für zusätzliche Sicherheit'),
+                  title: Text(l10n.protectWithPassphrase),
+                  subtitle: Text(l10n.recommendedForSecurity),
                   contentPadding: EdgeInsets.zero,
                 ),
                 if (usePassphrase) ...[
@@ -1019,9 +1035,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                   TextField(
                     controller: passphraseController,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Passphrase',
-                      hintText: 'Sichere Passphrase eingeben',
+                    decoration: InputDecoration(
+                      labelText: l10n.passphrase,
+                      hintText: l10n.enterSecurePassphrase,
                     ),
                   ),
                 ],
@@ -1031,13 +1047,13 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: () async {
                 if (nameController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Bitte gib einen Namen ein')),
+                    SnackBar(content: Text(l10n.pleaseEnterName)),
                   );
                   return;
                 }
@@ -1051,7 +1067,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                   passphrase: usePassphrase ? passphraseController.text : null,
                 );
               },
-              child: const Text('Generieren'),
+              child: Text(l10n.generateKey),
             ),
           ],
         ),
@@ -1107,9 +1123,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       await _loadKeyStatus();
 
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Schlüssel erfolgreich generiert und hochgeladen!'),
+          SnackBar(
+            content: Text(l10n.keySuccessfullyGenerated),
             backgroundColor: Colors.green,
           ),
         );
@@ -1121,8 +1138,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       if (mounted) Navigator.of(context).pop();
 
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler bei der Generierung: $e')),
+          SnackBar(content: Text(l10n.errorGeneration(e.toString()))),
         );
       }
     } finally {
@@ -1131,6 +1149,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showGeneratingProgressDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -1147,15 +1166,14 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               ),
               const SizedBox(height: 24),
               Text(
-                'Schlüssel wird generiert...',
+                l10n.generatingKey,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
               const SizedBox(height: 8),
               Text(
-                'Ed25519/Curve25519 Schlüssel wird erstellt.\n'
-                'Dies dauert nur wenige Sekunden.',
+                l10n.generatingEd25519Key,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -1171,17 +1189,18 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   Future<void> _uploadPublicKey() async {
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
 
     try {
       final privateKey = await widget.pgpKeyService.getPrivateKey();
       if (privateKey == null) {
-        throw Exception('Kein Private Key vorhanden');
+        throw Exception(l10n.noPrivateKey);
       }
 
       final fingerprint = await widget.pgpKeyService.getFingerprint();
       if (fingerprint == null) {
-        throw Exception('Kein Fingerprint vorhanden');
+        throw Exception(l10n.noFingerprint);
       }
 
       // Extrahiere Public Key aus Private Key
@@ -1203,9 +1222,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
 
       await _loadKeyStatus();
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Public Key erfolgreich hochgeladen!'),
+          SnackBar(
+            content: Text(l10n.publicKeySuccessfullyUploaded),
             backgroundColor: Colors.green,
           ),
         );
@@ -1213,8 +1233,9 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     } catch (e) {
       print('[PgpKeyScreen] Fehler beim Hochladen: $e');
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Hochladen: $e')),
+          SnackBar(content: Text(l10n.errorUploading(e.toString()))),
         );
       }
     } finally {
@@ -1223,12 +1244,13 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showExportDialog() async {
+    final l10n = AppLocalizations.of(context)!;
     final privateKey = await widget.pgpKeyService.exportPrivateKey();
 
     if (privateKey == null) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Kein Private Key vorhanden')),
+          SnackBar(content: Text(l10n.noPrivateKey)),
         );
       }
       return;
@@ -1239,7 +1261,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Private Key Export'),
+        title: Text(l10n.privateKeyExport),
         content: SizedBox(
           width: double.maxFinite,
           child: Column(
@@ -1261,8 +1283,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Bewahre diesen Schlüssel sicher auf! '
-                        'Teile ihn niemals mit anderen.',
+                        l10n.keepKeySafe,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onErrorContainer,
                           fontSize: 12,
@@ -1296,7 +1317,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Schließen'),
+            child: Text(l10n.close),
           ),
           FilledButton.icon(
             onPressed: () {
@@ -1304,7 +1325,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               Navigator.pop(context);
             },
             icon: const Icon(Icons.copy),
-            label: const Text('Kopieren'),
+            label: Text(l10n.copyFingerprint),
           ),
         ],
       ),
@@ -1312,28 +1333,29 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _showImportDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController();
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Private Key importieren'),
+        title: Text(l10n.importPrivateKey),
         content: SizedBox(
           width: double.maxFinite,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Füge deinen Private Key im PGP-Armor Format ein:',
-                style: TextStyle(fontSize: 12),
+              Text(
+                l10n.pastePrivateKeyInPgpFormat,
+                style: const TextStyle(fontSize: 12),
               ),
               const SizedBox(height: 16),
               TextField(
                 controller: controller,
                 maxLines: 8,
-                decoration: const InputDecoration(
-                  hintText: '-----BEGIN PGP PRIVATE KEY BLOCK-----\n...',
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  hintText: l10n.beginPgpPrivateKeyBlock,
+                  border: const OutlineInputBorder(),
                 ),
                 style: const TextStyle(
                   fontFamily: 'monospace',
@@ -1346,13 +1368,13 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () async {
               if (controller.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Bitte füge einen Key ein')),
+                  SnackBar(content: Text(l10n.pleasePasteKey)),
                 );
                 return;
               }
@@ -1361,25 +1383,26 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                   .importPrivateKey(controller.text);
 
               if (mounted) {
+                final l10n = AppLocalizations.of(context)!;
                 Navigator.pop(context);
                 if (success) {
                   await _loadKeyStatus();
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Private Key erfolgreich importiert!'),
+                    SnackBar(
+                      content: Text(l10n.privateKeySuccessfullyImported),
                       backgroundColor: Colors.green,
                     ),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Ungültiges Key-Format'),
+                    SnackBar(
+                      content: Text(l10n.invalidKeyFormat),
                     ),
                   );
                 }
               }
             },
-            child: const Text('Importieren'),
+            child: Text(l10n.send),
           ),
         ],
       ),
@@ -1387,9 +1410,10 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
   }
 
   void _copyToClipboard(String text, String label) {
+    final l10n = AppLocalizations.of(context)!;
     Clipboard.setData(ClipboardData(text: text));
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('$label in die Zwischenablage kopiert')),
+      SnackBar(content: Text(l10n.copiedToClipboard(label))),
     );
   }
 
@@ -1443,10 +1467,12 @@ class _GeneratingTimerState extends State<_GeneratingTimer> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final minutes = _seconds ~/ 60;
     final secs = _seconds % 60;
+    final formattedTime = '${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}';
     return Text(
-      'Verstrichene Zeit: ${minutes.toString().padLeft(2, '0')}:${secs.toString().padLeft(2, '0')}',
+      l10n.elapsedTime(formattedTime),
       style: Theme.of(context).textTheme.bodySmall?.copyWith(
             fontFamily: 'monospace',
             color: Theme.of(context).colorScheme.primary,
