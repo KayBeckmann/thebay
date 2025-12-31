@@ -269,7 +269,7 @@ class _EditListingScreenState extends State<EditListingScreen> {
       if (mounted) {
         final l10nError = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10nError.genericError.replaceAll('{error}', e.toString()))),
+          SnackBar(content: Text(l10nError.genericError(e.toString()))),
         );
       }
     } finally {

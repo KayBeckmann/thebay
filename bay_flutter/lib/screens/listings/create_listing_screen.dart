@@ -79,7 +79,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
         setState(() => _isLoadingCategories = false);
         final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${l10n.genericError.replaceAll('{error}', '')}: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     }
@@ -204,7 +204,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
       if (mounted) {
         final l10nError = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10nError.genericError.replaceAll('{error}', e.toString()))),
+          SnackBar(content: Text(l10nError.genericError(e.toString()))),
         );
       }
     } finally {
