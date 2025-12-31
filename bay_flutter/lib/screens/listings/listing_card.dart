@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart';
 import '../../widgets/price_display.dart';
 import 'listing_detail_screen.dart';
@@ -30,18 +31,20 @@ class ListingCard extends StatelessWidget {
     return '\$${(cents / 100).toStringAsFixed(2)}';
   }
 
-  String _getQuantityUnitLabel(QuantityUnit unit) {
+  String _getQuantityUnitLabel(BuildContext context, QuantityUnit unit) {
+    final l10n = AppLocalizations.of(context)!;
+
     switch (unit) {
       case QuantityUnit.piece:
-        return 'Stück';
+        return l10n.unitPiece;
       case QuantityUnit.kg:
-        return 'kg';
+        return l10n.unitKg;
       case QuantityUnit.gram:
-        return 'g';
+        return l10n.unitGram;
       case QuantityUnit.meter:
-        return 'm';
+        return l10n.unitMeter;
       case QuantityUnit.liter:
-        return 'L';
+        return l10n.unitLiter;
       case QuantityUnit.none:
         return '';
     }
@@ -49,6 +52,8 @@ class ListingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -101,16 +106,16 @@ class ListingCard extends StatelessWidget {
                     runSpacing: 4,
                     children: [
                       if (listing.hasShipping)
-                        _buildBadge(context, Icons.local_shipping, 'Versand'),
+                        _buildBadge(context, Icons.local_shipping, l10n.shipping),
                       if (listing.acceptsPaypal)
-                        _buildBadge(context, Icons.payment, 'PayPal'),
+                        _buildBadge(context, Icons.payment, l10n.paypal),
                       if (listing.acceptsBitcoin)
                         _buildBadge(context, Icons.currency_bitcoin, 'BTC'),
                       if (!listing.isActive)
                         _buildBadge(
                           context,
                           Icons.visibility_off,
-                          'Inaktiv',
+                          l10n.inactive,
                           color: Theme.of(context).colorScheme.error,
                         ),
                     ],
@@ -126,7 +131,7 @@ class ListingCard extends StatelessWidget {
                           TextButton.icon(
                             onPressed: onEdit,
                             icon: const Icon(Icons.edit, size: 18),
-                            label: const Text('Bearbeiten'),
+                            label: Text(l10n.edit),
                           ),
                         if (onDelete != null)
                           TextButton.icon(
@@ -137,7 +142,7 @@ class ListingCard extends StatelessWidget {
                               color: Theme.of(context).colorScheme.error,
                             ),
                             label: Text(
-                              'Löschen',
+                              l10n.delete,
                               style: TextStyle(color: Theme.of(context).colorScheme.error),
                             ),
                           ),
@@ -285,6 +290,8 @@ class ListingListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       child: ListTile(
         onTap: onTap ??
@@ -330,12 +337,12 @@ class ListingListTile extends StatelessWidget {
                 },
                 itemBuilder: (context) => [
                   if (onEdit != null)
-                    const PopupMenuItem(value: 'edit', child: Text('Bearbeiten')),
+                    PopupMenuItem(value: 'edit', child: Text(l10n.edit)),
                   if (onDelete != null)
                     PopupMenuItem(
                       value: 'delete',
                       child: Text(
-                        'Löschen',
+                        l10n.delete,
                         style: TextStyle(color: Theme.of(context).colorScheme.error),
                       ),
                     ),

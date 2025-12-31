@@ -839,6 +839,486 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'L'**
   String get unitLiter;
+
+  /// Bearbeiten Button
+  ///
+  /// In de, this message translates to:
+  /// **'Bearbeiten'**
+  String get edit;
+
+  /// Löschen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Löschen'**
+  String get delete;
+
+  /// Erstellen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Erstellen'**
+  String get create;
+
+  /// Aktiv Status
+  ///
+  /// In de, this message translates to:
+  /// **'Aktiv'**
+  String get active;
+
+  /// Inaktiv Status
+  ///
+  /// In de, this message translates to:
+  /// **'Inaktiv'**
+  String get inactive;
+
+  /// Erforderliches Feld Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Erforderlich'**
+  String get required;
+
+  /// Ungültige Eingabe Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Ungültige Eingabe'**
+  String get invalidInput;
+
+  /// Versand Label
+  ///
+  /// In de, this message translates to:
+  /// **'Versand'**
+  String get shipping;
+
+  /// Versandart Label
+  ///
+  /// In de, this message translates to:
+  /// **'Versandart'**
+  String get shippingMethod;
+
+  /// Versandkosten Label
+  ///
+  /// In de, this message translates to:
+  /// **'Versandkosten'**
+  String get shippingCost;
+
+  /// Suchen Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Suchen'**
+  String get searchTitle;
+
+  /// Favoriten Label
+  ///
+  /// In de, this message translates to:
+  /// **'Favoriten'**
+  String get favorites;
+
+  /// Angebote suchen Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'Angebote suchen...'**
+  String get searchListingsHint;
+
+  /// Kategorie Label
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorie'**
+  String get category;
+
+  /// Subkategorie Label
+  ///
+  /// In de, this message translates to:
+  /// **'Subkategorie'**
+  String get subcategory;
+
+  /// Bezahlart Label
+  ///
+  /// In de, this message translates to:
+  /// **'Bezahlart'**
+  String get paymentMethod;
+
+  /// Filter löschen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Filter löschen'**
+  String get clearFilters;
+
+  /// Keine Ergebnisse Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Ergebnisse'**
+  String get noResults;
+
+  /// Angebote durchsuchen Text
+  ///
+  /// In de, this message translates to:
+  /// **'Angebote durchsuchen'**
+  String get browseListings;
+
+  /// PayPal Zahlungsmethode
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal'**
+  String get paypal;
+
+  /// Bitcoin Zahlungsmethode
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin'**
+  String get bitcoin;
+
+  /// Angebotsdetails Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Angebotsdetails'**
+  String get listingDetailTitle;
+
+  /// Beschreibung Label
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibung'**
+  String get description;
+
+  /// Details Label
+  ///
+  /// In de, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// Akzeptierte Zahlungsmethoden Label
+  ///
+  /// In de, this message translates to:
+  /// **'Akzeptierte Zahlungsmethoden'**
+  String get acceptedPaymentMethods;
+
+  /// Menge Label
+  ///
+  /// In de, this message translates to:
+  /// **'Menge'**
+  String get quantity;
+
+  /// Preis pro Einheit Label
+  ///
+  /// In de, this message translates to:
+  /// **'Preis pro Einheit'**
+  String get pricePerUnit;
+
+  /// Erstellt am Label
+  ///
+  /// In de, this message translates to:
+  /// **'Erstellt am'**
+  String get createdAt;
+
+  /// Läuft ab am Label
+  ///
+  /// In de, this message translates to:
+  /// **'Läuft ab am'**
+  String get expiresAt;
+
+  /// Angebot nicht gefunden Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot nicht gefunden'**
+  String get listingNotFound;
+
+  /// Erneut versuchen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Erneut versuchen'**
+  String get tryAgain;
+
+  /// Jetzt kaufen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt kaufen'**
+  String get buyNow;
+
+  /// Verkäufer kontaktieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Verkäufer kontaktieren'**
+  String get contactSeller;
+
+  /// Neues Angebot Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Neues Angebot'**
+  String get createListingTitle;
+
+  /// Angebot bearbeiten Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot bearbeiten'**
+  String get editListingTitle;
+
+  /// Titel Label
+  ///
+  /// In de, this message translates to:
+  /// **'Titel'**
+  String get title;
+
+  /// Titel Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'Gib einen Titel ein'**
+  String get titleHint;
+
+  /// Titel erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Titel ist erforderlich'**
+  String get titleRequired;
+
+  /// Beschreibung Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibe dein Angebot...'**
+  String get descriptionHint;
+
+  /// Beschreibung erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibung ist erforderlich'**
+  String get descriptionRequired;
+
+  /// Preis Label
+  ///
+  /// In de, this message translates to:
+  /// **'Preis'**
+  String get price;
+
+  /// Preis Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'0.00'**
+  String get priceHint;
+
+  /// Preis erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Preis ist erforderlich'**
+  String get priceRequired;
+
+  /// Ungültiger Preis Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Preis muss größer als 0 sein'**
+  String get priceInvalid;
+
+  /// Menge Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'1'**
+  String get quantityHint;
+
+  /// Menge erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Menge ist erforderlich'**
+  String get quantityRequired;
+
+  /// Ungültige Menge Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Menge muss größer als 0 sein'**
+  String get quantityInvalid;
+
+  /// Einheit Label
+  ///
+  /// In de, this message translates to:
+  /// **'Einheit'**
+  String get unit;
+
+  /// Kategorie wählen Text
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorie wählen'**
+  String get selectCategory;
+
+  /// Subkategorie wählen Text
+  ///
+  /// In de, this message translates to:
+  /// **'Subkategorie wählen'**
+  String get selectSubcategory;
+
+  /// Kategorie erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorie ist erforderlich'**
+  String get categoryRequired;
+
+  /// Bilder Label
+  ///
+  /// In de, this message translates to:
+  /// **'Bilder'**
+  String get images;
+
+  /// Bilder hinzufügen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Bilder hinzufügen'**
+  String get addImages;
+
+  /// Zahlungsmethoden wählen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlungsmethoden wählen'**
+  String get selectPaymentMethods;
+
+  /// Mindestens eine Zahlungsmethode Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Mindestens eine Zahlungsmethode erforderlich'**
+  String get atLeastOnePaymentMethod;
+
+  /// Versandoptionen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Versandoptionen'**
+  String get shippingOptions;
+
+  /// Versand verfügbar Checkbox
+  ///
+  /// In de, this message translates to:
+  /// **'Versand verfügbar'**
+  String get shippingAvailable;
+
+  /// Versandkosten Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'5.00'**
+  String get shippingCostHint;
+
+  /// Angebot erstellt Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot erstellt'**
+  String get listingCreated;
+
+  /// Angebot aktualisiert Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot aktualisiert'**
+  String get listingUpdated;
+
+  /// Fehler beim Erstellen des Angebots
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Erstellen des Angebots'**
+  String get errorCreatingListing;
+
+  /// Fehler beim Aktualisieren des Angebots
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Aktualisieren des Angebots'**
+  String get errorUpdatingListing;
+
+  /// Angebot löschen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot löschen'**
+  String get deleteListing;
+
+  /// Angebot löschen Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du dieses Angebot wirklich löschen?'**
+  String get deleteListingConfirm;
+
+  /// Angebot gelöscht Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot gelöscht'**
+  String get listingDeleted;
+
+  /// Fehler beim Löschen des Angebots
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Löschen des Angebots'**
+  String get errorDeletingListing;
+
+  /// Slot Label
+  ///
+  /// In de, this message translates to:
+  /// **'Slot'**
+  String get slot;
+
+  /// Slot wählen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Slot wählen'**
+  String get selectSlot;
+
+  /// Slot erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Slot ist erforderlich'**
+  String get slotRequired;
+
+  /// Keine Slots verfügbar Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Slots verfügbar'**
+  String get noSlotsAvailable;
+
+  /// Lädt Status
+  ///
+  /// In de, this message translates to:
+  /// **'Lädt...'**
+  String get loading;
+
+  /// Wiederholen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Wiederholen'**
+  String get retry;
+
+  /// Suchleer-Status Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Gib einen Suchbegriff ein oder wähle Filter aus, um Angebote zu finden.'**
+  String get searchEmptyStateMessage;
+
+  /// Keine Ergebnisse Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Versuche andere Suchbegriffe oder passe die Filter an.'**
+  String get noResultsMessage;
+
+  /// Filter zurücksetzen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Filter zurücksetzen'**
+  String get resetFilters;
+
+  /// Keine Kategorie Auswahl
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Kategorie'**
+  String get noCategory;
+
+  /// Alle Subkategorien Auswahl
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Subkategorien'**
+  String get allSubcategories;
+
+  /// Alle Bezahlarten Auswahl
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Bezahlarten'**
+  String get allPaymentMethods;
+
+  /// Suchfehler Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler bei der Suche: {error}'**
+  String searchError(String error);
+
+  /// Anzahl der Suchergebnisse
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 Ergebnis} other{{count} Ergebnisse}}'**
+  String resultsCount(int count);
 }
 
 class _AppLocalizationsDelegate

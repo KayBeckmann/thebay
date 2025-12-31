@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../main.dart';
@@ -76,8 +77,9 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
     } catch (e) {
       if (mounted) {
         setState(() => _isLoadingCategories = false);
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Laden der Kategorien: $e')),
+          SnackBar(content: Text('${l10n.genericError.replaceAll('{error}', '')}: $e')),
         );
       }
     }
@@ -98,7 +100,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   Future<void> _pickImage() async {
     if (_images.length >= 3) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Maximal 3 Bilder erlaubt')),
+        SnackBar(content: Text('Maximum 3 images allowed')),
       );
       return;
     }
@@ -129,11 +131,13 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
+    final l10n = AppLocalizations.of(context)!;
+
     // Validiere Kategorie
     final categoryId = _selectedSubCategoryId ?? _selectedMainCategoryId;
     if (categoryId == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Bitte wähle eine Kategorie aus')),
+        SnackBar(content: Text(l10n.categoryRequired)),
       );
       return;
     }
@@ -141,7 +145,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
     // Validiere Zahlungsmethoden
     if (!_acceptsPaypal && !_acceptsBitcoin) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Mindestens eine Zahlungsmethode muss aktiviert sein')),
+        SnackBar(content: Text(l10n.atLeastOnePaymentMethod)),
       );
       return;
     }
@@ -178,7 +182,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
       );
 
       if (listing == null) {
-        throw Exception('Angebot konnte nicht erstellt werden');
+        throw Exception(l10n.errorCreatingListing);
       }
 
       // Lade Bilder hoch
@@ -192,14 +196,15 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Angebot erfolgreich erstellt!')),
+          SnackBar(content: Text(l10n.listingCreated)),
         );
         Navigator.pop(context, true);
       }
     } catch (e) {
       if (mounted) {
+        final l10nError = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10nError.genericError.replaceAll('{error}', e.toString()))),
         );
       }
     } finally {
@@ -211,14 +216,15 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Neues Angebot'),
+        title: Text(l10n.createListingTitle),
         actions: [
           if (!_isLoading)
             TextButton(
               onPressed: _submit,
-              child: const Text('Erstellen'),
+              child: Text(l10n.create),
             ),
         ],
       ),
@@ -236,17 +242,17 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                   // Titel
                   TextFormField(
                     controller: _titleController,
-                    decoration: const InputDecoration(
-                      labelText: 'Titel *',
-                      hintText: 'Was verkaufst du?',
-                      prefixIcon: Icon(Icons.title),
+                    decoration: InputDecoration(
+                      labelText: '${l10n.title} *',
+                      hintText: l10n.titleHint,
+                      prefixIcon: const Icon(Icons.title),
                     ),
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Titel ist erforderlich';
+                        return l10n.titleRequired;
                       }
                       if (value.trim().length < 3) {
-                        return 'Titel muss mindestens 3 Zeichen haben';
+                        return 'Title must be at least 3 characters';
                       }
                       return null;
                     },
@@ -256,19 +262,19 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                   // Beschreibung
                   TextFormField(
                     controller: _descriptionController,
-                    decoration: const InputDecoration(
-                      labelText: 'Beschreibung *',
-                      hintText: 'Beschreibe dein Angebot...',
+                    decoration: InputDecoration(
+                      labelText: '${l10n.description} *',
+                      hintText: l10n.descriptionHint,
                       alignLabelWithHint: true,
-                      prefixIcon: Icon(Icons.description),
+                      prefixIcon: const Icon(Icons.description),
                     ),
                     maxLines: 5,
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
-                        return 'Beschreibung ist erforderlich';
+                        return l10n.descriptionRequired;
                       }
                       if (value.trim().length < 10) {
-                        return 'Beschreibung muss mindestens 10 Zeichen haben';
+                        return 'Description must be at least 10 characters';
                       }
                       return null;
                     },
@@ -295,7 +301,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                   FilledButton.icon(
                     onPressed: _submit,
                     icon: const Icon(Icons.check),
-                    label: const Text('Angebot erstellen'),
+                    label: Text(l10n.createListingTitle),
                   ),
                 ],
               ),
@@ -304,11 +310,12 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   }
 
   Widget _buildImageSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Bilder (max. 3)',
+          '${l10n.images} (max. 3)',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -361,7 +368,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(
-                              'Hauptbild',
+                              'Main',
                               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                     color: Theme.of(context).colorScheme.onPrimary,
                                   ),
@@ -399,7 +406,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Bild hinzufügen',
+                          AppLocalizations.of(context)!.addImages,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                 color: Theme.of(context).colorScheme.onSurfaceVariant,
                               ),
@@ -416,11 +423,12 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   }
 
   Widget _buildCategorySection() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Kategorie *',
+          '${l10n.category} *',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -431,9 +439,9 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
         else ...[
           DropdownButtonFormField<int>(
             value: _selectedMainCategoryId,
-            decoration: const InputDecoration(
-              labelText: 'Hauptkategorie',
-              prefixIcon: Icon(Icons.category),
+            decoration: InputDecoration(
+              labelText: l10n.selectCategory,
+              prefixIcon: const Icon(Icons.category),
             ),
             items: _mainCategories.map((category) {
               return DropdownMenuItem(
@@ -444,7 +452,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
             onChanged: _onMainCategoryChanged,
             validator: (value) {
               if (value == null) {
-                return 'Kategorie ist erforderlich';
+                return l10n.categoryRequired;
               }
               return null;
             },
@@ -453,9 +461,9 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
             const SizedBox(height: 12),
             DropdownButtonFormField<int>(
               value: _selectedSubCategoryId,
-              decoration: const InputDecoration(
-                labelText: 'Unterkategorie (optional)',
-                prefixIcon: Icon(Icons.subdirectory_arrow_right),
+              decoration: InputDecoration(
+                labelText: l10n.selectSubcategory,
+                prefixIcon: const Icon(Icons.subdirectory_arrow_right),
               ),
               items: _subCategories.map((category) {
                 return DropdownMenuItem(
@@ -472,11 +480,12 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   }
 
   Widget _buildPriceSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Menge & Preis',
+          '${l10n.quantity} & ${l10n.price}',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -489,9 +498,9 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
             Expanded(
               child: TextFormField(
                 controller: _quantityController,
-                decoration: const InputDecoration(
-                  labelText: 'Menge *',
-                  prefixIcon: Icon(Icons.numbers),
+                decoration: InputDecoration(
+                  labelText: '${l10n.quantity} *',
+                  prefixIcon: const Icon(Icons.numbers),
                 ),
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
@@ -499,11 +508,11 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                 ],
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Erforderlich';
+                    return l10n.quantityRequired;
                   }
                   final parsed = double.tryParse(value.replaceAll(',', '.'));
                   if (parsed == null || parsed <= 0) {
-                    return 'Ungültige Menge';
+                    return l10n.quantityInvalid;
                   }
                   return null;
                 },
@@ -514,16 +523,16 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
             Expanded(
               child: DropdownButtonFormField<QuantityUnit>(
                 value: _quantityUnit,
-                decoration: const InputDecoration(
-                  labelText: 'Einheit',
+                decoration: InputDecoration(
+                  labelText: l10n.unit,
                 ),
-                items: const [
-                  DropdownMenuItem(value: QuantityUnit.piece, child: Text('Stück')),
-                  DropdownMenuItem(value: QuantityUnit.kg, child: Text('Kilogramm')),
-                  DropdownMenuItem(value: QuantityUnit.gram, child: Text('Gramm')),
-                  DropdownMenuItem(value: QuantityUnit.meter, child: Text('Meter')),
-                  DropdownMenuItem(value: QuantityUnit.liter, child: Text('Liter')),
-                  DropdownMenuItem(value: QuantityUnit.none, child: Text('Ohne')),
+                items: [
+                  DropdownMenuItem(value: QuantityUnit.piece, child: Text(l10n.unitPiece)),
+                  DropdownMenuItem(value: QuantityUnit.kg, child: Text(l10n.unitKg)),
+                  DropdownMenuItem(value: QuantityUnit.gram, child: Text(l10n.unitGram)),
+                  DropdownMenuItem(value: QuantityUnit.meter, child: Text(l10n.unitMeter)),
+                  DropdownMenuItem(value: QuantityUnit.liter, child: Text(l10n.unitLiter)),
+                  DropdownMenuItem(value: QuantityUnit.none, child: const Text('None')),
                 ],
                 onChanged: (value) {
                   if (value != null) setState(() => _quantityUnit = value);
@@ -535,10 +544,10 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
         const SizedBox(height: 12),
         TextFormField(
           controller: _priceController,
-          decoration: const InputDecoration(
-            labelText: 'Preis pro Einheit (USD) *',
-            prefixIcon: Icon(Icons.attach_money),
-            hintText: '0.00',
+          decoration: InputDecoration(
+            labelText: '${l10n.price} (USD) *',
+            prefixIcon: const Icon(Icons.attach_money),
+            hintText: l10n.priceHint,
           ),
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
           inputFormatters: [
@@ -546,11 +555,11 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
           ],
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Preis ist erforderlich';
+              return l10n.priceRequired;
             }
             final parsed = double.tryParse(value.replaceAll(',', '.'));
             if (parsed == null || parsed < 0) {
-              return 'Ungültiger Preis';
+              return l10n.priceInvalid;
             }
             return null;
           },
@@ -560,11 +569,12 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   }
 
   Widget _buildPaymentSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Zahlungsmethoden *',
+          '${l10n.selectPaymentMethods} *',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -576,14 +586,14 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
               CheckboxListTile(
                 value: _acceptsPaypal,
                 onChanged: (value) => setState(() => _acceptsPaypal = value ?? false),
-                title: const Text('PayPal'),
+                title: Text(l10n.paypal),
                 secondary: const Icon(Icons.payment),
               ),
               const Divider(height: 1),
               CheckboxListTile(
                 value: _acceptsBitcoin,
                 onChanged: (value) => setState(() => _acceptsBitcoin = value ?? false),
-                title: const Text('Bitcoin'),
+                title: Text(l10n.bitcoin),
                 secondary: const Icon(Icons.currency_bitcoin),
               ),
             ],
@@ -594,11 +604,12 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
   }
 
   Widget _buildShippingSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Versand',
+          l10n.shippingOptions,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -610,7 +621,7 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
               SwitchListTile(
                 value: _hasShipping,
                 onChanged: (value) => setState(() => _hasShipping = value),
-                title: const Text('Versand anbieten'),
+                title: Text(l10n.shippingAvailable),
                 secondary: const Icon(Icons.local_shipping),
               ),
               if (_hasShipping) ...[
@@ -621,19 +632,19 @@ class _CreateListingScreenState extends State<CreateListingScreen> {
                     children: [
                       TextFormField(
                         controller: _shippingMethodController,
-                        decoration: const InputDecoration(
-                          labelText: 'Versandart',
-                          hintText: 'z.B. DHL, UPS, Post...',
-                          prefixIcon: Icon(Icons.local_post_office),
+                        decoration: InputDecoration(
+                          labelText: l10n.shippingMethod,
+                          hintText: 'e.g. DHL, UPS, Post...',
+                          prefixIcon: const Icon(Icons.local_post_office),
                         ),
                       ),
                       const SizedBox(height: 12),
                       TextFormField(
                         controller: _shippingCostController,
-                        decoration: const InputDecoration(
-                          labelText: 'Versandkosten (USD)',
-                          prefixIcon: Icon(Icons.attach_money),
-                          hintText: '0.00',
+                        decoration: InputDecoration(
+                          labelText: '${l10n.shippingCost} (USD)',
+                          prefixIcon: const Icon(Icons.attach_money),
+                          hintText: l10n.shippingCostHint,
                         ),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         inputFormatters: [

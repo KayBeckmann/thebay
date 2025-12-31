@@ -427,4 +427,258 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get unitLiter => 'L';
+
+  @override
+  String get edit => 'Editar';
+
+  @override
+  String get delete => 'Eliminar';
+
+  @override
+  String get create => 'Crear';
+
+  @override
+  String get active => 'Activo';
+
+  @override
+  String get inactive => 'Inactivo';
+
+  @override
+  String get required => 'Requerido';
+
+  @override
+  String get invalidInput => 'Entrada inválida';
+
+  @override
+  String get shipping => 'Envío';
+
+  @override
+  String get shippingMethod => 'Método de envío';
+
+  @override
+  String get shippingCost => 'Costo de envío';
+
+  @override
+  String get searchTitle => 'Buscar';
+
+  @override
+  String get favorites => 'Favoritos';
+
+  @override
+  String get searchListingsHint => 'Buscar anuncios...';
+
+  @override
+  String get category => 'Categoría';
+
+  @override
+  String get subcategory => 'Subcategoría';
+
+  @override
+  String get paymentMethod => 'Método de pago';
+
+  @override
+  String get clearFilters => 'Borrar filtros';
+
+  @override
+  String get noResults => 'Sin resultados';
+
+  @override
+  String get browseListings => 'Explorar anuncios';
+
+  @override
+  String get paypal => 'PayPal';
+
+  @override
+  String get bitcoin => 'Bitcoin';
+
+  @override
+  String get listingDetailTitle => 'Detalles del anuncio';
+
+  @override
+  String get description => 'Descripción';
+
+  @override
+  String get details => 'Detalles';
+
+  @override
+  String get acceptedPaymentMethods => 'Métodos de pago aceptados';
+
+  @override
+  String get quantity => 'Cantidad';
+
+  @override
+  String get pricePerUnit => 'Precio por unidad';
+
+  @override
+  String get createdAt => 'Creado el';
+
+  @override
+  String get expiresAt => 'Expira el';
+
+  @override
+  String get listingNotFound => 'Anuncio no encontrado';
+
+  @override
+  String get tryAgain => 'Intentar de nuevo';
+
+  @override
+  String get buyNow => 'Comprar ahora';
+
+  @override
+  String get contactSeller => 'Contactar vendedor';
+
+  @override
+  String get createListingTitle => 'Nuevo anuncio';
+
+  @override
+  String get editListingTitle => 'Editar anuncio';
+
+  @override
+  String get title => 'Título';
+
+  @override
+  String get titleHint => 'Ingresa un título';
+
+  @override
+  String get titleRequired => 'El título es requerido';
+
+  @override
+  String get descriptionHint => 'Describe tu anuncio...';
+
+  @override
+  String get descriptionRequired => 'La descripción es requerida';
+
+  @override
+  String get price => 'Precio';
+
+  @override
+  String get priceHint => '0.00';
+
+  @override
+  String get priceRequired => 'El precio es requerido';
+
+  @override
+  String get priceInvalid => 'El precio debe ser mayor que 0';
+
+  @override
+  String get quantityHint => '1';
+
+  @override
+  String get quantityRequired => 'La cantidad es requerida';
+
+  @override
+  String get quantityInvalid => 'La cantidad debe ser mayor que 0';
+
+  @override
+  String get unit => 'Unidad';
+
+  @override
+  String get selectCategory => 'Seleccionar categoría';
+
+  @override
+  String get selectSubcategory => 'Seleccionar subcategoría';
+
+  @override
+  String get categoryRequired => 'La categoría es requerida';
+
+  @override
+  String get images => 'Imágenes';
+
+  @override
+  String get addImages => 'Agregar imágenes';
+
+  @override
+  String get selectPaymentMethods => 'Seleccionar métodos de pago';
+
+  @override
+  String get atLeastOnePaymentMethod =>
+      'Se requiere al menos un método de pago';
+
+  @override
+  String get shippingOptions => 'Opciones de envío';
+
+  @override
+  String get shippingAvailable => 'Envío disponible';
+
+  @override
+  String get shippingCostHint => '5.00';
+
+  @override
+  String get listingCreated => 'Anuncio creado';
+
+  @override
+  String get listingUpdated => 'Anuncio actualizado';
+
+  @override
+  String get errorCreatingListing => 'Error al crear el anuncio';
+
+  @override
+  String get errorUpdatingListing => 'Error al actualizar el anuncio';
+
+  @override
+  String get deleteListing => 'Eliminar anuncio';
+
+  @override
+  String get deleteListingConfirm =>
+      '¿Realmente quieres eliminar este anuncio?';
+
+  @override
+  String get listingDeleted => 'Anuncio eliminado';
+
+  @override
+  String get errorDeletingListing => 'Error al eliminar el anuncio';
+
+  @override
+  String get slot => 'Slot';
+
+  @override
+  String get selectSlot => 'Seleccionar slot';
+
+  @override
+  String get slotRequired => 'El slot es requerido';
+
+  @override
+  String get noSlotsAvailable => 'No hay slots disponibles';
+
+  @override
+  String get loading => 'Cargando...';
+
+  @override
+  String get retry => 'Reintentar';
+
+  @override
+  String get searchEmptyStateMessage =>
+      'Ingresa un término de búsqueda o selecciona filtros para encontrar anuncios.';
+
+  @override
+  String get noResultsMessage =>
+      'Prueba con diferentes términos de búsqueda o ajusta los filtros.';
+
+  @override
+  String get resetFilters => 'Restablecer filtros';
+
+  @override
+  String get noCategory => 'Sin categoría';
+
+  @override
+  String get allSubcategories => 'Todas las subcategorías';
+
+  @override
+  String get allPaymentMethods => 'Todos los métodos de pago';
+
+  @override
+  String searchError(String error) {
+    return 'Error de búsqueda: $error';
+  }
+
+  @override
+  String resultsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count resultados',
+      one: '1 resultado',
+    );
+    return '$_temp0';
+  }
 }

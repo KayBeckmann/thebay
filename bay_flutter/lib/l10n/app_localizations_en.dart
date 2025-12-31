@@ -422,4 +422,257 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unitLiter => 'L';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get create => 'Create';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get inactive => 'Inactive';
+
+  @override
+  String get required => 'Required';
+
+  @override
+  String get invalidInput => 'Invalid input';
+
+  @override
+  String get shipping => 'Shipping';
+
+  @override
+  String get shippingMethod => 'Shipping method';
+
+  @override
+  String get shippingCost => 'Shipping cost';
+
+  @override
+  String get searchTitle => 'Search';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get searchListingsHint => 'Search listings...';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get subcategory => 'Subcategory';
+
+  @override
+  String get paymentMethod => 'Payment method';
+
+  @override
+  String get clearFilters => 'Clear filters';
+
+  @override
+  String get noResults => 'No results';
+
+  @override
+  String get browseListings => 'Browse listings';
+
+  @override
+  String get paypal => 'PayPal';
+
+  @override
+  String get bitcoin => 'Bitcoin';
+
+  @override
+  String get listingDetailTitle => 'Listing Details';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get acceptedPaymentMethods => 'Accepted payment methods';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get pricePerUnit => 'Price per unit';
+
+  @override
+  String get createdAt => 'Created at';
+
+  @override
+  String get expiresAt => 'Expires at';
+
+  @override
+  String get listingNotFound => 'Listing not found';
+
+  @override
+  String get tryAgain => 'Try again';
+
+  @override
+  String get buyNow => 'Buy now';
+
+  @override
+  String get contactSeller => 'Contact seller';
+
+  @override
+  String get createListingTitle => 'New Listing';
+
+  @override
+  String get editListingTitle => 'Edit Listing';
+
+  @override
+  String get title => 'Title';
+
+  @override
+  String get titleHint => 'Enter a title';
+
+  @override
+  String get titleRequired => 'Title is required';
+
+  @override
+  String get descriptionHint => 'Describe your listing...';
+
+  @override
+  String get descriptionRequired => 'Description is required';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get priceHint => '0.00';
+
+  @override
+  String get priceRequired => 'Price is required';
+
+  @override
+  String get priceInvalid => 'Price must be greater than 0';
+
+  @override
+  String get quantityHint => '1';
+
+  @override
+  String get quantityRequired => 'Quantity is required';
+
+  @override
+  String get quantityInvalid => 'Quantity must be greater than 0';
+
+  @override
+  String get unit => 'Unit';
+
+  @override
+  String get selectCategory => 'Select category';
+
+  @override
+  String get selectSubcategory => 'Select subcategory';
+
+  @override
+  String get categoryRequired => 'Category is required';
+
+  @override
+  String get images => 'Images';
+
+  @override
+  String get addImages => 'Add images';
+
+  @override
+  String get selectPaymentMethods => 'Select payment methods';
+
+  @override
+  String get atLeastOnePaymentMethod => 'At least one payment method required';
+
+  @override
+  String get shippingOptions => 'Shipping options';
+
+  @override
+  String get shippingAvailable => 'Shipping available';
+
+  @override
+  String get shippingCostHint => '5.00';
+
+  @override
+  String get listingCreated => 'Listing created';
+
+  @override
+  String get listingUpdated => 'Listing updated';
+
+  @override
+  String get errorCreatingListing => 'Error creating listing';
+
+  @override
+  String get errorUpdatingListing => 'Error updating listing';
+
+  @override
+  String get deleteListing => 'Delete listing';
+
+  @override
+  String get deleteListingConfirm =>
+      'Do you really want to delete this listing?';
+
+  @override
+  String get listingDeleted => 'Listing deleted';
+
+  @override
+  String get errorDeletingListing => 'Error deleting listing';
+
+  @override
+  String get slot => 'Slot';
+
+  @override
+  String get selectSlot => 'Select slot';
+
+  @override
+  String get slotRequired => 'Slot is required';
+
+  @override
+  String get noSlotsAvailable => 'No slots available';
+
+  @override
+  String get loading => 'Loading...';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get searchEmptyStateMessage =>
+      'Enter a search term or select filters to find listings.';
+
+  @override
+  String get noResultsMessage =>
+      'Try different search terms or adjust the filters.';
+
+  @override
+  String get resetFilters => 'Reset filters';
+
+  @override
+  String get noCategory => 'No category';
+
+  @override
+  String get allSubcategories => 'All subcategories';
+
+  @override
+  String get allPaymentMethods => 'All payment methods';
+
+  @override
+  String searchError(String error) {
+    return 'Search error: $error';
+  }
+
+  @override
+  String resultsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count results',
+      one: '1 result',
+    );
+    return '$_temp0';
+  }
 }

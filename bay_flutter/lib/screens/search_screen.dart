@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart';
 import 'favorites_screen.dart';
 import 'listings/listing_card.dart';
@@ -119,8 +120,9 @@ class _SearchScreenState extends State<SearchScreen> {
     } catch (e) {
       if (mounted) {
         setState(() => _isLoading = false);
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler bei der Suche: $e')),
+          SnackBar(content: Text(l10n.searchError(e.toString()))),
         );
       }
     }
@@ -198,8 +200,9 @@ class _SearchScreenState extends State<SearchScreen> {
         setState(() {
           _favoriteStatus[listingId] = isFavorite;
         });
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     }
@@ -221,9 +224,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Suchen'),
+        title: Text(l10n.searchTitle),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
@@ -234,7 +239,7 @@ class _SearchScreenState extends State<SearchScreen> {
           IconButton(
             icon: const Icon(Icons.favorite_border),
             onPressed: () => _showFavorites(context),
-            tooltip: 'Favoriten',
+            tooltip: l10n.favorites,
           ),
         ],
       ),
@@ -253,6 +258,8 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildSearchHeader(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -271,7 +278,7 @@ class _SearchScreenState extends State<SearchScreen> {
           TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: 'Angebote suchen...',
+              hintText: l10n.searchListingsHint,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: _searchController.text.isNotEmpty
                   ? IconButton(
@@ -298,7 +305,7 @@ class _SearchScreenState extends State<SearchScreen> {
               children: [
                 // Kategorie Filter
                 FilterChip(
-                  label: Text(_selectedCategory?.name ?? 'Kategorie'),
+                  label: Text(_selectedCategory?.name ?? l10n.category),
                   selected: _selectedCategory != null,
                   onSelected: (_) => _showCategoryFilter(),
                   avatar: const Icon(Icons.category, size: 18),
@@ -308,7 +315,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 // Subkategorie Filter (nur wenn Kategorie gewählt)
                 if (_selectedCategory != null && _subcategories.isNotEmpty) ...[
                   FilterChip(
-                    label: Text(_selectedSubcategory?.name ?? 'Subkategorie'),
+                    label: Text(_selectedSubcategory?.name ?? l10n.subcategory),
                     selected: _selectedSubcategory != null,
                     onSelected: (_) => _showSubcategoryFilter(),
                     avatar: const Icon(Icons.subdirectory_arrow_right, size: 18),
@@ -318,7 +325,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
                 // Zahlungsmethode Filter
                 FilterChip(
-                  label: Text(_selectedPaymentMethod ?? 'Bezahlart'),
+                  label: Text(_selectedPaymentMethod ?? l10n.paymentMethod),
                   selected: _selectedPaymentMethod != null,
                   onSelected: (_) => _showPaymentMethodFilter(),
                   avatar: const Icon(Icons.payment, size: 18),
@@ -330,7 +337,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     _selectedSubcategory != null ||
                     _selectedPaymentMethod != null)
                   ActionChip(
-                    label: const Text('Filter löschen'),
+                    label: Text(l10n.clearFilters),
                     onPressed: _clearFilters,
                     avatar: const Icon(Icons.clear, size: 18),
                   ),
@@ -345,7 +352,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: FilledButton.icon(
               onPressed: _performSearch,
               icon: const Icon(Icons.search),
-              label: const Text('Suchen'),
+              label: Text(l10n.searchTitle),
             ),
           ),
         ],
@@ -366,6 +373,8 @@ class _SearchScreenState extends State<SearchScreen> {
       return _buildNoResultsState(context);
     }
 
+    final l10n = AppLocalizations.of(context)!;
+
     return Column(
       children: [
         // Ergebnis-Info
@@ -374,7 +383,7 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Row(
             children: [
               Text(
-                '$_totalCount Ergebnis${_totalCount == 1 ? '' : 'se'}',
+                l10n.resultsCount(_totalCount),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -473,6 +482,8 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildEmptyState(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
@@ -486,13 +497,13 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Angebote durchsuchen',
+              l10n.browseListings,
               style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
-              'Gib einen Suchbegriff ein oder wähle Filter aus, um Angebote zu finden.',
+              l10n.searchEmptyStateMessage,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -505,6 +516,8 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   Widget _buildNoResultsState(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
@@ -518,13 +531,13 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Keine Ergebnisse',
+              l10n.noResults,
               style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
             Text(
-              'Versuche andere Suchbegriffe oder passe die Filter an.',
+              l10n.noResultsMessage,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -533,7 +546,7 @@ class _SearchScreenState extends State<SearchScreen> {
             const SizedBox(height: 16),
             OutlinedButton(
               onPressed: _clearFilters,
-              child: const Text('Filter zurücksetzen'),
+              child: Text(l10n.resetFilters),
             ),
           ],
         ),
@@ -542,6 +555,8 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _showCategoryFilter() {
+    final l10n = AppLocalizations.of(context)!;
+
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
@@ -550,7 +565,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             ListTile(
               leading: const Icon(Icons.clear),
-              title: const Text('Keine Kategorie'),
+              title: Text(l10n.noCategory),
               onTap: () {
                 setState(() {
                   _selectedCategory = null;
@@ -590,6 +605,8 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _showSubcategoryFilter() {
+    final l10n = AppLocalizations.of(context)!;
+
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
@@ -598,7 +615,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             ListTile(
               leading: const Icon(Icons.clear),
-              title: const Text('Alle Subkategorien'),
+              title: Text(l10n.allSubcategories),
               onTap: () {
                 setState(() => _selectedSubcategory = null);
                 Navigator.pop(context);
@@ -630,6 +647,8 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _showPaymentMethodFilter() {
+    final l10n = AppLocalizations.of(context)!;
+
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
@@ -638,7 +657,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             ListTile(
               leading: const Icon(Icons.clear),
-              title: const Text('Alle Bezahlarten'),
+              title: Text(l10n.allPaymentMethods),
               onTap: () {
                 setState(() => _selectedPaymentMethod = null);
                 Navigator.pop(context);
@@ -647,7 +666,7 @@ class _SearchScreenState extends State<SearchScreen> {
             const Divider(),
             ListTile(
               leading: const Icon(Icons.payment),
-              title: const Text('PayPal'),
+              title: Text(l10n.paypal),
               selected: _selectedPaymentMethod == 'PayPal',
               onTap: () {
                 setState(() => _selectedPaymentMethod = 'PayPal');
@@ -656,7 +675,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.currency_bitcoin),
-              title: const Text('Bitcoin'),
+              title: Text(l10n.bitcoin),
               selected: _selectedPaymentMethod == 'Bitcoin',
               onTap: () {
                 setState(() => _selectedPaymentMethod = 'Bitcoin');

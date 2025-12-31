@@ -687,5 +687,415 @@
   "unitLiter": "L",
   "@unitLiter": {
     "description": "Mengeneinheit Liter"
+  },
+
+  "edit": "Bearbeiten",
+  "@edit": {
+    "description": "Bearbeiten Button"
+  },
+
+  "delete": "Löschen",
+  "@delete": {
+    "description": "Löschen Button"
+  },
+
+  "create": "Erstellen",
+  "@create": {
+    "description": "Erstellen Button"
+  },
+
+  "active": "Aktiv",
+  "@active": {
+    "description": "Aktiv Status"
+  },
+
+  "inactive": "Inaktiv",
+  "@inactive": {
+    "description": "Inaktiv Status"
+  },
+
+  "required": "Erforderlich",
+  "@required": {
+    "description": "Erforderliches Feld Validierung"
+  },
+
+  "invalidInput": "Ungültige Eingabe",
+  "@invalidInput": {
+    "description": "Ungültige Eingabe Validierung"
+  },
+
+  "shipping": "Versand",
+  "@shipping": {
+    "description": "Versand Label"
+  },
+
+  "shippingMethod": "Versandart",
+  "@shippingMethod": {
+    "description": "Versandart Label"
+  },
+
+  "shippingCost": "Versandkosten",
+  "@shippingCost": {
+    "description": "Versandkosten Label"
+  },
+
+  "searchTitle": "Suchen",
+  "@searchTitle": {
+    "description": "Suchen Screen Titel"
+  },
+
+  "favorites": "Favoriten",
+  "@favorites": {
+    "description": "Favoriten Label"
+  },
+
+  "searchListingsHint": "Angebote suchen...",
+  "@searchListingsHint": {
+    "description": "Angebote suchen Hinweistext"
+  },
+
+  "category": "Kategorie",
+  "@category": {
+    "description": "Kategorie Label"
+  },
+
+  "subcategory": "Subkategorie",
+  "@subcategory": {
+    "description": "Subkategorie Label"
+  },
+
+  "paymentMethod": "Bezahlart",
+  "@paymentMethod": {
+    "description": "Bezahlart Label"
+  },
+
+  "clearFilters": "Filter löschen",
+  "@clearFilters": {
+    "description": "Filter löschen Button"
+  },
+
+  "noResults": "Keine Ergebnisse",
+  "@noResults": {
+    "description": "Keine Ergebnisse Titel"
+  },
+
+  "browseListings": "Angebote durchsuchen",
+  "@browseListings": {
+    "description": "Angebote durchsuchen Text"
+  },
+
+  "paypal": "PayPal",
+  "@paypal": {
+    "description": "PayPal Zahlungsmethode"
+  },
+
+  "bitcoin": "Bitcoin",
+  "@bitcoin": {
+    "description": "Bitcoin Zahlungsmethode"
+  },
+
+  "listingDetailTitle": "Angebotsdetails",
+  "@listingDetailTitle": {
+    "description": "Angebotsdetails Screen Titel"
+  },
+
+  "description": "Beschreibung",
+  "@description": {
+    "description": "Beschreibung Label"
+  },
+
+  "details": "Details",
+  "@details": {
+    "description": "Details Label"
+  },
+
+  "acceptedPaymentMethods": "Akzeptierte Zahlungsmethoden",
+  "@acceptedPaymentMethods": {
+    "description": "Akzeptierte Zahlungsmethoden Label"
+  },
+
+  "quantity": "Menge",
+  "@quantity": {
+    "description": "Menge Label"
+  },
+
+  "pricePerUnit": "Preis pro Einheit",
+  "@pricePerUnit": {
+    "description": "Preis pro Einheit Label"
+  },
+
+  "createdAt": "Erstellt am",
+  "@createdAt": {
+    "description": "Erstellt am Label"
+  },
+
+  "expiresAt": "Läuft ab am",
+  "@expiresAt": {
+    "description": "Läuft ab am Label"
+  },
+
+  "listingNotFound": "Angebot nicht gefunden",
+  "@listingNotFound": {
+    "description": "Angebot nicht gefunden Fehler"
+  },
+
+  "tryAgain": "Erneut versuchen",
+  "@tryAgain": {
+    "description": "Erneut versuchen Button"
+  },
+
+  "buyNow": "Jetzt kaufen",
+  "@buyNow": {
+    "description": "Jetzt kaufen Button"
+  },
+
+  "contactSeller": "Verkäufer kontaktieren",
+  "@contactSeller": {
+    "description": "Verkäufer kontaktieren Button"
+  },
+
+  "createListingTitle": "Neues Angebot",
+  "@createListingTitle": {
+    "description": "Neues Angebot Screen Titel"
+  },
+
+  "editListingTitle": "Angebot bearbeiten",
+  "@editListingTitle": {
+    "description": "Angebot bearbeiten Screen Titel"
+  },
+
+  "title": "Titel",
+  "@title": {
+    "description": "Titel Label"
+  },
+
+  "titleHint": "Gib einen Titel ein",
+  "@titleHint": {
+    "description": "Titel Hinweistext"
+  },
+
+  "titleRequired": "Titel ist erforderlich",
+  "@titleRequired": {
+    "description": "Titel erforderlich Validierung"
+  },
+
+  "descriptionHint": "Beschreibe dein Angebot...",
+  "@descriptionHint": {
+    "description": "Beschreibung Hinweistext"
+  },
+
+  "descriptionRequired": "Beschreibung ist erforderlich",
+  "@descriptionRequired": {
+    "description": "Beschreibung erforderlich Validierung"
+  },
+
+  "price": "Preis",
+  "@price": {
+    "description": "Preis Label"
+  },
+
+  "priceHint": "0.00",
+  "@priceHint": {
+    "description": "Preis Hinweistext"
+  },
+
+  "priceRequired": "Preis ist erforderlich",
+  "@priceRequired": {
+    "description": "Preis erforderlich Validierung"
+  },
+
+  "priceInvalid": "Preis muss größer als 0 sein",
+  "@priceInvalid": {
+    "description": "Ungültiger Preis Validierung"
+  },
+
+  "quantityHint": "1",
+  "@quantityHint": {
+    "description": "Menge Hinweistext"
+  },
+
+  "quantityRequired": "Menge ist erforderlich",
+  "@quantityRequired": {
+    "description": "Menge erforderlich Validierung"
+  },
+
+  "quantityInvalid": "Menge muss größer als 0 sein",
+  "@quantityInvalid": {
+    "description": "Ungültige Menge Validierung"
+  },
+
+  "unit": "Einheit",
+  "@unit": {
+    "description": "Einheit Label"
+  },
+
+  "selectCategory": "Kategorie wählen",
+  "@selectCategory": {
+    "description": "Kategorie wählen Text"
+  },
+
+  "selectSubcategory": "Subkategorie wählen",
+  "@selectSubcategory": {
+    "description": "Subkategorie wählen Text"
+  },
+
+  "categoryRequired": "Kategorie ist erforderlich",
+  "@categoryRequired": {
+    "description": "Kategorie erforderlich Validierung"
+  },
+
+  "images": "Bilder",
+  "@images": {
+    "description": "Bilder Label"
+  },
+
+  "addImages": "Bilder hinzufügen",
+  "@addImages": {
+    "description": "Bilder hinzufügen Button"
+  },
+
+  "selectPaymentMethods": "Zahlungsmethoden wählen",
+  "@selectPaymentMethods": {
+    "description": "Zahlungsmethoden wählen Label"
+  },
+
+  "atLeastOnePaymentMethod": "Mindestens eine Zahlungsmethode erforderlich",
+  "@atLeastOnePaymentMethod": {
+    "description": "Mindestens eine Zahlungsmethode Validierung"
+  },
+
+  "shippingOptions": "Versandoptionen",
+  "@shippingOptions": {
+    "description": "Versandoptionen Label"
+  },
+
+  "shippingAvailable": "Versand verfügbar",
+  "@shippingAvailable": {
+    "description": "Versand verfügbar Checkbox"
+  },
+
+  "shippingCostHint": "5.00",
+  "@shippingCostHint": {
+    "description": "Versandkosten Hinweistext"
+  },
+
+  "listingCreated": "Angebot erstellt",
+  "@listingCreated": {
+    "description": "Angebot erstellt Nachricht"
+  },
+
+  "listingUpdated": "Angebot aktualisiert",
+  "@listingUpdated": {
+    "description": "Angebot aktualisiert Nachricht"
+  },
+
+  "errorCreatingListing": "Fehler beim Erstellen des Angebots",
+  "@errorCreatingListing": {
+    "description": "Fehler beim Erstellen des Angebots"
+  },
+
+  "errorUpdatingListing": "Fehler beim Aktualisieren des Angebots",
+  "@errorUpdatingListing": {
+    "description": "Fehler beim Aktualisieren des Angebots"
+  },
+
+  "deleteListing": "Angebot löschen",
+  "@deleteListing": {
+    "description": "Angebot löschen Label"
+  },
+
+  "deleteListingConfirm": "Möchtest du dieses Angebot wirklich löschen?",
+  "@deleteListingConfirm": {
+    "description": "Angebot löschen Bestätigung"
+  },
+
+  "listingDeleted": "Angebot gelöscht",
+  "@listingDeleted": {
+    "description": "Angebot gelöscht Nachricht"
+  },
+
+  "errorDeletingListing": "Fehler beim Löschen des Angebots",
+  "@errorDeletingListing": {
+    "description": "Fehler beim Löschen des Angebots"
+  },
+
+  "slot": "Slot",
+  "@slot": {
+    "description": "Slot Label"
+  },
+
+  "selectSlot": "Slot wählen",
+  "@selectSlot": {
+    "description": "Slot wählen Label"
+  },
+
+  "slotRequired": "Slot ist erforderlich",
+  "@slotRequired": {
+    "description": "Slot erforderlich Validierung"
+  },
+
+  "noSlotsAvailable": "Keine Slots verfügbar",
+  "@noSlotsAvailable": {
+    "description": "Keine Slots verfügbar Nachricht"
+  },
+
+  "loading": "Lädt...",
+  "@loading": {
+    "description": "Lädt Status"
+  },
+
+  "retry": "Wiederholen",
+  "@retry": {
+    "description": "Wiederholen Button"
+  },
+
+  "searchEmptyStateMessage": "Gib einen Suchbegriff ein oder wähle Filter aus, um Angebote zu finden.",
+  "@searchEmptyStateMessage": {
+    "description": "Suchleer-Status Nachricht"
+  },
+
+  "noResultsMessage": "Versuche andere Suchbegriffe oder passe die Filter an.",
+  "@noResultsMessage": {
+    "description": "Keine Ergebnisse Nachricht"
+  },
+
+  "resetFilters": "Filter zurücksetzen",
+  "@resetFilters": {
+    "description": "Filter zurücksetzen Button"
+  },
+
+  "noCategory": "Keine Kategorie",
+  "@noCategory": {
+    "description": "Keine Kategorie Auswahl"
+  },
+
+  "allSubcategories": "Alle Subkategorien",
+  "@allSubcategories": {
+    "description": "Alle Subkategorien Auswahl"
+  },
+
+  "allPaymentMethods": "Alle Bezahlarten",
+  "@allPaymentMethods": {
+    "description": "Alle Bezahlarten Auswahl"
+  },
+
+  "searchError": "Fehler bei der Suche: {error}",
+  "@searchError": {
+    "description": "Suchfehler Nachricht",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "resultsCount": "{count, plural, =1{1 Ergebnis} other{{count} Ergebnisse}}",
+  "@resultsCount": {
+    "description": "Anzahl der Suchergebnisse",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   }
 }

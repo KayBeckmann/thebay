@@ -428,4 +428,259 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get unitLiter => 'L';
+
+  @override
+  String get edit => 'Modifier';
+
+  @override
+  String get delete => 'Supprimer';
+
+  @override
+  String get create => 'Créer';
+
+  @override
+  String get active => 'Actif';
+
+  @override
+  String get inactive => 'Inactif';
+
+  @override
+  String get required => 'Requis';
+
+  @override
+  String get invalidInput => 'Entrée invalide';
+
+  @override
+  String get shipping => 'Expédition';
+
+  @override
+  String get shippingMethod => 'Mode de livraison';
+
+  @override
+  String get shippingCost => 'Frais de port';
+
+  @override
+  String get searchTitle => 'Rechercher';
+
+  @override
+  String get favorites => 'Favoris';
+
+  @override
+  String get searchListingsHint => 'Rechercher des annonces...';
+
+  @override
+  String get category => 'Catégorie';
+
+  @override
+  String get subcategory => 'Sous-catégorie';
+
+  @override
+  String get paymentMethod => 'Mode de paiement';
+
+  @override
+  String get clearFilters => 'Effacer les filtres';
+
+  @override
+  String get noResults => 'Aucun résultat';
+
+  @override
+  String get browseListings => 'Parcourir les annonces';
+
+  @override
+  String get paypal => 'PayPal';
+
+  @override
+  String get bitcoin => 'Bitcoin';
+
+  @override
+  String get listingDetailTitle => 'Détails de l\'annonce';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get details => 'Détails';
+
+  @override
+  String get acceptedPaymentMethods => 'Modes de paiement acceptés';
+
+  @override
+  String get quantity => 'Quantité';
+
+  @override
+  String get pricePerUnit => 'Prix par unité';
+
+  @override
+  String get createdAt => 'Créé le';
+
+  @override
+  String get expiresAt => 'Expire le';
+
+  @override
+  String get listingNotFound => 'Annonce non trouvée';
+
+  @override
+  String get tryAgain => 'Réessayer';
+
+  @override
+  String get buyNow => 'Acheter maintenant';
+
+  @override
+  String get contactSeller => 'Contacter le vendeur';
+
+  @override
+  String get createListingTitle => 'Nouvelle annonce';
+
+  @override
+  String get editListingTitle => 'Modifier l\'annonce';
+
+  @override
+  String get title => 'Titre';
+
+  @override
+  String get titleHint => 'Entrez un titre';
+
+  @override
+  String get titleRequired => 'Le titre est requis';
+
+  @override
+  String get descriptionHint => 'Décrivez votre annonce...';
+
+  @override
+  String get descriptionRequired => 'La description est requise';
+
+  @override
+  String get price => 'Prix';
+
+  @override
+  String get priceHint => '0.00';
+
+  @override
+  String get priceRequired => 'Le prix est requis';
+
+  @override
+  String get priceInvalid => 'Le prix doit être supérieur à 0';
+
+  @override
+  String get quantityHint => '1';
+
+  @override
+  String get quantityRequired => 'La quantité est requise';
+
+  @override
+  String get quantityInvalid => 'La quantité doit être supérieure à 0';
+
+  @override
+  String get unit => 'Unité';
+
+  @override
+  String get selectCategory => 'Sélectionner une catégorie';
+
+  @override
+  String get selectSubcategory => 'Sélectionner une sous-catégorie';
+
+  @override
+  String get categoryRequired => 'La catégorie est requise';
+
+  @override
+  String get images => 'Images';
+
+  @override
+  String get addImages => 'Ajouter des images';
+
+  @override
+  String get selectPaymentMethods => 'Sélectionner les modes de paiement';
+
+  @override
+  String get atLeastOnePaymentMethod => 'Au moins un mode de paiement requis';
+
+  @override
+  String get shippingOptions => 'Options d\'expédition';
+
+  @override
+  String get shippingAvailable => 'Expédition disponible';
+
+  @override
+  String get shippingCostHint => '5.00';
+
+  @override
+  String get listingCreated => 'Annonce créée';
+
+  @override
+  String get listingUpdated => 'Annonce mise à jour';
+
+  @override
+  String get errorCreatingListing => 'Erreur lors de la création de l\'annonce';
+
+  @override
+  String get errorUpdatingListing =>
+      'Erreur lors de la mise à jour de l\'annonce';
+
+  @override
+  String get deleteListing => 'Supprimer l\'annonce';
+
+  @override
+  String get deleteListingConfirm =>
+      'Voulez-vous vraiment supprimer cette annonce ?';
+
+  @override
+  String get listingDeleted => 'Annonce supprimée';
+
+  @override
+  String get errorDeletingListing =>
+      'Erreur lors de la suppression de l\'annonce';
+
+  @override
+  String get slot => 'Slot';
+
+  @override
+  String get selectSlot => 'Sélectionner un slot';
+
+  @override
+  String get slotRequired => 'Le slot est requis';
+
+  @override
+  String get noSlotsAvailable => 'Aucun slot disponible';
+
+  @override
+  String get loading => 'Chargement...';
+
+  @override
+  String get retry => 'Réessayer';
+
+  @override
+  String get searchEmptyStateMessage =>
+      'Saisissez un terme de recherche ou sélectionnez des filtres pour trouver des annonces.';
+
+  @override
+  String get noResultsMessage =>
+      'Essayez d\'autres termes de recherche ou ajustez les filtres.';
+
+  @override
+  String get resetFilters => 'Réinitialiser les filtres';
+
+  @override
+  String get noCategory => 'Aucune catégorie';
+
+  @override
+  String get allSubcategories => 'Toutes les sous-catégories';
+
+  @override
+  String get allPaymentMethods => 'Tous les modes de paiement';
+
+  @override
+  String searchError(String error) {
+    return 'Erreur de recherche : $error';
+  }
+
+  @override
+  String resultsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count résultats',
+      one: '1 résultat',
+    );
+    return '$_temp0';
+  }
 }

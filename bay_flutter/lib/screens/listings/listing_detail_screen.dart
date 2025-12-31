@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 
 import '../../main.dart' show client, authService;
 import '../../widgets/report_dialog.dart';
@@ -50,7 +51,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
     try {
       final listing = await client.listing.getById(widget.listingId);
       if (listing == null) {
-        throw Exception('Angebot nicht gefunden');
+        throw Exception('Listing not found');
       }
 
       final images = await client.listingImage.getByListing(widget.listingId);
@@ -86,18 +87,19 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
     return '\$${(cents / 100).toStringAsFixed(2)}';
   }
 
-  String _getQuantityUnitLabel(QuantityUnit unit) {
+  String _getQuantityUnitLabel(BuildContext context, QuantityUnit unit) {
+    final l10n = AppLocalizations.of(context)!;
     switch (unit) {
       case QuantityUnit.piece:
-        return 'Stück';
+        return l10n.unitPiece;
       case QuantityUnit.kg:
-        return 'kg';
+        return l10n.unitKg;
       case QuantityUnit.gram:
-        return 'g';
+        return l10n.unitGram;
       case QuantityUnit.meter:
-        return 'm';
+        return l10n.unitMeter;
       case QuantityUnit.liter:
-        return 'L';
+        return l10n.unitLiter;
       case QuantityUnit.none:
         return '';
     }
@@ -111,6 +113,8 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -122,16 +126,16 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
           children: [
             Icon(Icons.error_outline, size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.genericError(_error.toString())),
             const SizedBox(height: 16),
-            FilledButton(onPressed: _loadData, child: const Text('Erneut versuchen')),
+            FilledButton(onPressed: _loadData, child: Text(l10n.tryAgain)),
           ],
         ),
       );
     }
 
     if (_listing == null) {
-      return const Center(child: Text('Angebot nicht gefunden'));
+      return Center(child: Text(l10n.listingNotFound));
     }
 
     return CustomScrollView(
@@ -146,7 +150,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
           actions: [
             IconButton(
               icon: const Icon(Icons.flag),
-              tooltip: 'Angebot melden',
+              tooltip: 'Report listing',
               onPressed: () => _showReportDialog(),
             ),
           ],
@@ -325,7 +329,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildTitleSection() {
-    final unitLabel = _getQuantityUnitLabel(_listing!.quantityUnit);
+    final unitLabel = _getQuantityUnitLabel(context, _listing!.quantityUnit);
     final priceText = _formatPrice(_listing!.pricePerUnit);
 
     return Column(
@@ -380,7 +384,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
         Chip(
           avatar: const Icon(Icons.inventory, size: 18),
           label: Text(
-            '${_listing!.quantity} ${_getQuantityUnitLabel(_listing!.quantityUnit)}',
+            '${_listing!.quantity} ${_getQuantityUnitLabel(context, _listing!.quantityUnit)}',
           ),
         ),
 
@@ -388,7 +392,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
         if (!_listing!.isActive)
           Chip(
             avatar: const Icon(Icons.block, size: 18),
-            label: const Text('Inaktiv'),
+            label: Text(AppLocalizations.of(context)!.inactive),
             backgroundColor: Theme.of(context).colorScheme.errorContainer,
           ),
       ],
@@ -428,7 +432,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
                     Row(
                       children: [
                         Text(
-                          _sellerUsername ?? 'Unbekannt',
+                          _sellerUsername ?? 'Unknown',
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),
@@ -445,7 +449,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
-                              'Du',
+                              'You',
                               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                     color: Theme.of(context).colorScheme.onPrimaryContainer,
                                   ),
@@ -456,7 +460,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Verkäufer',
+                      'Seller',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
@@ -500,11 +504,12 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildDescriptionSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Beschreibung',
+          l10n.description,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -519,6 +524,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildDetailsSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -526,17 +532,17 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Details',
+              l10n.details,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 12),
-            _buildDetailRow('Menge', '${_listing!.quantity} ${_getQuantityUnitLabel(_listing!.quantityUnit)}'),
-            _buildDetailRow('Preis pro Einheit', _formatPrice(_listing!.pricePerUnit)),
-            _buildDetailRow('Erstellt am', _formatDate(_listing!.createdAt)),
+            _buildDetailRow(l10n.quantity, '${_listing!.quantity} ${_getQuantityUnitLabel(context, _listing!.quantityUnit)}'),
+            _buildDetailRow(l10n.pricePerUnit, _formatPrice(_listing!.pricePerUnit)),
+            _buildDetailRow(l10n.createdAt, _formatDate(_listing!.createdAt)),
             if (_listing!.expiresAt != null)
-              _buildDetailRow('Läuft ab am', _formatDate(_listing!.expiresAt!)),
+              _buildDetailRow(l10n.expiresAt, _formatDate(_listing!.expiresAt!)),
           ],
         ),
       ),
@@ -571,6 +577,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildPaymentSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -578,7 +585,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Akzeptierte Zahlungsmethoden',
+              l10n.acceptedPaymentMethods,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -588,13 +595,13 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
               children: [
                 if (_listing!.acceptsPaypal)
                   Expanded(
-                    child: _buildPaymentChip(Icons.payment, 'PayPal'),
+                    child: _buildPaymentChip(Icons.payment, l10n.paypal),
                   ),
                 if (_listing!.acceptsPaypal && _listing!.acceptsBitcoin)
                   const SizedBox(width: 12),
                 if (_listing!.acceptsBitcoin)
                   Expanded(
-                    child: _buildPaymentChip(Icons.currency_bitcoin, 'Bitcoin'),
+                    child: _buildPaymentChip(Icons.currency_bitcoin, l10n.bitcoin),
                   ),
               ],
             ),
@@ -629,6 +636,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildShippingSection() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -640,7 +648,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
                 const Icon(Icons.local_shipping),
                 const SizedBox(width: 8),
                 Text(
-                  'Versand',
+                  l10n.shipping,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -649,9 +657,9 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
             ),
             const SizedBox(height: 12),
             if (_listing!.shippingMethod != null && _listing!.shippingMethod!.isNotEmpty)
-              _buildDetailRow('Versandart', _listing!.shippingMethod!),
+              _buildDetailRow(l10n.shippingMethod, _listing!.shippingMethod!),
             if (_listing!.shippingCostCents != null)
-              _buildDetailRow('Versandkosten', _formatPrice(_listing!.shippingCostCents!)),
+              _buildDetailRow(l10n.shippingCost, _formatPrice(_listing!.shippingCostCents!)),
           ],
         ),
       ),
@@ -659,6 +667,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
   }
 
   Widget _buildContactButton() {
+    final l10n = AppLocalizations.of(context)!;
     // Prüfe ob es das eigene Angebot ist
     final currentUserId = authService.currentUser?.userId;
     final isOwnListing = _listing!.userId == currentUserId;
@@ -676,7 +685,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
             showStartTransactionDialog(context, listing: _listing!);
           },
           icon: const Icon(Icons.shopping_cart),
-          label: const Text('Buy Now'),
+          label: Text(l10n.buyNow),
         ),
         const SizedBox(height: 12),
         // Contact Button
@@ -689,7 +698,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
             );
           },
           icon: const Icon(Icons.message),
-          label: const Text('Contact Seller'),
+          label: Text(l10n.contactSeller),
         ),
       ],
     );
