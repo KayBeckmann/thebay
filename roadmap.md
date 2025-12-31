@@ -598,8 +598,8 @@
 - [x] User-Profil-Verwaltung übersetzen
 - [x] Zahlungsinformations-Dialoge übersetzen
 
-### 15.4 Marketplace Features
-- [ ] dashboard_screen.dart übersetzen
+### 15.4 Marketplace Features (in Arbeit)
+- [x] dashboard_screen.dart übersetzen (~25 Strings)
 - [ ] search_screen.dart übersetzen
 - [ ] Listing Cards übersetzen
 - [ ] listing_detail_screen.dart übersetzen

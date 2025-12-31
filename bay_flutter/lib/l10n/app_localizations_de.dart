@@ -320,4 +320,113 @@ class AppLocalizationsDe extends AppLocalizations {
   String genericError(String error) {
     return 'Fehler: $error';
   }
+
+  @override
+  String get dashboardTitle => 'Dashboard';
+
+  @override
+  String welcomeUser(String username) {
+    return 'Willkommen, $username!';
+  }
+
+  @override
+  String get userFallback => 'Benutzer';
+
+  @override
+  String get whatTodayQuestion => 'Was möchtest du heute tun?';
+
+  @override
+  String get sectionPendingRatings => 'Ausstehende Bewertungen';
+
+  @override
+  String get sectionNews => 'Neuigkeiten';
+
+  @override
+  String get sectionSlotWarnings => 'Slot-Warnungen';
+
+  @override
+  String get sectionRecentListings => 'Neueste Angebote';
+
+  @override
+  String get noNews => 'Keine Neuigkeiten';
+
+  @override
+  String get noNewsMessage =>
+      'Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!';
+
+  @override
+  String pendingRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Du hast $count ausstehende Bewertungen',
+      one: 'Du hast 1 ausstehende Bewertung',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String transactionNumber(int id) {
+    return 'Transaktion #$id';
+  }
+
+  @override
+  String viewAllPendingRatings(int count) {
+    return 'Alle $count ausstehenden Bewertungen anzeigen';
+  }
+
+  @override
+  String get noSlotsExpiring =>
+      'Keine Slots laufen in den nächsten 3 Tagen ab.';
+
+  @override
+  String slotsExpiringSoon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Slots laufen bald ab',
+      one: '1 Slot läuft bald ab',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String slotNumber(int id) {
+    return 'Slot #$id';
+  }
+
+  @override
+  String listingNumber(int id) {
+    return 'Listing #$id';
+  }
+
+  @override
+  String get noListingLinked => 'Kein Listing verknüpft';
+
+  @override
+  String moreCount(int count) {
+    return '+$count weitere';
+  }
+
+  @override
+  String get noListingsYet => 'Noch keine Angebote';
+
+  @override
+  String get noListingsMessage =>
+      'Hier werden die neuesten Angebote angezeigt.';
+
+  @override
+  String get unitPiece => 'Stück';
+
+  @override
+  String get unitKg => 'kg';
+
+  @override
+  String get unitGram => 'g';
+
+  @override
+  String get unitMeter => 'm';
+
+  @override
+  String get unitLiter => 'L';
 }

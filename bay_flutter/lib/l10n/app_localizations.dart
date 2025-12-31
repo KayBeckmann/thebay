@@ -683,6 +683,162 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Fehler: {error}'**
   String genericError(String error);
+
+  /// Dashboard Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Dashboard'**
+  String get dashboardTitle;
+
+  /// Willkommensgruß
+  ///
+  /// In de, this message translates to:
+  /// **'Willkommen, {username}!'**
+  String welcomeUser(String username);
+
+  /// Benutzer Fallback Name
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get userFallback;
+
+  /// Was möchtest du heute tun Frage
+  ///
+  /// In de, this message translates to:
+  /// **'Was möchtest du heute tun?'**
+  String get whatTodayQuestion;
+
+  /// Ausstehende Bewertungen Section
+  ///
+  /// In de, this message translates to:
+  /// **'Ausstehende Bewertungen'**
+  String get sectionPendingRatings;
+
+  /// Neuigkeiten Section
+  ///
+  /// In de, this message translates to:
+  /// **'Neuigkeiten'**
+  String get sectionNews;
+
+  /// Slot-Warnungen Section
+  ///
+  /// In de, this message translates to:
+  /// **'Slot-Warnungen'**
+  String get sectionSlotWarnings;
+
+  /// Neueste Angebote Section
+  ///
+  /// In de, this message translates to:
+  /// **'Neueste Angebote'**
+  String get sectionRecentListings;
+
+  /// Keine Neuigkeiten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Neuigkeiten'**
+  String get noNews;
+
+  /// Keine Neuigkeiten Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!'**
+  String get noNewsMessage;
+
+  /// Ausstehende Bewertungen Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{Du hast 1 ausstehende Bewertung} other{Du hast {count} ausstehende Bewertungen}}'**
+  String pendingRatingsCount(int count);
+
+  /// Transaktionsnummer
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion #{id}'**
+  String transactionNumber(int id);
+
+  /// Alle ausstehenden Bewertungen anzeigen
+  ///
+  /// In de, this message translates to:
+  /// **'Alle {count} ausstehenden Bewertungen anzeigen'**
+  String viewAllPendingRatings(int count);
+
+  /// Keine Slots laufen ab
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Slots laufen in den nächsten 3 Tagen ab.'**
+  String get noSlotsExpiring;
+
+  /// Slots laufen bald ab
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 Slot läuft bald ab} other{{count} Slots laufen bald ab}}'**
+  String slotsExpiringSoon(int count);
+
+  /// Slot-Nummer
+  ///
+  /// In de, this message translates to:
+  /// **'Slot #{id}'**
+  String slotNumber(int id);
+
+  /// Listing-Nummer
+  ///
+  /// In de, this message translates to:
+  /// **'Listing #{id}'**
+  String listingNumber(int id);
+
+  /// Kein Listing verknüpft
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Listing verknüpft'**
+  String get noListingLinked;
+
+  /// Weitere Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'+{count} weitere'**
+  String moreCount(int count);
+
+  /// Noch keine Angebote Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Angebote'**
+  String get noListingsYet;
+
+  /// Noch keine Angebote Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Hier werden die neuesten Angebote angezeigt.'**
+  String get noListingsMessage;
+
+  /// Mengeneinheit Stück
+  ///
+  /// In de, this message translates to:
+  /// **'Stück'**
+  String get unitPiece;
+
+  /// Mengeneinheit Kilogramm
+  ///
+  /// In de, this message translates to:
+  /// **'kg'**
+  String get unitKg;
+
+  /// Mengeneinheit Gramm
+  ///
+  /// In de, this message translates to:
+  /// **'g'**
+  String get unitGram;
+
+  /// Mengeneinheit Meter
+  ///
+  /// In de, this message translates to:
+  /// **'m'**
+  String get unitMeter;
+
+  /// Mengeneinheit Liter
+  ///
+  /// In de, this message translates to:
+  /// **'L'**
+  String get unitLiter;
 }
 
 class _AppLocalizationsDelegate

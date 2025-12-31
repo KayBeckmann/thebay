@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart';
 import '../services/auth_service.dart';
 import 'listings/listing_detail_screen.dart';
@@ -124,11 +125,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final user = widget.authService.currentUser;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text(l10n.dashboardTitle),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
@@ -147,26 +149,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
             // Pending ratings section
             if (_pendingRatings.isNotEmpty) ...[
-              _buildSectionHeader(context, 'Pending Ratings'),
+              _buildSectionHeader(context, l10n.sectionPendingRatings),
               const SizedBox(height: 8),
               _buildPendingRatingsSection(context),
               const SizedBox(height: 24),
             ],
 
             // News section
-            _buildSectionHeader(context, 'News'),
+            _buildSectionHeader(context, l10n.sectionNews),
             const SizedBox(height: 8),
             _buildNewsSection(context),
             const SizedBox(height: 24),
 
             // Slot warnings section
-            _buildSectionHeader(context, 'Slot Warnings'),
+            _buildSectionHeader(context, l10n.sectionSlotWarnings),
             const SizedBox(height: 8),
             _buildSlotWarningsSection(context),
             const SizedBox(height: 24),
 
             // Recent listings section
-            _buildSectionHeader(context, 'Recent Listings'),
+            _buildSectionHeader(context, l10n.sectionRecentListings),
             const SizedBox(height: 8),
             _buildRecentListingsSection(context),
           ],
@@ -176,6 +178,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildWelcomeCard(BuildContext context, String? username) {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -196,14 +199,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Willkommen, ${username ?? 'Benutzer'}!',
+                    l10n.welcomeUser(username ?? l10n.userFallback),
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Was möchtest du heute tun?',
+                    l10n.whatTodayQuestion,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
@@ -227,6 +230,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildNewsSection(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingNews) {
       return const Card(
         child: Padding(
@@ -252,7 +256,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'Keine Neuigkeiten',
+                      l10n.noNews,
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
@@ -260,7 +264,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!',
+                l10n.noNewsMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -328,6 +332,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildPendingRatingsSection(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingRatings) {
       return const Card(
         child: Padding(
@@ -353,7 +358,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'You have ${_pendingRatings.length} pending rating${_pendingRatings.length == 1 ? '' : 's'}',
+                    l10n.pendingRatingsCount(_pendingRatings.length),
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.onTertiaryContainer,
@@ -391,7 +396,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            'Transaction #${transaction.id}',
+                            l10n.transactionNumber(transaction.id!),
                             style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
                         ),
@@ -411,7 +416,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   onPressed: () {
                     // Navigate to transactions screen
                   },
-                  child: Text('View all ${_pendingRatings.length} pending ratings'),
+                  child: Text(l10n.viewAllPendingRatings(_pendingRatings.length)),
                 ),
               ),
           ],
@@ -421,6 +426,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildSlotWarningsSection(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingSlots) {
       return const Card(
         child: Padding(
@@ -443,7 +449,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
-                  'Keine Slots laufen in den nächsten 3 Tagen ab.',
+                  l10n.noSlotsExpiring,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
@@ -469,7 +475,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    '${_expiringSlots.length} Slot${_expiringSlots.length == 1 ? '' : 's'} laufen bald ab',
+                    l10n.slotsExpiringSoon(_expiringSlots.length),
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           color:
@@ -484,8 +490,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               final daysLeft =
                   slot.expiresAt.difference(DateTime.now()).inDays;
               final listingInfo = slot.listingId != null
-                  ? 'Listing #${slot.listingId}'
-                  : 'Kein Listing verknüpft';
+                  ? l10n.listingNumber(slot.listingId!)
+                  : l10n.noListingLinked;
 
               return Padding(
                 padding: const EdgeInsets.only(bottom: 8),
@@ -501,7 +507,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Slot #${slot.id} • $listingInfo • ${_formatDate(slot.expiresAt)}',
+                        '${l10n.slotNumber(slot.id!)} • $listingInfo • ${_formatDate(slot.expiresAt)}',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -524,7 +530,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             }),
             if (_expiringSlots.length > 3)
               Text(
-                '+${_expiringSlots.length - 3} weitere',
+                l10n.moreCount(_expiringSlots.length - 3),
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Theme.of(context).colorScheme.onErrorContainer,
                     ),
@@ -536,6 +542,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildRecentListingsSection(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingListings) {
       return const Card(
         child: Padding(
@@ -558,12 +565,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               const SizedBox(height: 12),
               Text(
-                'Noch keine Angebote',
+                l10n.noListingsYet,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               const SizedBox(height: 4),
               Text(
-                'Hier werden die neuesten Angebote angezeigt.',
+                l10n.noListingsMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -621,25 +628,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final currency =
         listing.acceptsBitcoin && !listing.acceptsPaypal ? 'BTC' : 'USD';
     final price = listing.pricePerUnit / 100;
-    final unitLabel = _quantityUnitLabel(listing.quantityUnit);
+    final unitLabel = _quantityUnitLabel(context, listing.quantityUnit);
     if (unitLabel.isEmpty) {
       return '${price.toStringAsFixed(2)} $currency';
     }
     return '${price.toStringAsFixed(2)} $currency/$unitLabel';
   }
 
-  String _quantityUnitLabel(QuantityUnit unit) {
+  String _quantityUnitLabel(BuildContext context, QuantityUnit unit) {
+    final l10n = AppLocalizations.of(context)!;
     switch (unit) {
       case QuantityUnit.piece:
-        return 'piece';
+        return l10n.unitPiece;
       case QuantityUnit.kg:
-        return 'kg';
+        return l10n.unitKg;
       case QuantityUnit.gram:
-        return 'g';
+        return l10n.unitGram;
       case QuantityUnit.meter:
-        return 'm';
+        return l10n.unitMeter;
       case QuantityUnit.liter:
-        return 'L';
+        return l10n.unitLiter;
       case QuantityUnit.none:
         return '';
     }

@@ -320,4 +320,112 @@ class AppLocalizationsFr extends AppLocalizations {
   String genericError(String error) {
     return 'Erreur : $error';
   }
+
+  @override
+  String get dashboardTitle => 'Tableau de bord';
+
+  @override
+  String welcomeUser(String username) {
+    return 'Bienvenue, $username !';
+  }
+
+  @override
+  String get userFallback => 'Utilisateur';
+
+  @override
+  String get whatTodayQuestion => 'Que voulez-vous faire aujourd\'hui ?';
+
+  @override
+  String get sectionPendingRatings => 'Évaluations en attente';
+
+  @override
+  String get sectionNews => 'Actualités';
+
+  @override
+  String get sectionSlotWarnings => 'Alertes de slots';
+
+  @override
+  String get sectionRecentListings => 'Annonces récentes';
+
+  @override
+  String get noNews => 'Pas d\'actualités';
+
+  @override
+  String get noNewsMessage =>
+      'Il n\'y a actuellement aucune actualité. Revenez plus tard !';
+
+  @override
+  String pendingRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Vous avez $count évaluations en attente',
+      one: 'Vous avez 1 évaluation en attente',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String transactionNumber(int id) {
+    return 'Transaction #$id';
+  }
+
+  @override
+  String viewAllPendingRatings(int count) {
+    return 'Voir les $count évaluations en attente';
+  }
+
+  @override
+  String get noSlotsExpiring =>
+      'Aucun slot n\'expire dans les 3 prochains jours.';
+
+  @override
+  String slotsExpiringSoon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count slots expirent bientôt',
+      one: '1 slot expire bientôt',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String slotNumber(int id) {
+    return 'Slot #$id';
+  }
+
+  @override
+  String listingNumber(int id) {
+    return 'Annonce #$id';
+  }
+
+  @override
+  String get noListingLinked => 'Aucune annonce liée';
+
+  @override
+  String moreCount(int count) {
+    return '+$count de plus';
+  }
+
+  @override
+  String get noListingsYet => 'Pas encore d\'annonces';
+
+  @override
+  String get noListingsMessage => 'Les annonces récentes seront affichées ici.';
+
+  @override
+  String get unitPiece => 'pièce';
+
+  @override
+  String get unitKg => 'kg';
+
+  @override
+  String get unitGram => 'g';
+
+  @override
+  String get unitMeter => 'm';
+
+  @override
+  String get unitLiter => 'L';
 }

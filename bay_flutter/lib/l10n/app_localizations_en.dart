@@ -316,4 +316,110 @@ class AppLocalizationsEn extends AppLocalizations {
   String genericError(String error) {
     return 'Error: $error';
   }
+
+  @override
+  String get dashboardTitle => 'Dashboard';
+
+  @override
+  String welcomeUser(String username) {
+    return 'Welcome, $username!';
+  }
+
+  @override
+  String get userFallback => 'User';
+
+  @override
+  String get whatTodayQuestion => 'What would you like to do today?';
+
+  @override
+  String get sectionPendingRatings => 'Pending Ratings';
+
+  @override
+  String get sectionNews => 'News';
+
+  @override
+  String get sectionSlotWarnings => 'Slot Warnings';
+
+  @override
+  String get sectionRecentListings => 'Recent Listings';
+
+  @override
+  String get noNews => 'No News';
+
+  @override
+  String get noNewsMessage => 'There are currently no news. Check back later!';
+
+  @override
+  String pendingRatingsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You have $count pending ratings',
+      one: 'You have 1 pending rating',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String transactionNumber(int id) {
+    return 'Transaction #$id';
+  }
+
+  @override
+  String viewAllPendingRatings(int count) {
+    return 'View all $count pending ratings';
+  }
+
+  @override
+  String get noSlotsExpiring => 'No slots expire in the next 3 days.';
+
+  @override
+  String slotsExpiringSoon(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count slots expire soon',
+      one: '1 slot expires soon',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String slotNumber(int id) {
+    return 'Slot #$id';
+  }
+
+  @override
+  String listingNumber(int id) {
+    return 'Listing #$id';
+  }
+
+  @override
+  String get noListingLinked => 'No listing linked';
+
+  @override
+  String moreCount(int count) {
+    return '+$count more';
+  }
+
+  @override
+  String get noListingsYet => 'No listings yet';
+
+  @override
+  String get noListingsMessage => 'Recent listings will be displayed here.';
+
+  @override
+  String get unitPiece => 'piece';
+
+  @override
+  String get unitKg => 'kg';
+
+  @override
+  String get unitGram => 'g';
+
+  @override
+  String get unitMeter => 'm';
+
+  @override
+  String get unitLiter => 'L';
 }

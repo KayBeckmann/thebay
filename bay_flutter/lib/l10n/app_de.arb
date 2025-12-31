@@ -517,5 +517,175 @@
         "type": "String"
       }
     }
+  },
+
+  "dashboardTitle": "Dashboard",
+  "@dashboardTitle": {
+    "description": "Dashboard Screen Titel"
+  },
+
+  "welcomeUser": "Willkommen, {username}!",
+  "@welcomeUser": {
+    "description": "Willkommensgruß",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "userFallback": "Benutzer",
+  "@userFallback": {
+    "description": "Benutzer Fallback Name"
+  },
+
+  "whatTodayQuestion": "Was möchtest du heute tun?",
+  "@whatTodayQuestion": {
+    "description": "Was möchtest du heute tun Frage"
+  },
+
+  "sectionPendingRatings": "Ausstehende Bewertungen",
+  "@sectionPendingRatings": {
+    "description": "Ausstehende Bewertungen Section"
+  },
+
+  "sectionNews": "Neuigkeiten",
+  "@sectionNews": {
+    "description": "Neuigkeiten Section"
+  },
+
+  "sectionSlotWarnings": "Slot-Warnungen",
+  "@sectionSlotWarnings": {
+    "description": "Slot-Warnungen Section"
+  },
+
+  "sectionRecentListings": "Neueste Angebote",
+  "@sectionRecentListings": {
+    "description": "Neueste Angebote Section"
+  },
+
+  "noNews": "Keine Neuigkeiten",
+  "@noNews": {
+    "description": "Keine Neuigkeiten Titel"
+  },
+
+  "noNewsMessage": "Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!",
+  "@noNewsMessage": {
+    "description": "Keine Neuigkeiten Nachricht"
+  },
+
+  "pendingRatingsCount": "{count, plural, =1{Du hast 1 ausstehende Bewertung} other{Du hast {count} ausstehende Bewertungen}}",
+  "@pendingRatingsCount": {
+    "description": "Ausstehende Bewertungen Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "transactionNumber": "Transaktion #{id}",
+  "@transactionNumber": {
+    "description": "Transaktionsnummer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "viewAllPendingRatings": "Alle {count} ausstehenden Bewertungen anzeigen",
+  "@viewAllPendingRatings": {
+    "description": "Alle ausstehenden Bewertungen anzeigen",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noSlotsExpiring": "Keine Slots laufen in den nächsten 3 Tagen ab.",
+  "@noSlotsExpiring": {
+    "description": "Keine Slots laufen ab"
+  },
+
+  "slotsExpiringSoon": "{count, plural, =1{1 Slot läuft bald ab} other{{count} Slots laufen bald ab}}",
+  "@slotsExpiringSoon": {
+    "description": "Slots laufen bald ab",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "slotNumber": "Slot #{id}",
+  "@slotNumber": {
+    "description": "Slot-Nummer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "listingNumber": "Listing #{id}",
+  "@listingNumber": {
+    "description": "Listing-Nummer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noListingLinked": "Kein Listing verknüpft",
+  "@noListingLinked": {
+    "description": "Kein Listing verknüpft"
+  },
+
+  "moreCount": "+{count} weitere",
+  "@moreCount": {
+    "description": "Weitere Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noListingsYet": "Noch keine Angebote",
+  "@noListingsYet": {
+    "description": "Noch keine Angebote Titel"
+  },
+
+  "noListingsMessage": "Hier werden die neuesten Angebote angezeigt.",
+  "@noListingsMessage": {
+    "description": "Noch keine Angebote Nachricht"
+  },
+
+  "unitPiece": "Stück",
+  "@unitPiece": {
+    "description": "Mengeneinheit Stück"
+  },
+
+  "unitKg": "kg",
+  "@unitKg": {
+    "description": "Mengeneinheit Kilogramm"
+  },
+
+  "unitGram": "g",
+  "@unitGram": {
+    "description": "Mengeneinheit Gramm"
+  },
+
+  "unitMeter": "m",
+  "@unitMeter": {
+    "description": "Mengeneinheit Meter"
+  },
+
+  "unitLiter": "L",
+  "@unitLiter": {
+    "description": "Mengeneinheit Liter"
   }
 }
