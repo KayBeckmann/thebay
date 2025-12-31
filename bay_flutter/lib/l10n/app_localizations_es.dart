@@ -681,4 +681,457 @@ class AppLocalizationsEs extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get transactions => 'Transacciones';
+
+  @override
+  String purchases(int count) {
+    return 'Compras ($count)';
+  }
+
+  @override
+  String sales(int count) {
+    return 'Ventas ($count)';
+  }
+
+  @override
+  String get refresh => 'Actualizar';
+
+  @override
+  String get noPurchasesYet => 'Aún no hay compras';
+
+  @override
+  String get noSalesYet => 'Aún no hay ventas';
+
+  @override
+  String get yourPurchasesWillAppearHere => 'Tus compras aparecerán aquí';
+
+  @override
+  String get yourSalesWillAppearHere => 'Tus ventas aparecerán aquí';
+
+  @override
+  String get statusOpen => 'Abierta';
+
+  @override
+  String get statusPaid => 'Pagada';
+
+  @override
+  String get statusShipped => 'Enviada';
+
+  @override
+  String get statusReceived => 'Recibida';
+
+  @override
+  String get statusCompleted => 'Completada';
+
+  @override
+  String get statusDisputed => 'En disputa';
+
+  @override
+  String get statusCancelled => 'Cancelada';
+
+  @override
+  String get autoCompletesToday => 'Se completa automáticamente hoy';
+
+  @override
+  String autoCompletesInDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'días',
+      one: 'día',
+    );
+    return 'Se completa automáticamente en $count $_temp0';
+  }
+
+  @override
+  String get transaction => 'Transacción';
+
+  @override
+  String get rateThisTransaction => 'Califica esta transacción';
+
+  @override
+  String shareYourExperience(String username) {
+    return 'Comparte tu experiencia con $username';
+  }
+
+  @override
+  String get rateNow => 'Calificar ahora';
+
+  @override
+  String get alreadyRated => 'Ya has calificado esta transacción';
+
+  @override
+  String get statusOpenDesc => 'Esperando el pago del comprador';
+
+  @override
+  String get statusPaidDesc => 'Pago enviado, esperando que el vendedor envíe';
+
+  @override
+  String get statusShippedDesc =>
+      'El artículo ha sido enviado, esperando la entrega';
+
+  @override
+  String get statusReceivedDesc => 'El comprador ha recibido el artículo';
+
+  @override
+  String get statusCompletedDesc => 'Transacción completada exitosamente';
+
+  @override
+  String get statusDisputedDesc => 'Se ha abierto una disputa';
+
+  @override
+  String get statusCancelledDesc => 'La transacción fue cancelada';
+
+  @override
+  String get timeline => 'Línea de tiempo';
+
+  @override
+  String get created => 'Creada';
+
+  @override
+  String get paid => 'Pagada';
+
+  @override
+  String get paymentSent => 'Pago enviado';
+
+  @override
+  String get waitingForBuyer => 'Esperando al comprador';
+
+  @override
+  String get shipped => 'Enviada';
+
+  @override
+  String get waitingForSeller => 'Esperando al vendedor';
+
+  @override
+  String get received => 'Recibida';
+
+  @override
+  String get completed => 'Completada';
+
+  @override
+  String get cancelled => 'Cancelada';
+
+  @override
+  String get pending => 'Pendiente';
+
+  @override
+  String get markAsShipped => 'Marcar como enviada';
+
+  @override
+  String get markAsPaid => 'Marcar como pagada';
+
+  @override
+  String get markAsReceived => 'Marcar como recibida';
+
+  @override
+  String get cancelTransaction => 'Cancelar transacción';
+
+  @override
+  String get openDispute => 'Abrir disputa';
+
+  @override
+  String get actions => 'Acciones';
+
+  @override
+  String get confirmShipment =>
+      'Confirma que has enviado el artículo. El comprador tendrá 14 días para confirmar la recepción o abrir una disputa.';
+
+  @override
+  String get confirm => 'Confirmar';
+
+  @override
+  String get transactionMarkedAsShipped => 'Transacción marcada como enviada';
+
+  @override
+  String get confirmPayment => 'Confirma que has enviado el pago al vendedor.';
+
+  @override
+  String get paymentMarkedAsSent => 'Pago marcado como enviado';
+
+  @override
+  String get confirmReceipt =>
+      'Confirma que has recibido el artículo. Esto completará la transacción.';
+
+  @override
+  String get transactionCompleted => 'Transacción completada';
+
+  @override
+  String get cancelTransactionConfirm =>
+      '¿Realmente quieres cancelar esta transacción? Esta acción no se puede deshacer.';
+
+  @override
+  String get keep => 'Mantener';
+
+  @override
+  String get transactionCancelled => 'Transacción cancelada';
+
+  @override
+  String get describeIssue =>
+      'Por favor describe el problema con esta transacción. Un moderador revisará tu disputa.';
+
+  @override
+  String get reason => 'Razón';
+
+  @override
+  String get describeProblem => 'Describe el problema...';
+
+  @override
+  String get pleaseEnterReason => 'Por favor ingresa una razón';
+
+  @override
+  String get disputeOpened => 'Disputa abierta';
+
+  @override
+  String get transactionNotFound => 'Transacción no encontrada';
+
+  @override
+  String get transactionId => 'ID de transacción';
+
+  @override
+  String get totalPrice => 'Precio total';
+
+  @override
+  String get parties => 'Partes';
+
+  @override
+  String get buyer => 'Comprador';
+
+  @override
+  String get seller => 'Vendedor';
+
+  @override
+  String get you => 'Tú';
+
+  @override
+  String get viewListingDetails => 'Ver detalles del anuncio';
+
+  @override
+  String get buyerNote => 'Nota del comprador';
+
+  @override
+  String get autoCompleteWarning => 'Advertencia de completado automático';
+
+  @override
+  String get autoCompleteToday =>
+      'Esta transacción se completará automáticamente hoy si no se abre una disputa.';
+
+  @override
+  String autoCompleteInDays(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'días',
+      one: 'día',
+    );
+    return 'Esta transacción se completará automáticamente en $count $_temp0 si no se toma ninguna acción.';
+  }
+
+  @override
+  String get disputeOpen => 'Disputa abierta';
+
+  @override
+  String disputeReason(String reason) {
+    return 'Razón: $reason';
+  }
+
+  @override
+  String disputeOpenedDate(String date) {
+    return 'Abierta: $date';
+  }
+
+  @override
+  String get moderatorReviewing => 'Un moderador está revisando esta disputa.';
+
+  @override
+  String get paymentInformation => 'Información de pago';
+
+  @override
+  String get sendPaymentTo =>
+      'Por favor envía el pago al vendedor con los siguientes detalles:';
+
+  @override
+  String get includeTransactionId =>
+      'El vendedor enviará el artículo una vez que se reciba el pago. Por favor incluye tu ID de transacción en la nota de pago.';
+
+  @override
+  String get messages => 'Mensajes';
+
+  @override
+  String get inbox => 'Bandeja de entrada';
+
+  @override
+  String get sent => 'Enviados';
+
+  @override
+  String get drafts => 'Borradores';
+
+  @override
+  String get newMessage => 'Nuevo mensaje';
+
+  @override
+  String get noMessages => 'No hay mensajes';
+
+  @override
+  String get inboxEmpty => 'Tu bandeja de entrada está vacía.';
+
+  @override
+  String get noSentMessages => 'No hay mensajes enviados';
+
+  @override
+  String get noSentMessagesYet => 'Aún no has enviado ningún mensaje.';
+
+  @override
+  String get noDrafts => 'No hay borradores';
+
+  @override
+  String get noSavedDrafts => 'No tienes borradores guardados.';
+
+  @override
+  String get errorLoading => 'Error al cargar';
+
+  @override
+  String from(String username) {
+    return 'De: $username';
+  }
+
+  @override
+  String to(String username) {
+    return 'Para: $username';
+  }
+
+  @override
+  String get yesterday => 'Ayer';
+
+  @override
+  String get monday => 'Lun';
+
+  @override
+  String get tuesday => 'Mar';
+
+  @override
+  String get wednesday => 'Mié';
+
+  @override
+  String get thursday => 'Jue';
+
+  @override
+  String get friday => 'Vie';
+
+  @override
+  String get saturday => 'Sáb';
+
+  @override
+  String get sunday => 'Dom';
+
+  @override
+  String userNumber(int id) {
+    return 'Usuario #$id';
+  }
+
+  @override
+  String get noRecipient => 'Sin destinatario';
+
+  @override
+  String lastEdited(String date) {
+    return 'Última edición: $date';
+  }
+
+  @override
+  String get deleteMessage => '¿Eliminar mensaje?';
+
+  @override
+  String get actionCannotBeUndone => 'Esta acción no se puede deshacer.';
+
+  @override
+  String get deleteDraft => '¿Eliminar borrador?';
+
+  @override
+  String get reply => 'Responder';
+
+  @override
+  String get decryptingMessage => 'Descifrando mensaje...';
+
+  @override
+  String get decryptionFailed => 'Fallo al descifrar';
+
+  @override
+  String get endToEndEncrypted => 'Cifrado de extremo a extremo';
+
+  @override
+  String fromUser(String username) {
+    return 'De: $username';
+  }
+
+  @override
+  String dateLabel(String date) {
+    return 'Fecha: $date';
+  }
+
+  @override
+  String get subject => 'Asunto';
+
+  @override
+  String get noSubject => '[Sin asunto]';
+
+  @override
+  String get message => 'Mensaje';
+
+  @override
+  String get noContent => '[Sin contenido]';
+
+  @override
+  String get editDraft => 'Editar borrador';
+
+  @override
+  String get draft => 'Borrador';
+
+  @override
+  String get send => 'Enviar';
+
+  @override
+  String get recipient => 'Destinatario';
+
+  @override
+  String get enterUsername => 'Ingresa el nombre de usuario';
+
+  @override
+  String get messageWillBeEncrypted => 'El mensaje será cifrado';
+
+  @override
+  String get clickToVerifyRecipient =>
+      'Haz clic en el ícono de búsqueda para verificar el destinatario';
+
+  @override
+  String userNotFoundOrNoKey(String username) {
+    return 'Usuario \"$username\" no encontrado o no tiene clave PGP';
+  }
+
+  @override
+  String get pleaseSelectRecipient => 'Por favor selecciona un destinatario';
+
+  @override
+  String get recipientNotVerified =>
+      'Destinatario no verificado o sin clave PGP disponible. Por favor verifica el destinatario.';
+
+  @override
+  String get pleaseEnterSubject => 'Por favor ingresa un asunto';
+
+  @override
+  String get pleaseEnterMessage => 'Por favor ingresa un mensaje';
+
+  @override
+  String errorSending(String error) {
+    return 'Error al enviar: $error';
+  }
+
+  @override
+  String get draftSaved => 'Borrador guardado';
+
+  @override
+  String errorSavingDraft(String error) {
+    return 'Error al guardar: $error';
+  }
 }

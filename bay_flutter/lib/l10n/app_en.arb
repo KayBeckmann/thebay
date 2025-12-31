@@ -208,5 +208,770 @@
   "allSubcategories": "All subcategories",
   "allPaymentMethods": "All payment methods",
   "searchError": "Search error: {error}",
-  "resultsCount": "{count, plural, =1{1 result} other{{count} results}}"
+  "resultsCount": "{count, plural, =1{1 result} other{{count} results}}",
+
+  "transactions": "Transactions",
+  "@transactions": {
+    "description": "Transactions screen title"
+  },
+
+  "purchases": "Purchases ({count})",
+  "@purchases": {
+    "description": "Purchases tab with count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sales": "Sales ({count})",
+  "@sales": {
+    "description": "Sales tab with count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "refresh": "Refresh",
+  "@refresh": {
+    "description": "Refresh tooltip"
+  },
+
+  "noPurchasesYet": "No purchases yet",
+  "@noPurchasesYet": {
+    "description": "Empty state for purchases title"
+  },
+
+  "noSalesYet": "No sales yet",
+  "@noSalesYet": {
+    "description": "Empty state for sales title"
+  },
+
+  "yourPurchasesWillAppearHere": "Your purchases will appear here",
+  "@yourPurchasesWillAppearHere": {
+    "description": "Empty state for purchases message"
+  },
+
+  "yourSalesWillAppearHere": "Your sales will appear here",
+  "@yourSalesWillAppearHere": {
+    "description": "Empty state for sales message"
+  },
+
+  "statusOpen": "Open",
+  "@statusOpen": {
+    "description": "Transaction status Open"
+  },
+
+  "statusPaid": "Paid",
+  "@statusPaid": {
+    "description": "Transaction status Paid"
+  },
+
+  "statusShipped": "Shipped",
+  "@statusShipped": {
+    "description": "Transaction status Shipped"
+  },
+
+  "statusReceived": "Received",
+  "@statusReceived": {
+    "description": "Transaction status Received"
+  },
+
+  "statusCompleted": "Completed",
+  "@statusCompleted": {
+    "description": "Transaction status Completed"
+  },
+
+  "statusDisputed": "Disputed",
+  "@statusDisputed": {
+    "description": "Transaction status Disputed"
+  },
+
+  "statusCancelled": "Cancelled",
+  "@statusCancelled": {
+    "description": "Transaction status Cancelled"
+  },
+
+  "transactionNumber": "Transaction #{id}",
+  "@transactionNumber": {
+    "description": "Transaction number",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "autoCompletesToday": "Auto-completes today",
+  "@autoCompletesToday": {
+    "description": "Auto-complete today warning"
+  },
+
+  "autoCompletesInDays": "Auto-completes in {count} {count, plural, =1{day} other{days}}",
+  "@autoCompletesInDays": {
+    "description": "Auto-complete in X days",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "transaction": "Transaction",
+  "@transaction": {
+    "description": "Transaction label"
+  },
+
+  "rateThisTransaction": "Rate this transaction",
+  "@rateThisTransaction": {
+    "description": "Rating prompt title"
+  },
+
+  "shareYourExperience": "Share your experience with {username}",
+  "@shareYourExperience": {
+    "description": "Rating prompt text",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "rateNow": "Rate now",
+  "@rateNow": {
+    "description": "Rate now button"
+  },
+
+  "alreadyRated": "You have already rated this transaction",
+  "@alreadyRated": {
+    "description": "Already rated message"
+  },
+
+  "statusOpenDesc": "Waiting for buyer's payment",
+  "@statusOpenDesc": {
+    "description": "Status Open description"
+  },
+
+  "statusPaidDesc": "Payment sent, waiting for seller to ship",
+  "@statusPaidDesc": {
+    "description": "Status Paid description"
+  },
+
+  "statusShippedDesc": "Item has been shipped, waiting for delivery",
+  "@statusShippedDesc": {
+    "description": "Status Shipped description"
+  },
+
+  "statusReceivedDesc": "Buyer has received the item",
+  "@statusReceivedDesc": {
+    "description": "Status Received description"
+  },
+
+  "statusCompletedDesc": "Transaction completed successfully",
+  "@statusCompletedDesc": {
+    "description": "Status Completed description"
+  },
+
+  "statusDisputedDesc": "A dispute has been opened",
+  "@statusDisputedDesc": {
+    "description": "Status Disputed description"
+  },
+
+  "statusCancelledDesc": "Transaction was cancelled",
+  "@statusCancelledDesc": {
+    "description": "Status Cancelled description"
+  },
+
+  "timeline": "Timeline",
+  "@timeline": {
+    "description": "Timeline title"
+  },
+
+  "created": "Created",
+  "@created": {
+    "description": "Created label"
+  },
+
+  "paid": "Paid",
+  "@paid": {
+    "description": "Paid label"
+  },
+
+  "paymentSent": "Payment sent",
+  "@paymentSent": {
+    "description": "Payment sent label"
+  },
+
+  "waitingForBuyer": "Waiting for buyer",
+  "@waitingForBuyer": {
+    "description": "Waiting for buyer status"
+  },
+
+  "shipped": "Shipped",
+  "@shipped": {
+    "description": "Shipped label"
+  },
+
+  "waitingForSeller": "Waiting for seller",
+  "@waitingForSeller": {
+    "description": "Waiting for seller status"
+  },
+
+  "received": "Received",
+  "@received": {
+    "description": "Received label"
+  },
+
+  "completed": "Completed",
+  "@completed": {
+    "description": "Completed label"
+  },
+
+  "cancelled": "Cancelled",
+  "@cancelled": {
+    "description": "Cancelled label"
+  },
+
+  "pending": "Pending",
+  "@pending": {
+    "description": "Pending label"
+  },
+
+  "markAsShipped": "Mark as shipped",
+  "@markAsShipped": {
+    "description": "Mark as shipped button"
+  },
+
+  "markAsPaid": "Mark as paid",
+  "@markAsPaid": {
+    "description": "Mark as paid button"
+  },
+
+  "markAsReceived": "Mark as received",
+  "@markAsReceived": {
+    "description": "Mark as received button"
+  },
+
+  "cancelTransaction": "Cancel transaction",
+  "@cancelTransaction": {
+    "description": "Cancel transaction button"
+  },
+
+  "openDispute": "Open dispute",
+  "@openDispute": {
+    "description": "Open dispute button"
+  },
+
+  "actions": "Actions",
+  "@actions": {
+    "description": "Actions title"
+  },
+
+  "confirmShipment": "Confirm that you have shipped the item. The buyer will have 14 days to confirm receipt or open a dispute.",
+  "@confirmShipment": {
+    "description": "Shipment confirmation dialog text"
+  },
+
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+
+  "transactionMarkedAsShipped": "Transaction marked as shipped",
+  "@transactionMarkedAsShipped": {
+    "description": "Marked as shipped message"
+  },
+
+  "confirmPayment": "Confirm that you have sent the payment to the seller.",
+  "@confirmPayment": {
+    "description": "Payment confirmation dialog text"
+  },
+
+  "paymentMarkedAsSent": "Payment marked as sent",
+  "@paymentMarkedAsSent": {
+    "description": "Payment marked as sent message"
+  },
+
+  "confirmReceipt": "Confirm that you have received the item. This will complete the transaction.",
+  "@confirmReceipt": {
+    "description": "Receipt confirmation dialog text"
+  },
+
+  "transactionCompleted": "Transaction completed",
+  "@transactionCompleted": {
+    "description": "Transaction completed message"
+  },
+
+  "cancelTransactionConfirm": "Do you really want to cancel this transaction? This action cannot be undone.",
+  "@cancelTransactionConfirm": {
+    "description": "Transaction cancellation confirmation"
+  },
+
+  "keep": "Keep",
+  "@keep": {
+    "description": "Keep button"
+  },
+
+  "transactionCancelled": "Transaction cancelled",
+  "@transactionCancelled": {
+    "description": "Transaction cancelled message"
+  },
+
+  "describeIssue": "Please describe the issue with this transaction. A moderator will review your dispute.",
+  "@describeIssue": {
+    "description": "Dispute description prompt"
+  },
+
+  "reason": "Reason",
+  "@reason": {
+    "description": "Reason label"
+  },
+
+  "describeProblem": "Describe the problem...",
+  "@describeProblem": {
+    "description": "Describe problem hint"
+  },
+
+  "pleaseEnterReason": "Please enter a reason",
+  "@pleaseEnterReason": {
+    "description": "Reason required validation"
+  },
+
+  "disputeOpened": "Dispute opened",
+  "@disputeOpened": {
+    "description": "Dispute opened message"
+  },
+
+  "transactionNotFound": "Transaction not found",
+  "@transactionNotFound": {
+    "description": "Transaction not found error"
+  },
+
+  "transactionId": "Transaction ID",
+  "@transactionId": {
+    "description": "Transaction ID label"
+  },
+
+  "totalPrice": "Total price",
+  "@totalPrice": {
+    "description": "Total price label"
+  },
+
+  "parties": "Parties",
+  "@parties": {
+    "description": "Parties title"
+  },
+
+  "buyer": "Buyer",
+  "@buyer": {
+    "description": "Buyer label"
+  },
+
+  "seller": "Seller",
+  "@seller": {
+    "description": "Seller label"
+  },
+
+  "you": "You",
+  "@you": {
+    "description": "You label"
+  },
+
+  "viewListingDetails": "View listing details",
+  "@viewListingDetails": {
+    "description": "View listing details link"
+  },
+
+  "buyerNote": "Buyer note",
+  "@buyerNote": {
+    "description": "Buyer note title"
+  },
+
+  "autoCompleteWarning": "Auto-complete warning",
+  "@autoCompleteWarning": {
+    "description": "Auto-complete warning title"
+  },
+
+  "autoCompleteToday": "This transaction will auto-complete today if no dispute is opened.",
+  "@autoCompleteToday": {
+    "description": "Auto-complete today message"
+  },
+
+  "autoCompleteInDays": "This transaction will auto-complete in {count} {count, plural, =1{day} other{days}} if no action is taken.",
+  "@autoCompleteInDays": {
+    "description": "Auto-complete in X days message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "disputeOpen": "Dispute open",
+  "@disputeOpen": {
+    "description": "Dispute open title"
+  },
+
+  "disputeReason": "Reason: {reason}",
+  "@disputeReason": {
+    "description": "Dispute reason",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+
+  "disputeOpenedDate": "Opened: {date}",
+  "@disputeOpenedDate": {
+    "description": "Dispute opened on",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "moderatorReviewing": "A moderator is reviewing this dispute.",
+  "@moderatorReviewing": {
+    "description": "Moderator reviewing message"
+  },
+
+  "paymentInformation": "Payment information",
+  "@paymentInformation": {
+    "description": "Payment information title"
+  },
+
+  "sendPaymentTo": "Please send payment to the seller with the following details:",
+  "@sendPaymentTo": {
+    "description": "Payment instruction"
+  },
+
+  "includeTransactionId": "The seller will ship the item once payment is received. Please include your transaction ID in the payment note.",
+  "@includeTransactionId": {
+    "description": "Transaction ID in payment hint"
+  },
+
+  "messages": "Messages",
+  "@messages": {
+    "description": "Messages screen title"
+  },
+
+  "inbox": "Inbox",
+  "@inbox": {
+    "description": "Inbox tab"
+  },
+
+  "sent": "Sent",
+  "@sent": {
+    "description": "Sent tab"
+  },
+
+  "drafts": "Drafts",
+  "@drafts": {
+    "description": "Drafts tab"
+  },
+
+  "newMessage": "New message",
+  "@newMessage": {
+    "description": "New message button"
+  },
+
+  "noMessages": "No messages",
+  "@noMessages": {
+    "description": "No messages title"
+  },
+
+  "inboxEmpty": "Your inbox is empty.",
+  "@inboxEmpty": {
+    "description": "Inbox empty message"
+  },
+
+  "noSentMessages": "No sent messages",
+  "@noSentMessages": {
+    "description": "No sent messages title"
+  },
+
+  "noSentMessagesYet": "You haven't sent any messages yet.",
+  "@noSentMessagesYet": {
+    "description": "No sent messages yet message"
+  },
+
+  "noDrafts": "No drafts",
+  "@noDrafts": {
+    "description": "No drafts title"
+  },
+
+  "noSavedDrafts": "You have no saved drafts.",
+  "@noSavedDrafts": {
+    "description": "No saved drafts message"
+  },
+
+  "errorLoading": "Error loading",
+  "@errorLoading": {
+    "description": "Error loading title"
+  },
+
+  "from": "From: {username}",
+  "@from": {
+    "description": "From label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "to": "To: {username}",
+  "@to": {
+    "description": "To label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Yesterday label"
+  },
+
+  "monday": "Mon",
+  "@monday": {
+    "description": "Monday abbreviation"
+  },
+
+  "tuesday": "Tue",
+  "@tuesday": {
+    "description": "Tuesday abbreviation"
+  },
+
+  "wednesday": "Wed",
+  "@wednesday": {
+    "description": "Wednesday abbreviation"
+  },
+
+  "thursday": "Thu",
+  "@thursday": {
+    "description": "Thursday abbreviation"
+  },
+
+  "friday": "Fri",
+  "@friday": {
+    "description": "Friday abbreviation"
+  },
+
+  "saturday": "Sat",
+  "@saturday": {
+    "description": "Saturday abbreviation"
+  },
+
+  "sunday": "Sun",
+  "@sunday": {
+    "description": "Sunday abbreviation"
+  },
+
+  "userNumber": "User #{id}",
+  "@userNumber": {
+    "description": "User number",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noRecipient": "No recipient",
+  "@noRecipient": {
+    "description": "No recipient label"
+  },
+
+  "lastEdited": "Last edited: {date}",
+  "@lastEdited": {
+    "description": "Last edited",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "deleteMessage": "Delete message?",
+  "@deleteMessage": {
+    "description": "Delete message confirmation title"
+  },
+
+  "actionCannotBeUndone": "This action cannot be undone.",
+  "@actionCannotBeUndone": {
+    "description": "Action cannot be undone warning"
+  },
+
+  "deleteDraft": "Delete draft?",
+  "@deleteDraft": {
+    "description": "Delete draft confirmation title"
+  },
+
+  "reply": "Reply",
+  "@reply": {
+    "description": "Reply button"
+  },
+
+  "decryptingMessage": "Decrypting message...",
+  "@decryptingMessage": {
+    "description": "Decryption in progress message"
+  },
+
+  "decryptionFailed": "Decryption failed",
+  "@decryptionFailed": {
+    "description": "Decryption failed error"
+  },
+
+  "endToEndEncrypted": "End-to-end encrypted",
+  "@endToEndEncrypted": {
+    "description": "End-to-end encrypted label"
+  },
+
+  "fromUser": "From: {username}",
+  "@fromUser": {
+    "description": "From user label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "dateLabel": "Date: {date}",
+  "@dateLabel": {
+    "description": "Date label",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "subject": "Subject",
+  "@subject": {
+    "description": "Subject label"
+  },
+
+  "noSubject": "[No subject]",
+  "@noSubject": {
+    "description": "No subject placeholder"
+  },
+
+  "message": "Message",
+  "@message": {
+    "description": "Message label"
+  },
+
+  "noContent": "[No content]",
+  "@noContent": {
+    "description": "No content placeholder"
+  },
+
+  "editDraft": "Edit draft",
+  "@editDraft": {
+    "description": "Edit draft title"
+  },
+
+  "draft": "Draft",
+  "@draft": {
+    "description": "Draft button"
+  },
+
+  "send": "Send",
+  "@send": {
+    "description": "Send button"
+  },
+
+  "recipient": "Recipient",
+  "@recipient": {
+    "description": "Recipient label"
+  },
+
+  "enterUsername": "Enter username",
+  "@enterUsername": {
+    "description": "Enter username hint"
+  },
+
+  "messageWillBeEncrypted": "Message will be encrypted",
+  "@messageWillBeEncrypted": {
+    "description": "Message will be encrypted hint"
+  },
+
+  "clickToVerifyRecipient": "Click the search icon to verify recipient",
+  "@clickToVerifyRecipient": {
+    "description": "Verify recipient hint"
+  },
+
+  "userNotFoundOrNoKey": "User \"{username}\" not found or has no PGP key",
+  "@userNotFoundOrNoKey": {
+    "description": "User not found error",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "searchError": "Search error: {error}",
+  "@searchError": {
+    "description": "Search error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "pleaseSelectRecipient": "Please select a recipient",
+  "@pleaseSelectRecipient": {
+    "description": "Select recipient validation"
+  },
+
+  "recipientNotVerified": "Recipient not verified or no PGP key available. Please verify recipient.",
+  "@recipientNotVerified": {
+    "description": "Recipient not verified error"
+  },
+
+  "pleaseEnterSubject": "Please enter a subject",
+  "@pleaseEnterSubject": {
+    "description": "Enter subject validation"
+  },
+
+  "pleaseEnterMessage": "Please enter a message",
+  "@pleaseEnterMessage": {
+    "description": "Enter message validation"
+  },
+
+  "errorSending": "Error sending: {error}",
+  "@errorSending": {
+    "description": "Send error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "draftSaved": "Draft saved",
+  "@draftSaved": {
+    "description": "Draft saved message"
+  },
+
+  "errorSavingDraft": "Error saving: {error}",
+  "@errorSavingDraft": {
+    "description": "Draft save error",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  }
 }

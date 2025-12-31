@@ -1308,7 +1308,7 @@ abstract class AppLocalizations {
   /// **'Alle Bezahlarten'**
   String get allPaymentMethods;
 
-  /// Suchfehler Nachricht
+  /// Suchfehler
   ///
   /// In de, this message translates to:
   /// **'Fehler bei der Suche: {error}'**
@@ -1319,6 +1319,804 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'{count, plural, =1{1 Ergebnis} other{{count} Ergebnisse}}'**
   String resultsCount(int count);
+
+  /// Transaktionen Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktionen'**
+  String get transactions;
+
+  /// Käufe Tab mit Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'Käufe ({count})'**
+  String purchases(int count);
+
+  /// Verkäufe Tab mit Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'Verkäufe ({count})'**
+  String sales(int count);
+
+  /// Aktualisieren Tooltip
+  ///
+  /// In de, this message translates to:
+  /// **'Aktualisieren'**
+  String get refresh;
+
+  /// Leerzustand für Käufe Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Käufe'**
+  String get noPurchasesYet;
+
+  /// Leerzustand für Verkäufe Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Verkäufe'**
+  String get noSalesYet;
+
+  /// Leerzustand für Käufe Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Käufe werden hier angezeigt'**
+  String get yourPurchasesWillAppearHere;
+
+  /// Leerzustand für Verkäufe Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Deine Verkäufe werden hier angezeigt'**
+  String get yourSalesWillAppearHere;
+
+  /// Transaktionsstatus Offen
+  ///
+  /// In de, this message translates to:
+  /// **'Offen'**
+  String get statusOpen;
+
+  /// Transaktionsstatus Bezahlt
+  ///
+  /// In de, this message translates to:
+  /// **'Bezahlt'**
+  String get statusPaid;
+
+  /// Transaktionsstatus Versendet
+  ///
+  /// In de, this message translates to:
+  /// **'Versendet'**
+  String get statusShipped;
+
+  /// Transaktionsstatus Erhalten
+  ///
+  /// In de, this message translates to:
+  /// **'Erhalten'**
+  String get statusReceived;
+
+  /// Transaktionsstatus Abgeschlossen
+  ///
+  /// In de, this message translates to:
+  /// **'Abgeschlossen'**
+  String get statusCompleted;
+
+  /// Transaktionsstatus Umstritten
+  ///
+  /// In de, this message translates to:
+  /// **'Umstritten'**
+  String get statusDisputed;
+
+  /// Transaktionsstatus Abgebrochen
+  ///
+  /// In de, this message translates to:
+  /// **'Abgebrochen'**
+  String get statusCancelled;
+
+  /// Auto-Abschluss heute Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Wird heute automatisch abgeschlossen'**
+  String get autoCompletesToday;
+
+  /// Auto-Abschluss in X Tagen
+  ///
+  /// In de, this message translates to:
+  /// **'Wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen'**
+  String autoCompletesInDays(int count);
+
+  /// Transaktion Label
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion'**
+  String get transaction;
+
+  /// Bewertungsaufforderung Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Bewerte diese Transaktion'**
+  String get rateThisTransaction;
+
+  /// Bewertungsaufforderung Text
+  ///
+  /// In de, this message translates to:
+  /// **'Teile deine Erfahrung mit {username}'**
+  String shareYourExperience(String username);
+
+  /// Jetzt bewerten Button
+  ///
+  /// In de, this message translates to:
+  /// **'Jetzt bewerten'**
+  String get rateNow;
+
+  /// Bereits bewertet Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast diese Transaktion bereits bewertet'**
+  String get alreadyRated;
+
+  /// Status Offen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Warte auf Zahlung des Käufers'**
+  String get statusOpenDesc;
+
+  /// Status Bezahlt Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung gesendet, warte auf Versand durch Verkäufer'**
+  String get statusPaidDesc;
+
+  /// Status Versendet Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Artikel wurde versendet, warte auf Zustellung'**
+  String get statusShippedDesc;
+
+  /// Status Erhalten Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Käufer hat den Artikel erhalten'**
+  String get statusReceivedDesc;
+
+  /// Status Abgeschlossen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion erfolgreich abgeschlossen'**
+  String get statusCompletedDesc;
+
+  /// Status Umstritten Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Ein Streitfall wurde eröffnet'**
+  String get statusDisputedDesc;
+
+  /// Status Abgebrochen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion wurde abgebrochen'**
+  String get statusCancelledDesc;
+
+  /// Zeitverlauf Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Zeitverlauf'**
+  String get timeline;
+
+  /// Erstellt Label
+  ///
+  /// In de, this message translates to:
+  /// **'Erstellt'**
+  String get created;
+
+  /// Bezahlt Label
+  ///
+  /// In de, this message translates to:
+  /// **'Bezahlt'**
+  String get paid;
+
+  /// Zahlung gesendet Label
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung gesendet'**
+  String get paymentSent;
+
+  /// Warte auf Käufer Status
+  ///
+  /// In de, this message translates to:
+  /// **'Warte auf Käufer'**
+  String get waitingForBuyer;
+
+  /// Versendet Label
+  ///
+  /// In de, this message translates to:
+  /// **'Versendet'**
+  String get shipped;
+
+  /// Warte auf Verkäufer Status
+  ///
+  /// In de, this message translates to:
+  /// **'Warte auf Verkäufer'**
+  String get waitingForSeller;
+
+  /// Erhalten Label
+  ///
+  /// In de, this message translates to:
+  /// **'Erhalten'**
+  String get received;
+
+  /// Abgeschlossen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Abgeschlossen'**
+  String get completed;
+
+  /// Abgebrochen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Abgebrochen'**
+  String get cancelled;
+
+  /// Ausstehend Label
+  ///
+  /// In de, this message translates to:
+  /// **'Ausstehend'**
+  String get pending;
+
+  /// Als versendet markieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Als versendet markieren'**
+  String get markAsShipped;
+
+  /// Als bezahlt markieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Als bezahlt markieren'**
+  String get markAsPaid;
+
+  /// Als erhalten markieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Als erhalten markieren'**
+  String get markAsReceived;
+
+  /// Transaktion abbrechen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion abbrechen'**
+  String get cancelTransaction;
+
+  /// Streitfall eröffnen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Streitfall eröffnen'**
+  String get openDispute;
+
+  /// Aktionen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Aktionen'**
+  String get actions;
+
+  /// Versandbestätigung Dialog Text
+  ///
+  /// In de, this message translates to:
+  /// **'Bestätige, dass du den Artikel versendet hast. Der Käufer hat 14 Tage Zeit, den Erhalt zu bestätigen oder einen Streitfall zu eröffnen.'**
+  String get confirmShipment;
+
+  /// Bestätigen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Bestätigen'**
+  String get confirm;
+
+  /// Als versendet markiert Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion als versendet markiert'**
+  String get transactionMarkedAsShipped;
+
+  /// Zahlungsbestätigung Dialog Text
+  ///
+  /// In de, this message translates to:
+  /// **'Bestätige, dass du die Zahlung an den Verkäufer gesendet hast.'**
+  String get confirmPayment;
+
+  /// Zahlung als gesendet markiert Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung als gesendet markiert'**
+  String get paymentMarkedAsSent;
+
+  /// Erhaltbestätigung Dialog Text
+  ///
+  /// In de, this message translates to:
+  /// **'Bestätige, dass du den Artikel erhalten hast. Dies wird die Transaktion abschließen.'**
+  String get confirmReceipt;
+
+  /// Transaktion abgeschlossen Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion abgeschlossen'**
+  String get transactionCompleted;
+
+  /// Transaktionsabbruch Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du diese Transaktion wirklich abbrechen? Diese Aktion kann nicht rückgängig gemacht werden.'**
+  String get cancelTransactionConfirm;
+
+  /// Behalten Button
+  ///
+  /// In de, this message translates to:
+  /// **'Behalten'**
+  String get keep;
+
+  /// Transaktion abgebrochen Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion abgebrochen'**
+  String get transactionCancelled;
+
+  /// Streitfall-Beschreibung Aufforderung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte beschreibe das Problem mit dieser Transaktion. Ein Moderator wird deinen Streitfall prüfen.'**
+  String get describeIssue;
+
+  /// Grund Label
+  ///
+  /// In de, this message translates to:
+  /// **'Grund'**
+  String get reason;
+
+  /// Problem beschreiben Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibe das Problem...'**
+  String get describeProblem;
+
+  /// Grund erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib einen Grund an'**
+  String get pleaseEnterReason;
+
+  /// Streitfall eröffnet Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Streitfall eröffnet'**
+  String get disputeOpened;
+
+  /// Transaktion nicht gefunden Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion nicht gefunden'**
+  String get transactionNotFound;
+
+  /// Transaktions-ID Label
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktions-ID'**
+  String get transactionId;
+
+  /// Gesamtpreis Label
+  ///
+  /// In de, this message translates to:
+  /// **'Gesamtpreis'**
+  String get totalPrice;
+
+  /// Parteien Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Parteien'**
+  String get parties;
+
+  /// Käufer Label
+  ///
+  /// In de, this message translates to:
+  /// **'Käufer'**
+  String get buyer;
+
+  /// Verkäufer Label
+  ///
+  /// In de, this message translates to:
+  /// **'Verkäufer'**
+  String get seller;
+
+  /// Du Label
+  ///
+  /// In de, this message translates to:
+  /// **'Du'**
+  String get you;
+
+  /// Angebotsdetails anzeigen Link
+  ///
+  /// In de, this message translates to:
+  /// **'Angebotsdetails anzeigen'**
+  String get viewListingDetails;
+
+  /// Käufernotiz Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Käufernotiz'**
+  String get buyerNote;
+
+  /// Auto-Abschluss Warnung Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Auto-Abschluss Warnung'**
+  String get autoCompleteWarning;
+
+  /// Auto-Abschluss heute Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Transaktion wird heute automatisch abgeschlossen, wenn kein Streitfall eröffnet wird.'**
+  String get autoCompleteToday;
+
+  /// Auto-Abschluss in X Tagen Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Transaktion wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen, wenn keine Aktion erfolgt.'**
+  String autoCompleteInDays(int count);
+
+  /// Streitfall offen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Streitfall offen'**
+  String get disputeOpen;
+
+  /// Streitfall-Grund
+  ///
+  /// In de, this message translates to:
+  /// **'Grund: {reason}'**
+  String disputeReason(String reason);
+
+  /// Streitfall eröffnet am
+  ///
+  /// In de, this message translates to:
+  /// **'Eröffnet: {date}'**
+  String disputeOpenedDate(String date);
+
+  /// Moderator prüft Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Ein Moderator prüft diesen Streitfall.'**
+  String get moderatorReviewing;
+
+  /// Zahlungsinformationen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlungsinformationen'**
+  String get paymentInformation;
+
+  /// Zahlungsanweisung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte sende die Zahlung an den Verkäufer mit den folgenden Details:'**
+  String get sendPaymentTo;
+
+  /// Transaktions-ID in Zahlung Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Der Verkäufer wird den Artikel versenden, sobald die Zahlung eingegangen ist. Bitte gib deine Transaktions-ID in der Zahlungsnotiz an.'**
+  String get includeTransactionId;
+
+  /// Nachrichten Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Nachrichten'**
+  String get messages;
+
+  /// Posteingang Tab
+  ///
+  /// In de, this message translates to:
+  /// **'Posteingang'**
+  String get inbox;
+
+  /// Gesendet Tab
+  ///
+  /// In de, this message translates to:
+  /// **'Gesendet'**
+  String get sent;
+
+  /// Entwürfe Tab
+  ///
+  /// In de, this message translates to:
+  /// **'Entwürfe'**
+  String get drafts;
+
+  /// Neue Nachricht Button
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Nachricht'**
+  String get newMessage;
+
+  /// Keine Nachrichten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Nachrichten'**
+  String get noMessages;
+
+  /// Posteingang leer Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Dein Posteingang ist leer.'**
+  String get inboxEmpty;
+
+  /// Keine gesendeten Nachrichten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Keine gesendeten Nachrichten'**
+  String get noSentMessages;
+
+  /// Noch keine gesendeten Nachrichten Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast noch keine Nachrichten gesendet.'**
+  String get noSentMessagesYet;
+
+  /// Keine Entwürfe Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Entwürfe'**
+  String get noDrafts;
+
+  /// Keine gespeicherten Entwürfe Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast keine gespeicherten Entwürfe.'**
+  String get noSavedDrafts;
+
+  /// Fehler beim Laden Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Laden'**
+  String get errorLoading;
+
+  /// Von Label
+  ///
+  /// In de, this message translates to:
+  /// **'Von: {username}'**
+  String from(String username);
+
+  /// An Label
+  ///
+  /// In de, this message translates to:
+  /// **'An: {username}'**
+  String to(String username);
+
+  /// Gestern Label
+  ///
+  /// In de, this message translates to:
+  /// **'Gestern'**
+  String get yesterday;
+
+  /// Montag Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'Mo'**
+  String get monday;
+
+  /// Dienstag Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'Di'**
+  String get tuesday;
+
+  /// Mittwoch Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'Mi'**
+  String get wednesday;
+
+  /// Donnerstag Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'Do'**
+  String get thursday;
+
+  /// Freitag Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'Fr'**
+  String get friday;
+
+  /// Samstag Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'Sa'**
+  String get saturday;
+
+  /// Sonntag Abkürzung
+  ///
+  /// In de, this message translates to:
+  /// **'So'**
+  String get sunday;
+
+  /// Benutzer Nummer
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer #{id}'**
+  String userNumber(int id);
+
+  /// Kein Empfänger Label
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Empfänger'**
+  String get noRecipient;
+
+  /// Zuletzt bearbeitet
+  ///
+  /// In de, this message translates to:
+  /// **'Zuletzt bearbeitet: {date}'**
+  String lastEdited(String date);
+
+  /// Nachricht löschen Bestätigung Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Nachricht löschen?'**
+  String get deleteMessage;
+
+  /// Aktion nicht rückgängig machbar Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Aktion kann nicht rückgängig gemacht werden.'**
+  String get actionCannotBeUndone;
+
+  /// Entwurf löschen Bestätigung Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Entwurf löschen?'**
+  String get deleteDraft;
+
+  /// Antworten Button
+  ///
+  /// In de, this message translates to:
+  /// **'Antworten'**
+  String get reply;
+
+  /// Entschlüsselung läuft Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Nachricht wird entschlüsselt...'**
+  String get decryptingMessage;
+
+  /// Entschlüsselung fehlgeschlagen Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Entschlüsselung fehlgeschlagen'**
+  String get decryptionFailed;
+
+  /// Ende-zu-Ende verschlüsselt Label
+  ///
+  /// In de, this message translates to:
+  /// **'Ende-zu-Ende verschlüsselt'**
+  String get endToEndEncrypted;
+
+  /// Von Benutzer Label
+  ///
+  /// In de, this message translates to:
+  /// **'Von: {username}'**
+  String fromUser(String username);
+
+  /// Datum Label
+  ///
+  /// In de, this message translates to:
+  /// **'Datum: {date}'**
+  String dateLabel(String date);
+
+  /// Betreff Label
+  ///
+  /// In de, this message translates to:
+  /// **'Betreff'**
+  String get subject;
+
+  /// Kein Betreff Platzhalter
+  ///
+  /// In de, this message translates to:
+  /// **'[Kein Betreff]'**
+  String get noSubject;
+
+  /// Nachricht Label
+  ///
+  /// In de, this message translates to:
+  /// **'Nachricht'**
+  String get message;
+
+  /// Kein Inhalt Platzhalter
+  ///
+  /// In de, this message translates to:
+  /// **'[Kein Inhalt]'**
+  String get noContent;
+
+  /// Entwurf bearbeiten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Entwurf bearbeiten'**
+  String get editDraft;
+
+  /// Entwurf Button
+  ///
+  /// In de, this message translates to:
+  /// **'Entwurf'**
+  String get draft;
+
+  /// Senden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Senden'**
+  String get send;
+
+  /// Empfänger Label
+  ///
+  /// In de, this message translates to:
+  /// **'Empfänger'**
+  String get recipient;
+
+  /// Benutzername eingeben Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzername eingeben'**
+  String get enterUsername;
+
+  /// Nachricht wird verschlüsselt Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Nachricht wird verschlüsselt'**
+  String get messageWillBeEncrypted;
+
+  /// Empfänger prüfen Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Klicke auf das Such-Icon um den Empfänger zu prüfen'**
+  String get clickToVerifyRecipient;
+
+  /// Benutzer nicht gefunden Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer \"{username}\" nicht gefunden oder hat keinen PGP-Schlüssel'**
+  String userNotFoundOrNoKey(String username);
+
+  /// Empfänger wählen Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte wähle einen Empfänger'**
+  String get pleaseSelectRecipient;
+
+  /// Empfänger nicht verifiziert Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Empfänger nicht verifiziert oder kein PGP-Schlüssel vorhanden. Bitte Empfänger prüfen.'**
+  String get recipientNotVerified;
+
+  /// Betreff eingeben Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib einen Betreff ein'**
+  String get pleaseEnterSubject;
+
+  /// Nachricht eingeben Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib eine Nachricht ein'**
+  String get pleaseEnterMessage;
+
+  /// Sendefehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Senden: {error}'**
+  String errorSending(String error);
+
+  /// Entwurf gespeichert Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Entwurf gespeichert'**
+  String get draftSaved;
+
+  /// Entwurf speichern Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Speichern: {error}'**
+  String errorSavingDraft(String error);
 }
 
 class _AppLocalizationsDelegate

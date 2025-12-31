@@ -607,10 +607,10 @@
 - [x] edit_listing_screen.dart übersetzen (~32 Strings)
 
 ### 15.5 Transaktionen & Nachrichten
-- [ ] transactions_screen.dart übersetzen (~12 Strings)
-- [ ] transaction_detail_screen.dart übersetzen (~74 Strings)
-- [ ] messages_screen.dart übersetzen (~41 Strings)
-- [ ] Transaktions-Dialoge übersetzen
+- [x] transactions_screen.dart übersetzen (~12 Strings)
+- [x] transaction_detail_screen.dart übersetzen (~74 Strings)
+- [x] messages_screen.dart übersetzen (~41 Strings)
+- [x] Transaktions-Dialoge übersetzen
 
 ### 15.6 PGP & Sicherheit
 - [ ] pgp_key_screen.dart übersetzen (~80 Strings)

@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart' show messageService, pgpKeyService;
 import '../services/message_service.dart';
 import '../services/pgp_key_service.dart';
@@ -192,9 +193,10 @@ class _MessagesScreenState extends State<MessagesScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nachrichten'),
+        title: Text(l10n.messages),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
@@ -205,7 +207,7 @@ class _MessagesScreenState extends State<MessagesScreen>
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _refresh,
-            tooltip: 'Aktualisieren',
+            tooltip: l10n.refresh,
           ),
         ],
         bottom: TabBar(
@@ -215,7 +217,7 @@ class _MessagesScreenState extends State<MessagesScreen>
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Posteingang'),
+                  Text(l10n.inbox),
                   if (_inbox.where((m) => !m.isRead).isNotEmpty) ...[
                     const SizedBox(width: 8),
                     Container(
@@ -239,12 +241,12 @@ class _MessagesScreenState extends State<MessagesScreen>
                 ],
               ),
             ),
-            const Tab(text: 'Gesendet'),
+            Tab(text: l10n.sent),
             Tab(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('Entwürfe'),
+                  Text(l10n.drafts),
                   if (_drafts.isNotEmpty) ...[
                     const SizedBox(width: 8),
                     Container(
@@ -282,7 +284,7 @@ class _MessagesScreenState extends State<MessagesScreen>
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showComposeDialog(),
         icon: const Icon(Icons.edit),
-        label: const Text('Neue Nachricht'),
+        label: Text(l10n.newMessage),
       ),
     );
   }
@@ -297,10 +299,11 @@ class _MessagesScreenState extends State<MessagesScreen>
     }
 
     if (_inbox.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return _buildEmptyState(
         Icons.inbox_outlined,
-        'Keine Nachrichten',
-        'Dein Posteingang ist leer.',
+        l10n.noMessages,
+        l10n.inboxEmpty,
       );
     }
 
@@ -334,10 +337,11 @@ class _MessagesScreenState extends State<MessagesScreen>
     }
 
     if (_sent.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return _buildEmptyState(
         Icons.send_outlined,
-        'Keine gesendeten Nachrichten',
-        'Du hast noch keine Nachrichten gesendet.',
+        l10n.noSentMessages,
+        l10n.noSentMessagesYet,
       );
     }
 
@@ -371,10 +375,11 @@ class _MessagesScreenState extends State<MessagesScreen>
     }
 
     if (_drafts.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return _buildEmptyState(
         Icons.drafts_outlined,
-        'Keine Entwürfe',
-        'Du hast keine gespeicherten Entwürfe.',
+        l10n.noDrafts,
+        l10n.noSavedDrafts,
       );
     }
 
@@ -427,6 +432,7 @@ class _MessagesScreenState extends State<MessagesScreen>
   }
 
   Widget _buildErrorState(String error, VoidCallback onRetry) {
+    final l10n = AppLocalizations.of(context)!;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
@@ -440,7 +446,7 @@ class _MessagesScreenState extends State<MessagesScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'Fehler beim Laden',
+              l10n.errorLoading,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
@@ -453,7 +459,7 @@ class _MessagesScreenState extends State<MessagesScreen>
             FilledButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh),
-              label: const Text('Erneut versuchen'),
+              label: Text(l10n.retry),
             ),
           ],
         ),
@@ -497,20 +503,20 @@ class _MessagesScreenState extends State<MessagesScreen>
   }
 
   Future<void> _deleteMessage(Message message) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Nachricht löschen?'),
-        content:
-            const Text('Diese Aktion kann nicht rückgängig gemacht werden.'),
+        title: Text(l10n.deleteMessage),
+        content: Text(l10n.actionCannotBeUndone),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -537,20 +543,20 @@ class _MessagesScreenState extends State<MessagesScreen>
   }
 
   Future<void> _deleteDraft(MessageDraft draft) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Entwurf löschen?'),
-        content:
-            const Text('Diese Aktion kann nicht rückgängig gemacht werden.'),
+        title: Text(l10n.deleteDraft),
+        content: Text(l10n.actionCannotBeUndone),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -646,13 +652,15 @@ class _MessageListTile extends StatelessWidget {
           ),
         ),
         title: Text(
-          isInbox ? 'Von: $otherUserName' : 'An: $otherUserName',
+          isInbox
+              ? AppLocalizations.of(context)!.from(otherUserName)
+              : AppLocalizations.of(context)!.to(otherUserName),
           style: TextStyle(
             fontWeight: isUnread ? FontWeight.bold : FontWeight.normal,
           ),
         ),
         subtitle: Text(
-          _formatDate(message.createdAt),
+          _formatDate(context, message.createdAt),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         trailing: isUnread
@@ -670,16 +678,25 @@ class _MessageListTile extends StatelessWidget {
     );
   }
 
-  String _formatDate(DateTime date) {
+  String _formatDate(BuildContext context, DateTime date) {
+    final l10n = AppLocalizations.of(context)!;
     final now = DateTime.now();
     final diff = now.difference(date);
 
     if (diff.inDays == 0) {
       return '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
     } else if (diff.inDays == 1) {
-      return 'Gestern';
+      return l10n.yesterday;
     } else if (diff.inDays < 7) {
-      const days = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+      final days = [
+        l10n.monday,
+        l10n.tuesday,
+        l10n.wednesday,
+        l10n.thursday,
+        l10n.friday,
+        l10n.saturday,
+        l10n.sunday
+      ];
       return days[date.weekday - 1];
     } else {
       return '${date.day}.${date.month}.${date.year}';
@@ -726,11 +743,11 @@ class _DraftListTile extends StatelessWidget {
           ),
         ),
         title: Text(
-          draft.recipientUsername ?? 'Kein Empfänger',
+          draft.recipientUsername ?? AppLocalizations.of(context)!.noRecipient,
           style: const TextStyle(fontStyle: FontStyle.italic),
         ),
         subtitle: Text(
-          'Zuletzt bearbeitet: ${_formatDate(draft.updatedAt)}',
+          AppLocalizations.of(context)!.lastEdited(_formatDate(draft.updatedAt)),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         trailing: const Icon(Icons.chevron_right),
@@ -810,7 +827,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                 widget.otherUserName,
               );
             },
-            tooltip: 'Antworten',
+            tooltip: AppLocalizations.of(context)!.reply,
           ),
         ],
       ),
@@ -819,14 +836,15 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoading) {
-      return const Center(
+      return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircularProgressIndicator(),
-            SizedBox(height: 16),
-            Text('Nachricht wird entschlüsselt...'),
+            const CircularProgressIndicator(),
+            const SizedBox(height: 16),
+            Text(l10n.decryptingMessage),
           ],
         ),
       );
@@ -845,7 +863,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                 color: Theme.of(context).colorScheme.error,
               ),
               const SizedBox(height: 16),
-              const Text('Entschlüsselung fehlgeschlagen'),
+              Text(l10n.decryptionFailed),
               const SizedBox(height: 8),
               Text(
                 _error!,
@@ -879,7 +897,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Ende-zu-Ende verschlüsselt',
+                        AppLocalizations.of(context)!.endToEndEncrypted,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context).colorScheme.primary,
                             ),
@@ -888,12 +906,12 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Von: ${widget.otherUserName}',
+                    AppLocalizations.of(context)!.fromUser(widget.otherUserName),
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Datum: ${_formatDate(widget.message.createdAt)}',
+                    AppLocalizations.of(context)!.dateLabel(_formatDate(widget.message.createdAt)),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -904,28 +922,28 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
 
           // Betreff
           Text(
-            'Betreff',
+            AppLocalizations.of(context)!.subject,
             style: Theme.of(context).textTheme.labelMedium?.copyWith(
                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
           ),
           const SizedBox(height: 4),
           Text(
-            _decrypted?.subject ?? '[Kein Betreff]',
+            _decrypted?.subject ?? AppLocalizations.of(context)!.noSubject,
             style: Theme.of(context).textTheme.titleMedium,
           ),
           const Divider(height: 32),
 
           // Inhalt
           Text(
-            'Nachricht',
+            AppLocalizations.of(context)!.message,
             style: Theme.of(context).textTheme.labelMedium?.copyWith(
                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                 ),
           ),
           const SizedBox(height: 8),
           SelectableText(
-            _decrypted?.content ?? '[Kein Inhalt]',
+            _decrypted?.content ?? AppLocalizations.of(context)!.noContent,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
@@ -1055,44 +1073,43 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
         });
       } else {
         print('[ComposeMessage] Empfänger nicht gefunden oder hat keinen Key');
+        final l10n = AppLocalizations.of(context)!;
         setState(() {
           _recipientId = null;
           _recipientHasKey = false;
-          _error =
-              'Benutzer "$username" nicht gefunden oder hat keinen PGP-Schlüssel';
+          _error = l10n.userNotFoundOrNoKey(username);
           _isCheckingRecipient = false;
         });
       }
     } catch (e) {
       print('[ComposeMessage] Fehler bei der Suche: $e');
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
-        _error = 'Fehler bei der Suche: $e';
+        _error = l10n.searchError(e.toString());
         _isCheckingRecipient = false;
       });
     }
   }
 
   Future<void> _send() async {
+    final l10n = AppLocalizations.of(context)!;
     if (_recipientId == null) {
-      setState(() => _error = 'Bitte wähle einen Empfänger');
+      setState(() => _error = l10n.pleaseSelectRecipient);
       return;
     }
 
     if (!_recipientHasKey) {
-      setState(
-        () => _error =
-            'Empfänger nicht verifiziert oder kein PGP-Schlüssel vorhanden. Bitte Empfänger prüfen.',
-      );
+      setState(() => _error = l10n.recipientNotVerified);
       return;
     }
 
     if (_subjectController.text.trim().isEmpty) {
-      setState(() => _error = 'Bitte gib einen Betreff ein');
+      setState(() => _error = l10n.pleaseEnterSubject);
       return;
     }
 
     if (_contentController.text.trim().isEmpty) {
-      setState(() => _error = 'Bitte gib eine Nachricht ein');
+      setState(() => _error = l10n.pleaseEnterMessage);
       return;
     }
 
@@ -1117,8 +1134,9 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
 
       widget.onSent();
     } catch (e) {
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
-        _error = 'Fehler beim Senden: $e';
+        _error = l10n.errorSending(e.toString());
         _isSending = false;
       });
     }
@@ -1143,13 +1161,15 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
       widget.onDraftSaved();
 
       if (mounted) {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Entwurf gespeichert')),
+          SnackBar(content: Text(l10n.draftSaved)),
         );
       }
     } catch (e) {
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
-        _error = 'Fehler beim Speichern: $e';
+        _error = l10n.errorSavingDraft(e.toString());
       });
     } finally {
       setState(() => _isSavingDraft = false);
@@ -1193,8 +1213,8 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                         Expanded(
                           child: Text(
                             widget.existingDraftId != null
-                                ? 'Entwurf bearbeiten'
-                                : 'Neue Nachricht',
+                                ? AppLocalizations.of(context)!.editDraft
+                                : AppLocalizations.of(context)!.newMessage,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
@@ -1224,7 +1244,7 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                           TextButton.icon(
                             onPressed: _saveDraft,
                             icon: const Icon(Icons.save_outlined),
-                            label: const Text('Entwurf'),
+                            label: Text(AppLocalizations.of(context)!.draft),
                             style: TextButton.styleFrom(
                               minimumSize: const Size(0, 44),
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -1243,7 +1263,7 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                                   ),
                                 )
                               : const Icon(Icons.send),
-                          label: const Text('Senden'),
+                          label: Text(AppLocalizations.of(context)!.send),
                           style: FilledButton.styleFrom(
                             minimumSize: const Size(0, 44),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -1280,8 +1300,8 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                     TextField(
                       controller: _recipientController,
                       decoration: InputDecoration(
-                        labelText: 'Empfänger',
-                        hintText: 'Benutzername eingeben',
+                        labelText: AppLocalizations.of(context)!.recipient,
+                        hintText: AppLocalizations.of(context)!.enterUsername,
                         prefixIcon: const Icon(Icons.person),
                         suffixIcon: _isCheckingRecipient
                             ? const SizedBox(
@@ -1319,7 +1339,7 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Nachricht wird verschlüsselt',
+                            AppLocalizations.of(context)!.messageWillBeEncrypted,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
@@ -1343,7 +1363,7 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Klicke auf das Such-Icon um den Empfänger zu prüfen',
+                            AppLocalizations.of(context)!.clickToVerifyRecipient,
                             style:
                                 Theme.of(context).textTheme.bodySmall?.copyWith(
                                       color: Theme.of(context)
@@ -1359,10 +1379,10 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                     // Betreff
                     TextField(
                       controller: _subjectController,
-                      decoration: const InputDecoration(
-                        labelText: 'Betreff',
-                        prefixIcon: Icon(Icons.subject),
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.subject,
+                        prefixIcon: const Icon(Icons.subject),
+                        border: const OutlineInputBorder(),
                       ),
                       textInputAction: TextInputAction.next,
                     ),
@@ -1371,10 +1391,10 @@ class _ComposeMessageSheetState extends State<_ComposeMessageSheet> {
                     // Nachricht
                     TextField(
                       controller: _contentController,
-                      decoration: const InputDecoration(
-                        labelText: 'Nachricht',
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.message,
                         alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
+                        border: const OutlineInputBorder(),
                       ),
                       maxLines: 10,
                       minLines: 5,

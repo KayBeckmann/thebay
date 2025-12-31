@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 import 'transaction_detail_screen.dart';
 
@@ -72,19 +73,20 @@ class _TransactionsScreenState extends State<TransactionsScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Transactions'),
+        title: Text(l10n.transactions),
         bottom: TabBar(
           controller: _tabController,
           tabs: [
             Tab(
               icon: const Icon(Icons.shopping_bag_outlined),
-              text: 'Purchases (${_purchases.length})',
+              text: l10n.purchases(_purchases.length),
             ),
             Tab(
               icon: const Icon(Icons.sell_outlined),
-              text: 'Sales (${_sales.length})',
+              text: l10n.sales(_sales.length),
             ),
           ],
         ),
@@ -92,7 +94,7 @@ class _TransactionsScreenState extends State<TransactionsScreen>
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _loadTransactions,
-            tooltip: 'Refresh',
+            tooltip: l10n.refresh,
           ),
         ],
       ),
@@ -101,6 +103,7 @@ class _TransactionsScreenState extends State<TransactionsScreen>
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -113,11 +116,11 @@ class _TransactionsScreenState extends State<TransactionsScreen>
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Error: $_error'),
+            Text(l10n.genericError(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadTransactions,
-              child: const Text('Retry'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -135,6 +138,7 @@ class _TransactionsScreenState extends State<TransactionsScreen>
 
   Widget _buildTransactionList(List<Transaction> transactions,
       {required bool isBuyer}) {
+    final l10n = AppLocalizations.of(context)!;
     if (transactions.isEmpty) {
       return Center(
         child: Column(
@@ -147,7 +151,7 @@ class _TransactionsScreenState extends State<TransactionsScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              isBuyer ? 'No purchases yet' : 'No sales yet',
+              isBuyer ? l10n.noPurchasesYet : l10n.noSalesYet,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -155,8 +159,8 @@ class _TransactionsScreenState extends State<TransactionsScreen>
             const SizedBox(height: 8),
             Text(
               isBuyer
-                  ? 'Your purchases will appear here'
-                  : 'Your sales will appear here',
+                  ? l10n.yourPurchasesWillAppearHere
+                  : l10n.yourSalesWillAppearHere,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -274,14 +278,14 @@ class _TransactionCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Transaction #${transaction.id}',
+                          AppLocalizations.of(context)!.transactionNumber(transaction.id!),
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Listing #${transaction.listingId}',
+                          AppLocalizations.of(context)!.listingNumber(transaction.listingId),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 color: Theme.of(context).colorScheme.onSurfaceVariant,
                               ),
@@ -313,8 +317,8 @@ class _TransactionCard extends StatelessWidget {
                           const SizedBox(width: 4),
                           Text(
                             transaction.paymentMethod == PaymentMethod.paypal
-                                ? 'PayPal'
-                                : 'Bitcoin',
+                                ? AppLocalizations.of(context)!.paypal
+                                : AppLocalizations.of(context)!.bitcoin,
                             style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                                 ),
@@ -340,6 +344,7 @@ class _TransactionCard extends StatelessWidget {
   }
 
   Widget _buildAutoCompleteWarning(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final daysLeft = transaction.autoCompleteAt!.difference(DateTime.now()).inDays;
     final isUrgent = daysLeft <= 3;
 
@@ -364,8 +369,8 @@ class _TransactionCard extends StatelessWidget {
           Expanded(
             child: Text(
               daysLeft <= 0
-                  ? 'Auto-completes today'
-                  : 'Auto-completes in $daysLeft day${daysLeft == 1 ? '' : 's'}',
+                  ? l10n.autoCompletesToday
+                  : l10n.autoCompletesInDays(daysLeft),
               style: TextStyle(
                 color: isUrgent
                     ? Theme.of(context).colorScheme.onErrorContainer
@@ -381,46 +386,47 @@ class _TransactionCard extends StatelessWidget {
   }
 
   _StatusInfo _getStatusInfo(BuildContext context, TransactionStatus status) {
+    final l10n = AppLocalizations.of(context)!;
     switch (status) {
       case TransactionStatus.open:
         return _StatusInfo(
-          label: 'Open',
+          label: l10n.statusOpen,
           icon: Icons.hourglass_empty,
           color: Colors.orange,
         );
       case TransactionStatus.paid:
         return _StatusInfo(
-          label: 'Paid',
+          label: l10n.statusPaid,
           icon: Icons.attach_money,
           color: Colors.green,
         );
       case TransactionStatus.shipped:
         return _StatusInfo(
-          label: 'Shipped',
+          label: l10n.statusShipped,
           icon: Icons.local_shipping,
           color: Colors.blue,
         );
       case TransactionStatus.received:
         return _StatusInfo(
-          label: 'Received',
+          label: l10n.statusReceived,
           icon: Icons.inbox,
           color: Colors.teal,
         );
       case TransactionStatus.completed:
         return _StatusInfo(
-          label: 'Completed',
+          label: l10n.statusCompleted,
           icon: Icons.check_circle,
           color: Colors.green,
         );
       case TransactionStatus.disputed:
         return _StatusInfo(
-          label: 'Disputed',
+          label: l10n.statusDisputed,
           icon: Icons.report_problem,
           color: Colors.red,
         );
       case TransactionStatus.cancelled:
         return _StatusInfo(
-          label: 'Cancelled',
+          label: l10n.statusCancelled,
           icon: Icons.cancel,
           color: Colors.grey,
         );

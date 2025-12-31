@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client, authService;
 import '../user_profile_screen.dart';
 import '../listings/listing_detail_screen.dart';
@@ -132,16 +133,17 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         title: Text(_transaction != null
-            ? 'Transaction #${_transaction!.id}'
-            : 'Transaction'),
+            ? l10n.transactionNumber(_transaction!.id!)
+            : l10n.transaction),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _loadData,
-            tooltip: 'Refresh',
+            tooltip: l10n.refresh,
           ),
         ],
       ),
@@ -150,6 +152,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -162,11 +165,11 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Error: $_error'),
+            Text(l10n.genericError(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadData,
-              child: const Text('Retry'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -174,7 +177,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
     }
 
     if (_transaction == null) {
-      return const Center(child: Text('Transaction not found'));
+      return Center(child: Text(l10n.transactionNotFound));
     }
 
     return SingleChildScrollView(
@@ -249,6 +252,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildRatingPrompt() {
+    final l10n = AppLocalizations.of(context)!;
     final partnerUsername = _isBuyer ? _sellerUsername : _buyerUsername;
 
     return Card(
@@ -268,7 +272,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Rate this transaction',
+                    l10n.rateThisTransaction,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -279,7 +283,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Share your experience with ${partnerUsername ?? 'the other party'}',
+              l10n.shareYourExperience(partnerUsername ?? 'the other party'),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onPrimaryContainer,
               ),
@@ -290,7 +294,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
               child: FilledButton.icon(
                 onPressed: _openRatingDialog,
                 icon: const Icon(Icons.rate_review),
-                label: const Text('Rate Now'),
+                label: Text(l10n.rateNow),
               ),
             ),
           ],
@@ -300,6 +304,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildAlreadyRatedCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       color: Theme.of(context).colorScheme.surfaceContainerHighest,
       margin: const EdgeInsets.only(bottom: 16),
@@ -314,7 +319,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             const SizedBox(width: 12),
             Expanded(
               child: Text(
-                'You have already rated this transaction',
+                l10n.alreadyRated,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -391,6 +396,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildTimeline() {
+    final l10n = AppLocalizations.of(context)!;
     final isPaid = _transaction!.status == TransactionStatus.paid ||
         _transaction!.status == TransactionStatus.shipped ||
         _transaction!.status == TransactionStatus.received ||
@@ -398,40 +404,40 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         _transaction!.status == TransactionStatus.disputed;
     final steps = <_TimelineStep>[
       _TimelineStep(
-        title: 'Created',
+        title: l10n.created,
         subtitle: _formatDateTime(_transaction!.createdAt),
         isCompleted: true,
         icon: Icons.add_circle,
       ),
       _TimelineStep(
-        title: 'Paid',
-        subtitle: isPaid ? 'Payment sent' : 'Waiting for buyer',
+        title: l10n.paid,
+        subtitle: isPaid ? l10n.paymentSent : l10n.waitingForBuyer,
         isCompleted: isPaid,
         icon: Icons.attach_money,
       ),
       _TimelineStep(
-        title: 'Shipped',
+        title: l10n.shipped,
         subtitle: _transaction!.shippedAt != null
             ? _formatDateTime(_transaction!.shippedAt!)
-            : 'Waiting for seller',
+            : l10n.waitingForSeller,
         isCompleted: _transaction!.shippedAt != null,
         icon: Icons.local_shipping,
       ),
       _TimelineStep(
-        title: 'Received',
+        title: l10n.received,
         subtitle: _transaction!.receivedAt != null
             ? _formatDateTime(_transaction!.receivedAt!)
-            : 'Waiting for buyer',
+            : l10n.waitingForBuyer,
         isCompleted: _transaction!.receivedAt != null,
         icon: Icons.inbox,
       ),
       _TimelineStep(
-        title: 'Completed',
+        title: l10n.completed,
         subtitle: _transaction!.completedAt != null
             ? _formatDateTime(_transaction!.completedAt!)
             : _transaction!.status == TransactionStatus.cancelled
-                ? 'Cancelled'
-                : 'Pending',
+                ? l10n.cancelled
+                : l10n.pending,
         isCompleted: _transaction!.completedAt != null,
         isCancelled: _transaction!.status == TransactionStatus.cancelled,
         icon: _transaction!.status == TransactionStatus.cancelled
@@ -447,7 +453,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Timeline',
+              l10n.timeline,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -534,6 +540,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildAutoCompleteWarning() {
+    final l10n = AppLocalizations.of(context)!;
     final daysLeft =
         _transaction!.autoCompleteAt!.difference(DateTime.now()).inDays;
     final isUrgent = daysLeft <= 3;
@@ -559,7 +566,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Auto-Complete Warning',
+                    l10n.autoCompleteWarning,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: isUrgent
@@ -570,8 +577,8 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                   const SizedBox(height: 4),
                   Text(
                     daysLeft <= 0
-                        ? 'This transaction will auto-complete today if no dispute is opened.'
-                        : 'This transaction will auto-complete in $daysLeft day${daysLeft == 1 ? '' : 's'} if no action is taken.',
+                        ? l10n.autoCompleteToday
+                        : l10n.autoCompleteInDays(daysLeft),
                     style: TextStyle(
                       color: isUrgent
                           ? Theme.of(context).colorScheme.onErrorContainer
@@ -588,6 +595,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildDisputeCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       color: Theme.of(context).colorScheme.errorContainer,
       child: Padding(
@@ -603,7 +611,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Dispute Open',
+                  l10n.disputeOpen,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.onErrorContainer,
@@ -613,14 +621,14 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             ),
             const SizedBox(height: 12),
             Text(
-              'Reason: ${_dispute!.reason}',
+              l10n.disputeReason(_dispute!.reason),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onErrorContainer,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Opened: ${_formatDateTime(_dispute!.createdAt)}',
+              l10n.disputeOpenedDate(_formatDateTime(_dispute!.createdAt)),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onErrorContainer,
                 fontSize: 12,
@@ -629,7 +637,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             if (_dispute!.moderatorId != null) ...[
               const SizedBox(height: 4),
               Text(
-                'A moderator is reviewing this dispute.',
+                l10n.moderatorReviewing,
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onErrorContainer,
                   fontStyle: FontStyle.italic,
@@ -644,6 +652,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildActionButtons() {
+    final l10n = AppLocalizations.of(context)!;
     final status = _transaction!.status;
     final actions = <Widget>[];
 
@@ -653,7 +662,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         FilledButton.icon(
           onPressed: _isActionLoading ? null : _markAsShipped,
           icon: const Icon(Icons.local_shipping),
-          label: const Text('Mark as Shipped'),
+          label: Text(l10n.markAsShipped),
         ),
       );
     }
@@ -664,7 +673,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         FilledButton.icon(
           onPressed: _isActionLoading ? null : _markAsPaid,
           icon: const Icon(Icons.attach_money),
-          label: const Text('Mark as Paid'),
+          label: Text(l10n.markAsPaid),
         ),
       );
     }
@@ -675,7 +684,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         FilledButton.icon(
           onPressed: _isActionLoading ? null : _markAsReceived,
           icon: const Icon(Icons.check_circle),
-          label: const Text('Mark as Received'),
+          label: Text(l10n.markAsReceived),
         ),
       );
     }
@@ -686,7 +695,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         OutlinedButton.icon(
           onPressed: _isActionLoading ? null : _cancelTransaction,
           icon: const Icon(Icons.cancel),
-          label: const Text('Cancel'),
+          label: Text(l10n.cancel),
         ),
       );
     }
@@ -700,7 +709,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             foregroundColor: Theme.of(context).colorScheme.error,
           ),
           icon: const Icon(Icons.report_problem),
-          label: const Text('Open Dispute'),
+          label: Text(l10n.openDispute),
         ),
       );
     }
@@ -716,7 +725,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Actions',
+              l10n.actions,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -737,21 +746,20 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Future<void> _markAsShipped() async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Mark as Shipped'),
-        content: const Text(
-          'Confirm that you have shipped the item. The buyer will have 14 days to confirm receipt or open a dispute.',
-        ),
+        title: Text(l10n.markAsShipped),
+        content: Text(l10n.confirmShipment),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Confirm'),
+            child: Text(l10n.confirm),
           ),
         ],
       ),
@@ -767,13 +775,13 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       await _loadData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Transaction marked as shipped')),
+          SnackBar(content: Text(l10n.transactionMarkedAsShipped)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     } finally {
@@ -784,21 +792,20 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Future<void> _markAsPaid() async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Mark as Paid'),
-        content: const Text(
-          'Confirm that you have sent the payment to the seller.',
-        ),
+        title: Text(l10n.markAsPaid),
+        content: Text(l10n.confirmPayment),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Confirm'),
+            child: Text(l10n.confirm),
           ),
         ],
       ),
@@ -814,13 +821,13 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       await _loadData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Payment marked as sent')),
+          SnackBar(content: Text(l10n.paymentMarkedAsSent)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     } finally {
@@ -831,21 +838,20 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Future<void> _markAsReceived() async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Mark as Received'),
-        content: const Text(
-          'Confirm that you have received the item. This will complete the transaction.',
-        ),
+        title: Text(l10n.markAsReceived),
+        content: Text(l10n.confirmReceipt),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Confirm'),
+            child: Text(l10n.confirm),
           ),
         ],
       ),
@@ -861,13 +867,13 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       await _loadData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Transaction completed')),
+          SnackBar(content: Text(l10n.transactionCompleted)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     } finally {
@@ -878,24 +884,23 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Future<void> _cancelTransaction() async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Cancel Transaction'),
-        content: const Text(
-          'Are you sure you want to cancel this transaction? This action cannot be undone.',
-        ),
+        title: Text(l10n.cancelTransaction),
+        content: Text(l10n.cancelTransactionConfirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Keep'),
+            child: Text(l10n.keep),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Cancel Transaction'),
+            child: Text(l10n.cancelTransaction),
           ),
         ],
       ),
@@ -911,13 +916,13 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       await _loadData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Transaction cancelled')),
+          SnackBar(content: Text(l10n.transactionCancelled)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     } finally {
@@ -928,26 +933,25 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Future<void> _openDispute() async {
+    final l10n = AppLocalizations.of(context)!;
     final reasonController = TextEditingController();
 
     final result = await showDialog<String?>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Open Dispute'),
+        title: Text(l10n.openDispute),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Please describe the issue with this transaction. A moderator will review your dispute.',
-            ),
+            Text(l10n.describeIssue),
             const SizedBox(height: 16),
             TextField(
               controller: reasonController,
-              decoration: const InputDecoration(
-                labelText: 'Reason',
-                hintText: 'Describe the problem...',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.reason,
+                hintText: l10n.describeProblem,
+                border: const OutlineInputBorder(),
               ),
               maxLines: 3,
               maxLength: 500,
@@ -957,13 +961,13 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () {
               if (reasonController.text.trim().isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Please enter a reason')),
+                  SnackBar(content: Text(l10n.pleaseEnterReason)),
                 );
                 return;
               }
@@ -972,7 +976,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Open Dispute'),
+            child: Text(l10n.openDispute),
           ),
         ],
       ),
@@ -991,13 +995,13 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       await _loadData();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Dispute opened')),
+          SnackBar(content: Text(l10n.disputeOpened)),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
+          SnackBar(content: Text(l10n.genericError(e.toString()))),
         );
       }
     } finally {
@@ -1008,6 +1012,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildDetailsCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -1015,23 +1020,23 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Details',
+              l10n.details,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 12),
-            _buildDetailRow('Transaction ID', '#${_transaction!.id}'),
-            _buildDetailRow('Quantity', '${_transaction!.quantity}'),
+            _buildDetailRow(l10n.transactionId, '#${_transaction!.id}'),
+            _buildDetailRow(l10n.quantity, '${_transaction!.quantity}'),
             _buildDetailRow(
-                'Total Price', _formatPrice(_transaction!.totalPriceCents)),
+                l10n.totalPrice, _formatPrice(_transaction!.totalPriceCents)),
             _buildDetailRow(
-              'Payment Method',
+              l10n.paymentMethod,
               _transaction!.paymentMethod == PaymentMethod.paypal
-                  ? 'PayPal'
-                  : 'Bitcoin',
+                  ? l10n.paypal
+                  : l10n.bitcoin,
             ),
-            _buildDetailRow('Created', _formatDateTime(_transaction!.createdAt)),
+            _buildDetailRow(l10n.createdAt, _formatDateTime(_transaction!.createdAt)),
           ],
         ),
       ),
@@ -1039,6 +1044,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildPartiesCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -1046,21 +1052,21 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Parties',
+              l10n.parties,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 12),
             _buildPartyTile(
-              label: 'Buyer',
+              label: l10n.buyer,
               username: _buyerUsername ?? 'Unknown',
               userId: _transaction!.buyerId,
               isCurrentUser: _isBuyer,
             ),
             const SizedBox(height: 8),
             _buildPartyTile(
-              label: 'Seller',
+              label: l10n.seller,
               username: _sellerUsername ?? 'Unknown',
               userId: _transaction!.sellerId,
               isCurrentUser: _isSeller,
@@ -1129,7 +1135,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
-                            'You',
+                            AppLocalizations.of(context)!.you,
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.onPrimary,
                               fontSize: 10,
@@ -1203,7 +1209,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'View listing details',
+                      AppLocalizations.of(context)!.viewListingDetails,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: Theme.of(context).colorScheme.primary,
                           ),
@@ -1223,6 +1229,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildBuyerNoteCard() {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -1234,7 +1241,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                 const Icon(Icons.note, size: 20),
                 const SizedBox(width: 8),
                 Text(
-                  'Buyer Note',
+                  l10n.buyerNote,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -1273,6 +1280,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   Widget _buildPaymentInfoCard() {
+    final l10n = AppLocalizations.of(context)!;
     final paymentMethod = _transaction!.paymentMethod;
     final paymentInfo = _sellerPaymentInfo!;
 
@@ -1292,7 +1300,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Payment Information',
+                    l10n.paymentInformation,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -1303,7 +1311,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Please send the payment to the seller using the following details:',
+              l10n.sendPaymentTo,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
@@ -1333,8 +1341,8 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                       const SizedBox(width: 8),
                       Text(
                         paymentMethod == PaymentMethod.paypal
-                            ? 'PayPal'
-                            : 'Bitcoin',
+                            ? l10n.paypal
+                            : l10n.bitcoin,
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.primary,
@@ -1381,7 +1389,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      'The seller will ship the item once payment is received. Please include your transaction ID in the payment note.',
+                      l10n.includeTransactionId,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color:
                                 Theme.of(context).colorScheme.onTertiaryContainer,
@@ -1398,53 +1406,54 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
   }
 
   _StatusInfo _getStatusInfo(TransactionStatus status) {
+    final l10n = AppLocalizations.of(context)!;
     switch (status) {
       case TransactionStatus.open:
         return _StatusInfo(
-          label: 'Open',
-          description: 'Waiting for buyer payment',
+          label: l10n.statusOpen,
+          description: l10n.statusOpenDesc,
           icon: Icons.hourglass_empty,
           color: Colors.orange,
         );
       case TransactionStatus.paid:
         return _StatusInfo(
-          label: 'Paid',
-          description: 'Payment sent, waiting for seller to ship',
+          label: l10n.statusPaid,
+          description: l10n.statusPaidDesc,
           icon: Icons.attach_money,
           color: Colors.green,
         );
       case TransactionStatus.shipped:
         return _StatusInfo(
-          label: 'Shipped',
-          description: 'Item has been shipped, waiting for delivery',
+          label: l10n.statusShipped,
+          description: l10n.statusShippedDesc,
           icon: Icons.local_shipping,
           color: Colors.blue,
         );
       case TransactionStatus.received:
         return _StatusInfo(
-          label: 'Received',
-          description: 'Buyer has received the item',
+          label: l10n.statusReceived,
+          description: l10n.statusReceivedDesc,
           icon: Icons.inbox,
           color: Colors.teal,
         );
       case TransactionStatus.completed:
         return _StatusInfo(
-          label: 'Completed',
-          description: 'Transaction successfully completed',
+          label: l10n.statusCompleted,
+          description: l10n.statusCompletedDesc,
           icon: Icons.check_circle,
           color: Colors.green,
         );
       case TransactionStatus.disputed:
         return _StatusInfo(
-          label: 'Disputed',
-          description: 'A dispute has been opened',
+          label: l10n.statusDisputed,
+          description: l10n.statusDisputedDesc,
           icon: Icons.report_problem,
           color: Colors.red,
         );
       case TransactionStatus.cancelled:
         return _StatusInfo(
-          label: 'Cancelled',
-          description: 'Transaction was cancelled',
+          label: l10n.statusCancelled,
+          description: l10n.statusCancelledDesc,
           icon: Icons.cancel,
           color: Colors.grey,
         );

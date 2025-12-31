@@ -208,5 +208,770 @@
   "allSubcategories": "Todas las subcategorías",
   "allPaymentMethods": "Todos los métodos de pago",
   "searchError": "Error de búsqueda: {error}",
-  "resultsCount": "{count, plural, =1{1 resultado} other{{count} resultados}}"
+  "resultsCount": "{count, plural, =1{1 resultado} other{{count} resultados}}",
+
+  "transactions": "Transacciones",
+  "@transactions": {
+    "description": "Título de la pantalla de transacciones"
+  },
+
+  "purchases": "Compras ({count})",
+  "@purchases": {
+    "description": "Pestaña de compras con contador",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sales": "Ventas ({count})",
+  "@sales": {
+    "description": "Pestaña de ventas con contador",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "refresh": "Actualizar",
+  "@refresh": {
+    "description": "Descripción de actualizar"
+  },
+
+  "noPurchasesYet": "Aún no hay compras",
+  "@noPurchasesYet": {
+    "description": "Título de estado vacío para compras"
+  },
+
+  "noSalesYet": "Aún no hay ventas",
+  "@noSalesYet": {
+    "description": "Título de estado vacío para ventas"
+  },
+
+  "yourPurchasesWillAppearHere": "Tus compras aparecerán aquí",
+  "@yourPurchasesWillAppearHere": {
+    "description": "Mensaje de estado vacío para compras"
+  },
+
+  "yourSalesWillAppearHere": "Tus ventas aparecerán aquí",
+  "@yourSalesWillAppearHere": {
+    "description": "Mensaje de estado vacío para ventas"
+  },
+
+  "statusOpen": "Abierta",
+  "@statusOpen": {
+    "description": "Estado de transacción Abierta"
+  },
+
+  "statusPaid": "Pagada",
+  "@statusPaid": {
+    "description": "Estado de transacción Pagada"
+  },
+
+  "statusShipped": "Enviada",
+  "@statusShipped": {
+    "description": "Estado de transacción Enviada"
+  },
+
+  "statusReceived": "Recibida",
+  "@statusReceived": {
+    "description": "Estado de transacción Recibida"
+  },
+
+  "statusCompleted": "Completada",
+  "@statusCompleted": {
+    "description": "Estado de transacción Completada"
+  },
+
+  "statusDisputed": "En disputa",
+  "@statusDisputed": {
+    "description": "Estado de transacción En disputa"
+  },
+
+  "statusCancelled": "Cancelada",
+  "@statusCancelled": {
+    "description": "Estado de transacción Cancelada"
+  },
+
+  "transactionNumber": "Transacción #{id}",
+  "@transactionNumber": {
+    "description": "Número de transacción",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "autoCompletesToday": "Se completa automáticamente hoy",
+  "@autoCompletesToday": {
+    "description": "Advertencia de completado automático hoy"
+  },
+
+  "autoCompletesInDays": "Se completa automáticamente en {count} {count, plural, =1{día} other{días}}",
+  "@autoCompletesInDays": {
+    "description": "Completado automático en X días",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "transaction": "Transacción",
+  "@transaction": {
+    "description": "Etiqueta de transacción"
+  },
+
+  "rateThisTransaction": "Califica esta transacción",
+  "@rateThisTransaction": {
+    "description": "Título de solicitud de calificación"
+  },
+
+  "shareYourExperience": "Comparte tu experiencia con {username}",
+  "@shareYourExperience": {
+    "description": "Texto de solicitud de calificación",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "rateNow": "Calificar ahora",
+  "@rateNow": {
+    "description": "Botón calificar ahora"
+  },
+
+  "alreadyRated": "Ya has calificado esta transacción",
+  "@alreadyRated": {
+    "description": "Mensaje ya calificado"
+  },
+
+  "statusOpenDesc": "Esperando el pago del comprador",
+  "@statusOpenDesc": {
+    "description": "Descripción de estado Abierta"
+  },
+
+  "statusPaidDesc": "Pago enviado, esperando que el vendedor envíe",
+  "@statusPaidDesc": {
+    "description": "Descripción de estado Pagada"
+  },
+
+  "statusShippedDesc": "El artículo ha sido enviado, esperando la entrega",
+  "@statusShippedDesc": {
+    "description": "Descripción de estado Enviada"
+  },
+
+  "statusReceivedDesc": "El comprador ha recibido el artículo",
+  "@statusReceivedDesc": {
+    "description": "Descripción de estado Recibida"
+  },
+
+  "statusCompletedDesc": "Transacción completada exitosamente",
+  "@statusCompletedDesc": {
+    "description": "Descripción de estado Completada"
+  },
+
+  "statusDisputedDesc": "Se ha abierto una disputa",
+  "@statusDisputedDesc": {
+    "description": "Descripción de estado En disputa"
+  },
+
+  "statusCancelledDesc": "La transacción fue cancelada",
+  "@statusCancelledDesc": {
+    "description": "Descripción de estado Cancelada"
+  },
+
+  "timeline": "Línea de tiempo",
+  "@timeline": {
+    "description": "Título de línea de tiempo"
+  },
+
+  "created": "Creada",
+  "@created": {
+    "description": "Etiqueta Creada"
+  },
+
+  "paid": "Pagada",
+  "@paid": {
+    "description": "Etiqueta Pagada"
+  },
+
+  "paymentSent": "Pago enviado",
+  "@paymentSent": {
+    "description": "Etiqueta Pago enviado"
+  },
+
+  "waitingForBuyer": "Esperando al comprador",
+  "@waitingForBuyer": {
+    "description": "Estado esperando al comprador"
+  },
+
+  "shipped": "Enviada",
+  "@shipped": {
+    "description": "Etiqueta Enviada"
+  },
+
+  "waitingForSeller": "Esperando al vendedor",
+  "@waitingForSeller": {
+    "description": "Estado esperando al vendedor"
+  },
+
+  "received": "Recibida",
+  "@received": {
+    "description": "Etiqueta Recibida"
+  },
+
+  "completed": "Completada",
+  "@completed": {
+    "description": "Etiqueta Completada"
+  },
+
+  "cancelled": "Cancelada",
+  "@cancelled": {
+    "description": "Etiqueta Cancelada"
+  },
+
+  "pending": "Pendiente",
+  "@pending": {
+    "description": "Etiqueta Pendiente"
+  },
+
+  "markAsShipped": "Marcar como enviada",
+  "@markAsShipped": {
+    "description": "Botón marcar como enviada"
+  },
+
+  "markAsPaid": "Marcar como pagada",
+  "@markAsPaid": {
+    "description": "Botón marcar como pagada"
+  },
+
+  "markAsReceived": "Marcar como recibida",
+  "@markAsReceived": {
+    "description": "Botón marcar como recibida"
+  },
+
+  "cancelTransaction": "Cancelar transacción",
+  "@cancelTransaction": {
+    "description": "Botón cancelar transacción"
+  },
+
+  "openDispute": "Abrir disputa",
+  "@openDispute": {
+    "description": "Botón abrir disputa"
+  },
+
+  "actions": "Acciones",
+  "@actions": {
+    "description": "Título de acciones"
+  },
+
+  "confirmShipment": "Confirma que has enviado el artículo. El comprador tendrá 14 días para confirmar la recepción o abrir una disputa.",
+  "@confirmShipment": {
+    "description": "Texto de diálogo de confirmación de envío"
+  },
+
+  "confirm": "Confirmar",
+  "@confirm": {
+    "description": "Botón Confirmar"
+  },
+
+  "transactionMarkedAsShipped": "Transacción marcada como enviada",
+  "@transactionMarkedAsShipped": {
+    "description": "Mensaje marcada como enviada"
+  },
+
+  "confirmPayment": "Confirma que has enviado el pago al vendedor.",
+  "@confirmPayment": {
+    "description": "Texto de diálogo de confirmación de pago"
+  },
+
+  "paymentMarkedAsSent": "Pago marcado como enviado",
+  "@paymentMarkedAsSent": {
+    "description": "Mensaje pago marcado como enviado"
+  },
+
+  "confirmReceipt": "Confirma que has recibido el artículo. Esto completará la transacción.",
+  "@confirmReceipt": {
+    "description": "Texto de diálogo de confirmación de recepción"
+  },
+
+  "transactionCompleted": "Transacción completada",
+  "@transactionCompleted": {
+    "description": "Mensaje transacción completada"
+  },
+
+  "cancelTransactionConfirm": "¿Realmente quieres cancelar esta transacción? Esta acción no se puede deshacer.",
+  "@cancelTransactionConfirm": {
+    "description": "Confirmación de cancelación de transacción"
+  },
+
+  "keep": "Mantener",
+  "@keep": {
+    "description": "Botón Mantener"
+  },
+
+  "transactionCancelled": "Transacción cancelada",
+  "@transactionCancelled": {
+    "description": "Mensaje transacción cancelada"
+  },
+
+  "describeIssue": "Por favor describe el problema con esta transacción. Un moderador revisará tu disputa.",
+  "@describeIssue": {
+    "description": "Solicitud de descripción de disputa"
+  },
+
+  "reason": "Razón",
+  "@reason": {
+    "description": "Etiqueta Razón"
+  },
+
+  "describeProblem": "Describe el problema...",
+  "@describeProblem": {
+    "description": "Sugerencia describir problema"
+  },
+
+  "pleaseEnterReason": "Por favor ingresa una razón",
+  "@pleaseEnterReason": {
+    "description": "Validación razón requerida"
+  },
+
+  "disputeOpened": "Disputa abierta",
+  "@disputeOpened": {
+    "description": "Mensaje disputa abierta"
+  },
+
+  "transactionNotFound": "Transacción no encontrada",
+  "@transactionNotFound": {
+    "description": "Error transacción no encontrada"
+  },
+
+  "transactionId": "ID de transacción",
+  "@transactionId": {
+    "description": "Etiqueta ID de transacción"
+  },
+
+  "totalPrice": "Precio total",
+  "@totalPrice": {
+    "description": "Etiqueta Precio total"
+  },
+
+  "parties": "Partes",
+  "@parties": {
+    "description": "Título Partes"
+  },
+
+  "buyer": "Comprador",
+  "@buyer": {
+    "description": "Etiqueta Comprador"
+  },
+
+  "seller": "Vendedor",
+  "@seller": {
+    "description": "Etiqueta Vendedor"
+  },
+
+  "you": "Tú",
+  "@you": {
+    "description": "Etiqueta Tú"
+  },
+
+  "viewListingDetails": "Ver detalles del anuncio",
+  "@viewListingDetails": {
+    "description": "Enlace ver detalles del anuncio"
+  },
+
+  "buyerNote": "Nota del comprador",
+  "@buyerNote": {
+    "description": "Título nota del comprador"
+  },
+
+  "autoCompleteWarning": "Advertencia de completado automático",
+  "@autoCompleteWarning": {
+    "description": "Título de advertencia de completado automático"
+  },
+
+  "autoCompleteToday": "Esta transacción se completará automáticamente hoy si no se abre una disputa.",
+  "@autoCompleteToday": {
+    "description": "Mensaje completado automático hoy"
+  },
+
+  "autoCompleteInDays": "Esta transacción se completará automáticamente en {count} {count, plural, =1{día} other{días}} si no se toma ninguna acción.",
+  "@autoCompleteInDays": {
+    "description": "Mensaje completado automático en X días",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "disputeOpen": "Disputa abierta",
+  "@disputeOpen": {
+    "description": "Título disputa abierta"
+  },
+
+  "disputeReason": "Razón: {reason}",
+  "@disputeReason": {
+    "description": "Razón de disputa",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+
+  "disputeOpenedDate": "Abierta: {date}",
+  "@disputeOpenedDate": {
+    "description": "Disputa abierta el",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "moderatorReviewing": "Un moderador está revisando esta disputa.",
+  "@moderatorReviewing": {
+    "description": "Mensaje moderador revisando"
+  },
+
+  "paymentInformation": "Información de pago",
+  "@paymentInformation": {
+    "description": "Título información de pago"
+  },
+
+  "sendPaymentTo": "Por favor envía el pago al vendedor con los siguientes detalles:",
+  "@sendPaymentTo": {
+    "description": "Instrucción de pago"
+  },
+
+  "includeTransactionId": "El vendedor enviará el artículo una vez que se reciba el pago. Por favor incluye tu ID de transacción en la nota de pago.",
+  "@includeTransactionId": {
+    "description": "Sugerencia ID de transacción en pago"
+  },
+
+  "messages": "Mensajes",
+  "@messages": {
+    "description": "Título de pantalla de mensajes"
+  },
+
+  "inbox": "Bandeja de entrada",
+  "@inbox": {
+    "description": "Pestaña Bandeja de entrada"
+  },
+
+  "sent": "Enviados",
+  "@sent": {
+    "description": "Pestaña Enviados"
+  },
+
+  "drafts": "Borradores",
+  "@drafts": {
+    "description": "Pestaña Borradores"
+  },
+
+  "newMessage": "Nuevo mensaje",
+  "@newMessage": {
+    "description": "Botón Nuevo mensaje"
+  },
+
+  "noMessages": "No hay mensajes",
+  "@noMessages": {
+    "description": "Título No hay mensajes"
+  },
+
+  "inboxEmpty": "Tu bandeja de entrada está vacía.",
+  "@inboxEmpty": {
+    "description": "Mensaje bandeja de entrada vacía"
+  },
+
+  "noSentMessages": "No hay mensajes enviados",
+  "@noSentMessages": {
+    "description": "Título No hay mensajes enviados"
+  },
+
+  "noSentMessagesYet": "Aún no has enviado ningún mensaje.",
+  "@noSentMessagesYet": {
+    "description": "Mensaje aún no hay mensajes enviados"
+  },
+
+  "noDrafts": "No hay borradores",
+  "@noDrafts": {
+    "description": "Título No hay borradores"
+  },
+
+  "noSavedDrafts": "No tienes borradores guardados.",
+  "@noSavedDrafts": {
+    "description": "Mensaje no hay borradores guardados"
+  },
+
+  "errorLoading": "Error al cargar",
+  "@errorLoading": {
+    "description": "Título Error al cargar"
+  },
+
+  "from": "De: {username}",
+  "@from": {
+    "description": "Etiqueta De",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "to": "Para: {username}",
+  "@to": {
+    "description": "Etiqueta Para",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "yesterday": "Ayer",
+  "@yesterday": {
+    "description": "Etiqueta Ayer"
+  },
+
+  "monday": "Lun",
+  "@monday": {
+    "description": "Abreviatura de lunes"
+  },
+
+  "tuesday": "Mar",
+  "@tuesday": {
+    "description": "Abreviatura de martes"
+  },
+
+  "wednesday": "Mié",
+  "@wednesday": {
+    "description": "Abreviatura de miércoles"
+  },
+
+  "thursday": "Jue",
+  "@thursday": {
+    "description": "Abreviatura de jueves"
+  },
+
+  "friday": "Vie",
+  "@friday": {
+    "description": "Abreviatura de viernes"
+  },
+
+  "saturday": "Sáb",
+  "@saturday": {
+    "description": "Abreviatura de sábado"
+  },
+
+  "sunday": "Dom",
+  "@sunday": {
+    "description": "Abreviatura de domingo"
+  },
+
+  "userNumber": "Usuario #{id}",
+  "@userNumber": {
+    "description": "Número de usuario",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noRecipient": "Sin destinatario",
+  "@noRecipient": {
+    "description": "Etiqueta Sin destinatario"
+  },
+
+  "lastEdited": "Última edición: {date}",
+  "@lastEdited": {
+    "description": "Última edición",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "deleteMessage": "¿Eliminar mensaje?",
+  "@deleteMessage": {
+    "description": "Título de confirmación eliminar mensaje"
+  },
+
+  "actionCannotBeUndone": "Esta acción no se puede deshacer.",
+  "@actionCannotBeUndone": {
+    "description": "Advertencia acción no se puede deshacer"
+  },
+
+  "deleteDraft": "¿Eliminar borrador?",
+  "@deleteDraft": {
+    "description": "Título de confirmación eliminar borrador"
+  },
+
+  "reply": "Responder",
+  "@reply": {
+    "description": "Botón Responder"
+  },
+
+  "decryptingMessage": "Descifrando mensaje...",
+  "@decryptingMessage": {
+    "description": "Mensaje descifrado en progreso"
+  },
+
+  "decryptionFailed": "Fallo al descifrar",
+  "@decryptionFailed": {
+    "description": "Error fallo al descifrar"
+  },
+
+  "endToEndEncrypted": "Cifrado de extremo a extremo",
+  "@endToEndEncrypted": {
+    "description": "Etiqueta Cifrado de extremo a extremo"
+  },
+
+  "fromUser": "De: {username}",
+  "@fromUser": {
+    "description": "Etiqueta De usuario",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "dateLabel": "Fecha: {date}",
+  "@dateLabel": {
+    "description": "Etiqueta Fecha",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "subject": "Asunto",
+  "@subject": {
+    "description": "Etiqueta Asunto"
+  },
+
+  "noSubject": "[Sin asunto]",
+  "@noSubject": {
+    "description": "Marcador de posición sin asunto"
+  },
+
+  "message": "Mensaje",
+  "@message": {
+    "description": "Etiqueta Mensaje"
+  },
+
+  "noContent": "[Sin contenido]",
+  "@noContent": {
+    "description": "Marcador de posición sin contenido"
+  },
+
+  "editDraft": "Editar borrador",
+  "@editDraft": {
+    "description": "Título editar borrador"
+  },
+
+  "draft": "Borrador",
+  "@draft": {
+    "description": "Botón Borrador"
+  },
+
+  "send": "Enviar",
+  "@send": {
+    "description": "Botón Enviar"
+  },
+
+  "recipient": "Destinatario",
+  "@recipient": {
+    "description": "Etiqueta Destinatario"
+  },
+
+  "enterUsername": "Ingresa el nombre de usuario",
+  "@enterUsername": {
+    "description": "Sugerencia ingresar nombre de usuario"
+  },
+
+  "messageWillBeEncrypted": "El mensaje será cifrado",
+  "@messageWillBeEncrypted": {
+    "description": "Sugerencia el mensaje será cifrado"
+  },
+
+  "clickToVerifyRecipient": "Haz clic en el ícono de búsqueda para verificar el destinatario",
+  "@clickToVerifyRecipient": {
+    "description": "Sugerencia verificar destinatario"
+  },
+
+  "userNotFoundOrNoKey": "Usuario \"{username}\" no encontrado o no tiene clave PGP",
+  "@userNotFoundOrNoKey": {
+    "description": "Error usuario no encontrado",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "searchError": "Error de búsqueda: {error}",
+  "@searchError": {
+    "description": "Error de búsqueda",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "pleaseSelectRecipient": "Por favor selecciona un destinatario",
+  "@pleaseSelectRecipient": {
+    "description": "Validación seleccionar destinatario"
+  },
+
+  "recipientNotVerified": "Destinatario no verificado o sin clave PGP disponible. Por favor verifica el destinatario.",
+  "@recipientNotVerified": {
+    "description": "Error destinatario no verificado"
+  },
+
+  "pleaseEnterSubject": "Por favor ingresa un asunto",
+  "@pleaseEnterSubject": {
+    "description": "Validación ingresar asunto"
+  },
+
+  "pleaseEnterMessage": "Por favor ingresa un mensaje",
+  "@pleaseEnterMessage": {
+    "description": "Validación ingresar mensaje"
+  },
+
+  "errorSending": "Error al enviar: {error}",
+  "@errorSending": {
+    "description": "Error de envío",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "draftSaved": "Borrador guardado",
+  "@draftSaved": {
+    "description": "Mensaje borrador guardado"
+  },
+
+  "errorSavingDraft": "Error al guardar: {error}",
+  "@errorSavingDraft": {
+    "description": "Error al guardar borrador",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  }
 }

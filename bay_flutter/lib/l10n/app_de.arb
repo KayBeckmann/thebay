@@ -1097,5 +1097,770 @@
         "type": "int"
       }
     }
+  },
+
+  "transactions": "Transaktionen",
+  "@transactions": {
+    "description": "Transaktionen Screen Titel"
+  },
+
+  "purchases": "Käufe ({count})",
+  "@purchases": {
+    "description": "Käufe Tab mit Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sales": "Verkäufe ({count})",
+  "@sales": {
+    "description": "Verkäufe Tab mit Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "refresh": "Aktualisieren",
+  "@refresh": {
+    "description": "Aktualisieren Tooltip"
+  },
+
+  "noPurchasesYet": "Noch keine Käufe",
+  "@noPurchasesYet": {
+    "description": "Leerzustand für Käufe Titel"
+  },
+
+  "noSalesYet": "Noch keine Verkäufe",
+  "@noSalesYet": {
+    "description": "Leerzustand für Verkäufe Titel"
+  },
+
+  "yourPurchasesWillAppearHere": "Deine Käufe werden hier angezeigt",
+  "@yourPurchasesWillAppearHere": {
+    "description": "Leerzustand für Käufe Nachricht"
+  },
+
+  "yourSalesWillAppearHere": "Deine Verkäufe werden hier angezeigt",
+  "@yourSalesWillAppearHere": {
+    "description": "Leerzustand für Verkäufe Nachricht"
+  },
+
+  "statusOpen": "Offen",
+  "@statusOpen": {
+    "description": "Transaktionsstatus Offen"
+  },
+
+  "statusPaid": "Bezahlt",
+  "@statusPaid": {
+    "description": "Transaktionsstatus Bezahlt"
+  },
+
+  "statusShipped": "Versendet",
+  "@statusShipped": {
+    "description": "Transaktionsstatus Versendet"
+  },
+
+  "statusReceived": "Erhalten",
+  "@statusReceived": {
+    "description": "Transaktionsstatus Erhalten"
+  },
+
+  "statusCompleted": "Abgeschlossen",
+  "@statusCompleted": {
+    "description": "Transaktionsstatus Abgeschlossen"
+  },
+
+  "statusDisputed": "Umstritten",
+  "@statusDisputed": {
+    "description": "Transaktionsstatus Umstritten"
+  },
+
+  "statusCancelled": "Abgebrochen",
+  "@statusCancelled": {
+    "description": "Transaktionsstatus Abgebrochen"
+  },
+
+  "transactionNumber": "Transaktion #{id}",
+  "@transactionNumber": {
+    "description": "Transaktionsnummer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "autoCompletesToday": "Wird heute automatisch abgeschlossen",
+  "@autoCompletesToday": {
+    "description": "Auto-Abschluss heute Warnung"
+  },
+
+  "autoCompletesInDays": "Wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen",
+  "@autoCompletesInDays": {
+    "description": "Auto-Abschluss in X Tagen",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "transaction": "Transaktion",
+  "@transaction": {
+    "description": "Transaktion Label"
+  },
+
+  "rateThisTransaction": "Bewerte diese Transaktion",
+  "@rateThisTransaction": {
+    "description": "Bewertungsaufforderung Titel"
+  },
+
+  "shareYourExperience": "Teile deine Erfahrung mit {username}",
+  "@shareYourExperience": {
+    "description": "Bewertungsaufforderung Text",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "rateNow": "Jetzt bewerten",
+  "@rateNow": {
+    "description": "Jetzt bewerten Button"
+  },
+
+  "alreadyRated": "Du hast diese Transaktion bereits bewertet",
+  "@alreadyRated": {
+    "description": "Bereits bewertet Nachricht"
+  },
+
+  "statusOpenDesc": "Warte auf Zahlung des Käufers",
+  "@statusOpenDesc": {
+    "description": "Status Offen Beschreibung"
+  },
+
+  "statusPaidDesc": "Zahlung gesendet, warte auf Versand durch Verkäufer",
+  "@statusPaidDesc": {
+    "description": "Status Bezahlt Beschreibung"
+  },
+
+  "statusShippedDesc": "Artikel wurde versendet, warte auf Zustellung",
+  "@statusShippedDesc": {
+    "description": "Status Versendet Beschreibung"
+  },
+
+  "statusReceivedDesc": "Käufer hat den Artikel erhalten",
+  "@statusReceivedDesc": {
+    "description": "Status Erhalten Beschreibung"
+  },
+
+  "statusCompletedDesc": "Transaktion erfolgreich abgeschlossen",
+  "@statusCompletedDesc": {
+    "description": "Status Abgeschlossen Beschreibung"
+  },
+
+  "statusDisputedDesc": "Ein Streitfall wurde eröffnet",
+  "@statusDisputedDesc": {
+    "description": "Status Umstritten Beschreibung"
+  },
+
+  "statusCancelledDesc": "Transaktion wurde abgebrochen",
+  "@statusCancelledDesc": {
+    "description": "Status Abgebrochen Beschreibung"
+  },
+
+  "timeline": "Zeitverlauf",
+  "@timeline": {
+    "description": "Zeitverlauf Titel"
+  },
+
+  "created": "Erstellt",
+  "@created": {
+    "description": "Erstellt Label"
+  },
+
+  "paid": "Bezahlt",
+  "@paid": {
+    "description": "Bezahlt Label"
+  },
+
+  "paymentSent": "Zahlung gesendet",
+  "@paymentSent": {
+    "description": "Zahlung gesendet Label"
+  },
+
+  "waitingForBuyer": "Warte auf Käufer",
+  "@waitingForBuyer": {
+    "description": "Warte auf Käufer Status"
+  },
+
+  "shipped": "Versendet",
+  "@shipped": {
+    "description": "Versendet Label"
+  },
+
+  "waitingForSeller": "Warte auf Verkäufer",
+  "@waitingForSeller": {
+    "description": "Warte auf Verkäufer Status"
+  },
+
+  "received": "Erhalten",
+  "@received": {
+    "description": "Erhalten Label"
+  },
+
+  "completed": "Abgeschlossen",
+  "@completed": {
+    "description": "Abgeschlossen Label"
+  },
+
+  "cancelled": "Abgebrochen",
+  "@cancelled": {
+    "description": "Abgebrochen Label"
+  },
+
+  "pending": "Ausstehend",
+  "@pending": {
+    "description": "Ausstehend Label"
+  },
+
+  "markAsShipped": "Als versendet markieren",
+  "@markAsShipped": {
+    "description": "Als versendet markieren Button"
+  },
+
+  "markAsPaid": "Als bezahlt markieren",
+  "@markAsPaid": {
+    "description": "Als bezahlt markieren Button"
+  },
+
+  "markAsReceived": "Als erhalten markieren",
+  "@markAsReceived": {
+    "description": "Als erhalten markieren Button"
+  },
+
+  "cancelTransaction": "Transaktion abbrechen",
+  "@cancelTransaction": {
+    "description": "Transaktion abbrechen Button"
+  },
+
+  "openDispute": "Streitfall eröffnen",
+  "@openDispute": {
+    "description": "Streitfall eröffnen Button"
+  },
+
+  "actions": "Aktionen",
+  "@actions": {
+    "description": "Aktionen Titel"
+  },
+
+  "confirmShipment": "Bestätige, dass du den Artikel versendet hast. Der Käufer hat 14 Tage Zeit, den Erhalt zu bestätigen oder einen Streitfall zu eröffnen.",
+  "@confirmShipment": {
+    "description": "Versandbestätigung Dialog Text"
+  },
+
+  "confirm": "Bestätigen",
+  "@confirm": {
+    "description": "Bestätigen Button"
+  },
+
+  "transactionMarkedAsShipped": "Transaktion als versendet markiert",
+  "@transactionMarkedAsShipped": {
+    "description": "Als versendet markiert Nachricht"
+  },
+
+  "confirmPayment": "Bestätige, dass du die Zahlung an den Verkäufer gesendet hast.",
+  "@confirmPayment": {
+    "description": "Zahlungsbestätigung Dialog Text"
+  },
+
+  "paymentMarkedAsSent": "Zahlung als gesendet markiert",
+  "@paymentMarkedAsSent": {
+    "description": "Zahlung als gesendet markiert Nachricht"
+  },
+
+  "confirmReceipt": "Bestätige, dass du den Artikel erhalten hast. Dies wird die Transaktion abschließen.",
+  "@confirmReceipt": {
+    "description": "Erhaltbestätigung Dialog Text"
+  },
+
+  "transactionCompleted": "Transaktion abgeschlossen",
+  "@transactionCompleted": {
+    "description": "Transaktion abgeschlossen Nachricht"
+  },
+
+  "cancelTransactionConfirm": "Möchtest du diese Transaktion wirklich abbrechen? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "@cancelTransactionConfirm": {
+    "description": "Transaktionsabbruch Bestätigung"
+  },
+
+  "keep": "Behalten",
+  "@keep": {
+    "description": "Behalten Button"
+  },
+
+  "transactionCancelled": "Transaktion abgebrochen",
+  "@transactionCancelled": {
+    "description": "Transaktion abgebrochen Nachricht"
+  },
+
+  "describeIssue": "Bitte beschreibe das Problem mit dieser Transaktion. Ein Moderator wird deinen Streitfall prüfen.",
+  "@describeIssue": {
+    "description": "Streitfall-Beschreibung Aufforderung"
+  },
+
+  "reason": "Grund",
+  "@reason": {
+    "description": "Grund Label"
+  },
+
+  "describeProblem": "Beschreibe das Problem...",
+  "@describeProblem": {
+    "description": "Problem beschreiben Hinweis"
+  },
+
+  "pleaseEnterReason": "Bitte gib einen Grund an",
+  "@pleaseEnterReason": {
+    "description": "Grund erforderlich Validierung"
+  },
+
+  "disputeOpened": "Streitfall eröffnet",
+  "@disputeOpened": {
+    "description": "Streitfall eröffnet Nachricht"
+  },
+
+  "transactionNotFound": "Transaktion nicht gefunden",
+  "@transactionNotFound": {
+    "description": "Transaktion nicht gefunden Fehler"
+  },
+
+  "transactionId": "Transaktions-ID",
+  "@transactionId": {
+    "description": "Transaktions-ID Label"
+  },
+
+  "totalPrice": "Gesamtpreis",
+  "@totalPrice": {
+    "description": "Gesamtpreis Label"
+  },
+
+  "parties": "Parteien",
+  "@parties": {
+    "description": "Parteien Titel"
+  },
+
+  "buyer": "Käufer",
+  "@buyer": {
+    "description": "Käufer Label"
+  },
+
+  "seller": "Verkäufer",
+  "@seller": {
+    "description": "Verkäufer Label"
+  },
+
+  "you": "Du",
+  "@you": {
+    "description": "Du Label"
+  },
+
+  "viewListingDetails": "Angebotsdetails anzeigen",
+  "@viewListingDetails": {
+    "description": "Angebotsdetails anzeigen Link"
+  },
+
+  "buyerNote": "Käufernotiz",
+  "@buyerNote": {
+    "description": "Käufernotiz Titel"
+  },
+
+  "autoCompleteWarning": "Auto-Abschluss Warnung",
+  "@autoCompleteWarning": {
+    "description": "Auto-Abschluss Warnung Titel"
+  },
+
+  "autoCompleteToday": "Diese Transaktion wird heute automatisch abgeschlossen, wenn kein Streitfall eröffnet wird.",
+  "@autoCompleteToday": {
+    "description": "Auto-Abschluss heute Nachricht"
+  },
+
+  "autoCompleteInDays": "Diese Transaktion wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen, wenn keine Aktion erfolgt.",
+  "@autoCompleteInDays": {
+    "description": "Auto-Abschluss in X Tagen Nachricht",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "disputeOpen": "Streitfall offen",
+  "@disputeOpen": {
+    "description": "Streitfall offen Titel"
+  },
+
+  "disputeReason": "Grund: {reason}",
+  "@disputeReason": {
+    "description": "Streitfall-Grund",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+
+  "disputeOpenedDate": "Eröffnet: {date}",
+  "@disputeOpenedDate": {
+    "description": "Streitfall eröffnet am",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "moderatorReviewing": "Ein Moderator prüft diesen Streitfall.",
+  "@moderatorReviewing": {
+    "description": "Moderator prüft Nachricht"
+  },
+
+  "paymentInformation": "Zahlungsinformationen",
+  "@paymentInformation": {
+    "description": "Zahlungsinformationen Titel"
+  },
+
+  "sendPaymentTo": "Bitte sende die Zahlung an den Verkäufer mit den folgenden Details:",
+  "@sendPaymentTo": {
+    "description": "Zahlungsanweisung"
+  },
+
+  "includeTransactionId": "Der Verkäufer wird den Artikel versenden, sobald die Zahlung eingegangen ist. Bitte gib deine Transaktions-ID in der Zahlungsnotiz an.",
+  "@includeTransactionId": {
+    "description": "Transaktions-ID in Zahlung Hinweis"
+  },
+
+  "messages": "Nachrichten",
+  "@messages": {
+    "description": "Nachrichten Screen Titel"
+  },
+
+  "inbox": "Posteingang",
+  "@inbox": {
+    "description": "Posteingang Tab"
+  },
+
+  "sent": "Gesendet",
+  "@sent": {
+    "description": "Gesendet Tab"
+  },
+
+  "drafts": "Entwürfe",
+  "@drafts": {
+    "description": "Entwürfe Tab"
+  },
+
+  "newMessage": "Neue Nachricht",
+  "@newMessage": {
+    "description": "Neue Nachricht Button"
+  },
+
+  "noMessages": "Keine Nachrichten",
+  "@noMessages": {
+    "description": "Keine Nachrichten Titel"
+  },
+
+  "inboxEmpty": "Dein Posteingang ist leer.",
+  "@inboxEmpty": {
+    "description": "Posteingang leer Nachricht"
+  },
+
+  "noSentMessages": "Keine gesendeten Nachrichten",
+  "@noSentMessages": {
+    "description": "Keine gesendeten Nachrichten Titel"
+  },
+
+  "noSentMessagesYet": "Du hast noch keine Nachrichten gesendet.",
+  "@noSentMessagesYet": {
+    "description": "Noch keine gesendeten Nachrichten Nachricht"
+  },
+
+  "noDrafts": "Keine Entwürfe",
+  "@noDrafts": {
+    "description": "Keine Entwürfe Titel"
+  },
+
+  "noSavedDrafts": "Du hast keine gespeicherten Entwürfe.",
+  "@noSavedDrafts": {
+    "description": "Keine gespeicherten Entwürfe Nachricht"
+  },
+
+  "errorLoading": "Fehler beim Laden",
+  "@errorLoading": {
+    "description": "Fehler beim Laden Titel"
+  },
+
+  "from": "Von: {username}",
+  "@from": {
+    "description": "Von Label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "to": "An: {username}",
+  "@to": {
+    "description": "An Label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "yesterday": "Gestern",
+  "@yesterday": {
+    "description": "Gestern Label"
+  },
+
+  "monday": "Mo",
+  "@monday": {
+    "description": "Montag Abkürzung"
+  },
+
+  "tuesday": "Di",
+  "@tuesday": {
+    "description": "Dienstag Abkürzung"
+  },
+
+  "wednesday": "Mi",
+  "@wednesday": {
+    "description": "Mittwoch Abkürzung"
+  },
+
+  "thursday": "Do",
+  "@thursday": {
+    "description": "Donnerstag Abkürzung"
+  },
+
+  "friday": "Fr",
+  "@friday": {
+    "description": "Freitag Abkürzung"
+  },
+
+  "saturday": "Sa",
+  "@saturday": {
+    "description": "Samstag Abkürzung"
+  },
+
+  "sunday": "So",
+  "@sunday": {
+    "description": "Sonntag Abkürzung"
+  },
+
+  "userNumber": "Benutzer #{id}",
+  "@userNumber": {
+    "description": "Benutzer Nummer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noRecipient": "Kein Empfänger",
+  "@noRecipient": {
+    "description": "Kein Empfänger Label"
+  },
+
+  "lastEdited": "Zuletzt bearbeitet: {date}",
+  "@lastEdited": {
+    "description": "Zuletzt bearbeitet",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "deleteMessage": "Nachricht löschen?",
+  "@deleteMessage": {
+    "description": "Nachricht löschen Bestätigung Titel"
+  },
+
+  "actionCannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden.",
+  "@actionCannotBeUndone": {
+    "description": "Aktion nicht rückgängig machbar Warnung"
+  },
+
+  "deleteDraft": "Entwurf löschen?",
+  "@deleteDraft": {
+    "description": "Entwurf löschen Bestätigung Titel"
+  },
+
+  "reply": "Antworten",
+  "@reply": {
+    "description": "Antworten Button"
+  },
+
+  "decryptingMessage": "Nachricht wird entschlüsselt...",
+  "@decryptingMessage": {
+    "description": "Entschlüsselung läuft Nachricht"
+  },
+
+  "decryptionFailed": "Entschlüsselung fehlgeschlagen",
+  "@decryptionFailed": {
+    "description": "Entschlüsselung fehlgeschlagen Fehler"
+  },
+
+  "endToEndEncrypted": "Ende-zu-Ende verschlüsselt",
+  "@endToEndEncrypted": {
+    "description": "Ende-zu-Ende verschlüsselt Label"
+  },
+
+  "fromUser": "Von: {username}",
+  "@fromUser": {
+    "description": "Von Benutzer Label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "dateLabel": "Datum: {date}",
+  "@dateLabel": {
+    "description": "Datum Label",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "subject": "Betreff",
+  "@subject": {
+    "description": "Betreff Label"
+  },
+
+  "noSubject": "[Kein Betreff]",
+  "@noSubject": {
+    "description": "Kein Betreff Platzhalter"
+  },
+
+  "message": "Nachricht",
+  "@message": {
+    "description": "Nachricht Label"
+  },
+
+  "noContent": "[Kein Inhalt]",
+  "@noContent": {
+    "description": "Kein Inhalt Platzhalter"
+  },
+
+  "editDraft": "Entwurf bearbeiten",
+  "@editDraft": {
+    "description": "Entwurf bearbeiten Titel"
+  },
+
+  "draft": "Entwurf",
+  "@draft": {
+    "description": "Entwurf Button"
+  },
+
+  "send": "Senden",
+  "@send": {
+    "description": "Senden Button"
+  },
+
+  "recipient": "Empfänger",
+  "@recipient": {
+    "description": "Empfänger Label"
+  },
+
+  "enterUsername": "Benutzername eingeben",
+  "@enterUsername": {
+    "description": "Benutzername eingeben Hinweis"
+  },
+
+  "messageWillBeEncrypted": "Nachricht wird verschlüsselt",
+  "@messageWillBeEncrypted": {
+    "description": "Nachricht wird verschlüsselt Hinweis"
+  },
+
+  "clickToVerifyRecipient": "Klicke auf das Such-Icon um den Empfänger zu prüfen",
+  "@clickToVerifyRecipient": {
+    "description": "Empfänger prüfen Hinweis"
+  },
+
+  "userNotFoundOrNoKey": "Benutzer \"{username}\" nicht gefunden oder hat keinen PGP-Schlüssel",
+  "@userNotFoundOrNoKey": {
+    "description": "Benutzer nicht gefunden Fehler",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "searchError": "Fehler bei der Suche: {error}",
+  "@searchError": {
+    "description": "Suchfehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "pleaseSelectRecipient": "Bitte wähle einen Empfänger",
+  "@pleaseSelectRecipient": {
+    "description": "Empfänger wählen Validierung"
+  },
+
+  "recipientNotVerified": "Empfänger nicht verifiziert oder kein PGP-Schlüssel vorhanden. Bitte Empfänger prüfen.",
+  "@recipientNotVerified": {
+    "description": "Empfänger nicht verifiziert Fehler"
+  },
+
+  "pleaseEnterSubject": "Bitte gib einen Betreff ein",
+  "@pleaseEnterSubject": {
+    "description": "Betreff eingeben Validierung"
+  },
+
+  "pleaseEnterMessage": "Bitte gib eine Nachricht ein",
+  "@pleaseEnterMessage": {
+    "description": "Nachricht eingeben Validierung"
+  },
+
+  "errorSending": "Fehler beim Senden: {error}",
+  "@errorSending": {
+    "description": "Sendefehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "draftSaved": "Entwurf gespeichert",
+  "@draftSaved": {
+    "description": "Entwurf gespeichert Nachricht"
+  },
+
+  "errorSavingDraft": "Fehler beim Speichern: {error}",
+  "@errorSavingDraft": {
+    "description": "Entwurf speichern Fehler",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
   }
 }
