@@ -1444,4 +1444,667 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get recipientHasNoPgpKey => 'El destinatario no tiene clave PGP';
+
+  @override
+  String get adminPanel => 'Panel de Administración';
+
+  @override
+  String get adminPanelWelcome => 'Bienvenido al Área de Administración';
+
+  @override
+  String get userManagement => 'Gestión de Usuarios';
+
+  @override
+  String get categoryManagement => 'Gestión de Categorías';
+
+  @override
+  String get newsManagement => 'Gestión de Noticias';
+
+  @override
+  String get paymentSettings => 'Configuración de Pagos';
+
+  @override
+  String get pendingPayments => 'Pagos Pendientes';
+
+  @override
+  String get slotVariants => 'Variantes de Slot';
+
+  @override
+  String get moderatorPanel => 'Panel de Moderación';
+
+  @override
+  String get moderatorPanelWelcome => 'Bienvenido al Área de Moderación';
+
+  @override
+  String get reports => 'Reportes';
+
+  @override
+  String get disputes => 'Disputas';
+
+  @override
+  String get allReports => 'Todos los Reportes';
+
+  @override
+  String get openReports => 'Abiertos';
+
+  @override
+  String get inReviewReports => 'En Revisión';
+
+  @override
+  String get resolvedReports => 'Resueltos';
+
+  @override
+  String get dismissedReports => 'Rechazados';
+
+  @override
+  String get statusReportOpen => 'ABIERTO';
+
+  @override
+  String get statusReportInReview => 'EN REVISIÓN';
+
+  @override
+  String get statusReportResolved => 'RESUELTO';
+
+  @override
+  String get statusReportDismissed => 'RECHAZADO';
+
+  @override
+  String get reportedBy => 'Reportado por';
+
+  @override
+  String get reportedUser => 'Usuario Reportado';
+
+  @override
+  String get reportedListing => 'Anuncio Reportado';
+
+  @override
+  String get reportReason => 'Razón';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonInappropriate => 'Contenido Inapropiado';
+
+  @override
+  String get reportReasonScam => 'Estafa/Fraude';
+
+  @override
+  String get reportReasonHarassment => 'Acoso';
+
+  @override
+  String get reportReasonFakeInfo => 'Información Falsa';
+
+  @override
+  String get reportReasonOther => 'Otro';
+
+  @override
+  String get noReports => 'No hay Reportes';
+
+  @override
+  String get noReportsMessage => 'Actualmente no hay reportes para revisar.';
+
+  @override
+  String get viewReport => 'Ver Reporte';
+
+  @override
+  String get reportDetail => 'Detalles del Reporte';
+
+  @override
+  String get reportId => 'ID de Reporte';
+
+  @override
+  String get reportType => 'Tipo';
+
+  @override
+  String get reportTypeUser => 'Usuario';
+
+  @override
+  String get reportTypeListing => 'Anuncio';
+
+  @override
+  String get reportedAt => 'Reportado el';
+
+  @override
+  String get reportDescription => 'Descripción';
+
+  @override
+  String get moderatorNotes => 'Notas del Moderador';
+
+  @override
+  String get addNote => 'Agregar Nota';
+
+  @override
+  String get internalNotesOnly => 'Visible solo para moderadores';
+
+  @override
+  String get enterNote => 'Ingresar nota...';
+
+  @override
+  String get noteSaved => 'Nota guardada';
+
+  @override
+  String get takeAction => 'Tomar Acción';
+
+  @override
+  String get markAsInReview => 'Marcar como En Revisión';
+
+  @override
+  String get resolveReport => 'Resolver Reporte';
+
+  @override
+  String get dismissReport => 'Rechazar Reporte';
+
+  @override
+  String get viewReportedUser => 'Ver Usuario Reportado';
+
+  @override
+  String get viewReportedListing => 'Ver Anuncio Reportado';
+
+  @override
+  String get warnUser => 'Advertir Usuario';
+
+  @override
+  String get banUser => 'Banear Usuario';
+
+  @override
+  String get reportMarkedInReview => 'Reporte marcado como en revisión';
+
+  @override
+  String get reportResolved => 'Reporte resuelto';
+
+  @override
+  String get reportDismissed => 'Reporte rechazado';
+
+  @override
+  String get confirmResolveReport =>
+      '¿Quieres marcar este reporte como resuelto?';
+
+  @override
+  String get confirmDismissReport => '¿Quieres rechazar este reporte?';
+
+  @override
+  String get resolve => 'Resolver';
+
+  @override
+  String get dismiss => 'Rechazar';
+
+  @override
+  String get userDetail => 'Detalles del Usuario';
+
+  @override
+  String get userId => 'ID de Usuario';
+
+  @override
+  String get registeredAt => 'Registrado el';
+
+  @override
+  String get lastActive => 'Última actividad';
+
+  @override
+  String get totalListings => 'Anuncios totales';
+
+  @override
+  String get totalTransactions => 'Transacciones totales';
+
+  @override
+  String get userRating => 'Calificación';
+
+  @override
+  String get userStatus => 'Estado';
+
+  @override
+  String get userStatusActive => 'Activo';
+
+  @override
+  String get userStatusBanned => 'Baneado';
+
+  @override
+  String get userStatusWarned => 'Advertido';
+
+  @override
+  String get banUserDialog => 'Banear Usuario';
+
+  @override
+  String get banReason => 'Razón del Baneo';
+
+  @override
+  String get selectBanReason => 'Seleccionar razón del baneo';
+
+  @override
+  String get banReasonSpam => 'Spam';
+
+  @override
+  String get banReasonScam => 'Estafa';
+
+  @override
+  String get banReasonHarassment => 'Acoso';
+
+  @override
+  String get banReasonIllegalContent => 'Contenido Ilegal';
+
+  @override
+  String get banReasonMultipleViolations => 'Múltiples Violaciones';
+
+  @override
+  String get banReasonOther => 'Otro';
+
+  @override
+  String get banDuration => 'Duración del Baneo';
+
+  @override
+  String get banDuration24h => '24 Horas';
+
+  @override
+  String get banDuration7d => '7 Días';
+
+  @override
+  String get banDuration30d => '30 Días';
+
+  @override
+  String get banDurationPermanent => 'Permanente';
+
+  @override
+  String get additionalNotes => 'Notas Adicionales';
+
+  @override
+  String get optionalNotes => 'Opcional: Información adicional...';
+
+  @override
+  String get confirmBanUser => '¿Realmente quieres banear a este usuario?';
+
+  @override
+  String get ban => 'Banear';
+
+  @override
+  String get userBanned => 'Usuario baneado';
+
+  @override
+  String get userWarned => 'Usuario advertido';
+
+  @override
+  String get newsManagementScreen => 'Gestión de Noticias';
+
+  @override
+  String get allNews => 'Todas las Noticias';
+
+  @override
+  String get publishedNews => 'Publicadas';
+
+  @override
+  String get draftNews => 'Borradores';
+
+  @override
+  String get createNews => 'Crear Noticia';
+
+  @override
+  String get noNewsItems => 'No hay Noticias';
+
+  @override
+  String get noNewsItemsMessage => 'Aún no se han creado noticias.';
+
+  @override
+  String get newsTitle => 'Título';
+
+  @override
+  String get newsContent => 'Contenido';
+
+  @override
+  String get newsStatus => 'Estado';
+
+  @override
+  String get newsStatusPublished => 'Publicada';
+
+  @override
+  String get newsStatusDraft => 'Borrador';
+
+  @override
+  String get publishedAt => 'Publicado el';
+
+  @override
+  String get editNews => 'Editar Noticia';
+
+  @override
+  String get deleteNews => 'Eliminar Noticia';
+
+  @override
+  String get createNewsItem => 'Crear Noticia';
+
+  @override
+  String get editNewsItem => 'Editar Noticia';
+
+  @override
+  String get enterNewsTitle => 'Ingresar título de la noticia';
+
+  @override
+  String get enterNewsContent => 'Ingresar contenido de la noticia...';
+
+  @override
+  String get newsTitleRequired => 'El título es requerido';
+
+  @override
+  String get newsContentRequired => 'El contenido es requerido';
+
+  @override
+  String get publish => 'Publicar';
+
+  @override
+  String get saveAsDraft => 'Guardar como Borrador';
+
+  @override
+  String get newsCreated => 'Noticia creada';
+
+  @override
+  String get newsUpdated => 'Noticia actualizada';
+
+  @override
+  String get newsDeleted => 'Noticia eliminada';
+
+  @override
+  String get confirmDeleteNews => '¿Realmente quieres eliminar esta noticia?';
+
+  @override
+  String get categoryManagementScreen => 'Gestión de Categorías';
+
+  @override
+  String get categories => 'Categorías';
+
+  @override
+  String get subcategories => 'Subcategorías';
+
+  @override
+  String get createCategory => 'Crear Categoría';
+
+  @override
+  String get createSubcategory => 'Crear Subcategoría';
+
+  @override
+  String get noCategories => 'No hay Categorías';
+
+  @override
+  String get noCategoriesMessage => 'Aún no se han creado categorías.';
+
+  @override
+  String get noSubcategories => 'No hay Subcategorías';
+
+  @override
+  String get noSubcategoriesMessage => 'Aún no se han creado subcategorías.';
+
+  @override
+  String get categoryName => 'Nombre';
+
+  @override
+  String get categoryDescription => 'Descripción';
+
+  @override
+  String get parentCategory => 'Categoría Padre';
+
+  @override
+  String get listingsCount => 'Anuncios';
+
+  @override
+  String get editCategory => 'Editar Categoría';
+
+  @override
+  String get deleteCategory => 'Eliminar Categoría';
+
+  @override
+  String get createCategoryDialog => 'Crear Categoría';
+
+  @override
+  String get editCategoryDialog => 'Editar Categoría';
+
+  @override
+  String get enterCategoryName => 'Ingresar nombre de categoría';
+
+  @override
+  String get enterCategoryDescription => 'Ingresar descripción (opcional)';
+
+  @override
+  String get categoryNameRequired => 'El nombre es requerido';
+
+  @override
+  String get categoryCreated => 'Categoría creada';
+
+  @override
+  String get categoryUpdated => 'Categoría actualizada';
+
+  @override
+  String get categoryDeleted => 'Categoría eliminada';
+
+  @override
+  String get confirmDeleteCategory =>
+      '¿Realmente quieres eliminar esta categoría? Todas las subcategorías asociadas también serán eliminadas.';
+
+  @override
+  String get paymentSettingsScreen => 'Configuración de Pagos';
+
+  @override
+  String get paymentMethods => 'Métodos de Pago';
+
+  @override
+  String get fees => 'Tarifas';
+
+  @override
+  String get paypalEnabled => 'PayPal Habilitado';
+
+  @override
+  String get bitcoinEnabled => 'Bitcoin Habilitado';
+
+  @override
+  String get transactionFee => 'Tarifa de Transacción';
+
+  @override
+  String get platformFee => 'Tarifa de Plataforma';
+
+  @override
+  String get feePercentage => 'Porcentaje';
+
+  @override
+  String get minimumFee => 'Tarifa Mínima';
+
+  @override
+  String get maximumFee => 'Tarifa Máxima';
+
+  @override
+  String get settingsSaved => 'Configuración guardada';
+
+  @override
+  String get pendingPaymentsScreen => 'Pagos Pendientes';
+
+  @override
+  String get allPendingPayments => 'Todos';
+
+  @override
+  String get paypalPayments => 'PayPal';
+
+  @override
+  String get bitcoinPayments => 'Bitcoin';
+
+  @override
+  String get noPendingPayments => 'No hay Pagos Pendientes';
+
+  @override
+  String get noPendingPaymentsMessage =>
+      'Actualmente no hay pagos pendientes para procesar.';
+
+  @override
+  String get paymentId => 'ID de Pago';
+
+  @override
+  String get amount => 'Monto';
+
+  @override
+  String get requestedAt => 'Solicitado el';
+
+  @override
+  String get paymentStatus => 'Estado';
+
+  @override
+  String get paymentStatusPending => 'Pendiente';
+
+  @override
+  String get paymentStatusProcessing => 'Procesando';
+
+  @override
+  String get paymentStatusCompleted => 'Completado';
+
+  @override
+  String get paymentStatusFailed => 'Fallido';
+
+  @override
+  String get processPayment => 'Procesar Pago';
+
+  @override
+  String get markAsProcessing => 'Marcar como Procesando';
+
+  @override
+  String get markAsCompleted => 'Marcar como Completado';
+
+  @override
+  String get markAsFailed => 'Marcar como Fallido';
+
+  @override
+  String get paymentMarkedProcessing => 'Pago marcado como procesando';
+
+  @override
+  String get paymentMarkedCompleted => 'Pago marcado como completado';
+
+  @override
+  String get paymentMarkedFailed => 'Pago marcado como fallido';
+
+  @override
+  String get slotVariantsScreen => 'Variantes de Slot';
+
+  @override
+  String get activeSlotVariants => 'Activas';
+
+  @override
+  String get inactiveSlotVariants => 'Inactivas';
+
+  @override
+  String get createSlotVariant => 'Crear Variante de Slot';
+
+  @override
+  String get noSlotVariants => 'No hay Variantes de Slot';
+
+  @override
+  String get noSlotVariantsMessage => 'Aún no se han creado variantes de slot.';
+
+  @override
+  String get variantName => 'Nombre';
+
+  @override
+  String get duration => 'Duración';
+
+  @override
+  String durationDays(int days) {
+    return '$days días';
+  }
+
+  @override
+  String get priceUSD => 'Precio (USD)';
+
+  @override
+  String get priceBTC => 'Precio (BTC)';
+
+  @override
+  String get maxListings => 'Máx. Anuncios';
+
+  @override
+  String get variantStatus => 'Estado';
+
+  @override
+  String get editSlotVariant => 'Editar Variante de Slot';
+
+  @override
+  String get deleteSlotVariant => 'Eliminar Variante de Slot';
+
+  @override
+  String get createSlotVariantDialog => 'Crear Variante de Slot';
+
+  @override
+  String get editSlotVariantDialog => 'Editar Variante de Slot';
+
+  @override
+  String get enterVariantName => 'Ingresar nombre de variante';
+
+  @override
+  String get enterDuration => 'Duración (días)';
+
+  @override
+  String get enterPriceUSD => 'Precio en USD';
+
+  @override
+  String get enterPriceBTC => 'Precio en BTC';
+
+  @override
+  String get enterMaxListings => 'Máx. anuncios';
+
+  @override
+  String get variantNameRequired => 'El nombre es requerido';
+
+  @override
+  String get durationRequired => 'La duración es requerida';
+
+  @override
+  String get priceUSDRequired => 'El precio en USD es requerido';
+
+  @override
+  String get priceBTCRequired => 'El precio en BTC es requerido';
+
+  @override
+  String get maxListingsRequired => 'El máx. de anuncios es requerido';
+
+  @override
+  String get slotVariantCreated => 'Variante de slot creada';
+
+  @override
+  String get slotVariantUpdated => 'Variante de slot actualizada';
+
+  @override
+  String get slotVariantDeleted => 'Variante de slot eliminada';
+
+  @override
+  String get confirmDeleteSlotVariant =>
+      '¿Realmente quieres eliminar esta variante de slot?';
+
+  @override
+  String get userManagementScreen => 'Gestión de Usuarios';
+
+  @override
+  String get allUsers => 'Todos los Usuarios';
+
+  @override
+  String get activeUsers => 'Activos';
+
+  @override
+  String get bannedUsers => 'Baneados';
+
+  @override
+  String get searchUsers => 'Buscar usuarios...';
+
+  @override
+  String get noUsers => 'No hay Usuarios';
+
+  @override
+  String get noUsersMessage => 'No se encontraron usuarios.';
+
+  @override
+  String get role => 'Rol';
+
+  @override
+  String get viewUser => 'Ver Usuario';
+
+  @override
+  String get unbanUser => 'Desbanear';
+
+  @override
+  String get userUnbanned => 'Usuario desbaneado';
+
+  @override
+  String get confirmUnbanUser => '¿Realmente quieres desbanear a este usuario?';
+
+  @override
+  String get unban => 'Desbanear';
 }

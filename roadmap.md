@@ -618,14 +618,15 @@
 - [x] Verschlüsselungs-Fehlermeldungen übersetzen
 
 ### 15.7 Admin & Moderation
-- [ ] admin_panel_screen.dart übersetzen
-- [ ] moderator_panel_screen.dart übersetzen
-- [ ] news_management_screen.dart übersetzen (~32 Strings)
-- [ ] user_management_screen.dart übersetzen
-- [ ] categories_screen.dart übersetzen
-- [ ] payment_settings_screen.dart übersetzen
-- [ ] pending_payments_screen.dart übersetzen
-- [ ] slot_variants_screen.dart übersetzen
+- [x] ARB-Übersetzungen für alle Admin/Moderations-Screens (~250 Strings)
+- [ ] admin_panel_screen.dart mit AppLocalizations aktualisieren
+- [ ] moderator_panel_screen.dart mit AppLocalizations aktualisieren
+- [ ] news_management_screen.dart mit AppLocalizations aktualisieren (~32 Strings)
+- [ ] user_management_screen.dart mit AppLocalizations aktualisieren
+- [ ] categories_screen.dart mit AppLocalizations aktualisieren
+- [ ] payment_settings_screen.dart mit AppLocalizations aktualisieren
+- [ ] pending_payments_screen.dart mit AppLocalizations aktualisieren
+- [ ] slot_variants_screen.dart mit AppLocalizations aktualisieren
 
 ### 15.8 Feinschliff & Completion
 - [ ] favorites_screen.dart übersetzen

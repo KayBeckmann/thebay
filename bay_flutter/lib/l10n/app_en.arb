@@ -1438,5 +1438,1105 @@
   "recipientHasNoPgpKey": "Recipient has no PGP key",
   "@recipientHasNoPgpKey": {
     "description": "Recipient has no PGP key error"
+  },
+
+  "adminPanel": "Admin Panel",
+  "@adminPanel": {
+    "description": "Admin Panel title"
+  },
+
+  "adminPanelWelcome": "Welcome to the Admin Area",
+  "@adminPanelWelcome": {
+    "description": "Admin Panel welcome message"
+  },
+
+  "userManagement": "User Management",
+  "@userManagement": {
+    "description": "User Management label"
+  },
+
+  "categoryManagement": "Category Management",
+  "@categoryManagement": {
+    "description": "Category Management label"
+  },
+
+  "newsManagement": "News Management",
+  "@newsManagement": {
+    "description": "News Management label"
+  },
+
+  "paymentSettings": "Payment Settings",
+  "@paymentSettings": {
+    "description": "Payment Settings label"
+  },
+
+  "pendingPayments": "Pending Payments",
+  "@pendingPayments": {
+    "description": "Pending Payments label"
+  },
+
+  "slotVariants": "Slot Variants",
+  "@slotVariants": {
+    "description": "Slot Variants label"
+  },
+
+  "moderatorPanel": "Moderator Panel",
+  "@moderatorPanel": {
+    "description": "Moderator Panel title"
+  },
+
+  "moderatorPanelWelcome": "Welcome to the Moderation Area",
+  "@moderatorPanelWelcome": {
+    "description": "Moderator Panel welcome message"
+  },
+
+  "reports": "Reports",
+  "@reports": {
+    "description": "Reports label"
+  },
+
+  "disputes": "Disputes",
+  "@disputes": {
+    "description": "Disputes label"
+  },
+
+  "allReports": "All Reports",
+  "@allReports": {
+    "description": "All Reports tab"
+  },
+
+  "openReports": "Open",
+  "@openReports": {
+    "description": "Open Reports tab"
+  },
+
+  "inReviewReports": "In Review",
+  "@inReviewReports": {
+    "description": "In Review Reports tab"
+  },
+
+  "resolvedReports": "Resolved",
+  "@resolvedReports": {
+    "description": "Resolved Reports tab"
+  },
+
+  "dismissedReports": "Dismissed",
+  "@dismissedReports": {
+    "description": "Dismissed Reports tab"
+  },
+
+  "statusReportOpen": "OPEN",
+  "@statusReportOpen": {
+    "description": "Report status Open"
+  },
+
+  "statusReportInReview": "IN REVIEW",
+  "@statusReportInReview": {
+    "description": "Report status In Review"
+  },
+
+  "statusReportResolved": "RESOLVED",
+  "@statusReportResolved": {
+    "description": "Report status Resolved"
+  },
+
+  "statusReportDismissed": "DISMISSED",
+  "@statusReportDismissed": {
+    "description": "Report status Dismissed"
+  },
+
+  "reportedBy": "Reported by",
+  "@reportedBy": {
+    "description": "Reported by label"
+  },
+
+  "reportedUser": "Reported User",
+  "@reportedUser": {
+    "description": "Reported User label"
+  },
+
+  "reportedListing": "Reported Listing",
+  "@reportedListing": {
+    "description": "Reported Listing label"
+  },
+
+  "reportReason": "Reason",
+  "@reportReason": {
+    "description": "Report reason label"
+  },
+
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Report reason Spam"
+  },
+
+  "reportReasonInappropriate": "Inappropriate Content",
+  "@reportReasonInappropriate": {
+    "description": "Report reason Inappropriate Content"
+  },
+
+  "reportReasonScam": "Scam/Fraud",
+  "@reportReasonScam": {
+    "description": "Report reason Scam"
+  },
+
+  "reportReasonHarassment": "Harassment",
+  "@reportReasonHarassment": {
+    "description": "Report reason Harassment"
+  },
+
+  "reportReasonFakeInfo": "False Information",
+  "@reportReasonFakeInfo": {
+    "description": "Report reason False Information"
+  },
+
+  "reportReasonOther": "Other",
+  "@reportReasonOther": {
+    "description": "Report reason Other"
+  },
+
+  "noReports": "No Reports",
+  "@noReports": {
+    "description": "No reports title"
+  },
+
+  "noReportsMessage": "There are currently no reports to review.",
+  "@noReportsMessage": {
+    "description": "No reports message"
+  },
+
+  "viewReport": "View Report",
+  "@viewReport": {
+    "description": "View report button"
+  },
+
+  "reportDetail": "Report Details",
+  "@reportDetail": {
+    "description": "Report details title"
+  },
+
+  "reportId": "Report ID",
+  "@reportId": {
+    "description": "Report ID label"
+  },
+
+  "reportType": "Type",
+  "@reportType": {
+    "description": "Report type label"
+  },
+
+  "reportTypeUser": "User",
+  "@reportTypeUser": {
+    "description": "Report type User"
+  },
+
+  "reportTypeListing": "Listing",
+  "@reportTypeListing": {
+    "description": "Report type Listing"
+  },
+
+  "reportedAt": "Reported at",
+  "@reportedAt": {
+    "description": "Reported at label"
+  },
+
+  "reportDescription": "Description",
+  "@reportDescription": {
+    "description": "Report description label"
+  },
+
+  "moderatorNotes": "Moderator Notes",
+  "@moderatorNotes": {
+    "description": "Moderator notes label"
+  },
+
+  "addNote": "Add Note",
+  "@addNote": {
+    "description": "Add note button"
+  },
+
+  "internalNotesOnly": "Visible to moderators only",
+  "@internalNotesOnly": {
+    "description": "Internal notes hint"
+  },
+
+  "enterNote": "Enter note...",
+  "@enterNote": {
+    "description": "Enter note hint"
+  },
+
+  "noteSaved": "Note saved",
+  "@noteSaved": {
+    "description": "Note saved message"
+  },
+
+  "takeAction": "Take Action",
+  "@takeAction": {
+    "description": "Take action button"
+  },
+
+  "markAsInReview": "Mark as In Review",
+  "@markAsInReview": {
+    "description": "Mark as in review button"
+  },
+
+  "resolveReport": "Resolve Report",
+  "@resolveReport": {
+    "description": "Resolve report button"
+  },
+
+  "dismissReport": "Dismiss Report",
+  "@dismissReport": {
+    "description": "Dismiss report button"
+  },
+
+  "viewReportedUser": "View Reported User",
+  "@viewReportedUser": {
+    "description": "View reported user button"
+  },
+
+  "viewReportedListing": "View Reported Listing",
+  "@viewReportedListing": {
+    "description": "View reported listing button"
+  },
+
+  "warnUser": "Warn User",
+  "@warnUser": {
+    "description": "Warn user button"
+  },
+
+  "banUser": "Ban User",
+  "@banUser": {
+    "description": "Ban user button"
+  },
+
+  "reportMarkedInReview": "Report marked as in review",
+  "@reportMarkedInReview": {
+    "description": "Marked as in review message"
+  },
+
+  "reportResolved": "Report resolved",
+  "@reportResolved": {
+    "description": "Report resolved message"
+  },
+
+  "reportDismissed": "Report dismissed",
+  "@reportDismissed": {
+    "description": "Report dismissed message"
+  },
+
+  "confirmResolveReport": "Do you want to mark this report as resolved?",
+  "@confirmResolveReport": {
+    "description": "Resolve report confirmation"
+  },
+
+  "confirmDismissReport": "Do you want to dismiss this report?",
+  "@confirmDismissReport": {
+    "description": "Dismiss report confirmation"
+  },
+
+  "resolve": "Resolve",
+  "@resolve": {
+    "description": "Resolve button"
+  },
+
+  "dismiss": "Dismiss",
+  "@dismiss": {
+    "description": "Dismiss button"
+  },
+
+  "userDetail": "User Details",
+  "@userDetail": {
+    "description": "User details title"
+  },
+
+  "userId": "User ID",
+  "@userId": {
+    "description": "User ID label"
+  },
+
+  "registeredAt": "Registered at",
+  "@registeredAt": {
+    "description": "Registered at label"
+  },
+
+  "lastActive": "Last active",
+  "@lastActive": {
+    "description": "Last active label"
+  },
+
+  "totalListings": "Total listings",
+  "@totalListings": {
+    "description": "Total listings label"
+  },
+
+  "totalTransactions": "Total transactions",
+  "@totalTransactions": {
+    "description": "Total transactions label"
+  },
+
+  "userRating": "Rating",
+  "@userRating": {
+    "description": "Rating label"
+  },
+
+  "userStatus": "Status",
+  "@userStatus": {
+    "description": "User status label"
+  },
+
+  "userStatusActive": "Active",
+  "@userStatusActive": {
+    "description": "User status Active"
+  },
+
+  "userStatusBanned": "Banned",
+  "@userStatusBanned": {
+    "description": "User status Banned"
+  },
+
+  "userStatusWarned": "Warned",
+  "@userStatusWarned": {
+    "description": "User status Warned"
+  },
+
+  "banUserDialog": "Ban User",
+  "@banUserDialog": {
+    "description": "Ban user dialog title"
+  },
+
+  "banReason": "Ban Reason",
+  "@banReason": {
+    "description": "Ban reason label"
+  },
+
+  "selectBanReason": "Select ban reason",
+  "@selectBanReason": {
+    "description": "Select ban reason label"
+  },
+
+  "banReasonSpam": "Spam",
+  "@banReasonSpam": {
+    "description": "Ban reason Spam"
+  },
+
+  "banReasonScam": "Scam",
+  "@banReasonScam": {
+    "description": "Ban reason Scam"
+  },
+
+  "banReasonHarassment": "Harassment",
+  "@banReasonHarassment": {
+    "description": "Ban reason Harassment"
+  },
+
+  "banReasonIllegalContent": "Illegal Content",
+  "@banReasonIllegalContent": {
+    "description": "Ban reason Illegal Content"
+  },
+
+  "banReasonMultipleViolations": "Multiple Violations",
+  "@banReasonMultipleViolations": {
+    "description": "Ban reason Multiple Violations"
+  },
+
+  "banReasonOther": "Other",
+  "@banReasonOther": {
+    "description": "Ban reason Other"
+  },
+
+  "banDuration": "Ban Duration",
+  "@banDuration": {
+    "description": "Ban duration label"
+  },
+
+  "banDuration24h": "24 Hours",
+  "@banDuration24h": {
+    "description": "Ban duration 24 hours"
+  },
+
+  "banDuration7d": "7 Days",
+  "@banDuration7d": {
+    "description": "Ban duration 7 days"
+  },
+
+  "banDuration30d": "30 Days",
+  "@banDuration30d": {
+    "description": "Ban duration 30 days"
+  },
+
+  "banDurationPermanent": "Permanent",
+  "@banDurationPermanent": {
+    "description": "Ban duration Permanent"
+  },
+
+  "additionalNotes": "Additional Notes",
+  "@additionalNotes": {
+    "description": "Additional notes label"
+  },
+
+  "optionalNotes": "Optional: Additional information...",
+  "@optionalNotes": {
+    "description": "Optional notes hint"
+  },
+
+  "confirmBanUser": "Do you really want to ban this user?",
+  "@confirmBanUser": {
+    "description": "Ban user confirmation"
+  },
+
+  "ban": "Ban",
+  "@ban": {
+    "description": "Ban button"
+  },
+
+  "userBanned": "User banned",
+  "@userBanned": {
+    "description": "User banned message"
+  },
+
+  "userWarned": "User warned",
+  "@userWarned": {
+    "description": "User warned message"
+  },
+
+  "newsManagementScreen": "News Management",
+  "@newsManagementScreen": {
+    "description": "News Management screen title"
+  },
+
+  "allNews": "All News",
+  "@allNews": {
+    "description": "All News tab"
+  },
+
+  "publishedNews": "Published",
+  "@publishedNews": {
+    "description": "Published News tab"
+  },
+
+  "draftNews": "Drafts",
+  "@draftNews": {
+    "description": "Draft News tab"
+  },
+
+  "createNews": "Create News",
+  "@createNews": {
+    "description": "Create news button"
+  },
+
+  "noNewsItems": "No News Items",
+  "@noNewsItems": {
+    "description": "No news title"
+  },
+
+  "noNewsItemsMessage": "No news items have been created yet.",
+  "@noNewsItemsMessage": {
+    "description": "No news message"
+  },
+
+  "newsTitle": "Title",
+  "@newsTitle": {
+    "description": "News title label"
+  },
+
+  "newsContent": "Content",
+  "@newsContent": {
+    "description": "News content label"
+  },
+
+  "newsStatus": "Status",
+  "@newsStatus": {
+    "description": "News status label"
+  },
+
+  "newsStatusPublished": "Published",
+  "@newsStatusPublished": {
+    "description": "News status Published"
+  },
+
+  "newsStatusDraft": "Draft",
+  "@newsStatusDraft": {
+    "description": "News status Draft"
+  },
+
+  "publishedAt": "Published at",
+  "@publishedAt": {
+    "description": "Published at label"
+  },
+
+  "editNews": "Edit News",
+  "@editNews": {
+    "description": "Edit news button"
+  },
+
+  "deleteNews": "Delete News",
+  "@deleteNews": {
+    "description": "Delete news button"
+  },
+
+  "createNewsItem": "Create News",
+  "@createNewsItem": {
+    "description": "Create news dialog title"
+  },
+
+  "editNewsItem": "Edit News",
+  "@editNewsItem": {
+    "description": "Edit news dialog title"
+  },
+
+  "enterNewsTitle": "Enter news title",
+  "@enterNewsTitle": {
+    "description": "News title hint"
+  },
+
+  "enterNewsContent": "Enter news content...",
+  "@enterNewsContent": {
+    "description": "News content hint"
+  },
+
+  "newsTitleRequired": "Title is required",
+  "@newsTitleRequired": {
+    "description": "News title required validation"
+  },
+
+  "newsContentRequired": "Content is required",
+  "@newsContentRequired": {
+    "description": "News content required validation"
+  },
+
+  "publish": "Publish",
+  "@publish": {
+    "description": "Publish button"
+  },
+
+  "saveAsDraft": "Save as Draft",
+  "@saveAsDraft": {
+    "description": "Save as draft button"
+  },
+
+  "newsCreated": "News created",
+  "@newsCreated": {
+    "description": "News created message"
+  },
+
+  "newsUpdated": "News updated",
+  "@newsUpdated": {
+    "description": "News updated message"
+  },
+
+  "newsDeleted": "News deleted",
+  "@newsDeleted": {
+    "description": "News deleted message"
+  },
+
+  "confirmDeleteNews": "Do you really want to delete this news item?",
+  "@confirmDeleteNews": {
+    "description": "Delete news confirmation"
+  },
+
+  "categoryManagementScreen": "Category Management",
+  "@categoryManagementScreen": {
+    "description": "Category Management screen title"
+  },
+
+  "categories": "Categories",
+  "@categories": {
+    "description": "Categories tab"
+  },
+
+  "subcategories": "Subcategories",
+  "@subcategories": {
+    "description": "Subcategories tab"
+  },
+
+  "createCategory": "Create Category",
+  "@createCategory": {
+    "description": "Create category button"
+  },
+
+  "createSubcategory": "Create Subcategory",
+  "@createSubcategory": {
+    "description": "Create subcategory button"
+  },
+
+  "noCategories": "No Categories",
+  "@noCategories": {
+    "description": "No categories title"
+  },
+
+  "noCategoriesMessage": "No categories have been created yet.",
+  "@noCategoriesMessage": {
+    "description": "No categories message"
+  },
+
+  "noSubcategories": "No Subcategories",
+  "@noSubcategories": {
+    "description": "No subcategories title"
+  },
+
+  "noSubcategoriesMessage": "No subcategories have been created yet.",
+  "@noSubcategoriesMessage": {
+    "description": "No subcategories message"
+  },
+
+  "categoryName": "Name",
+  "@categoryName": {
+    "description": "Category name label"
+  },
+
+  "categoryDescription": "Description",
+  "@categoryDescription": {
+    "description": "Category description label"
+  },
+
+  "parentCategory": "Parent Category",
+  "@parentCategory": {
+    "description": "Parent category label"
+  },
+
+  "listingsCount": "Listings",
+  "@listingsCount": {
+    "description": "Listings count label"
+  },
+
+  "editCategory": "Edit Category",
+  "@editCategory": {
+    "description": "Edit category button"
+  },
+
+  "deleteCategory": "Delete Category",
+  "@deleteCategory": {
+    "description": "Delete category button"
+  },
+
+  "createCategoryDialog": "Create Category",
+  "@createCategoryDialog": {
+    "description": "Create category dialog title"
+  },
+
+  "editCategoryDialog": "Edit Category",
+  "@editCategoryDialog": {
+    "description": "Edit category dialog title"
+  },
+
+  "enterCategoryName": "Enter category name",
+  "@enterCategoryName": {
+    "description": "Category name hint"
+  },
+
+  "enterCategoryDescription": "Enter description (optional)",
+  "@enterCategoryDescription": {
+    "description": "Category description hint"
+  },
+
+  "categoryNameRequired": "Name is required",
+  "@categoryNameRequired": {
+    "description": "Category name required validation"
+  },
+
+  "categoryCreated": "Category created",
+  "@categoryCreated": {
+    "description": "Category created message"
+  },
+
+  "categoryUpdated": "Category updated",
+  "@categoryUpdated": {
+    "description": "Category updated message"
+  },
+
+  "categoryDeleted": "Category deleted",
+  "@categoryDeleted": {
+    "description": "Category deleted message"
+  },
+
+  "confirmDeleteCategory": "Do you really want to delete this category? All associated subcategories will also be deleted.",
+  "@confirmDeleteCategory": {
+    "description": "Delete category confirmation"
+  },
+
+  "paymentSettingsScreen": "Payment Settings",
+  "@paymentSettingsScreen": {
+    "description": "Payment Settings screen title"
+  },
+
+  "paymentMethods": "Payment Methods",
+  "@paymentMethods": {
+    "description": "Payment methods label"
+  },
+
+  "fees": "Fees",
+  "@fees": {
+    "description": "Fees label"
+  },
+
+  "paypalEnabled": "PayPal Enabled",
+  "@paypalEnabled": {
+    "description": "PayPal enabled label"
+  },
+
+  "bitcoinEnabled": "Bitcoin Enabled",
+  "@bitcoinEnabled": {
+    "description": "Bitcoin enabled label"
+  },
+
+  "transactionFee": "Transaction Fee",
+  "@transactionFee": {
+    "description": "Transaction fee label"
+  },
+
+  "platformFee": "Platform Fee",
+  "@platformFee": {
+    "description": "Platform fee label"
+  },
+
+  "feePercentage": "Percentage",
+  "@feePercentage": {
+    "description": "Fee percentage label"
+  },
+
+  "minimumFee": "Minimum Fee",
+  "@minimumFee": {
+    "description": "Minimum fee label"
+  },
+
+  "maximumFee": "Maximum Fee",
+  "@maximumFee": {
+    "description": "Maximum fee label"
+  },
+
+  "settingsSaved": "Settings saved",
+  "@settingsSaved": {
+    "description": "Settings saved message"
+  },
+
+  "pendingPaymentsScreen": "Pending Payments",
+  "@pendingPaymentsScreen": {
+    "description": "Pending Payments screen title"
+  },
+
+  "allPendingPayments": "All",
+  "@allPendingPayments": {
+    "description": "All pending payments tab"
+  },
+
+  "paypalPayments": "PayPal",
+  "@paypalPayments": {
+    "description": "PayPal payments tab"
+  },
+
+  "bitcoinPayments": "Bitcoin",
+  "@bitcoinPayments": {
+    "description": "Bitcoin payments tab"
+  },
+
+  "noPendingPayments": "No Pending Payments",
+  "@noPendingPayments": {
+    "description": "No pending payments title"
+  },
+
+  "noPendingPaymentsMessage": "There are currently no pending payments to process.",
+  "@noPendingPaymentsMessage": {
+    "description": "No pending payments message"
+  },
+
+  "paymentId": "Payment ID",
+  "@paymentId": {
+    "description": "Payment ID label"
+  },
+
+  "amount": "Amount",
+  "@amount": {
+    "description": "Amount label"
+  },
+
+  "requestedAt": "Requested at",
+  "@requestedAt": {
+    "description": "Requested at label"
+  },
+
+  "paymentStatus": "Status",
+  "@paymentStatus": {
+    "description": "Payment status label"
+  },
+
+  "paymentStatusPending": "Pending",
+  "@paymentStatusPending": {
+    "description": "Payment status Pending"
+  },
+
+  "paymentStatusProcessing": "Processing",
+  "@paymentStatusProcessing": {
+    "description": "Payment status Processing"
+  },
+
+  "paymentStatusCompleted": "Completed",
+  "@paymentStatusCompleted": {
+    "description": "Payment status Completed"
+  },
+
+  "paymentStatusFailed": "Failed",
+  "@paymentStatusFailed": {
+    "description": "Payment status Failed"
+  },
+
+  "processPayment": "Process Payment",
+  "@processPayment": {
+    "description": "Process payment button"
+  },
+
+  "markAsProcessing": "Mark as Processing",
+  "@markAsProcessing": {
+    "description": "Mark as processing button"
+  },
+
+  "markAsCompleted": "Mark as Completed",
+  "@markAsCompleted": {
+    "description": "Mark as completed button"
+  },
+
+  "markAsFailed": "Mark as Failed",
+  "@markAsFailed": {
+    "description": "Mark as failed button"
+  },
+
+  "paymentMarkedProcessing": "Payment marked as processing",
+  "@paymentMarkedProcessing": {
+    "description": "Marked as processing message"
+  },
+
+  "paymentMarkedCompleted": "Payment marked as completed",
+  "@paymentMarkedCompleted": {
+    "description": "Marked as completed message"
+  },
+
+  "paymentMarkedFailed": "Payment marked as failed",
+  "@paymentMarkedFailed": {
+    "description": "Marked as failed message"
+  },
+
+  "slotVariantsScreen": "Slot Variants",
+  "@slotVariantsScreen": {
+    "description": "Slot Variants screen title"
+  },
+
+  "activeSlotVariants": "Active",
+  "@activeSlotVariants": {
+    "description": "Active slot variants tab"
+  },
+
+  "inactiveSlotVariants": "Inactive",
+  "@inactiveSlotVariants": {
+    "description": "Inactive slot variants tab"
+  },
+
+  "createSlotVariant": "Create Slot Variant",
+  "@createSlotVariant": {
+    "description": "Create slot variant button"
+  },
+
+  "noSlotVariants": "No Slot Variants",
+  "@noSlotVariants": {
+    "description": "No slot variants title"
+  },
+
+  "noSlotVariantsMessage": "No slot variants have been created yet.",
+  "@noSlotVariantsMessage": {
+    "description": "No slot variants message"
+  },
+
+  "variantName": "Name",
+  "@variantName": {
+    "description": "Variant name label"
+  },
+
+  "duration": "Duration",
+  "@duration": {
+    "description": "Duration label"
+  },
+
+  "durationDays": "{days} days",
+  "@durationDays": {
+    "description": "Duration in days",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+
+  "priceUSD": "Price (USD)",
+  "@priceUSD": {
+    "description": "Price USD label"
+  },
+
+  "priceBTC": "Price (BTC)",
+  "@priceBTC": {
+    "description": "Price BTC label"
+  },
+
+  "maxListings": "Max Listings",
+  "@maxListings": {
+    "description": "Max listings label"
+  },
+
+  "variantStatus": "Status",
+  "@variantStatus": {
+    "description": "Variant status label"
+  },
+
+  "editSlotVariant": "Edit Slot Variant",
+  "@editSlotVariant": {
+    "description": "Edit slot variant button"
+  },
+
+  "deleteSlotVariant": "Delete Slot Variant",
+  "@deleteSlotVariant": {
+    "description": "Delete slot variant button"
+  },
+
+  "createSlotVariantDialog": "Create Slot Variant",
+  "@createSlotVariantDialog": {
+    "description": "Create slot variant dialog title"
+  },
+
+  "editSlotVariantDialog": "Edit Slot Variant",
+  "@editSlotVariantDialog": {
+    "description": "Edit slot variant dialog title"
+  },
+
+  "enterVariantName": "Enter variant name",
+  "@enterVariantName": {
+    "description": "Variant name hint"
+  },
+
+  "enterDuration": "Duration (days)",
+  "@enterDuration": {
+    "description": "Duration hint"
+  },
+
+  "enterPriceUSD": "Price in USD",
+  "@enterPriceUSD": {
+    "description": "Price USD hint"
+  },
+
+  "enterPriceBTC": "Price in BTC",
+  "@enterPriceBTC": {
+    "description": "Price BTC hint"
+  },
+
+  "enterMaxListings": "Max listings",
+  "@enterMaxListings": {
+    "description": "Max listings hint"
+  },
+
+  "variantNameRequired": "Name is required",
+  "@variantNameRequired": {
+    "description": "Variant name required validation"
+  },
+
+  "durationRequired": "Duration is required",
+  "@durationRequired": {
+    "description": "Duration required validation"
+  },
+
+  "priceUSDRequired": "USD price is required",
+  "@priceUSDRequired": {
+    "description": "USD price required validation"
+  },
+
+  "priceBTCRequired": "BTC price is required",
+  "@priceBTCRequired": {
+    "description": "BTC price required validation"
+  },
+
+  "maxListingsRequired": "Max listings is required",
+  "@maxListingsRequired": {
+    "description": "Max listings required validation"
+  },
+
+  "slotVariantCreated": "Slot variant created",
+  "@slotVariantCreated": {
+    "description": "Slot variant created message"
+  },
+
+  "slotVariantUpdated": "Slot variant updated",
+  "@slotVariantUpdated": {
+    "description": "Slot variant updated message"
+  },
+
+  "slotVariantDeleted": "Slot variant deleted",
+  "@slotVariantDeleted": {
+    "description": "Slot variant deleted message"
+  },
+
+  "confirmDeleteSlotVariant": "Do you really want to delete this slot variant?",
+  "@confirmDeleteSlotVariant": {
+    "description": "Delete slot variant confirmation"
+  },
+
+  "userManagementScreen": "User Management",
+  "@userManagementScreen": {
+    "description": "User Management screen title"
+  },
+
+  "allUsers": "All Users",
+  "@allUsers": {
+    "description": "All users tab"
+  },
+
+  "activeUsers": "Active",
+  "@activeUsers": {
+    "description": "Active users tab"
+  },
+
+  "bannedUsers": "Banned",
+  "@bannedUsers": {
+    "description": "Banned users tab"
+  },
+
+  "searchUsers": "Search users...",
+  "@searchUsers": {
+    "description": "Search users hint"
+  },
+
+  "noUsers": "No Users",
+  "@noUsers": {
+    "description": "No users title"
+  },
+
+  "noUsersMessage": "No users found.",
+  "@noUsersMessage": {
+    "description": "No users message"
+  },
+
+  "role": "Role",
+  "@role": {
+    "description": "Role label"
+  },
+
+  "viewUser": "View User",
+  "@viewUser": {
+    "description": "View user button"
+  },
+
+  "unbanUser": "Unban",
+  "@unbanUser": {
+    "description": "Unban user button"
+  },
+
+  "userUnbanned": "User unbanned",
+  "@userUnbanned": {
+    "description": "User unbanned message"
+  },
+
+  "confirmUnbanUser": "Do you really want to unban this user?",
+  "@confirmUnbanUser": {
+    "description": "Unban user confirmation"
+  },
+
+  "unban": "Unban",
+  "@unban": {
+    "description": "Unban button"
   }
 }

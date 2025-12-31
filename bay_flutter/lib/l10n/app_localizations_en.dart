@@ -1431,4 +1431,669 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get recipientHasNoPgpKey => 'Recipient has no PGP key';
+
+  @override
+  String get adminPanel => 'Admin Panel';
+
+  @override
+  String get adminPanelWelcome => 'Welcome to the Admin Area';
+
+  @override
+  String get userManagement => 'User Management';
+
+  @override
+  String get categoryManagement => 'Category Management';
+
+  @override
+  String get newsManagement => 'News Management';
+
+  @override
+  String get paymentSettings => 'Payment Settings';
+
+  @override
+  String get pendingPayments => 'Pending Payments';
+
+  @override
+  String get slotVariants => 'Slot Variants';
+
+  @override
+  String get moderatorPanel => 'Moderator Panel';
+
+  @override
+  String get moderatorPanelWelcome => 'Welcome to the Moderation Area';
+
+  @override
+  String get reports => 'Reports';
+
+  @override
+  String get disputes => 'Disputes';
+
+  @override
+  String get allReports => 'All Reports';
+
+  @override
+  String get openReports => 'Open';
+
+  @override
+  String get inReviewReports => 'In Review';
+
+  @override
+  String get resolvedReports => 'Resolved';
+
+  @override
+  String get dismissedReports => 'Dismissed';
+
+  @override
+  String get statusReportOpen => 'OPEN';
+
+  @override
+  String get statusReportInReview => 'IN REVIEW';
+
+  @override
+  String get statusReportResolved => 'RESOLVED';
+
+  @override
+  String get statusReportDismissed => 'DISMISSED';
+
+  @override
+  String get reportedBy => 'Reported by';
+
+  @override
+  String get reportedUser => 'Reported User';
+
+  @override
+  String get reportedListing => 'Reported Listing';
+
+  @override
+  String get reportReason => 'Reason';
+
+  @override
+  String get reportReasonSpam => 'Spam';
+
+  @override
+  String get reportReasonInappropriate => 'Inappropriate Content';
+
+  @override
+  String get reportReasonScam => 'Scam/Fraud';
+
+  @override
+  String get reportReasonHarassment => 'Harassment';
+
+  @override
+  String get reportReasonFakeInfo => 'False Information';
+
+  @override
+  String get reportReasonOther => 'Other';
+
+  @override
+  String get noReports => 'No Reports';
+
+  @override
+  String get noReportsMessage => 'There are currently no reports to review.';
+
+  @override
+  String get viewReport => 'View Report';
+
+  @override
+  String get reportDetail => 'Report Details';
+
+  @override
+  String get reportId => 'Report ID';
+
+  @override
+  String get reportType => 'Type';
+
+  @override
+  String get reportTypeUser => 'User';
+
+  @override
+  String get reportTypeListing => 'Listing';
+
+  @override
+  String get reportedAt => 'Reported at';
+
+  @override
+  String get reportDescription => 'Description';
+
+  @override
+  String get moderatorNotes => 'Moderator Notes';
+
+  @override
+  String get addNote => 'Add Note';
+
+  @override
+  String get internalNotesOnly => 'Visible to moderators only';
+
+  @override
+  String get enterNote => 'Enter note...';
+
+  @override
+  String get noteSaved => 'Note saved';
+
+  @override
+  String get takeAction => 'Take Action';
+
+  @override
+  String get markAsInReview => 'Mark as In Review';
+
+  @override
+  String get resolveReport => 'Resolve Report';
+
+  @override
+  String get dismissReport => 'Dismiss Report';
+
+  @override
+  String get viewReportedUser => 'View Reported User';
+
+  @override
+  String get viewReportedListing => 'View Reported Listing';
+
+  @override
+  String get warnUser => 'Warn User';
+
+  @override
+  String get banUser => 'Ban User';
+
+  @override
+  String get reportMarkedInReview => 'Report marked as in review';
+
+  @override
+  String get reportResolved => 'Report resolved';
+
+  @override
+  String get reportDismissed => 'Report dismissed';
+
+  @override
+  String get confirmResolveReport =>
+      'Do you want to mark this report as resolved?';
+
+  @override
+  String get confirmDismissReport => 'Do you want to dismiss this report?';
+
+  @override
+  String get resolve => 'Resolve';
+
+  @override
+  String get dismiss => 'Dismiss';
+
+  @override
+  String get userDetail => 'User Details';
+
+  @override
+  String get userId => 'User ID';
+
+  @override
+  String get registeredAt => 'Registered at';
+
+  @override
+  String get lastActive => 'Last active';
+
+  @override
+  String get totalListings => 'Total listings';
+
+  @override
+  String get totalTransactions => 'Total transactions';
+
+  @override
+  String get userRating => 'Rating';
+
+  @override
+  String get userStatus => 'Status';
+
+  @override
+  String get userStatusActive => 'Active';
+
+  @override
+  String get userStatusBanned => 'Banned';
+
+  @override
+  String get userStatusWarned => 'Warned';
+
+  @override
+  String get banUserDialog => 'Ban User';
+
+  @override
+  String get banReason => 'Ban Reason';
+
+  @override
+  String get selectBanReason => 'Select ban reason';
+
+  @override
+  String get banReasonSpam => 'Spam';
+
+  @override
+  String get banReasonScam => 'Scam';
+
+  @override
+  String get banReasonHarassment => 'Harassment';
+
+  @override
+  String get banReasonIllegalContent => 'Illegal Content';
+
+  @override
+  String get banReasonMultipleViolations => 'Multiple Violations';
+
+  @override
+  String get banReasonOther => 'Other';
+
+  @override
+  String get banDuration => 'Ban Duration';
+
+  @override
+  String get banDuration24h => '24 Hours';
+
+  @override
+  String get banDuration7d => '7 Days';
+
+  @override
+  String get banDuration30d => '30 Days';
+
+  @override
+  String get banDurationPermanent => 'Permanent';
+
+  @override
+  String get additionalNotes => 'Additional Notes';
+
+  @override
+  String get optionalNotes => 'Optional: Additional information...';
+
+  @override
+  String get confirmBanUser => 'Do you really want to ban this user?';
+
+  @override
+  String get ban => 'Ban';
+
+  @override
+  String get userBanned => 'User banned';
+
+  @override
+  String get userWarned => 'User warned';
+
+  @override
+  String get newsManagementScreen => 'News Management';
+
+  @override
+  String get allNews => 'All News';
+
+  @override
+  String get publishedNews => 'Published';
+
+  @override
+  String get draftNews => 'Drafts';
+
+  @override
+  String get createNews => 'Create News';
+
+  @override
+  String get noNewsItems => 'No News Items';
+
+  @override
+  String get noNewsItemsMessage => 'No news items have been created yet.';
+
+  @override
+  String get newsTitle => 'Title';
+
+  @override
+  String get newsContent => 'Content';
+
+  @override
+  String get newsStatus => 'Status';
+
+  @override
+  String get newsStatusPublished => 'Published';
+
+  @override
+  String get newsStatusDraft => 'Draft';
+
+  @override
+  String get publishedAt => 'Published at';
+
+  @override
+  String get editNews => 'Edit News';
+
+  @override
+  String get deleteNews => 'Delete News';
+
+  @override
+  String get createNewsItem => 'Create News';
+
+  @override
+  String get editNewsItem => 'Edit News';
+
+  @override
+  String get enterNewsTitle => 'Enter news title';
+
+  @override
+  String get enterNewsContent => 'Enter news content...';
+
+  @override
+  String get newsTitleRequired => 'Title is required';
+
+  @override
+  String get newsContentRequired => 'Content is required';
+
+  @override
+  String get publish => 'Publish';
+
+  @override
+  String get saveAsDraft => 'Save as Draft';
+
+  @override
+  String get newsCreated => 'News created';
+
+  @override
+  String get newsUpdated => 'News updated';
+
+  @override
+  String get newsDeleted => 'News deleted';
+
+  @override
+  String get confirmDeleteNews =>
+      'Do you really want to delete this news item?';
+
+  @override
+  String get categoryManagementScreen => 'Category Management';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get subcategories => 'Subcategories';
+
+  @override
+  String get createCategory => 'Create Category';
+
+  @override
+  String get createSubcategory => 'Create Subcategory';
+
+  @override
+  String get noCategories => 'No Categories';
+
+  @override
+  String get noCategoriesMessage => 'No categories have been created yet.';
+
+  @override
+  String get noSubcategories => 'No Subcategories';
+
+  @override
+  String get noSubcategoriesMessage =>
+      'No subcategories have been created yet.';
+
+  @override
+  String get categoryName => 'Name';
+
+  @override
+  String get categoryDescription => 'Description';
+
+  @override
+  String get parentCategory => 'Parent Category';
+
+  @override
+  String get listingsCount => 'Listings';
+
+  @override
+  String get editCategory => 'Edit Category';
+
+  @override
+  String get deleteCategory => 'Delete Category';
+
+  @override
+  String get createCategoryDialog => 'Create Category';
+
+  @override
+  String get editCategoryDialog => 'Edit Category';
+
+  @override
+  String get enterCategoryName => 'Enter category name';
+
+  @override
+  String get enterCategoryDescription => 'Enter description (optional)';
+
+  @override
+  String get categoryNameRequired => 'Name is required';
+
+  @override
+  String get categoryCreated => 'Category created';
+
+  @override
+  String get categoryUpdated => 'Category updated';
+
+  @override
+  String get categoryDeleted => 'Category deleted';
+
+  @override
+  String get confirmDeleteCategory =>
+      'Do you really want to delete this category? All associated subcategories will also be deleted.';
+
+  @override
+  String get paymentSettingsScreen => 'Payment Settings';
+
+  @override
+  String get paymentMethods => 'Payment Methods';
+
+  @override
+  String get fees => 'Fees';
+
+  @override
+  String get paypalEnabled => 'PayPal Enabled';
+
+  @override
+  String get bitcoinEnabled => 'Bitcoin Enabled';
+
+  @override
+  String get transactionFee => 'Transaction Fee';
+
+  @override
+  String get platformFee => 'Platform Fee';
+
+  @override
+  String get feePercentage => 'Percentage';
+
+  @override
+  String get minimumFee => 'Minimum Fee';
+
+  @override
+  String get maximumFee => 'Maximum Fee';
+
+  @override
+  String get settingsSaved => 'Settings saved';
+
+  @override
+  String get pendingPaymentsScreen => 'Pending Payments';
+
+  @override
+  String get allPendingPayments => 'All';
+
+  @override
+  String get paypalPayments => 'PayPal';
+
+  @override
+  String get bitcoinPayments => 'Bitcoin';
+
+  @override
+  String get noPendingPayments => 'No Pending Payments';
+
+  @override
+  String get noPendingPaymentsMessage =>
+      'There are currently no pending payments to process.';
+
+  @override
+  String get paymentId => 'Payment ID';
+
+  @override
+  String get amount => 'Amount';
+
+  @override
+  String get requestedAt => 'Requested at';
+
+  @override
+  String get paymentStatus => 'Status';
+
+  @override
+  String get paymentStatusPending => 'Pending';
+
+  @override
+  String get paymentStatusProcessing => 'Processing';
+
+  @override
+  String get paymentStatusCompleted => 'Completed';
+
+  @override
+  String get paymentStatusFailed => 'Failed';
+
+  @override
+  String get processPayment => 'Process Payment';
+
+  @override
+  String get markAsProcessing => 'Mark as Processing';
+
+  @override
+  String get markAsCompleted => 'Mark as Completed';
+
+  @override
+  String get markAsFailed => 'Mark as Failed';
+
+  @override
+  String get paymentMarkedProcessing => 'Payment marked as processing';
+
+  @override
+  String get paymentMarkedCompleted => 'Payment marked as completed';
+
+  @override
+  String get paymentMarkedFailed => 'Payment marked as failed';
+
+  @override
+  String get slotVariantsScreen => 'Slot Variants';
+
+  @override
+  String get activeSlotVariants => 'Active';
+
+  @override
+  String get inactiveSlotVariants => 'Inactive';
+
+  @override
+  String get createSlotVariant => 'Create Slot Variant';
+
+  @override
+  String get noSlotVariants => 'No Slot Variants';
+
+  @override
+  String get noSlotVariantsMessage => 'No slot variants have been created yet.';
+
+  @override
+  String get variantName => 'Name';
+
+  @override
+  String get duration => 'Duration';
+
+  @override
+  String durationDays(int days) {
+    return '$days days';
+  }
+
+  @override
+  String get priceUSD => 'Price (USD)';
+
+  @override
+  String get priceBTC => 'Price (BTC)';
+
+  @override
+  String get maxListings => 'Max Listings';
+
+  @override
+  String get variantStatus => 'Status';
+
+  @override
+  String get editSlotVariant => 'Edit Slot Variant';
+
+  @override
+  String get deleteSlotVariant => 'Delete Slot Variant';
+
+  @override
+  String get createSlotVariantDialog => 'Create Slot Variant';
+
+  @override
+  String get editSlotVariantDialog => 'Edit Slot Variant';
+
+  @override
+  String get enterVariantName => 'Enter variant name';
+
+  @override
+  String get enterDuration => 'Duration (days)';
+
+  @override
+  String get enterPriceUSD => 'Price in USD';
+
+  @override
+  String get enterPriceBTC => 'Price in BTC';
+
+  @override
+  String get enterMaxListings => 'Max listings';
+
+  @override
+  String get variantNameRequired => 'Name is required';
+
+  @override
+  String get durationRequired => 'Duration is required';
+
+  @override
+  String get priceUSDRequired => 'USD price is required';
+
+  @override
+  String get priceBTCRequired => 'BTC price is required';
+
+  @override
+  String get maxListingsRequired => 'Max listings is required';
+
+  @override
+  String get slotVariantCreated => 'Slot variant created';
+
+  @override
+  String get slotVariantUpdated => 'Slot variant updated';
+
+  @override
+  String get slotVariantDeleted => 'Slot variant deleted';
+
+  @override
+  String get confirmDeleteSlotVariant =>
+      'Do you really want to delete this slot variant?';
+
+  @override
+  String get userManagementScreen => 'User Management';
+
+  @override
+  String get allUsers => 'All Users';
+
+  @override
+  String get activeUsers => 'Active';
+
+  @override
+  String get bannedUsers => 'Banned';
+
+  @override
+  String get searchUsers => 'Search users...';
+
+  @override
+  String get noUsers => 'No Users';
+
+  @override
+  String get noUsersMessage => 'No users found.';
+
+  @override
+  String get role => 'Role';
+
+  @override
+  String get viewUser => 'View User';
+
+  @override
+  String get unbanUser => 'Unban';
+
+  @override
+  String get userUnbanned => 'User unbanned';
+
+  @override
+  String get confirmUnbanUser => 'Do you really want to unban this user?';
+
+  @override
+  String get unban => 'Unban';
 }
