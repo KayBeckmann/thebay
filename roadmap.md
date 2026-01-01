@@ -617,16 +617,25 @@
 - [x] Sicherheits-Dialoge übersetzen
 - [x] Verschlüsselungs-Fehlermeldungen übersetzen
 
-### 15.7 Admin & Moderation
+### 15.7 Admin & Moderation - Vorbereitung
 - [x] ARB-Übersetzungen für alle Admin/Moderations-Screens (~250 Strings)
-- [ ] admin_panel_screen.dart mit AppLocalizations aktualisieren
-- [ ] moderator_panel_screen.dart mit AppLocalizations aktualisieren
+
+### 15.7a Kern-Admin-Screens
+- [ ] admin_panel_screen.dart mit AppLocalizations aktualisieren (~14 Strings)
 - [ ] news_management_screen.dart mit AppLocalizations aktualisieren (~32 Strings)
-- [ ] user_management_screen.dart mit AppLocalizations aktualisieren
-- [ ] categories_screen.dart mit AppLocalizations aktualisieren
-- [ ] payment_settings_screen.dart mit AppLocalizations aktualisieren
-- [ ] pending_payments_screen.dart mit AppLocalizations aktualisieren
-- [ ] slot_variants_screen.dart mit AppLocalizations aktualisieren
+- [ ] categories_screen.dart mit AppLocalizations aktualisieren (~22 Strings)
+- [ ] payment_settings_screen.dart mit AppLocalizations aktualisieren (~16 Strings)
+
+### 15.7b Transaktions-Management
+- [ ] pending_payments_screen.dart mit AppLocalizations aktualisieren (~26 Strings)
+- [ ] slot_variants_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
+
+### 15.7c Moderation & User-Management
+- [ ] moderator_panel_screen.dart mit AppLocalizations aktualisieren (~20 Strings)
+- [ ] user_management_screen.dart mit AppLocalizations aktualisieren (~20 Strings)
+- [ ] report_detail_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
+- [ ] user_detail_dialog.dart mit AppLocalizations aktualisieren (~24 Strings)
+- [ ] ban_user_dialog.dart mit AppLocalizations aktualisieren (~14 Strings)
 
 ### 15.8 Feinschliff & Completion
 - [ ] favorites_screen.dart übersetzen
