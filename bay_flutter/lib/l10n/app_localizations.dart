@@ -3366,6 +3366,108 @@ abstract class AppLocalizations {
   /// **'Möchtest du diese News wirklich löschen?'**
   String get confirmDeleteNews;
 
+  /// News löschen Bestätigung mit Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du \"{title}\" wirklich löschen?'**
+  String confirmDeleteNewsWithTitle(String title);
+
+  /// Abgelaufene löschen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Abgelaufene löschen'**
+  String get deleteExpired;
+
+  /// Abgelaufene News löschen Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Abgelaufene News löschen'**
+  String get deleteExpiredNews;
+
+  /// Abgelaufene News löschen Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du alle abgelaufenen News löschen?'**
+  String get confirmDeleteExpiredNews;
+
+  /// Abgelaufene News gelöscht Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'{count} abgelaufene News gelöscht'**
+  String expiredNewsDeleted(int count);
+
+  /// News-Status Abgelaufen
+  ///
+  /// In de, this message translates to:
+  /// **'Abgelaufen'**
+  String get newsStatusExpired;
+
+  /// Erstellt Label mit Datum
+  ///
+  /// In de, this message translates to:
+  /// **'Erstellt: {date}'**
+  String createdLabel(String date);
+
+  /// Läuft ab Label mit Datum
+  ///
+  /// In de, this message translates to:
+  /// **'Läuft ab: {date}'**
+  String expiresLabel(String date);
+
+  /// Markdown wird unterstützt Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Markdown wird unterstützt'**
+  String get markdownSupported;
+
+  /// Lebenszeit in Tagen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Lebenszeit (Tage)'**
+  String get lifetimeDays;
+
+  /// Standard Lebenszeit Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Standard: 14 Tage'**
+  String get defaultLifetimeDays;
+
+  /// Ablaufdatum Label
+  ///
+  /// In de, this message translates to:
+  /// **'Ablaufdatum'**
+  String get expiryDate;
+
+  /// Kein Ablaufdatum Text
+  ///
+  /// In de, this message translates to:
+  /// **'Kein Ablaufdatum'**
+  String get noExpiryDate;
+
+  /// Veröffentlichen News Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'News wird auf dem Dashboard angezeigt'**
+  String get publishNewsMessage;
+
+  /// Titel und Inhalt erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Titel und Inhalt dürfen nicht leer sein'**
+  String get titleContentRequired;
+
+  /// Erstelle erste News Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Erstelle die erste News mit dem + Button.'**
+  String get createFirstNews;
+
+  /// Fehler beim Löschen Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Löschen: {error}'**
+  String errorDeleting(String error);
+
   /// Kategorienverwaltung Screen Titel
   ///
   /// In de, this message translates to:
@@ -3510,6 +3612,72 @@ abstract class AppLocalizations {
   /// **'Möchtest du diese Kategorie wirklich löschen? Alle zugehörigen Subkategorien werden ebenfalls gelöscht.'**
   String get confirmDeleteCategory;
 
+  /// Kategorie löschen Bestätigung mit Name
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du \"{name}\" wirklich löschen?'**
+  String confirmDeleteCategoryWithName(String name);
+
+  /// Neue Kategorie Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Kategorie'**
+  String get newCategory;
+
+  /// Unterkategorie hinzufügen Tooltip
+  ///
+  /// In de, this message translates to:
+  /// **'Unterkategorie hinzufügen'**
+  String get addSubcategory;
+
+  /// Erstelle erste Kategorie Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Erstelle die erste Kategorie mit dem + Button.'**
+  String get createFirstCategory;
+
+  /// Unterkategorien Anzahl mit Sortierung
+  ///
+  /// In de, this message translates to:
+  /// **'{count} Unterkategorien • Sortierung: {sortOrder}'**
+  String subcategoriesCount(int count, int sortOrder);
+
+  /// Sortierung
+  ///
+  /// In de, this message translates to:
+  /// **'Sortierung'**
+  String get sorting;
+
+  /// Sortierung Label
+  ///
+  /// In de, this message translates to:
+  /// **'Sortierung: {sortOrder}'**
+  String sortingLabel(int sortOrder);
+
+  /// Sortierung Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'0'**
+  String get sortingHint;
+
+  /// Kategorie aktiv Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorie wird Benutzern angezeigt'**
+  String get categoryShownToUsers;
+
+  /// Kategorie hat Unterkategorien Warnung
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Kategorie hat {count} Unterkategorien, die ebenfalls gelöscht werden!'**
+  String categoryHasSubcategories(int count);
+
+  /// Name erforderlich Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Name darf nicht leer sein'**
+  String get nameRequired;
+
   /// Zahlungseinstellungen Screen Titel
   ///
   /// In de, this message translates to:
@@ -3575,6 +3743,66 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Einstellungen gespeichert'**
   String get settingsSaved;
+
+  /// Einstellungen speichern Button
+  ///
+  /// In de, this message translates to:
+  /// **'Einstellungen speichern'**
+  String get saveSettings;
+
+  /// Zahlungseinstellungen Info
+  ///
+  /// In de, this message translates to:
+  /// **'Diese Einstellungen bestimmen, wie Benutzer für Slots bezahlen können.'**
+  String get paymentSettingsInfo;
+
+  /// PayPal aktivieren
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal aktivieren'**
+  String get enablePaypal;
+
+  /// PayPal Bezahlung Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer können mit PayPal bezahlen'**
+  String get paypalPaymentDescription;
+
+  /// PayPal E-Mail-Adresse Label
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal E-Mail-Adresse'**
+  String get paypalEmailAddress;
+
+  /// PayPal E-Mail Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'zahlungen@beispiel.com'**
+  String get paypalEmailHint;
+
+  /// Bitcoin aktivieren
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin aktivieren'**
+  String get enableBitcoin;
+
+  /// Bitcoin Bezahlung Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer können mit Bitcoin bezahlen'**
+  String get bitcoinPaymentDescription;
+
+  /// Bitcoin Wallet-Adresse Label
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin Wallet-Adresse'**
+  String get bitcoinWalletAddress;
+
+  /// Bitcoin Wallet Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'bc1q...'**
+  String get bitcoinWalletHint;
 
   /// Ausstehende Zahlungen Screen Titel
   ///
@@ -3965,6 +4193,78 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Entsperren'**
   String get unban;
+
+  /// Administration Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Administration'**
+  String get administration;
+
+  /// System- und Benutzerverwaltung Untertitel
+  ///
+  /// In de, this message translates to:
+  /// **'System- und Benutzerverwaltung'**
+  String get systemUserManagement;
+
+  /// Kategorien verwalten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorien verwalten'**
+  String get manageCategories;
+
+  /// Kategorien und Subkategorien erstellen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Kategorien und Subkategorien erstellen'**
+  String get createCategoriesSubcategories;
+
+  /// Slot-Typen konfigurieren Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Slot-Typen und Preise konfigurieren'**
+  String get configureSlotTypes;
+
+  /// PayPal und Bitcoin Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal und Bitcoin für Slot-Käufe'**
+  String get paypalBitcoinSlots;
+
+  /// Offene Bestellungen prüfen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Offene Bestellungen prüfen und bestätigen'**
+  String get reviewPendingOrders;
+
+  /// Benutzer verwalten Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer verwalten und Rollen zuweisen'**
+  String get manageUsersRoles;
+
+  /// Feature kommt in Meilenstein Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'{title} wird in Meilenstein {milestone} implementiert.'**
+  String featureInMilestone(String title, String milestone);
+
+  /// Slots Abschnittstitel
+  ///
+  /// In de, this message translates to:
+  /// **'Slots'**
+  String get slots;
+
+  /// Zahlungen Abschnittstitel
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlungen'**
+  String get payments;
+
+  /// Benutzer Abschnittstitel
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get users;
 }
 
 class _AppLocalizationsDelegate

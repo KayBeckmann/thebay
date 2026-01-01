@@ -1792,6 +1792,68 @@ class AppLocalizationsEn extends AppLocalizations {
       'Do you really want to delete this news item?';
 
   @override
+  String confirmDeleteNewsWithTitle(String title) {
+    return 'Do you really want to delete \"$title\"?';
+  }
+
+  @override
+  String get deleteExpired => 'Delete expired';
+
+  @override
+  String get deleteExpiredNews => 'Delete expired news';
+
+  @override
+  String get confirmDeleteExpiredNews =>
+      'Do you want to delete all expired news?';
+
+  @override
+  String expiredNewsDeleted(int count) {
+    return '$count expired news deleted';
+  }
+
+  @override
+  String get newsStatusExpired => 'Expired';
+
+  @override
+  String createdLabel(String date) {
+    return 'Created: $date';
+  }
+
+  @override
+  String expiresLabel(String date) {
+    return 'Expires: $date';
+  }
+
+  @override
+  String get markdownSupported => 'Markdown is supported';
+
+  @override
+  String get lifetimeDays => 'Lifetime (days)';
+
+  @override
+  String get defaultLifetimeDays => 'Default: 14 days';
+
+  @override
+  String get expiryDate => 'Expiry date';
+
+  @override
+  String get noExpiryDate => 'No expiry date';
+
+  @override
+  String get publishNewsMessage => 'News will be displayed on the dashboard';
+
+  @override
+  String get titleContentRequired => 'Title and content must not be empty';
+
+  @override
+  String get createFirstNews => 'Create the first news with the + button.';
+
+  @override
+  String errorDeleting(String error) {
+    return 'Error deleting: $error';
+  }
+
+  @override
   String get categoryManagementScreen => 'Category Management';
 
   @override
@@ -1866,6 +1928,48 @@ class AppLocalizationsEn extends AppLocalizations {
       'Do you really want to delete this category? All associated subcategories will also be deleted.';
 
   @override
+  String confirmDeleteCategoryWithName(String name) {
+    return 'Do you really want to delete \"$name\"?';
+  }
+
+  @override
+  String get newCategory => 'New category';
+
+  @override
+  String get addSubcategory => 'Add subcategory';
+
+  @override
+  String get createFirstCategory =>
+      'Create the first category with the + button.';
+
+  @override
+  String subcategoriesCount(int count, int sortOrder) {
+    return '$count Subcategories • Sorting: $sortOrder';
+  }
+
+  @override
+  String get sorting => 'Sorting';
+
+  @override
+  String sortingLabel(int sortOrder) {
+    return 'Sorting: $sortOrder';
+  }
+
+  @override
+  String get sortingHint => '0';
+
+  @override
+  String get categoryShownToUsers => 'Category is shown to users';
+
+  @override
+  String categoryHasSubcategories(int count) {
+    return 'This category has $count subcategories that will also be deleted!';
+  }
+
+  @override
+  String get nameRequired => 'Name must not be empty';
+
+  @override
   String get paymentSettingsScreen => 'Payment Settings';
 
   @override
@@ -1897,6 +2001,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Settings saved';
+
+  @override
+  String get saveSettings => 'Save settings';
+
+  @override
+  String get paymentSettingsInfo =>
+      'These settings determine how users can pay for slots.';
+
+  @override
+  String get enablePaypal => 'Enable PayPal';
+
+  @override
+  String get paypalPaymentDescription => 'Users can pay with PayPal';
+
+  @override
+  String get paypalEmailAddress => 'PayPal email address';
+
+  @override
+  String get paypalEmailHint => 'payments@example.com';
+
+  @override
+  String get enableBitcoin => 'Enable Bitcoin';
+
+  @override
+  String get bitcoinPaymentDescription => 'Users can pay with Bitcoin';
+
+  @override
+  String get bitcoinWalletAddress => 'Bitcoin wallet address';
+
+  @override
+  String get bitcoinWalletHint => 'bc1q...';
 
   @override
   String get pendingPaymentsScreen => 'Pending Payments';
@@ -2096,4 +2231,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unban => 'Unban';
+
+  @override
+  String get administration => 'Administration';
+
+  @override
+  String get systemUserManagement => 'System and user management';
+
+  @override
+  String get manageCategories => 'Manage categories';
+
+  @override
+  String get createCategoriesSubcategories =>
+      'Create categories and subcategories';
+
+  @override
+  String get configureSlotTypes => 'Configure slot types and prices';
+
+  @override
+  String get paypalBitcoinSlots => 'PayPal and Bitcoin for slot purchases';
+
+  @override
+  String get reviewPendingOrders => 'Review and confirm pending orders';
+
+  @override
+  String get manageUsersRoles => 'Manage users and assign roles';
+
+  @override
+  String featureInMilestone(String title, String milestone) {
+    return '$title will be implemented in milestone $milestone.';
+  }
+
+  @override
+  String get slots => 'Slots';
+
+  @override
+  String get payments => 'Payments';
+
+  @override
+  String get users => 'Users';
 }

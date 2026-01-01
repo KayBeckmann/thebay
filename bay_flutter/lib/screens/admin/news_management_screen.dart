@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart';
 
 /// Admin screen for managing news articles.
@@ -58,14 +59,16 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('News verwalten'),
+        title: Text(l10n.newsManagementScreen),
         actions: [
           IconButton(
             icon: const Icon(Icons.delete_sweep),
             onPressed: _deleteExpired,
-            tooltip: 'Abgelaufene löschen',
+            tooltip: l10n.deleteExpired,
           ),
         ],
       ),
@@ -83,6 +86,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
     }
 
     if (_error != null) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -90,11 +94,11 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadNews,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -102,6 +106,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
     }
 
     if (_news.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -111,12 +116,12 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                 color: Theme.of(context).colorScheme.onSurfaceVariant),
             const SizedBox(height: 16),
             Text(
-              'Keine News',
+              l10n.noNewsItems,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              'Erstelle die erste News mit dem + Button.',
+              l10n.createFirstNews,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -141,6 +146,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
 
   Widget _buildNewsCard(News news) {
     final isExpired = _isExpired(news);
+    final l10n = AppLocalizations.of(context)!;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -167,11 +173,11 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                   ),
                 ),
                 if (!news.isPublished)
-                  _buildStatusChip(context, 'Entwurf', Colors.grey),
+                  _buildStatusChip(context, l10n.newsStatusDraft, Colors.grey),
                 if (news.isPublished && !isExpired)
-                  _buildStatusChip(context, 'Veröffentlicht', Colors.green),
+                  _buildStatusChip(context, l10n.newsStatusPublished, Colors.green),
                 if (isExpired)
-                  _buildStatusChip(context, 'Abgelaufen', Colors.red),
+                  _buildStatusChip(context, l10n.newsStatusExpired, Colors.red),
               ],
             ),
             const SizedBox(height: 8),
@@ -191,7 +197,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                     color: Theme.of(context).colorScheme.onSurfaceVariant),
                 const SizedBox(width: 4),
                 Text(
-                  'Erstellt: ${_formatDate(news.createdAt)}',
+                  l10n.createdLabel(_formatDate(news.createdAt)),
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(width: 16),
@@ -203,7 +209,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                           : Theme.of(context).colorScheme.onSurfaceVariant),
                   const SizedBox(width: 4),
                   Text(
-                    'Läuft ab: ${_formatDate(news.expiresAt)}',
+                    l10n.expiresLabel(_formatDate(news.expiresAt)),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: isExpired
                               ? Theme.of(context).colorScheme.error
@@ -220,13 +226,13 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                 TextButton.icon(
                   onPressed: () => _showNewsDialog(news),
                   icon: const Icon(Icons.edit, size: 18),
-                  label: const Text('Bearbeiten'),
+                  label: Text(l10n.edit),
                 ),
                 const SizedBox(width: 8),
                 TextButton.icon(
                   onPressed: () => _confirmDelete(news),
                   icon: Icon(Icons.delete, size: 18, color: Theme.of(context).colorScheme.error),
-                  label: Text('Löschen', style: TextStyle(color: Theme.of(context).colorScheme.error)),
+                  label: Text(l10n.delete, style: TextStyle(color: Theme.of(context).colorScheme.error)),
                 ),
               ],
             ),
@@ -252,6 +258,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
   }
 
   Future<void> _showNewsDialog(News? news) async {
+    final l10n = AppLocalizations.of(context)!;
     final isEditing = news != null;
     final titleController = TextEditingController(text: news?.title ?? '');
     final contentController = TextEditingController(text: news?.content ?? '');
@@ -263,7 +270,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: Text(isEditing ? 'News bearbeiten' : 'Neue News'),
+          title: Text(isEditing ? l10n.editNewsItem : l10n.createNewsItem),
           content: SingleChildScrollView(
             child: SizedBox(
               width: 400,
@@ -272,17 +279,17 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                 children: [
                   TextField(
                     controller: titleController,
-                    decoration: const InputDecoration(
-                      labelText: 'Titel',
+                    decoration: InputDecoration(
+                      labelText: l10n.newsTitle,
                     ),
                     autofocus: true,
                   ),
                   const SizedBox(height: 16),
                   TextField(
                     controller: contentController,
-                    decoration: const InputDecoration(
-                      labelText: 'Inhalt',
-                      hintText: 'Markdown wird unterstützt',
+                    decoration: InputDecoration(
+                      labelText: l10n.newsContent,
+                      hintText: l10n.markdownSupported,
                       alignLabelWithHint: true,
                     ),
                     maxLines: 5,
@@ -291,16 +298,16 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                   if (!isEditing)
                     TextField(
                       controller: lifetimeController,
-                      decoration: const InputDecoration(
-                        labelText: 'Lebenszeit (Tage)',
-                        hintText: 'Standard: 14 Tage',
+                      decoration: InputDecoration(
+                        labelText: l10n.lifetimeDays,
+                        hintText: l10n.defaultLifetimeDays,
                       ),
                       keyboardType: TextInputType.number,
                     ),
                   if (isEditing)
                     ListTile(
-                      title: const Text('Ablaufdatum'),
-                      subtitle: Text(expiresAt != null ? _formatDate(expiresAt) : 'Kein Ablaufdatum'),
+                      title: Text(l10n.expiryDate),
+                      subtitle: Text(expiresAt != null ? _formatDate(expiresAt) : l10n.noExpiryDate),
                       trailing: IconButton(
                         icon: const Icon(Icons.calendar_month),
                         onPressed: () async {
@@ -318,8 +325,8 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                     ),
                   const SizedBox(height: 16),
                   SwitchListTile(
-                    title: const Text('Veröffentlichen'),
-                    subtitle: const Text('News wird auf dem Dashboard angezeigt'),
+                    title: Text(l10n.publish),
+                    subtitle: Text(l10n.publishNewsMessage),
                     value: isPublished,
                     onChanged: (value) => setDialogState(() => isPublished = value),
                   ),
@@ -330,11 +337,11 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, true),
-              child: Text(isEditing ? 'Speichern' : 'Erstellen'),
+              child: Text(isEditing ? l10n.save : l10n.create),
             ),
           ],
         ),
@@ -347,7 +354,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
 
       if (title.isEmpty || content.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Titel und Inhalt dürfen nicht leer sein')),
+          SnackBar(content: Text(l10n.titleContentRequired)),
         );
         return;
       }
@@ -374,7 +381,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler: $e')),
+            SnackBar(content: Text(l10n.errorLoading(e.toString()))),
           );
         }
       }
@@ -382,22 +389,23 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
   }
 
   Future<void> _confirmDelete(News news) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('News löschen'),
-        content: Text('Möchtest du "${news.title}" wirklich löschen?'),
+        title: Text(l10n.deleteNews),
+        content: Text(l10n.confirmDeleteNewsWithTitle(news.title)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -410,7 +418,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler beim Löschen: $e')),
+            SnackBar(content: Text(l10n.errorDeleting(e.toString()))),
           );
         }
       }
@@ -418,19 +426,20 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
   }
 
   Future<void> _deleteExpired() async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Abgelaufene News löschen'),
-        content: const Text('Möchtest du alle abgelaufenen News löschen?'),
+        title: Text(l10n.deleteExpiredNews),
+        content: Text(l10n.confirmDeleteExpiredNews),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -442,13 +451,13 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
         _loadNews();
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('$count abgelaufene News gelöscht')),
+            SnackBar(content: Text(l10n.expiredNewsDeleted(count))),
           );
         }
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler: $e')),
+            SnackBar(content: Text(l10n.errorLoading(e.toString()))),
           );
         }
       }

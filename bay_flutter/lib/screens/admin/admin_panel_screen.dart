@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import 'categories_screen.dart';
 import 'slot_variants_screen.dart';
 import 'payment_settings_screen.dart';
@@ -12,9 +13,11 @@ class AdminPanelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Admin-Panel'),
+        title: Text(l10n.adminPanel),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
@@ -43,14 +46,14 @@ class AdminPanelScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Administration',
+                          l10n.administration,
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).colorScheme.onPrimaryContainer,
                               ),
                         ),
                         Text(
-                          'System- und Benutzerverwaltung',
+                          l10n.systemUserManagement,
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 color: Theme.of(context).colorScheme.onPrimaryContainer,
                               ),
@@ -65,12 +68,12 @@ class AdminPanelScreen extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Admin sections
-          _buildSectionHeader(context, 'Kategorien'),
+          _buildSectionHeader(context, l10n.categories),
           _buildAdminTile(
             context,
             icon: Icons.category,
-            title: 'Kategorien verwalten',
-            subtitle: 'Kategorien und Subkategorien erstellen',
+            title: l10n.manageCategories,
+            subtitle: l10n.createCategoriesSubcategories,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const CategoriesScreen()),
@@ -78,12 +81,12 @@ class AdminPanelScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          _buildSectionHeader(context, 'Slots'),
+          _buildSectionHeader(context, l10n.slots),
           _buildAdminTile(
             context,
             icon: Icons.confirmation_number,
-            title: 'Slot-Varianten',
-            subtitle: 'Slot-Typen und Preise konfigurieren',
+            title: l10n.slotVariants,
+            subtitle: l10n.configureSlotTypes,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SlotVariantsScreen()),
@@ -91,12 +94,12 @@ class AdminPanelScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          _buildSectionHeader(context, 'Zahlungen'),
+          _buildSectionHeader(context, l10n.payments),
           _buildAdminTile(
             context,
             icon: Icons.payment,
-            title: 'Zahlungseinstellungen',
-            subtitle: 'PayPal und Bitcoin für Slot-Käufe',
+            title: l10n.paymentSettings,
+            subtitle: l10n.paypalBitcoinSlots,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PaymentSettingsScreen()),
@@ -105,8 +108,8 @@ class AdminPanelScreen extends StatelessWidget {
           _buildAdminTile(
             context,
             icon: Icons.pending_actions,
-            title: 'Ausstehende Zahlungen',
-            subtitle: 'Offene Bestellungen prüfen und bestätigen',
+            title: l10n.pendingPayments,
+            subtitle: l10n.reviewPendingOrders,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PendingPaymentsScreen()),
@@ -114,12 +117,12 @@ class AdminPanelScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
 
-          _buildSectionHeader(context, 'Benutzer'),
+          _buildSectionHeader(context, l10n.users),
           _buildAdminTile(
             context,
             icon: Icons.people,
-            title: 'Benutzerverwaltung',
-            subtitle: 'Benutzer verwalten und Rollen zuweisen',
+            title: l10n.userManagement,
+            subtitle: l10n.manageUsersRoles,
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const UserManagementScreen()),
@@ -182,9 +185,10 @@ class AdminPanelScreen extends StatelessWidget {
         onTap: isImplemented
             ? onTap
             : () {
+                final l10n = AppLocalizations.of(context)!;
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('$title wird in Meilenstein $milestone implementiert.'),
+                    content: Text(l10n.featureInMilestone(title, milestone.toString())),
                   ),
                 );
               },

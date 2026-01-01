@@ -2035,6 +2035,116 @@
     "description": "Delete news confirmation"
   },
 
+  "confirmDeleteNewsWithTitle": "Do you really want to delete \"{title}\"?",
+  "@confirmDeleteNewsWithTitle": {
+    "description": "Delete news confirmation with title",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+
+  "deleteExpired": "Delete expired",
+  "@deleteExpired": {
+    "description": "Delete expired button"
+  },
+
+  "deleteExpiredNews": "Delete expired news",
+  "@deleteExpiredNews": {
+    "description": "Delete expired news dialog title"
+  },
+
+  "confirmDeleteExpiredNews": "Do you want to delete all expired news?",
+  "@confirmDeleteExpiredNews": {
+    "description": "Delete expired news confirmation"
+  },
+
+  "expiredNewsDeleted": "{count} expired news deleted",
+  "@expiredNewsDeleted": {
+    "description": "Expired news deleted message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "newsStatusExpired": "Expired",
+  "@newsStatusExpired": {
+    "description": "News status expired"
+  },
+
+  "createdLabel": "Created: {date}",
+  "@createdLabel": {
+    "description": "Created label with date",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "expiresLabel": "Expires: {date}",
+  "@expiresLabel": {
+    "description": "Expires label with date",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "markdownSupported": "Markdown is supported",
+  "@markdownSupported": {
+    "description": "Markdown is supported note"
+  },
+
+  "lifetimeDays": "Lifetime (days)",
+  "@lifetimeDays": {
+    "description": "Lifetime in days label"
+  },
+
+  "defaultLifetimeDays": "Default: 14 days",
+  "@defaultLifetimeDays": {
+    "description": "Default lifetime note"
+  },
+
+  "expiryDate": "Expiry date",
+  "@expiryDate": {
+    "description": "Expiry date label"
+  },
+
+  "noExpiryDate": "No expiry date",
+  "@noExpiryDate": {
+    "description": "No expiry date text"
+  },
+
+  "publishNewsMessage": "News will be displayed on the dashboard",
+  "@publishNewsMessage": {
+    "description": "Publish news message"
+  },
+
+  "titleContentRequired": "Title and content must not be empty",
+  "@titleContentRequired": {
+    "description": "Title and content required validation"
+  },
+
+  "createFirstNews": "Create the first news with the + button.",
+  "@createFirstNews": {
+    "description": "Create first news message"
+  },
+
+  "errorDeleting": "Error deleting: {error}",
+  "@errorDeleting": {
+    "description": "Error deleting message",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
   "categoryManagementScreen": "Category Management",
   "@categoryManagementScreen": {
     "description": "Category Management screen title"
@@ -2155,6 +2265,84 @@
     "description": "Delete category confirmation"
   },
 
+  "confirmDeleteCategoryWithName": "Do you really want to delete \"{name}\"?",
+  "@confirmDeleteCategoryWithName": {
+    "description": "Delete category confirmation with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "newCategory": "New category",
+  "@newCategory": {
+    "description": "New category dialog title"
+  },
+
+  "addSubcategory": "Add subcategory",
+  "@addSubcategory": {
+    "description": "Add subcategory tooltip"
+  },
+
+  "createFirstCategory": "Create the first category with the + button.",
+  "@createFirstCategory": {
+    "description": "Create first category message"
+  },
+
+  "subcategoriesCount": "{count} Subcategories • Sorting: {sortOrder}",
+  "@subcategoriesCount": {
+    "description": "Subcategories count with sorting",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "sortOrder": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sorting": "Sorting",
+  "@sorting": {
+    "description": "Sorting"
+  },
+
+  "sortingLabel": "Sorting: {sortOrder}",
+  "@sortingLabel": {
+    "description": "Sorting label",
+    "placeholders": {
+      "sortOrder": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sortingHint": "0",
+  "@sortingHint": {
+    "description": "Sorting hint"
+  },
+
+  "categoryShownToUsers": "Category is shown to users",
+  "@categoryShownToUsers": {
+    "description": "Category active message"
+  },
+
+  "categoryHasSubcategories": "This category has {count} subcategories that will also be deleted!",
+  "@categoryHasSubcategories": {
+    "description": "Category has subcategories warning",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "nameRequired": "Name must not be empty",
+  "@nameRequired": {
+    "description": "Name required validation"
+  },
+
   "paymentSettingsScreen": "Payment Settings",
   "@paymentSettingsScreen": {
     "description": "Payment Settings screen title"
@@ -2208,6 +2396,56 @@
   "settingsSaved": "Settings saved",
   "@settingsSaved": {
     "description": "Settings saved message"
+  },
+
+  "saveSettings": "Save settings",
+  "@saveSettings": {
+    "description": "Save settings button"
+  },
+
+  "paymentSettingsInfo": "These settings determine how users can pay for slots.",
+  "@paymentSettingsInfo": {
+    "description": "Payment settings info"
+  },
+
+  "enablePaypal": "Enable PayPal",
+  "@enablePaypal": {
+    "description": "Enable PayPal"
+  },
+
+  "paypalPaymentDescription": "Users can pay with PayPal",
+  "@paypalPaymentDescription": {
+    "description": "PayPal payment description"
+  },
+
+  "paypalEmailAddress": "PayPal email address",
+  "@paypalEmailAddress": {
+    "description": "PayPal email address label"
+  },
+
+  "paypalEmailHint": "payments@example.com",
+  "@paypalEmailHint": {
+    "description": "PayPal email hint"
+  },
+
+  "enableBitcoin": "Enable Bitcoin",
+  "@enableBitcoin": {
+    "description": "Enable Bitcoin"
+  },
+
+  "bitcoinPaymentDescription": "Users can pay with Bitcoin",
+  "@bitcoinPaymentDescription": {
+    "description": "Bitcoin payment description"
+  },
+
+  "bitcoinWalletAddress": "Bitcoin wallet address",
+  "@bitcoinWalletAddress": {
+    "description": "Bitcoin wallet address label"
+  },
+
+  "bitcoinWalletHint": "bc1q...",
+  "@bitcoinWalletHint": {
+    "description": "Bitcoin wallet hint"
   },
 
   "pendingPaymentsScreen": "Pending Payments",
@@ -2538,5 +2776,73 @@
   "unban": "Unban",
   "@unban": {
     "description": "Unban button"
+  },
+
+  "administration": "Administration",
+  "@administration": {
+    "description": "Administration title"
+  },
+
+  "systemUserManagement": "System and user management",
+  "@systemUserManagement": {
+    "description": "System and user management subtitle"
+  },
+
+  "manageCategories": "Manage categories",
+  "@manageCategories": {
+    "description": "Manage categories title"
+  },
+
+  "createCategoriesSubcategories": "Create categories and subcategories",
+  "@createCategoriesSubcategories": {
+    "description": "Create categories description"
+  },
+
+  "configureSlotTypes": "Configure slot types and prices",
+  "@configureSlotTypes": {
+    "description": "Configure slot types description"
+  },
+
+  "paypalBitcoinSlots": "PayPal and Bitcoin for slot purchases",
+  "@paypalBitcoinSlots": {
+    "description": "PayPal and Bitcoin description"
+  },
+
+  "reviewPendingOrders": "Review and confirm pending orders",
+  "@reviewPendingOrders": {
+    "description": "Review pending orders description"
+  },
+
+  "manageUsersRoles": "Manage users and assign roles",
+  "@manageUsersRoles": {
+    "description": "Manage users description"
+  },
+
+  "featureInMilestone": "{title} will be implemented in milestone {milestone}.",
+  "@featureInMilestone": {
+    "description": "Feature coming in milestone message",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "milestone": {
+        "type": "String"
+      }
+    }
+  },
+
+  "slots": "Slots",
+  "@slots": {
+    "description": "Slots section title"
+  },
+
+  "payments": "Payments",
+  "@payments": {
+    "description": "Payments section title"
+  },
+
+  "users": "Users",
+  "@users": {
+    "description": "Users section title"
   }
 }

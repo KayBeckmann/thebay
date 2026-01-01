@@ -2979,6 +2979,116 @@
     "description": "News löschen Bestätigung"
   },
 
+  "confirmDeleteNewsWithTitle": "Möchtest du \"{title}\" wirklich löschen?",
+  "@confirmDeleteNewsWithTitle": {
+    "description": "News löschen Bestätigung mit Titel",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+
+  "deleteExpired": "Abgelaufene löschen",
+  "@deleteExpired": {
+    "description": "Abgelaufene löschen Button"
+  },
+
+  "deleteExpiredNews": "Abgelaufene News löschen",
+  "@deleteExpiredNews": {
+    "description": "Abgelaufene News löschen Dialog Titel"
+  },
+
+  "confirmDeleteExpiredNews": "Möchtest du alle abgelaufenen News löschen?",
+  "@confirmDeleteExpiredNews": {
+    "description": "Abgelaufene News löschen Bestätigung"
+  },
+
+  "expiredNewsDeleted": "{count} abgelaufene News gelöscht",
+  "@expiredNewsDeleted": {
+    "description": "Abgelaufene News gelöscht Nachricht",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "newsStatusExpired": "Abgelaufen",
+  "@newsStatusExpired": {
+    "description": "News-Status Abgelaufen"
+  },
+
+  "createdLabel": "Erstellt: {date}",
+  "@createdLabel": {
+    "description": "Erstellt Label mit Datum",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "expiresLabel": "Läuft ab: {date}",
+  "@expiresLabel": {
+    "description": "Läuft ab Label mit Datum",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "markdownSupported": "Markdown wird unterstützt",
+  "@markdownSupported": {
+    "description": "Markdown wird unterstützt Hinweis"
+  },
+
+  "lifetimeDays": "Lebenszeit (Tage)",
+  "@lifetimeDays": {
+    "description": "Lebenszeit in Tagen Label"
+  },
+
+  "defaultLifetimeDays": "Standard: 14 Tage",
+  "@defaultLifetimeDays": {
+    "description": "Standard Lebenszeit Hinweis"
+  },
+
+  "expiryDate": "Ablaufdatum",
+  "@expiryDate": {
+    "description": "Ablaufdatum Label"
+  },
+
+  "noExpiryDate": "Kein Ablaufdatum",
+  "@noExpiryDate": {
+    "description": "Kein Ablaufdatum Text"
+  },
+
+  "publishNewsMessage": "News wird auf dem Dashboard angezeigt",
+  "@publishNewsMessage": {
+    "description": "Veröffentlichen News Nachricht"
+  },
+
+  "titleContentRequired": "Titel und Inhalt dürfen nicht leer sein",
+  "@titleContentRequired": {
+    "description": "Titel und Inhalt erforderlich Validierung"
+  },
+
+  "createFirstNews": "Erstelle die erste News mit dem + Button.",
+  "@createFirstNews": {
+    "description": "Erstelle erste News Nachricht"
+  },
+
+  "errorDeleting": "Fehler beim Löschen: {error}",
+  "@errorDeleting": {
+    "description": "Fehler beim Löschen Nachricht",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
   "categoryManagementScreen": "Kategorienverwaltung",
   "@categoryManagementScreen": {
     "description": "Kategorienverwaltung Screen Titel"
@@ -3099,6 +3209,84 @@
     "description": "Kategorie löschen Bestätigung"
   },
 
+  "confirmDeleteCategoryWithName": "Möchtest du \"{name}\" wirklich löschen?",
+  "@confirmDeleteCategoryWithName": {
+    "description": "Kategorie löschen Bestätigung mit Name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "newCategory": "Neue Kategorie",
+  "@newCategory": {
+    "description": "Neue Kategorie Dialog Titel"
+  },
+
+  "addSubcategory": "Unterkategorie hinzufügen",
+  "@addSubcategory": {
+    "description": "Unterkategorie hinzufügen Tooltip"
+  },
+
+  "createFirstCategory": "Erstelle die erste Kategorie mit dem + Button.",
+  "@createFirstCategory": {
+    "description": "Erstelle erste Kategorie Nachricht"
+  },
+
+  "subcategoriesCount": "{count} Unterkategorien • Sortierung: {sortOrder}",
+  "@subcategoriesCount": {
+    "description": "Unterkategorien Anzahl mit Sortierung",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "sortOrder": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sorting": "Sortierung",
+  "@sorting": {
+    "description": "Sortierung"
+  },
+
+  "sortingLabel": "Sortierung: {sortOrder}",
+  "@sortingLabel": {
+    "description": "Sortierung Label",
+    "placeholders": {
+      "sortOrder": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sortingHint": "0",
+  "@sortingHint": {
+    "description": "Sortierung Hinweis"
+  },
+
+  "categoryShownToUsers": "Kategorie wird Benutzern angezeigt",
+  "@categoryShownToUsers": {
+    "description": "Kategorie aktiv Nachricht"
+  },
+
+  "categoryHasSubcategories": "Diese Kategorie hat {count} Unterkategorien, die ebenfalls gelöscht werden!",
+  "@categoryHasSubcategories": {
+    "description": "Kategorie hat Unterkategorien Warnung",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "nameRequired": "Name darf nicht leer sein",
+  "@nameRequired": {
+    "description": "Name erforderlich Validierung"
+  },
+
   "paymentSettingsScreen": "Zahlungseinstellungen",
   "@paymentSettingsScreen": {
     "description": "Zahlungseinstellungen Screen Titel"
@@ -3152,6 +3340,56 @@
   "settingsSaved": "Einstellungen gespeichert",
   "@settingsSaved": {
     "description": "Einstellungen gespeichert Nachricht"
+  },
+
+  "saveSettings": "Einstellungen speichern",
+  "@saveSettings": {
+    "description": "Einstellungen speichern Button"
+  },
+
+  "paymentSettingsInfo": "Diese Einstellungen bestimmen, wie Benutzer für Slots bezahlen können.",
+  "@paymentSettingsInfo": {
+    "description": "Zahlungseinstellungen Info"
+  },
+
+  "enablePaypal": "PayPal aktivieren",
+  "@enablePaypal": {
+    "description": "PayPal aktivieren"
+  },
+
+  "paypalPaymentDescription": "Benutzer können mit PayPal bezahlen",
+  "@paypalPaymentDescription": {
+    "description": "PayPal Bezahlung Beschreibung"
+  },
+
+  "paypalEmailAddress": "PayPal E-Mail-Adresse",
+  "@paypalEmailAddress": {
+    "description": "PayPal E-Mail-Adresse Label"
+  },
+
+  "paypalEmailHint": "zahlungen@beispiel.com",
+  "@paypalEmailHint": {
+    "description": "PayPal E-Mail Hinweis"
+  },
+
+  "enableBitcoin": "Bitcoin aktivieren",
+  "@enableBitcoin": {
+    "description": "Bitcoin aktivieren"
+  },
+
+  "bitcoinPaymentDescription": "Benutzer können mit Bitcoin bezahlen",
+  "@bitcoinPaymentDescription": {
+    "description": "Bitcoin Bezahlung Beschreibung"
+  },
+
+  "bitcoinWalletAddress": "Bitcoin Wallet-Adresse",
+  "@bitcoinWalletAddress": {
+    "description": "Bitcoin Wallet-Adresse Label"
+  },
+
+  "bitcoinWalletHint": "bc1q...",
+  "@bitcoinWalletHint": {
+    "description": "Bitcoin Wallet Hinweis"
   },
 
   "pendingPaymentsScreen": "Ausstehende Zahlungen",
@@ -3482,5 +3720,73 @@
   "unban": "Entsperren",
   "@unban": {
     "description": "Entsperren Button"
+  },
+
+  "administration": "Administration",
+  "@administration": {
+    "description": "Administration Titel"
+  },
+
+  "systemUserManagement": "System- und Benutzerverwaltung",
+  "@systemUserManagement": {
+    "description": "System- und Benutzerverwaltung Untertitel"
+  },
+
+  "manageCategories": "Kategorien verwalten",
+  "@manageCategories": {
+    "description": "Kategorien verwalten Titel"
+  },
+
+  "createCategoriesSubcategories": "Kategorien und Subkategorien erstellen",
+  "@createCategoriesSubcategories": {
+    "description": "Kategorien und Subkategorien erstellen Beschreibung"
+  },
+
+  "configureSlotTypes": "Slot-Typen und Preise konfigurieren",
+  "@configureSlotTypes": {
+    "description": "Slot-Typen konfigurieren Beschreibung"
+  },
+
+  "paypalBitcoinSlots": "PayPal und Bitcoin für Slot-Käufe",
+  "@paypalBitcoinSlots": {
+    "description": "PayPal und Bitcoin Beschreibung"
+  },
+
+  "reviewPendingOrders": "Offene Bestellungen prüfen und bestätigen",
+  "@reviewPendingOrders": {
+    "description": "Offene Bestellungen prüfen Beschreibung"
+  },
+
+  "manageUsersRoles": "Benutzer verwalten und Rollen zuweisen",
+  "@manageUsersRoles": {
+    "description": "Benutzer verwalten Beschreibung"
+  },
+
+  "featureInMilestone": "{title} wird in Meilenstein {milestone} implementiert.",
+  "@featureInMilestone": {
+    "description": "Feature kommt in Meilenstein Nachricht",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "milestone": {
+        "type": "String"
+      }
+    }
+  },
+
+  "slots": "Slots",
+  "@slots": {
+    "description": "Slots Abschnittstitel"
+  },
+
+  "payments": "Zahlungen",
+  "@payments": {
+    "description": "Zahlungen Abschnittstitel"
+  },
+
+  "users": "Benutzer",
+  "@users": {
+    "description": "Benutzer Abschnittstitel"
   }
 }

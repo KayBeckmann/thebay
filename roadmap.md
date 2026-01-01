@@ -621,10 +621,10 @@
 - [x] ARB-Übersetzungen für alle Admin/Moderations-Screens (~250 Strings)
 
 ### 15.7a Kern-Admin-Screens
-- [ ] admin_panel_screen.dart mit AppLocalizations aktualisieren (~14 Strings)
-- [ ] news_management_screen.dart mit AppLocalizations aktualisieren (~32 Strings)
-- [ ] categories_screen.dart mit AppLocalizations aktualisieren (~22 Strings)
-- [ ] payment_settings_screen.dart mit AppLocalizations aktualisieren (~16 Strings)
+- [x] admin_panel_screen.dart mit AppLocalizations aktualisieren (~14 Strings)
+- [x] news_management_screen.dart mit AppLocalizations aktualisieren (~32 Strings)
+- [x] categories_screen.dart mit AppLocalizations aktualisieren (~22 Strings)
+- [x] payment_settings_screen.dart mit AppLocalizations aktualisieren (~16 Strings)
 
 ### 15.7b Transaktions-Management
 - [ ] pending_payments_screen.dart mit AppLocalizations aktualisieren (~26 Strings)

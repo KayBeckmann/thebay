@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart';
 
 /// Admin screen for managing categories.
@@ -58,9 +59,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kategorien verwalten'),
+        title: Text(l10n.manageCategories),
       ),
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
@@ -76,6 +79,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     }
 
     if (_error != null) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -83,11 +87,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadCategories,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -95,6 +99,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     }
 
     if (_categories.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -104,12 +109,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 color: Theme.of(context).colorScheme.onSurfaceVariant),
             const SizedBox(height: 16),
             Text(
-              'Keine Kategorien',
+              l10n.noCategories,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              'Erstelle die erste Kategorie mit dem + Button.',
+              l10n.createFirstCategory,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -134,6 +139,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   Widget _buildCategoryCard(Category category) {
     final subcategories = _getSubcategories(category.id!);
+    final l10n = AppLocalizations.of(context)!;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
@@ -152,7 +158,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           ),
         ),
         subtitle: Text(
-          '${subcategories.length} Unterkategorien • Sortierung: ${category.sortOrder}',
+          l10n.subcategoriesCount(subcategories.length, category.sortOrder),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         trailing: Row(
@@ -161,17 +167,17 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             IconButton(
               icon: const Icon(Icons.add),
               onPressed: () => _showCategoryDialog(null, category.id),
-              tooltip: 'Unterkategorie hinzufügen',
+              tooltip: l10n.addSubcategory,
             ),
             IconButton(
               icon: const Icon(Icons.edit),
               onPressed: () => _showCategoryDialog(category, null),
-              tooltip: 'Bearbeiten',
+              tooltip: l10n.edit,
             ),
             IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () => _confirmDelete(category),
-              tooltip: 'Löschen',
+              tooltip: l10n.delete,
             ),
           ],
         ),
@@ -180,7 +186,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                'Keine Unterkategorien',
+                l10n.noSubcategories,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -194,6 +200,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   }
 
   Widget _buildSubcategoryTile(Category category) {
+    final l10n = AppLocalizations.of(context)!;
+
     return ListTile(
       leading: Icon(
         category.isActive ? Icons.folder_open : Icons.folder_off_outlined,
@@ -207,19 +215,19 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           color: category.isActive ? null : Theme.of(context).colorScheme.onSurfaceVariant,
         ),
       ),
-      subtitle: Text('Sortierung: ${category.sortOrder}'),
+      subtitle: Text(l10n.sortingLabel(category.sortOrder)),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
             icon: const Icon(Icons.edit, size: 20),
             onPressed: () => _showCategoryDialog(category, category.parentId),
-            tooltip: 'Bearbeiten',
+            tooltip: l10n.edit,
           ),
           IconButton(
             icon: const Icon(Icons.delete, size: 20),
             onPressed: () => _confirmDelete(category),
-            tooltip: 'Löschen',
+            tooltip: l10n.delete,
           ),
         ],
       ),
@@ -227,6 +235,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   }
 
   Future<void> _showCategoryDialog(Category? category, int? parentId) async {
+    final l10n = AppLocalizations.of(context)!;
     final isEditing = category != null;
     final nameController = TextEditingController(text: category?.name ?? '');
     final sortOrderController =
@@ -237,31 +246,31 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: Text(isEditing ? 'Kategorie bearbeiten' : 'Neue Kategorie'),
+          title: Text(isEditing ? l10n.editCategory : l10n.newCategory),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextField(
                 controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'Kategoriename eingeben',
+                decoration: InputDecoration(
+                  labelText: l10n.categoryName,
+                  hintText: l10n.enterCategoryName,
                 ),
                 autofocus: true,
               ),
               const SizedBox(height: 16),
               TextField(
                 controller: sortOrderController,
-                decoration: const InputDecoration(
-                  labelText: 'Sortierung',
-                  hintText: '0',
+                decoration: InputDecoration(
+                  labelText: l10n.sorting,
+                  hintText: l10n.sortingHint,
                 ),
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 16),
               SwitchListTile(
-                title: const Text('Aktiv'),
-                subtitle: const Text('Kategorie wird Benutzern angezeigt'),
+                title: Text(l10n.active),
+                subtitle: Text(l10n.categoryShownToUsers),
                 value: isActive,
                 onChanged: (value) => setDialogState(() => isActive = value),
               ),
@@ -270,11 +279,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, true),
-              child: Text(isEditing ? 'Speichern' : 'Erstellen'),
+              child: Text(isEditing ? l10n.save : l10n.create),
             ),
           ],
         ),
@@ -287,7 +296,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
       if (name.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Name darf nicht leer sein')),
+          SnackBar(content: Text(l10n.nameRequired)),
         );
         return;
       }
@@ -308,7 +317,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler: $e')),
+            SnackBar(content: Text(l10n.errorLoading(e.toString()))),
           );
         }
       }
@@ -316,18 +325,19 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   }
 
   Future<void> _confirmDelete(Category category) async {
+    final l10n = AppLocalizations.of(context)!;
     final subcategories = _getSubcategories(category.id!);
     final hasSubcategories = subcategories.isNotEmpty;
 
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Kategorie löschen'),
+        title: Text(l10n.deleteCategory),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Möchtest du "${category.name}" wirklich löschen?'),
+            Text(l10n.confirmDeleteCategoryWithName(category.name)),
             if (hasSubcategories) ...[
               const SizedBox(height: 16),
               Container(
@@ -343,7 +353,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Diese Kategorie hat ${subcategories.length} Unterkategorien, die ebenfalls gelöscht werden!',
+                        l10n.categoryHasSubcategories(subcategories.length),
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onErrorContainer,
                         ),
@@ -358,14 +368,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -378,7 +388,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler beim Löschen: $e')),
+            SnackBar(content: Text(l10n.errorDeleting(e.toString()))),
           );
         }
       }

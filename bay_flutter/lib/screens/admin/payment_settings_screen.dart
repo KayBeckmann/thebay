@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart';
 
 /// Admin screen for managing payment settings.
@@ -67,6 +68,7 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
   }
 
   Future<void> _saveSettings() async {
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
 
     try {
@@ -79,7 +81,7 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Einstellungen gespeichert')),
+          SnackBar(content: Text(l10n.settingsSaved)),
         );
         _loadSettings();
       }
@@ -87,7 +89,7 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
       if (mounted) {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }
@@ -95,15 +97,17 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Zahlungseinstellungen'),
+        title: Text(l10n.paymentSettingsScreen),
         actions: [
           if (!_isLoading)
             IconButton(
               icon: const Icon(Icons.save),
               onPressed: _saveSettings,
-              tooltip: 'Speichern',
+              tooltip: l10n.save,
             ),
         ],
       ),
@@ -117,6 +121,7 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
     }
 
     if (_error != null) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -124,16 +129,18 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadSettings,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
       );
     }
+
+    final l10n = AppLocalizations.of(context)!;
 
     return ListView(
       padding: const EdgeInsets.all(16),
@@ -150,7 +157,7 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Diese Einstellungen bestimmen, wie Benutzer für Slots bezahlen können.',
+                    l10n.paymentSettingsInfo,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
@@ -176,18 +183,18 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
             child: Column(
               children: [
                 SwitchListTile(
-                  title: const Text('PayPal aktivieren'),
-                  subtitle: const Text('Benutzer können mit PayPal bezahlen'),
+                  title: Text(l10n.enablePaypal),
+                  subtitle: Text(l10n.paypalPaymentDescription),
                   value: _paypalEnabled,
                   onChanged: (value) => setState(() => _paypalEnabled = value),
                 ),
                 const Divider(),
                 TextField(
                   controller: _paypalController,
-                  decoration: const InputDecoration(
-                    labelText: 'PayPal E-Mail-Adresse',
-                    hintText: 'zahlungen@beispiel.com',
-                    prefixIcon: Icon(Icons.email),
+                  decoration: InputDecoration(
+                    labelText: l10n.paypalEmailAddress,
+                    hintText: l10n.paypalEmailHint,
+                    prefixIcon: const Icon(Icons.email),
                   ),
                   keyboardType: TextInputType.emailAddress,
                   enabled: _paypalEnabled,
@@ -212,18 +219,18 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
             child: Column(
               children: [
                 SwitchListTile(
-                  title: const Text('Bitcoin aktivieren'),
-                  subtitle: const Text('Benutzer können mit Bitcoin bezahlen'),
+                  title: Text(l10n.enableBitcoin),
+                  subtitle: Text(l10n.bitcoinPaymentDescription),
                   value: _bitcoinEnabled,
                   onChanged: (value) => setState(() => _bitcoinEnabled = value),
                 ),
                 const Divider(),
                 TextField(
                   controller: _bitcoinController,
-                  decoration: const InputDecoration(
-                    labelText: 'Bitcoin Wallet-Adresse',
-                    hintText: 'bc1q...',
-                    prefixIcon: Icon(Icons.currency_bitcoin),
+                  decoration: InputDecoration(
+                    labelText: l10n.bitcoinWalletAddress,
+                    hintText: l10n.bitcoinWalletHint,
+                    prefixIcon: const Icon(Icons.currency_bitcoin),
                   ),
                   enabled: _bitcoinEnabled,
                 ),
@@ -237,7 +244,7 @@ class _PaymentSettingsScreenState extends State<PaymentSettingsScreen> {
         FilledButton.icon(
           onPressed: _saveSettings,
           icon: const Icon(Icons.save),
-          label: const Text('Einstellungen speichern'),
+          label: Text(l10n.saveSettings),
         ),
       ],
     );

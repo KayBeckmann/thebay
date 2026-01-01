@@ -1809,6 +1809,70 @@ class AppLocalizationsFr extends AppLocalizations {
       'Voulez-vous vraiment supprimer cette actualité ?';
 
   @override
+  String confirmDeleteNewsWithTitle(String title) {
+    return 'Voulez-vous vraiment supprimer \"$title\" ?';
+  }
+
+  @override
+  String get deleteExpired => 'Supprimer expirées';
+
+  @override
+  String get deleteExpiredNews => 'Supprimer les actualités expirées';
+
+  @override
+  String get confirmDeleteExpiredNews =>
+      'Voulez-vous supprimer toutes les actualités expirées ?';
+
+  @override
+  String expiredNewsDeleted(int count) {
+    return '$count actualités expirées supprimées';
+  }
+
+  @override
+  String get newsStatusExpired => 'Expirée';
+
+  @override
+  String createdLabel(String date) {
+    return 'Créée : $date';
+  }
+
+  @override
+  String expiresLabel(String date) {
+    return 'Expire : $date';
+  }
+
+  @override
+  String get markdownSupported => 'Markdown est pris en charge';
+
+  @override
+  String get lifetimeDays => 'Durée de vie (jours)';
+
+  @override
+  String get defaultLifetimeDays => 'Par défaut : 14 jours';
+
+  @override
+  String get expiryDate => 'Date d\'expiration';
+
+  @override
+  String get noExpiryDate => 'Pas de date d\'expiration';
+
+  @override
+  String get publishNewsMessage =>
+      'L\'actualité sera affichée sur le tableau de bord';
+
+  @override
+  String get titleContentRequired =>
+      'Le titre et le contenu ne doivent pas être vides';
+
+  @override
+  String get createFirstNews => 'Créez la première actualité avec le bouton +.';
+
+  @override
+  String errorDeleting(String error) {
+    return 'Erreur lors de la suppression : $error';
+  }
+
+  @override
   String get categoryManagementScreen => 'Gestion des Catégories';
 
   @override
@@ -1883,6 +1947,49 @@ class AppLocalizationsFr extends AppLocalizations {
       'Voulez-vous vraiment supprimer cette catégorie ? Toutes les sous-catégories associées seront également supprimées.';
 
   @override
+  String confirmDeleteCategoryWithName(String name) {
+    return 'Voulez-vous vraiment supprimer \"$name\" ?';
+  }
+
+  @override
+  String get newCategory => 'Nouvelle catégorie';
+
+  @override
+  String get addSubcategory => 'Ajouter une sous-catégorie';
+
+  @override
+  String get createFirstCategory =>
+      'Créez la première catégorie avec le bouton +.';
+
+  @override
+  String subcategoriesCount(int count, int sortOrder) {
+    return '$count Sous-catégories • Tri : $sortOrder';
+  }
+
+  @override
+  String get sorting => 'Tri';
+
+  @override
+  String sortingLabel(int sortOrder) {
+    return 'Tri : $sortOrder';
+  }
+
+  @override
+  String get sortingHint => '0';
+
+  @override
+  String get categoryShownToUsers =>
+      'La catégorie est affichée aux utilisateurs';
+
+  @override
+  String categoryHasSubcategories(int count) {
+    return 'Cette catégorie a $count sous-catégories qui seront également supprimées !';
+  }
+
+  @override
+  String get nameRequired => 'Le nom ne doit pas être vide';
+
+  @override
   String get paymentSettingsScreen => 'Paramètres de Paiement';
 
   @override
@@ -1914,6 +2021,39 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Paramètres enregistrés';
+
+  @override
+  String get saveSettings => 'Enregistrer les paramètres';
+
+  @override
+  String get paymentSettingsInfo =>
+      'Ces paramètres déterminent comment les utilisateurs peuvent payer pour les emplacements.';
+
+  @override
+  String get enablePaypal => 'Activer PayPal';
+
+  @override
+  String get paypalPaymentDescription =>
+      'Les utilisateurs peuvent payer avec PayPal';
+
+  @override
+  String get paypalEmailAddress => 'Adresse e-mail PayPal';
+
+  @override
+  String get paypalEmailHint => 'paiements@exemple.com';
+
+  @override
+  String get enableBitcoin => 'Activer Bitcoin';
+
+  @override
+  String get bitcoinPaymentDescription =>
+      'Les utilisateurs peuvent payer avec Bitcoin';
+
+  @override
+  String get bitcoinWalletAddress => 'Adresse de portefeuille Bitcoin';
+
+  @override
+  String get bitcoinWalletHint => 'bc1q...';
 
   @override
   String get pendingPaymentsScreen => 'Paiements en Attente';
@@ -2115,4 +2255,45 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get unban => 'Débannir';
+
+  @override
+  String get administration => 'Administration';
+
+  @override
+  String get systemUserManagement => 'Gestion du système et des utilisateurs';
+
+  @override
+  String get manageCategories => 'Gérer les catégories';
+
+  @override
+  String get createCategoriesSubcategories =>
+      'Créer des catégories et sous-catégories';
+
+  @override
+  String get configureSlotTypes => 'Configurer les types et prix de slots';
+
+  @override
+  String get paypalBitcoinSlots => 'PayPal et Bitcoin pour l\'achat de slots';
+
+  @override
+  String get reviewPendingOrders =>
+      'Examiner et confirmer les commandes en attente';
+
+  @override
+  String get manageUsersRoles =>
+      'Gérer les utilisateurs et attribuer des rôles';
+
+  @override
+  String featureInMilestone(String title, String milestone) {
+    return '$title sera implémenté dans le jalon $milestone.';
+  }
+
+  @override
+  String get slots => 'Slots';
+
+  @override
+  String get payments => 'Paiements';
+
+  @override
+  String get users => 'Utilisateurs';
 }

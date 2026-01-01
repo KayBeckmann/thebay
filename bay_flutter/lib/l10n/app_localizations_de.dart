@@ -1808,6 +1808,68 @@ class AppLocalizationsDe extends AppLocalizations {
   String get confirmDeleteNews => 'Möchtest du diese News wirklich löschen?';
 
   @override
+  String confirmDeleteNewsWithTitle(String title) {
+    return 'Möchtest du \"$title\" wirklich löschen?';
+  }
+
+  @override
+  String get deleteExpired => 'Abgelaufene löschen';
+
+  @override
+  String get deleteExpiredNews => 'Abgelaufene News löschen';
+
+  @override
+  String get confirmDeleteExpiredNews =>
+      'Möchtest du alle abgelaufenen News löschen?';
+
+  @override
+  String expiredNewsDeleted(int count) {
+    return '$count abgelaufene News gelöscht';
+  }
+
+  @override
+  String get newsStatusExpired => 'Abgelaufen';
+
+  @override
+  String createdLabel(String date) {
+    return 'Erstellt: $date';
+  }
+
+  @override
+  String expiresLabel(String date) {
+    return 'Läuft ab: $date';
+  }
+
+  @override
+  String get markdownSupported => 'Markdown wird unterstützt';
+
+  @override
+  String get lifetimeDays => 'Lebenszeit (Tage)';
+
+  @override
+  String get defaultLifetimeDays => 'Standard: 14 Tage';
+
+  @override
+  String get expiryDate => 'Ablaufdatum';
+
+  @override
+  String get noExpiryDate => 'Kein Ablaufdatum';
+
+  @override
+  String get publishNewsMessage => 'News wird auf dem Dashboard angezeigt';
+
+  @override
+  String get titleContentRequired => 'Titel und Inhalt dürfen nicht leer sein';
+
+  @override
+  String get createFirstNews => 'Erstelle die erste News mit dem + Button.';
+
+  @override
+  String errorDeleting(String error) {
+    return 'Fehler beim Löschen: $error';
+  }
+
+  @override
   String get categoryManagementScreen => 'Kategorienverwaltung';
 
   @override
@@ -1882,6 +1944,48 @@ class AppLocalizationsDe extends AppLocalizations {
       'Möchtest du diese Kategorie wirklich löschen? Alle zugehörigen Subkategorien werden ebenfalls gelöscht.';
 
   @override
+  String confirmDeleteCategoryWithName(String name) {
+    return 'Möchtest du \"$name\" wirklich löschen?';
+  }
+
+  @override
+  String get newCategory => 'Neue Kategorie';
+
+  @override
+  String get addSubcategory => 'Unterkategorie hinzufügen';
+
+  @override
+  String get createFirstCategory =>
+      'Erstelle die erste Kategorie mit dem + Button.';
+
+  @override
+  String subcategoriesCount(int count, int sortOrder) {
+    return '$count Unterkategorien • Sortierung: $sortOrder';
+  }
+
+  @override
+  String get sorting => 'Sortierung';
+
+  @override
+  String sortingLabel(int sortOrder) {
+    return 'Sortierung: $sortOrder';
+  }
+
+  @override
+  String get sortingHint => '0';
+
+  @override
+  String get categoryShownToUsers => 'Kategorie wird Benutzern angezeigt';
+
+  @override
+  String categoryHasSubcategories(int count) {
+    return 'Diese Kategorie hat $count Unterkategorien, die ebenfalls gelöscht werden!';
+  }
+
+  @override
+  String get nameRequired => 'Name darf nicht leer sein';
+
+  @override
   String get paymentSettingsScreen => 'Zahlungseinstellungen';
 
   @override
@@ -1913,6 +2017,38 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get settingsSaved => 'Einstellungen gespeichert';
+
+  @override
+  String get saveSettings => 'Einstellungen speichern';
+
+  @override
+  String get paymentSettingsInfo =>
+      'Diese Einstellungen bestimmen, wie Benutzer für Slots bezahlen können.';
+
+  @override
+  String get enablePaypal => 'PayPal aktivieren';
+
+  @override
+  String get paypalPaymentDescription => 'Benutzer können mit PayPal bezahlen';
+
+  @override
+  String get paypalEmailAddress => 'PayPal E-Mail-Adresse';
+
+  @override
+  String get paypalEmailHint => 'zahlungen@beispiel.com';
+
+  @override
+  String get enableBitcoin => 'Bitcoin aktivieren';
+
+  @override
+  String get bitcoinPaymentDescription =>
+      'Benutzer können mit Bitcoin bezahlen';
+
+  @override
+  String get bitcoinWalletAddress => 'Bitcoin Wallet-Adresse';
+
+  @override
+  String get bitcoinWalletHint => 'bc1q...';
 
   @override
   String get pendingPaymentsScreen => 'Ausstehende Zahlungen';
@@ -2114,4 +2250,43 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get unban => 'Entsperren';
+
+  @override
+  String get administration => 'Administration';
+
+  @override
+  String get systemUserManagement => 'System- und Benutzerverwaltung';
+
+  @override
+  String get manageCategories => 'Kategorien verwalten';
+
+  @override
+  String get createCategoriesSubcategories =>
+      'Kategorien und Subkategorien erstellen';
+
+  @override
+  String get configureSlotTypes => 'Slot-Typen und Preise konfigurieren';
+
+  @override
+  String get paypalBitcoinSlots => 'PayPal und Bitcoin für Slot-Käufe';
+
+  @override
+  String get reviewPendingOrders => 'Offene Bestellungen prüfen und bestätigen';
+
+  @override
+  String get manageUsersRoles => 'Benutzer verwalten und Rollen zuweisen';
+
+  @override
+  String featureInMilestone(String title, String milestone) {
+    return '$title wird in Meilenstein $milestone implementiert.';
+  }
+
+  @override
+  String get slots => 'Slots';
+
+  @override
+  String get payments => 'Zahlungen';
+
+  @override
+  String get users => 'Benutzer';
 }
