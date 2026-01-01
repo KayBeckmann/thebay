@@ -2092,6 +2092,89 @@ class AppLocalizationsEs extends AppLocalizations {
   String get processPayment => 'Procesar Pago';
 
   @override
+  String get checkBitcoinPayments => 'Verificar pagos Bitcoin';
+
+  @override
+  String get expireOldOrders => 'Expirar pedidos antiguos';
+
+  @override
+  String get confirmPaymentTitle => 'Confirmar pago';
+
+  @override
+  String confirmPaymentMessage(int orderId, String amount, String method) {
+    return '¿Realmente quieres confirmar el pago del pedido #$orderId?\n\nCantidad: $amount\nMétodo: $method';
+  }
+
+  @override
+  String get paymentConfirmedSlotActivated => 'Pago confirmado y slot activado';
+
+  @override
+  String bitcoinPaymentsProcessed(int count) {
+    return '$count pagos Bitcoin procesados';
+  }
+
+  @override
+  String get expireOldOrdersTitle => 'Expirar pedidos antiguos';
+
+  @override
+  String get expireOldOrdersMessage =>
+      '¿Quieres marcar todos los pedidos pendientes de más de 24 horas como expirados?';
+
+  @override
+  String get expireAction => 'Expirar';
+
+  @override
+  String ordersExpired(int count) {
+    return '$count pedidos marcados como expirados';
+  }
+
+  @override
+  String get allPaymentsProcessed => 'Todos los pagos han sido procesados';
+
+  @override
+  String orderNumber(int number) {
+    return 'Pedido #$number';
+  }
+
+  @override
+  String get user => 'Usuario';
+
+  @override
+  String get unknown => 'Desconocido';
+
+  @override
+  String get variant => 'Variante';
+
+  @override
+  String get method => 'Método';
+
+  @override
+  String get txId => 'TX-ID';
+
+  @override
+  String paymentDetailsTitle(int number) {
+    return 'Detalles de pago #$number';
+  }
+
+  @override
+  String get paypalEmail => 'Email PayPal';
+
+  @override
+  String get currency => 'Moneda';
+
+  @override
+  String get bitcoinAddress => 'Dirección Bitcoin';
+
+  @override
+  String get amountUsd => 'Cantidad (USD)';
+
+  @override
+  String get amountBtc => 'Cantidad (BTC)';
+
+  @override
+  String get memo => 'Memo';
+
+  @override
   String get markAsProcessing => 'Marcar como Procesando';
 
   @override
@@ -2204,6 +2287,50 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get confirmDeleteSlotVariant =>
       '¿Realmente quieres eliminar esta variante de slot?';
+
+  @override
+  String confirmDeleteSlotVariantWithName(String name) {
+    return '¿Realmente quieres eliminar \"$name\"?';
+  }
+
+  @override
+  String get manageSlotVariants => 'Gestionar variantes de slot';
+
+  @override
+  String get createFirstSlotVariant =>
+      'Crea la primera variante de slot con el botón +.';
+
+  @override
+  String get newSlotVariant => 'Nueva variante de slot';
+
+  @override
+  String get freeLabel => 'GRATIS';
+
+  @override
+  String get free => 'Gratis';
+
+  @override
+  String get nameHint => 'p.ej. Estándar, Premium';
+
+  @override
+  String get descriptionOptional => 'Descripción (opcional)';
+
+  @override
+  String get priceUsd => 'Precio (USD)';
+
+  @override
+  String get durationDaysLabel => 'Duración (días)';
+
+  @override
+  String get freeVariantDescription =>
+      'La variante es gratuita (para slots promocionales)';
+
+  @override
+  String get activeVariantDescription => 'La variante se puede comprar';
+
+  @override
+  String get atLeastOnePaymentMethodRequired =>
+      'Debe estar activado al menos un método de pago';
 
   @override
   String get userManagementScreen => 'Gestión de Usuarios';

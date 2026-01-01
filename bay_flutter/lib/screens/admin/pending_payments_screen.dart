@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bay_client/bay_client.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart';
 
 /// Admin screen for managing pending payments.
@@ -62,23 +63,25 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
   }
 
   Future<void> _confirmPayment(SlotOrder order) async {
+    final l10n = AppLocalizations.of(context)!;
+    final paymentMethodName = order.paymentMethod == PaymentMethod.paypal ? 'PayPal' : 'Bitcoin';
+    final amountFormatted = '\$${(order.amountCents / 100).toStringAsFixed(2)}';
+
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Zahlung bestätigen'),
+        title: Text(l10n.confirmPaymentTitle),
         content: Text(
-          'Möchten Sie die Zahlung für Bestellung #${order.id} wirklich bestätigen?\n\n'
-          'Betrag: \$${(order.amountCents / 100).toStringAsFixed(2)}\n'
-          'Methode: ${order.paymentMethod == PaymentMethod.paypal ? 'PayPal' : 'Bitcoin'}',
+          l10n.confirmPaymentMessage(order.id!, amountFormatted, paymentMethodName),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Bestätigen'),
+            child: Text(l10n.confirm),
           ),
         ],
       ),
@@ -91,20 +94,21 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Zahlung bestätigt und Slot aktiviert')),
+          SnackBar(content: Text(l10n.paymentConfirmedSlotActivated)),
         );
         _loadPendingOrders();
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }
   }
 
   Future<void> _checkBitcoinPayments() async {
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
 
     try {
@@ -112,7 +116,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('$count Bitcoin-Zahlungen verarbeitet')),
+          SnackBar(content: Text(l10n.bitcoinPaymentsProcessed(count))),
         );
         _loadPendingOrders();
       }
@@ -120,29 +124,27 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
       if (mounted) {
         setState(() => _isLoading = false);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }
   }
 
   Future<void> _expireOldOrders() async {
+    final l10n = AppLocalizations.of(context)!;
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Alte Bestellungen ablaufen lassen'),
-        content: const Text(
-          'Möchten Sie alle ausstehenden Bestellungen, die älter als 24 Stunden sind, '
-          'als abgelaufen markieren?',
-        ),
+        title: Text(l10n.expireOldOrdersTitle),
+        content: Text(l10n.expireOldOrdersMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Ablaufen lassen'),
+            child: Text(l10n.expireAction),
           ),
         ],
       ),
@@ -155,14 +157,14 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('$count Bestellungen als abgelaufen markiert')),
+          SnackBar(content: Text(l10n.ordersExpired(count))),
         );
         _loadPendingOrders();
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }
@@ -170,24 +172,26 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ausstehende Zahlungen'),
+        title: Text(l10n.pendingPaymentsScreen),
         actions: [
           IconButton(
             icon: const Icon(Icons.currency_bitcoin),
             onPressed: _checkBitcoinPayments,
-            tooltip: 'Bitcoin-Zahlungen prüfen',
+            tooltip: l10n.checkBitcoinPayments,
           ),
           IconButton(
             icon: const Icon(Icons.timer_off),
             onPressed: _expireOldOrders,
-            tooltip: 'Alte Bestellungen ablaufen lassen',
+            tooltip: l10n.expireOldOrders,
           ),
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: _loadPendingOrders,
-            tooltip: 'Aktualisieren',
+            tooltip: l10n.refresh,
           ),
         ],
       ),
@@ -201,6 +205,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
     }
 
     if (_error != null) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -208,11 +213,11 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadPendingOrders,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -220,6 +225,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
     }
 
     if (_pendingOrders.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -231,12 +237,12 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Keine ausstehenden Zahlungen',
+              l10n.noPendingPayments,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              'Alle Zahlungen wurden verarbeitet',
+              l10n.allPaymentsProcessed,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -265,6 +271,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
   }
 
   Widget _buildOrderCard(SlotOrder order) {
+    final l10n = AppLocalizations.of(context)!;
     final user = _users[order.id];
     final variant = _variants[order.id];
 
@@ -305,7 +312,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Bestellung #${order.id}',
+                              l10n.orderNumber(order.id!),
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium
@@ -353,28 +360,28 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
                   // Details
                   _buildDetailRow(
                     context,
-                    'Benutzer',
-                    user?.username ?? 'Unbekannt',
+                    l10n.user,
+                    user?.username ?? l10n.unknown,
                     Icons.person,
                   ),
                   const SizedBox(height: 8),
                   _buildDetailRow(
                     context,
-                    'Variante',
-                    variant?.name ?? 'Unbekannt',
+                    l10n.variant,
+                    variant?.name ?? l10n.unknown,
                     Icons.confirmation_number,
                   ),
                   const SizedBox(height: 8),
                   _buildDetailRow(
                     context,
-                    'Betrag',
+                    l10n.amount,
                     '\$${(order.amountCents / 100).toStringAsFixed(2)}',
                     Icons.attach_money,
                   ),
                   const SizedBox(height: 8),
                   _buildDetailRow(
                     context,
-                    'Methode',
+                    l10n.method,
                     order.paymentMethod == PaymentMethod.paypal
                         ? 'PayPal'
                         : 'Bitcoin',
@@ -388,7 +395,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
                     const SizedBox(height: 8),
                     _buildDetailRow(
                       context,
-                      'TX-ID',
+                      l10n.txId,
                       order.transactionId!,
                       Icons.tag,
                     ),
@@ -406,7 +413,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
               child: FilledButton.icon(
                 onPressed: () => _confirmPayment(order),
                 icon: const Icon(Icons.check),
-                label: const Text('Bestätigen'),
+                label: Text(l10n.confirm),
               ),
             ),
           ),
@@ -449,6 +456,8 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
   }
 
   Future<void> _showPaymentDetails(SlotOrder order) async {
+    final l10n = AppLocalizations.of(context)!;
+
     try {
       final info = await client.payment.getPaymentInfo(order.id!);
 
@@ -457,31 +466,31 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Zahlungsdetails #${order.id}'),
+          title: Text(l10n.paymentDetailsTitle(order.id!)),
           content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (order.paymentMethod == PaymentMethod.paypal) ...[
-                  _buildInfoItem('PayPal E-Mail', info['email'] ?? '-'),
-                  _buildInfoItem('Betrag', '\$${info['amount']}'),
-                  _buildInfoItem('Währung', info['currency'] ?? 'USD'),
+                  _buildInfoItem(l10n.paypalEmail, info['email'] ?? '-'),
+                  _buildInfoItem(l10n.amount, '\$${info['amount']}'),
+                  _buildInfoItem(l10n.currency, info['currency'] ?? 'USD'),
                 ] else ...[
-                  _buildInfoItem('Bitcoin-Adresse', info['address'] ?? '-'),
-                  _buildInfoItem('Betrag (USD)', '\$${info['amountUsd']}'),
+                  _buildInfoItem(l10n.bitcoinAddress, info['address'] ?? '-'),
+                  _buildInfoItem(l10n.amountUsd, '\$${info['amountUsd']}'),
                   _buildInfoItem(
-                      'Betrag (BTC)', '${info['amountBtc']} BTC'),
-                  _buildInfoItem('Memo', info['memo'] ?? '-'),
+                      l10n.amountBtc, '${info['amountBtc']} BTC'),
+                  _buildInfoItem(l10n.memo, info['memo'] ?? '-'),
                 ],
-                _buildInfoItem('Beschreibung', info['description'] ?? '-'),
+                _buildInfoItem(l10n.description, info['description'] ?? '-'),
               ],
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Schließen'),
+              child: Text(l10n.close),
             ),
           ],
         ),
@@ -489,7 +498,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.errorLoading(e.toString()))),
         );
       }
     }

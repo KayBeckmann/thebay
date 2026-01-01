@@ -2523,6 +2523,167 @@
     "description": "Process payment button"
   },
 
+  "checkBitcoinPayments": "Check Bitcoin payments",
+  "@checkBitcoinPayments": {
+    "description": "Check Bitcoin payments button"
+  },
+
+  "expireOldOrders": "Expire old orders",
+  "@expireOldOrders": {
+    "description": "Expire old orders button"
+  },
+
+  "refresh": "Refresh",
+  "@refresh": {
+    "description": "Refresh tooltip"
+  },
+
+  "confirmPaymentTitle": "Confirm payment",
+  "@confirmPaymentTitle": {
+    "description": "Confirm payment dialog title"
+  },
+
+  "confirmPaymentMessage": "Do you really want to confirm the payment for order #{orderId}?\n\nAmount: {amount}\nMethod: {method}",
+  "@confirmPaymentMessage": {
+    "description": "Confirm payment dialog message",
+    "placeholders": {
+      "orderId": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+
+  "paymentConfirmedSlotActivated": "Payment confirmed and slot activated",
+  "@paymentConfirmedSlotActivated": {
+    "description": "Payment confirmed and slot activated message"
+  },
+
+  "bitcoinPaymentsProcessed": "{count} Bitcoin payments processed",
+  "@bitcoinPaymentsProcessed": {
+    "description": "Bitcoin payments processed message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "expireOldOrdersTitle": "Expire old orders",
+  "@expireOldOrdersTitle": {
+    "description": "Expire old orders dialog title"
+  },
+
+  "expireOldOrdersMessage": "Do you want to mark all pending orders older than 24 hours as expired?",
+  "@expireOldOrdersMessage": {
+    "description": "Expire old orders dialog message"
+  },
+
+  "expireAction": "Expire",
+  "@expireAction": {
+    "description": "Expire button"
+  },
+
+  "ordersExpired": "{count} orders marked as expired",
+  "@ordersExpired": {
+    "description": "Orders marked as expired message",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "allPaymentsProcessed": "All payments have been processed",
+  "@allPaymentsProcessed": {
+    "description": "All payments processed message"
+  },
+
+  "orderNumber": "Order #{number}",
+  "@orderNumber": {
+    "description": "Order number label",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+
+  "user": "User",
+  "@user": {
+    "description": "User label"
+  },
+
+  "unknown": "Unknown",
+  "@unknown": {
+    "description": "Unknown label"
+  },
+
+  "variant": "Variant",
+  "@variant": {
+    "description": "Variant label"
+  },
+
+  "method": "Method",
+  "@method": {
+    "description": "Method label"
+  },
+
+  "txId": "TX-ID",
+  "@txId": {
+    "description": "Transaction ID label"
+  },
+
+  "paymentDetailsTitle": "Payment details #{number}",
+  "@paymentDetailsTitle": {
+    "description": "Payment details dialog title",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+
+  "paypalEmail": "PayPal email",
+  "@paypalEmail": {
+    "description": "PayPal email label"
+  },
+
+  "currency": "Currency",
+  "@currency": {
+    "description": "Currency label"
+  },
+
+  "bitcoinAddress": "Bitcoin address",
+  "@bitcoinAddress": {
+    "description": "Bitcoin address label"
+  },
+
+  "amountUsd": "Amount (USD)",
+  "@amountUsd": {
+    "description": "Amount in USD label"
+  },
+
+  "amountBtc": "Amount (BTC)",
+  "@amountBtc": {
+    "description": "Amount in BTC label"
+  },
+
+  "memo": "Memo",
+  "@memo": {
+    "description": "Memo label"
+  },
+
   "markAsProcessing": "Mark as Processing",
   "@markAsProcessing": {
     "description": "Mark as processing button"
@@ -2711,6 +2872,76 @@
   "confirmDeleteSlotVariant": "Do you really want to delete this slot variant?",
   "@confirmDeleteSlotVariant": {
     "description": "Delete slot variant confirmation"
+  },
+
+  "confirmDeleteSlotVariantWithName": "Do you really want to delete \"{name}\"?",
+  "@confirmDeleteSlotVariantWithName": {
+    "description": "Delete slot variant confirmation with name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "manageSlotVariants": "Manage slot variants",
+  "@manageSlotVariants": {
+    "description": "Manage slot variants title"
+  },
+
+  "createFirstSlotVariant": "Create the first slot variant with the + button.",
+  "@createFirstSlotVariant": {
+    "description": "Create first slot variant message"
+  },
+
+  "newSlotVariant": "New slot variant",
+  "@newSlotVariant": {
+    "description": "New slot variant dialog title"
+  },
+
+  "freeLabel": "FREE",
+  "@freeLabel": {
+    "description": "Free badge"
+  },
+
+  "free": "Free",
+  "@free": {
+    "description": "Free label"
+  },
+
+  "nameHint": "e.g. Standard, Premium",
+  "@nameHint": {
+    "description": "Name hint"
+  },
+
+  "descriptionOptional": "Description (optional)",
+  "@descriptionOptional": {
+    "description": "Description optional label"
+  },
+
+  "priceUsd": "Price (USD)",
+  "@priceUsd": {
+    "description": "Price in USD label"
+  },
+
+  "durationDaysLabel": "Duration (days)",
+  "@durationDaysLabel": {
+    "description": "Duration in days label"
+  },
+
+  "freeVariantDescription": "Variant is free (for promotion slots)",
+  "@freeVariantDescription": {
+    "description": "Free variant description"
+  },
+
+  "activeVariantDescription": "Variant can be purchased",
+  "@activeVariantDescription": {
+    "description": "Active variant description"
+  },
+
+  "atLeastOnePaymentMethodRequired": "At least one payment method must be enabled",
+  "@atLeastOnePaymentMethodRequired": {
+    "description": "At least one payment method validation"
   },
 
   "userManagementScreen": "User Management",

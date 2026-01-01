@@ -2097,6 +2097,90 @@ class AppLocalizationsDe extends AppLocalizations {
   String get processPayment => 'Zahlung bearbeiten';
 
   @override
+  String get checkBitcoinPayments => 'Bitcoin-Zahlungen prüfen';
+
+  @override
+  String get expireOldOrders => 'Alte Bestellungen ablaufen lassen';
+
+  @override
+  String get confirmPaymentTitle => 'Zahlung bestätigen';
+
+  @override
+  String confirmPaymentMessage(int orderId, String amount, String method) {
+    return 'Möchten Sie die Zahlung für Bestellung #$orderId wirklich bestätigen?\n\nBetrag: $amount\nMethode: $method';
+  }
+
+  @override
+  String get paymentConfirmedSlotActivated =>
+      'Zahlung bestätigt und Slot aktiviert';
+
+  @override
+  String bitcoinPaymentsProcessed(int count) {
+    return '$count Bitcoin-Zahlungen verarbeitet';
+  }
+
+  @override
+  String get expireOldOrdersTitle => 'Alte Bestellungen ablaufen lassen';
+
+  @override
+  String get expireOldOrdersMessage =>
+      'Möchten Sie alle ausstehenden Bestellungen, die älter als 24 Stunden sind, als abgelaufen markieren?';
+
+  @override
+  String get expireAction => 'Ablaufen lassen';
+
+  @override
+  String ordersExpired(int count) {
+    return '$count Bestellungen als abgelaufen markiert';
+  }
+
+  @override
+  String get allPaymentsProcessed => 'Alle Zahlungen wurden verarbeitet';
+
+  @override
+  String orderNumber(int number) {
+    return 'Bestellung #$number';
+  }
+
+  @override
+  String get user => 'Benutzer';
+
+  @override
+  String get unknown => 'Unbekannt';
+
+  @override
+  String get variant => 'Variante';
+
+  @override
+  String get method => 'Methode';
+
+  @override
+  String get txId => 'TX-ID';
+
+  @override
+  String paymentDetailsTitle(int number) {
+    return 'Zahlungsdetails #$number';
+  }
+
+  @override
+  String get paypalEmail => 'PayPal E-Mail';
+
+  @override
+  String get currency => 'Währung';
+
+  @override
+  String get bitcoinAddress => 'Bitcoin-Adresse';
+
+  @override
+  String get amountUsd => 'Betrag (USD)';
+
+  @override
+  String get amountBtc => 'Betrag (BTC)';
+
+  @override
+  String get memo => 'Memo';
+
+  @override
   String get markAsProcessing => 'Als in Bearbeitung markieren';
 
   @override
@@ -2210,6 +2294,50 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get confirmDeleteSlotVariant =>
       'Möchtest du diese Slot-Variante wirklich löschen?';
+
+  @override
+  String confirmDeleteSlotVariantWithName(String name) {
+    return 'Möchtest du \"$name\" wirklich löschen?';
+  }
+
+  @override
+  String get manageSlotVariants => 'Slot-Varianten verwalten';
+
+  @override
+  String get createFirstSlotVariant =>
+      'Erstelle die erste Slot-Variante mit dem + Button.';
+
+  @override
+  String get newSlotVariant => 'Neue Slot-Variante';
+
+  @override
+  String get freeLabel => 'KOSTENLOS';
+
+  @override
+  String get free => 'Kostenlos';
+
+  @override
+  String get nameHint => 'z.B. Standard, Premium';
+
+  @override
+  String get descriptionOptional => 'Beschreibung (optional)';
+
+  @override
+  String get priceUsd => 'Preis (USD)';
+
+  @override
+  String get durationDaysLabel => 'Laufzeit (Tage)';
+
+  @override
+  String get freeVariantDescription =>
+      'Variante ist gratis (für Promotion-Slots)';
+
+  @override
+  String get activeVariantDescription => 'Variante kann gekauft werden';
+
+  @override
+  String get atLeastOnePaymentMethodRequired =>
+      'Mindestens eine Zahlungsmethode muss aktiviert sein';
 
   @override
   String get userManagementScreen => 'Benutzerverwaltung';

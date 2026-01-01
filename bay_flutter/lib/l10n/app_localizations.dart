@@ -3894,6 +3894,150 @@ abstract class AppLocalizations {
   /// **'Zahlung bearbeiten'**
   String get processPayment;
 
+  /// Bitcoin-Zahlungen prüfen Tooltip
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Zahlungen prüfen'**
+  String get checkBitcoinPayments;
+
+  /// Alte Bestellungen ablaufen lassen Tooltip
+  ///
+  /// In de, this message translates to:
+  /// **'Alte Bestellungen ablaufen lassen'**
+  String get expireOldOrders;
+
+  /// Zahlung bestätigen Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung bestätigen'**
+  String get confirmPaymentTitle;
+
+  /// Zahlung bestätigen Dialog Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie die Zahlung für Bestellung #{orderId} wirklich bestätigen?\n\nBetrag: {amount}\nMethode: {method}'**
+  String confirmPaymentMessage(int orderId, String amount, String method);
+
+  /// Zahlung bestätigt Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung bestätigt und Slot aktiviert'**
+  String get paymentConfirmedSlotActivated;
+
+  /// Bitcoin-Zahlungen verarbeitet Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'{count} Bitcoin-Zahlungen verarbeitet'**
+  String bitcoinPaymentsProcessed(int count);
+
+  /// Alte Bestellungen ablaufen Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Alte Bestellungen ablaufen lassen'**
+  String get expireOldOrdersTitle;
+
+  /// Alte Bestellungen ablaufen Dialog Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie alle ausstehenden Bestellungen, die älter als 24 Stunden sind, als abgelaufen markieren?'**
+  String get expireOldOrdersMessage;
+
+  /// Ablaufen lassen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Ablaufen lassen'**
+  String get expireAction;
+
+  /// Bestellungen abgelaufen Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'{count} Bestellungen als abgelaufen markiert'**
+  String ordersExpired(int count);
+
+  /// Alle Zahlungen verarbeitet Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Alle Zahlungen wurden verarbeitet'**
+  String get allPaymentsProcessed;
+
+  /// Bestellungsnummer
+  ///
+  /// In de, this message translates to:
+  /// **'Bestellung #{number}'**
+  String orderNumber(int number);
+
+  /// Benutzer Label
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get user;
+
+  /// Unbekannt Text
+  ///
+  /// In de, this message translates to:
+  /// **'Unbekannt'**
+  String get unknown;
+
+  /// Variante Label
+  ///
+  /// In de, this message translates to:
+  /// **'Variante'**
+  String get variant;
+
+  /// Methode Label
+  ///
+  /// In de, this message translates to:
+  /// **'Methode'**
+  String get method;
+
+  /// Transaktions-ID Label
+  ///
+  /// In de, this message translates to:
+  /// **'TX-ID'**
+  String get txId;
+
+  /// Zahlungsdetails Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlungsdetails #{number}'**
+  String paymentDetailsTitle(int number);
+
+  /// PayPal E-Mail Label
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal E-Mail'**
+  String get paypalEmail;
+
+  /// Währung Label
+  ///
+  /// In de, this message translates to:
+  /// **'Währung'**
+  String get currency;
+
+  /// Bitcoin-Adresse Label
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Adresse'**
+  String get bitcoinAddress;
+
+  /// Betrag in USD Label
+  ///
+  /// In de, this message translates to:
+  /// **'Betrag (USD)'**
+  String get amountUsd;
+
+  /// Betrag in BTC Label
+  ///
+  /// In de, this message translates to:
+  /// **'Betrag (BTC)'**
+  String get amountBtc;
+
+  /// Memo Label
+  ///
+  /// In de, this message translates to:
+  /// **'Memo'**
+  String get memo;
+
   /// Als in Bearbeitung markieren Button
   ///
   /// In de, this message translates to:
@@ -4115,6 +4259,84 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Möchtest du diese Slot-Variante wirklich löschen?'**
   String get confirmDeleteSlotVariant;
+
+  /// Slot-Variante löschen Bestätigung mit Name
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du \"{name}\" wirklich löschen?'**
+  String confirmDeleteSlotVariantWithName(String name);
+
+  /// Slot-Varianten verwalten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Slot-Varianten verwalten'**
+  String get manageSlotVariants;
+
+  /// Erstelle erste Slot-Variante Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Erstelle die erste Slot-Variante mit dem + Button.'**
+  String get createFirstSlotVariant;
+
+  /// Neue Slot-Variante Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Neue Slot-Variante'**
+  String get newSlotVariant;
+
+  /// Kostenlos Badge
+  ///
+  /// In de, this message translates to:
+  /// **'KOSTENLOS'**
+  String get freeLabel;
+
+  /// Kostenlos Label
+  ///
+  /// In de, this message translates to:
+  /// **'Kostenlos'**
+  String get free;
+
+  /// Name Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'z.B. Standard, Premium'**
+  String get nameHint;
+
+  /// Beschreibung optional Label
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibung (optional)'**
+  String get descriptionOptional;
+
+  /// Preis in USD Label
+  ///
+  /// In de, this message translates to:
+  /// **'Preis (USD)'**
+  String get priceUsd;
+
+  /// Laufzeit in Tagen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Laufzeit (Tage)'**
+  String get durationDaysLabel;
+
+  /// Kostenlose Variante Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Variante ist gratis (für Promotion-Slots)'**
+  String get freeVariantDescription;
+
+  /// Aktive Variante Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Variante kann gekauft werden'**
+  String get activeVariantDescription;
+
+  /// Mindestens eine Zahlungsmethode Validierung
+  ///
+  /// In de, this message translates to:
+  /// **'Mindestens eine Zahlungsmethode muss aktiviert sein'**
+  String get atLeastOnePaymentMethodRequired;
 
   /// Benutzerverwaltung Screen Titel
   ///

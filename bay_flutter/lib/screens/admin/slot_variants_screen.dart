@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart';
 
 /// Admin screen for managing slot variants.
@@ -53,9 +54,11 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Slot-Varianten verwalten'),
+        title: Text(l10n.manageSlotVariants),
       ),
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
@@ -71,6 +74,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
     }
 
     if (_error != null) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -78,11 +82,11 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
             Icon(Icons.error_outline,
                 size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadVariants,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -90,6 +94,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
     }
 
     if (_variants.isEmpty) {
+      final l10n = AppLocalizations.of(context)!;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -99,12 +104,12 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                 color: Theme.of(context).colorScheme.onSurfaceVariant),
             const SizedBox(height: 16),
             Text(
-              'Keine Slot-Varianten',
+              l10n.noSlotVariants,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 8),
             Text(
-              'Erstelle die erste Slot-Variante mit dem + Button.',
+              l10n.createFirstSlotVariant,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -128,6 +133,8 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
   }
 
   Widget _buildVariantCard(SlotVariant variant) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: Padding(
@@ -180,11 +187,11 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: Colors.green.withOpacity(0.2),
+                      color: Colors.green.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Text(
-                      'KOSTENLOS',
+                      l10n.freeLabel,
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: Colors.green.shade700,
                             fontWeight: FontWeight.bold,
@@ -201,7 +208,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Text(
-                      'Inaktiv',
+                      l10n.inactive,
                       style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
@@ -221,7 +228,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                 _buildInfoChip(
                   context,
                   Icons.schedule,
-                  '${variant.durationDays} Tage',
+                  l10n.durationDays(variant.durationDays),
                 ),
                 const SizedBox(width: 8),
                 if (variant.allowPaypal)
@@ -239,13 +246,13 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                 TextButton.icon(
                   onPressed: () => _showVariantDialog(variant),
                   icon: const Icon(Icons.edit, size: 18),
-                  label: const Text('Bearbeiten'),
+                  label: Text(l10n.edit),
                 ),
                 const SizedBox(width: 8),
                 TextButton.icon(
                   onPressed: () => _confirmDelete(variant),
                   icon: Icon(Icons.delete, size: 18, color: Theme.of(context).colorScheme.error),
-                  label: Text('Löschen', style: TextStyle(color: Theme.of(context).colorScheme.error)),
+                  label: Text(l10n.delete, style: TextStyle(color: Theme.of(context).colorScheme.error)),
                 ),
               ],
             ),
@@ -279,6 +286,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
   }
 
   Future<void> _showVariantDialog(SlotVariant? variant) async {
+    final l10n = AppLocalizations.of(context)!;
     final isEditing = variant != null;
     final nameController = TextEditingController(text: variant?.name ?? '');
     final descriptionController =
@@ -298,24 +306,24 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: Text(isEditing ? 'Slot-Variante bearbeiten' : 'Neue Slot-Variante'),
+          title: Text(isEditing ? l10n.editSlotVariant : l10n.newSlotVariant),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(
                   controller: nameController,
-                  decoration: const InputDecoration(
-                    labelText: 'Name',
-                    hintText: 'z.B. Standard, Premium',
+                  decoration: InputDecoration(
+                    labelText: l10n.categoryName,
+                    hintText: l10n.nameHint,
                   ),
                   autofocus: true,
                 ),
                 const SizedBox(height: 16),
                 TextField(
                   controller: descriptionController,
-                  decoration: const InputDecoration(
-                    labelText: 'Beschreibung (optional)',
+                  decoration: InputDecoration(
+                    labelText: l10n.descriptionOptional,
                   ),
                   maxLines: 2,
                 ),
@@ -325,8 +333,8 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                     Expanded(
                       child: TextField(
                         controller: priceController,
-                        decoration: const InputDecoration(
-                          labelText: 'Preis (USD)',
+                        decoration: InputDecoration(
+                          labelText: l10n.priceUsd,
                           prefixText: '\$ ',
                         ),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -337,8 +345,8 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                     Expanded(
                       child: TextField(
                         controller: durationController,
-                        decoration: const InputDecoration(
-                          labelText: 'Laufzeit (Tage)',
+                        decoration: InputDecoration(
+                          labelText: l10n.durationDaysLabel,
                         ),
                         keyboardType: TextInputType.number,
                       ),
@@ -348,13 +356,13 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                 const SizedBox(height: 16),
                 TextField(
                   controller: sortOrderController,
-                  decoration: const InputDecoration(
-                    labelText: 'Sortierung',
+                  decoration: InputDecoration(
+                    labelText: l10n.sorting,
                   ),
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 16),
-                const Text('Zahlungsmethoden', style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(l10n.paymentMethods, style: const TextStyle(fontWeight: FontWeight.bold)),
                 CheckboxListTile(
                   title: const Text('PayPal'),
                   value: allowPaypal,
@@ -366,8 +374,8 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                   onChanged: (value) => setDialogState(() => allowBitcoin = value ?? true),
                 ),
                 SwitchListTile(
-                  title: const Text('Kostenlos'),
-                  subtitle: const Text('Variante ist gratis (für Promotion-Slots)'),
+                  title: Text(l10n.free),
+                  subtitle: Text(l10n.freeVariantDescription),
                   value: isFree,
                   onChanged: (value) {
                     setDialogState(() {
@@ -379,8 +387,8 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                   },
                 ),
                 SwitchListTile(
-                  title: const Text('Aktiv'),
-                  subtitle: const Text('Variante kann gekauft werden'),
+                  title: Text(l10n.active),
+                  subtitle: Text(l10n.activeVariantDescription),
                   value: isActive,
                   onChanged: (value) => setDialogState(() => isActive = value),
                 ),
@@ -390,11 +398,11 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, true),
-              child: Text(isEditing ? 'Speichern' : 'Erstellen'),
+              child: Text(isEditing ? l10n.save : l10n.create),
             ),
           ],
         ),
@@ -411,14 +419,14 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
 
       if (name.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Name darf nicht leer sein')),
+          SnackBar(content: Text(l10n.nameRequired)),
         );
         return;
       }
 
       if (!allowPaypal && !allowBitcoin) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Mindestens eine Zahlungsmethode muss aktiviert sein')),
+          SnackBar(content: Text(l10n.atLeastOnePaymentMethodRequired)),
         );
         return;
       }
@@ -453,7 +461,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler: $e')),
+            SnackBar(content: Text(l10n.errorLoading(e.toString()))),
           );
         }
       }
@@ -461,22 +469,23 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
   }
 
   Future<void> _confirmDelete(SlotVariant variant) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Slot-Variante löschen'),
-        content: Text('Möchtest du "${variant.name}" wirklich löschen?'),
+        title: Text(l10n.deleteSlotVariant),
+        content: Text(l10n.confirmDeleteSlotVariantWithName(variant.name)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -489,7 +498,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler beim Löschen: $e')),
+            SnackBar(content: Text(l10n.errorDeleting(e.toString()))),
           );
         }
       }

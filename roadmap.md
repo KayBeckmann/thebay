@@ -627,8 +627,8 @@
 - [x] payment_settings_screen.dart mit AppLocalizations aktualisieren (~16 Strings)
 
 ### 15.7b Transaktions-Management
-- [ ] pending_payments_screen.dart mit AppLocalizations aktualisieren (~26 Strings)
-- [ ] slot_variants_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
+- [x] pending_payments_screen.dart mit AppLocalizations aktualisieren (~26 Strings)
+- [x] slot_variants_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
 
 ### 15.7c Moderation & User-Management
 - [ ] moderator_panel_screen.dart mit AppLocalizations aktualisieren (~20 Strings)

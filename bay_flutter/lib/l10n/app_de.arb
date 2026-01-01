@@ -3467,6 +3467,167 @@
     "description": "Zahlung bearbeiten Button"
   },
 
+  "checkBitcoinPayments": "Bitcoin-Zahlungen prüfen",
+  "@checkBitcoinPayments": {
+    "description": "Bitcoin-Zahlungen prüfen Tooltip"
+  },
+
+  "expireOldOrders": "Alte Bestellungen ablaufen lassen",
+  "@expireOldOrders": {
+    "description": "Alte Bestellungen ablaufen lassen Tooltip"
+  },
+
+  "refresh": "Aktualisieren",
+  "@refresh": {
+    "description": "Aktualisieren Tooltip"
+  },
+
+  "confirmPaymentTitle": "Zahlung bestätigen",
+  "@confirmPaymentTitle": {
+    "description": "Zahlung bestätigen Dialog Titel"
+  },
+
+  "confirmPaymentMessage": "Möchten Sie die Zahlung für Bestellung #{orderId} wirklich bestätigen?\n\nBetrag: {amount}\nMethode: {method}",
+  "@confirmPaymentMessage": {
+    "description": "Zahlung bestätigen Dialog Nachricht",
+    "placeholders": {
+      "orderId": {
+        "type": "int"
+      },
+      "amount": {
+        "type": "String"
+      },
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+
+  "confirm": "Bestätigen",
+  "@confirm": {
+    "description": "Bestätigen Button"
+  },
+
+  "paymentConfirmedSlotActivated": "Zahlung bestätigt und Slot aktiviert",
+  "@paymentConfirmedSlotActivated": {
+    "description": "Zahlung bestätigt Nachricht"
+  },
+
+  "bitcoinPaymentsProcessed": "{count} Bitcoin-Zahlungen verarbeitet",
+  "@bitcoinPaymentsProcessed": {
+    "description": "Bitcoin-Zahlungen verarbeitet Nachricht",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "expireOldOrdersTitle": "Alte Bestellungen ablaufen lassen",
+  "@expireOldOrdersTitle": {
+    "description": "Alte Bestellungen ablaufen Dialog Titel"
+  },
+
+  "expireOldOrdersMessage": "Möchten Sie alle ausstehenden Bestellungen, die älter als 24 Stunden sind, als abgelaufen markieren?",
+  "@expireOldOrdersMessage": {
+    "description": "Alte Bestellungen ablaufen Dialog Nachricht"
+  },
+
+  "expireAction": "Ablaufen lassen",
+  "@expireAction": {
+    "description": "Ablaufen lassen Button"
+  },
+
+  "ordersExpired": "{count} Bestellungen als abgelaufen markiert",
+  "@ordersExpired": {
+    "description": "Bestellungen abgelaufen Nachricht",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "allPaymentsProcessed": "Alle Zahlungen wurden verarbeitet",
+  "@allPaymentsProcessed": {
+    "description": "Alle Zahlungen verarbeitet Nachricht"
+  },
+
+  "orderNumber": "Bestellung #{number}",
+  "@orderNumber": {
+    "description": "Bestellungsnummer",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+
+  "user": "Benutzer",
+  "@user": {
+    "description": "Benutzer Label"
+  },
+
+  "unknown": "Unbekannt",
+  "@unknown": {
+    "description": "Unbekannt Text"
+  },
+
+  "variant": "Variante",
+  "@variant": {
+    "description": "Variante Label"
+  },
+
+  "method": "Methode",
+  "@method": {
+    "description": "Methode Label"
+  },
+
+  "txId": "TX-ID",
+  "@txId": {
+    "description": "Transaktions-ID Label"
+  },
+
+  "paymentDetailsTitle": "Zahlungsdetails #{number}",
+  "@paymentDetailsTitle": {
+    "description": "Zahlungsdetails Dialog Titel",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+
+  "paypalEmail": "PayPal E-Mail",
+  "@paypalEmail": {
+    "description": "PayPal E-Mail Label"
+  },
+
+  "currency": "Währung",
+  "@currency": {
+    "description": "Währung Label"
+  },
+
+  "bitcoinAddress": "Bitcoin-Adresse",
+  "@bitcoinAddress": {
+    "description": "Bitcoin-Adresse Label"
+  },
+
+  "amountUsd": "Betrag (USD)",
+  "@amountUsd": {
+    "description": "Betrag in USD Label"
+  },
+
+  "amountBtc": "Betrag (BTC)",
+  "@amountBtc": {
+    "description": "Betrag in BTC Label"
+  },
+
+  "memo": "Memo",
+  "@memo": {
+    "description": "Memo Label"
+  },
+
   "markAsProcessing": "Als in Bearbeitung markieren",
   "@markAsProcessing": {
     "description": "Als in Bearbeitung markieren Button"
@@ -3655,6 +3816,76 @@
   "confirmDeleteSlotVariant": "Möchtest du diese Slot-Variante wirklich löschen?",
   "@confirmDeleteSlotVariant": {
     "description": "Slot-Variante löschen Bestätigung"
+  },
+
+  "confirmDeleteSlotVariantWithName": "Möchtest du \"{name}\" wirklich löschen?",
+  "@confirmDeleteSlotVariantWithName": {
+    "description": "Slot-Variante löschen Bestätigung mit Name",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+
+  "manageSlotVariants": "Slot-Varianten verwalten",
+  "@manageSlotVariants": {
+    "description": "Slot-Varianten verwalten Titel"
+  },
+
+  "createFirstSlotVariant": "Erstelle die erste Slot-Variante mit dem + Button.",
+  "@createFirstSlotVariant": {
+    "description": "Erstelle erste Slot-Variante Nachricht"
+  },
+
+  "newSlotVariant": "Neue Slot-Variante",
+  "@newSlotVariant": {
+    "description": "Neue Slot-Variante Dialog Titel"
+  },
+
+  "freeLabel": "KOSTENLOS",
+  "@freeLabel": {
+    "description": "Kostenlos Badge"
+  },
+
+  "free": "Kostenlos",
+  "@free": {
+    "description": "Kostenlos Label"
+  },
+
+  "nameHint": "z.B. Standard, Premium",
+  "@nameHint": {
+    "description": "Name Hinweis"
+  },
+
+  "descriptionOptional": "Beschreibung (optional)",
+  "@descriptionOptional": {
+    "description": "Beschreibung optional Label"
+  },
+
+  "priceUsd": "Preis (USD)",
+  "@priceUsd": {
+    "description": "Preis in USD Label"
+  },
+
+  "durationDaysLabel": "Laufzeit (Tage)",
+  "@durationDaysLabel": {
+    "description": "Laufzeit in Tagen Label"
+  },
+
+  "freeVariantDescription": "Variante ist gratis (für Promotion-Slots)",
+  "@freeVariantDescription": {
+    "description": "Kostenlose Variante Beschreibung"
+  },
+
+  "activeVariantDescription": "Variante kann gekauft werden",
+  "@activeVariantDescription": {
+    "description": "Aktive Variante Beschreibung"
+  },
+
+  "atLeastOnePaymentMethodRequired": "Mindestens eine Zahlungsmethode muss aktiviert sein",
+  "@atLeastOnePaymentMethodRequired": {
+    "description": "Mindestens eine Zahlungsmethode Validierung"
   },
 
   "userManagementScreen": "Benutzerverwaltung",
