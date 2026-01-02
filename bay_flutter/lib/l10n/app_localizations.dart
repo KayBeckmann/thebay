@@ -906,7 +906,7 @@ abstract class AppLocalizations {
   /// **'Suchen'**
   String get searchTitle;
 
-  /// Favoriten Label
+  /// Favoriten Titel
   ///
   /// In de, this message translates to:
   /// **'Favoriten'**
@@ -954,13 +954,13 @@ abstract class AppLocalizations {
   /// **'Angebote durchsuchen'**
   String get browseListings;
 
-  /// PayPal Zahlungsmethode
+  /// PayPal Label
   ///
   /// In de, this message translates to:
   /// **'PayPal'**
   String get paypal;
 
-  /// Bitcoin Zahlungsmethode
+  /// Bitcoin Label
   ///
   /// In de, this message translates to:
   /// **'Bitcoin'**
@@ -1434,11 +1434,11 @@ abstract class AppLocalizations {
   /// **'Bewerte diese Transaktion'**
   String get rateThisTransaction;
 
-  /// Bewertungsaufforderung Text
+  /// Erfahrung teilen Platzhalter
   ///
   /// In de, this message translates to:
-  /// **'Teile deine Erfahrung mit {username}'**
-  String shareYourExperience(String username);
+  /// **'Teile deine Erfahrung...'**
+  String get shareYourExperience;
 
   /// Jetzt bewerten Button
   ///
@@ -1722,7 +1722,7 @@ abstract class AppLocalizations {
   /// **'Verkäufer'**
   String get seller;
 
-  /// Du Label
+  /// Du Badge für eigenes Profil
   ///
   /// In de, this message translates to:
   /// **'Du'**
@@ -2382,11 +2382,11 @@ abstract class AppLocalizations {
   /// **'Wiederherstellen'**
   String get restore;
 
-  /// Fehler beim Laden
+  /// Fehler beim Laden Titel
   ///
   /// In de, this message translates to:
-  /// **'Fehler beim Laden: {error}'**
-  String errorLoading(String error);
+  /// **'Fehler beim Laden'**
+  String get errorLoading;
 
   /// Schlüssel wird ersetzt Warnung
   ///
@@ -2802,25 +2802,25 @@ abstract class AppLocalizations {
   /// **'Grund'**
   String get reportReason;
 
-  /// Meldegrund: Spam
+  /// Meldungsgrund: Spam
   ///
   /// In de, this message translates to:
   /// **'Spam'**
   String get reportReasonSpam;
 
-  /// Meldegrund: Unangemessen
+  /// Meldungsgrund: Unangemessener Inhalt
   ///
   /// In de, this message translates to:
   /// **'Unangemessener Inhalt'**
   String get reportReasonInappropriate;
 
-  /// Meldegrund: Scam
+  /// Meldungsgrund: Betrug/Scam
   ///
   /// In de, this message translates to:
   /// **'Betrug/Scam'**
   String get reportReasonScam;
 
-  /// Meldegrund: Belästigung
+  /// Meldungsgrund: Belästigung
   ///
   /// In de, this message translates to:
   /// **'Belästigung'**
@@ -2832,7 +2832,7 @@ abstract class AppLocalizations {
   /// **'Falsche Informationen'**
   String get reportReasonFakeInfo;
 
-  /// Meldegrund: Sonstiges
+  /// Meldungsgrund: Sonstiges
   ///
   /// In de, this message translates to:
   /// **'Sonstiges'**
@@ -4548,7 +4548,7 @@ abstract class AppLocalizations {
   /// **'ABGEWIESEN'**
   String get reportStatusDismissed;
 
-  /// Meldegrund: Betrug
+  /// Meldungsgrund: Betrügerisches Angebot
   ///
   /// In de, this message translates to:
   /// **'Betrügerisches Angebot'**
@@ -4974,6 +4974,378 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Bitcoin-Adresse kopiert!'**
   String get bitcoinAddressCopied;
+
+  /// Aus Favoriten entfernt Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'{title} aus Favoriten entfernt'**
+  String removedFromFavorites(String title);
+
+  /// Rückgängig Button
+  ///
+  /// In de, this message translates to:
+  /// **'Rückgängig'**
+  String get undo;
+
+  /// Erneut versuchen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Erneut versuchen'**
+  String get retryButton;
+
+  /// Keine Favoriten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Favoriten'**
+  String get noFavorites;
+
+  /// Keine Favoriten Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast noch keine Angebote favorisiert. Tippe auf das Herz-Symbol bei einem Angebot, um es zu deinen Favoriten hinzuzufügen.'**
+  String get noFavoritesDescription;
+
+  /// Favorit entfernen Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Favorit entfernen?'**
+  String get removeFavoriteTitle;
+
+  /// Favorit entfernen Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du \"{title}\" aus deinen Favoriten entfernen?'**
+  String removeFavoriteConfirm(String title);
+
+  /// Entfernen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Entfernen'**
+  String get remove;
+
+  /// Profil Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Profil'**
+  String get profile;
+
+  /// Benutzer melden Tooltip
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer melden'**
+  String get reportUser;
+
+  /// Benutzer nicht gefunden Fehlermeldung
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer nicht gefunden'**
+  String get userNotFound;
+
+  /// Listings Label
+  ///
+  /// In de, this message translates to:
+  /// **'Listings'**
+  String get listings;
+
+  /// Listings Tab mit Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'Listings ({count})'**
+  String listingsWithCount(int count);
+
+  /// Ratings Label
+  ///
+  /// In de, this message translates to:
+  /// **'Ratings'**
+  String get ratings;
+
+  /// Ratings Tab mit Anzahl
+  ///
+  /// In de, this message translates to:
+  /// **'Ratings ({count})'**
+  String ratingsWithCount(int count);
+
+  /// Keine aktiven Angebote
+  ///
+  /// In de, this message translates to:
+  /// **'Keine aktiven Angebote'**
+  String get noActiveListings;
+
+  /// Mitglied seit Datum
+  ///
+  /// In de, this message translates to:
+  /// **'Mitglied seit {date}'**
+  String memberSince(String date);
+
+  /// Verschlüsselung aktiv Label
+  ///
+  /// In de, this message translates to:
+  /// **'Verschlüsselung aktiv'**
+  String get encryptionActive;
+
+  /// Keine Ratings
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Ratings'**
+  String get noRatings;
+
+  /// Rating Anzahl mit Pluralisierung
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 Rating} other{{count} Ratings}}'**
+  String ratingCount(int count);
+
+  /// Nachricht senden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Nachricht senden'**
+  String get sendMessage;
+
+  /// Kein PGP-Schlüssel vorhanden Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Kein PGP-Schlüssel vorhanden'**
+  String get noPgpKeyAvailable;
+
+  /// Januar abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Jan'**
+  String get monthJan;
+
+  /// Februar abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Feb'**
+  String get monthFeb;
+
+  /// März abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Mär'**
+  String get monthMar;
+
+  /// April abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Apr'**
+  String get monthApr;
+
+  /// Mai abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Mai'**
+  String get monthMay;
+
+  /// Juni abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Jun'**
+  String get monthJun;
+
+  /// Juli abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Jul'**
+  String get monthJul;
+
+  /// August abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Aug'**
+  String get monthAug;
+
+  /// September abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Sep'**
+  String get monthSep;
+
+  /// Oktober abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Okt'**
+  String get monthOct;
+
+  /// November abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Nov'**
+  String get monthNov;
+
+  /// Dezember abgekürzt
+  ///
+  /// In de, this message translates to:
+  /// **'Dez'**
+  String get monthDec;
+
+  /// Transaktion bewerten Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion bewerten'**
+  String get rateTransaction;
+
+  /// Wie war deine Erfahrung Frage
+  ///
+  /// In de, this message translates to:
+  /// **'Wie war deine Erfahrung?'**
+  String get howWasYourExperience;
+
+  /// Gut Rating
+  ///
+  /// In de, this message translates to:
+  /// **'Gut'**
+  String get ratingGood;
+
+  /// Neutral Rating
+  ///
+  /// In de, this message translates to:
+  /// **'Neutral'**
+  String get ratingNeutral;
+
+  /// Schlecht Rating
+  ///
+  /// In de, this message translates to:
+  /// **'Schlecht'**
+  String get ratingBad;
+
+  /// Kommentar optional Label
+  ///
+  /// In de, this message translates to:
+  /// **'Kommentar (optional)'**
+  String get commentOptional;
+
+  /// Bewertung abgeben Button
+  ///
+  /// In de, this message translates to:
+  /// **'Bewertung abgeben'**
+  String get submitRating;
+
+  /// Bewertung abgegeben Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Bewertung erfolgreich abgegeben'**
+  String get ratingSubmittedSuccessfully;
+
+  /// Fehler beim Laden der Bewertungen
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Laden der Bewertungen'**
+  String get errorLoadingRatings;
+
+  /// Keine Bewertungen vorhanden Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Bewertungen'**
+  String get noRatingsYet;
+
+  /// Keine Bewertungen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Bewertungen erscheinen hier nach abgeschlossenen Transaktionen'**
+  String get noRatingsDescription;
+
+  /// Positiv Label (für Prozentangabe)
+  ///
+  /// In de, this message translates to:
+  /// **'positiv'**
+  String get positive;
+
+  /// Alle Bewertungen anzeigen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Alle {count} Bewertungen anzeigen'**
+  String showAllRatings(int count);
+
+  /// Mehr laden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Mehr laden'**
+  String get loadMore;
+
+  /// Automatische Bewertung Badge
+  ///
+  /// In de, this message translates to:
+  /// **'Auto'**
+  String get auto;
+
+  /// Bitte Grund auswählen Fehlermeldung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte wähle einen Grund aus'**
+  String get reportSelectReason;
+
+  /// Meldung erfolgreich Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Meldung erfolgreich eingereicht'**
+  String get reportSubmittedSuccessfully;
+
+  /// Meldung Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Einreichen der Meldung'**
+  String get reportSubmitError;
+
+  /// Bereits gemeldet Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast dies bereits gemeldet'**
+  String get reportAlreadyReported;
+
+  /// Eintrag nicht gefunden Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Eintrag nicht gefunden'**
+  String get reportTargetNotFound;
+
+  /// Meldungsziel: Angebot
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot'**
+  String get reportTargetListing;
+
+  /// Meldungsziel: Benutzer
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get reportTargetUser;
+
+  /// Meldungs-Dialog Titel
+  ///
+  /// In de, this message translates to:
+  /// **'{targetType} melden'**
+  String reportTitle(String targetType);
+
+  /// Du meldest Text
+  ///
+  /// In de, this message translates to:
+  /// **'Du meldest: \"{targetName}\"'**
+  String reportYouAreReporting(String targetName);
+
+  /// Grund der Meldung Label
+  ///
+  /// In de, this message translates to:
+  /// **'Grund der Meldung:'**
+  String get reportReasonLabel;
+
+  /// Zusätzliche Details Label
+  ///
+  /// In de, this message translates to:
+  /// **'Zusätzliche Details (optional)'**
+  String get reportDetailsOptional;
+
+  /// Problem beschreiben Platzhalter
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibe das Problem...'**
+  String get reportDetailsHint;
+
+  /// Melden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Melden'**
+  String get report;
 }
 
 class _AppLocalizationsDelegate

@@ -752,9 +752,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get rateThisTransaction => 'Califica esta transacción';
 
   @override
-  String shareYourExperience(String username) {
-    return 'Comparte tu experiencia con $username';
-  }
+  String get shareYourExperience => 'Comparte tu experiencia...';
 
   @override
   String get rateNow => 'Calificar ahora';
@@ -1284,9 +1282,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get restore => 'Restaurar';
 
   @override
-  String errorLoading(String error) {
-    return 'Error al cargar';
-  }
+  String get errorLoading => 'Error al cargar';
 
   @override
   String get existingKeyWillBeReplaced =>
@@ -2691,4 +2687,216 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get bitcoinAddressCopied => '¡Dirección Bitcoin copiada!';
+
+  @override
+  String removedFromFavorites(String title) {
+    return '$title eliminado de favoritos';
+  }
+
+  @override
+  String get undo => 'Deshacer';
+
+  @override
+  String get retryButton => 'Reintentar';
+
+  @override
+  String get noFavorites => 'Sin Favoritos';
+
+  @override
+  String get noFavoritesDescription =>
+      'Aún no has marcado ninguna oferta como favorita. Toca el ícono de corazón en una oferta para añadirla a tus favoritos.';
+
+  @override
+  String get removeFavoriteTitle => '¿Eliminar Favorito?';
+
+  @override
+  String removeFavoriteConfirm(String title) {
+    return '¿Quieres eliminar \"$title\" de tus favoritos?';
+  }
+
+  @override
+  String get remove => 'Eliminar';
+
+  @override
+  String get profile => 'Profil';
+
+  @override
+  String get reportUser => 'Benutzer melden';
+
+  @override
+  String get userNotFound => 'Benutzer nicht gefunden';
+
+  @override
+  String get listings => 'Listings';
+
+  @override
+  String listingsWithCount(int count) {
+    return 'Listings ($count)';
+  }
+
+  @override
+  String get ratings => 'Ratings';
+
+  @override
+  String ratingsWithCount(int count) {
+    return 'Ratings ($count)';
+  }
+
+  @override
+  String get noActiveListings => 'Keine aktiven Angebote';
+
+  @override
+  String memberSince(String date) {
+    return 'Mitglied seit $date';
+  }
+
+  @override
+  String get encryptionActive => 'Verschlüsselung aktiv';
+
+  @override
+  String get noRatings => 'Keine Ratings';
+
+  @override
+  String ratingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Ratings',
+      one: '1 Rating',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get sendMessage => 'Nachricht senden';
+
+  @override
+  String get noPgpKeyAvailable => 'Kein PGP-Schlüssel vorhanden';
+
+  @override
+  String get monthJan => 'Jan';
+
+  @override
+  String get monthFeb => 'Feb';
+
+  @override
+  String get monthMar => 'Mär';
+
+  @override
+  String get monthApr => 'Apr';
+
+  @override
+  String get monthMay => 'Mai';
+
+  @override
+  String get monthJun => 'Jun';
+
+  @override
+  String get monthJul => 'Jul';
+
+  @override
+  String get monthAug => 'Aug';
+
+  @override
+  String get monthSep => 'Sep';
+
+  @override
+  String get monthOct => 'Okt';
+
+  @override
+  String get monthNov => 'Nov';
+
+  @override
+  String get monthDec => 'Dez';
+
+  @override
+  String get rateTransaction => 'Calificar Transacción';
+
+  @override
+  String get howWasYourExperience => '¿Cómo fue tu experiencia?';
+
+  @override
+  String get ratingGood => 'Bueno';
+
+  @override
+  String get ratingNeutral => 'Neutral';
+
+  @override
+  String get ratingBad => 'Malo';
+
+  @override
+  String get commentOptional => 'Comentario (opcional)';
+
+  @override
+  String get submitRating => 'Enviar Calificación';
+
+  @override
+  String get ratingSubmittedSuccessfully => 'Calificación enviada con éxito';
+
+  @override
+  String get errorLoadingRatings => 'Error al cargar calificaciones';
+
+  @override
+  String get noRatingsYet => 'Aún no hay calificaciones';
+
+  @override
+  String get noRatingsDescription =>
+      'Las calificaciones aparecerán aquí después de transacciones completadas';
+
+  @override
+  String get positive => 'positivo';
+
+  @override
+  String showAllRatings(int count) {
+    return 'Mostrar todas las $count calificaciones';
+  }
+
+  @override
+  String get loadMore => 'Cargar más';
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get reportSelectReason => 'Por favor selecciona un motivo';
+
+  @override
+  String get reportSubmittedSuccessfully => 'Reporte enviado con éxito';
+
+  @override
+  String get reportSubmitError => 'Error al enviar el reporte';
+
+  @override
+  String get reportAlreadyReported => 'Ya has reportado esto';
+
+  @override
+  String get reportTargetNotFound => 'Entrada no encontrada';
+
+  @override
+  String get reportTargetListing => 'Oferta';
+
+  @override
+  String get reportTargetUser => 'Usuario';
+
+  @override
+  String reportTitle(String targetType) {
+    return 'Reportar $targetType';
+  }
+
+  @override
+  String reportYouAreReporting(String targetName) {
+    return 'Estás reportando: \"$targetName\"';
+  }
+
+  @override
+  String get reportReasonLabel => 'Motivo del reporte:';
+
+  @override
+  String get reportDetailsOptional => 'Detalles Adicionales (opcional)';
+
+  @override
+  String get reportDetailsHint => 'Describe el problema...';
+
+  @override
+  String get report => 'Reportar';
 }

@@ -746,9 +746,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rateThisTransaction => 'Rate this transaction';
 
   @override
-  String shareYourExperience(String username) {
-    return 'Share your experience with $username';
-  }
+  String get shareYourExperience => 'Share your experience...';
 
   @override
   String get rateNow => 'Rate now';
@@ -1276,9 +1274,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restore => 'Restore';
 
   @override
-  String errorLoading(String error) {
-    return 'Error loading';
-  }
+  String get errorLoading => 'Error loading';
 
   @override
   String get existingKeyWillBeReplaced => 'The existing key will be replaced!';
@@ -2437,7 +2433,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reportStatusDismissed => 'DISMISSED';
 
   @override
-  String get reportReasonFraud => 'Fraudulent Listing';
+  String get reportReasonFraud => 'Fraudulent Offer';
 
   @override
   String get assigned => 'Assigned';
@@ -2678,4 +2674,216 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bitcoinAddressCopied => 'Bitcoin address copied!';
+
+  @override
+  String removedFromFavorites(String title) {
+    return '$title removed from favorites';
+  }
+
+  @override
+  String get undo => 'Undo';
+
+  @override
+  String get retryButton => 'Retry';
+
+  @override
+  String get noFavorites => 'No Favorites';
+
+  @override
+  String get noFavoritesDescription =>
+      'You haven\'t favorited any listings yet. Tap the heart icon on a listing to add it to your favorites.';
+
+  @override
+  String get removeFavoriteTitle => 'Remove Favorite?';
+
+  @override
+  String removeFavoriteConfirm(String title) {
+    return 'Do you want to remove \"$title\" from your favorites?';
+  }
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get profile => 'Profil';
+
+  @override
+  String get reportUser => 'Benutzer melden';
+
+  @override
+  String get userNotFound => 'Benutzer nicht gefunden';
+
+  @override
+  String get listings => 'Listings';
+
+  @override
+  String listingsWithCount(int count) {
+    return 'Listings ($count)';
+  }
+
+  @override
+  String get ratings => 'Ratings';
+
+  @override
+  String ratingsWithCount(int count) {
+    return 'Ratings ($count)';
+  }
+
+  @override
+  String get noActiveListings => 'Keine aktiven Angebote';
+
+  @override
+  String memberSince(String date) {
+    return 'Mitglied seit $date';
+  }
+
+  @override
+  String get encryptionActive => 'Verschlüsselung aktiv';
+
+  @override
+  String get noRatings => 'Keine Ratings';
+
+  @override
+  String ratingCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Ratings',
+      one: '1 Rating',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get sendMessage => 'Nachricht senden';
+
+  @override
+  String get noPgpKeyAvailable => 'Kein PGP-Schlüssel vorhanden';
+
+  @override
+  String get monthJan => 'Jan';
+
+  @override
+  String get monthFeb => 'Feb';
+
+  @override
+  String get monthMar => 'Mär';
+
+  @override
+  String get monthApr => 'Apr';
+
+  @override
+  String get monthMay => 'Mai';
+
+  @override
+  String get monthJun => 'Jun';
+
+  @override
+  String get monthJul => 'Jul';
+
+  @override
+  String get monthAug => 'Aug';
+
+  @override
+  String get monthSep => 'Sep';
+
+  @override
+  String get monthOct => 'Okt';
+
+  @override
+  String get monthNov => 'Nov';
+
+  @override
+  String get monthDec => 'Dez';
+
+  @override
+  String get rateTransaction => 'Rate Transaction';
+
+  @override
+  String get howWasYourExperience => 'How was your experience?';
+
+  @override
+  String get ratingGood => 'Good';
+
+  @override
+  String get ratingNeutral => 'Neutral';
+
+  @override
+  String get ratingBad => 'Bad';
+
+  @override
+  String get commentOptional => 'Comment (optional)';
+
+  @override
+  String get submitRating => 'Submit Rating';
+
+  @override
+  String get ratingSubmittedSuccessfully => 'Rating submitted successfully';
+
+  @override
+  String get errorLoadingRatings => 'Error loading ratings';
+
+  @override
+  String get noRatingsYet => 'No ratings yet';
+
+  @override
+  String get noRatingsDescription =>
+      'Ratings will appear here after completed transactions';
+
+  @override
+  String get positive => 'positive';
+
+  @override
+  String showAllRatings(int count) {
+    return 'Show all $count ratings';
+  }
+
+  @override
+  String get loadMore => 'Load more';
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get reportSelectReason => 'Please select a reason';
+
+  @override
+  String get reportSubmittedSuccessfully => 'Report submitted successfully';
+
+  @override
+  String get reportSubmitError => 'Error submitting report';
+
+  @override
+  String get reportAlreadyReported => 'You have already reported this';
+
+  @override
+  String get reportTargetNotFound => 'Entry not found';
+
+  @override
+  String get reportTargetListing => 'Listing';
+
+  @override
+  String get reportTargetUser => 'User';
+
+  @override
+  String reportTitle(String targetType) {
+    return 'Report $targetType';
+  }
+
+  @override
+  String reportYouAreReporting(String targetName) {
+    return 'You are reporting: \"$targetName\"';
+  }
+
+  @override
+  String get reportReasonLabel => 'Reason for report:';
+
+  @override
+  String get reportDetailsOptional => 'Additional Details (optional)';
+
+  @override
+  String get reportDetailsHint => 'Describe the problem...';
+
+  @override
+  String get report => 'Report';
 }

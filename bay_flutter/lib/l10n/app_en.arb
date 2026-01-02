@@ -3775,5 +3775,205 @@
   "remove": "Remove",
   "@remove": {
     "description": "Remove button"
+  },
+
+  "rateTransaction": "Rate Transaction",
+  "@rateTransaction": {
+    "description": "Rate transaction dialog title"
+  },
+
+  "seller": "Seller",
+  "@seller": {
+    "description": "Seller role label"
+  },
+
+  "buyer": "Buyer",
+  "@buyer": {
+    "description": "Buyer role label"
+  },
+
+  "howWasYourExperience": "How was your experience?",
+  "@howWasYourExperience": {
+    "description": "Rating question"
+  },
+
+  "ratingGood": "Good",
+  "@ratingGood": {
+    "description": "Good rating option"
+  },
+
+  "ratingNeutral": "Neutral",
+  "@ratingNeutral": {
+    "description": "Neutral rating option"
+  },
+
+  "ratingBad": "Bad",
+  "@ratingBad": {
+    "description": "Bad rating option"
+  },
+
+  "commentOptional": "Comment (optional)",
+  "@commentOptional": {
+    "description": "Comment field label"
+  },
+
+  "shareYourExperience": "Share your experience...",
+  "@shareYourExperience": {
+    "description": "Comment placeholder text"
+  },
+
+  "submitRating": "Submit Rating",
+  "@submitRating": {
+    "description": "Submit rating button"
+  },
+
+  "ratingSubmittedSuccessfully": "Rating submitted successfully",
+  "@ratingSubmittedSuccessfully": {
+    "description": "Rating success message"
+  },
+
+  "errorLoadingRatings": "Error loading ratings",
+  "@errorLoadingRatings": {
+    "description": "Error loading ratings message"
+  },
+
+  "noRatingsYet": "No ratings yet",
+  "@noRatingsYet": {
+    "description": "No ratings title"
+  },
+
+  "noRatingsDescription": "Ratings will appear here after completed transactions",
+  "@noRatingsDescription": {
+    "description": "No ratings description"
+  },
+
+  "positive": "positive",
+  "@positive": {
+    "description": "Positive label (for percentage)"
+  },
+
+  "showAllRatings": "Show all {count} ratings",
+  "@showAllRatings": {
+    "description": "Show all ratings button",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "loadMore": "Load more",
+  "@loadMore": {
+    "description": "Load more button"
+  },
+
+  "auto": "Auto",
+  "@auto": {
+    "description": "Automatic rating badge"
+  },
+
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Report reason: Spam"
+  },
+
+  "reportReasonInappropriate": "Inappropriate Content",
+  "@reportReasonInappropriate": {
+    "description": "Report reason: Inappropriate content"
+  },
+
+  "reportReasonScam": "Scam",
+  "@reportReasonScam": {
+    "description": "Report reason: Scam"
+  },
+
+  "reportReasonFraud": "Fraudulent Offer",
+  "@reportReasonFraud": {
+    "description": "Report reason: Fraudulent offer"
+  },
+
+  "reportReasonHarassment": "Harassment",
+  "@reportReasonHarassment": {
+    "description": "Report reason: Harassment"
+  },
+
+  "reportReasonOther": "Other",
+  "@reportReasonOther": {
+    "description": "Report reason: Other"
+  },
+
+  "reportSelectReason": "Please select a reason",
+  "@reportSelectReason": {
+    "description": "Select reason error message"
+  },
+
+  "reportSubmittedSuccessfully": "Report submitted successfully",
+  "@reportSubmittedSuccessfully": {
+    "description": "Report success message"
+  },
+
+  "reportSubmitError": "Error submitting report",
+  "@reportSubmitError": {
+    "description": "Report error message"
+  },
+
+  "reportAlreadyReported": "You have already reported this",
+  "@reportAlreadyReported": {
+    "description": "Already reported error"
+  },
+
+  "reportTargetNotFound": "Entry not found",
+  "@reportTargetNotFound": {
+    "description": "Target not found error"
+  },
+
+  "reportTargetListing": "Listing",
+  "@reportTargetListing": {
+    "description": "Report target: Listing"
+  },
+
+  "reportTargetUser": "User",
+  "@reportTargetUser": {
+    "description": "Report target: User"
+  },
+
+  "reportTitle": "Report {targetType}",
+  "@reportTitle": {
+    "description": "Report dialog title",
+    "placeholders": {
+      "targetType": {
+        "type": "String"
+      }
+    }
+  },
+
+  "reportYouAreReporting": "You are reporting: \"{targetName}\"",
+  "@reportYouAreReporting": {
+    "description": "You are reporting text",
+    "placeholders": {
+      "targetName": {
+        "type": "String"
+      }
+    }
+  },
+
+  "reportReasonLabel": "Reason for report:",
+  "@reportReasonLabel": {
+    "description": "Reason label"
+  },
+
+  "reportDetailsOptional": "Additional Details (optional)",
+  "@reportDetailsOptional": {
+    "description": "Additional details label"
+  },
+
+  "reportDetailsHint": "Describe the problem...",
+  "@reportDetailsHint": {
+    "description": "Details hint text"
+  },
+
+  "report": "Report",
+  "@report": {
+    "description": "Report button"
   }
 }

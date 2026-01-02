@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bay_client/bay_client.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart' show client;
 
 /// Dialog for reporting a listing or user
@@ -31,27 +32,29 @@ class _ReportDialogState extends State<ReportDialog> {
     super.dispose();
   }
 
-  String _getReasonLabel(ReportReason reason) {
+  String _getReasonLabel(ReportReason reason, AppLocalizations l10n) {
     switch (reason) {
       case ReportReason.spam:
-        return 'Spam';
+        return l10n.reportReasonSpam;
       case ReportReason.inappropriate:
-        return 'Unangemessener Inhalt';
+        return l10n.reportReasonInappropriate;
       case ReportReason.scam:
-        return 'Betrug/Scam';
+        return l10n.reportReasonScam;
       case ReportReason.fraud:
-        return 'Betrügerisches Angebot';
+        return l10n.reportReasonFraud;
       case ReportReason.harassment:
-        return 'Belästigung';
+        return l10n.reportReasonHarassment;
       case ReportReason.other:
-        return 'Sonstiges';
+        return l10n.reportReasonOther;
     }
   }
 
   Future<void> _submitReport() async {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_selectedReason == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Bitte wähle einen Grund aus')),
+        SnackBar(content: Text(l10n.reportSelectReason)),
       );
       return;
     }
@@ -78,8 +81,10 @@ class _ReportDialogState extends State<ReportDialog> {
       if (mounted) {
         Navigator.pop(context, true); // Return true to indicate success
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Meldung erfolgreich eingereicht'),
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.reportSubmittedSuccessfully,
+            ),
             backgroundColor: Colors.green,
           ),
         );
@@ -88,11 +93,12 @@ class _ReportDialogState extends State<ReportDialog> {
       if (mounted) {
         setState(() => _isSubmitting = false);
 
-        String errorMessage = 'Fehler beim Einreichen der Meldung';
+        final l10n = AppLocalizations.of(context)!;
+        String errorMessage = l10n.reportSubmitError;
         if (e.toString().contains('already reported')) {
-          errorMessage = 'Du hast dies bereits gemeldet';
+          errorMessage = l10n.reportAlreadyReported;
         } else if (e.toString().contains('not found')) {
-          errorMessage = 'Eintrag nicht gefunden';
+          errorMessage = l10n.reportTargetNotFound;
         }
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -107,32 +113,33 @@ class _ReportDialogState extends State<ReportDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final targetTypeLabel = widget.targetType == ReportTargetType.listing
-        ? 'Angebot'
-        : 'Benutzer';
+        ? l10n.reportTargetListing
+        : l10n.reportTargetUser;
 
     return AlertDialog(
-      title: Text('$targetTypeLabel melden'),
+      title: Text(l10n.reportTitle(targetTypeLabel)),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Du meldest: "${widget.targetName}"',
+              l10n.reportYouAreReporting(widget.targetName),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 16),
             Text(
-              'Grund der Meldung:',
+              l10n.reportReasonLabel,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 8),
             ...ReportReason.values.map((reason) {
               return RadioListTile<ReportReason>(
-                title: Text(_getReasonLabel(reason)),
+                title: Text(_getReasonLabel(reason, l10n)),
                 value: reason,
                 groupValue: _selectedReason,
                 onChanged: _isSubmitting
@@ -145,10 +152,10 @@ class _ReportDialogState extends State<ReportDialog> {
             const SizedBox(height: 16),
             TextField(
               controller: _detailsController,
-              decoration: const InputDecoration(
-                labelText: 'Zusätzliche Details (optional)',
-                hintText: 'Beschreibe das Problem...',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.reportDetailsOptional,
+                hintText: l10n.reportDetailsHint,
+                border: const OutlineInputBorder(),
               ),
               maxLines: 3,
               maxLength: 500,
@@ -160,7 +167,7 @@ class _ReportDialogState extends State<ReportDialog> {
       actions: [
         TextButton(
           onPressed: _isSubmitting ? null : () => Navigator.pop(context, false),
-          child: const Text('Abbrechen'),
+          child: Text(l10n.cancel),
         ),
         FilledButton(
           onPressed: _isSubmitting ? null : _submitReport,
@@ -170,7 +177,7 @@ class _ReportDialogState extends State<ReportDialog> {
                   height: 16,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Melden'),
+              : Text(l10n.report),
         ),
       ],
     );

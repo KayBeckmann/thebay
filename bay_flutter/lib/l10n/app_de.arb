@@ -4719,5 +4719,375 @@
   "remove": "Entfernen",
   "@remove": {
     "description": "Entfernen Button"
+  },
+
+  "profile": "Profil",
+  "@profile": {
+    "description": "Profil Titel"
+  },
+
+  "reportUser": "Benutzer melden",
+  "@reportUser": {
+    "description": "Benutzer melden Tooltip"
+  },
+
+  "userNotFound": "Benutzer nicht gefunden",
+  "@userNotFound": {
+    "description": "Benutzer nicht gefunden Fehlermeldung"
+  },
+
+  "listings": "Listings",
+  "@listings": {
+    "description": "Listings Label"
+  },
+
+  "listingsWithCount": "Listings ({count})",
+  "@listingsWithCount": {
+    "description": "Listings Tab mit Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "ratings": "Ratings",
+  "@ratings": {
+    "description": "Ratings Label"
+  },
+
+  "ratingsWithCount": "Ratings ({count})",
+  "@ratingsWithCount": {
+    "description": "Ratings Tab mit Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noActiveListings": "Keine aktiven Angebote",
+  "@noActiveListings": {
+    "description": "Keine aktiven Angebote"
+  },
+
+  "you": "Du",
+  "@you": {
+    "description": "Du Badge für eigenes Profil"
+  },
+
+  "memberSince": "Mitglied seit {date}",
+  "@memberSince": {
+    "description": "Mitglied seit Datum",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "encryptionActive": "Verschlüsselung aktiv",
+  "@encryptionActive": {
+    "description": "Verschlüsselung aktiv Label"
+  },
+
+  "noRatings": "Keine Ratings",
+  "@noRatings": {
+    "description": "Keine Ratings"
+  },
+
+  "ratingCount": "{count, plural, =1{1 Rating} other{{count} Ratings}}",
+  "@ratingCount": {
+    "description": "Rating Anzahl mit Pluralisierung",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "paymentInformation": "Zahlungsinformationen",
+  "@paymentInformation": {
+    "description": "Zahlungsinformationen Titel"
+  },
+
+  "paypal": "PayPal",
+  "@paypal": {
+    "description": "PayPal Label"
+  },
+
+  "bitcoin": "Bitcoin",
+  "@bitcoin": {
+    "description": "Bitcoin Label"
+  },
+
+  "sendMessage": "Nachricht senden",
+  "@sendMessage": {
+    "description": "Nachricht senden Button"
+  },
+
+  "noPgpKeyAvailable": "Kein PGP-Schlüssel vorhanden",
+  "@noPgpKeyAvailable": {
+    "description": "Kein PGP-Schlüssel vorhanden Nachricht"
+  },
+
+  "monthJan": "Jan",
+  "@monthJan": {
+    "description": "Januar abgekürzt"
+  },
+
+  "monthFeb": "Feb",
+  "@monthFeb": {
+    "description": "Februar abgekürzt"
+  },
+
+  "monthMar": "Mär",
+  "@monthMar": {
+    "description": "März abgekürzt"
+  },
+
+  "monthApr": "Apr",
+  "@monthApr": {
+    "description": "April abgekürzt"
+  },
+
+  "monthMay": "Mai",
+  "@monthMay": {
+    "description": "Mai abgekürzt"
+  },
+
+  "monthJun": "Jun",
+  "@monthJun": {
+    "description": "Juni abgekürzt"
+  },
+
+  "monthJul": "Jul",
+  "@monthJul": {
+    "description": "Juli abgekürzt"
+  },
+
+  "monthAug": "Aug",
+  "@monthAug": {
+    "description": "August abgekürzt"
+  },
+
+  "monthSep": "Sep",
+  "@monthSep": {
+    "description": "September abgekürzt"
+  },
+
+  "monthOct": "Okt",
+  "@monthOct": {
+    "description": "Oktober abgekürzt"
+  },
+
+  "monthNov": "Nov",
+  "@monthNov": {
+    "description": "November abgekürzt"
+  },
+
+  "monthDec": "Dez",
+  "@monthDec": {
+    "description": "Dezember abgekürzt"
+  },
+
+  "rateTransaction": "Transaktion bewerten",
+  "@rateTransaction": {
+    "description": "Transaktion bewerten Titel"
+  },
+
+  "seller": "Verkäufer",
+  "@seller": {
+    "description": "Verkäufer Label"
+  },
+
+  "buyer": "Käufer",
+  "@buyer": {
+    "description": "Käufer Label"
+  },
+
+  "howWasYourExperience": "Wie war deine Erfahrung?",
+  "@howWasYourExperience": {
+    "description": "Wie war deine Erfahrung Frage"
+  },
+
+  "ratingGood": "Gut",
+  "@ratingGood": {
+    "description": "Gut Rating"
+  },
+
+  "ratingNeutral": "Neutral",
+  "@ratingNeutral": {
+    "description": "Neutral Rating"
+  },
+
+  "ratingBad": "Schlecht",
+  "@ratingBad": {
+    "description": "Schlecht Rating"
+  },
+
+  "commentOptional": "Kommentar (optional)",
+  "@commentOptional": {
+    "description": "Kommentar optional Label"
+  },
+
+  "shareYourExperience": "Teile deine Erfahrung...",
+  "@shareYourExperience": {
+    "description": "Erfahrung teilen Platzhalter"
+  },
+
+  "submitRating": "Bewertung abgeben",
+  "@submitRating": {
+    "description": "Bewertung abgeben Button"
+  },
+
+  "ratingSubmittedSuccessfully": "Bewertung erfolgreich abgegeben",
+  "@ratingSubmittedSuccessfully": {
+    "description": "Bewertung abgegeben Bestätigung"
+  },
+
+  "errorLoadingRatings": "Fehler beim Laden der Bewertungen",
+  "@errorLoadingRatings": {
+    "description": "Fehler beim Laden der Bewertungen"
+  },
+
+  "noRatingsYet": "Noch keine Bewertungen",
+  "@noRatingsYet": {
+    "description": "Keine Bewertungen vorhanden Titel"
+  },
+
+  "noRatingsDescription": "Bewertungen erscheinen hier nach abgeschlossenen Transaktionen",
+  "@noRatingsDescription": {
+    "description": "Keine Bewertungen Beschreibung"
+  },
+
+  "positive": "positiv",
+  "@positive": {
+    "description": "Positiv Label (für Prozentangabe)"
+  },
+
+  "showAllRatings": "Alle {count} Bewertungen anzeigen",
+  "@showAllRatings": {
+    "description": "Alle Bewertungen anzeigen Button",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "loadMore": "Mehr laden",
+  "@loadMore": {
+    "description": "Mehr laden Button"
+  },
+
+  "auto": "Auto",
+  "@auto": {
+    "description": "Automatische Bewertung Badge"
+  },
+
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Meldungsgrund: Spam"
+  },
+
+  "reportReasonInappropriate": "Unangemessener Inhalt",
+  "@reportReasonInappropriate": {
+    "description": "Meldungsgrund: Unangemessener Inhalt"
+  },
+
+  "reportReasonScam": "Betrug/Scam",
+  "@reportReasonScam": {
+    "description": "Meldungsgrund: Betrug/Scam"
+  },
+
+  "reportReasonFraud": "Betrügerisches Angebot",
+  "@reportReasonFraud": {
+    "description": "Meldungsgrund: Betrügerisches Angebot"
+  },
+
+  "reportReasonHarassment": "Belästigung",
+  "@reportReasonHarassment": {
+    "description": "Meldungsgrund: Belästigung"
+  },
+
+  "reportReasonOther": "Sonstiges",
+  "@reportReasonOther": {
+    "description": "Meldungsgrund: Sonstiges"
+  },
+
+  "reportSelectReason": "Bitte wähle einen Grund aus",
+  "@reportSelectReason": {
+    "description": "Bitte Grund auswählen Fehlermeldung"
+  },
+
+  "reportSubmittedSuccessfully": "Meldung erfolgreich eingereicht",
+  "@reportSubmittedSuccessfully": {
+    "description": "Meldung erfolgreich Bestätigung"
+  },
+
+  "reportSubmitError": "Fehler beim Einreichen der Meldung",
+  "@reportSubmitError": {
+    "description": "Meldung Fehler"
+  },
+
+  "reportAlreadyReported": "Du hast dies bereits gemeldet",
+  "@reportAlreadyReported": {
+    "description": "Bereits gemeldet Fehler"
+  },
+
+  "reportTargetNotFound": "Eintrag nicht gefunden",
+  "@reportTargetNotFound": {
+    "description": "Eintrag nicht gefunden Fehler"
+  },
+
+  "reportTargetListing": "Angebot",
+  "@reportTargetListing": {
+    "description": "Meldungsziel: Angebot"
+  },
+
+  "reportTargetUser": "Benutzer",
+  "@reportTargetUser": {
+    "description": "Meldungsziel: Benutzer"
+  },
+
+  "reportTitle": "{targetType} melden",
+  "@reportTitle": {
+    "description": "Meldungs-Dialog Titel",
+    "placeholders": {
+      "targetType": {
+        "type": "String"
+      }
+    }
+  },
+
+  "reportYouAreReporting": "Du meldest: \"{targetName}\"",
+  "@reportYouAreReporting": {
+    "description": "Du meldest Text",
+    "placeholders": {
+      "targetName": {
+        "type": "String"
+      }
+    }
+  },
+
+  "reportReasonLabel": "Grund der Meldung:",
+  "@reportReasonLabel": {
+    "description": "Grund der Meldung Label"
+  },
+
+  "reportDetailsOptional": "Zusätzliche Details (optional)",
+  "@reportDetailsOptional": {
+    "description": "Zusätzliche Details Label"
+  },
+
+  "reportDetailsHint": "Beschreibe das Problem...",
+  "@reportDetailsHint": {
+    "description": "Problem beschreiben Platzhalter"
+  },
+
+  "report": "Melden",
+  "@report": {
+    "description": "Melden Button"
   }
 }

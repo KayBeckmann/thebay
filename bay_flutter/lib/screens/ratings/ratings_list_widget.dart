@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 
 /// Widget zur Anzeige einer Liste von Bewertungen für einen Benutzer.
@@ -96,6 +97,8 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_isLoading) {
       return const Card(
         child: Padding(
@@ -114,10 +117,10 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
               Icon(Icons.error_outline,
                   color: Theme.of(context).colorScheme.error),
               const SizedBox(height: 8),
-              Text('Error loading ratings'),
+              Text(l10n.errorLoadingRatings),
               TextButton(
                 onPressed: _loadData,
-                child: const Text('Retry'),
+                child: Text(l10n.retryButton),
               ),
             ],
           ),
@@ -147,12 +150,12 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'No ratings yet',
+                      l10n.noRatingsYet,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Ratings will appear here after completed transactions',
+                      l10n.noRatingsDescription,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color:
                                 Theme.of(context).colorScheme.onSurfaceVariant,
@@ -171,6 +174,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
   }
 
   Widget _buildStatsCard() {
+    final l10n = AppLocalizations.of(context)!;
     final positivePercentage = _stats!.positivePercentage;
 
     return Card(
@@ -201,7 +205,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                                 ),
                       ),
                       Text(
-                        'positive',
+                        l10n.positive,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -218,7 +222,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                   ),
                   const SizedBox(width: 16),
                   Text(
-                    'No ratings yet',
+                    l10n.noRatingsYet,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
@@ -238,19 +242,19 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                   icon: Icons.thumb_up,
                   color: Colors.green,
                   count: _stats!.positiveCount,
-                  label: 'Good',
+                  label: l10n.ratingGood,
                 ),
                 _buildStatItem(
                   icon: Icons.thumbs_up_down,
                   color: Colors.orange,
                   count: _stats!.neutralCount,
-                  label: 'Neutral',
+                  label: l10n.ratingNeutral,
                 ),
                 _buildStatItem(
                   icon: Icons.thumb_down,
                   color: Colors.red,
                   count: _stats!.negativeCount,
-                  label: 'Bad',
+                  label: l10n.ratingBad,
                 ),
               ],
             ),
@@ -287,6 +291,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
   }
 
   List<Widget> _buildRatingsList() {
+    final l10n = AppLocalizations.of(context)!;
     final displayedRatings = _showAll ? _ratings : _ratings.take(widget.initialLimit).toList();
 
     return [
@@ -297,7 +302,9 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
           child: Center(
             child: TextButton(
               onPressed: () => setState(() => _showAll = true),
-              child: Text('Show all ${_stats?.totalCount ?? _ratings.length} ratings'),
+              child: Text(
+                l10n.showAllRatings(_stats?.totalCount ?? _ratings.length),
+              ),
             ),
           ),
         ),
@@ -309,7 +316,7 @@ class _RatingsListWidgetState extends State<RatingsListWidget> {
                 ? const CircularProgressIndicator()
                 : TextButton(
                     onPressed: _loadMore,
-                    child: const Text('Load more'),
+                    child: Text(l10n.loadMore),
                   ),
           ),
         ),
@@ -362,7 +369,8 @@ class _RatingCardState extends State<_RatingCard> {
 
   @override
   Widget build(BuildContext context) {
-    final ratingInfo = _getRatingInfo(widget.rating.rating);
+    final l10n = AppLocalizations.of(context)!;
+    final ratingInfo = _getRatingInfo(widget.rating.rating, l10n);
 
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
@@ -411,7 +419,7 @@ class _RatingCardState extends State<_RatingCard> {
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
-                                'Auto',
+                                l10n.auto,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall
@@ -472,23 +480,23 @@ class _RatingCardState extends State<_RatingCard> {
     );
   }
 
-  _RatingInfo _getRatingInfo(RatingValue rating) {
+  _RatingInfo _getRatingInfo(RatingValue rating, AppLocalizations l10n) {
     switch (rating) {
       case RatingValue.positive:
         return _RatingInfo(
-          label: 'Good',
+          label: l10n.ratingGood,
           icon: Icons.thumb_up,
           color: Colors.green,
         );
       case RatingValue.neutral:
         return _RatingInfo(
-          label: 'Neutral',
+          label: l10n.ratingNeutral,
           icon: Icons.thumbs_up_down,
           color: Colors.orange,
         );
       case RatingValue.negative:
         return _RatingInfo(
-          label: 'Bad',
+          label: l10n.ratingBad,
           icon: Icons.thumb_down,
           color: Colors.red,
         );

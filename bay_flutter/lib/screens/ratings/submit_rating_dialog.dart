@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 
 /// Dialog zum Abgeben einer Bewertung nach einer Transaktion.
@@ -49,8 +50,10 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return AlertDialog(
-      title: const Text('Rate Transaction'),
+      title: Text(l10n.rateTransaction),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -88,7 +91,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          widget.isBuyer ? 'Seller' : 'Buyer',
+                          widget.isBuyer ? l10n.seller : l10n.buyer,
                           style:
                               Theme.of(context).textTheme.bodySmall?.copyWith(
                                     color: Theme.of(context)
@@ -106,7 +109,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
 
             // Rating Selection
             Text(
-              'How was your experience?',
+              l10n.howWasYourExperience,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -120,7 +123,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
                   child: _RatingButton(
                     rating: RatingValue.positive,
                     icon: Icons.thumb_up,
-                    label: 'Good',
+                    label: l10n.ratingGood,
                     color: Colors.green,
                     isSelected: _selectedRating == RatingValue.positive,
                     onTap: () =>
@@ -132,7 +135,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
                   child: _RatingButton(
                     rating: RatingValue.neutral,
                     icon: Icons.thumbs_up_down,
-                    label: 'Neutral',
+                    label: l10n.ratingNeutral,
                     color: Colors.orange,
                     isSelected: _selectedRating == RatingValue.neutral,
                     onTap: () =>
@@ -144,7 +147,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
                   child: _RatingButton(
                     rating: RatingValue.negative,
                     icon: Icons.thumb_down,
-                    label: 'Bad',
+                    label: l10n.ratingBad,
                     color: Colors.red,
                     isSelected: _selectedRating == RatingValue.negative,
                     onTap: () =>
@@ -157,15 +160,15 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
 
             // Comment Field
             Text(
-              'Comment (optional)',
+              l10n.commentOptional,
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: 8),
             TextField(
               controller: _commentController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Share your experience...',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: l10n.shareYourExperience,
               ),
               maxLines: 3,
               maxLength: 500,
@@ -206,7 +209,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
       actions: [
         TextButton(
           onPressed: _isLoading ? null : () => Navigator.pop(context),
-          child: const Text('Cancel'),
+          child: Text(l10n.cancel),
         ),
         FilledButton(
           onPressed:
@@ -217,7 +220,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
                   height: 20,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Submit Rating'),
+              : Text(l10n.submitRating),
         ),
       ],
     );
@@ -243,7 +246,11 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
       if (mounted) {
         Navigator.pop(context, rating);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Rating submitted successfully')),
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.ratingSubmittedSuccessfully,
+            ),
+          ),
         );
       }
     } catch (e) {
