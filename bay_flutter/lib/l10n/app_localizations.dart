@@ -1434,11 +1434,11 @@ abstract class AppLocalizations {
   /// **'Bewerte diese Transaktion'**
   String get rateThisTransaction;
 
-  /// Erfahrung teilen Platzhalter
+  /// Bewertungsaufforderung Text
   ///
   /// In de, this message translates to:
-  /// **'Teile deine Erfahrung...'**
-  String get shareYourExperience;
+  /// **'Teile deine Erfahrung mit {username}'**
+  String shareYourExperience(String username);
 
   /// Jetzt bewerten Button
   ///
@@ -2382,11 +2382,11 @@ abstract class AppLocalizations {
   /// **'Wiederherstellen'**
   String get restore;
 
-  /// Fehler beim Laden Titel
+  /// Fehler beim Laden
   ///
   /// In de, this message translates to:
-  /// **'Fehler beim Laden'**
-  String get errorLoading;
+  /// **'Fehler beim Laden: {error}'**
+  String errorLoading(String error);
 
   /// Schlüssel wird ersetzt Warnung
   ///
@@ -5214,6 +5214,12 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Kommentar (optional)'**
   String get commentOptional;
+
+  /// Bewertungskommentar Platzhalter
+  ///
+  /// In de, this message translates to:
+  /// **'Teile deine Erfahrung...'**
+  String get ratingCommentHint;
 
   /// Bewertung abgeben Button
   ///

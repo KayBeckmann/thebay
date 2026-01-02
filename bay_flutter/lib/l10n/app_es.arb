@@ -1880,7 +1880,7 @@
   "ratingNeutral": "Neutral",
   "ratingBad": "Malo",
   "commentOptional": "Comentario (opcional)",
-  "shareYourExperience": "Comparte tu experiencia...",
+  "ratingCommentHint": "Comparte tu experiencia...",
   "submitRating": "Enviar Calificación",
   "ratingSubmittedSuccessfully": "Calificación enviada con éxito",
   "errorLoadingRatings": "Error al cargar calificaciones",

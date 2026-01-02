@@ -168,7 +168,7 @@ class _SubmitRatingDialogState extends State<_SubmitRatingDialog> {
               controller: _commentController,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
-                hintText: l10n.shareYourExperience,
+                hintText: l10n.ratingCommentHint,
               ),
               maxLines: 3,
               maxLength: 500,

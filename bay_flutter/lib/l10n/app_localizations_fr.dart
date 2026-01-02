@@ -754,7 +754,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rateThisTransaction => 'Évaluer cette transaction';
 
   @override
-  String get shareYourExperience => 'Partagez votre expérience...';
+  String shareYourExperience(String username) {
+    return 'Partagez votre expérience avec $username';
+  }
 
   @override
   String get rateNow => 'Évaluer maintenant';
@@ -1286,7 +1288,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get restore => 'Restaurer';
 
   @override
-  String get errorLoading => 'Erreur de chargement';
+  String errorLoading(String error) {
+    return 'Erreur de chargement';
+  }
 
   @override
   String get existingKeyWillBeReplaced => 'La clé existante sera remplacée !';
@@ -2843,6 +2847,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get commentOptional => 'Commentaire (facultatif)';
+
+  @override
+  String get ratingCommentHint => 'Partagez votre expérience...';
 
   @override
   String get submitRating => 'Soumettre l\'Évaluation';

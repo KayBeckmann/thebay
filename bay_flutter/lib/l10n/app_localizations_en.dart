@@ -746,7 +746,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rateThisTransaction => 'Rate this transaction';
 
   @override
-  String get shareYourExperience => 'Share your experience...';
+  String shareYourExperience(String username) {
+    return 'Share your experience with $username';
+  }
 
   @override
   String get rateNow => 'Rate now';
@@ -1274,7 +1276,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get restore => 'Restore';
 
   @override
-  String get errorLoading => 'Error loading';
+  String errorLoading(String error) {
+    return 'Error loading';
+  }
 
   @override
   String get existingKeyWillBeReplaced => 'The existing key will be replaced!';
@@ -2813,6 +2817,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commentOptional => 'Comment (optional)';
+
+  @override
+  String get ratingCommentHint => 'Share your experience...';
 
   @override
   String get submitRating => 'Submit Rating';

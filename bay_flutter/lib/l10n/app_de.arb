@@ -4681,11 +4681,6 @@
     "description": "Rückgängig Button"
   },
 
-  "errorLoading": "Fehler beim Laden",
-  "@errorLoading": {
-    "description": "Fehler beim Laden Titel"
-  },
-
   "retryButton": "Erneut versuchen",
   "@retryButton": {
     "description": "Erneut versuchen Button"
@@ -4931,9 +4926,9 @@
     "description": "Kommentar optional Label"
   },
 
-  "shareYourExperience": "Teile deine Erfahrung...",
-  "@shareYourExperience": {
-    "description": "Erfahrung teilen Platzhalter"
+  "ratingCommentHint": "Teile deine Erfahrung...",
+  "@ratingCommentHint": {
+    "description": "Bewertungskommentar Platzhalter"
   },
 
   "submitRating": "Bewertung abgeben",

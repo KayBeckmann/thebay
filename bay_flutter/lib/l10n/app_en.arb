@@ -3817,9 +3817,9 @@
     "description": "Comment field label"
   },
 
-  "shareYourExperience": "Share your experience...",
-  "@shareYourExperience": {
-    "description": "Comment placeholder text"
+  "ratingCommentHint": "Share your experience...",
+  "@ratingCommentHint": {
+    "description": "Rating comment placeholder text"
   },
 
   "submitRating": "Submit Rating",
