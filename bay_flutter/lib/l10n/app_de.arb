@@ -4659,5 +4659,65 @@
   "bitcoinAddressCopied": "Bitcoin-Adresse kopiert!",
   "@bitcoinAddressCopied": {
     "description": "Bitcoin-Adresse kopiert Bestätigung"
+  },
+
+  "favorites": "Favoriten",
+  "@favorites": {
+    "description": "Favoriten Titel"
+  },
+
+  "removedFromFavorites": "{title} aus Favoriten entfernt",
+  "@removedFromFavorites": {
+    "description": "Aus Favoriten entfernt Bestätigung",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+
+  "undo": "Rückgängig",
+  "@undo": {
+    "description": "Rückgängig Button"
+  },
+
+  "errorLoading": "Fehler beim Laden",
+  "@errorLoading": {
+    "description": "Fehler beim Laden Titel"
+  },
+
+  "retryButton": "Erneut versuchen",
+  "@retryButton": {
+    "description": "Erneut versuchen Button"
+  },
+
+  "noFavorites": "Keine Favoriten",
+  "@noFavorites": {
+    "description": "Keine Favoriten Titel"
+  },
+
+  "noFavoritesDescription": "Du hast noch keine Angebote favorisiert. Tippe auf das Herz-Symbol bei einem Angebot, um es zu deinen Favoriten hinzuzufügen.",
+  "@noFavoritesDescription": {
+    "description": "Keine Favoriten Beschreibung"
+  },
+
+  "removeFavoriteTitle": "Favorit entfernen?",
+  "@removeFavoriteTitle": {
+    "description": "Favorit entfernen Dialog Titel"
+  },
+
+  "removeFavoriteConfirm": "Möchtest du \"{title}\" aus deinen Favoriten entfernen?",
+  "@removeFavoriteConfirm": {
+    "description": "Favorit entfernen Bestätigung",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+
+  "remove": "Entfernen",
+  "@remove": {
+    "description": "Entfernen Button"
   }
 }

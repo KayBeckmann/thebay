@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart';
 import 'listings/listing_card.dart';
 import 'listings/listing_detail_screen.dart';
@@ -49,6 +50,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   }
 
   Future<void> _removeFavorite(Listing listing) async {
+    final l10n = AppLocalizations.of(context)!;
+
     try {
       await client.favorite.remove(listing.id!);
       if (mounted) {
@@ -57,9 +60,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('${listing.title} aus Favoriten entfernt'),
+            content: Text(l10n.removedFromFavorites(listing.title)),
             action: SnackBarAction(
-              label: 'Rückgängig',
+              label: l10n.undo,
               onPressed: () async {
                 try {
                   await client.favorite.add(listing.id!);
@@ -75,7 +78,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler: $e')),
+          SnackBar(content: Text(l10n.error(e.toString()))),
         );
       }
     }
@@ -92,15 +95,19 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favoriten'),
+        title: Text(l10n.favorites),
       ),
       body: _buildBody(context),
     );
   }
 
   Widget _buildBody(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -119,7 +126,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Fehler beim Laden',
+                l10n.errorLoading,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 8),
@@ -133,7 +140,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               const SizedBox(height: 16),
               FilledButton(
                 onPressed: _loadFavorites,
-                child: const Text('Erneut versuchen'),
+                child: Text(l10n.retryButton),
               ),
             ],
           ),
@@ -155,12 +162,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                'Keine Favoriten',
+                l10n.noFavorites,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 8),
               Text(
-                'Du hast noch keine Angebote favorisiert. Tippe auf das Herz-Symbol bei einem Angebot, um es zu deinen Favoriten hinzuzufügen.',
+                l10n.noFavoritesDescription,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -193,20 +200,20 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               child: const Icon(Icons.delete, color: Colors.white),
             ),
             confirmDismiss: (direction) async {
+              final l10n = AppLocalizations.of(context)!;
               return await showDialog<bool>(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const Text('Favorit entfernen?'),
-                  content: Text(
-                      'Möchtest du "${listing.title}" aus deinen Favoriten entfernen?'),
+                  title: Text(l10n.removeFavoriteTitle),
+                  content: Text(l10n.removeFavoriteConfirm(listing.title)),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context, false),
-                      child: const Text('Abbrechen'),
+                      child: Text(l10n.cancel),
                     ),
                     TextButton(
                       onPressed: () => Navigator.pop(context, true),
-                      child: const Text('Entfernen'),
+                      child: Text(l10n.remove),
                     ),
                   ],
                 ),
@@ -234,7 +241,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                         backgroundColor: Theme.of(context)
                             .colorScheme
                             .surface
-                            .withOpacity(0.9),
+                            .withValues(alpha: 0.9),
                       ),
                     ),
                   ),

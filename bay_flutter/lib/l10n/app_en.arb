@@ -3715,5 +3715,65 @@
   "bitcoinAddressCopied": "Bitcoin address copied!",
   "@bitcoinAddressCopied": {
     "description": "Bitcoin address copied confirmation"
+  },
+
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": "Favorites title"
+  },
+
+  "removedFromFavorites": "{title} removed from favorites",
+  "@removedFromFavorites": {
+    "description": "Removed from favorites confirmation",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+
+  "undo": "Undo",
+  "@undo": {
+    "description": "Undo button"
+  },
+
+  "errorLoading": "Error loading",
+  "@errorLoading": {
+    "description": "Error loading title"
+  },
+
+  "retryButton": "Retry",
+  "@retryButton": {
+    "description": "Retry button"
+  },
+
+  "noFavorites": "No Favorites",
+  "@noFavorites": {
+    "description": "No favorites title"
+  },
+
+  "noFavoritesDescription": "You haven't favorited any listings yet. Tap the heart icon on a listing to add it to your favorites.",
+  "@noFavoritesDescription": {
+    "description": "No favorites description"
+  },
+
+  "removeFavoriteTitle": "Remove Favorite?",
+  "@removeFavoriteTitle": {
+    "description": "Remove favorite dialog title"
+  },
+
+  "removeFavoriteConfirm": "Do you want to remove \"{title}\" from your favorites?",
+  "@removeFavoriteConfirm": {
+    "description": "Remove favorite confirmation",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+
+  "remove": "Remove",
+  "@remove": {
+    "description": "Remove button"
   }
 }

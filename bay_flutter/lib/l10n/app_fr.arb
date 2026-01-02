@@ -1861,5 +1861,15 @@
   "donateDescription": "Si vous aimez cette application, vous pouvez soutenir son développement avec un don :",
   "donateBitcoin": "Faire un Don Bitcoin",
   "donateCoffee": "Buy Me a Coffee",
-  "bitcoinAddressCopied": "Adresse Bitcoin copiée !"
+  "bitcoinAddressCopied": "Adresse Bitcoin copiée !",
+  "favorites": "Favoris",
+  "removedFromFavorites": "{title} retiré des favoris",
+  "undo": "Annuler",
+  "errorLoading": "Erreur de chargement",
+  "retryButton": "Réessayer",
+  "noFavorites": "Aucun Favori",
+  "noFavoritesDescription": "Vous n'avez pas encore ajouté d'annonces à vos favoris. Appuyez sur l'icône en forme de cœur sur une annonce pour l'ajouter à vos favoris.",
+  "removeFavoriteTitle": "Retirer des Favoris ?",
+  "removeFavoriteConfirm": "Voulez-vous retirer \"{title}\" de vos favoris ?",
+  "remove": "Retirer"
 }
