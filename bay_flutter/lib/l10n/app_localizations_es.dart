@@ -1482,7 +1482,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get disputes => 'Disputas';
 
   @override
-  String get allReports => 'Todos los Reportes';
+  String get allReports => 'Todos';
 
   @override
   String get openReports => 'Abiertos';
@@ -1527,7 +1527,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reportReasonInappropriate => 'Contenido Inapropiado';
 
   @override
-  String get reportReasonScam => 'Estafa/Fraude';
+  String get reportReasonScam => 'Estafa';
 
   @override
   String get reportReasonHarassment => 'Acoso';
@@ -1539,7 +1539,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reportReasonOther => 'Otro';
 
   @override
-  String get noReports => 'No hay Reportes';
+  String get noReports => 'Sin Reportes';
 
   @override
   String get noReportsMessage => 'Actualmente no hay reportes para revisar.';
@@ -1633,7 +1633,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get userDetail => 'Detalles del Usuario';
 
   @override
-  String get userId => 'ID de Usuario';
+  String userId(int id) {
+    return 'ID: $id';
+  }
 
   @override
   String get registeredAt => 'Registrado el';
@@ -1666,7 +1668,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get banUserDialog => 'Banear Usuario';
 
   @override
-  String get banReason => 'Razón del Baneo';
+  String banReason(String reason) {
+    return 'Motivo: $reason';
+  }
 
   @override
   String get selectBanReason => 'Seleccionar razón del baneo';
@@ -2409,4 +2413,69 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get users => 'Usuarios';
+
+  @override
+  String get moderatorPanelScreen => 'Panel de Moderador';
+
+  @override
+  String openReportsCount(int count) {
+    return '$count abiertos';
+  }
+
+  @override
+  String get listingReports => 'Ofertas';
+
+  @override
+  String get userReports => 'Usuarios';
+
+  @override
+  String get noReportsDescription => 'Actualmente no hay reportes';
+
+  @override
+  String get listing => 'Oferta';
+
+  @override
+  String get reportStatusOpen => 'ABIERTO';
+
+  @override
+  String get reportStatusReviewing => 'EN REVISIÓN';
+
+  @override
+  String get reportStatusResolved => 'RESUELTO';
+
+  @override
+  String get reportStatusDismissed => 'DESESTIMADO';
+
+  @override
+  String get reportReasonFraud => 'Oferta Fraudulenta';
+
+  @override
+  String get assigned => 'Asignado';
+
+  @override
+  String get justNow => 'Justo ahora';
+
+  @override
+  String minutesAgo(int minutes) {
+    return 'hace ${minutes}m';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return 'hace ${hours}h';
+  }
+
+  @override
+  String daysAgo(int days) {
+    return 'hace ${days}d';
+  }
+
+  @override
+  String get staff => 'Personal';
+
+  @override
+  String get banned => 'BLOQUEADO';
+
+  @override
+  String get noUsersFound => 'No se Encontraron Usuarios';
 }

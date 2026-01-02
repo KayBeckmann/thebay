@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 import 'user_detail_dialog.dart';
 import 'ban_user_dialog.dart';
@@ -111,16 +112,18 @@ class _UserManagementScreenState extends State<UserManagementScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Benutzerverwaltung'),
+        title: Text(l10n.userManagementScreen),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Alle', icon: Icon(Icons.people)),
-            Tab(text: 'Benutzer', icon: Icon(Icons.person)),
-            Tab(text: 'Staff', icon: Icon(Icons.admin_panel_settings)),
-            Tab(text: 'Gesperrt', icon: Icon(Icons.block)),
+          tabs: [
+            Tab(text: l10n.allUsers, icon: const Icon(Icons.people)),
+            Tab(text: l10n.users, icon: const Icon(Icons.person)),
+            Tab(text: l10n.staff, icon: const Icon(Icons.admin_panel_settings)),
+            Tab(text: l10n.bannedUsers, icon: const Icon(Icons.block)),
           ],
         ),
       ),
@@ -134,12 +137,14 @@ class _UserManagementScreenState extends State<UserManagementScreen>
   }
 
   Widget _buildSearchBar() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: TextField(
         controller: _searchController,
         decoration: InputDecoration(
-          hintText: 'Benutzer suchen...',
+          hintText: l10n.searchUsers,
           prefixIcon: const Icon(Icons.search),
           suffixIcon: _searchQuery.isNotEmpty
               ? IconButton(
@@ -158,6 +163,8 @@ class _UserManagementScreenState extends State<UserManagementScreen>
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -173,11 +180,11 @@ class _UserManagementScreenState extends State<UserManagementScreen>
               color: Theme.of(context).colorScheme.error,
             ),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadData,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -196,7 +203,7 @@ class _UserManagementScreenState extends State<UserManagementScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'Keine Benutzer gefunden',
+              l10n.noUsersFound,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ],
@@ -218,6 +225,7 @@ class _UserManagementScreenState extends State<UserManagementScreen>
   }
 
   Widget _buildUserCard(User user) {
+    final l10n = AppLocalizations.of(context)!;
     final roleColor = _getRoleColor(user.role);
     final roleText = _getRoleText(user.role);
 
@@ -240,7 +248,7 @@ class _UserManagementScreenState extends State<UserManagementScreen>
             children: [
               CircleAvatar(
                 radius: 24,
-                backgroundColor: roleColor.withOpacity(0.2),
+                backgroundColor: roleColor.withValues(alpha: 0.2),
                 child: Text(
                   user.username.substring(0, 1).toUpperCase(),
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -271,11 +279,11 @@ class _UserManagementScreenState extends State<UserManagementScreen>
                               vertical: 2,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.red.withOpacity(0.2),
+                              color: Colors.red.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
-                              'GESPERRT',
+                              l10n.banned,
                               style: Theme.of(context)
                                   .textTheme
                                   .labelSmall
@@ -296,7 +304,7 @@ class _UserManagementScreenState extends State<UserManagementScreen>
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color: roleColor.withOpacity(0.2),
+                            color: roleColor.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
@@ -312,7 +320,7 @@ class _UserManagementScreenState extends State<UserManagementScreen>
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'ID: ${user.id}',
+                          l10n.userId(user.id!),
                           style:
                               Theme.of(context).textTheme.bodySmall?.copyWith(
                                     color: Theme.of(context)
@@ -325,7 +333,7 @@ class _UserManagementScreenState extends State<UserManagementScreen>
                     if (user.isBanned && user.bannedReason != null) ...[
                       const SizedBox(height: 4),
                       Text(
-                        'Grund: ${user.bannedReason}',
+                        l10n.banReason(user.bannedReason!),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.red.shade700,
                             ),
@@ -356,13 +364,14 @@ class _UserManagementScreenState extends State<UserManagementScreen>
   }
 
   String _getRoleText(UserRole role) {
+    final l10n = AppLocalizations.of(context)!;
     switch (role) {
       case UserRole.admin:
-        return 'Administrator';
+        return l10n.roleAdmin;
       case UserRole.moderator:
-        return 'Moderator';
+        return l10n.roleModerator;
       case UserRole.user:
-        return 'Benutzer';
+        return l10n.roleUser;
     }
   }
 }

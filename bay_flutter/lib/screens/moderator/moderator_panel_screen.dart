@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 import 'report_detail_screen.dart';
 
@@ -89,11 +90,13 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
-            const Text('Moderator Panel'),
+            Text(l10n.moderatorPanelScreen),
             if (_openCount > 0) ...[
               const SizedBox(width: 8),
               Container(
@@ -103,7 +106,7 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  '$_openCount offen',
+                  l10n.openReportsCount(_openCount),
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         color: Theme.of(context).colorScheme.onErrorContainer,
                       ),
@@ -114,10 +117,10 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
         ),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Alle', icon: Icon(Icons.list)),
-            Tab(text: 'Angebote', icon: Icon(Icons.inventory_2)),
-            Tab(text: 'Benutzer', icon: Icon(Icons.person)),
+          tabs: [
+            Tab(text: l10n.allReports, icon: const Icon(Icons.list)),
+            Tab(text: l10n.listingReports, icon: const Icon(Icons.inventory_2)),
+            Tab(text: l10n.userReports, icon: const Icon(Icons.person)),
           ],
         ),
       ),
@@ -126,6 +129,8 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -141,11 +146,11 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
               color: Theme.of(context).colorScheme.error,
             ),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadData,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -164,12 +169,12 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'Keine Meldungen',
+              l10n.noReports,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
             Text(
-              'Es gibt derzeit keine Meldungen',
+              l10n.noReportsDescription,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -193,11 +198,12 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
   }
 
   Widget _buildReportCard(Report report) {
+    final l10n = AppLocalizations.of(context)!;
     final statusColor = _getStatusColor(report.status);
     final reasonText = _getReasonText(report.reason);
     final targetTypeText = report.targetType == ReportTargetType.listing
-        ? 'Angebot'
-        : 'Benutzer';
+        ? l10n.listing
+        : l10n.user;
 
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -227,7 +233,7 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
-                      color: statusColor.withOpacity(0.2),
+                      color: statusColor.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
@@ -312,7 +318,7 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'Zugewiesen',
+                      l10n.assigned,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color:
                                 Theme.of(context).colorScheme.onSurfaceVariant,
@@ -342,47 +348,50 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
   }
 
   String _getStatusText(ReportStatus status) {
+    final l10n = AppLocalizations.of(context)!;
     switch (status) {
       case ReportStatus.open:
-        return 'OFFEN';
+        return l10n.reportStatusOpen;
       case ReportStatus.reviewing:
-        return 'IN PRÜFUNG';
+        return l10n.reportStatusReviewing;
       case ReportStatus.resolved:
-        return 'GELÖST';
+        return l10n.reportStatusResolved;
       case ReportStatus.dismissed:
-        return 'ABGEWIESEN';
+        return l10n.reportStatusDismissed;
     }
   }
 
   String _getReasonText(ReportReason reason) {
+    final l10n = AppLocalizations.of(context)!;
     switch (reason) {
       case ReportReason.spam:
-        return 'Spam';
+        return l10n.reportReasonSpam;
       case ReportReason.inappropriate:
-        return 'Unangemessener Inhalt';
+        return l10n.reportReasonInappropriate;
       case ReportReason.scam:
-        return 'Betrug/Scam';
+        return l10n.reportReasonScam;
       case ReportReason.fraud:
-        return 'Betrügerisches Angebot';
+        return l10n.reportReasonFraud;
       case ReportReason.harassment:
-        return 'Belästigung';
+        return l10n.reportReasonHarassment;
       case ReportReason.other:
-        return 'Sonstiges';
+        return l10n.reportReasonOther;
     }
   }
 
   String _formatDate(DateTime date) {
+    final l10n = AppLocalizations.of(context)!;
     final now = DateTime.now();
     final difference = now.difference(date);
 
     if (difference.inMinutes < 1) {
-      return 'Gerade eben';
+      return l10n.justNow;
     } else if (difference.inHours < 1) {
-      return 'vor ${difference.inMinutes}m';
+      return l10n.minutesAgo(difference.inMinutes);
     } else if (difference.inDays < 1) {
-      return 'vor ${difference.inHours}h';
+      return l10n.hoursAgo(difference.inHours);
     } else if (difference.inDays < 7) {
-      return 'vor ${difference.inDays}d';
+      return l10n.daysAgo(difference.inDays);
     } else {
       final day = date.day.toString().padLeft(2, '0');
       final month = date.month.toString().padLeft(2, '0');

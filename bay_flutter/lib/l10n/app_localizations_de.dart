@@ -1486,7 +1486,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get disputes => 'Streitfälle';
 
   @override
-  String get allReports => 'Alle Meldungen';
+  String get allReports => 'Alle';
 
   @override
   String get openReports => 'Offen';
@@ -1637,7 +1637,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get userDetail => 'Benutzerdetails';
 
   @override
-  String get userId => 'Benutzer-ID';
+  String userId(int id) {
+    return 'ID: $id';
+  }
 
   @override
   String get registeredAt => 'Registriert am';
@@ -1670,7 +1672,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get banUserDialog => 'Benutzer sperren';
 
   @override
-  String get banReason => 'Sperrgrund';
+  String banReason(String reason) {
+    return 'Grund: $reason';
+  }
 
   @override
   String get selectBanReason => 'Sperrgrund wählen';
@@ -2417,4 +2421,69 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get users => 'Benutzer';
+
+  @override
+  String get moderatorPanelScreen => 'Moderator Panel';
+
+  @override
+  String openReportsCount(int count) {
+    return '$count offen';
+  }
+
+  @override
+  String get listingReports => 'Angebote';
+
+  @override
+  String get userReports => 'Benutzer';
+
+  @override
+  String get noReportsDescription => 'Es gibt derzeit keine Meldungen';
+
+  @override
+  String get listing => 'Angebot';
+
+  @override
+  String get reportStatusOpen => 'OFFEN';
+
+  @override
+  String get reportStatusReviewing => 'IN PRÜFUNG';
+
+  @override
+  String get reportStatusResolved => 'GELÖST';
+
+  @override
+  String get reportStatusDismissed => 'ABGEWIESEN';
+
+  @override
+  String get reportReasonFraud => 'Betrügerisches Angebot';
+
+  @override
+  String get assigned => 'Zugewiesen';
+
+  @override
+  String get justNow => 'Gerade eben';
+
+  @override
+  String minutesAgo(int minutes) {
+    return 'vor ${minutes}m';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return 'vor ${hours}h';
+  }
+
+  @override
+  String daysAgo(int days) {
+    return 'vor ${days}d';
+  }
+
+  @override
+  String get staff => 'Staff';
+
+  @override
+  String get banned => 'GESPERRT';
+
+  @override
+  String get noUsersFound => 'Keine Benutzer gefunden';
 }

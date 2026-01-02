@@ -4019,5 +4019,190 @@
   "users": "Benutzer",
   "@users": {
     "description": "Benutzer Abschnittstitel"
+  },
+
+  "moderatorPanelScreen": "Moderator Panel",
+  "@moderatorPanelScreen": {
+    "description": "Moderator Panel Screen Titel"
+  },
+
+  "openReportsCount": "{count} offen",
+  "@openReportsCount": {
+    "description": "Anzahl offener Meldungen",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "allReports": "Alle",
+  "@allReports": {
+    "description": "Alle Meldungen Tab"
+  },
+
+  "listingReports": "Angebote",
+  "@listingReports": {
+    "description": "Angebots-Meldungen Tab"
+  },
+
+  "userReports": "Benutzer",
+  "@userReports": {
+    "description": "Benutzer-Meldungen Tab"
+  },
+
+  "noReports": "Keine Meldungen",
+  "@noReports": {
+    "description": "Keine Meldungen Titel"
+  },
+
+  "noReportsDescription": "Es gibt derzeit keine Meldungen",
+  "@noReportsDescription": {
+    "description": "Keine Meldungen Beschreibung"
+  },
+
+  "listing": "Angebot",
+  "@listing": {
+    "description": "Angebot Label"
+  },
+
+  "reportStatusOpen": "OFFEN",
+  "@reportStatusOpen": {
+    "description": "Meldung Status: Offen"
+  },
+
+  "reportStatusReviewing": "IN PRÜFUNG",
+  "@reportStatusReviewing": {
+    "description": "Meldung Status: In Prüfung"
+  },
+
+  "reportStatusResolved": "GELÖST",
+  "@reportStatusResolved": {
+    "description": "Meldung Status: Gelöst"
+  },
+
+  "reportStatusDismissed": "ABGEWIESEN",
+  "@reportStatusDismissed": {
+    "description": "Meldung Status: Abgewiesen"
+  },
+
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Meldegrund: Spam"
+  },
+
+  "reportReasonInappropriate": "Unangemessener Inhalt",
+  "@reportReasonInappropriate": {
+    "description": "Meldegrund: Unangemessen"
+  },
+
+  "reportReasonScam": "Betrug/Scam",
+  "@reportReasonScam": {
+    "description": "Meldegrund: Scam"
+  },
+
+  "reportReasonFraud": "Betrügerisches Angebot",
+  "@reportReasonFraud": {
+    "description": "Meldegrund: Betrug"
+  },
+
+  "reportReasonHarassment": "Belästigung",
+  "@reportReasonHarassment": {
+    "description": "Meldegrund: Belästigung"
+  },
+
+  "reportReasonOther": "Sonstiges",
+  "@reportReasonOther": {
+    "description": "Meldegrund: Sonstiges"
+  },
+
+  "assigned": "Zugewiesen",
+  "@assigned": {
+    "description": "Zugewiesen Label"
+  },
+
+  "justNow": "Gerade eben",
+  "@justNow": {
+    "description": "Gerade eben Zeitformat"
+  },
+
+  "minutesAgo": "vor {minutes}m",
+  "@minutesAgo": {
+    "description": "Vor X Minuten",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+
+  "hoursAgo": "vor {hours}h",
+  "@hoursAgo": {
+    "description": "Vor X Stunden",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+
+  "daysAgo": "vor {days}d",
+  "@daysAgo": {
+    "description": "Vor X Tagen",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+
+  "staff": "Staff",
+  "@staff": {
+    "description": "Staff Tab"
+  },
+
+  "banned": "GESPERRT",
+  "@banned": {
+    "description": "Gesperrt Badge"
+  },
+
+  "noUsersFound": "Keine Benutzer gefunden",
+  "@noUsersFound": {
+    "description": "Keine Benutzer gefunden"
+  },
+
+  "banReason": "Grund: {reason}",
+  "@banReason": {
+    "description": "Sperrgrund",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+
+  "roleAdmin": "Administrator",
+  "@roleAdmin": {
+    "description": "Administrator Rolle"
+  },
+
+  "roleModerator": "Moderator",
+  "@roleModerator": {
+    "description": "Moderator Rolle"
+  },
+
+  "roleUser": "Benutzer",
+  "@roleUser": {
+    "description": "Benutzer Rolle"
+  },
+
+  "userId": "ID: {id}",
+  "@userId": {
+    "description": "Benutzer ID",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
   }
 }

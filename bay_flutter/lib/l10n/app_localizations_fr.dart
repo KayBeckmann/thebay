@@ -1485,7 +1485,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get disputes => 'Litiges';
 
   @override
-  String get allReports => 'Tous les Signalements';
+  String get allReports => 'Tous';
 
   @override
   String get openReports => 'Ouverts';
@@ -1530,7 +1530,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get reportReasonInappropriate => 'Contenu Inapproprié';
 
   @override
-  String get reportReasonScam => 'Arnaque/Fraude';
+  String get reportReasonScam => 'Arnaque';
 
   @override
   String get reportReasonHarassment => 'Harcèlement';
@@ -1637,7 +1637,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get userDetail => 'Détails de l\'Utilisateur';
 
   @override
-  String get userId => 'ID de l\'Utilisateur';
+  String userId(int id) {
+    return 'ID : $id';
+  }
 
   @override
   String get registeredAt => 'Inscrit le';
@@ -1670,7 +1672,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get banUserDialog => 'Bannir l\'Utilisateur';
 
   @override
-  String get banReason => 'Raison du Bannissement';
+  String banReason(String reason) {
+    return 'Raison : $reason';
+  }
 
   @override
   String get selectBanReason => 'Sélectionner la raison du bannissement';
@@ -2424,4 +2428,69 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get users => 'Utilisateurs';
+
+  @override
+  String get moderatorPanelScreen => 'Panneau de Modérateur';
+
+  @override
+  String openReportsCount(int count) {
+    return '$count ouverts';
+  }
+
+  @override
+  String get listingReports => 'Annonces';
+
+  @override
+  String get userReports => 'Utilisateurs';
+
+  @override
+  String get noReportsDescription => 'Il n\'y a actuellement aucun signalement';
+
+  @override
+  String get listing => 'Annonce';
+
+  @override
+  String get reportStatusOpen => 'OUVERT';
+
+  @override
+  String get reportStatusReviewing => 'EN EXAMEN';
+
+  @override
+  String get reportStatusResolved => 'RÉSOLU';
+
+  @override
+  String get reportStatusDismissed => 'REJETÉ';
+
+  @override
+  String get reportReasonFraud => 'Annonce Frauduleuse';
+
+  @override
+  String get assigned => 'Assigné';
+
+  @override
+  String get justNow => 'À l\'instant';
+
+  @override
+  String minutesAgo(int minutes) {
+    return 'il y a ${minutes}m';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return 'il y a ${hours}h';
+  }
+
+  @override
+  String daysAgo(int days) {
+    return 'il y a ${days}j';
+  }
+
+  @override
+  String get staff => 'Personnel';
+
+  @override
+  String get banned => 'BANNI';
+
+  @override
+  String get noUsersFound => 'Aucun Utilisateur Trouvé';
 }

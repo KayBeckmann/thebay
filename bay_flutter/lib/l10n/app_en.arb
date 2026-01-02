@@ -3075,5 +3075,190 @@
   "users": "Users",
   "@users": {
     "description": "Users section title"
+  },
+
+  "moderatorPanelScreen": "Moderator Panel",
+  "@moderatorPanelScreen": {
+    "description": "Moderator panel screen title"
+  },
+
+  "openReportsCount": "{count} open",
+  "@openReportsCount": {
+    "description": "Number of open reports",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "allReports": "All",
+  "@allReports": {
+    "description": "All reports tab"
+  },
+
+  "listingReports": "Listings",
+  "@listingReports": {
+    "description": "Listing reports tab"
+  },
+
+  "userReports": "Users",
+  "@userReports": {
+    "description": "User reports tab"
+  },
+
+  "noReports": "No Reports",
+  "@noReports": {
+    "description": "No reports title"
+  },
+
+  "noReportsDescription": "There are currently no reports",
+  "@noReportsDescription": {
+    "description": "No reports description"
+  },
+
+  "listing": "Listing",
+  "@listing": {
+    "description": "Listing label"
+  },
+
+  "reportStatusOpen": "OPEN",
+  "@reportStatusOpen": {
+    "description": "Report status: Open"
+  },
+
+  "reportStatusReviewing": "REVIEWING",
+  "@reportStatusReviewing": {
+    "description": "Report status: Reviewing"
+  },
+
+  "reportStatusResolved": "RESOLVED",
+  "@reportStatusResolved": {
+    "description": "Report status: Resolved"
+  },
+
+  "reportStatusDismissed": "DISMISSED",
+  "@reportStatusDismissed": {
+    "description": "Report status: Dismissed"
+  },
+
+  "reportReasonSpam": "Spam",
+  "@reportReasonSpam": {
+    "description": "Report reason: Spam"
+  },
+
+  "reportReasonInappropriate": "Inappropriate Content",
+  "@reportReasonInappropriate": {
+    "description": "Report reason: Inappropriate"
+  },
+
+  "reportReasonScam": "Scam",
+  "@reportReasonScam": {
+    "description": "Report reason: Scam"
+  },
+
+  "reportReasonFraud": "Fraudulent Listing",
+  "@reportReasonFraud": {
+    "description": "Report reason: Fraud"
+  },
+
+  "reportReasonHarassment": "Harassment",
+  "@reportReasonHarassment": {
+    "description": "Report reason: Harassment"
+  },
+
+  "reportReasonOther": "Other",
+  "@reportReasonOther": {
+    "description": "Report reason: Other"
+  },
+
+  "assigned": "Assigned",
+  "@assigned": {
+    "description": "Assigned label"
+  },
+
+  "justNow": "Just now",
+  "@justNow": {
+    "description": "Just now time format"
+  },
+
+  "minutesAgo": "{minutes}m ago",
+  "@minutesAgo": {
+    "description": "X minutes ago",
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+
+  "hoursAgo": "{hours}h ago",
+  "@hoursAgo": {
+    "description": "X hours ago",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+
+  "daysAgo": "{days}d ago",
+  "@daysAgo": {
+    "description": "X days ago",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+
+  "staff": "Staff",
+  "@staff": {
+    "description": "Staff tab"
+  },
+
+  "banned": "BANNED",
+  "@banned": {
+    "description": "Banned badge"
+  },
+
+  "noUsersFound": "No Users Found",
+  "@noUsersFound": {
+    "description": "No users found"
+  },
+
+  "banReason": "Reason: {reason}",
+  "@banReason": {
+    "description": "Ban reason",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+
+  "roleAdmin": "Administrator",
+  "@roleAdmin": {
+    "description": "Administrator role"
+  },
+
+  "roleModerator": "Moderator",
+  "@roleModerator": {
+    "description": "Moderator role"
+  },
+
+  "roleUser": "User",
+  "@roleUser": {
+    "description": "User role"
+  },
+
+  "userId": "ID: {id}",
+  "@userId": {
+    "description": "User ID",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
   }
 }

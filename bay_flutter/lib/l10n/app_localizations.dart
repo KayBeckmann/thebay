@@ -2727,7 +2727,7 @@ abstract class AppLocalizations {
   /// Alle Meldungen Tab
   ///
   /// In de, this message translates to:
-  /// **'Alle Meldungen'**
+  /// **'Alle'**
   String get allReports;
 
   /// Offene Meldungen Tab
@@ -2802,25 +2802,25 @@ abstract class AppLocalizations {
   /// **'Grund'**
   String get reportReason;
 
-  /// Meldegrund Spam
+  /// Meldegrund: Spam
   ///
   /// In de, this message translates to:
   /// **'Spam'**
   String get reportReasonSpam;
 
-  /// Meldegrund Unangemessener Inhalt
+  /// Meldegrund: Unangemessen
   ///
   /// In de, this message translates to:
   /// **'Unangemessener Inhalt'**
   String get reportReasonInappropriate;
 
-  /// Meldegrund Betrug
+  /// Meldegrund: Scam
   ///
   /// In de, this message translates to:
   /// **'Betrug/Scam'**
   String get reportReasonScam;
 
-  /// Meldegrund Belästigung
+  /// Meldegrund: Belästigung
   ///
   /// In de, this message translates to:
   /// **'Belästigung'**
@@ -2832,7 +2832,7 @@ abstract class AppLocalizations {
   /// **'Falsche Informationen'**
   String get reportReasonFakeInfo;
 
-  /// Meldegrund Sonstiges
+  /// Meldegrund: Sonstiges
   ///
   /// In de, this message translates to:
   /// **'Sonstiges'**
@@ -3024,11 +3024,11 @@ abstract class AppLocalizations {
   /// **'Benutzerdetails'**
   String get userDetail;
 
-  /// Benutzer-ID Label
+  /// Benutzer ID
   ///
   /// In de, this message translates to:
-  /// **'Benutzer-ID'**
-  String get userId;
+  /// **'ID: {id}'**
+  String userId(int id);
 
   /// Registriert am Label
   ///
@@ -3090,11 +3090,11 @@ abstract class AppLocalizations {
   /// **'Benutzer sperren'**
   String get banUserDialog;
 
-  /// Sperrgrund Label
+  /// Sperrgrund
   ///
   /// In de, this message translates to:
-  /// **'Sperrgrund'**
-  String get banReason;
+  /// **'Grund: {reason}'**
+  String banReason(String reason);
 
   /// Sperrgrund wählen Label
   ///
@@ -4487,6 +4487,120 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Benutzer'**
   String get users;
+
+  /// Moderator Panel Screen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Moderator Panel'**
+  String get moderatorPanelScreen;
+
+  /// Anzahl offener Meldungen
+  ///
+  /// In de, this message translates to:
+  /// **'{count} offen'**
+  String openReportsCount(int count);
+
+  /// Angebots-Meldungen Tab
+  ///
+  /// In de, this message translates to:
+  /// **'Angebote'**
+  String get listingReports;
+
+  /// Benutzer-Meldungen Tab
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer'**
+  String get userReports;
+
+  /// Keine Meldungen Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Es gibt derzeit keine Meldungen'**
+  String get noReportsDescription;
+
+  /// Angebot Label
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot'**
+  String get listing;
+
+  /// Meldung Status: Offen
+  ///
+  /// In de, this message translates to:
+  /// **'OFFEN'**
+  String get reportStatusOpen;
+
+  /// Meldung Status: In Prüfung
+  ///
+  /// In de, this message translates to:
+  /// **'IN PRÜFUNG'**
+  String get reportStatusReviewing;
+
+  /// Meldung Status: Gelöst
+  ///
+  /// In de, this message translates to:
+  /// **'GELÖST'**
+  String get reportStatusResolved;
+
+  /// Meldung Status: Abgewiesen
+  ///
+  /// In de, this message translates to:
+  /// **'ABGEWIESEN'**
+  String get reportStatusDismissed;
+
+  /// Meldegrund: Betrug
+  ///
+  /// In de, this message translates to:
+  /// **'Betrügerisches Angebot'**
+  String get reportReasonFraud;
+
+  /// Zugewiesen Label
+  ///
+  /// In de, this message translates to:
+  /// **'Zugewiesen'**
+  String get assigned;
+
+  /// Gerade eben Zeitformat
+  ///
+  /// In de, this message translates to:
+  /// **'Gerade eben'**
+  String get justNow;
+
+  /// Vor X Minuten
+  ///
+  /// In de, this message translates to:
+  /// **'vor {minutes}m'**
+  String minutesAgo(int minutes);
+
+  /// Vor X Stunden
+  ///
+  /// In de, this message translates to:
+  /// **'vor {hours}h'**
+  String hoursAgo(int hours);
+
+  /// Vor X Tagen
+  ///
+  /// In de, this message translates to:
+  /// **'vor {days}d'**
+  String daysAgo(int days);
+
+  /// Staff Tab
+  ///
+  /// In de, this message translates to:
+  /// **'Staff'**
+  String get staff;
+
+  /// Gesperrt Badge
+  ///
+  /// In de, this message translates to:
+  /// **'GESPERRT'**
+  String get banned;
+
+  /// Keine Benutzer gefunden
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Benutzer gefunden'**
+  String get noUsersFound;
 }
 
 class _AppLocalizationsDelegate

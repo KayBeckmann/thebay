@@ -1469,7 +1469,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get disputes => 'Disputes';
 
   @override
-  String get allReports => 'All Reports';
+  String get allReports => 'All';
 
   @override
   String get openReports => 'Open';
@@ -1514,7 +1514,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reportReasonInappropriate => 'Inappropriate Content';
 
   @override
-  String get reportReasonScam => 'Scam/Fraud';
+  String get reportReasonScam => 'Scam';
 
   @override
   String get reportReasonHarassment => 'Harassment';
@@ -1620,7 +1620,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get userDetail => 'User Details';
 
   @override
-  String get userId => 'User ID';
+  String userId(int id) {
+    return 'ID: $id';
+  }
 
   @override
   String get registeredAt => 'Registered at';
@@ -1653,7 +1655,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get banUserDialog => 'Ban User';
 
   @override
-  String get banReason => 'Ban Reason';
+  String banReason(String reason) {
+    return 'Reason: $reason';
+  }
 
   @override
   String get selectBanReason => 'Select ban reason';
@@ -2397,4 +2401,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get users => 'Users';
+
+  @override
+  String get moderatorPanelScreen => 'Moderator Panel';
+
+  @override
+  String openReportsCount(int count) {
+    return '$count open';
+  }
+
+  @override
+  String get listingReports => 'Listings';
+
+  @override
+  String get userReports => 'Users';
+
+  @override
+  String get noReportsDescription => 'There are currently no reports';
+
+  @override
+  String get listing => 'Listing';
+
+  @override
+  String get reportStatusOpen => 'OPEN';
+
+  @override
+  String get reportStatusReviewing => 'REVIEWING';
+
+  @override
+  String get reportStatusResolved => 'RESOLVED';
+
+  @override
+  String get reportStatusDismissed => 'DISMISSED';
+
+  @override
+  String get reportReasonFraud => 'Fraudulent Listing';
+
+  @override
+  String get assigned => 'Assigned';
+
+  @override
+  String get justNow => 'Just now';
+
+  @override
+  String minutesAgo(int minutes) {
+    return '${minutes}m ago';
+  }
+
+  @override
+  String hoursAgo(int hours) {
+    return '${hours}h ago';
+  }
+
+  @override
+  String daysAgo(int days) {
+    return '${days}d ago';
+  }
+
+  @override
+  String get staff => 'Staff';
+
+  @override
+  String get banned => 'BANNED';
+
+  @override
+  String get noUsersFound => 'No Users Found';
 }
