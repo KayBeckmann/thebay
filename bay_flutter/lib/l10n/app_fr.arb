@@ -1855,5 +1855,11 @@
   "reasonRequired": "Raison (requise)",
   "describeBanReason": "Décrivez la raison du ban...",
   "banWarning": "Attention : Le bannissement désactivera toutes les annonces actives et annulera les transactions ouvertes de l'utilisateur.",
-  "banAction": "Bannir"
+  "banAction": "Bannir",
+  "sectionDonate": "Soutenir le Développeur",
+  "donateTitle": "Soutenir le Développement",
+  "donateDescription": "Si vous aimez cette application, vous pouvez soutenir son développement avec un don :",
+  "donateBitcoin": "Faire un Don Bitcoin",
+  "donateCoffee": "Buy Me a Coffee",
+  "bitcoinAddressCopied": "Adresse Bitcoin copiée !"
 }

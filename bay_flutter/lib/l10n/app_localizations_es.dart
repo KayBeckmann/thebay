@@ -2672,4 +2672,23 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get banAction => 'Bloquear';
+
+  @override
+  String get sectionDonate => 'Apoyar al Desarrollador';
+
+  @override
+  String get donateTitle => 'Apoyar el Desarrollo';
+
+  @override
+  String get donateDescription =>
+      'Si te gusta esta aplicación, puedes apoyar su desarrollo con una donación:';
+
+  @override
+  String get donateBitcoin => 'Donar Bitcoin';
+
+  @override
+  String get donateCoffee => 'Buy Me a Coffee';
+
+  @override
+  String get bitcoinAddressCopied => '¡Dirección Bitcoin copiada!';
 }

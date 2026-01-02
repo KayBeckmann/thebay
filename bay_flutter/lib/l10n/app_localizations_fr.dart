@@ -2689,4 +2689,23 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get banAction => 'Bannir';
+
+  @override
+  String get sectionDonate => 'Soutenir le Développeur';
+
+  @override
+  String get donateTitle => 'Soutenir le Développement';
+
+  @override
+  String get donateDescription =>
+      'Si vous aimez cette application, vous pouvez soutenir son développement avec un don :';
+
+  @override
+  String get donateBitcoin => 'Faire un Don Bitcoin';
+
+  @override
+  String get donateCoffee => 'Buy Me a Coffee';
+
+  @override
+  String get bitcoinAddressCopied => 'Adresse Bitcoin copiée !';
 }

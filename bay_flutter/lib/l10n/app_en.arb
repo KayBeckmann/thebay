@@ -3685,5 +3685,35 @@
   "banAction": "Ban",
   "@banAction": {
     "description": "Ban action"
+  },
+
+  "sectionDonate": "Support the Developer",
+  "@sectionDonate": {
+    "description": "Donate section"
+  },
+
+  "donateTitle": "Support Development",
+  "@donateTitle": {
+    "description": "Donate title"
+  },
+
+  "donateDescription": "If you like this app, you can support its development with a donation:",
+  "@donateDescription": {
+    "description": "Donate description"
+  },
+
+  "donateBitcoin": "Donate Bitcoin",
+  "@donateBitcoin": {
+    "description": "Donate Bitcoin button"
+  },
+
+  "donateCoffee": "Buy Me a Coffee",
+  "@donateCoffee": {
+    "description": "Buy Me a Coffee button"
+  },
+
+  "bitcoinAddressCopied": "Bitcoin address copied!",
+  "@bitcoinAddressCopied": {
+    "description": "Bitcoin address copied confirmation"
   }
 }

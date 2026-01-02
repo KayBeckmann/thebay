@@ -1855,5 +1855,11 @@
   "reasonRequired": "Motivo (requerido)",
   "describeBanReason": "Describa el motivo del bloqueo...",
   "banWarning": "Advertencia: El bloqueo desactivará todas las ofertas activas y cancelará las transacciones abiertas del usuario.",
-  "banAction": "Bloquear"
+  "banAction": "Bloquear",
+  "sectionDonate": "Apoyar al Desarrollador",
+  "donateTitle": "Apoyar el Desarrollo",
+  "donateDescription": "Si te gusta esta aplicación, puedes apoyar su desarrollo con una donación:",
+  "donateBitcoin": "Donar Bitcoin",
+  "donateCoffee": "Buy Me a Coffee",
+  "bitcoinAddressCopied": "¡Dirección Bitcoin copiada!"
 }

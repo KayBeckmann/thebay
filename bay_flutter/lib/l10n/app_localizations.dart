@@ -4938,6 +4938,42 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Sperren'**
   String get banAction;
+
+  /// Spenden-Sektion
+  ///
+  /// In de, this message translates to:
+  /// **'Entwickler unterstützen'**
+  String get sectionDonate;
+
+  /// Spenden Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Entwicklung unterstützen'**
+  String get donateTitle;
+
+  /// Spenden Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Wenn dir diese App gefällt, kannst du die Entwicklung mit einer Spende unterstützen:'**
+  String get donateDescription;
+
+  /// Bitcoin spenden Button
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin spenden'**
+  String get donateBitcoin;
+
+  /// Buy Me a Coffee Button
+  ///
+  /// In de, this message translates to:
+  /// **'Buy Me a Coffee'**
+  String get donateCoffee;
+
+  /// Bitcoin-Adresse kopiert Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Adresse kopiert!'**
+  String get bitcoinAddressCopied;
 }
 
 class _AppLocalizationsDelegate

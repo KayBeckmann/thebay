@@ -4629,5 +4629,35 @@
   "banAction": "Sperren",
   "@banAction": {
     "description": "Sperren Aktion"
+  },
+
+  "sectionDonate": "Entwickler unterstützen",
+  "@sectionDonate": {
+    "description": "Spenden-Sektion"
+  },
+
+  "donateTitle": "Entwicklung unterstützen",
+  "@donateTitle": {
+    "description": "Spenden Titel"
+  },
+
+  "donateDescription": "Wenn dir diese App gefällt, kannst du die Entwicklung mit einer Spende unterstützen:",
+  "@donateDescription": {
+    "description": "Spenden Beschreibung"
+  },
+
+  "donateBitcoin": "Bitcoin spenden",
+  "@donateBitcoin": {
+    "description": "Bitcoin spenden Button"
+  },
+
+  "donateCoffee": "Buy Me a Coffee",
+  "@donateCoffee": {
+    "description": "Buy Me a Coffee Button"
+  },
+
+  "bitcoinAddressCopied": "Bitcoin-Adresse kopiert!",
+  "@bitcoinAddressCopied": {
+    "description": "Bitcoin-Adresse kopiert Bestätigung"
   }
 }
