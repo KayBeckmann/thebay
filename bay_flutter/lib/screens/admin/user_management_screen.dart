@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 import 'user_detail_dialog.dart';
-import 'ban_user_dialog.dart';
 
 /// User management screen for admins
 class UserManagementScreen extends StatefulWidget {

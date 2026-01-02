@@ -499,7 +499,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get description => 'Beschreibung';
 
   @override
-  String get details => 'Details';
+  String get details => 'Details:';
 
   @override
   String get acceptedPaymentMethods => 'Akzeptierte Zahlungsmethoden';
@@ -1555,7 +1555,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reportDetail => 'Meldungsdetails';
 
   @override
-  String get reportId => 'Meldungs-ID';
+  String reportId(int id) {
+    return 'Meldung #$id';
+  }
 
   @override
   String get reportType => 'Typ';
@@ -1585,7 +1587,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get enterNote => 'Notiz eingeben...';
 
   @override
-  String get noteSaved => 'Notiz gespeichert';
+  String get noteSaved => 'Notiz wurde gespeichert';
 
   @override
   String get takeAction => 'Maßnahme ergreifen';
@@ -1686,7 +1688,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get banReasonScam => 'Betrug';
 
   @override
-  String get banReasonHarassment => 'Belästigung';
+  String get banReasonHarassment => 'Belästigung anderer Nutzer';
 
   @override
   String get banReasonIllegalContent => 'Illegaler Inhalt';
@@ -1725,7 +1727,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get ban => 'Sperren';
 
   @override
-  String get userBanned => 'Benutzer gesperrt';
+  String get userBanned => 'Benutzer wurde gesperrt';
 
   @override
   String get userWarned => 'Benutzer verwarnt';
@@ -2371,10 +2373,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get viewUser => 'Benutzer ansehen';
 
   @override
-  String get unbanUser => 'Entsperren';
+  String get unbanUser => 'Sperre aufheben';
 
   @override
-  String get userUnbanned => 'Benutzer entsperrt';
+  String get userUnbanned => 'Sperre wurde aufgehoben';
 
   @override
   String get confirmUnbanUser =>
@@ -2486,4 +2488,198 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get noUsersFound => 'Keine Benutzer gefunden';
+
+  @override
+  String get reportAssignedToYou => 'Meldung wurde Ihnen zugewiesen';
+
+  @override
+  String get statusUpdated => 'Status wurde aktualisiert';
+
+  @override
+  String get noteCannotBeEmpty => 'Notiz darf nicht leer sein';
+
+  @override
+  String get deactivateListing => 'Angebot deaktivieren';
+
+  @override
+  String get deactivateListingConfirm =>
+      'Möchten Sie dieses Angebot wirklich deaktivieren? Diese Aktion kann nicht rückgängig gemacht werden.';
+
+  @override
+  String get deactivate => 'Deaktivieren';
+
+  @override
+  String get listingDeactivated => 'Angebot wurde deaktiviert';
+
+  @override
+  String get reportNotFound => 'Meldung nicht gefunden';
+
+  @override
+  String assignedToModerator(int id) {
+    return 'Zugewiesen an Moderator #$id';
+  }
+
+  @override
+  String get notYetAssigned => 'Noch nicht zugewiesen';
+
+  @override
+  String get reportDetails => 'Meldungsdetails';
+
+  @override
+  String get reportedOn => 'Gemeldet am';
+
+  @override
+  String reporterUser(int id) {
+    return 'Benutzer #$id';
+  }
+
+  @override
+  String get reportedUserProfile => 'Gemeldetes Benutzerprofil';
+
+  @override
+  String get addInternalNotes => 'Fügen Sie interne Notizen hinzu...';
+
+  @override
+  String get assignToMe => 'Mir zuweisen';
+
+  @override
+  String get markAsResolved => 'Als gelöst markieren';
+
+  @override
+  String fullDateTimeFormat(
+      String day, String month, int year, String hour, String minute) {
+    return '$day.$month.$year um $hour:$minute Uhr';
+  }
+
+  @override
+  String listingId(int id) {
+    return 'Angebot #$id';
+  }
+
+  @override
+  String get warning => 'Warnung';
+
+  @override
+  String confirmRoleChange(String role) {
+    return 'Möchten Sie diesem Benutzer wirklich die Rolle \"$role\" zuweisen? Diese Aktion gibt dem Benutzer erweiterte Berechtigungen.';
+  }
+
+  @override
+  String get roleUpdated => 'Rolle wurde aktualisiert';
+
+  @override
+  String error(String error) {
+    return 'Fehler: $error';
+  }
+
+  @override
+  String get noFreeSlotVariantsAvailable =>
+      'Keine kostenlosen Slot-Varianten verfügbar. Erstelle zuerst eine kostenlose Variante.';
+
+  @override
+  String get grantFreeSlot => 'Kostenlosen Slot vergeben';
+
+  @override
+  String selectFreeSlotVariant(String username) {
+    return 'Wähle eine kostenlose Slot-Variante für $username:';
+  }
+
+  @override
+  String daysRuntime(int days) {
+    return '$days Tage Laufzeit';
+  }
+
+  @override
+  String get freeUppercase => 'KOSTENLOS';
+
+  @override
+  String freeSlotGranted(String variantName, String username) {
+    return 'Kostenloser Slot \"$variantName\" wurde an $username vergeben';
+  }
+
+  @override
+  String get confirmUnban =>
+      'Möchten Sie die Sperre dieses Benutzers wirklich aufheben?';
+
+  @override
+  String get unbanReason => 'Sperre durch Admin aufgehoben';
+
+  @override
+  String get information => 'Informationen';
+
+  @override
+  String get lastLogin => 'Letzter Login';
+
+  @override
+  String get never => 'Noch nie';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get bannedSince => 'Gesperrt seit';
+
+  @override
+  String get banReasonLabel => 'Sperrgrund';
+
+  @override
+  String get cannotChangeOwnRole =>
+      'Sie können Ihre eigene Rolle nicht ändern.';
+
+  @override
+  String get roleDescriptionAdmin => 'Voller Zugriff auf alle Funktionen';
+
+  @override
+  String get roleDescriptionModerator =>
+      'Kann Meldungen bearbeiten und Inhalte moderieren';
+
+  @override
+  String get roleDescriptionUser =>
+      'Normaler Benutzer ohne erweiterte Berechtigungen';
+
+  @override
+  String get banHistory => 'Sperr-Historie';
+
+  @override
+  String get bannedAction => 'Gesperrt';
+
+  @override
+  String get unbannedAction => 'Entsperrt';
+
+  @override
+  String get banReasonFraud => 'Betrug/Scam';
+
+  @override
+  String get banReasonInappropriate => 'Unangemessenes Verhalten';
+
+  @override
+  String get banReasonTosViolation => 'Verstoß gegen Nutzungsbedingungen';
+
+  @override
+  String get banReasonMultipleAccounts => 'Mehrfach-Accounts';
+
+  @override
+  String get banReasonIllegal => 'Illegale Aktivitäten';
+
+  @override
+  String get banReasonRequired => 'Bitte geben Sie einen Grund ein';
+
+  @override
+  String get enterBanReason => 'Bitte geben Sie einen Grund für die Sperre an:';
+
+  @override
+  String get presetReasons => 'Vordefinierte Gründe:';
+
+  @override
+  String get reasonRequired => 'Grund (erforderlich)';
+
+  @override
+  String get describeBanReason => 'Beschreiben Sie den Grund für die Sperre...';
+
+  @override
+  String get banWarning =>
+      'Achtung: Beim Sperren werden alle aktiven Angebote des Benutzers deaktiviert und offene Transaktionen abgebrochen.';
+
+  @override
+  String get banAction => 'Sperren';
 }

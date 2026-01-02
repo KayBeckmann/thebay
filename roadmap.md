@@ -631,11 +631,11 @@
 - [x] slot_variants_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
 
 ### 15.7c Moderation & User-Management
-- [ ] moderator_panel_screen.dart mit AppLocalizations aktualisieren (~20 Strings)
-- [ ] user_management_screen.dart mit AppLocalizations aktualisieren (~20 Strings)
-- [ ] report_detail_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
-- [ ] user_detail_dialog.dart mit AppLocalizations aktualisieren (~24 Strings)
-- [ ] ban_user_dialog.dart mit AppLocalizations aktualisieren (~14 Strings)
+- [x] moderator_panel_screen.dart mit AppLocalizations aktualisieren (~20 Strings)
+- [x] user_management_screen.dart mit AppLocalizations aktualisieren (~20 Strings)
+- [x] report_detail_screen.dart mit AppLocalizations aktualisieren (~30 Strings)
+- [x] user_detail_dialog.dart mit AppLocalizations aktualisieren (~24 Strings)
+- [x] ban_user_dialog.dart mit AppLocalizations aktualisieren (~14 Strings)
 
 ### 15.8 Feinschliff & Completion
 - [ ] favorites_screen.dart übersetzen

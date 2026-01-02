@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client, authService;
 import 'ban_user_dialog.dart';
 
@@ -45,23 +46,25 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Future<void> _updateRole(UserRole newRole) async {
+    final l10n = AppLocalizations.of(context)!;
+
     // Confirm if promoting to moderator or admin
     if (newRole == UserRole.moderator || newRole == UserRole.admin) {
       final confirm = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Warnung'),
+          title: Text(l10n.warning),
           content: Text(
-            'Möchten Sie diesem Benutzer wirklich die Rolle "${_getRoleText(newRole)}" zuweisen? Diese Aktion gibt dem Benutzer erweiterte Berechtigungen.',
+            l10n.confirmRoleChange(_getRoleText(newRole)),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
             FilledButton(
               onPressed: () => Navigator.pop(context, true),
-              child: const Text('Bestätigen'),
+              child: Text(l10n.confirm),
             ),
           ],
         ),
@@ -76,8 +79,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
       if (mounted) {
         setState(() => _user = updated);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Rolle wurde aktualisiert'),
+          SnackBar(
+            content: Text(l10n.roleUpdated),
             backgroundColor: Colors.green,
           ),
         );
@@ -86,7 +89,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Fehler: $e'),
+            content: Text(l10n.error(e.toString())),
             backgroundColor: Colors.red,
           ),
         );
@@ -95,6 +98,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Future<void> _grantFreeSlot() async {
+    final l10n = AppLocalizations.of(context)!;
+
     try {
       // Lade kostenlose Slot-Varianten
       final freeVariants = await client.slotVariant.getAll();
@@ -104,8 +109,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
 
       if (freeOnly.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Keine kostenlosen Slot-Varianten verfügbar. Erstelle zuerst eine kostenlose Variante.'),
+          SnackBar(
+            content: Text(l10n.noFreeSlotVariantsAvailable),
           ),
         );
         return;
@@ -116,7 +121,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
         context: context,
         builder: (context) => AlertDialog(
           icon: const Icon(Icons.card_giftcard),
-          title: const Text('Kostenlosen Slot vergeben'),
+          title: Text(l10n.grantFreeSlot),
           content: SizedBox(
             width: double.maxFinite,
             child: Column(
@@ -124,7 +129,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Wähle eine kostenlose Slot-Variante für ${_user.username}:',
+                  l10n.selectFreeSlotVariant(_user.username),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 16),
@@ -138,15 +143,15 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                         child: ListTile(
                           leading: const Icon(Icons.confirmation_number, color: Colors.green),
                           title: Text(variant.name),
-                          subtitle: Text('${variant.durationDays} Tage Laufzeit'),
+                          subtitle: Text(l10n.daysRuntime(variant.durationDays)),
                           trailing: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
-                              color: Colors.green.withOpacity(0.2),
+                              color: Colors.green.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(
-                              'KOSTENLOS',
+                              l10n.freeUppercase,
                               style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                     color: Colors.green.shade700,
                                     fontWeight: FontWeight.bold,
@@ -165,7 +170,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Abbrechen'),
+              child: Text(l10n.cancel),
             ),
           ],
         ),
@@ -182,7 +187,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Kostenloser Slot "${selectedVariant.name}" wurde an ${_user.username} vergeben'),
+            content: Text(l10n.freeSlotGranted(selectedVariant.name, _user.username)),
             backgroundColor: Colors.green,
           ),
         );
@@ -191,7 +196,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Fehler: $e'),
+            content: Text(l10n.error(e.toString())),
             backgroundColor: Colors.red,
           ),
         );
@@ -207,13 +212,15 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
 
     if (reason == null) return;
 
+    final l10n = AppLocalizations.of(context)!;
+
     try {
       final updated = await client.userManagement.banUser(_user.id!, reason);
       if (mounted) {
         setState(() => _user = updated);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Benutzer wurde gesperrt'),
+          SnackBar(
+            content: Text(l10n.userBanned),
             backgroundColor: Colors.green,
           ),
         );
@@ -223,7 +230,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Fehler: $e'),
+            content: Text(l10n.error(e.toString())),
             backgroundColor: Colors.red,
           ),
         );
@@ -232,21 +239,21 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Future<void> _unbanUser() async {
+    final l10n = AppLocalizations.of(context)!;
+
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sperre aufheben'),
-        content: const Text(
-          'Möchten Sie die Sperre dieses Benutzers wirklich aufheben?',
-        ),
+        title: Text(l10n.unbanUser),
+        content: Text(l10n.confirmUnban),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
-            child: const Text('Sperre aufheben'),
+            child: Text(l10n.unbanUser),
           ),
         ],
       ),
@@ -257,13 +264,13 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
     try {
       final updated = await client.userManagement.unbanUser(
         _user.id!,
-        'Sperre durch Admin aufgehoben',
+        l10n.unbanReason,
       );
       if (mounted) {
         setState(() => _user = updated);
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Sperre wurde aufgehoben'),
+          SnackBar(
+            content: Text(l10n.userUnbanned),
             backgroundColor: Colors.green,
           ),
         );
@@ -273,7 +280,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Fehler: $e'),
+            content: Text(l10n.error(e.toString())),
             backgroundColor: Colors.red,
           ),
         );
@@ -327,13 +334,13 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                                   ),
                         ),
                         Text(
-                          'ID: ${_user.id}',
+                          AppLocalizations.of(context)!.userId(_user.id!),
                           style:
                               Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
                                         .onPrimaryContainer
-                                        .withOpacity(0.7),
+                                        .withValues(alpha: 0.7),
                                   ),
                         ),
                       ],
@@ -374,6 +381,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Widget _buildInfoSection() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -381,38 +390,38 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Informationen',
+              l10n.information,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 12),
-            _buildInfoRow(Icons.calendar_today, 'Erstellt',
+            _buildInfoRow(Icons.calendar_today, l10n.created,
                 _formatDate(_user.createdAt)),
             const SizedBox(height: 8),
             _buildInfoRow(
               Icons.login,
-              'Letzter Login',
+              l10n.lastLogin,
               _user.lastLoginAt != null
                   ? _formatDate(_user.lastLoginAt!)
-                  : 'Noch nie',
+                  : l10n.never,
             ),
             const SizedBox(height: 8),
             _buildInfoRow(
               Icons.check_circle,
-              'Status',
-              _user.isActive ? 'Aktiv' : 'Inaktiv',
+              l10n.status,
+              _user.isActive ? l10n.active : l10n.inactive,
             ),
             if (_user.isBanned) ...[
               const SizedBox(height: 8),
               _buildInfoRow(
                 Icons.block,
-                'Gesperrt seit',
+                l10n.bannedSince,
                 _user.bannedAt != null ? _formatDate(_user.bannedAt!) : '-',
               ),
               if (_user.bannedReason != null) ...[
                 const SizedBox(height: 8),
-                _buildInfoRow(Icons.info, 'Sperrgrund', _user.bannedReason!),
+                _buildInfoRow(Icons.info, l10n.banReasonLabel, _user.bannedReason!),
               ],
             ],
           ],
@@ -422,6 +431,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Widget _buildRoleSection(bool isOwnAccount) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -429,7 +440,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Rolle',
+              l10n.role,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -437,7 +448,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
             const SizedBox(height: 12),
             if (isOwnAccount)
               Text(
-                'Sie können Ihre eigene Rolle nicht ändern.',
+                l10n.cannotChangeOwnRole,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -465,6 +476,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Widget _buildActionsSection() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -472,7 +485,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Aktionen',
+              l10n.actions,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -483,7 +496,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
               child: OutlinedButton.icon(
                 onPressed: _grantFreeSlot,
                 icon: const Icon(Icons.card_giftcard),
-                label: const Text('Kostenlosen Slot vergeben'),
+                label: Text(l10n.grantFreeSlot),
               ),
             ),
             const SizedBox(height: 8),
@@ -493,7 +506,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                 child: FilledButton.icon(
                   onPressed: _unbanUser,
                   icon: const Icon(Icons.lock_open),
-                  label: const Text('Sperre aufheben'),
+                  label: Text(l10n.unbanUser),
                   style: FilledButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),
@@ -505,7 +518,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                 child: FilledButton.icon(
                   onPressed: _banUser,
                   icon: const Icon(Icons.block),
-                  label: const Text('Benutzer sperren'),
+                  label: Text(l10n.banUser),
                   style: FilledButton.styleFrom(
                     backgroundColor: Colors.red,
                   ),
@@ -518,6 +531,8 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   Widget _buildBanHistorySection() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -525,7 +540,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Sperr-Historie',
+              l10n.banHistory,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -551,7 +566,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              isBan ? 'Gesperrt' : 'Entsperrt',
+                              isBan ? l10n.bannedAction : l10n.unbannedAction,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
@@ -617,24 +632,26 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
   }
 
   String _getRoleText(UserRole role) {
+    final l10n = AppLocalizations.of(context)!;
     switch (role) {
       case UserRole.admin:
-        return 'Administrator';
+        return l10n.roleAdmin;
       case UserRole.moderator:
-        return 'Moderator';
+        return l10n.roleModerator;
       case UserRole.user:
-        return 'Benutzer';
+        return l10n.roleUser;
     }
   }
 
   String _getRoleDescription(UserRole role) {
+    final l10n = AppLocalizations.of(context)!;
     switch (role) {
       case UserRole.admin:
-        return 'Voller Zugriff auf alle Funktionen';
+        return l10n.roleDescriptionAdmin;
       case UserRole.moderator:
-        return 'Kann Meldungen bearbeiten und Inhalte moderieren';
+        return l10n.roleDescriptionModerator;
       case UserRole.user:
-        return 'Normaler Benutzer ohne erweiterte Berechtigungen';
+        return l10n.roleDescriptionUser;
     }
   }
 

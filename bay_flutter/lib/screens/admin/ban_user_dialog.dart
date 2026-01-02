@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 /// Dialog for entering a ban reason
 class BanUserDialog extends StatefulWidget {
   const BanUserDialog({super.key});
@@ -12,15 +14,18 @@ class _BanUserDialogState extends State<BanUserDialog> {
   final _reasonController = TextEditingController();
   String? _selectedPreset;
 
-  final List<String> _presetReasons = [
-    'Spam',
-    'Betrug/Scam',
-    'Unangemessenes Verhalten',
-    'Verstoß gegen Nutzungsbedingungen',
-    'Mehrfach-Accounts',
-    'Belästigung anderer Nutzer',
-    'Illegale Aktivitäten',
-  ];
+  List<String> _getPresetReasons(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      l10n.banReasonSpam,
+      l10n.banReasonFraud,
+      l10n.banReasonInappropriate,
+      l10n.banReasonTosViolation,
+      l10n.banReasonMultipleAccounts,
+      l10n.banReasonHarassment,
+      l10n.banReasonIllegal,
+    ];
+  }
 
   @override
   void dispose() {
@@ -38,10 +43,11 @@ class _BanUserDialogState extends State<BanUserDialog> {
   }
 
   void _submit() {
+    final l10n = AppLocalizations.of(context)!;
     final reason = _reasonController.text.trim();
     if (reason.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Bitte geben Sie einen Grund ein')),
+        SnackBar(content: Text(l10n.banReasonRequired)),
       );
       return;
     }
@@ -51,27 +57,30 @@ class _BanUserDialogState extends State<BanUserDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final presetReasons = _getPresetReasons(context);
+
     return AlertDialog(
-      title: const Text('Benutzer sperren'),
+      title: Text(l10n.banUser),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Bitte geben Sie einen Grund für die Sperre an:',
+              l10n.enterBanReason,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 16),
             Text(
-              'Vordefinierte Gründe:',
+              l10n.presetReasons,
               style: Theme.of(context).textTheme.labelMedium,
             ),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: _presetReasons.map((reason) {
+              children: presetReasons.map((reason) {
                 final isSelected = _selectedPreset == reason;
                 return FilterChip(
                   label: Text(reason),
@@ -85,10 +94,10 @@ class _BanUserDialogState extends State<BanUserDialog> {
             const SizedBox(height: 16),
             TextField(
               controller: _reasonController,
-              decoration: const InputDecoration(
-                labelText: 'Grund (erforderlich)',
-                hintText: 'Beschreiben Sie den Grund für die Sperre...',
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.reasonRequired,
+                hintText: l10n.describeBanReason,
+                border: const OutlineInputBorder(),
               ),
               maxLines: 3,
               maxLength: 500,
@@ -109,7 +118,7 @@ class _BanUserDialogState extends State<BanUserDialog> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      'Achtung: Beim Sperren werden alle aktiven Angebote des Benutzers deaktiviert und offene Transaktionen abgebrochen.',
+                      l10n.banWarning,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color:
                                 Theme.of(context).colorScheme.onErrorContainer,
@@ -125,14 +134,14 @@ class _BanUserDialogState extends State<BanUserDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Abbrechen'),
+          child: Text(l10n.cancel),
         ),
         FilledButton(
           onPressed: _submit,
           style: FilledButton.styleFrom(
             backgroundColor: Colors.red,
           ),
-          child: const Text('Sperren'),
+          child: Text(l10n.banAction),
         ),
       ],
     );

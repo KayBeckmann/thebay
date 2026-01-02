@@ -4204,5 +4204,430 @@
         "type": "int"
       }
     }
+  },
+
+  "reportAssignedToYou": "Meldung wurde Ihnen zugewiesen",
+  "@reportAssignedToYou": {
+    "description": "Meldung zugewiesen Bestätigung"
+  },
+
+  "statusUpdated": "Status wurde aktualisiert",
+  "@statusUpdated": {
+    "description": "Status aktualisiert Bestätigung"
+  },
+
+  "noteCannotBeEmpty": "Notiz darf nicht leer sein",
+  "@noteCannotBeEmpty": {
+    "description": "Notiz leer Fehler"
+  },
+
+  "noteSaved": "Notiz wurde gespeichert",
+  "@noteSaved": {
+    "description": "Notiz gespeichert Bestätigung"
+  },
+
+  "deactivateListing": "Angebot deaktivieren",
+  "@deactivateListing": {
+    "description": "Angebot deaktivieren Titel"
+  },
+
+  "deactivateListingConfirm": "Möchten Sie dieses Angebot wirklich deaktivieren? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "@deactivateListingConfirm": {
+    "description": "Angebot deaktivieren Bestätigung"
+  },
+
+  "deactivate": "Deaktivieren",
+  "@deactivate": {
+    "description": "Deaktivieren Button"
+  },
+
+  "listingDeactivated": "Angebot wurde deaktiviert",
+  "@listingDeactivated": {
+    "description": "Angebot deaktiviert Bestätigung"
+  },
+
+  "reportId": "Meldung #{id}",
+  "@reportId": {
+    "description": "Meldung ID",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "reportNotFound": "Meldung nicht gefunden",
+  "@reportNotFound": {
+    "description": "Meldung nicht gefunden"
+  },
+
+  "assignedToModerator": "Zugewiesen an Moderator #{id}",
+  "@assignedToModerator": {
+    "description": "Zugewiesen an Moderator",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "notYetAssigned": "Noch nicht zugewiesen",
+  "@notYetAssigned": {
+    "description": "Noch nicht zugewiesen"
+  },
+
+  "reportDetails": "Meldungsdetails",
+  "@reportDetails": {
+    "description": "Meldungsdetails Titel"
+  },
+
+  "reason": "Grund",
+  "@reason": {
+    "description": "Grund Label"
+  },
+
+  "reportedOn": "Gemeldet am",
+  "@reportedOn": {
+    "description": "Gemeldet am Label"
+  },
+
+  "reportedBy": "Gemeldet von",
+  "@reportedBy": {
+    "description": "Gemeldet von Label"
+  },
+
+  "reporterUser": "Benutzer #{id}",
+  "@reporterUser": {
+    "description": "Meldender Benutzer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "details": "Details:",
+  "@details": {
+    "description": "Details Label"
+  },
+
+  "reportedListing": "Gemeldetes Angebot",
+  "@reportedListing": {
+    "description": "Gemeldetes Angebot"
+  },
+
+  "reportedUserProfile": "Gemeldetes Benutzerprofil",
+  "@reportedUserProfile": {
+    "description": "Gemeldetes Benutzerprofil"
+  },
+
+  "moderatorNotes": "Moderator-Notizen",
+  "@moderatorNotes": {
+    "description": "Moderator-Notizen Titel"
+  },
+
+  "addInternalNotes": "Fügen Sie interne Notizen hinzu...",
+  "@addInternalNotes": {
+    "description": "Notizen Hinweis"
+  },
+
+  "actions": "Aktionen",
+  "@actions": {
+    "description": "Aktionen Titel"
+  },
+
+  "assignToMe": "Mir zuweisen",
+  "@assignToMe": {
+    "description": "Mir zuweisen Button"
+  },
+
+  "markAsResolved": "Als gelöst markieren",
+  "@markAsResolved": {
+    "description": "Als gelöst markieren Button"
+  },
+
+  "dismiss": "Abweisen",
+  "@dismiss": {
+    "description": "Abweisen Button"
+  },
+
+  "fullDateTimeFormat": "{day}.{month}.{year} um {hour}:{minute} Uhr",
+  "@fullDateTimeFormat": {
+    "description": "Vollständiges Datum/Zeit Format",
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      },
+      "minute": {
+        "type": "String"
+      }
+    }
+  },
+
+  "listingId": "Angebot #{id}",
+  "@listingId": {
+    "description": "Angebot ID",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "warning": "Warnung",
+  "@warning": {
+    "description": "Warnung Titel"
+  },
+
+  "confirmRoleChange": "Möchten Sie diesem Benutzer wirklich die Rolle \"{role}\" zuweisen? Diese Aktion gibt dem Benutzer erweiterte Berechtigungen.",
+  "@confirmRoleChange": {
+    "description": "Bestätigung für Rollen-Änderung",
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+
+  "confirm": "Bestätigen",
+  "@confirm": {
+    "description": "Bestätigen Button"
+  },
+
+  "roleUpdated": "Rolle wurde aktualisiert",
+  "@roleUpdated": {
+    "description": "Rolle aktualisiert Bestätigung"
+  },
+
+  "error": "Fehler: {error}",
+  "@error": {
+    "description": "Fehler Nachricht",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noFreeSlotVariantsAvailable": "Keine kostenlosen Slot-Varianten verfügbar. Erstelle zuerst eine kostenlose Variante.",
+  "@noFreeSlotVariantsAvailable": {
+    "description": "Keine kostenlosen Slot-Varianten verfügbar"
+  },
+
+  "grantFreeSlot": "Kostenlosen Slot vergeben",
+  "@grantFreeSlot": {
+    "description": "Kostenlosen Slot vergeben"
+  },
+
+  "selectFreeSlotVariant": "Wähle eine kostenlose Slot-Variante für {username}:",
+  "@selectFreeSlotVariant": {
+    "description": "Slot-Variante auswählen",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "daysRuntime": "{days} Tage Laufzeit",
+  "@daysRuntime": {
+    "description": "Tage Laufzeit",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+
+  "freeUppercase": "KOSTENLOS",
+  "@freeUppercase": {
+    "description": "Kostenlos Label (Großbuchstaben)"
+  },
+
+  "freeSlotGranted": "Kostenloser Slot \"{variantName}\" wurde an {username} vergeben",
+  "@freeSlotGranted": {
+    "description": "Kostenloser Slot vergeben Bestätigung",
+    "placeholders": {
+      "variantName": {
+        "type": "String"
+      },
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "userBanned": "Benutzer wurde gesperrt",
+  "@userBanned": {
+    "description": "Benutzer gesperrt Bestätigung"
+  },
+
+  "unbanUser": "Sperre aufheben",
+  "@unbanUser": {
+    "description": "Sperre aufheben"
+  },
+
+  "confirmUnban": "Möchten Sie die Sperre dieses Benutzers wirklich aufheben?",
+  "@confirmUnban": {
+    "description": "Sperre aufheben Bestätigung"
+  },
+
+  "unbanReason": "Sperre durch Admin aufgehoben",
+  "@unbanReason": {
+    "description": "Standard-Grund für Aufhebung der Sperre"
+  },
+
+  "userUnbanned": "Sperre wurde aufgehoben",
+  "@userUnbanned": {
+    "description": "Sperre aufgehoben Bestätigung"
+  },
+
+  "information": "Informationen",
+  "@information": {
+    "description": "Informationen Titel"
+  },
+
+  "lastLogin": "Letzter Login",
+  "@lastLogin": {
+    "description": "Letzter Login Label"
+  },
+
+  "never": "Noch nie",
+  "@never": {
+    "description": "Noch nie"
+  },
+
+  "status": "Status",
+  "@status": {
+    "description": "Status Label"
+  },
+
+  "bannedSince": "Gesperrt seit",
+  "@bannedSince": {
+    "description": "Gesperrt seit Label"
+  },
+
+  "banReasonLabel": "Sperrgrund",
+  "@banReasonLabel": {
+    "description": "Sperrgrund Label"
+  },
+
+  "cannotChangeOwnRole": "Sie können Ihre eigene Rolle nicht ändern.",
+  "@cannotChangeOwnRole": {
+    "description": "Eigene Rolle nicht änderbar"
+  },
+
+  "roleDescriptionAdmin": "Voller Zugriff auf alle Funktionen",
+  "@roleDescriptionAdmin": {
+    "description": "Administrator Rollen-Beschreibung"
+  },
+
+  "roleDescriptionModerator": "Kann Meldungen bearbeiten und Inhalte moderieren",
+  "@roleDescriptionModerator": {
+    "description": "Moderator Rollen-Beschreibung"
+  },
+
+  "roleDescriptionUser": "Normaler Benutzer ohne erweiterte Berechtigungen",
+  "@roleDescriptionUser": {
+    "description": "Benutzer Rollen-Beschreibung"
+  },
+
+  "banUser": "Benutzer sperren",
+  "@banUser": {
+    "description": "Benutzer sperren"
+  },
+
+  "banHistory": "Sperr-Historie",
+  "@banHistory": {
+    "description": "Sperr-Historie"
+  },
+
+  "bannedAction": "Gesperrt",
+  "@bannedAction": {
+    "description": "Gesperrt Aktion"
+  },
+
+  "unbannedAction": "Entsperrt",
+  "@unbannedAction": {
+    "description": "Entsperrt Aktion"
+  },
+
+  "banReasonSpam": "Spam",
+  "@banReasonSpam": {
+    "description": "Ban-Grund: Spam"
+  },
+
+  "banReasonFraud": "Betrug/Scam",
+  "@banReasonFraud": {
+    "description": "Ban-Grund: Betrug/Scam"
+  },
+
+  "banReasonInappropriate": "Unangemessenes Verhalten",
+  "@banReasonInappropriate": {
+    "description": "Ban-Grund: Unangemessenes Verhalten"
+  },
+
+  "banReasonTosViolation": "Verstoß gegen Nutzungsbedingungen",
+  "@banReasonTosViolation": {
+    "description": "Ban-Grund: Verstoß gegen Nutzungsbedingungen"
+  },
+
+  "banReasonMultipleAccounts": "Mehrfach-Accounts",
+  "@banReasonMultipleAccounts": {
+    "description": "Ban-Grund: Mehrfach-Accounts"
+  },
+
+  "banReasonHarassment": "Belästigung anderer Nutzer",
+  "@banReasonHarassment": {
+    "description": "Ban-Grund: Belästigung"
+  },
+
+  "banReasonIllegal": "Illegale Aktivitäten",
+  "@banReasonIllegal": {
+    "description": "Ban-Grund: Illegale Aktivitäten"
+  },
+
+  "banReasonRequired": "Bitte geben Sie einen Grund ein",
+  "@banReasonRequired": {
+    "description": "Ban-Grund erforderlich Fehlermeldung"
+  },
+
+  "enterBanReason": "Bitte geben Sie einen Grund für die Sperre an:",
+  "@enterBanReason": {
+    "description": "Grund für Sperre eingeben"
+  },
+
+  "presetReasons": "Vordefinierte Gründe:",
+  "@presetReasons": {
+    "description": "Vordefinierte Gründe Label"
+  },
+
+  "reasonRequired": "Grund (erforderlich)",
+  "@reasonRequired": {
+    "description": "Grund erforderlich Label"
+  },
+
+  "describeBanReason": "Beschreiben Sie den Grund für die Sperre...",
+  "@describeBanReason": {
+    "description": "Beschreibung für Ban-Grund Platzhalter"
+  },
+
+  "banWarning": "Achtung: Beim Sperren werden alle aktiven Angebote des Benutzers deaktiviert und offene Transaktionen abgebrochen.",
+  "@banWarning": {
+    "description": "Warnung beim Sperren eines Benutzers"
+  },
+
+  "banAction": "Sperren",
+  "@banAction": {
+    "description": "Sperren Aktion"
   }
 }

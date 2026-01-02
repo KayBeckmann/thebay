@@ -981,7 +981,7 @@ abstract class AppLocalizations {
   /// Details Label
   ///
   /// In de, this message translates to:
-  /// **'Details'**
+  /// **'Details:'**
   String get details;
 
   /// Akzeptierte Zahlungsmethoden Label
@@ -2790,7 +2790,7 @@ abstract class AppLocalizations {
   /// **'Gemeldeter Benutzer'**
   String get reportedUser;
 
-  /// Gemeldetes Angebot Label
+  /// Gemeldetes Angebot
   ///
   /// In de, this message translates to:
   /// **'Gemeldetes Angebot'**
@@ -2862,11 +2862,11 @@ abstract class AppLocalizations {
   /// **'Meldungsdetails'**
   String get reportDetail;
 
-  /// Meldungs-ID Label
+  /// Meldung ID
   ///
   /// In de, this message translates to:
-  /// **'Meldungs-ID'**
-  String get reportId;
+  /// **'Meldung #{id}'**
+  String reportId(int id);
 
   /// Meldungstyp Label
   ///
@@ -2898,7 +2898,7 @@ abstract class AppLocalizations {
   /// **'Beschreibung'**
   String get reportDescription;
 
-  /// Moderator-Notizen Label
+  /// Moderator-Notizen Titel
   ///
   /// In de, this message translates to:
   /// **'Moderator-Notizen'**
@@ -2922,10 +2922,10 @@ abstract class AppLocalizations {
   /// **'Notiz eingeben...'**
   String get enterNote;
 
-  /// Notiz gespeichert Nachricht
+  /// Notiz gespeichert Bestätigung
   ///
   /// In de, this message translates to:
-  /// **'Notiz gespeichert'**
+  /// **'Notiz wurde gespeichert'**
   String get noteSaved;
 
   /// Maßnahme ergreifen Button
@@ -2970,7 +2970,7 @@ abstract class AppLocalizations {
   /// **'Benutzer verwarnen'**
   String get warnUser;
 
-  /// Benutzer sperren Button
+  /// Benutzer sperren
   ///
   /// In de, this message translates to:
   /// **'Benutzer sperren'**
@@ -3102,7 +3102,7 @@ abstract class AppLocalizations {
   /// **'Sperrgrund wählen'**
   String get selectBanReason;
 
-  /// Sperrgrund Spam
+  /// Ban-Grund: Spam
   ///
   /// In de, this message translates to:
   /// **'Spam'**
@@ -3114,10 +3114,10 @@ abstract class AppLocalizations {
   /// **'Betrug'**
   String get banReasonScam;
 
-  /// Sperrgrund Belästigung
+  /// Ban-Grund: Belästigung
   ///
   /// In de, this message translates to:
-  /// **'Belästigung'**
+  /// **'Belästigung anderer Nutzer'**
   String get banReasonHarassment;
 
   /// Sperrgrund Illegaler Inhalt
@@ -3192,10 +3192,10 @@ abstract class AppLocalizations {
   /// **'Sperren'**
   String get ban;
 
-  /// Benutzer gesperrt Nachricht
+  /// Benutzer gesperrt Bestätigung
   ///
   /// In de, this message translates to:
-  /// **'Benutzer gesperrt'**
+  /// **'Benutzer wurde gesperrt'**
   String get userBanned;
 
   /// Benutzer verwarnt Nachricht
@@ -4392,16 +4392,16 @@ abstract class AppLocalizations {
   /// **'Benutzer ansehen'**
   String get viewUser;
 
-  /// Benutzer entsperren Button
+  /// Sperre aufheben
   ///
   /// In de, this message translates to:
-  /// **'Entsperren'**
+  /// **'Sperre aufheben'**
   String get unbanUser;
 
-  /// Benutzer entsperrt Nachricht
+  /// Sperre aufgehoben Bestätigung
   ///
   /// In de, this message translates to:
-  /// **'Benutzer entsperrt'**
+  /// **'Sperre wurde aufgehoben'**
   String get userUnbanned;
 
   /// Benutzer entsperren Bestätigung
@@ -4601,6 +4601,343 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Keine Benutzer gefunden'**
   String get noUsersFound;
+
+  /// Meldung zugewiesen Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Meldung wurde Ihnen zugewiesen'**
+  String get reportAssignedToYou;
+
+  /// Status aktualisiert Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Status wurde aktualisiert'**
+  String get statusUpdated;
+
+  /// Notiz leer Fehler
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz darf nicht leer sein'**
+  String get noteCannotBeEmpty;
+
+  /// Angebot deaktivieren Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot deaktivieren'**
+  String get deactivateListing;
+
+  /// Angebot deaktivieren Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie dieses Angebot wirklich deaktivieren? Diese Aktion kann nicht rückgängig gemacht werden.'**
+  String get deactivateListingConfirm;
+
+  /// Deaktivieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Deaktivieren'**
+  String get deactivate;
+
+  /// Angebot deaktiviert Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot wurde deaktiviert'**
+  String get listingDeactivated;
+
+  /// Meldung nicht gefunden
+  ///
+  /// In de, this message translates to:
+  /// **'Meldung nicht gefunden'**
+  String get reportNotFound;
+
+  /// Zugewiesen an Moderator
+  ///
+  /// In de, this message translates to:
+  /// **'Zugewiesen an Moderator #{id}'**
+  String assignedToModerator(int id);
+
+  /// Noch nicht zugewiesen
+  ///
+  /// In de, this message translates to:
+  /// **'Noch nicht zugewiesen'**
+  String get notYetAssigned;
+
+  /// Meldungsdetails Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Meldungsdetails'**
+  String get reportDetails;
+
+  /// Gemeldet am Label
+  ///
+  /// In de, this message translates to:
+  /// **'Gemeldet am'**
+  String get reportedOn;
+
+  /// Meldender Benutzer
+  ///
+  /// In de, this message translates to:
+  /// **'Benutzer #{id}'**
+  String reporterUser(int id);
+
+  /// Gemeldetes Benutzerprofil
+  ///
+  /// In de, this message translates to:
+  /// **'Gemeldetes Benutzerprofil'**
+  String get reportedUserProfile;
+
+  /// Notizen Hinweis
+  ///
+  /// In de, this message translates to:
+  /// **'Fügen Sie interne Notizen hinzu...'**
+  String get addInternalNotes;
+
+  /// Mir zuweisen Button
+  ///
+  /// In de, this message translates to:
+  /// **'Mir zuweisen'**
+  String get assignToMe;
+
+  /// Als gelöst markieren Button
+  ///
+  /// In de, this message translates to:
+  /// **'Als gelöst markieren'**
+  String get markAsResolved;
+
+  /// Vollständiges Datum/Zeit Format
+  ///
+  /// In de, this message translates to:
+  /// **'{day}.{month}.{year} um {hour}:{minute} Uhr'**
+  String fullDateTimeFormat(
+      String day, String month, int year, String hour, String minute);
+
+  /// Angebot ID
+  ///
+  /// In de, this message translates to:
+  /// **'Angebot #{id}'**
+  String listingId(int id);
+
+  /// Warnung Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Warnung'**
+  String get warning;
+
+  /// Bestätigung für Rollen-Änderung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie diesem Benutzer wirklich die Rolle \"{role}\" zuweisen? Diese Aktion gibt dem Benutzer erweiterte Berechtigungen.'**
+  String confirmRoleChange(String role);
+
+  /// Rolle aktualisiert Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Rolle wurde aktualisiert'**
+  String get roleUpdated;
+
+  /// Fehler Nachricht
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler: {error}'**
+  String error(String error);
+
+  /// Keine kostenlosen Slot-Varianten verfügbar
+  ///
+  /// In de, this message translates to:
+  /// **'Keine kostenlosen Slot-Varianten verfügbar. Erstelle zuerst eine kostenlose Variante.'**
+  String get noFreeSlotVariantsAvailable;
+
+  /// Kostenlosen Slot vergeben
+  ///
+  /// In de, this message translates to:
+  /// **'Kostenlosen Slot vergeben'**
+  String get grantFreeSlot;
+
+  /// Slot-Variante auswählen
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle eine kostenlose Slot-Variante für {username}:'**
+  String selectFreeSlotVariant(String username);
+
+  /// Tage Laufzeit
+  ///
+  /// In de, this message translates to:
+  /// **'{days} Tage Laufzeit'**
+  String daysRuntime(int days);
+
+  /// Kostenlos Label (Großbuchstaben)
+  ///
+  /// In de, this message translates to:
+  /// **'KOSTENLOS'**
+  String get freeUppercase;
+
+  /// Kostenloser Slot vergeben Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Kostenloser Slot \"{variantName}\" wurde an {username} vergeben'**
+  String freeSlotGranted(String variantName, String username);
+
+  /// Sperre aufheben Bestätigung
+  ///
+  /// In de, this message translates to:
+  /// **'Möchten Sie die Sperre dieses Benutzers wirklich aufheben?'**
+  String get confirmUnban;
+
+  /// Standard-Grund für Aufhebung der Sperre
+  ///
+  /// In de, this message translates to:
+  /// **'Sperre durch Admin aufgehoben'**
+  String get unbanReason;
+
+  /// Informationen Titel
+  ///
+  /// In de, this message translates to:
+  /// **'Informationen'**
+  String get information;
+
+  /// Letzter Login Label
+  ///
+  /// In de, this message translates to:
+  /// **'Letzter Login'**
+  String get lastLogin;
+
+  /// Noch nie
+  ///
+  /// In de, this message translates to:
+  /// **'Noch nie'**
+  String get never;
+
+  /// Status Label
+  ///
+  /// In de, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// Gesperrt seit Label
+  ///
+  /// In de, this message translates to:
+  /// **'Gesperrt seit'**
+  String get bannedSince;
+
+  /// Sperrgrund Label
+  ///
+  /// In de, this message translates to:
+  /// **'Sperrgrund'**
+  String get banReasonLabel;
+
+  /// Eigene Rolle nicht änderbar
+  ///
+  /// In de, this message translates to:
+  /// **'Sie können Ihre eigene Rolle nicht ändern.'**
+  String get cannotChangeOwnRole;
+
+  /// Administrator Rollen-Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Voller Zugriff auf alle Funktionen'**
+  String get roleDescriptionAdmin;
+
+  /// Moderator Rollen-Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Kann Meldungen bearbeiten und Inhalte moderieren'**
+  String get roleDescriptionModerator;
+
+  /// Benutzer Rollen-Beschreibung
+  ///
+  /// In de, this message translates to:
+  /// **'Normaler Benutzer ohne erweiterte Berechtigungen'**
+  String get roleDescriptionUser;
+
+  /// Sperr-Historie
+  ///
+  /// In de, this message translates to:
+  /// **'Sperr-Historie'**
+  String get banHistory;
+
+  /// Gesperrt Aktion
+  ///
+  /// In de, this message translates to:
+  /// **'Gesperrt'**
+  String get bannedAction;
+
+  /// Entsperrt Aktion
+  ///
+  /// In de, this message translates to:
+  /// **'Entsperrt'**
+  String get unbannedAction;
+
+  /// Ban-Grund: Betrug/Scam
+  ///
+  /// In de, this message translates to:
+  /// **'Betrug/Scam'**
+  String get banReasonFraud;
+
+  /// Ban-Grund: Unangemessenes Verhalten
+  ///
+  /// In de, this message translates to:
+  /// **'Unangemessenes Verhalten'**
+  String get banReasonInappropriate;
+
+  /// Ban-Grund: Verstoß gegen Nutzungsbedingungen
+  ///
+  /// In de, this message translates to:
+  /// **'Verstoß gegen Nutzungsbedingungen'**
+  String get banReasonTosViolation;
+
+  /// Ban-Grund: Mehrfach-Accounts
+  ///
+  /// In de, this message translates to:
+  /// **'Mehrfach-Accounts'**
+  String get banReasonMultipleAccounts;
+
+  /// Ban-Grund: Illegale Aktivitäten
+  ///
+  /// In de, this message translates to:
+  /// **'Illegale Aktivitäten'**
+  String get banReasonIllegal;
+
+  /// Ban-Grund erforderlich Fehlermeldung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte geben Sie einen Grund ein'**
+  String get banReasonRequired;
+
+  /// Grund für Sperre eingeben
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte geben Sie einen Grund für die Sperre an:'**
+  String get enterBanReason;
+
+  /// Vordefinierte Gründe Label
+  ///
+  /// In de, this message translates to:
+  /// **'Vordefinierte Gründe:'**
+  String get presetReasons;
+
+  /// Grund erforderlich Label
+  ///
+  /// In de, this message translates to:
+  /// **'Grund (erforderlich)'**
+  String get reasonRequired;
+
+  /// Beschreibung für Ban-Grund Platzhalter
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreiben Sie den Grund für die Sperre...'**
+  String get describeBanReason;
+
+  /// Warnung beim Sperren eines Benutzers
+  ///
+  /// In de, this message translates to:
+  /// **'Achtung: Beim Sperren werden alle aktiven Angebote des Benutzers deaktiviert und offene Transaktionen abgebrochen.'**
+  String get banWarning;
+
+  /// Sperren Aktion
+  ///
+  /// In de, this message translates to:
+  /// **'Sperren'**
+  String get banAction;
 }
 
 class _AppLocalizationsDelegate

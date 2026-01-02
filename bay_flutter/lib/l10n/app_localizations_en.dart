@@ -493,7 +493,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get description => 'Description';
 
   @override
-  String get details => 'Details';
+  String get details => 'Details:';
 
   @override
   String get acceptedPaymentMethods => 'Accepted payment methods';
@@ -1538,7 +1538,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reportDetail => 'Report Details';
 
   @override
-  String get reportId => 'Report ID';
+  String reportId(int id) {
+    return 'Report #$id';
+  }
 
   @override
   String get reportType => 'Type';
@@ -1568,7 +1570,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get enterNote => 'Enter note...';
 
   @override
-  String get noteSaved => 'Note saved';
+  String get noteSaved => 'Note has been saved';
 
   @override
   String get takeAction => 'Take Action';
@@ -1669,7 +1671,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get banReasonScam => 'Scam';
 
   @override
-  String get banReasonHarassment => 'Harassment';
+  String get banReasonHarassment => 'Harassment of Other Users';
 
   @override
   String get banReasonIllegalContent => 'Illegal Content';
@@ -1708,7 +1710,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ban => 'Ban';
 
   @override
-  String get userBanned => 'User banned';
+  String get userBanned => 'User has been banned';
 
   @override
   String get userWarned => 'User warned';
@@ -2352,10 +2354,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get viewUser => 'View User';
 
   @override
-  String get unbanUser => 'Unban';
+  String get unbanUser => 'Unban User';
 
   @override
-  String get userUnbanned => 'User unbanned';
+  String get userUnbanned => 'User has been unbanned';
 
   @override
   String get confirmUnbanUser => 'Do you really want to unban this user?';
@@ -2466,4 +2468,195 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noUsersFound => 'No Users Found';
+
+  @override
+  String get reportAssignedToYou => 'Report has been assigned to you';
+
+  @override
+  String get statusUpdated => 'Status has been updated';
+
+  @override
+  String get noteCannotBeEmpty => 'Note cannot be empty';
+
+  @override
+  String get deactivateListing => 'Deactivate Listing';
+
+  @override
+  String get deactivateListingConfirm =>
+      'Do you really want to deactivate this listing? This action cannot be undone.';
+
+  @override
+  String get deactivate => 'Deactivate';
+
+  @override
+  String get listingDeactivated => 'Listing has been deactivated';
+
+  @override
+  String get reportNotFound => 'Report not found';
+
+  @override
+  String assignedToModerator(int id) {
+    return 'Assigned to moderator #$id';
+  }
+
+  @override
+  String get notYetAssigned => 'Not yet assigned';
+
+  @override
+  String get reportDetails => 'Report Details';
+
+  @override
+  String get reportedOn => 'Reported on';
+
+  @override
+  String reporterUser(int id) {
+    return 'User #$id';
+  }
+
+  @override
+  String get reportedUserProfile => 'Reported User Profile';
+
+  @override
+  String get addInternalNotes => 'Add internal notes...';
+
+  @override
+  String get assignToMe => 'Assign to Me';
+
+  @override
+  String get markAsResolved => 'Mark as Resolved';
+
+  @override
+  String fullDateTimeFormat(
+      String day, String month, int year, String hour, String minute) {
+    return '$day.$month.$year at $hour:$minute';
+  }
+
+  @override
+  String listingId(int id) {
+    return 'Listing #$id';
+  }
+
+  @override
+  String get warning => 'Warning';
+
+  @override
+  String confirmRoleChange(String role) {
+    return 'Do you really want to assign the role \"$role\" to this user? This action gives the user extended permissions.';
+  }
+
+  @override
+  String get roleUpdated => 'Role has been updated';
+
+  @override
+  String error(String error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String get noFreeSlotVariantsAvailable =>
+      'No free slot variants available. Create a free variant first.';
+
+  @override
+  String get grantFreeSlot => 'Grant Free Slot';
+
+  @override
+  String selectFreeSlotVariant(String username) {
+    return 'Select a free slot variant for $username:';
+  }
+
+  @override
+  String daysRuntime(int days) {
+    return '$days days runtime';
+  }
+
+  @override
+  String get freeUppercase => 'FREE';
+
+  @override
+  String freeSlotGranted(String variantName, String username) {
+    return 'Free slot \"$variantName\" has been granted to $username';
+  }
+
+  @override
+  String get confirmUnban => 'Do you really want to unban this user?';
+
+  @override
+  String get unbanReason => 'Ban lifted by admin';
+
+  @override
+  String get information => 'Information';
+
+  @override
+  String get lastLogin => 'Last Login';
+
+  @override
+  String get never => 'Never';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get bannedSince => 'Banned Since';
+
+  @override
+  String get banReasonLabel => 'Ban Reason';
+
+  @override
+  String get cannotChangeOwnRole => 'You cannot change your own role.';
+
+  @override
+  String get roleDescriptionAdmin => 'Full access to all features';
+
+  @override
+  String get roleDescriptionModerator =>
+      'Can manage reports and moderate content';
+
+  @override
+  String get roleDescriptionUser => 'Regular user without extended permissions';
+
+  @override
+  String get banHistory => 'Ban History';
+
+  @override
+  String get bannedAction => 'Banned';
+
+  @override
+  String get unbannedAction => 'Unbanned';
+
+  @override
+  String get banReasonFraud => 'Fraud/Scam';
+
+  @override
+  String get banReasonInappropriate => 'Inappropriate Behavior';
+
+  @override
+  String get banReasonTosViolation => 'Terms of Service Violation';
+
+  @override
+  String get banReasonMultipleAccounts => 'Multiple Accounts';
+
+  @override
+  String get banReasonIllegal => 'Illegal Activities';
+
+  @override
+  String get banReasonRequired => 'Please enter a reason';
+
+  @override
+  String get enterBanReason => 'Please provide a reason for the ban:';
+
+  @override
+  String get presetReasons => 'Preset Reasons:';
+
+  @override
+  String get reasonRequired => 'Reason (required)';
+
+  @override
+  String get describeBanReason => 'Describe the reason for the ban...';
+
+  @override
+  String get banWarning =>
+      'Warning: Banning will deactivate all active listings and cancel open transactions of the user.';
+
+  @override
+  String get banAction => 'Ban';
 }

@@ -498,7 +498,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get description => 'Descripción';
 
   @override
-  String get details => 'Detalles';
+  String get details => 'Detalles:';
 
   @override
   String get acceptedPaymentMethods => 'Métodos de pago aceptados';
@@ -873,7 +873,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Por favor describe el problema con esta transacción. Un moderador revisará tu disputa.';
 
   @override
-  String get reason => 'Razón';
+  String get reason => 'Motivo';
 
   @override
   String get describeProblem => 'Describe el problema...';
@@ -1515,7 +1515,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reportedUser => 'Usuario Reportado';
 
   @override
-  String get reportedListing => 'Anuncio Reportado';
+  String get reportedListing => 'Oferta Reportada';
 
   @override
   String get reportReason => 'Razón';
@@ -1551,7 +1551,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get reportDetail => 'Detalles del Reporte';
 
   @override
-  String get reportId => 'ID de Reporte';
+  String reportId(int id) {
+    return 'Reporte #$id';
+  }
 
   @override
   String get reportType => 'Tipo';
@@ -1581,7 +1583,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get enterNote => 'Ingresar nota...';
 
   @override
-  String get noteSaved => 'Nota guardada';
+  String get noteSaved => 'La nota ha sido guardada';
 
   @override
   String get takeAction => 'Tomar Acción';
@@ -1605,7 +1607,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get warnUser => 'Advertir Usuario';
 
   @override
-  String get banUser => 'Banear Usuario';
+  String get banUser => 'Bloquear Usuario';
 
   @override
   String get reportMarkedInReview => 'Reporte marcado como en revisión';
@@ -1627,7 +1629,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get resolve => 'Resolver';
 
   @override
-  String get dismiss => 'Rechazar';
+  String get dismiss => 'Desestimar';
 
   @override
   String get userDetail => 'Detalles del Usuario';
@@ -1682,7 +1684,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get banReasonScam => 'Estafa';
 
   @override
-  String get banReasonHarassment => 'Acoso';
+  String get banReasonHarassment => 'Acoso a Otros Usuarios';
 
   @override
   String get banReasonIllegalContent => 'Contenido Ilegal';
@@ -1721,7 +1723,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ban => 'Banear';
 
   @override
-  String get userBanned => 'Usuario baneado';
+  String get userBanned => 'El usuario ha sido bloqueado';
 
   @override
   String get userWarned => 'Usuario advertido';
@@ -2364,10 +2366,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get viewUser => 'Ver Usuario';
 
   @override
-  String get unbanUser => 'Desbanear';
+  String get unbanUser => 'Desbloquear Usuario';
 
   @override
-  String get userUnbanned => 'Usuario desbaneado';
+  String get userUnbanned => 'El usuario ha sido desbloqueado';
 
   @override
   String get confirmUnbanUser => '¿Realmente quieres desbanear a este usuario?';
@@ -2478,4 +2480,196 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get noUsersFound => 'No se Encontraron Usuarios';
+
+  @override
+  String get reportAssignedToYou => 'El reporte ha sido asignado a ti';
+
+  @override
+  String get statusUpdated => 'El estado ha sido actualizado';
+
+  @override
+  String get noteCannotBeEmpty => 'La nota no puede estar vacía';
+
+  @override
+  String get deactivateListing => 'Desactivar Oferta';
+
+  @override
+  String get deactivateListingConfirm =>
+      '¿Realmente desea desactivar esta oferta? Esta acción no se puede deshacer.';
+
+  @override
+  String get deactivate => 'Desactivar';
+
+  @override
+  String get listingDeactivated => 'La oferta ha sido desactivada';
+
+  @override
+  String get reportNotFound => 'Reporte no encontrado';
+
+  @override
+  String assignedToModerator(int id) {
+    return 'Asignado al moderador #$id';
+  }
+
+  @override
+  String get notYetAssigned => 'Aún no asignado';
+
+  @override
+  String get reportDetails => 'Detalles del Reporte';
+
+  @override
+  String get reportedOn => 'Reportado el';
+
+  @override
+  String reporterUser(int id) {
+    return 'Usuario #$id';
+  }
+
+  @override
+  String get reportedUserProfile => 'Perfil de Usuario Reportado';
+
+  @override
+  String get addInternalNotes => 'Agregar notas internas...';
+
+  @override
+  String get assignToMe => 'Asignarme';
+
+  @override
+  String get markAsResolved => 'Marcar como Resuelto';
+
+  @override
+  String fullDateTimeFormat(
+      String day, String month, int year, String hour, String minute) {
+    return '$day.$month.$year a las $hour:$minute';
+  }
+
+  @override
+  String listingId(int id) {
+    return 'Oferta #$id';
+  }
+
+  @override
+  String get warning => 'Advertencia';
+
+  @override
+  String confirmRoleChange(String role) {
+    return '¿Realmente desea asignar el rol \"$role\" a este usuario? Esta acción otorga permisos extendidos al usuario.';
+  }
+
+  @override
+  String get roleUpdated => 'El rol ha sido actualizado';
+
+  @override
+  String error(String error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String get noFreeSlotVariantsAvailable =>
+      'No hay variantes de slot gratuitas disponibles. Crea primero una variante gratuita.';
+
+  @override
+  String get grantFreeSlot => 'Otorgar Slot Gratuito';
+
+  @override
+  String selectFreeSlotVariant(String username) {
+    return 'Selecciona una variante de slot gratuita para $username:';
+  }
+
+  @override
+  String daysRuntime(int days) {
+    return '$days días de duración';
+  }
+
+  @override
+  String get freeUppercase => 'GRATIS';
+
+  @override
+  String freeSlotGranted(String variantName, String username) {
+    return 'El slot gratuito \"$variantName\" ha sido otorgado a $username';
+  }
+
+  @override
+  String get confirmUnban => '¿Realmente desea desbloquear a este usuario?';
+
+  @override
+  String get unbanReason => 'Bloqueo levantado por el administrador';
+
+  @override
+  String get information => 'Información';
+
+  @override
+  String get lastLogin => 'Último Inicio de Sesión';
+
+  @override
+  String get never => 'Nunca';
+
+  @override
+  String get status => 'Estado';
+
+  @override
+  String get bannedSince => 'Bloqueado Desde';
+
+  @override
+  String get banReasonLabel => 'Motivo del Bloqueo';
+
+  @override
+  String get cannotChangeOwnRole => 'No puede cambiar su propio rol.';
+
+  @override
+  String get roleDescriptionAdmin => 'Acceso completo a todas las funciones';
+
+  @override
+  String get roleDescriptionModerator =>
+      'Puede gestionar reportes y moderar contenido';
+
+  @override
+  String get roleDescriptionUser => 'Usuario regular sin permisos extendidos';
+
+  @override
+  String get banHistory => 'Historial de Bloqueos';
+
+  @override
+  String get bannedAction => 'Bloqueado';
+
+  @override
+  String get unbannedAction => 'Desbloqueado';
+
+  @override
+  String get banReasonFraud => 'Fraude/Estafa';
+
+  @override
+  String get banReasonInappropriate => 'Comportamiento Inapropiado';
+
+  @override
+  String get banReasonTosViolation => 'Violación de Términos de Servicio';
+
+  @override
+  String get banReasonMultipleAccounts => 'Múltiples Cuentas';
+
+  @override
+  String get banReasonIllegal => 'Actividades Ilegales';
+
+  @override
+  String get banReasonRequired => 'Por favor ingrese un motivo';
+
+  @override
+  String get enterBanReason =>
+      'Por favor proporcione un motivo para el bloqueo:';
+
+  @override
+  String get presetReasons => 'Motivos Predefinidos:';
+
+  @override
+  String get reasonRequired => 'Motivo (requerido)';
+
+  @override
+  String get describeBanReason => 'Describa el motivo del bloqueo...';
+
+  @override
+  String get banWarning =>
+      'Advertencia: El bloqueo desactivará todas las ofertas activas y cancelará las transacciones abiertas del usuario.';
+
+  @override
+  String get banAction => 'Bloquear';
 }

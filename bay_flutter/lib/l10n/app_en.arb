@@ -3260,5 +3260,430 @@
         "type": "int"
       }
     }
+  },
+
+  "reportAssignedToYou": "Report has been assigned to you",
+  "@reportAssignedToYou": {
+    "description": "Report assigned confirmation"
+  },
+
+  "statusUpdated": "Status has been updated",
+  "@statusUpdated": {
+    "description": "Status updated confirmation"
+  },
+
+  "noteCannotBeEmpty": "Note cannot be empty",
+  "@noteCannotBeEmpty": {
+    "description": "Note empty error"
+  },
+
+  "noteSaved": "Note has been saved",
+  "@noteSaved": {
+    "description": "Note saved confirmation"
+  },
+
+  "deactivateListing": "Deactivate Listing",
+  "@deactivateListing": {
+    "description": "Deactivate listing title"
+  },
+
+  "deactivateListingConfirm": "Do you really want to deactivate this listing? This action cannot be undone.",
+  "@deactivateListingConfirm": {
+    "description": "Deactivate listing confirmation"
+  },
+
+  "deactivate": "Deactivate",
+  "@deactivate": {
+    "description": "Deactivate button"
+  },
+
+  "listingDeactivated": "Listing has been deactivated",
+  "@listingDeactivated": {
+    "description": "Listing deactivated confirmation"
+  },
+
+  "reportId": "Report #{id}",
+  "@reportId": {
+    "description": "Report ID",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "reportNotFound": "Report not found",
+  "@reportNotFound": {
+    "description": "Report not found"
+  },
+
+  "assignedToModerator": "Assigned to moderator #{id}",
+  "@assignedToModerator": {
+    "description": "Assigned to moderator",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "notYetAssigned": "Not yet assigned",
+  "@notYetAssigned": {
+    "description": "Not yet assigned"
+  },
+
+  "reportDetails": "Report Details",
+  "@reportDetails": {
+    "description": "Report details title"
+  },
+
+  "reason": "Reason",
+  "@reason": {
+    "description": "Reason label"
+  },
+
+  "reportedOn": "Reported on",
+  "@reportedOn": {
+    "description": "Reported on label"
+  },
+
+  "reportedBy": "Reported by",
+  "@reportedBy": {
+    "description": "Reported by label"
+  },
+
+  "reporterUser": "User #{id}",
+  "@reporterUser": {
+    "description": "Reporter user",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "details": "Details:",
+  "@details": {
+    "description": "Details label"
+  },
+
+  "reportedListing": "Reported Listing",
+  "@reportedListing": {
+    "description": "Reported listing"
+  },
+
+  "reportedUserProfile": "Reported User Profile",
+  "@reportedUserProfile": {
+    "description": "Reported user profile"
+  },
+
+  "moderatorNotes": "Moderator Notes",
+  "@moderatorNotes": {
+    "description": "Moderator notes title"
+  },
+
+  "addInternalNotes": "Add internal notes...",
+  "@addInternalNotes": {
+    "description": "Notes hint"
+  },
+
+  "actions": "Actions",
+  "@actions": {
+    "description": "Actions title"
+  },
+
+  "assignToMe": "Assign to Me",
+  "@assignToMe": {
+    "description": "Assign to me button"
+  },
+
+  "markAsResolved": "Mark as Resolved",
+  "@markAsResolved": {
+    "description": "Mark as resolved button"
+  },
+
+  "dismiss": "Dismiss",
+  "@dismiss": {
+    "description": "Dismiss button"
+  },
+
+  "fullDateTimeFormat": "{day}.{month}.{year} at {hour}:{minute}",
+  "@fullDateTimeFormat": {
+    "description": "Full date time format",
+    "placeholders": {
+      "day": {
+        "type": "String"
+      },
+      "month": {
+        "type": "String"
+      },
+      "year": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      },
+      "minute": {
+        "type": "String"
+      }
+    }
+  },
+
+  "listingId": "Listing #{id}",
+  "@listingId": {
+    "description": "Listing ID",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+
+  "warning": "Warning",
+  "@warning": {
+    "description": "Warning title"
+  },
+
+  "confirmRoleChange": "Do you really want to assign the role \"{role}\" to this user? This action gives the user extended permissions.",
+  "@confirmRoleChange": {
+    "description": "Role change confirmation",
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": "Confirm button"
+  },
+
+  "roleUpdated": "Role has been updated",
+  "@roleUpdated": {
+    "description": "Role updated confirmation"
+  },
+
+  "error": "Error: {error}",
+  "@error": {
+    "description": "Error message",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noFreeSlotVariantsAvailable": "No free slot variants available. Create a free variant first.",
+  "@noFreeSlotVariantsAvailable": {
+    "description": "No free slot variants available"
+  },
+
+  "grantFreeSlot": "Grant Free Slot",
+  "@grantFreeSlot": {
+    "description": "Grant free slot"
+  },
+
+  "selectFreeSlotVariant": "Select a free slot variant for {username}:",
+  "@selectFreeSlotVariant": {
+    "description": "Select slot variant",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "daysRuntime": "{days} days runtime",
+  "@daysRuntime": {
+    "description": "Days runtime",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+
+  "freeUppercase": "FREE",
+  "@freeUppercase": {
+    "description": "Free label (uppercase)"
+  },
+
+  "freeSlotGranted": "Free slot \"{variantName}\" has been granted to {username}",
+  "@freeSlotGranted": {
+    "description": "Free slot granted confirmation",
+    "placeholders": {
+      "variantName": {
+        "type": "String"
+      },
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+
+  "userBanned": "User has been banned",
+  "@userBanned": {
+    "description": "User banned confirmation"
+  },
+
+  "unbanUser": "Unban User",
+  "@unbanUser": {
+    "description": "Unban user"
+  },
+
+  "confirmUnban": "Do you really want to unban this user?",
+  "@confirmUnban": {
+    "description": "Unban confirmation"
+  },
+
+  "unbanReason": "Ban lifted by admin",
+  "@unbanReason": {
+    "description": "Default unban reason"
+  },
+
+  "userUnbanned": "User has been unbanned",
+  "@userUnbanned": {
+    "description": "User unbanned confirmation"
+  },
+
+  "information": "Information",
+  "@information": {
+    "description": "Information title"
+  },
+
+  "lastLogin": "Last Login",
+  "@lastLogin": {
+    "description": "Last login label"
+  },
+
+  "never": "Never",
+  "@never": {
+    "description": "Never"
+  },
+
+  "status": "Status",
+  "@status": {
+    "description": "Status label"
+  },
+
+  "bannedSince": "Banned Since",
+  "@bannedSince": {
+    "description": "Banned since label"
+  },
+
+  "banReasonLabel": "Ban Reason",
+  "@banReasonLabel": {
+    "description": "Ban reason label"
+  },
+
+  "cannotChangeOwnRole": "You cannot change your own role.",
+  "@cannotChangeOwnRole": {
+    "description": "Cannot change own role"
+  },
+
+  "roleDescriptionAdmin": "Full access to all features",
+  "@roleDescriptionAdmin": {
+    "description": "Admin role description"
+  },
+
+  "roleDescriptionModerator": "Can manage reports and moderate content",
+  "@roleDescriptionModerator": {
+    "description": "Moderator role description"
+  },
+
+  "roleDescriptionUser": "Regular user without extended permissions",
+  "@roleDescriptionUser": {
+    "description": "User role description"
+  },
+
+  "banUser": "Ban User",
+  "@banUser": {
+    "description": "Ban user"
+  },
+
+  "banHistory": "Ban History",
+  "@banHistory": {
+    "description": "Ban history"
+  },
+
+  "bannedAction": "Banned",
+  "@bannedAction": {
+    "description": "Banned action"
+  },
+
+  "unbannedAction": "Unbanned",
+  "@unbannedAction": {
+    "description": "Unbanned action"
+  },
+
+  "banReasonSpam": "Spam",
+  "@banReasonSpam": {
+    "description": "Ban reason: Spam"
+  },
+
+  "banReasonFraud": "Fraud/Scam",
+  "@banReasonFraud": {
+    "description": "Ban reason: Fraud/Scam"
+  },
+
+  "banReasonInappropriate": "Inappropriate Behavior",
+  "@banReasonInappropriate": {
+    "description": "Ban reason: Inappropriate behavior"
+  },
+
+  "banReasonTosViolation": "Terms of Service Violation",
+  "@banReasonTosViolation": {
+    "description": "Ban reason: ToS violation"
+  },
+
+  "banReasonMultipleAccounts": "Multiple Accounts",
+  "@banReasonMultipleAccounts": {
+    "description": "Ban reason: Multiple accounts"
+  },
+
+  "banReasonHarassment": "Harassment of Other Users",
+  "@banReasonHarassment": {
+    "description": "Ban reason: Harassment"
+  },
+
+  "banReasonIllegal": "Illegal Activities",
+  "@banReasonIllegal": {
+    "description": "Ban reason: Illegal activities"
+  },
+
+  "banReasonRequired": "Please enter a reason",
+  "@banReasonRequired": {
+    "description": "Ban reason required error"
+  },
+
+  "enterBanReason": "Please provide a reason for the ban:",
+  "@enterBanReason": {
+    "description": "Enter ban reason prompt"
+  },
+
+  "presetReasons": "Preset Reasons:",
+  "@presetReasons": {
+    "description": "Preset reasons label"
+  },
+
+  "reasonRequired": "Reason (required)",
+  "@reasonRequired": {
+    "description": "Reason required label"
+  },
+
+  "describeBanReason": "Describe the reason for the ban...",
+  "@describeBanReason": {
+    "description": "Describe ban reason placeholder"
+  },
+
+  "banWarning": "Warning: Banning will deactivate all active listings and cancel open transactions of the user.",
+  "@banWarning": {
+    "description": "Ban warning message"
+  },
+
+  "banAction": "Ban",
+  "@banAction": {
+    "description": "Ban action"
   }
 }
