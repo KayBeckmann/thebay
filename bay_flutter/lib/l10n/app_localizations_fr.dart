@@ -2338,4 +2338,33 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get buy => 'Acheter';
+
+  @override
+  String removedFromFavorites(Object title) {
+    return '$title a été retiré des favoris';
+  }
+
+  @override
+  String get undo => 'Annuler';
+
+  @override
+  String get retryButton => 'Réessayer';
+
+  @override
+  String get noFavorites => 'Aucun Favori';
+
+  @override
+  String get noFavoritesDescription =>
+      'Vous n\'avez pas encore enregistré de favoris. Appuyez sur l\'icône de cœur sur les annonces que vous aimez.';
+
+  @override
+  String get removeFavoriteTitle => 'Retirer le Favori';
+
+  @override
+  String removeFavoriteConfirm(Object title) {
+    return 'Voulez-vous vraiment retirer \"$title\" de vos favoris?';
+  }
+
+  @override
+  String get remove => 'Retirer';
 }

@@ -2327,4 +2327,33 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get buy => 'Comprar';
+
+  @override
+  String removedFromFavorites(Object title) {
+    return '$title ha sido eliminado de favoritos';
+  }
+
+  @override
+  String get undo => 'Deshacer';
+
+  @override
+  String get retryButton => 'Reintentar';
+
+  @override
+  String get noFavorites => 'Sin Favoritos';
+
+  @override
+  String get noFavoritesDescription =>
+      'Aún no has guardado ningún favorito. Toca el ícono de corazón en los anuncios que te gusten.';
+
+  @override
+  String get removeFavoriteTitle => 'Eliminar Favorito';
+
+  @override
+  String removeFavoriteConfirm(Object title) {
+    return '¿Realmente deseas eliminar \"$title\" de tus favoritos?';
+  }
+
+  @override
+  String get remove => 'Eliminar';
 }

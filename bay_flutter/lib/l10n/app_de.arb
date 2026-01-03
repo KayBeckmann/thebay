@@ -3606,5 +3606,13 @@
   "referenceLabel": "Referenz",
   "errorLoadingPaymentInfo": "Fehler beim Laden der Zahlungsinformationen: {error}",
   "buySlot": "Slot kaufen",
-  "buy": "Kaufen"
+  "buy": "Kaufen",
+  "removedFromFavorites": "{title} wurde aus den Favoriten entfernt",
+  "undo": "Rückgängig",
+  "retryButton": "Erneut versuchen",
+  "noFavorites": "Keine Favoriten",
+  "noFavoritesDescription": "Du hast noch keine Favoriten gespeichert. Tippe auf das Herz-Symbol bei Angeboten, die dir gefallen.",
+  "removeFavoriteTitle": "Favorit entfernen",
+  "removeFavoriteConfirm": "Möchtest du \"{title}\" wirklich aus deinen Favoriten entfernen?",
+  "remove": "Entfernen"
 }

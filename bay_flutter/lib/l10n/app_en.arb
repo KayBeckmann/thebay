@@ -2662,5 +2662,13 @@
   "referenceLabel": "Reference",
   "errorLoadingPaymentInfo": "Error loading payment information: {error}",
   "buySlot": "Buy Slot",
-  "buy": "Buy"
+  "buy": "Buy",
+  "removedFromFavorites": "{title} has been removed from favorites",
+  "undo": "Undo",
+  "retryButton": "Retry",
+  "noFavorites": "No Favorites",
+  "noFavoritesDescription": "You haven't saved any favorites yet. Tap the heart icon on listings you like.",
+  "removeFavoriteTitle": "Remove Favorite",
+  "removeFavoriteConfirm": "Do you really want to remove \"{title}\" from your favorites?",
+  "remove": "Remove"
 }

@@ -638,12 +638,12 @@
 - [x] ban_user_dialog.dart mit AppLocalizations aktualisieren (~14 Strings)
 
 ### 15.8 Feinschliff & Completion
-- [ ] favorites_screen.dart übersetzen
+- [x] favorites_screen.dart übersetzen (~8 Strings für Favoritenverwaltung)
 - [x] user_profile_screen.dart übersetzen (~25 Strings)
 - [x] Rating-Dialoge übersetzen (submit_rating_dialog.dart ~11 Strings, ratings_list_widget.dart ~8 Strings)
 - [x] Report-Dialoge übersetzen (report_dialog.dart ~18 Strings)
 - [x] Alle übersehenen Widgets übersetzen (start_transaction_dialog.dart ~21 Strings, sell_screen.dart ~60 Strings)
-- [x] Übersetzungen auf Konsistenz prüfen (alle 4 Sprachen vollständig)
+- [x] Übersetzungen auf Konsistenz prüfen (alle 4 Sprachen vollständig, 0 fehlende Übersetzungen)
 - [ ] Native Speaker Reviews durchführen
 - [ ] Alle Sprach-Kombinationen testen
 - [ ] Dokumentation aktualisieren

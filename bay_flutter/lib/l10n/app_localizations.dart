@@ -4277,6 +4277,54 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Kaufen'**
   String get buy;
+
+  /// No description provided for @removedFromFavorites.
+  ///
+  /// In de, this message translates to:
+  /// **'{title} wurde aus den Favoriten entfernt'**
+  String removedFromFavorites(Object title);
+
+  /// No description provided for @undo.
+  ///
+  /// In de, this message translates to:
+  /// **'Rückgängig'**
+  String get undo;
+
+  /// No description provided for @retryButton.
+  ///
+  /// In de, this message translates to:
+  /// **'Erneut versuchen'**
+  String get retryButton;
+
+  /// No description provided for @noFavorites.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Favoriten'**
+  String get noFavorites;
+
+  /// No description provided for @noFavoritesDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast noch keine Favoriten gespeichert. Tippe auf das Herz-Symbol bei Angeboten, die dir gefallen.'**
+  String get noFavoritesDescription;
+
+  /// No description provided for @removeFavoriteTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Favorit entfernen'**
+  String get removeFavoriteTitle;
+
+  /// No description provided for @removeFavoriteConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du \"{title}\" wirklich aus deinen Favoriten entfernen?'**
+  String removeFavoriteConfirm(Object title);
+
+  /// No description provided for @remove.
+  ///
+  /// In de, this message translates to:
+  /// **'Entfernen'**
+  String get remove;
 }
 
 class _AppLocalizationsDelegate

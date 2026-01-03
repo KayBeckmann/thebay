@@ -2016,5 +2016,13 @@
   "extendSlotPrompt": "Choisissez une variante de slot pour prolonger votre slot. La durée sera ajoutée à la date d'expiration actuelle.",
   "buySlot": "Acheter un Slot",
   "paymentMethod": "Méthode de Paiement",
-  "buy": "Acheter"
+  "buy": "Acheter",
+  "removedFromFavorites": "{title} a été retiré des favoris",
+  "undo": "Annuler",
+  "retryButton": "Réessayer",
+  "noFavorites": "Aucun Favori",
+  "noFavoritesDescription": "Vous n'avez pas encore enregistré de favoris. Appuyez sur l'icône de cœur sur les annonces que vous aimez.",
+  "removeFavoriteTitle": "Retirer le Favori",
+  "removeFavoriteConfirm": "Voulez-vous vraiment retirer \"{title}\" de vos favoris?",
+  "remove": "Retirer"
 }
