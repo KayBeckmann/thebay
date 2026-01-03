@@ -614,7 +614,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(l10n.cancelOrder),
+        title: Text(l10n.cancelOrder),
         content: Text(
           l10n.cancelOrderConfirm(order.id!),
         ),
@@ -640,7 +640,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       await client.slotOrder.cancel(order.id!);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text(l10n.orderCanceled)),
+          SnackBar(content: Text(l10n.orderCanceled)),
         );
         _loadPendingOrders();
       }
@@ -661,7 +661,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       context: context,
       builder: (context) => AlertDialog(
         icon: const Icon(Icons.currency_bitcoin),
-        title: const Text(l10n.bitcoinTransactionId),
+        title: Text(l10n.bitcoinTransactionId),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -673,10 +673,10 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
             const SizedBox(height: 16),
             TextField(
               controller: controller,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: l10n.txIdLabel,
                 hintText: l10n.txIdPlaceholder,
-                prefixIcon: Icon(Icons.tag),
+                prefixIcon: const Icon(Icons.tag),
               ),
               autofocus: true,
             ),
@@ -689,7 +689,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, controller.text.trim()),
-            child: const Text(l10n.save),
+            child: Text(l10n.save),
           ),
         ],
       ),
@@ -704,7 +704,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text(l10n.txIdSaved)),
+          SnackBar(content: Text(l10n.txIdSaved)),
         );
         _loadPendingOrders();
       }
@@ -769,7 +769,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text(l10n.close),
+              child: Text(l10n.close),
             ),
             if (order.paymentMethod == PaymentMethod.bitcoin)
               FilledButton(
@@ -891,7 +891,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Chip(
-                  label: const Text(l10n.free),
+                  label: Text(l10n.free),
                   backgroundColor: Colors.green.withOpacity(0.2),
                   labelStyle: TextStyle(
                     color: Colors.green.shade700,
@@ -1073,7 +1073,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               child: FilledButton.icon(
                 onPressed: () => _buySlot(variant),
                 icon: const Icon(Icons.add_circle_outline),
-                label: const Text(l10n.activateSlot),
+                label: Text(l10n.activateSlot),
               ),
             ),
           ],
@@ -1091,7 +1091,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
     if (availableMethods.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(l10n.noPaymentMethod)),
+        SnackBar(content: Text(l10n.noPaymentMethod)),
       );
       return;
     }
@@ -1128,11 +1128,11 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _showPaymentInstructions(
-    final l10n = AppLocalizations.of(context)!;
     SlotOrder order,
     SlotVariant variant,
     PaymentMethod method,
   ) async {
+    final l10n = AppLocalizations.of(context)!;
     try {
       final info = await client.payment.getPaymentInfo(order.id!);
 
@@ -1212,7 +1212,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               ),
             FilledButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text(l10n.close),
+              child: Text(l10n.close),
             ),
           ],
         ),
@@ -1235,7 +1235,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     // Wähle eine Slot-Variante aus
     if (_slotVariants.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(l10n.noSlotVariantsAvailable)),
+        SnackBar(content: Text(l10n.noSlotVariantsAvailable)),
       );
       return;
     }
@@ -1243,7 +1243,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     final variant = await showDialog<SlotVariant>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(l10n.extendSlot),
+        title: Text(l10n.extendSlot),
         content: SizedBox(
           width: double.maxFinite,
           child: Column(
@@ -1320,9 +1320,10 @@ class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AlertDialog(
       icon: const Icon(Icons.shopping_cart),
-      title: const Text(l10n.buySlot),
+      title: Text(l10n.buySlot),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1403,7 +1404,7 @@ class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
           onPressed: _selectedMethod == null
               ? null
               : () => Navigator.pop(context, _selectedMethod),
-          child: const Text(l10n.buy),
+          child: Text(l10n.buy),
         ),
       ],
     );

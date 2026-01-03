@@ -2005,6 +2005,7 @@
   "activateSlot": "Activer le slot",
   "noPaymentMethod": "Aucun moyen de paiement disponible",
   "order": "Commande #{id}",
+  "orderNumber": "Commande #{id}",
   "paypalAddress": "Adresse PayPal",
   "bitcoinAddress": "Adresse Bitcoin",
   "referenceLabel": "Référence (Memo)",

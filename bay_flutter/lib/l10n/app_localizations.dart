@@ -807,7 +807,7 @@ abstract class AppLocalizations {
   /// Noch keine Angebote Nachricht
   ///
   /// In de, this message translates to:
-  /// **'Hier werden die neuesten Angebote angezeigt.'**
+  /// **'Du hast noch keine Angebote erstellt.'**
   String get noListingsMessage;
 
   /// Mengeneinheit Stück
@@ -906,7 +906,7 @@ abstract class AppLocalizations {
   /// **'Suchen'**
   String get searchTitle;
 
-  /// Favoriten Titel
+  /// Favoriten Label
   ///
   /// In de, this message translates to:
   /// **'Favoriten'**
@@ -954,13 +954,13 @@ abstract class AppLocalizations {
   /// **'Angebote durchsuchen'**
   String get browseListings;
 
-  /// PayPal Label
+  /// PayPal Zahlungsmethode
   ///
   /// In de, this message translates to:
   /// **'PayPal'**
   String get paypal;
 
-  /// Bitcoin Label
+  /// Bitcoin Zahlungsmethode
   ///
   /// In de, this message translates to:
   /// **'Bitcoin'**
@@ -981,7 +981,7 @@ abstract class AppLocalizations {
   /// Details Label
   ///
   /// In de, this message translates to:
-  /// **'Details:'**
+  /// **'Details'**
   String get details;
 
   /// Akzeptierte Zahlungsmethoden Label
@@ -996,11 +996,11 @@ abstract class AppLocalizations {
   /// **'Menge'**
   String get quantity;
 
-  /// Preis pro Einheit
+  /// Preis pro Einheit Label
   ///
   /// In de, this message translates to:
-  /// **'{price} pro {unit}'**
-  String pricePerUnit(String price, String unit);
+  /// **'Preis pro Einheit'**
+  String pricePerUnit(Object price, Object unit);
 
   /// Erstellt am Label
   ///
@@ -1222,7 +1222,7 @@ abstract class AppLocalizations {
   ///
   /// In de, this message translates to:
   /// **'Möchtest du dieses Angebot wirklich löschen?'**
-  String get deleteListingConfirm;
+  String deleteListingConfirm(Object title);
 
   /// Angebot gelöscht Nachricht
   ///
@@ -1504,7 +1504,7 @@ abstract class AppLocalizations {
   ///
   /// In de, this message translates to:
   /// **'Erstellt'**
-  String get created;
+  String created(Object date);
 
   /// Bezahlt Label
   ///
@@ -1722,7 +1722,7 @@ abstract class AppLocalizations {
   /// **'Verkäufer'**
   String get seller;
 
-  /// Du Badge für eigenes Profil
+  /// Du Label
   ///
   /// In de, this message translates to:
   /// **'Du'**
@@ -2727,7 +2727,7 @@ abstract class AppLocalizations {
   /// Alle Meldungen Tab
   ///
   /// In de, this message translates to:
-  /// **'Alle'**
+  /// **'Alle Meldungen'**
   String get allReports;
 
   /// Offene Meldungen Tab
@@ -2790,7 +2790,7 @@ abstract class AppLocalizations {
   /// **'Gemeldeter Benutzer'**
   String get reportedUser;
 
-  /// Gemeldetes Angebot
+  /// Gemeldetes Angebot Label
   ///
   /// In de, this message translates to:
   /// **'Gemeldetes Angebot'**
@@ -2802,25 +2802,25 @@ abstract class AppLocalizations {
   /// **'Grund'**
   String get reportReason;
 
-  /// Meldungsgrund: Spam
+  /// Meldegrund Spam
   ///
   /// In de, this message translates to:
   /// **'Spam'**
   String get reportReasonSpam;
 
-  /// Meldungsgrund: Unangemessener Inhalt
+  /// Meldegrund Unangemessener Inhalt
   ///
   /// In de, this message translates to:
   /// **'Unangemessener Inhalt'**
   String get reportReasonInappropriate;
 
-  /// Meldungsgrund: Betrug/Scam
+  /// Meldegrund Betrug
   ///
   /// In de, this message translates to:
   /// **'Betrug/Scam'**
   String get reportReasonScam;
 
-  /// Meldungsgrund: Belästigung
+  /// Meldegrund Belästigung
   ///
   /// In de, this message translates to:
   /// **'Belästigung'**
@@ -2832,7 +2832,7 @@ abstract class AppLocalizations {
   /// **'Falsche Informationen'**
   String get reportReasonFakeInfo;
 
-  /// Meldungsgrund: Sonstiges
+  /// Meldegrund Sonstiges
   ///
   /// In de, this message translates to:
   /// **'Sonstiges'**
@@ -2862,11 +2862,11 @@ abstract class AppLocalizations {
   /// **'Meldungsdetails'**
   String get reportDetail;
 
-  /// Meldung ID
+  /// Meldungs-ID Label
   ///
   /// In de, this message translates to:
-  /// **'Meldung #{id}'**
-  String reportId(int id);
+  /// **'Meldungs-ID'**
+  String reportId(Object id);
 
   /// Meldungstyp Label
   ///
@@ -2898,7 +2898,7 @@ abstract class AppLocalizations {
   /// **'Beschreibung'**
   String get reportDescription;
 
-  /// Moderator-Notizen Titel
+  /// Moderator-Notizen Label
   ///
   /// In de, this message translates to:
   /// **'Moderator-Notizen'**
@@ -2922,10 +2922,10 @@ abstract class AppLocalizations {
   /// **'Notiz eingeben...'**
   String get enterNote;
 
-  /// Notiz gespeichert Bestätigung
+  /// Notiz gespeichert Nachricht
   ///
   /// In de, this message translates to:
-  /// **'Notiz wurde gespeichert'**
+  /// **'Notiz gespeichert'**
   String get noteSaved;
 
   /// Maßnahme ergreifen Button
@@ -2970,7 +2970,7 @@ abstract class AppLocalizations {
   /// **'Benutzer verwarnen'**
   String get warnUser;
 
-  /// Benutzer sperren
+  /// Benutzer sperren Button
   ///
   /// In de, this message translates to:
   /// **'Benutzer sperren'**
@@ -3024,11 +3024,11 @@ abstract class AppLocalizations {
   /// **'Benutzerdetails'**
   String get userDetail;
 
-  /// Benutzer ID
+  /// Benutzer-ID Label
   ///
   /// In de, this message translates to:
-  /// **'ID: {id}'**
-  String userId(int id);
+  /// **'Benutzer-ID'**
+  String userId(Object id);
 
   /// Registriert am Label
   ///
@@ -3090,11 +3090,11 @@ abstract class AppLocalizations {
   /// **'Benutzer sperren'**
   String get banUserDialog;
 
-  /// Sperrgrund
+  /// Sperrgrund Label
   ///
   /// In de, this message translates to:
-  /// **'Grund: {reason}'**
-  String banReason(String reason);
+  /// **'Sperrgrund'**
+  String banReason(Object reason);
 
   /// Sperrgrund wählen Label
   ///
@@ -3102,7 +3102,7 @@ abstract class AppLocalizations {
   /// **'Sperrgrund wählen'**
   String get selectBanReason;
 
-  /// Ban-Grund: Spam
+  /// Sperrgrund Spam
   ///
   /// In de, this message translates to:
   /// **'Spam'**
@@ -3114,10 +3114,10 @@ abstract class AppLocalizations {
   /// **'Betrug'**
   String get banReasonScam;
 
-  /// Ban-Grund: Belästigung
+  /// Sperrgrund Belästigung
   ///
   /// In de, this message translates to:
-  /// **'Belästigung anderer Nutzer'**
+  /// **'Belästigung'**
   String get banReasonHarassment;
 
   /// Sperrgrund Illegaler Inhalt
@@ -3192,10 +3192,10 @@ abstract class AppLocalizations {
   /// **'Sperren'**
   String get ban;
 
-  /// Benutzer gesperrt Bestätigung
+  /// Benutzer gesperrt Nachricht
   ///
   /// In de, this message translates to:
-  /// **'Benutzer wurde gesperrt'**
+  /// **'Benutzer gesperrt'**
   String get userBanned;
 
   /// Benutzer verwarnt Nachricht
@@ -3960,1512 +3960,323 @@ abstract class AppLocalizations {
   /// **'Alle Zahlungen wurden verarbeitet'**
   String get allPaymentsProcessed;
 
-  /// Bestellungsnummer
+  /// No description provided for @sell.
   ///
   /// In de, this message translates to:
-  /// **'Bestellung #{number}'**
-  String orderNumber(int number);
+  /// **'Verkaufen'**
+  String get sell;
 
-  /// Benutzer Label
+  /// No description provided for @myListings.
   ///
   /// In de, this message translates to:
-  /// **'Benutzer'**
-  String get user;
+  /// **'Meine Angebote ({count})'**
+  String myListings(Object count);
 
-  /// Unbekannt Text
+  /// No description provided for @mySlots.
   ///
   /// In de, this message translates to:
-  /// **'Unbekannt'**
-  String get unknown;
+  /// **'Meine Slots ({count})'**
+  String mySlots(Object count);
 
-  /// Variante Label
+  /// No description provided for @newListing.
   ///
   /// In de, this message translates to:
-  /// **'Variante'**
-  String get variant;
+  /// **'Neues Angebot'**
+  String get newListing;
 
-  /// Methode Label
+  /// No description provided for @noAvailableSlots.
   ///
   /// In de, this message translates to:
-  /// **'Methode'**
-  String get method;
+  /// **'Keine verfügbaren Slots'**
+  String get noAvailableSlots;
 
-  /// Transaktions-ID Label
+  /// No description provided for @noSlotsMessage.
   ///
   /// In de, this message translates to:
-  /// **'TX-ID'**
-  String get txId;
+  /// **'Um ein Angebot zu erstellen, benötigst du einen verfügbaren Slot. Kaufe zuerst einen Slot im \"Meine Slots\" Tab.'**
+  String get noSlotsMessage;
 
-  /// Zahlungsdetails Dialog Titel
+  /// No description provided for @showSlots.
   ///
   /// In de, this message translates to:
-  /// **'Zahlungsdetails #{number}'**
-  String paymentDetailsTitle(int number);
+  /// **'Slots anzeigen'**
+  String get showSlots;
 
-  /// PayPal E-Mail Label
+  /// No description provided for @noListings.
   ///
   /// In de, this message translates to:
-  /// **'PayPal E-Mail'**
-  String get paypalEmail;
+  /// **'Keine Angebote'**
+  String get noListings;
 
-  /// Währung Label
+  /// No description provided for @createFirstListing.
   ///
   /// In de, this message translates to:
-  /// **'Währung'**
-  String get currency;
+  /// **'Erstes Angebot erstellen'**
+  String get createFirstListing;
 
-  /// Bitcoin-Adresse Label
+  /// No description provided for @buySlots.
   ///
   /// In de, this message translates to:
-  /// **'Bitcoin-Adresse'**
-  String get bitcoinAddress;
+  /// **'Slots kaufen'**
+  String get buySlots;
 
-  /// Betrag in USD Label
+  /// No description provided for @available.
+  ///
+  /// In de, this message translates to:
+  /// **'Verfügbar'**
+  String get available;
+
+  /// No description provided for @used.
+  ///
+  /// In de, this message translates to:
+  /// **'Genutzt'**
+  String get used;
+
+  /// No description provided for @expired.
+  ///
+  /// In de, this message translates to:
+  /// **'Abgelaufen'**
+  String get expired;
+
+  /// No description provided for @pendingOrders.
+  ///
+  /// In de, this message translates to:
+  /// **'Ausstehende Bestellungen'**
+  String get pendingOrders;
+
+  /// No description provided for @orderNumber.
+  ///
+  /// In de, this message translates to:
+  /// **'Bestellung #{id}'**
+  String orderNumber(Object id);
+
+  /// No description provided for @paypalWaitingForPayment.
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal - Warte auf Zahlung'**
+  String get paypalWaitingForPayment;
+
+  /// No description provided for @bitcoinWaitingForConfirmation.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin - Warte auf Bestätigung'**
+  String get bitcoinWaitingForConfirmation;
+
+  /// No description provided for @enterTxId.
+  ///
+  /// In de, this message translates to:
+  /// **'TX-ID eingeben'**
+  String get enterTxId;
+
+  /// No description provided for @pay.
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlen'**
+  String get pay;
+
+  /// No description provided for @cancelOrder.
+  ///
+  /// In de, this message translates to:
+  /// **'Bestellung stornieren'**
+  String get cancelOrder;
+
+  /// No description provided for @cancelOrderConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du die Bestellung #{id} wirklich stornieren?'**
+  String cancelOrderConfirm(Object id);
+
+  /// No description provided for @orderCanceled.
+  ///
+  /// In de, this message translates to:
+  /// **'Bestellung storniert'**
+  String get orderCanceled;
+
+  /// No description provided for @bitcoinTransactionId.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Transaktions-ID'**
+  String get bitcoinTransactionId;
+
+  /// No description provided for @txIdLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'TX-ID / TX-Hash'**
+  String get txIdLabel;
+
+  /// No description provided for @txIdPlaceholder.
+  ///
+  /// In de, this message translates to:
+  /// **'z.B. abc123def456...'**
+  String get txIdPlaceholder;
+
+  /// No description provided for @txIdSaved.
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktions-ID gespeichert'**
+  String get txIdSaved;
+
+  /// No description provided for @paypalPayment.
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal-Zahlung'**
+  String get paypalPayment;
+
+  /// No description provided for @bitcoinPayment.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin-Zahlung'**
+  String get bitcoinPayment;
+
+  /// No description provided for @reference.
+  ///
+  /// In de, this message translates to:
+  /// **'Verwendungszweck'**
+  String get reference;
+
+  /// No description provided for @address.
+  ///
+  /// In de, this message translates to:
+  /// **'Adresse'**
+  String get address;
+
+  /// No description provided for @activeSlots.
+  ///
+  /// In de, this message translates to:
+  /// **'Aktive Slots'**
+  String get activeSlots;
+
+  /// No description provided for @noActiveSlots.
+  ///
+  /// In de, this message translates to:
+  /// **'Du hast keine aktiven Slots.'**
+  String get noActiveSlots;
+
+  /// No description provided for @slotUsed.
+  ///
+  /// In de, this message translates to:
+  /// **'Slot genutzt'**
+  String get slotUsed;
+
+  /// No description provided for @slotAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'Slot verfügbar'**
+  String get slotAvailable;
+
+  /// No description provided for @expiresOn.
+  ///
+  /// In de, this message translates to:
+  /// **'Läuft ab: {date}'**
+  String expiresOn(Object date);
+
+  /// No description provided for @free.
+  ///
+  /// In de, this message translates to:
+  /// **'KOSTENLOS'**
+  String get free;
+
+  /// No description provided for @daysRemaining.
+  ///
+  /// In de, this message translates to:
+  /// **'{count} {count, plural, =1{Tag} other{Tage}}'**
+  String daysRemaining(num count);
+
+  /// No description provided for @extend.
+  ///
+  /// In de, this message translates to:
+  /// **'Verlängern'**
+  String get extend;
+
+  /// No description provided for @noSlotVariantsAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Slot-Varianten verfügbar'**
+  String get noSlotVariantsAvailable;
+
+  /// No description provided for @adminMustConfigureSlots.
+  ///
+  /// In de, this message translates to:
+  /// **'Der Administrator muss zuerst Slot-Varianten konfigurieren.'**
+  String get adminMustConfigureSlots;
+
+  /// No description provided for @daysValidity.
+  ///
+  /// In de, this message translates to:
+  /// **'{count} Tage Laufzeit'**
+  String daysValidity(Object count);
+
+  /// No description provided for @activateSlot.
+  ///
+  /// In de, this message translates to:
+  /// **'Slot aktivieren'**
+  String get activateSlot;
+
+  /// No description provided for @noPaymentMethod.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine Zahlungsmethode verfügbar'**
+  String get noPaymentMethod;
+
+  /// No description provided for @amountUsd.
   ///
   /// In de, this message translates to:
   /// **'Betrag (USD)'**
   String get amountUsd;
 
-  /// Betrag in BTC Label
+  /// No description provided for @amountBtc.
   ///
   /// In de, this message translates to:
   /// **'Betrag (BTC)'**
   String get amountBtc;
 
-  /// Memo Label
+  /// No description provided for @memo.
   ///
   /// In de, this message translates to:
   /// **'Memo'**
   String get memo;
 
-  /// Als in Bearbeitung markieren Button
+  /// No description provided for @extendSlot.
   ///
   /// In de, this message translates to:
-  /// **'Als in Bearbeitung markieren'**
-  String get markAsProcessing;
+  /// **'Slot verlängern'**
+  String get extendSlot;
 
-  /// Als abgeschlossen markieren Button
-  ///
-  /// In de, this message translates to:
-  /// **'Als abgeschlossen markieren'**
-  String get markAsCompleted;
-
-  /// Als fehlgeschlagen markieren Button
-  ///
-  /// In de, this message translates to:
-  /// **'Als fehlgeschlagen markieren'**
-  String get markAsFailed;
-
-  /// Als in Bearbeitung markiert Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Zahlung als in Bearbeitung markiert'**
-  String get paymentMarkedProcessing;
-
-  /// Als abgeschlossen markiert Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Zahlung als abgeschlossen markiert'**
-  String get paymentMarkedCompleted;
-
-  /// Als fehlgeschlagen markiert Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Zahlung als fehlgeschlagen markiert'**
-  String get paymentMarkedFailed;
-
-  /// Slot-Varianten Screen Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Varianten'**
-  String get slotVariantsScreen;
-
-  /// Aktive Slot-Varianten Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Aktiv'**
-  String get activeSlotVariants;
-
-  /// Inaktive Slot-Varianten Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Inaktiv'**
-  String get inactiveSlotVariants;
-
-  /// Slot-Variante erstellen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante erstellen'**
-  String get createSlotVariant;
-
-  /// Keine Slot-Varianten Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Slot-Varianten'**
-  String get noSlotVariants;
-
-  /// Keine Slot-Varianten Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Es wurden noch keine Slot-Varianten erstellt.'**
-  String get noSlotVariantsMessage;
-
-  /// Variantenname Label
-  ///
-  /// In de, this message translates to:
-  /// **'Name'**
-  String get variantName;
-
-  /// Laufzeit Label
-  ///
-  /// In de, this message translates to:
-  /// **'Laufzeit'**
-  String get duration;
-
-  /// Laufzeit in Tagen
-  ///
-  /// In de, this message translates to:
-  /// **'{days} Tage'**
-  String durationDays(int days);
-
-  /// Preis USD Label
-  ///
-  /// In de, this message translates to:
-  /// **'Preis (USD)'**
-  String get priceUSD;
-
-  /// Preis BTC Label
-  ///
-  /// In de, this message translates to:
-  /// **'Preis (BTC)'**
-  String get priceBTC;
-
-  /// Maximale Angebote Label
-  ///
-  /// In de, this message translates to:
-  /// **'Max. Angebote'**
-  String get maxListings;
-
-  /// Varianten-Status Label
-  ///
-  /// In de, this message translates to:
-  /// **'Status'**
-  String get variantStatus;
-
-  /// Slot-Variante bearbeiten Button
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante bearbeiten'**
-  String get editSlotVariant;
-
-  /// Slot-Variante löschen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante löschen'**
-  String get deleteSlotVariant;
-
-  /// Slot-Variante erstellen Dialog Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante erstellen'**
-  String get createSlotVariantDialog;
-
-  /// Slot-Variante bearbeiten Dialog Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante bearbeiten'**
-  String get editSlotVariantDialog;
-
-  /// Variantenname Hint
-  ///
-  /// In de, this message translates to:
-  /// **'Variantenname eingeben'**
-  String get enterVariantName;
-
-  /// Laufzeit Hint
-  ///
-  /// In de, this message translates to:
-  /// **'Laufzeit (Tage)'**
-  String get enterDuration;
-
-  /// Preis USD Hint
-  ///
-  /// In de, this message translates to:
-  /// **'Preis in USD'**
-  String get enterPriceUSD;
-
-  /// Preis BTC Hint
-  ///
-  /// In de, this message translates to:
-  /// **'Preis in BTC'**
-  String get enterPriceBTC;
-
-  /// Max. Angebote Hint
-  ///
-  /// In de, this message translates to:
-  /// **'Max. Angebote'**
-  String get enterMaxListings;
-
-  /// Variantenname erforderlich Validierung
-  ///
-  /// In de, this message translates to:
-  /// **'Name ist erforderlich'**
-  String get variantNameRequired;
-
-  /// Laufzeit erforderlich Validierung
-  ///
-  /// In de, this message translates to:
-  /// **'Laufzeit ist erforderlich'**
-  String get durationRequired;
-
-  /// USD-Preis erforderlich Validierung
-  ///
-  /// In de, this message translates to:
-  /// **'USD-Preis ist erforderlich'**
-  String get priceUSDRequired;
-
-  /// BTC-Preis erforderlich Validierung
-  ///
-  /// In de, this message translates to:
-  /// **'BTC-Preis ist erforderlich'**
-  String get priceBTCRequired;
-
-  /// Max. Angebote erforderlich Validierung
-  ///
-  /// In de, this message translates to:
-  /// **'Max. Angebote ist erforderlich'**
-  String get maxListingsRequired;
-
-  /// Slot-Variante erstellt Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante erstellt'**
-  String get slotVariantCreated;
-
-  /// Slot-Variante aktualisiert Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante aktualisiert'**
-  String get slotVariantUpdated;
-
-  /// Slot-Variante gelöscht Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Variante gelöscht'**
-  String get slotVariantDeleted;
-
-  /// Slot-Variante löschen Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Möchtest du diese Slot-Variante wirklich löschen?'**
-  String get confirmDeleteSlotVariant;
-
-  /// Slot-Variante löschen Bestätigung mit Name
-  ///
-  /// In de, this message translates to:
-  /// **'Möchtest du \"{name}\" wirklich löschen?'**
-  String confirmDeleteSlotVariantWithName(String name);
-
-  /// Slot-Varianten verwalten Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Varianten verwalten'**
-  String get manageSlotVariants;
-
-  /// Erstelle erste Slot-Variante Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Erstelle die erste Slot-Variante mit dem + Button.'**
-  String get createFirstSlotVariant;
-
-  /// Neue Slot-Variante Dialog Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Neue Slot-Variante'**
-  String get newSlotVariant;
-
-  /// Kostenlos Badge
-  ///
-  /// In de, this message translates to:
-  /// **'KOSTENLOS'**
-  String get freeLabel;
-
-  /// Kostenlos Label
-  ///
-  /// In de, this message translates to:
-  /// **'Kostenlos'**
-  String get free;
-
-  /// Name Hinweis
-  ///
-  /// In de, this message translates to:
-  /// **'z.B. Standard, Premium'**
-  String get nameHint;
-
-  /// Beschreibung optional Label
-  ///
-  /// In de, this message translates to:
-  /// **'Beschreibung (optional)'**
-  String get descriptionOptional;
-
-  /// Preis in USD Label
-  ///
-  /// In de, this message translates to:
-  /// **'Preis (USD)'**
-  String get priceUsd;
-
-  /// Laufzeit in Tagen Label
-  ///
-  /// In de, this message translates to:
-  /// **'Laufzeit (Tage)'**
-  String get durationDaysLabel;
-
-  /// Kostenlose Variante Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Variante ist gratis (für Promotion-Slots)'**
-  String get freeVariantDescription;
-
-  /// Aktive Variante Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Variante kann gekauft werden'**
-  String get activeVariantDescription;
-
-  /// Mindestens eine Zahlungsmethode Validierung
-  ///
-  /// In de, this message translates to:
-  /// **'Mindestens eine Zahlungsmethode muss aktiviert sein'**
-  String get atLeastOnePaymentMethodRequired;
-
-  /// Benutzerverwaltung Screen Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzerverwaltung'**
-  String get userManagementScreen;
-
-  /// Alle Benutzer Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Alle Benutzer'**
-  String get allUsers;
-
-  /// Aktive Benutzer Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Aktiv'**
-  String get activeUsers;
-
-  /// Gesperrte Benutzer Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Gesperrt'**
-  String get bannedUsers;
-
-  /// Benutzer suchen Hint
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer suchen...'**
-  String get searchUsers;
-
-  /// Keine Benutzer Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Benutzer'**
-  String get noUsers;
-
-  /// Keine Benutzer Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Benutzer gefunden.'**
-  String get noUsersMessage;
-
-  /// Rolle Label
-  ///
-  /// In de, this message translates to:
-  /// **'Rolle'**
-  String get role;
-
-  /// Benutzer ansehen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer ansehen'**
-  String get viewUser;
-
-  /// Sperre aufheben
-  ///
-  /// In de, this message translates to:
-  /// **'Sperre aufheben'**
-  String get unbanUser;
-
-  /// Sperre aufgehoben Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Sperre wurde aufgehoben'**
-  String get userUnbanned;
-
-  /// Benutzer entsperren Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Möchtest du diesen Benutzer wirklich entsperren?'**
-  String get confirmUnbanUser;
-
-  /// Entsperren Button
-  ///
-  /// In de, this message translates to:
-  /// **'Entsperren'**
-  String get unban;
-
-  /// Administration Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Administration'**
-  String get administration;
-
-  /// System- und Benutzerverwaltung Untertitel
-  ///
-  /// In de, this message translates to:
-  /// **'System- und Benutzerverwaltung'**
-  String get systemUserManagement;
-
-  /// Kategorien verwalten Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Kategorien verwalten'**
-  String get manageCategories;
-
-  /// Kategorien und Subkategorien erstellen Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Kategorien und Subkategorien erstellen'**
-  String get createCategoriesSubcategories;
-
-  /// Slot-Typen konfigurieren Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Slot-Typen und Preise konfigurieren'**
-  String get configureSlotTypes;
-
-  /// PayPal und Bitcoin Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'PayPal und Bitcoin für Slot-Käufe'**
-  String get paypalBitcoinSlots;
-
-  /// Offene Bestellungen prüfen Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Offene Bestellungen prüfen und bestätigen'**
-  String get reviewPendingOrders;
-
-  /// Benutzer verwalten Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer verwalten und Rollen zuweisen'**
-  String get manageUsersRoles;
-
-  /// Feature kommt in Meilenstein Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'{title} wird in Meilenstein {milestone} implementiert.'**
-  String featureInMilestone(String title, String milestone);
-
-  /// Slots Abschnittstitel
-  ///
-  /// In de, this message translates to:
-  /// **'Slots'**
-  String get slots;
-
-  /// Zahlungen Abschnittstitel
-  ///
-  /// In de, this message translates to:
-  /// **'Zahlungen'**
-  String get payments;
-
-  /// Benutzer Abschnittstitel
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer'**
-  String get users;
-
-  /// Moderator Panel Screen Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Moderator Panel'**
-  String get moderatorPanelScreen;
-
-  /// Anzahl offener Meldungen
-  ///
-  /// In de, this message translates to:
-  /// **'{count} offen'**
-  String openReportsCount(int count);
-
-  /// Angebots-Meldungen Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Angebote'**
-  String get listingReports;
-
-  /// Benutzer-Meldungen Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer'**
-  String get userReports;
-
-  /// Keine Meldungen Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Es gibt derzeit keine Meldungen'**
-  String get noReportsDescription;
-
-  /// Angebot Label
-  ///
-  /// In de, this message translates to:
-  /// **'Angebot'**
-  String get listing;
-
-  /// Meldung Status: Offen
-  ///
-  /// In de, this message translates to:
-  /// **'OFFEN'**
-  String get reportStatusOpen;
-
-  /// Meldung Status: In Prüfung
-  ///
-  /// In de, this message translates to:
-  /// **'IN PRÜFUNG'**
-  String get reportStatusReviewing;
-
-  /// Meldung Status: Gelöst
-  ///
-  /// In de, this message translates to:
-  /// **'GELÖST'**
-  String get reportStatusResolved;
-
-  /// Meldung Status: Abgewiesen
-  ///
-  /// In de, this message translates to:
-  /// **'ABGEWIESEN'**
-  String get reportStatusDismissed;
-
-  /// Meldungsgrund: Betrügerisches Angebot
-  ///
-  /// In de, this message translates to:
-  /// **'Betrügerisches Angebot'**
-  String get reportReasonFraud;
-
-  /// Zugewiesen Label
-  ///
-  /// In de, this message translates to:
-  /// **'Zugewiesen'**
-  String get assigned;
-
-  /// Gerade eben Zeitformat
-  ///
-  /// In de, this message translates to:
-  /// **'Gerade eben'**
-  String get justNow;
-
-  /// Vor X Minuten
-  ///
-  /// In de, this message translates to:
-  /// **'vor {minutes}m'**
-  String minutesAgo(int minutes);
-
-  /// Vor X Stunden
-  ///
-  /// In de, this message translates to:
-  /// **'vor {hours}h'**
-  String hoursAgo(int hours);
-
-  /// Vor X Tagen
-  ///
-  /// In de, this message translates to:
-  /// **'vor {days}d'**
-  String daysAgo(int days);
-
-  /// Staff Tab
-  ///
-  /// In de, this message translates to:
-  /// **'Staff'**
-  String get staff;
-
-  /// Gesperrt Badge
-  ///
-  /// In de, this message translates to:
-  /// **'GESPERRT'**
-  String get banned;
-
-  /// Keine Benutzer gefunden
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Benutzer gefunden'**
-  String get noUsersFound;
-
-  /// Meldung zugewiesen Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Meldung wurde Ihnen zugewiesen'**
-  String get reportAssignedToYou;
-
-  /// Status aktualisiert Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Status wurde aktualisiert'**
-  String get statusUpdated;
-
-  /// Notiz leer Fehler
-  ///
-  /// In de, this message translates to:
-  /// **'Notiz darf nicht leer sein'**
-  String get noteCannotBeEmpty;
-
-  /// Angebot deaktivieren Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Angebot deaktivieren'**
-  String get deactivateListing;
-
-  /// Angebot deaktivieren Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Möchten Sie dieses Angebot wirklich deaktivieren? Diese Aktion kann nicht rückgängig gemacht werden.'**
-  String get deactivateListingConfirm;
-
-  /// Deaktivieren Button
-  ///
-  /// In de, this message translates to:
-  /// **'Deaktivieren'**
-  String get deactivate;
-
-  /// Angebot deaktiviert Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Angebot wurde deaktiviert'**
-  String get listingDeactivated;
-
-  /// Meldung nicht gefunden
-  ///
-  /// In de, this message translates to:
-  /// **'Meldung nicht gefunden'**
-  String get reportNotFound;
-
-  /// Zugewiesen an Moderator
-  ///
-  /// In de, this message translates to:
-  /// **'Zugewiesen an Moderator #{id}'**
-  String assignedToModerator(int id);
-
-  /// Noch nicht zugewiesen
-  ///
-  /// In de, this message translates to:
-  /// **'Noch nicht zugewiesen'**
-  String get notYetAssigned;
-
-  /// Meldungsdetails Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Meldungsdetails'**
-  String get reportDetails;
-
-  /// Gemeldet am Label
-  ///
-  /// In de, this message translates to:
-  /// **'Gemeldet am'**
-  String get reportedOn;
-
-  /// Meldender Benutzer
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer #{id}'**
-  String reporterUser(int id);
-
-  /// Gemeldetes Benutzerprofil
-  ///
-  /// In de, this message translates to:
-  /// **'Gemeldetes Benutzerprofil'**
-  String get reportedUserProfile;
-
-  /// Notizen Hinweis
-  ///
-  /// In de, this message translates to:
-  /// **'Fügen Sie interne Notizen hinzu...'**
-  String get addInternalNotes;
-
-  /// Mir zuweisen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Mir zuweisen'**
-  String get assignToMe;
-
-  /// Als gelöst markieren Button
-  ///
-  /// In de, this message translates to:
-  /// **'Als gelöst markieren'**
-  String get markAsResolved;
-
-  /// Vollständiges Datum/Zeit Format
-  ///
-  /// In de, this message translates to:
-  /// **'{day}.{month}.{year} um {hour}:{minute} Uhr'**
-  String fullDateTimeFormat(
-      String day, String month, int year, String hour, String minute);
-
-  /// Angebot ID
-  ///
-  /// In de, this message translates to:
-  /// **'Angebot #{id}'**
-  String listingId(int id);
-
-  /// Warnung Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Warnung'**
-  String get warning;
-
-  /// Bestätigung für Rollen-Änderung
-  ///
-  /// In de, this message translates to:
-  /// **'Möchten Sie diesem Benutzer wirklich die Rolle \"{role}\" zuweisen? Diese Aktion gibt dem Benutzer erweiterte Berechtigungen.'**
-  String confirmRoleChange(String role);
-
-  /// Rolle aktualisiert Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Rolle wurde aktualisiert'**
-  String get roleUpdated;
-
-  /// Fehler Nachricht
+  /// No description provided for @error.
   ///
   /// In de, this message translates to:
   /// **'Fehler: {error}'**
-  String error(String error);
+  String error(Object error);
 
-  /// Keine kostenlosen Slot-Varianten verfügbar
+  /// No description provided for @bitcoinAddress.
   ///
   /// In de, this message translates to:
-  /// **'Keine kostenlosen Slot-Varianten verfügbar. Erstelle zuerst eine kostenlose Variante.'**
-  String get noFreeSlotVariantsAvailable;
+  /// **'Bitcoin-Adresse'**
+  String get bitcoinAddress;
 
-  /// Kostenlosen Slot vergeben
+  /// No description provided for @referenceLabel.
   ///
   /// In de, this message translates to:
-  /// **'Kostenlosen Slot vergeben'**
-  String get grantFreeSlot;
+  /// **'Referenz'**
+  String get referenceLabel;
 
-  /// Slot-Variante auswählen
+  /// No description provided for @errorLoadingPaymentInfo.
   ///
   /// In de, this message translates to:
-  /// **'Wähle eine kostenlose Slot-Variante für {username}:'**
-  String selectFreeSlotVariant(String username);
+  /// **'Fehler beim Laden der Zahlungsinformationen: {error}'**
+  String errorLoadingPaymentInfo(Object error);
 
-  /// Tage Laufzeit
+  /// No description provided for @buySlot.
   ///
   /// In de, this message translates to:
-  /// **'{days} Tage Laufzeit'**
-  String daysRuntime(int days);
+  /// **'Slot kaufen'**
+  String get buySlot;
 
-  /// Kostenlos Label (Großbuchstaben)
+  /// No description provided for @buy.
   ///
   /// In de, this message translates to:
-  /// **'KOSTENLOS'**
-  String get freeUppercase;
-
-  /// Kostenloser Slot vergeben Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Kostenloser Slot \"{variantName}\" wurde an {username} vergeben'**
-  String freeSlotGranted(String variantName, String username);
-
-  /// Sperre aufheben Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Möchten Sie die Sperre dieses Benutzers wirklich aufheben?'**
-  String get confirmUnban;
-
-  /// Standard-Grund für Aufhebung der Sperre
-  ///
-  /// In de, this message translates to:
-  /// **'Sperre durch Admin aufgehoben'**
-  String get unbanReason;
-
-  /// Informationen Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Informationen'**
-  String get information;
-
-  /// Letzter Login Label
-  ///
-  /// In de, this message translates to:
-  /// **'Letzter Login'**
-  String get lastLogin;
-
-  /// Noch nie
-  ///
-  /// In de, this message translates to:
-  /// **'Noch nie'**
-  String get never;
-
-  /// Status Label
-  ///
-  /// In de, this message translates to:
-  /// **'Status'**
-  String get status;
-
-  /// Gesperrt seit Label
-  ///
-  /// In de, this message translates to:
-  /// **'Gesperrt seit'**
-  String get bannedSince;
-
-  /// Sperrgrund Label
-  ///
-  /// In de, this message translates to:
-  /// **'Sperrgrund'**
-  String get banReasonLabel;
-
-  /// Eigene Rolle nicht änderbar
-  ///
-  /// In de, this message translates to:
-  /// **'Sie können Ihre eigene Rolle nicht ändern.'**
-  String get cannotChangeOwnRole;
-
-  /// Administrator Rollen-Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Voller Zugriff auf alle Funktionen'**
-  String get roleDescriptionAdmin;
-
-  /// Moderator Rollen-Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Kann Meldungen bearbeiten und Inhalte moderieren'**
-  String get roleDescriptionModerator;
-
-  /// Benutzer Rollen-Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Normaler Benutzer ohne erweiterte Berechtigungen'**
-  String get roleDescriptionUser;
-
-  /// Sperr-Historie
-  ///
-  /// In de, this message translates to:
-  /// **'Sperr-Historie'**
-  String get banHistory;
-
-  /// Gesperrt Aktion
-  ///
-  /// In de, this message translates to:
-  /// **'Gesperrt'**
-  String get bannedAction;
-
-  /// Entsperrt Aktion
-  ///
-  /// In de, this message translates to:
-  /// **'Entsperrt'**
-  String get unbannedAction;
-
-  /// Ban-Grund: Betrug/Scam
-  ///
-  /// In de, this message translates to:
-  /// **'Betrug/Scam'**
-  String get banReasonFraud;
-
-  /// Ban-Grund: Unangemessenes Verhalten
-  ///
-  /// In de, this message translates to:
-  /// **'Unangemessenes Verhalten'**
-  String get banReasonInappropriate;
-
-  /// Ban-Grund: Verstoß gegen Nutzungsbedingungen
-  ///
-  /// In de, this message translates to:
-  /// **'Verstoß gegen Nutzungsbedingungen'**
-  String get banReasonTosViolation;
-
-  /// Ban-Grund: Mehrfach-Accounts
-  ///
-  /// In de, this message translates to:
-  /// **'Mehrfach-Accounts'**
-  String get banReasonMultipleAccounts;
-
-  /// Ban-Grund: Illegale Aktivitäten
-  ///
-  /// In de, this message translates to:
-  /// **'Illegale Aktivitäten'**
-  String get banReasonIllegal;
-
-  /// Ban-Grund erforderlich Fehlermeldung
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte geben Sie einen Grund ein'**
-  String get banReasonRequired;
-
-  /// Grund für Sperre eingeben
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte geben Sie einen Grund für die Sperre an:'**
-  String get enterBanReason;
-
-  /// Vordefinierte Gründe Label
-  ///
-  /// In de, this message translates to:
-  /// **'Vordefinierte Gründe:'**
-  String get presetReasons;
-
-  /// Grund erforderlich Label
-  ///
-  /// In de, this message translates to:
-  /// **'Grund (erforderlich)'**
-  String get reasonRequired;
-
-  /// Beschreibung für Ban-Grund Platzhalter
-  ///
-  /// In de, this message translates to:
-  /// **'Beschreiben Sie den Grund für die Sperre...'**
-  String get describeBanReason;
-
-  /// Warnung beim Sperren eines Benutzers
-  ///
-  /// In de, this message translates to:
-  /// **'Achtung: Beim Sperren werden alle aktiven Angebote des Benutzers deaktiviert und offene Transaktionen abgebrochen.'**
-  String get banWarning;
-
-  /// Sperren Aktion
-  ///
-  /// In de, this message translates to:
-  /// **'Sperren'**
-  String get banAction;
-
-  /// Spenden-Sektion
-  ///
-  /// In de, this message translates to:
-  /// **'Entwickler unterstützen'**
-  String get sectionDonate;
-
-  /// Spenden Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Entwicklung unterstützen'**
-  String get donateTitle;
-
-  /// Spenden Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Wenn dir diese App gefällt, kannst du die Entwicklung mit einer Spende unterstützen:'**
-  String get donateDescription;
-
-  /// Bitcoin spenden Button
-  ///
-  /// In de, this message translates to:
-  /// **'Bitcoin spenden'**
-  String get donateBitcoin;
-
-  /// Buy Me a Coffee Button
-  ///
-  /// In de, this message translates to:
-  /// **'Buy Me a Coffee'**
-  String get donateCoffee;
-
-  /// Bitcoin-Adresse kopiert Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Bitcoin-Adresse kopiert!'**
-  String get bitcoinAddressCopied;
-
-  /// Aus Favoriten entfernt Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'{title} aus Favoriten entfernt'**
-  String removedFromFavorites(String title);
-
-  /// Rückgängig Button
-  ///
-  /// In de, this message translates to:
-  /// **'Rückgängig'**
-  String get undo;
-
-  /// Erneut versuchen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Erneut versuchen'**
-  String get retryButton;
-
-  /// Keine Favoriten Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Favoriten'**
-  String get noFavorites;
-
-  /// Keine Favoriten Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Du hast noch keine Angebote favorisiert. Tippe auf das Herz-Symbol bei einem Angebot, um es zu deinen Favoriten hinzuzufügen.'**
-  String get noFavoritesDescription;
-
-  /// Favorit entfernen Dialog Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Favorit entfernen?'**
-  String get removeFavoriteTitle;
-
-  /// Favorit entfernen Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Möchtest du \"{title}\" aus deinen Favoriten entfernen?'**
-  String removeFavoriteConfirm(String title);
-
-  /// Entfernen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Entfernen'**
-  String get remove;
-
-  /// Profil Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Profil'**
-  String get profile;
-
-  /// Benutzer melden Tooltip
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer melden'**
-  String get reportUser;
-
-  /// Benutzer nicht gefunden Fehlermeldung
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer nicht gefunden'**
-  String get userNotFound;
-
-  /// Listings Label
-  ///
-  /// In de, this message translates to:
-  /// **'Listings'**
-  String get listings;
-
-  /// Listings Tab mit Anzahl
-  ///
-  /// In de, this message translates to:
-  /// **'Listings ({count})'**
-  String listingsWithCount(int count);
-
-  /// Ratings Label
-  ///
-  /// In de, this message translates to:
-  /// **'Ratings'**
-  String get ratings;
-
-  /// Ratings Tab mit Anzahl
-  ///
-  /// In de, this message translates to:
-  /// **'Ratings ({count})'**
-  String ratingsWithCount(int count);
-
-  /// Keine aktiven Angebote
-  ///
-  /// In de, this message translates to:
-  /// **'Keine aktiven Angebote'**
-  String get noActiveListings;
-
-  /// Mitglied seit Datum
-  ///
-  /// In de, this message translates to:
-  /// **'Mitglied seit {date}'**
-  String memberSince(String date);
-
-  /// Verschlüsselung aktiv Label
-  ///
-  /// In de, this message translates to:
-  /// **'Verschlüsselung aktiv'**
-  String get encryptionActive;
-
-  /// Keine Ratings
-  ///
-  /// In de, this message translates to:
-  /// **'Keine Ratings'**
-  String get noRatings;
-
-  /// Rating Anzahl mit Pluralisierung
-  ///
-  /// In de, this message translates to:
-  /// **'{count, plural, =1{1 Rating} other{{count} Ratings}}'**
-  String ratingCount(int count);
-
-  /// Nachricht senden Button
-  ///
-  /// In de, this message translates to:
-  /// **'Nachricht senden'**
-  String get sendMessage;
-
-  /// Kein PGP-Schlüssel vorhanden Nachricht
-  ///
-  /// In de, this message translates to:
-  /// **'Kein PGP-Schlüssel vorhanden'**
-  String get noPgpKeyAvailable;
-
-  /// Januar abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Jan'**
-  String get monthJan;
-
-  /// Februar abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Feb'**
-  String get monthFeb;
-
-  /// März abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Mär'**
-  String get monthMar;
-
-  /// April abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Apr'**
-  String get monthApr;
-
-  /// Mai abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Mai'**
-  String get monthMay;
-
-  /// Juni abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Jun'**
-  String get monthJun;
-
-  /// Juli abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Jul'**
-  String get monthJul;
-
-  /// August abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Aug'**
-  String get monthAug;
-
-  /// September abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Sep'**
-  String get monthSep;
-
-  /// Oktober abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Okt'**
-  String get monthOct;
-
-  /// November abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Nov'**
-  String get monthNov;
-
-  /// Dezember abgekürzt
-  ///
-  /// In de, this message translates to:
-  /// **'Dez'**
-  String get monthDec;
-
-  /// Transaktion bewerten Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Transaktion bewerten'**
-  String get rateTransaction;
-
-  /// Wie war deine Erfahrung Frage
-  ///
-  /// In de, this message translates to:
-  /// **'Wie war deine Erfahrung?'**
-  String get howWasYourExperience;
-
-  /// Gut Rating
-  ///
-  /// In de, this message translates to:
-  /// **'Gut'**
-  String get ratingGood;
-
-  /// Neutral Rating
-  ///
-  /// In de, this message translates to:
-  /// **'Neutral'**
-  String get ratingNeutral;
-
-  /// Schlecht Rating
-  ///
-  /// In de, this message translates to:
-  /// **'Schlecht'**
-  String get ratingBad;
-
-  /// Kommentar optional Label
-  ///
-  /// In de, this message translates to:
-  /// **'Kommentar (optional)'**
-  String get commentOptional;
-
-  /// Bewertungskommentar Platzhalter
-  ///
-  /// In de, this message translates to:
-  /// **'Teile deine Erfahrung...'**
-  String get ratingCommentHint;
-
-  /// Bewertung abgeben Button
-  ///
-  /// In de, this message translates to:
-  /// **'Bewertung abgeben'**
-  String get submitRating;
-
-  /// Bewertung abgegeben Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Bewertung erfolgreich abgegeben'**
-  String get ratingSubmittedSuccessfully;
-
-  /// Fehler beim Laden der Bewertungen
-  ///
-  /// In de, this message translates to:
-  /// **'Fehler beim Laden der Bewertungen'**
-  String get errorLoadingRatings;
-
-  /// Keine Bewertungen vorhanden Titel
-  ///
-  /// In de, this message translates to:
-  /// **'Noch keine Bewertungen'**
-  String get noRatingsYet;
-
-  /// Keine Bewertungen Beschreibung
-  ///
-  /// In de, this message translates to:
-  /// **'Bewertungen erscheinen hier nach abgeschlossenen Transaktionen'**
-  String get noRatingsDescription;
-
-  /// Positiv Label (für Prozentangabe)
-  ///
-  /// In de, this message translates to:
-  /// **'positiv'**
-  String get positive;
-
-  /// Alle Bewertungen anzeigen Button
-  ///
-  /// In de, this message translates to:
-  /// **'Alle {count} Bewertungen anzeigen'**
-  String showAllRatings(int count);
-
-  /// Mehr laden Button
-  ///
-  /// In de, this message translates to:
-  /// **'Mehr laden'**
-  String get loadMore;
-
-  /// Automatische Bewertung Badge
-  ///
-  /// In de, this message translates to:
-  /// **'Auto'**
-  String get auto;
-
-  /// Bitte Grund auswählen Fehlermeldung
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte wähle einen Grund aus'**
-  String get reportSelectReason;
-
-  /// Meldung erfolgreich Bestätigung
-  ///
-  /// In de, this message translates to:
-  /// **'Meldung erfolgreich eingereicht'**
-  String get reportSubmittedSuccessfully;
-
-  /// Meldung Fehler
-  ///
-  /// In de, this message translates to:
-  /// **'Fehler beim Einreichen der Meldung'**
-  String get reportSubmitError;
-
-  /// Bereits gemeldet Fehler
-  ///
-  /// In de, this message translates to:
-  /// **'Du hast dies bereits gemeldet'**
-  String get reportAlreadyReported;
-
-  /// Eintrag nicht gefunden Fehler
-  ///
-  /// In de, this message translates to:
-  /// **'Eintrag nicht gefunden'**
-  String get reportTargetNotFound;
-
-  /// Meldungsziel: Angebot
-  ///
-  /// In de, this message translates to:
-  /// **'Angebot'**
-  String get reportTargetListing;
-
-  /// Meldungsziel: Benutzer
-  ///
-  /// In de, this message translates to:
-  /// **'Benutzer'**
-  String get reportTargetUser;
-
-  /// Meldungs-Dialog Titel
-  ///
-  /// In de, this message translates to:
-  /// **'{targetType} melden'**
-  String reportTitle(String targetType);
-
-  /// Du meldest Text
-  ///
-  /// In de, this message translates to:
-  /// **'Du meldest: \"{targetName}\"'**
-  String reportYouAreReporting(String targetName);
-
-  /// Grund der Meldung Label
-  ///
-  /// In de, this message translates to:
-  /// **'Grund der Meldung:'**
-  String get reportReasonLabel;
-
-  /// Zusätzliche Details Label
-  ///
-  /// In de, this message translates to:
-  /// **'Zusätzliche Details (optional)'**
-  String get reportDetailsOptional;
-
-  /// Problem beschreiben Platzhalter
-  ///
-  /// In de, this message translates to:
-  /// **'Beschreibe das Problem...'**
-  String get reportDetailsHint;
-
-  /// Melden Button
-  ///
-  /// In de, this message translates to:
-  /// **'Melden'**
-  String get report;
-
-  /// Transaktion starten Titel/Button
-  ///
-  /// In de, this message translates to:
-  /// **'Transaktion starten'**
-  String get startTransaction;
-
-  /// Menge Label
-  ///
-  /// In de, this message translates to:
-  /// **'Menge'**
-  String get quantityLabel;
-
-  /// Menge eingeben Hinweistext
-  ///
-  /// In de, this message translates to:
-  /// **'Menge eingeben'**
-  String get enterQuantity;
-
-  /// von verfügbar
-  ///
-  /// In de, this message translates to:
-  /// **'von {available}'**
-  String ofAvailable(String available);
-
-  /// Notiz für Verkäufer Label
-  ///
-  /// In de, this message translates to:
-  /// **'Notiz für Verkäufer (optional)'**
-  String get noteForSeller;
-
-  /// Notiz für Verkäufer Hinweistext
-  ///
-  /// In de, this message translates to:
-  /// **'Füge eine Notiz für den Verkäufer hinzu...'**
-  String get noteForSellerHint;
-
-  /// Zwischensumme Label
-  ///
-  /// In de, this message translates to:
-  /// **'Zwischensumme'**
-  String get subtotal;
-
-  /// Gesamt Label
-  ///
-  /// In de, this message translates to:
-  /// **'Gesamt'**
-  String get total;
-
-  /// Zahlung per Methode
-  ///
-  /// In de, this message translates to:
-  /// **'Zahlung per {method}'**
-  String paymentVia(String method);
-
-  /// PayPal oder Bitcoin Zahlungsmethoden
-  ///
-  /// In de, this message translates to:
-  /// **'PayPal oder Bitcoin'**
-  String get paymentMethodPaypalOrBitcoin;
-
-  /// PayPal Zahlungsmethode
-  ///
-  /// In de, this message translates to:
-  /// **'PayPal'**
-  String get paymentMethodPaypal;
-
-  /// Bitcoin Zahlungsmethode
-  ///
-  /// In de, this message translates to:
-  /// **'Bitcoin'**
-  String get paymentMethodBitcoin;
-
-  /// Gültige Menge eingeben Fehlermeldung
-  ///
-  /// In de, this message translates to:
-  /// **'Bitte gib eine gültige Menge ein'**
-  String get enterValidQuantity;
-
-  /// Menge überschreitet Verfügbarkeit Fehlermeldung
-  ///
-  /// In de, this message translates to:
-  /// **'Menge überschreitet verfügbare Anzahl'**
-  String get quantityExceedsAvailable;
-
-  /// Mengeneinheit: Stück
-  ///
-  /// In de, this message translates to:
-  /// **'Stück'**
-  String get quantityUnitPiece;
-
-  /// Mengeneinheit: Kilogramm
-  ///
-  /// In de, this message translates to:
-  /// **'kg'**
-  String get quantityUnitKg;
-
-  /// Mengeneinheit: Gramm
-  ///
-  /// In de, this message translates to:
-  /// **'g'**
-  String get quantityUnitGram;
-
-  /// Mengeneinheit: Meter
-  ///
-  /// In de, this message translates to:
-  /// **'m'**
-  String get quantityUnitMeter;
-
-  /// Mengeneinheit: Liter
-  ///
-  /// In de, this message translates to:
-  /// **'L'**
-  String get quantityUnitLiter;
+  /// **'Kaufen'**
+  String get buy;
 }
 
 class _AppLocalizationsDelegate
