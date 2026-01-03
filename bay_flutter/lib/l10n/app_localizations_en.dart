@@ -169,7 +169,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get drawerAdminSection => 'Administration';
 
   @override
-  String get roleAdmin => 'Administrator';
+  String get roleAdmin => 'Admin';
 
   @override
   String get roleModerator => 'Moderator';
@@ -786,7 +786,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String created(Object date) {
-    return 'Created';
+    return 'Created on $date';
   }
 
   @override
@@ -2346,4 +2346,278 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get remove => 'Remove';
+
+  @override
+  String get monthJan => 'Jan';
+
+  @override
+  String get monthFeb => 'Feb';
+
+  @override
+  String get monthMar => 'Mar';
+
+  @override
+  String get monthApr => 'Apr';
+
+  @override
+  String get monthMay => 'May';
+
+  @override
+  String get monthJun => 'Jun';
+
+  @override
+  String get monthJul => 'Jul';
+
+  @override
+  String get monthAug => 'Aug';
+
+  @override
+  String get monthSep => 'Sep';
+
+  @override
+  String get monthOct => 'Oct';
+
+  @override
+  String get monthNov => 'Nov';
+
+  @override
+  String get monthDec => 'Dec';
+
+  @override
+  String get quantityUnitPiece => 'piece';
+
+  @override
+  String get quantityUnitKg => 'kg';
+
+  @override
+  String get quantityUnitGram => 'g';
+
+  @override
+  String get quantityUnitMeter => 'm';
+
+  @override
+  String get quantityUnitLiter => 'l';
+
+  @override
+  String get startTransaction => 'Start Transaction';
+
+  @override
+  String get quantityLabel => 'Quantity';
+
+  @override
+  String get enterQuantity => 'Enter quantity';
+
+  @override
+  String ofAvailable(Object available) {
+    return 'of $available available';
+  }
+
+  @override
+  String get noteForSeller => 'Note for seller';
+
+  @override
+  String get noteForSellerHint => 'Optional: Add a message for the seller';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String paymentVia(Object method) {
+    return 'Payment via $method';
+  }
+
+  @override
+  String get paymentMethodPaypalOrBitcoin => 'PayPal or Bitcoin';
+
+  @override
+  String get paymentMethodPaypal => 'PayPal';
+
+  @override
+  String get paymentMethodBitcoin => 'Bitcoin';
+
+  @override
+  String get enterValidQuantity => 'Please enter a valid quantity';
+
+  @override
+  String get quantityExceedsAvailable => 'Quantity exceeds available amount';
+
+  @override
+  String get rateTransaction => 'Rate Transaction';
+
+  @override
+  String get howWasYourExperience => 'How was your experience?';
+
+  @override
+  String get ratingGood => 'Good';
+
+  @override
+  String get ratingNeutral => 'Neutral';
+
+  @override
+  String get ratingBad => 'Bad';
+
+  @override
+  String get commentOptional => 'Comment (optional)';
+
+  @override
+  String get ratingCommentHint => 'Share your experience with other users';
+
+  @override
+  String get submitRating => 'Submit Rating';
+
+  @override
+  String get ratingSubmittedSuccessfully => 'Rating submitted successfully';
+
+  @override
+  String get warning => 'Warning';
+
+  @override
+  String confirmRoleChange(Object role) {
+    return 'Do you really want to change the role to \"$role\"?';
+  }
+
+  @override
+  String get roleUpdated => 'Role updated';
+
+  @override
+  String get noFreeSlotVariantsAvailable => 'No free slot variants available';
+
+  @override
+  String get grantFreeSlot => 'Grant Free Slot';
+
+  @override
+  String selectFreeSlotVariant(Object username) {
+    return 'Select a slot variant for $username';
+  }
+
+  @override
+  String daysRuntime(Object days) {
+    return '$days days runtime';
+  }
+
+  @override
+  String get freeUppercase => 'FREE';
+
+  @override
+  String freeSlotGranted(Object username, Object variantName) {
+    return '$variantName has been granted to $username';
+  }
+
+  @override
+  String get unbanUser => 'Unban User';
+
+  @override
+  String get confirmUnban => 'Do you really want to unban this user?';
+
+  @override
+  String get unbanReason => 'Reason for unbanning';
+
+  @override
+  String get userUnbanned => 'User has been unbanned';
+
+  @override
+  String get information => 'Information';
+
+  @override
+  String get lastLogin => 'Last Login';
+
+  @override
+  String get never => 'Never';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get bannedSince => 'Banned since';
+
+  @override
+  String get banReasonLabel => 'Reason';
+
+  @override
+  String get role => 'Role';
+
+  @override
+  String get cannotChangeOwnRole => 'You cannot change your own role';
+
+  @override
+  String get banHistory => 'Ban History';
+
+  @override
+  String get bannedAction => 'Banned';
+
+  @override
+  String get unbannedAction => 'Unbanned';
+
+  @override
+  String get roleDescriptionAdmin => 'Full access';
+
+  @override
+  String get roleDescriptionModerator => 'Moderation rights';
+
+  @override
+  String get roleDescriptionUser => 'Normal user rights';
+
+  @override
+  String get errorLoadingRatings => 'Error loading ratings';
+
+  @override
+  String get noRatingsYet => 'No ratings yet';
+
+  @override
+  String get noRatingsDescription =>
+      'This user has not received any ratings yet';
+
+  @override
+  String get positive => 'Positive';
+
+  @override
+  String showAllRatings(Object count) {
+    return 'Show all $count ratings';
+  }
+
+  @override
+  String get loadMore => 'Load more';
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get banReasonFraud => 'Fraud';
+
+  @override
+  String get banReasonInappropriate => 'Inappropriate content';
+
+  @override
+  String get banReasonTosViolation => 'Terms of Service violation';
+
+  @override
+  String get banReasonMultipleAccounts => 'Multiple accounts';
+
+  @override
+  String get banReasonIllegal => 'Illegal activities';
+
+  @override
+  String get banReasonRequired => 'Please provide a reason';
+
+  @override
+  String get enterBanReason => 'Enter ban reason';
+
+  @override
+  String get presetReasons => 'Preset reasons';
+
+  @override
+  String get reasonRequired => 'Reason (required)';
+
+  @override
+  String get describeBanReason => 'Describe the reason for the ban';
+
+  @override
+  String get banWarning =>
+      'This user will be immediately blocked and won\'t be able to log in.';
+
+  @override
+  String get banAction => 'Ban User';
 }

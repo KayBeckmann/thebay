@@ -792,7 +792,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String created(Object date) {
-    return 'Creado: $date';
+    return 'Creado el $date';
   }
 
   @override
@@ -1689,7 +1689,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get banReasonScam => 'Estafa';
 
   @override
-  String get banReasonHarassment => 'Acoso a Otros Usuarios';
+  String get banReasonHarassment => 'Acoso';
 
   @override
   String get banReasonIllegalContent => 'Contenido Ilegal';
@@ -2356,4 +2356,281 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get remove => 'Eliminar';
+
+  @override
+  String get monthJan => 'Ene';
+
+  @override
+  String get monthFeb => 'Feb';
+
+  @override
+  String get monthMar => 'Mar';
+
+  @override
+  String get monthApr => 'Abr';
+
+  @override
+  String get monthMay => 'May';
+
+  @override
+  String get monthJun => 'Jun';
+
+  @override
+  String get monthJul => 'Jul';
+
+  @override
+  String get monthAug => 'Ago';
+
+  @override
+  String get monthSep => 'Sep';
+
+  @override
+  String get monthOct => 'Oct';
+
+  @override
+  String get monthNov => 'Nov';
+
+  @override
+  String get monthDec => 'Dic';
+
+  @override
+  String get quantityUnitPiece => 'pieza';
+
+  @override
+  String get quantityUnitKg => 'kg';
+
+  @override
+  String get quantityUnitGram => 'g';
+
+  @override
+  String get quantityUnitMeter => 'm';
+
+  @override
+  String get quantityUnitLiter => 'l';
+
+  @override
+  String get startTransaction => 'Iniciar Transacción';
+
+  @override
+  String get quantityLabel => 'Cantidad';
+
+  @override
+  String get enterQuantity => 'Ingresar cantidad';
+
+  @override
+  String ofAvailable(Object available) {
+    return 'de $available disponibles';
+  }
+
+  @override
+  String get noteForSeller => 'Nota para el vendedor';
+
+  @override
+  String get noteForSellerHint =>
+      'Opcional: Agrega un mensaje para el vendedor';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String paymentVia(Object method) {
+    return 'Pago vía $method';
+  }
+
+  @override
+  String get paymentMethodPaypalOrBitcoin => 'PayPal o Bitcoin';
+
+  @override
+  String get paymentMethodPaypal => 'PayPal';
+
+  @override
+  String get paymentMethodBitcoin => 'Bitcoin';
+
+  @override
+  String get enterValidQuantity => 'Por favor ingresa una cantidad válida';
+
+  @override
+  String get quantityExceedsAvailable =>
+      'La cantidad excede la cantidad disponible';
+
+  @override
+  String get rateTransaction => 'Calificar Transacción';
+
+  @override
+  String get howWasYourExperience => '¿Cómo fue tu experiencia?';
+
+  @override
+  String get ratingGood => 'Buena';
+
+  @override
+  String get ratingNeutral => 'Neutral';
+
+  @override
+  String get ratingBad => 'Mala';
+
+  @override
+  String get commentOptional => 'Comentario (opcional)';
+
+  @override
+  String get ratingCommentHint => 'Comparte tu experiencia con otros usuarios';
+
+  @override
+  String get submitRating => 'Enviar Calificación';
+
+  @override
+  String get ratingSubmittedSuccessfully => 'Calificación enviada exitosamente';
+
+  @override
+  String get warning => 'Advertencia';
+
+  @override
+  String confirmRoleChange(Object role) {
+    return '¿Realmente deseas cambiar el rol a \"$role\"?';
+  }
+
+  @override
+  String get roleUpdated => 'Rol actualizado';
+
+  @override
+  String get noFreeSlotVariantsAvailable =>
+      'No hay variantes de slot gratuitas disponibles';
+
+  @override
+  String get grantFreeSlot => 'Otorgar Slot Gratuito';
+
+  @override
+  String selectFreeSlotVariant(Object username) {
+    return 'Selecciona una variante de slot para $username';
+  }
+
+  @override
+  String daysRuntime(Object days) {
+    return '$days días de duración';
+  }
+
+  @override
+  String get freeUppercase => 'GRATIS';
+
+  @override
+  String freeSlotGranted(Object username, Object variantName) {
+    return '$variantName ha sido otorgado a $username';
+  }
+
+  @override
+  String get unbanUser => 'Desbanear Usuario';
+
+  @override
+  String get confirmUnban => '¿Realmente deseas desbanear a este usuario?';
+
+  @override
+  String get unbanReason => 'Razón para desbanear';
+
+  @override
+  String get userUnbanned => 'Usuario ha sido desbaneado';
+
+  @override
+  String get information => 'Información';
+
+  @override
+  String get lastLogin => 'Último Inicio de Sesión';
+
+  @override
+  String get never => 'Nunca';
+
+  @override
+  String get status => 'Estado';
+
+  @override
+  String get bannedSince => 'Baneado desde';
+
+  @override
+  String get banReasonLabel => 'Razón';
+
+  @override
+  String get role => 'Rol';
+
+  @override
+  String get cannotChangeOwnRole => 'No puedes cambiar tu propio rol';
+
+  @override
+  String get banHistory => 'Historial de Baneos';
+
+  @override
+  String get bannedAction => 'Baneado';
+
+  @override
+  String get unbannedAction => 'Desbaneado';
+
+  @override
+  String get roleDescriptionAdmin => 'Acceso completo';
+
+  @override
+  String get roleDescriptionModerator => 'Derechos de moderación';
+
+  @override
+  String get roleDescriptionUser => 'Derechos normales de usuario';
+
+  @override
+  String get errorLoadingRatings => 'Error al cargar calificaciones';
+
+  @override
+  String get noRatingsYet => 'Aún no hay calificaciones';
+
+  @override
+  String get noRatingsDescription =>
+      'Este usuario aún no ha recibido calificaciones';
+
+  @override
+  String get positive => 'Positivo';
+
+  @override
+  String showAllRatings(Object count) {
+    return 'Mostrar todas las $count calificaciones';
+  }
+
+  @override
+  String get loadMore => 'Cargar más';
+
+  @override
+  String get auto => 'Auto';
+
+  @override
+  String get banReasonFraud => 'Fraude';
+
+  @override
+  String get banReasonInappropriate => 'Contenido inapropiado';
+
+  @override
+  String get banReasonTosViolation => 'Violación de términos de servicio';
+
+  @override
+  String get banReasonMultipleAccounts => 'Múltiples cuentas';
+
+  @override
+  String get banReasonIllegal => 'Actividades ilegales';
+
+  @override
+  String get banReasonRequired => 'Por favor proporciona una razón';
+
+  @override
+  String get enterBanReason => 'Ingresar razón del baneo';
+
+  @override
+  String get presetReasons => 'Razones predefinidas';
+
+  @override
+  String get reasonRequired => 'Razón (requerida)';
+
+  @override
+  String get describeBanReason => 'Describe la razón del baneo';
+
+  @override
+  String get banWarning =>
+      'Este usuario será bloqueado inmediatamente y no podrá iniciar sesión.';
+
+  @override
+  String get banAction => 'Banear Usuario';
 }

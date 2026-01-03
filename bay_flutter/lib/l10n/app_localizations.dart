@@ -405,7 +405,7 @@ abstract class AppLocalizations {
   /// Administrator Rolle
   ///
   /// In de, this message translates to:
-  /// **'Administrator'**
+  /// **'Admin'**
   String get roleAdmin;
 
   /// Moderator Rolle
@@ -417,7 +417,7 @@ abstract class AppLocalizations {
   /// Benutzer Rolle
   ///
   /// In de, this message translates to:
-  /// **'Benutzer'**
+  /// **'Nutzer'**
   String get roleUser;
 
   /// Einstellungen Screen Titel
@@ -1503,7 +1503,7 @@ abstract class AppLocalizations {
   /// Erstellt Label
   ///
   /// In de, this message translates to:
-  /// **'Erstellt'**
+  /// **'Erstellt am {date}'**
   String created(Object date);
 
   /// Bezahlt Label
@@ -4325,6 +4325,522 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Entfernen'**
   String get remove;
+
+  /// No description provided for @monthJan.
+  ///
+  /// In de, this message translates to:
+  /// **'Jan'**
+  String get monthJan;
+
+  /// No description provided for @monthFeb.
+  ///
+  /// In de, this message translates to:
+  /// **'Feb'**
+  String get monthFeb;
+
+  /// No description provided for @monthMar.
+  ///
+  /// In de, this message translates to:
+  /// **'Mär'**
+  String get monthMar;
+
+  /// No description provided for @monthApr.
+  ///
+  /// In de, this message translates to:
+  /// **'Apr'**
+  String get monthApr;
+
+  /// No description provided for @monthMay.
+  ///
+  /// In de, this message translates to:
+  /// **'Mai'**
+  String get monthMay;
+
+  /// No description provided for @monthJun.
+  ///
+  /// In de, this message translates to:
+  /// **'Jun'**
+  String get monthJun;
+
+  /// No description provided for @monthJul.
+  ///
+  /// In de, this message translates to:
+  /// **'Jul'**
+  String get monthJul;
+
+  /// No description provided for @monthAug.
+  ///
+  /// In de, this message translates to:
+  /// **'Aug'**
+  String get monthAug;
+
+  /// No description provided for @monthSep.
+  ///
+  /// In de, this message translates to:
+  /// **'Sep'**
+  String get monthSep;
+
+  /// No description provided for @monthOct.
+  ///
+  /// In de, this message translates to:
+  /// **'Okt'**
+  String get monthOct;
+
+  /// No description provided for @monthNov.
+  ///
+  /// In de, this message translates to:
+  /// **'Nov'**
+  String get monthNov;
+
+  /// No description provided for @monthDec.
+  ///
+  /// In de, this message translates to:
+  /// **'Dez'**
+  String get monthDec;
+
+  /// No description provided for @quantityUnitPiece.
+  ///
+  /// In de, this message translates to:
+  /// **'Stück'**
+  String get quantityUnitPiece;
+
+  /// No description provided for @quantityUnitKg.
+  ///
+  /// In de, this message translates to:
+  /// **'kg'**
+  String get quantityUnitKg;
+
+  /// No description provided for @quantityUnitGram.
+  ///
+  /// In de, this message translates to:
+  /// **'g'**
+  String get quantityUnitGram;
+
+  /// No description provided for @quantityUnitMeter.
+  ///
+  /// In de, this message translates to:
+  /// **'m'**
+  String get quantityUnitMeter;
+
+  /// No description provided for @quantityUnitLiter.
+  ///
+  /// In de, this message translates to:
+  /// **'l'**
+  String get quantityUnitLiter;
+
+  /// No description provided for @startTransaction.
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion starten'**
+  String get startTransaction;
+
+  /// No description provided for @quantityLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Menge'**
+  String get quantityLabel;
+
+  /// No description provided for @enterQuantity.
+  ///
+  /// In de, this message translates to:
+  /// **'Menge eingeben'**
+  String get enterQuantity;
+
+  /// No description provided for @ofAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'von {available} verfügbar'**
+  String ofAvailable(Object available);
+
+  /// No description provided for @noteForSeller.
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz für Verkäufer'**
+  String get noteForSeller;
+
+  /// No description provided for @noteForSellerHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Optional: Füge eine Nachricht für den Verkäufer hinzu'**
+  String get noteForSellerHint;
+
+  /// No description provided for @subtotal.
+  ///
+  /// In de, this message translates to:
+  /// **'Zwischensumme'**
+  String get subtotal;
+
+  /// No description provided for @total.
+  ///
+  /// In de, this message translates to:
+  /// **'Gesamt'**
+  String get total;
+
+  /// No description provided for @paymentVia.
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung via {method}'**
+  String paymentVia(Object method);
+
+  /// No description provided for @paymentMethodPaypalOrBitcoin.
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal oder Bitcoin'**
+  String get paymentMethodPaypalOrBitcoin;
+
+  /// No description provided for @paymentMethodPaypal.
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal'**
+  String get paymentMethodPaypal;
+
+  /// No description provided for @paymentMethodBitcoin.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin'**
+  String get paymentMethodBitcoin;
+
+  /// No description provided for @enterValidQuantity.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib eine gültige Menge ein'**
+  String get enterValidQuantity;
+
+  /// No description provided for @quantityExceedsAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'Die Menge überschreitet die verfügbare Anzahl'**
+  String get quantityExceedsAvailable;
+
+  /// No description provided for @rateTransaction.
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion bewerten'**
+  String get rateTransaction;
+
+  /// No description provided for @howWasYourExperience.
+  ///
+  /// In de, this message translates to:
+  /// **'Wie war deine Erfahrung?'**
+  String get howWasYourExperience;
+
+  /// No description provided for @ratingGood.
+  ///
+  /// In de, this message translates to:
+  /// **'Gut'**
+  String get ratingGood;
+
+  /// No description provided for @ratingNeutral.
+  ///
+  /// In de, this message translates to:
+  /// **'Neutral'**
+  String get ratingNeutral;
+
+  /// No description provided for @ratingBad.
+  ///
+  /// In de, this message translates to:
+  /// **'Schlecht'**
+  String get ratingBad;
+
+  /// No description provided for @commentOptional.
+  ///
+  /// In de, this message translates to:
+  /// **'Kommentar (optional)'**
+  String get commentOptional;
+
+  /// No description provided for @ratingCommentHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Teile deine Erfahrung mit anderen Nutzern'**
+  String get ratingCommentHint;
+
+  /// No description provided for @submitRating.
+  ///
+  /// In de, this message translates to:
+  /// **'Bewertung abschicken'**
+  String get submitRating;
+
+  /// No description provided for @ratingSubmittedSuccessfully.
+  ///
+  /// In de, this message translates to:
+  /// **'Bewertung erfolgreich abgeschickt'**
+  String get ratingSubmittedSuccessfully;
+
+  /// No description provided for @warning.
+  ///
+  /// In de, this message translates to:
+  /// **'Warnung'**
+  String get warning;
+
+  /// No description provided for @confirmRoleChange.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du die Rolle wirklich zu \"{role}\" ändern?'**
+  String confirmRoleChange(Object role);
+
+  /// No description provided for @roleUpdated.
+  ///
+  /// In de, this message translates to:
+  /// **'Rolle aktualisiert'**
+  String get roleUpdated;
+
+  /// No description provided for @noFreeSlotVariantsAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'Keine kostenlosen Slot-Varianten verfügbar'**
+  String get noFreeSlotVariantsAvailable;
+
+  /// No description provided for @grantFreeSlot.
+  ///
+  /// In de, this message translates to:
+  /// **'Kostenlosen Slot gewähren'**
+  String get grantFreeSlot;
+
+  /// No description provided for @selectFreeSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Wähle eine Slot-Variante für {username}'**
+  String selectFreeSlotVariant(Object username);
+
+  /// No description provided for @daysRuntime.
+  ///
+  /// In de, this message translates to:
+  /// **'{days} Tage Laufzeit'**
+  String daysRuntime(Object days);
+
+  /// No description provided for @freeUppercase.
+  ///
+  /// In de, this message translates to:
+  /// **'KOSTENLOS'**
+  String get freeUppercase;
+
+  /// No description provided for @freeSlotGranted.
+  ///
+  /// In de, this message translates to:
+  /// **'{variantName} wurde {username} gewährt'**
+  String freeSlotGranted(Object username, Object variantName);
+
+  /// No description provided for @unbanUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Nutzer entbannen'**
+  String get unbanUser;
+
+  /// No description provided for @confirmUnban.
+  ///
+  /// In de, this message translates to:
+  /// **'Möchtest du diesen Nutzer wirklich entbannen?'**
+  String get confirmUnban;
+
+  /// No description provided for @unbanReason.
+  ///
+  /// In de, this message translates to:
+  /// **'Grund für Entbannung'**
+  String get unbanReason;
+
+  /// No description provided for @userUnbanned.
+  ///
+  /// In de, this message translates to:
+  /// **'Nutzer wurde entbannt'**
+  String get userUnbanned;
+
+  /// No description provided for @information.
+  ///
+  /// In de, this message translates to:
+  /// **'Informationen'**
+  String get information;
+
+  /// No description provided for @lastLogin.
+  ///
+  /// In de, this message translates to:
+  /// **'Letzter Login'**
+  String get lastLogin;
+
+  /// No description provided for @never.
+  ///
+  /// In de, this message translates to:
+  /// **'Nie'**
+  String get never;
+
+  /// No description provided for @status.
+  ///
+  /// In de, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @bannedSince.
+  ///
+  /// In de, this message translates to:
+  /// **'Gebannt seit'**
+  String get bannedSince;
+
+  /// No description provided for @banReasonLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Grund'**
+  String get banReasonLabel;
+
+  /// No description provided for @role.
+  ///
+  /// In de, this message translates to:
+  /// **'Rolle'**
+  String get role;
+
+  /// No description provided for @cannotChangeOwnRole.
+  ///
+  /// In de, this message translates to:
+  /// **'Du kannst deine eigene Rolle nicht ändern'**
+  String get cannotChangeOwnRole;
+
+  /// No description provided for @banHistory.
+  ///
+  /// In de, this message translates to:
+  /// **'Ban-Verlauf'**
+  String get banHistory;
+
+  /// No description provided for @bannedAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Gebannt'**
+  String get bannedAction;
+
+  /// No description provided for @unbannedAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Entbannt'**
+  String get unbannedAction;
+
+  /// No description provided for @roleDescriptionAdmin.
+  ///
+  /// In de, this message translates to:
+  /// **'Vollzugriff'**
+  String get roleDescriptionAdmin;
+
+  /// No description provided for @roleDescriptionModerator.
+  ///
+  /// In de, this message translates to:
+  /// **'Moderationsrechte'**
+  String get roleDescriptionModerator;
+
+  /// No description provided for @roleDescriptionUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Normale Nutzerrechte'**
+  String get roleDescriptionUser;
+
+  /// No description provided for @errorLoadingRatings.
+  ///
+  /// In de, this message translates to:
+  /// **'Fehler beim Laden der Bewertungen'**
+  String get errorLoadingRatings;
+
+  /// No description provided for @noRatingsYet.
+  ///
+  /// In de, this message translates to:
+  /// **'Noch keine Bewertungen'**
+  String get noRatingsYet;
+
+  /// No description provided for @noRatingsDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieser Nutzer hat noch keine Bewertungen erhalten'**
+  String get noRatingsDescription;
+
+  /// No description provided for @positive.
+  ///
+  /// In de, this message translates to:
+  /// **'Positiv'**
+  String get positive;
+
+  /// No description provided for @showAllRatings.
+  ///
+  /// In de, this message translates to:
+  /// **'Alle {count} Bewertungen anzeigen'**
+  String showAllRatings(Object count);
+
+  /// No description provided for @loadMore.
+  ///
+  /// In de, this message translates to:
+  /// **'Mehr laden'**
+  String get loadMore;
+
+  /// No description provided for @auto.
+  ///
+  /// In de, this message translates to:
+  /// **'Automatisch'**
+  String get auto;
+
+  /// No description provided for @banReasonFraud.
+  ///
+  /// In de, this message translates to:
+  /// **'Betrug'**
+  String get banReasonFraud;
+
+  /// No description provided for @banReasonInappropriate.
+  ///
+  /// In de, this message translates to:
+  /// **'Unangemessener Inhalt'**
+  String get banReasonInappropriate;
+
+  /// No description provided for @banReasonTosViolation.
+  ///
+  /// In de, this message translates to:
+  /// **'Verstoß gegen AGB'**
+  String get banReasonTosViolation;
+
+  /// No description provided for @banReasonMultipleAccounts.
+  ///
+  /// In de, this message translates to:
+  /// **'Multiple Accounts'**
+  String get banReasonMultipleAccounts;
+
+  /// No description provided for @banReasonIllegal.
+  ///
+  /// In de, this message translates to:
+  /// **'Illegale Aktivitäten'**
+  String get banReasonIllegal;
+
+  /// No description provided for @banReasonRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib einen Grund an'**
+  String get banReasonRequired;
+
+  /// No description provided for @enterBanReason.
+  ///
+  /// In de, this message translates to:
+  /// **'Grund für Ban eingeben'**
+  String get enterBanReason;
+
+  /// No description provided for @presetReasons.
+  ///
+  /// In de, this message translates to:
+  /// **'Vorgegebene Gründe'**
+  String get presetReasons;
+
+  /// No description provided for @reasonRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Grund (erforderlich)'**
+  String get reasonRequired;
+
+  /// No description provided for @describeBanReason.
+  ///
+  /// In de, this message translates to:
+  /// **'Beschreibe den Grund für den Ban'**
+  String get describeBanReason;
+
+  /// No description provided for @banWarning.
+  ///
+  /// In de, this message translates to:
+  /// **'Dieser Nutzer wird sofort gesperrt und kann sich nicht mehr einloggen.'**
+  String get banWarning;
+
+  /// No description provided for @banAction.
+  ///
+  /// In de, this message translates to:
+  /// **'Nutzer bannen'**
+  String get banAction;
 }
 
 class _AppLocalizationsDelegate
