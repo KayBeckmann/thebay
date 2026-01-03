@@ -2,6 +2,7 @@ import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart';
 import 'listings/create_listing_screen.dart';
 import 'listings/edit_listing_screen.dart';
@@ -162,22 +163,23 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _deleteListing(Listing listing) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Angebot löschen'),
-        content: Text('Möchtest du "${listing.title}" wirklich löschen? Der Slot wird freigegeben.'),
+        title: Text(l10n.deleteListing),
+        content: Text(l10n.deleteListingConfirm(listing.title)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Abbrechen'),
+            child: Text(l10n.cancel),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, true),
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Löschen'),
+            child: Text(l10n.delete),
           ),
         ],
       ),
@@ -188,14 +190,14 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
         await client.listing.delete(listing.id!);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Angebot gelöscht')),
+            SnackBar(content: Text(l10n.listingDeleted)),
           );
           _loadData();
         }
       } catch (e) {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Fehler: $e')),
+            SnackBar(content: Text(l10n.error(e.toString()))),
           );
         }
       }
@@ -203,21 +205,20 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   void _showNoSlotsDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         icon: const Icon(Icons.info_outline),
-        title: const Text('Keine verfügbaren Slots'),
-        content: const Text(
-          'Um ein Angebot zu erstellen, benötigst du einen verfügbaren Slot. Kaufe zuerst einen Slot im "Meine Slots" Tab.',
-        ),
+        title: Text(l10n.noAvailableSlots),
+        content: Text(l10n.noSlotsMessage),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
               _tabController.animateTo(1);
             },
-            child: const Text('Slots anzeigen'),
+            child: Text(l10n.showSlots),
           ),
         ],
       ),
@@ -226,9 +227,10 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Verkaufen'),
+        title: Text(l10n.sell),
         leading: Builder(
           builder: (context) => IconButton(
             icon: const Icon(Icons.menu),
@@ -238,8 +240,8 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
         bottom: TabBar(
           controller: _tabController,
           tabs: [
-            Tab(text: 'Meine Angebote (${_myListings.length})'),
-            Tab(text: 'Meine Slots ($_availableSlots)'),
+            Tab(text: l10n.myListings(_myListings.length)),
+            Tab(text: l10n.mySlots(_availableSlots)),
           ],
         ),
       ),
@@ -253,12 +255,13 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _createListing,
         icon: const Icon(Icons.add),
-        label: const Text('Neues Angebot'),
+        label: Text(l10n.newListing),
       ),
     );
   }
 
   Widget _buildMyListingsTab() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingListings) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -277,12 +280,12 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               ),
               const SizedBox(height: 16),
               Text(
-                'Keine Angebote',
+                l10n.noListings,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 8),
               Text(
-                'Du hast noch keine Angebote erstellt.',
+                l10n.noListingsMessage,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -293,13 +296,13 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 FilledButton.icon(
                   onPressed: _createListing,
                   icon: const Icon(Icons.add),
-                  label: const Text('Erstes Angebot erstellen'),
+                  label: Text(l10n.createFirstListing),
                 )
               else
                 FilledButton.icon(
                   onPressed: () => _tabController.animateTo(1),
                   icon: const Icon(Icons.shopping_cart),
-                  label: const Text('Slots kaufen'),
+                  label: Text(l10n.buySlots),
                 ),
             ],
           ),
@@ -328,6 +331,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildMySlotsTab() {
+    final l10n = AppLocalizations.of(context)!;
     return RefreshIndicator(
       onRefresh: () async {
         await _loadMySlots();
@@ -344,7 +348,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           // Ausstehende Bestellungen
           if (_pendingOrders.isNotEmpty) ...[
             Text(
-              'Ausstehende Bestellungen',
+              l10n.pendingOrders,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -356,7 +360,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
           // Aktive Slots
           Text(
-            'Aktive Slots',
+            l10n.activeSlots,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -367,7 +371,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
           // Slots kaufen
           Text(
-            'Slots kaufen',
+            l10n.buySlots,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -380,6 +384,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildSlotStatsCard() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingSlots) {
       return const Card(
         child: Padding(
@@ -397,21 +402,21 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           children: [
             _buildStatItem(
               context,
-              'Verfügbar',
+              l10n.available,
               '${_slotStats['available'] ?? 0}',
               Icons.check_circle,
               Colors.green,
             ),
             _buildStatItem(
               context,
-              'Genutzt',
+              l10n.used,
               '${_slotStats['used'] ?? 0}',
               Icons.inventory,
               Theme.of(context).colorScheme.primary,
             ),
             _buildStatItem(
               context,
-              'Abgelaufen',
+              l10n.expired,
               '${_slotStats['expired'] ?? 0}',
               Icons.timer_off,
               Colors.orange,
@@ -453,6 +458,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildActiveSlotsSection() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingSlots) {
       return const Card(
         child: Padding(
@@ -470,7 +476,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           padding: const EdgeInsets.all(16),
           child: Center(
             child: Text(
-              'Du hast keine aktiven Slots.',
+              l10n.noActiveSlots,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -501,6 +507,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildPendingOrderCard(SlotOrder order) {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       color: Theme.of(context).colorScheme.secondaryContainer.withValues(alpha: 0.5),
@@ -529,15 +536,15 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Bestellung #${order.id}',
+                        l10n.orderNumber(order.id!),
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
                       ),
                       Text(
                         order.paymentMethod == PaymentMethod.paypal
-                            ? 'PayPal - Warte auf Zahlung'
-                            : 'Bitcoin - Warte auf Bestätigung',
+                            ? l10n.paypalWaitingForPayment
+                            : l10n.bitcoinWaitingForConfirmation,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context).colorScheme.onSurfaceVariant,
                             ),
@@ -564,7 +571,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  'Erstellt: ${_formatDate(order.createdAt)}',
+                  l10n.created(_formatDate(order.createdAt)),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -577,21 +584,21 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               children: [
                 TextButton(
                   onPressed: () => _cancelOrder(order),
-                  child: const Text('Stornieren'),
+                  child: Text(l10n.cancel),
                 ),
                 const SizedBox(width: 8),
                 if (order.paymentMethod == PaymentMethod.bitcoin)
                   OutlinedButton.icon(
                     onPressed: () => _enterBitcoinTxId(order),
                     icon: const Icon(Icons.edit, size: 16),
-                    label: const Text('TX-ID eingeben'),
+                    label: Text(l10n.enterTxId),
                   ),
                 if (order.paymentMethod == PaymentMethod.bitcoin)
                   const SizedBox(width: 8),
                 FilledButton.icon(
                   onPressed: () => _viewPaymentDetails(order),
                   icon: const Icon(Icons.info_outline, size: 16),
-                  label: const Text('Zahlen'),
+                  label: Text(l10n.pay),
                 ),
               ],
             ),
@@ -603,12 +610,13 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _cancelOrder(SlotOrder order) async {
+    final l10n = AppLocalizations.of(context)!;
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Bestellung stornieren'),
+        title: const Text(l10n.cancelOrder),
         content: Text(
-          'Möchtest du die Bestellung #${order.id} wirklich stornieren?',
+          l10n.cancelOrderConfirm(order.id!),
         ),
         actions: [
           TextButton(
@@ -620,7 +628,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
             style: FilledButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.error,
             ),
-            child: const Text('Stornieren'),
+            child: Text(l10n.cancel),
           ),
         ],
       ),
@@ -632,7 +640,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       await client.slotOrder.cancel(order.id!);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Bestellung storniert')),
+          const SnackBar(content: Text(l10n.orderCanceled)),
         );
         _loadPendingOrders();
       }
@@ -646,13 +654,14 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _enterBitcoinTxId(SlotOrder order) async {
+    final l10n = AppLocalizations.of(context)!;
     final controller = TextEditingController(text: order.transactionId ?? '');
 
     final txId = await showDialog<String>(
       context: context,
       builder: (context) => AlertDialog(
         icon: const Icon(Icons.currency_bitcoin),
-        title: const Text('Bitcoin-Transaktions-ID'),
+        title: const Text(l10n.bitcoinTransactionId),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -665,8 +674,8 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
             TextField(
               controller: controller,
               decoration: const InputDecoration(
-                labelText: 'TX-ID / TX-Hash',
-                hintText: 'z.B. abc123def456...',
+                labelText: l10n.txIdLabel,
+                hintText: l10n.txIdPlaceholder,
                 prefixIcon: Icon(Icons.tag),
               ),
               autofocus: true,
@@ -680,7 +689,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context, controller.text.trim()),
-            child: const Text('Speichern'),
+            child: const Text(l10n.save),
           ),
         ],
       ),
@@ -695,7 +704,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Transaktions-ID gespeichert')),
+          const SnackBar(content: Text(l10n.txIdSaved)),
         );
         _loadPendingOrders();
       }
@@ -709,6 +718,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _viewPaymentDetails(SlotOrder order) async {
+    final l10n = AppLocalizations.of(context)!;
     try {
       final info = await client.payment.getPaymentInfo(order.id!);
 
@@ -724,17 +734,17 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           ),
           title: Text(
             order.paymentMethod == PaymentMethod.paypal
-                ? 'PayPal-Zahlung'
-                : 'Bitcoin-Zahlung',
+                ? l10n.paypalPayment
+                : l10n.bitcoinPayment,
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (order.paymentMethod == PaymentMethod.paypal) ...[
-                _buildPaymentInfoItem('Empfänger', info['email'] ?? '-'),
-                _buildPaymentInfoItem('Betrag', '\$${info['amount']}'),
-                _buildPaymentInfoItem('Verwendungszweck', 'Order-${order.id}'),
+                _buildPaymentInfoItem(l10n.recipient, info['email'] ?? '-'),
+                _buildPaymentInfoItem(l10n.amount, '\$${info['amount']}'),
+                _buildPaymentInfoItem(l10n.reference, 'Order-${order.id}'),
                 const SizedBox(height: 16),
                 const Text(
                   'Bitte sende den Betrag an die angegebene PayPal-Adresse '
@@ -742,10 +752,10 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ] else ...[
-                _buildPaymentInfoItem('Adresse', info['address'] ?? '-'),
-                _buildPaymentInfoItem('Betrag (USD)', '\$${info['amountUsd']}'),
-                _buildPaymentInfoItem('Betrag (BTC)', '${info['amountBtc']} BTC'),
-                _buildPaymentInfoItem('Memo', info['memo'] ?? '-'),
+                _buildPaymentInfoItem(l10n.address, info['address'] ?? '-'),
+                _buildPaymentInfoItem(l10n.amountUsd, '\$${info['amountUsd']}'),
+                _buildPaymentInfoItem(l10n.amountBtc, '${info['amountBtc']} BTC'),
+                _buildPaymentInfoItem(l10n.memo, info['memo'] ?? '-'),
                 const SizedBox(height: 16),
                 const Text(
                   'Bitte sende den BTC-Betrag an die angegebene Adresse '
@@ -759,7 +769,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Schließen'),
+              child: const Text(l10n.close),
             ),
             if (order.paymentMethod == PaymentMethod.bitcoin)
               FilledButton(
@@ -767,7 +777,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                   Navigator.pop(context);
                   _enterBitcoinTxId(order);
                 },
-                child: const Text('TX-ID eingeben'),
+                child: Text(l10n.enterTxId),
               ),
           ],
         ),
@@ -830,6 +840,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildSlotCard(UserSlot slot) {
+    final l10n = AppLocalizations.of(context)!;
     final now = DateTime.now();
     final daysRemaining = slot.expiresAt.difference(now).inDays;
     final isExpiringSoon = daysRemaining <= 3 && daysRemaining >= 0;
@@ -859,14 +870,14 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    slot.isUsed ? 'Slot genutzt' : 'Slot verfügbar',
+                    slot.isUsed ? l10n.slotUsed : l10n.slotAvailable,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    'Läuft ab: ${_formatDate(slot.expiresAt)}',
+                    l10n.expiresOn(_formatDate(slot.expiresAt)),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: isExpiringSoon
                               ? Theme.of(context).colorScheme.error
@@ -880,7 +891,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Chip(
-                  label: const Text('KOSTENLOS'),
+                  label: const Text(l10n.free),
                   backgroundColor: Colors.green.withOpacity(0.2),
                   labelStyle: TextStyle(
                     color: Colors.green.shade700,
@@ -894,7 +905,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               Padding(
                 padding: const EdgeInsets.only(right: 8),
                 child: Chip(
-                  label: Text('$daysRemaining Tage'),
+                  label: Text(l10n.daysRemaining(daysRemaining)),
                   backgroundColor: Theme.of(context).colorScheme.errorContainer,
                   labelStyle: TextStyle(
                     color: Theme.of(context).colorScheme.onErrorContainer,
@@ -906,7 +917,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
             IconButton(
               onPressed: () => _extendSlot(slot),
               icon: const Icon(Icons.add_circle_outline),
-              tooltip: 'Verlängern',
+              tooltip: l10n.extend,
             ),
           ],
         ),
@@ -915,6 +926,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildBuySlotSection() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoadingVariants) {
       return const Card(
         child: Padding(
@@ -937,12 +949,12 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               ),
               const SizedBox(height: 12),
               Text(
-                'Keine Slot-Varianten verfügbar',
+                l10n.noSlotVariantsAvailable,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               const SizedBox(height: 4),
               Text(
-                'Der Administrator muss zuerst Slot-Varianten konfigurieren.',
+                l10n.adminMustConfigureSlots,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
@@ -960,6 +972,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Widget _buildSlotVariantCard(SlotVariant variant) {
+    final l10n = AppLocalizations.of(context)!;
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       child: Padding(
@@ -1017,7 +1030,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  '${variant.durationDays} Tage Laufzeit',
+                  l10n.daysValidity(variant.durationDays),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -1060,7 +1073,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
               child: FilledButton.icon(
                 onPressed: () => _buySlot(variant),
                 icon: const Icon(Icons.add_circle_outline),
-                label: const Text('Slot aktivieren'),
+                label: const Text(l10n.activateSlot),
               ),
             ),
           ],
@@ -1070,6 +1083,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _buySlot(SlotVariant variant) async {
+    final l10n = AppLocalizations.of(context)!;
     // Bestimme verfügbare Zahlungsmethoden
     final List<PaymentMethod> availableMethods = [];
     if (variant.allowPaypal) availableMethods.add(PaymentMethod.paypal);
@@ -1077,7 +1091,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
     if (availableMethods.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Keine Zahlungsmethode verfügbar')),
+        const SnackBar(content: Text(l10n.noPaymentMethod)),
       );
       return;
     }
@@ -1114,6 +1128,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _showPaymentInstructions(
+    final l10n = AppLocalizations.of(context)!;
     SlotOrder order,
     SlotVariant variant,
     PaymentMethod method,
@@ -1129,14 +1144,14 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
           icon: Icon(
             method == PaymentMethod.paypal ? Icons.payment : Icons.currency_bitcoin,
           ),
-          title: Text(method == PaymentMethod.paypal ? 'PayPal-Zahlung' : 'Bitcoin-Zahlung'),
+          title: Text(method == PaymentMethod.paypal ? l10n.paypalPayment : l10n.bitcoinPayment),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Bestellung #${order.id}',
+                  l10n.orderNumber(order.id!),
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
@@ -1144,8 +1159,8 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 const Divider(height: 32),
 
                 if (method == PaymentMethod.paypal) ...[
-                  _buildPaymentInfoItem('PayPal-Adresse', info['email'] ?? '-'),
-                  _buildPaymentInfoItem('Verwendungszweck', 'Order-${order.id}'),
+                  _buildPaymentInfoItem(l10n.paypalAddress, info['email'] ?? '-'),
+                  _buildPaymentInfoItem(l10n.reference, 'Order-${order.id}'),
                   const SizedBox(height: 16),
                   const Text(
                     'Bitte sende den Betrag an die angegebene PayPal-Adresse '
@@ -1170,10 +1185,10 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _buildPaymentInfoItem('Bitcoin-Adresse', info['address'] ?? '-'),
-                  _buildPaymentInfoItem('Betrag (USD)', '\$${info['amountUsd'] ?? '-'}'),
-                  _buildPaymentInfoItem('Betrag (BTC)', '${info['amountBtc'] ?? '-'} BTC'),
-                  _buildPaymentInfoItem('Referenz (Memo)', info['memo'] ?? '-'),
+                  _buildPaymentInfoItem(l10n.bitcoinAddress, info['address'] ?? '-'),
+                  _buildPaymentInfoItem(l10n.amountUsd, '\$${info['amountUsd'] ?? '-'}'),
+                  _buildPaymentInfoItem(l10n.amountBtc, '${info['amountBtc'] ?? '-'} BTC'),
+                  _buildPaymentInfoItem(l10n.referenceLabel, info['memo'] ?? '-'),
                   const SizedBox(height: 16),
                   const Text(
                     'Scanne den QR-Code oder sende den BTC-Betrag an die angegebene '
@@ -1193,11 +1208,11 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                   _enterBitcoinTxId(order);
                 },
                 icon: const Icon(Icons.edit, size: 18),
-                label: const Text('TX-ID eingeben'),
+                label: Text(l10n.enterTxId),
               ),
             FilledButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Schließen'),
+              child: const Text(l10n.close),
             ),
           ],
         ),
@@ -1208,18 +1223,19 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Fehler beim Laden der Zahlungsinformationen: $e')),
+          SnackBar(content: Text(l10n.errorLoadingPaymentInfo(e.toString()))),
         );
       }
     }
   }
 
   Future<void> _extendSlot(UserSlot slot) async {
+    final l10n = AppLocalizations.of(context)!;
     // Verlängerung funktioniert wie ein normaler Kauf
     // Wähle eine Slot-Variante aus
     if (_slotVariants.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Keine Slot-Varianten verfügbar')),
+        const SnackBar(content: Text(l10n.noSlotVariantsAvailable)),
       );
       return;
     }
@@ -1227,7 +1243,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
     final variant = await showDialog<SlotVariant>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Slot verlängern'),
+        title: const Text(l10n.extendSlot),
         content: SizedBox(
           width: double.maxFinite,
           child: Column(
@@ -1247,7 +1263,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                     return ListTile(
                       leading: const Icon(Icons.add_circle),
                       title: Text(v.name),
-                      subtitle: Text('+${v.durationDays} Tage'),
+                      subtitle: Text(l10n.daysRemaining(v.durationDays)),
                       trailing: Text('\$${(v.priceUsdCents / 100).toStringAsFixed(2)}'),
                       onTap: () => Navigator.pop(context, v),
                     );
@@ -1306,7 +1322,7 @@ class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       icon: const Icon(Icons.shopping_cart),
-      title: const Text('Slot kaufen'),
+      title: const Text(l10n.buySlot),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1357,7 +1373,7 @@ class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
 
           // Zahlungsmethode
           Text(
-            'Zahlungsmethode',
+            l10n.paymentMethod,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -1387,7 +1403,7 @@ class _SlotPurchaseDialogState extends State<_SlotPurchaseDialog> {
           onPressed: _selectedMethod == null
               ? null
               : () => Navigator.pop(context, _selectedMethod),
-          child: const Text('Kaufen'),
+          child: const Text(l10n.buy),
         ),
       ],
     );
