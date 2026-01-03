@@ -451,7 +451,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get invalidInput => 'Entrée invalide';
 
   @override
-  String get shipping => 'Expédition';
+  String get shipping => 'Livraison';
 
   @override
   String get shippingMethod => 'Mode de livraison';
@@ -508,7 +508,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get quantity => 'Quantité';
 
   @override
-  String get pricePerUnit => 'Prix par unité';
+  String pricePerUnit(String price, String unit) {
+    return '$price par $unit';
+  }
 
   @override
   String get createdAt => 'Créé le';
@@ -2923,4 +2925,66 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get report => 'Signaler';
+
+  @override
+  String get startTransaction => 'Démarrer la Transaction';
+
+  @override
+  String get quantityLabel => 'Quantité';
+
+  @override
+  String get enterQuantity => 'Entrez la quantité';
+
+  @override
+  String ofAvailable(String available) {
+    return 'de $available';
+  }
+
+  @override
+  String get noteForSeller => 'Note pour le vendeur (facultatif)';
+
+  @override
+  String get noteForSellerHint => 'Ajoutez une note pour le vendeur...';
+
+  @override
+  String get subtotal => 'Sous-total';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String paymentVia(String method) {
+    return 'Paiement par $method';
+  }
+
+  @override
+  String get paymentMethodPaypalOrBitcoin => 'PayPal ou Bitcoin';
+
+  @override
+  String get paymentMethodPaypal => 'PayPal';
+
+  @override
+  String get paymentMethodBitcoin => 'Bitcoin';
+
+  @override
+  String get enterValidQuantity => 'Veuillez entrer une quantité valide';
+
+  @override
+  String get quantityExceedsAvailable =>
+      'La quantité dépasse le montant disponible';
+
+  @override
+  String get quantityUnitPiece => 'pièces';
+
+  @override
+  String get quantityUnitKg => 'kg';
+
+  @override
+  String get quantityUnitGram => 'g';
+
+  @override
+  String get quantityUnitMeter => 'm';
+
+  @override
+  String get quantityUnitLiter => 'L';
 }

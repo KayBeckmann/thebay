@@ -3975,5 +3975,128 @@
   "report": "Report",
   "@report": {
     "description": "Report button"
+  },
+
+  "startTransaction": "Start Transaction",
+  "@startTransaction": {
+    "description": "Start transaction title/button"
+  },
+
+  "pricePerUnit": "{price} per {unit}",
+  "@pricePerUnit": {
+    "description": "Price per unit",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+
+  "quantityLabel": "Quantity",
+  "@quantityLabel": {
+    "description": "Quantity label"
+  },
+
+  "enterQuantity": "Enter quantity",
+  "@enterQuantity": {
+    "description": "Enter quantity hint"
+  },
+
+  "ofAvailable": "of {available}",
+  "@ofAvailable": {
+    "description": "of available",
+    "placeholders": {
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noteForSeller": "Note for seller (optional)",
+  "@noteForSeller": {
+    "description": "Note for seller label"
+  },
+
+  "noteForSellerHint": "Add a note for the seller...",
+  "@noteForSellerHint": {
+    "description": "Note for seller hint"
+  },
+
+  "subtotal": "Subtotal",
+  "@subtotal": {
+    "description": "Subtotal label"
+  },
+
+  "shipping": "Shipping",
+  "@shipping": {
+    "description": "Shipping label"
+  },
+
+  "total": "Total",
+  "@total": {
+    "description": "Total label"
+  },
+
+  "paymentVia": "Payment via {method}",
+  "@paymentVia": {
+    "description": "Payment via method",
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+
+  "paymentMethodPaypalOrBitcoin": "PayPal or Bitcoin",
+  "@paymentMethodPaypalOrBitcoin": {
+    "description": "PayPal or Bitcoin payment methods"
+  },
+
+  "paymentMethodPaypal": "PayPal",
+  "@paymentMethodPaypal": {
+    "description": "PayPal payment method"
+  },
+
+  "paymentMethodBitcoin": "Bitcoin",
+  "@paymentMethodBitcoin": {
+    "description": "Bitcoin payment method"
+  },
+
+  "enterValidQuantity": "Please enter a valid quantity",
+  "@enterValidQuantity": {
+    "description": "Enter valid quantity error"
+  },
+
+  "quantityExceedsAvailable": "Quantity exceeds available amount",
+  "@quantityExceedsAvailable": {
+    "description": "Quantity exceeds available error"
+  },
+
+  "quantityUnitPiece": "pieces",
+  "@quantityUnitPiece": {
+    "description": "Quantity unit: pieces"
+  },
+
+  "quantityUnitKg": "kg",
+  "@quantityUnitKg": {
+    "description": "Quantity unit: kilograms"
+  },
+
+  "quantityUnitGram": "g",
+  "@quantityUnitGram": {
+    "description": "Quantity unit: grams"
+  },
+
+  "quantityUnitMeter": "m",
+  "@quantityUnitMeter": {
+    "description": "Quantity unit: meters"
+  },
+
+  "quantityUnitLiter": "L",
+  "@quantityUnitLiter": {
+    "description": "Quantity unit: liters"
   }
 }

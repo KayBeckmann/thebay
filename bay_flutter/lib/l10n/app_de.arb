@@ -5084,5 +5084,128 @@
   "report": "Melden",
   "@report": {
     "description": "Melden Button"
+  },
+
+  "startTransaction": "Transaktion starten",
+  "@startTransaction": {
+    "description": "Transaktion starten Titel/Button"
+  },
+
+  "pricePerUnit": "{price} pro {unit}",
+  "@pricePerUnit": {
+    "description": "Preis pro Einheit",
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+
+  "quantityLabel": "Menge",
+  "@quantityLabel": {
+    "description": "Menge Label"
+  },
+
+  "enterQuantity": "Menge eingeben",
+  "@enterQuantity": {
+    "description": "Menge eingeben Hinweistext"
+  },
+
+  "ofAvailable": "von {available}",
+  "@ofAvailable": {
+    "description": "von verfügbar",
+    "placeholders": {
+      "available": {
+        "type": "String"
+      }
+    }
+  },
+
+  "noteForSeller": "Notiz für Verkäufer (optional)",
+  "@noteForSeller": {
+    "description": "Notiz für Verkäufer Label"
+  },
+
+  "noteForSellerHint": "Füge eine Notiz für den Verkäufer hinzu...",
+  "@noteForSellerHint": {
+    "description": "Notiz für Verkäufer Hinweistext"
+  },
+
+  "subtotal": "Zwischensumme",
+  "@subtotal": {
+    "description": "Zwischensumme Label"
+  },
+
+  "shipping": "Versand",
+  "@shipping": {
+    "description": "Versand Label"
+  },
+
+  "total": "Gesamt",
+  "@total": {
+    "description": "Gesamt Label"
+  },
+
+  "paymentVia": "Zahlung per {method}",
+  "@paymentVia": {
+    "description": "Zahlung per Methode",
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+
+  "paymentMethodPaypalOrBitcoin": "PayPal oder Bitcoin",
+  "@paymentMethodPaypalOrBitcoin": {
+    "description": "PayPal oder Bitcoin Zahlungsmethoden"
+  },
+
+  "paymentMethodPaypal": "PayPal",
+  "@paymentMethodPaypal": {
+    "description": "PayPal Zahlungsmethode"
+  },
+
+  "paymentMethodBitcoin": "Bitcoin",
+  "@paymentMethodBitcoin": {
+    "description": "Bitcoin Zahlungsmethode"
+  },
+
+  "enterValidQuantity": "Bitte gib eine gültige Menge ein",
+  "@enterValidQuantity": {
+    "description": "Gültige Menge eingeben Fehlermeldung"
+  },
+
+  "quantityExceedsAvailable": "Menge überschreitet verfügbare Anzahl",
+  "@quantityExceedsAvailable": {
+    "description": "Menge überschreitet Verfügbarkeit Fehlermeldung"
+  },
+
+  "quantityUnitPiece": "Stück",
+  "@quantityUnitPiece": {
+    "description": "Mengeneinheit: Stück"
+  },
+
+  "quantityUnitKg": "kg",
+  "@quantityUnitKg": {
+    "description": "Mengeneinheit: Kilogramm"
+  },
+
+  "quantityUnitGram": "g",
+  "@quantityUnitGram": {
+    "description": "Mengeneinheit: Gramm"
+  },
+
+  "quantityUnitMeter": "m",
+  "@quantityUnitMeter": {
+    "description": "Mengeneinheit: Meter"
+  },
+
+  "quantityUnitLiter": "L",
+  "@quantityUnitLiter": {
+    "description": "Mengeneinheit: Liter"
   }
 }

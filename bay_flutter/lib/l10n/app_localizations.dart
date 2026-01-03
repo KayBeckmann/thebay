@@ -996,11 +996,11 @@ abstract class AppLocalizations {
   /// **'Menge'**
   String get quantity;
 
-  /// Preis pro Einheit Label
+  /// Preis pro Einheit
   ///
   /// In de, this message translates to:
-  /// **'Preis pro Einheit'**
-  String get pricePerUnit;
+  /// **'{price} pro {unit}'**
+  String pricePerUnit(String price, String unit);
 
   /// Erstellt am Label
   ///
@@ -5352,6 +5352,120 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Melden'**
   String get report;
+
+  /// Transaktion starten Titel/Button
+  ///
+  /// In de, this message translates to:
+  /// **'Transaktion starten'**
+  String get startTransaction;
+
+  /// Menge Label
+  ///
+  /// In de, this message translates to:
+  /// **'Menge'**
+  String get quantityLabel;
+
+  /// Menge eingeben Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'Menge eingeben'**
+  String get enterQuantity;
+
+  /// von verfügbar
+  ///
+  /// In de, this message translates to:
+  /// **'von {available}'**
+  String ofAvailable(String available);
+
+  /// Notiz für Verkäufer Label
+  ///
+  /// In de, this message translates to:
+  /// **'Notiz für Verkäufer (optional)'**
+  String get noteForSeller;
+
+  /// Notiz für Verkäufer Hinweistext
+  ///
+  /// In de, this message translates to:
+  /// **'Füge eine Notiz für den Verkäufer hinzu...'**
+  String get noteForSellerHint;
+
+  /// Zwischensumme Label
+  ///
+  /// In de, this message translates to:
+  /// **'Zwischensumme'**
+  String get subtotal;
+
+  /// Gesamt Label
+  ///
+  /// In de, this message translates to:
+  /// **'Gesamt'**
+  String get total;
+
+  /// Zahlung per Methode
+  ///
+  /// In de, this message translates to:
+  /// **'Zahlung per {method}'**
+  String paymentVia(String method);
+
+  /// PayPal oder Bitcoin Zahlungsmethoden
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal oder Bitcoin'**
+  String get paymentMethodPaypalOrBitcoin;
+
+  /// PayPal Zahlungsmethode
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal'**
+  String get paymentMethodPaypal;
+
+  /// Bitcoin Zahlungsmethode
+  ///
+  /// In de, this message translates to:
+  /// **'Bitcoin'**
+  String get paymentMethodBitcoin;
+
+  /// Gültige Menge eingeben Fehlermeldung
+  ///
+  /// In de, this message translates to:
+  /// **'Bitte gib eine gültige Menge ein'**
+  String get enterValidQuantity;
+
+  /// Menge überschreitet Verfügbarkeit Fehlermeldung
+  ///
+  /// In de, this message translates to:
+  /// **'Menge überschreitet verfügbare Anzahl'**
+  String get quantityExceedsAvailable;
+
+  /// Mengeneinheit: Stück
+  ///
+  /// In de, this message translates to:
+  /// **'Stück'**
+  String get quantityUnitPiece;
+
+  /// Mengeneinheit: Kilogramm
+  ///
+  /// In de, this message translates to:
+  /// **'kg'**
+  String get quantityUnitKg;
+
+  /// Mengeneinheit: Gramm
+  ///
+  /// In de, this message translates to:
+  /// **'g'**
+  String get quantityUnitGram;
+
+  /// Mengeneinheit: Meter
+  ///
+  /// In de, this message translates to:
+  /// **'m'**
+  String get quantityUnitMeter;
+
+  /// Mengeneinheit: Liter
+  ///
+  /// In de, this message translates to:
+  /// **'L'**
+  String get quantityUnitLiter;
 }
 
 class _AppLocalizationsDelegate

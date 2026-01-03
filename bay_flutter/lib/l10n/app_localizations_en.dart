@@ -502,7 +502,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quantity => 'Quantity';
 
   @override
-  String get pricePerUnit => 'Price per unit';
+  String pricePerUnit(String price, String unit) {
+    return '$price per $unit';
+  }
 
   @override
   String get createdAt => 'Created at';
@@ -2893,4 +2895,65 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get report => 'Report';
+
+  @override
+  String get startTransaction => 'Start Transaction';
+
+  @override
+  String get quantityLabel => 'Quantity';
+
+  @override
+  String get enterQuantity => 'Enter quantity';
+
+  @override
+  String ofAvailable(String available) {
+    return 'of $available';
+  }
+
+  @override
+  String get noteForSeller => 'Note for seller (optional)';
+
+  @override
+  String get noteForSellerHint => 'Add a note for the seller...';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String paymentVia(String method) {
+    return 'Payment via $method';
+  }
+
+  @override
+  String get paymentMethodPaypalOrBitcoin => 'PayPal or Bitcoin';
+
+  @override
+  String get paymentMethodPaypal => 'PayPal';
+
+  @override
+  String get paymentMethodBitcoin => 'Bitcoin';
+
+  @override
+  String get enterValidQuantity => 'Please enter a valid quantity';
+
+  @override
+  String get quantityExceedsAvailable => 'Quantity exceeds available amount';
+
+  @override
+  String get quantityUnitPiece => 'pieces';
+
+  @override
+  String get quantityUnitKg => 'kg';
+
+  @override
+  String get quantityUnitGram => 'g';
+
+  @override
+  String get quantityUnitMeter => 'm';
+
+  @override
+  String get quantityUnitLiter => 'L';
 }

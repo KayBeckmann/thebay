@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
 import 'transaction_detail_screen.dart';
 
@@ -43,18 +44,18 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
     super.dispose();
   }
 
-  String _getQuantityUnitLabel(QuantityUnit unit) {
+  String _getQuantityUnitLabel(QuantityUnit unit, AppLocalizations l10n) {
     switch (unit) {
       case QuantityUnit.piece:
-        return 'pieces';
+        return l10n.quantityUnitPiece;
       case QuantityUnit.kg:
-        return 'kg';
+        return l10n.quantityUnitKg;
       case QuantityUnit.gram:
-        return 'g';
+        return l10n.quantityUnitGram;
       case QuantityUnit.meter:
-        return 'm';
+        return l10n.quantityUnitMeter;
       case QuantityUnit.liter:
-        return 'L';
+        return l10n.quantityUnitLiter;
       case QuantityUnit.none:
         return '';
     }
@@ -66,10 +67,11 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final unitLabel = _getQuantityUnitLabel(widget.listing.quantityUnit);
+    final l10n = AppLocalizations.of(context)!;
+    final unitLabel = _getQuantityUnitLabel(widget.listing.quantityUnit, l10n);
 
     return AlertDialog(
-      title: const Text('Start Transaction'),
+      title: Text(l10n.startTransaction),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -109,7 +111,10 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '${_formatPrice(widget.listing.pricePerUnit)} per $unitLabel',
+                          l10n.pricePerUnit(
+                            _formatPrice(widget.listing.pricePerUnit),
+                            unitLabel,
+                          ),
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 color: Theme.of(context)
                                     .colorScheme
@@ -126,7 +131,7 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
 
             // Quantity Input
             Text(
-              'Quantity',
+              l10n.quantityLabel,
               style: Theme.of(context).textTheme.labelLarge,
             ),
             const SizedBox(height: 8),
@@ -140,14 +145,14 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
                       suffixText: unitLabel,
-                      hintText: 'Enter quantity',
+                      hintText: l10n.enterQuantity,
                     ),
                     onChanged: (_) => setState(() {}),
                   ),
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'of ${widget.listing.quantity}',
+                  l10n.ofAvailable(widget.listing.quantity.toString()),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -158,15 +163,15 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
 
             // Note Input
             Text(
-              'Note for seller (optional)',
+              l10n.noteForSeller,
               style: Theme.of(context).textTheme.labelLarge,
             ),
             const SizedBox(height: 8),
             TextField(
               controller: _noteController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Add a note for the seller...',
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: l10n.noteForSellerHint,
               ),
               maxLines: 2,
               maxLength: 500,
@@ -183,21 +188,21 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
               child: Column(
                 children: [
                   _buildPriceRow(
-                    'Subtotal',
+                    l10n.subtotal,
                     _formatPrice(_totalCents),
                     context,
                   ),
                   if (widget.listing.hasShipping) ...[
                     const SizedBox(height: 4),
                     _buildPriceRow(
-                      'Shipping',
+                      l10n.shipping,
                       _formatPrice(_shippingCents),
                       context,
                     ),
                   ],
                   const Divider(height: 16),
                   _buildPriceRow(
-                    'Total',
+                    l10n.total,
                     _formatPrice(_grandTotalCents),
                     context,
                     isBold: true,
@@ -218,7 +223,13 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    'Payment via ${widget.listing.acceptsPaypal && widget.listing.acceptsBitcoin ? 'PayPal or Bitcoin' : widget.listing.acceptsPaypal ? 'PayPal' : 'Bitcoin'}',
+                    l10n.paymentVia(
+                      widget.listing.acceptsPaypal && widget.listing.acceptsBitcoin
+                          ? l10n.paymentMethodPaypalOrBitcoin
+                          : widget.listing.acceptsPaypal
+                              ? l10n.paymentMethodPaypal
+                              : l10n.paymentMethodBitcoin,
+                    ),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
@@ -261,7 +272,7 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
       actions: [
         TextButton(
           onPressed: _isLoading ? null : () => Navigator.pop(context),
-          child: const Text('Cancel'),
+          child: Text(l10n.cancel),
         ),
         FilledButton(
           onPressed: _isLoading || _quantity <= 0 ? null : _startTransaction,
@@ -271,7 +282,7 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
                   height: 20,
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
-              : const Text('Start Transaction'),
+              : Text(l10n.startTransaction),
         ),
       ],
     );
@@ -301,13 +312,15 @@ class _StartTransactionDialogState extends State<_StartTransactionDialog> {
   }
 
   Future<void> _startTransaction() async {
+    final l10n = AppLocalizations.of(context)!;
+
     // Validate quantity
     if (_quantity <= 0) {
-      setState(() => _error = 'Please enter a valid quantity');
+      setState(() => _error = l10n.enterValidQuantity);
       return;
     }
     if (_quantity > widget.listing.quantity) {
-      setState(() => _error = 'Quantity exceeds available amount');
+      setState(() => _error = l10n.quantityExceedsAvailable);
       return;
     }
 
