@@ -1,6 +1,7 @@
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart' show client, authService;
 import '../widgets/report_dialog.dart';
 import 'listings/listing_card.dart';
@@ -53,7 +54,10 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     try {
       final profile = await client.userProfile.getProfile(widget.userId);
       if (profile == null) {
-        throw Exception('Benutzer nicht gefunden');
+        if (mounted) {
+          throw Exception(AppLocalizations.of(context)!.userNotFound);
+        }
+        return;
       }
 
       final listings = await client.userProfile.getUserListings(
@@ -114,13 +118,15 @@ class _UserProfileScreenState extends State<UserProfileScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(_profile?.username ?? 'Profil'),
+        title: Text(_profile?.username ?? l10n.profile),
         actions: [
           IconButton(
             icon: const Icon(Icons.flag),
-            tooltip: 'Benutzer melden',
+            tooltip: l10n.reportUser,
             onPressed: _profile != null ? () => _showReportDialog() : null,
           ),
         ],
@@ -130,6 +136,8 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -145,11 +153,11 @@ class _UserProfileScreenState extends State<UserProfileScreen>
               color: Theme.of(context).colorScheme.error,
             ),
             const SizedBox(height: 16),
-            Text('Fehler: $_error'),
+            Text(l10n.errorLoading(_error!)),
             const SizedBox(height: 16),
             FilledButton(
               onPressed: _loadData,
-              child: const Text('Erneut versuchen'),
+              child: Text(l10n.retryButton),
             ),
           ],
         ),
@@ -157,7 +165,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     }
 
     if (_profile == null) {
-      return const Center(child: Text('Benutzer nicht gefunden'));
+      return Center(child: Text(l10n.userNotFound));
     }
 
     return NestedScrollView(
@@ -194,11 +202,11 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 tabs: [
                   Tab(
                     icon: const Icon(Icons.inventory_2),
-                    text: 'Listings (${_profile!.activeListingsCount})',
+                    text: l10n.listingsWithCount(_profile!.activeListingsCount),
                   ),
                   Tab(
                     icon: const Icon(Icons.star),
-                    text: 'Ratings (${_profile!.ratingCount})',
+                    text: l10n.ratingsWithCount(_profile!.ratingCount),
                   ),
                 ],
               ),
@@ -219,6 +227,8 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   }
 
   Widget _buildListingsTab() {
+    final l10n = AppLocalizations.of(context)!;
+
     if (_listings.isEmpty) {
       return Center(
         child: Column(
@@ -231,7 +241,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'No active listings',
+              l10n.noActiveListings,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -279,6 +289,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   }
 
   Widget _buildProfileHeader() {
+    final l10n = AppLocalizations.of(context)!;
     final isOwnProfile = authService.currentUser?.userId == widget.userId;
 
     return Padding(
@@ -323,7 +334,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          'Du',
+                          l10n.you,
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                 color: Theme.of(context).colorScheme.onPrimaryContainer,
                               ),
@@ -334,7 +345,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Mitglied seit ${_formatDate(_profile!.memberSince)}',
+                  l10n.memberSince(_formatDate(_profile!.memberSince, l10n)),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -350,7 +361,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Verschlüsselung aktiv',
+                        l10n.encryptionActive,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.green.shade600,
                             ),
@@ -367,6 +378,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   }
 
   Widget _buildStats() {
+    final l10n = AppLocalizations.of(context)!;
     final ratingPercentage = _profile!.ratingAverage;
     final ratingColor = ratingPercentage != null
         ? (ratingPercentage >= 90
@@ -389,7 +401,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 child: _buildStatItem(
                   icon: Icons.inventory_2,
                   value: _profile!.activeListingsCount.toString(),
-                  label: 'Listings',
+                  label: l10n.listings,
                 ),
               ),
               Container(
@@ -430,8 +442,8 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                       const SizedBox(height: 4),
                       Text(
                         _profile!.ratingCount == 0
-                            ? 'No ratings'
-                            : '${_profile!.ratingCount} rating${_profile!.ratingCount == 1 ? '' : 's'}',
+                            ? l10n.noRatings
+                            : l10n.ratingCount(_profile!.ratingCount),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -476,6 +488,8 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   }
 
   Widget _buildPaymentInfo() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       child: Card(
@@ -489,7 +503,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                   const Icon(Icons.payment),
                   const SizedBox(width: 8),
                   Text(
-                    'Zahlungsinformationen',
+                    l10n.paymentInformation,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -500,7 +514,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
               if (_profile!.paypalAddress != null) ...[
                 _buildPaymentRow(
                   icon: Icons.paypal,
-                  label: 'PayPal',
+                  label: l10n.paypal,
                   value: _profile!.paypalAddress!,
                 ),
                 const SizedBox(height: 8),
@@ -508,7 +522,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
               if (_profile!.bitcoinWallet != null)
                 _buildPaymentRow(
                   icon: Icons.currency_bitcoin,
-                  label: 'Bitcoin',
+                  label: l10n.bitcoin,
                   value: _profile!.bitcoinWallet!,
                 ),
             ],
@@ -546,6 +560,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
   }
 
   Widget _buildActions() {
+    final l10n = AppLocalizations.of(context)!;
     final isOwnProfile = authService.currentUser?.userId == widget.userId;
 
     if (isOwnProfile) {
@@ -560,9 +575,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
           onPressed: _profile!.hasPgpKey ? _sendMessage : null,
           icon: const Icon(Icons.message),
           label: Text(
-            _profile!.hasPgpKey
-                ? 'Nachricht senden'
-                : 'Kein PGP-Schlüssel vorhanden',
+            _profile!.hasPgpKey ? l10n.sendMessage : l10n.noPgpKeyAvailable,
           ),
         ),
       ),
@@ -589,10 +602,11 @@ class _UserProfileScreenState extends State<UserProfileScreen>
     );
   }
 
-  String _formatDate(DateTime date) {
+  String _formatDate(DateTime date, AppLocalizations l10n) {
     final months = [
-      'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+      l10n.monthJan, l10n.monthFeb, l10n.monthMar, l10n.monthApr,
+      l10n.monthMay, l10n.monthJun, l10n.monthJul, l10n.monthAug,
+      l10n.monthSep, l10n.monthOct, l10n.monthNov, l10n.monthDec,
     ];
     return '${months[date.month - 1]} ${date.year}';
   }

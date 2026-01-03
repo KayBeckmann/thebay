@@ -4098,5 +4098,145 @@
   "quantityUnitLiter": "L",
   "@quantityUnitLiter": {
     "description": "Quantity unit: liters"
+  },
+
+  "profile": "Profile",
+  "@profile": {
+    "description": "Profile title"
+  },
+
+  "reportUser": "Report User",
+  "@reportUser": {
+    "description": "Report user tooltip"
+  },
+
+  "userNotFound": "User not found",
+  "@userNotFound": {
+    "description": "User not found error"
+  },
+
+  "listingsWithCount": "Listings ({count})",
+  "@listingsWithCount": {
+    "description": "Listings tab with count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "ratingsWithCount": "Ratings ({count})",
+  "@ratingsWithCount": {
+    "description": "Ratings tab with count",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "noActiveListings": "No active listings",
+  "@noActiveListings": {
+    "description": "No active listings message"
+  },
+
+  "memberSince": "Member since {date}",
+  "@memberSince": {
+    "description": "Member since date",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+
+  "encryptionActive": "Encryption active",
+  "@encryptionActive": {
+    "description": "Encryption active label"
+  },
+
+  "noRatings": "No ratings",
+  "@noRatings": {
+    "description": "No ratings message"
+  },
+
+  "ratingCount": "{count, plural, =1{1 rating} other{{count} ratings}}",
+  "@ratingCount": {
+    "description": "Rating count with pluralization",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+  "sendMessage": "Send Message",
+  "@sendMessage": {
+    "description": "Send message button"
+  },
+
+  "noPgpKeyAvailable": "No PGP key available",
+  "@noPgpKeyAvailable": {
+    "description": "No PGP key available message"
+  },
+
+  "monthJan": "Jan",
+  "@monthJan": {
+    "description": "January abbreviated"
+  },
+
+  "monthFeb": "Feb",
+  "@monthFeb": {
+    "description": "February abbreviated"
+  },
+
+  "monthMar": "Mar",
+  "@monthMar": {
+    "description": "March abbreviated"
+  },
+
+  "monthApr": "Apr",
+  "@monthApr": {
+    "description": "April abbreviated"
+  },
+
+  "monthMay": "May",
+  "@monthMay": {
+    "description": "May abbreviated"
+  },
+
+  "monthJun": "Jun",
+  "@monthJun": {
+    "description": "June abbreviated"
+  },
+
+  "monthJul": "Jul",
+  "@monthJul": {
+    "description": "July abbreviated"
+  },
+
+  "monthAug": "Aug",
+  "@monthAug": {
+    "description": "August abbreviated"
+  },
+
+  "monthSep": "Sep",
+  "@monthSep": {
+    "description": "September abbreviated"
+  },
+
+  "monthOct": "Oct",
+  "@monthOct": {
+    "description": "October abbreviated"
+  },
+
+  "monthNov": "Nov",
+  "@monthNov": {
+    "description": "November abbreviated"
+  },
+
+  "monthDec": "Dec",
+  "@monthDec": {
+    "description": "December abbreviated"
   }
 }
