@@ -571,7 +571,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  l10n.created(_formatDate(order.createdAt)),
+                  l10n.createdLabel(_formatDate(order.createdAt)),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),

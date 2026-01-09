@@ -346,7 +346,7 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
                       child: TextField(
                         controller: durationController,
                         decoration: InputDecoration(
-                          labelText: l10n.durationDaysLabel,
+                          labelText: l10n.duration,
                         ),
                         keyboardType: TextInputType.number,
                       ),

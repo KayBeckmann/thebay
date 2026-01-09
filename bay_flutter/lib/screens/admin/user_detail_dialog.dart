@@ -396,7 +396,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                   ),
             ),
             const SizedBox(height: 12),
-            _buildInfoRow(Icons.calendar_today, l10n.created,
+            _buildInfoRow(Icons.calendar_today, l10n.createdAt,
                 _formatDate(_user.createdAt)),
             const SizedBox(height: 8),
             _buildInfoRow(

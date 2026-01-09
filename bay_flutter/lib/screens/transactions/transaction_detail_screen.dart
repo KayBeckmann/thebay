@@ -404,7 +404,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
         _transaction!.status == TransactionStatus.disputed;
     final steps = <_TimelineStep>[
       _TimelineStep(
-        title: l10n.created,
+        title: l10n.createdAt,
         subtitle: _formatDateTime(_transaction!.createdAt),
         isCompleted: true,
         icon: Icons.add_circle,

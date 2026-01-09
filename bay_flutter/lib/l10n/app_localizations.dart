@@ -999,7 +999,7 @@ abstract class AppLocalizations {
   /// Preis pro Einheit Label
   ///
   /// In de, this message translates to:
-  /// **'Preis pro Einheit'**
+  /// **'{price} pro {unit}'**
   String pricePerUnit(Object price, Object unit);
 
   /// Erstellt am Label
@@ -4841,6 +4841,943 @@ abstract class AppLocalizations {
   /// In de, this message translates to:
   /// **'Nutzer bannen'**
   String get banAction;
+
+  /// No description provided for @activeSlotVariants.
+  ///
+  /// In de, this message translates to:
+  /// **'Actives'**
+  String get activeSlotVariants;
+
+  /// No description provided for @activeUsers.
+  ///
+  /// In de, this message translates to:
+  /// **'Actifs'**
+  String get activeUsers;
+
+  /// No description provided for @activeVariantDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'La variante peut être achetée'**
+  String get activeVariantDescription;
+
+  /// No description provided for @addInternalNotes.
+  ///
+  /// In de, this message translates to:
+  /// **'Ajouter des notes internes...'**
+  String get addInternalNotes;
+
+  /// No description provided for @administration.
+  ///
+  /// In de, this message translates to:
+  /// **'Administration'**
+  String get administration;
+
+  /// No description provided for @allUsers.
+  ///
+  /// In de, this message translates to:
+  /// **'Tous les Utilisateurs'**
+  String get allUsers;
+
+  /// No description provided for @assignToMe.
+  ///
+  /// In de, this message translates to:
+  /// **'M\'assigner'**
+  String get assignToMe;
+
+  /// No description provided for @assigned.
+  ///
+  /// In de, this message translates to:
+  /// **'Assigné'**
+  String get assigned;
+
+  /// No description provided for @assignedToModerator.
+  ///
+  /// In de, this message translates to:
+  /// **'Assigné au modérateur #{id}'**
+  String assignedToModerator(Object id);
+
+  /// No description provided for @atLeastOnePaymentMethodRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Au moins une méthode de paiement doit être activée'**
+  String get atLeastOnePaymentMethodRequired;
+
+  /// No description provided for @banned.
+  ///
+  /// In de, this message translates to:
+  /// **'BANNI'**
+  String get banned;
+
+  /// No description provided for @bannedUsers.
+  ///
+  /// In de, this message translates to:
+  /// **'Bannis'**
+  String get bannedUsers;
+
+  /// No description provided for @bitcoinAddressCopied.
+  ///
+  /// In de, this message translates to:
+  /// **'Adresse Bitcoin copiée !'**
+  String get bitcoinAddressCopied;
+
+  /// No description provided for @bitcoinInstructions.
+  ///
+  /// In de, this message translates to:
+  /// **'Veuillez envoyer le montant BTC à l\'adresse fournie et inclure la référence (Memo). Après le paiement, saisissez le TX-ID.'**
+  String get bitcoinInstructions;
+
+  /// No description provided for @bitcoinInstructionsDetailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Scannez le code QR ou envoyez le montant BTC à l\'adresse fournie et incluez la référence (Memo). Votre slot sera activé automatiquement après au moins 1 confirmation sur la blockchain.'**
+  String get bitcoinInstructionsDetailed;
+
+  /// No description provided for @configureSlotTypes.
+  ///
+  /// In de, this message translates to:
+  /// **'Configurer les types et prix de slots'**
+  String get configureSlotTypes;
+
+  /// No description provided for @confirmDeleteSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Voulez-vous vraiment supprimer cette variante de slot ?'**
+  String get confirmDeleteSlotVariant;
+
+  /// No description provided for @confirmDeleteSlotVariantWithName.
+  ///
+  /// In de, this message translates to:
+  /// **'Voulez-vous vraiment supprimer \"{name}\" ?'**
+  String confirmDeleteSlotVariantWithName(Object name);
+
+  /// No description provided for @confirmUnbanUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Voulez-vous vraiment débannir cet utilisateur ?'**
+  String get confirmUnbanUser;
+
+  /// No description provided for @createCategoriesSubcategories.
+  ///
+  /// In de, this message translates to:
+  /// **'Créer des catégories et sous-catégories'**
+  String get createCategoriesSubcategories;
+
+  /// No description provided for @createFirstSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Créez la première variante de slot avec le bouton +.'**
+  String get createFirstSlotVariant;
+
+  /// No description provided for @createSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Créer une Variante de Slot'**
+  String get createSlotVariant;
+
+  /// No description provided for @createSlotVariantDialog.
+  ///
+  /// In de, this message translates to:
+  /// **'Créer une Variante de Slot'**
+  String get createSlotVariantDialog;
+
+  /// No description provided for @currency.
+  ///
+  /// In de, this message translates to:
+  /// **'Devise'**
+  String get currency;
+
+  /// No description provided for @daysAgo.
+  ///
+  /// In de, this message translates to:
+  /// **'il y a {days}j'**
+  String daysAgo(Object days);
+
+  /// No description provided for @deactivate.
+  ///
+  /// In de, this message translates to:
+  /// **'Désactiver'**
+  String get deactivate;
+
+  /// No description provided for @deactivateListing.
+  ///
+  /// In de, this message translates to:
+  /// **'Désactiver l\'Annonce'**
+  String get deactivateListing;
+
+  /// No description provided for @deactivateListingConfirm.
+  ///
+  /// In de, this message translates to:
+  /// **'Voulez-vous vraiment désactiver cette annonce ? Cette action ne peut pas être annulée.'**
+  String get deactivateListingConfirm;
+
+  /// No description provided for @deleteSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Supprimer la Variante de Slot'**
+  String get deleteSlotVariant;
+
+  /// No description provided for @descriptionOptional.
+  ///
+  /// In de, this message translates to:
+  /// **'Description (facultatif)'**
+  String get descriptionOptional;
+
+  /// No description provided for @donateBitcoin.
+  ///
+  /// In de, this message translates to:
+  /// **'Faire un Don Bitcoin'**
+  String get donateBitcoin;
+
+  /// No description provided for @donateCoffee.
+  ///
+  /// In de, this message translates to:
+  /// **'Buy Me a Coffee'**
+  String get donateCoffee;
+
+  /// No description provided for @donateDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'Si vous aimez cette application, vous pouvez soutenir son développement avec un don :'**
+  String get donateDescription;
+
+  /// No description provided for @donateTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Soutenir le Développement'**
+  String get donateTitle;
+
+  /// No description provided for @duration.
+  ///
+  /// In de, this message translates to:
+  /// **'Durée'**
+  String get duration;
+
+  /// No description provided for @durationDays.
+  ///
+  /// In de, this message translates to:
+  /// **'{days} jours'**
+  String durationDays(Object days);
+
+  /// No description provided for @durationDaysLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Durée (jours)'**
+  String durationDaysLabel(Object days);
+
+  /// No description provided for @durationRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'La durée est requise'**
+  String get durationRequired;
+
+  /// No description provided for @editSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Modifier la Variante de Slot'**
+  String get editSlotVariant;
+
+  /// No description provided for @editSlotVariantDialog.
+  ///
+  /// In de, this message translates to:
+  /// **'Modifier la Variante de Slot'**
+  String get editSlotVariantDialog;
+
+  /// No description provided for @encryptionActive.
+  ///
+  /// In de, this message translates to:
+  /// **'Chiffrement actif'**
+  String get encryptionActive;
+
+  /// No description provided for @enterBitcoinTxIdPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Saisissez l\'ID de transaction Bitcoin (TX-Hash) après avoir envoyé le paiement:'**
+  String get enterBitcoinTxIdPrompt;
+
+  /// No description provided for @enterDuration.
+  ///
+  /// In de, this message translates to:
+  /// **'Durée (jours)'**
+  String get enterDuration;
+
+  /// No description provided for @enterMaxListings.
+  ///
+  /// In de, this message translates to:
+  /// **'Max. annonces'**
+  String get enterMaxListings;
+
+  /// No description provided for @enterPriceBTC.
+  ///
+  /// In de, this message translates to:
+  /// **'Prix en BTC'**
+  String get enterPriceBTC;
+
+  /// No description provided for @enterPriceUSD.
+  ///
+  /// In de, this message translates to:
+  /// **'Prix en USD'**
+  String get enterPriceUSD;
+
+  /// No description provided for @enterVariantName.
+  ///
+  /// In de, this message translates to:
+  /// **'Entrer le nom de la variante'**
+  String get enterVariantName;
+
+  /// No description provided for @extendSlotPrompt.
+  ///
+  /// In de, this message translates to:
+  /// **'Choisissez une variante de slot pour prolonger votre slot. La durée sera ajoutée à la date d\'expiration actuelle.'**
+  String get extendSlotPrompt;
+
+  /// No description provided for @featureInMilestone.
+  ///
+  /// In de, this message translates to:
+  /// **'{title} wird in Meilenstein {milestone} implementiert.'**
+  String featureInMilestone(Object milestone, Object title);
+
+  /// No description provided for @freeLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'GRATUIT'**
+  String get freeLabel;
+
+  /// No description provided for @freeVariantDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'La variante est gratuite (pour les emplacements promotionnels)'**
+  String get freeVariantDescription;
+
+  /// No description provided for @fullDateTimeFormat.
+  ///
+  /// In de, this message translates to:
+  /// **'{day}.{month}.{year} à {hour}:{minute}'**
+  String fullDateTimeFormat(
+      Object day, Object hour, Object minute, Object month, Object year);
+
+  /// No description provided for @hoursAgo.
+  ///
+  /// In de, this message translates to:
+  /// **'il y a {hours}h'**
+  String hoursAgo(Object hours);
+
+  /// No description provided for @inactiveSlotVariants.
+  ///
+  /// In de, this message translates to:
+  /// **'Inactives'**
+  String get inactiveSlotVariants;
+
+  /// No description provided for @justNow.
+  ///
+  /// In de, this message translates to:
+  /// **'À l\'instant'**
+  String get justNow;
+
+  /// No description provided for @listing.
+  ///
+  /// In de, this message translates to:
+  /// **'Annonce'**
+  String get listing;
+
+  /// No description provided for @listingDeactivated.
+  ///
+  /// In de, this message translates to:
+  /// **'L\'annonce a été désactivée'**
+  String get listingDeactivated;
+
+  /// No description provided for @listingId.
+  ///
+  /// In de, this message translates to:
+  /// **'Annonce #{id}'**
+  String listingId(Object id);
+
+  /// No description provided for @listingReports.
+  ///
+  /// In de, this message translates to:
+  /// **'Annonces'**
+  String get listingReports;
+
+  /// No description provided for @listingsWithCount.
+  ///
+  /// In de, this message translates to:
+  /// **'Annonces ({count})'**
+  String listingsWithCount(Object count);
+
+  /// No description provided for @manageCategories.
+  ///
+  /// In de, this message translates to:
+  /// **'Gérer les catégories'**
+  String get manageCategories;
+
+  /// No description provided for @manageSlotVariants.
+  ///
+  /// In de, this message translates to:
+  /// **'Gérer les variantes de slot'**
+  String get manageSlotVariants;
+
+  /// No description provided for @manageUsersRoles.
+  ///
+  /// In de, this message translates to:
+  /// **'Gérer les utilisateurs et attribuer des rôles'**
+  String get manageUsersRoles;
+
+  /// No description provided for @markAsCompleted.
+  ///
+  /// In de, this message translates to:
+  /// **'Marquer comme Terminé'**
+  String get markAsCompleted;
+
+  /// No description provided for @markAsFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Marquer comme Échoué'**
+  String get markAsFailed;
+
+  /// No description provided for @markAsProcessing.
+  ///
+  /// In de, this message translates to:
+  /// **'Marquer comme En Traitement'**
+  String get markAsProcessing;
+
+  /// No description provided for @markAsResolved.
+  ///
+  /// In de, this message translates to:
+  /// **'Marquer comme Résolu'**
+  String get markAsResolved;
+
+  /// No description provided for @maxListings.
+  ///
+  /// In de, this message translates to:
+  /// **'Max. Annonces'**
+  String get maxListings;
+
+  /// No description provided for @maxListingsRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Le max. d\'annonces est requis'**
+  String get maxListingsRequired;
+
+  /// No description provided for @memberSince.
+  ///
+  /// In de, this message translates to:
+  /// **'Membre depuis {date}'**
+  String memberSince(Object date);
+
+  /// No description provided for @method.
+  ///
+  /// In de, this message translates to:
+  /// **'Méthode'**
+  String get method;
+
+  /// No description provided for @minutesAgo.
+  ///
+  /// In de, this message translates to:
+  /// **'il y a {minutes}m'**
+  String minutesAgo(Object minutes);
+
+  /// No description provided for @moderatorPanelScreen.
+  ///
+  /// In de, this message translates to:
+  /// **'Panneau de Modérateur'**
+  String get moderatorPanelScreen;
+
+  /// No description provided for @nameHint.
+  ///
+  /// In de, this message translates to:
+  /// **'par ex. Standard, Premium'**
+  String get nameHint;
+
+  /// No description provided for @newSlotVariant.
+  ///
+  /// In de, this message translates to:
+  /// **'Nouvelle variante de slot'**
+  String get newSlotVariant;
+
+  /// No description provided for @noActiveListings.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucune annonce active'**
+  String get noActiveListings;
+
+  /// No description provided for @noPgpKeyAvailable.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucune clé PGP disponible'**
+  String get noPgpKeyAvailable;
+
+  /// No description provided for @noRatings.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucune évaluation'**
+  String get noRatings;
+
+  /// No description provided for @noReportsDescription.
+  ///
+  /// In de, this message translates to:
+  /// **'Il n\'y a actuellement aucun signalement'**
+  String get noReportsDescription;
+
+  /// No description provided for @noSlotVariants.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucune Variante de Slot'**
+  String get noSlotVariants;
+
+  /// No description provided for @noSlotVariantsMessage.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucune variante de slot n\'a encore été créée.'**
+  String get noSlotVariantsMessage;
+
+  /// No description provided for @noUsers.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucun Utilisateur'**
+  String get noUsers;
+
+  /// No description provided for @noUsersFound.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucun Utilisateur Trouvé'**
+  String get noUsersFound;
+
+  /// No description provided for @noUsersMessage.
+  ///
+  /// In de, this message translates to:
+  /// **'Aucun utilisateur trouvé.'**
+  String get noUsersMessage;
+
+  /// No description provided for @notYetAssigned.
+  ///
+  /// In de, this message translates to:
+  /// **'Pas encore assigné'**
+  String get notYetAssigned;
+
+  /// No description provided for @noteCannotBeEmpty.
+  ///
+  /// In de, this message translates to:
+  /// **'La note ne peut pas être vide'**
+  String get noteCannotBeEmpty;
+
+  /// No description provided for @openReportsCount.
+  ///
+  /// In de, this message translates to:
+  /// **'{count} ouverts'**
+  String openReportsCount(Object count);
+
+  /// No description provided for @order.
+  ///
+  /// In de, this message translates to:
+  /// **'Commande #{id}'**
+  String order(Object id);
+
+  /// No description provided for @paymentDetailsTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Détails du paiement #{number}'**
+  String paymentDetailsTitle(Object number);
+
+  /// No description provided for @paymentMarkedCompleted.
+  ///
+  /// In de, this message translates to:
+  /// **'Paiement marqué comme terminé'**
+  String get paymentMarkedCompleted;
+
+  /// No description provided for @paymentMarkedFailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Paiement marqué comme échoué'**
+  String get paymentMarkedFailed;
+
+  /// No description provided for @paymentMarkedProcessing.
+  ///
+  /// In de, this message translates to:
+  /// **'Paiement marqué comme en traitement'**
+  String get paymentMarkedProcessing;
+
+  /// No description provided for @payments.
+  ///
+  /// In de, this message translates to:
+  /// **'Paiements'**
+  String get payments;
+
+  /// No description provided for @paypalBitcoinSlots.
+  ///
+  /// In de, this message translates to:
+  /// **'PayPal et Bitcoin pour l\'achat de slots'**
+  String get paypalBitcoinSlots;
+
+  /// No description provided for @paypalEmail.
+  ///
+  /// In de, this message translates to:
+  /// **'Email PayPal'**
+  String get paypalEmail;
+
+  /// No description provided for @paypalInstructions.
+  ///
+  /// In de, this message translates to:
+  /// **'Veuillez envoyer le montant à l\'adresse PayPal fournie et inclure la référence.'**
+  String get paypalInstructions;
+
+  /// No description provided for @paypalInstructionsDetailed.
+  ///
+  /// In de, this message translates to:
+  /// **'Veuillez envoyer le montant à l\'adresse PayPal fournie et inclure la référence. Votre slot sera activé automatiquement après réception du paiement.'**
+  String get paypalInstructionsDetailed;
+
+  /// No description provided for @priceBTC.
+  ///
+  /// In de, this message translates to:
+  /// **'Prix (BTC)'**
+  String get priceBTC;
+
+  /// No description provided for @priceBTCRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Le prix en BTC est requis'**
+  String get priceBTCRequired;
+
+  /// No description provided for @priceUSD.
+  ///
+  /// In de, this message translates to:
+  /// **'Prix (USD)'**
+  String get priceUSD;
+
+  /// No description provided for @priceUSDRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Le prix en USD est requis'**
+  String get priceUSDRequired;
+
+  /// No description provided for @priceUsd.
+  ///
+  /// In de, this message translates to:
+  /// **'Prix (USD)'**
+  String get priceUsd;
+
+  /// No description provided for @profile.
+  ///
+  /// In de, this message translates to:
+  /// **'Profil'**
+  String get profile;
+
+  /// No description provided for @ratingCount.
+  ///
+  /// In de, this message translates to:
+  /// **'{count, plural, =1{1 évaluation} other{{count} évaluations}}'**
+  String ratingCount(num count);
+
+  /// No description provided for @ratingsWithCount.
+  ///
+  /// In de, this message translates to:
+  /// **'Évaluations ({count})'**
+  String ratingsWithCount(Object count);
+
+  /// No description provided for @report.
+  ///
+  /// In de, this message translates to:
+  /// **'Signaler'**
+  String get report;
+
+  /// No description provided for @reportAlreadyReported.
+  ///
+  /// In de, this message translates to:
+  /// **'Vous avez déjà signalé ceci'**
+  String get reportAlreadyReported;
+
+  /// No description provided for @reportAssignedToYou.
+  ///
+  /// In de, this message translates to:
+  /// **'Le signalement vous a été assigné'**
+  String get reportAssignedToYou;
+
+  /// No description provided for @reportDetails.
+  ///
+  /// In de, this message translates to:
+  /// **'Détails du Signalement'**
+  String get reportDetails;
+
+  /// No description provided for @reportDetailsHint.
+  ///
+  /// In de, this message translates to:
+  /// **'Décrivez le problème...'**
+  String get reportDetailsHint;
+
+  /// No description provided for @reportDetailsOptional.
+  ///
+  /// In de, this message translates to:
+  /// **'Détails Supplémentaires (facultatif)'**
+  String get reportDetailsOptional;
+
+  /// No description provided for @reportNotFound.
+  ///
+  /// In de, this message translates to:
+  /// **'Signalement non trouvé'**
+  String get reportNotFound;
+
+  /// No description provided for @reportReasonFraud.
+  ///
+  /// In de, this message translates to:
+  /// **'Offre Frauduleuse'**
+  String get reportReasonFraud;
+
+  /// No description provided for @reportReasonLabel.
+  ///
+  /// In de, this message translates to:
+  /// **'Raison du signalement :'**
+  String get reportReasonLabel;
+
+  /// No description provided for @reportSelectReason.
+  ///
+  /// In de, this message translates to:
+  /// **'Veuillez sélectionner une raison'**
+  String get reportSelectReason;
+
+  /// No description provided for @reportStatusDismissed.
+  ///
+  /// In de, this message translates to:
+  /// **'REJETÉ'**
+  String get reportStatusDismissed;
+
+  /// No description provided for @reportStatusOpen.
+  ///
+  /// In de, this message translates to:
+  /// **'OUVERT'**
+  String get reportStatusOpen;
+
+  /// No description provided for @reportStatusResolved.
+  ///
+  /// In de, this message translates to:
+  /// **'RÉSOLU'**
+  String get reportStatusResolved;
+
+  /// No description provided for @reportStatusReviewing.
+  ///
+  /// In de, this message translates to:
+  /// **'EN EXAMEN'**
+  String get reportStatusReviewing;
+
+  /// No description provided for @reportSubmitError.
+  ///
+  /// In de, this message translates to:
+  /// **'Erreur lors de l\'envoi du signalement'**
+  String get reportSubmitError;
+
+  /// No description provided for @reportSubmittedSuccessfully.
+  ///
+  /// In de, this message translates to:
+  /// **'Signalement soumis avec succès'**
+  String get reportSubmittedSuccessfully;
+
+  /// No description provided for @reportTargetListing.
+  ///
+  /// In de, this message translates to:
+  /// **'Annonce'**
+  String get reportTargetListing;
+
+  /// No description provided for @reportTargetNotFound.
+  ///
+  /// In de, this message translates to:
+  /// **'Entrée non trouvée'**
+  String get reportTargetNotFound;
+
+  /// No description provided for @reportTargetUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Utilisateur'**
+  String get reportTargetUser;
+
+  /// No description provided for @reportTitle.
+  ///
+  /// In de, this message translates to:
+  /// **'Signaler {targetType}'**
+  String reportTitle(Object targetType);
+
+  /// No description provided for @reportUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Signaler l\'Utilisateur'**
+  String get reportUser;
+
+  /// No description provided for @reportYouAreReporting.
+  ///
+  /// In de, this message translates to:
+  /// **'Vous signalez : \"{targetName}\"'**
+  String reportYouAreReporting(Object targetName);
+
+  /// No description provided for @reportedOn.
+  ///
+  /// In de, this message translates to:
+  /// **'Signalé le'**
+  String get reportedOn;
+
+  /// No description provided for @reportedUserProfile.
+  ///
+  /// In de, this message translates to:
+  /// **'Profil Utilisateur Signalé'**
+  String get reportedUserProfile;
+
+  /// No description provided for @reporterUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Utilisateur #{id}'**
+  String reporterUser(Object id);
+
+  /// No description provided for @reviewPendingOrders.
+  ///
+  /// In de, this message translates to:
+  /// **'Examiner et confirmer les commandes en attente'**
+  String get reviewPendingOrders;
+
+  /// No description provided for @searchUsers.
+  ///
+  /// In de, this message translates to:
+  /// **'Rechercher des utilisateurs...'**
+  String get searchUsers;
+
+  /// No description provided for @sectionDonate.
+  ///
+  /// In de, this message translates to:
+  /// **'Soutenir le Développeur'**
+  String get sectionDonate;
+
+  /// No description provided for @sendMessage.
+  ///
+  /// In de, this message translates to:
+  /// **'Envoyer un Message'**
+  String get sendMessage;
+
+  /// No description provided for @slotVariantCreated.
+  ///
+  /// In de, this message translates to:
+  /// **'Variante de slot créée'**
+  String get slotVariantCreated;
+
+  /// No description provided for @slotVariantDeleted.
+  ///
+  /// In de, this message translates to:
+  /// **'Variante de slot supprimée'**
+  String get slotVariantDeleted;
+
+  /// No description provided for @slotVariantUpdated.
+  ///
+  /// In de, this message translates to:
+  /// **'Variante de slot mise à jour'**
+  String get slotVariantUpdated;
+
+  /// No description provided for @slotVariantsScreen.
+  ///
+  /// In de, this message translates to:
+  /// **'Variantes de Slot'**
+  String get slotVariantsScreen;
+
+  /// No description provided for @slots.
+  ///
+  /// In de, this message translates to:
+  /// **'Slots'**
+  String get slots;
+
+  /// No description provided for @staff.
+  ///
+  /// In de, this message translates to:
+  /// **'Personnel'**
+  String get staff;
+
+  /// No description provided for @statusUpdated.
+  ///
+  /// In de, this message translates to:
+  /// **'Le statut a été mis à jour'**
+  String get statusUpdated;
+
+  /// No description provided for @systemUserManagement.
+  ///
+  /// In de, this message translates to:
+  /// **'Gestion du système et des utilisateurs'**
+  String get systemUserManagement;
+
+  /// No description provided for @txId.
+  ///
+  /// In de, this message translates to:
+  /// **'TX-ID'**
+  String get txId;
+
+  /// No description provided for @unban.
+  ///
+  /// In de, this message translates to:
+  /// **'Débannir'**
+  String get unban;
+
+  /// No description provided for @unknown.
+  ///
+  /// In de, this message translates to:
+  /// **'Inconnu'**
+  String get unknown;
+
+  /// No description provided for @user.
+  ///
+  /// In de, this message translates to:
+  /// **'Utilisateur'**
+  String get user;
+
+  /// No description provided for @userManagementScreen.
+  ///
+  /// In de, this message translates to:
+  /// **'Gestion des Utilisateurs'**
+  String get userManagementScreen;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In de, this message translates to:
+  /// **'Utilisateur non trouvé'**
+  String get userNotFound;
+
+  /// No description provided for @userReports.
+  ///
+  /// In de, this message translates to:
+  /// **'Utilisateurs'**
+  String get userReports;
+
+  /// No description provided for @users.
+  ///
+  /// In de, this message translates to:
+  /// **'Utilisateurs'**
+  String get users;
+
+  /// No description provided for @variant.
+  ///
+  /// In de, this message translates to:
+  /// **'Variante'**
+  String get variant;
+
+  /// No description provided for @variantName.
+  ///
+  /// In de, this message translates to:
+  /// **'Nom'**
+  String get variantName;
+
+  /// No description provided for @variantNameRequired.
+  ///
+  /// In de, this message translates to:
+  /// **'Le nom est requis'**
+  String get variantNameRequired;
+
+  /// No description provided for @variantStatus.
+  ///
+  /// In de, this message translates to:
+  /// **'Statut'**
+  String get variantStatus;
+
+  /// No description provided for @viewUser.
+  ///
+  /// In de, this message translates to:
+  /// **'Voir l\'Utilisateur'**
+  String get viewUser;
+
+  /// No description provided for @listings.
+  ///
+  /// In de, this message translates to:
+  /// **'Angebote'**
+  String get listings;
 }
 
 class _AppLocalizationsDelegate

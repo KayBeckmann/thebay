@@ -539,7 +539,7 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
             ),
             const SizedBox(height: 12),
             _buildDetailRow(l10n.quantity, '${_listing!.quantity} ${_getQuantityUnitLabel(context, _listing!.quantityUnit)}'),
-            _buildDetailRow(l10n.pricePerUnit, _formatPrice(_listing!.pricePerUnit)),
+            _buildDetailRow(l10n.price, _formatPrice(_listing!.pricePerUnit)),
             _buildDetailRow(l10n.createdAt, _formatDate(_listing!.createdAt)),
             if (_listing!.expiresAt != null)
               _buildDetailRow(l10n.expiresAt, _formatDate(_listing!.expiresAt!)),

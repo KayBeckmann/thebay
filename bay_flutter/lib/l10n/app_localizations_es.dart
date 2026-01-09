@@ -792,7 +792,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String created(Object date) {
-    return 'Creado el $date';
+    return 'Creada';
   }
 
   @override
@@ -2633,4 +2633,532 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get banAction => 'Banear Usuario';
+
+  @override
+  String get activeSlotVariants => 'Activas';
+
+  @override
+  String get activeUsers => 'Activos';
+
+  @override
+  String get activeVariantDescription => 'La variante se puede comprar';
+
+  @override
+  String get addInternalNotes => 'Agregar notas internas...';
+
+  @override
+  String get administration => 'Administración';
+
+  @override
+  String get allUsers => 'Todos los Usuarios';
+
+  @override
+  String get assignToMe => 'Asignarme';
+
+  @override
+  String get assigned => 'Asignado';
+
+  @override
+  String assignedToModerator(Object id) {
+    return 'Asignado al moderador #$id';
+  }
+
+  @override
+  String get atLeastOnePaymentMethodRequired =>
+      'Debe estar activado al menos un método de pago';
+
+  @override
+  String get banned => 'BLOQUEADO';
+
+  @override
+  String get bannedUsers => 'Baneados';
+
+  @override
+  String get bitcoinAddressCopied => '¡Dirección Bitcoin copiada!';
+
+  @override
+  String get bitcoinInstructions =>
+      'Por favor envía el monto BTC a la dirección proporcionada e incluye la referencia (Memo). Después del pago, ingresa el TX-ID.';
+
+  @override
+  String get bitcoinInstructionsDetailed =>
+      'Escanea el código QR o envía el monto BTC a la dirección proporcionada e incluye la referencia (Memo). Tu slot se activará automáticamente después de al menos 1 confirmación en la blockchain.';
+
+  @override
+  String get configureSlotTypes => 'Configurar tipos y precios de slots';
+
+  @override
+  String get confirmDeleteSlotVariant =>
+      '¿Realmente quieres eliminar esta variante de slot?';
+
+  @override
+  String confirmDeleteSlotVariantWithName(Object name) {
+    return '¿Realmente quieres eliminar \"$name\"?';
+  }
+
+  @override
+  String get confirmUnbanUser => '¿Realmente quieres desbanear a este usuario?';
+
+  @override
+  String get createCategoriesSubcategories =>
+      'Crear categorías y subcategorías';
+
+  @override
+  String get createFirstSlotVariant =>
+      'Crea la primera variante de slot con el botón +.';
+
+  @override
+  String get createSlotVariant => 'Crear Variante de Slot';
+
+  @override
+  String get createSlotVariantDialog => 'Crear Variante de Slot';
+
+  @override
+  String get currency => 'Moneda';
+
+  @override
+  String daysAgo(Object days) {
+    return 'hace ${days}d';
+  }
+
+  @override
+  String get deactivate => 'Desactivar';
+
+  @override
+  String get deactivateListing => 'Desactivar Oferta';
+
+  @override
+  String get deactivateListingConfirm =>
+      '¿Realmente desea desactivar esta oferta? Esta acción no se puede deshacer.';
+
+  @override
+  String get deleteSlotVariant => 'Eliminar Variante de Slot';
+
+  @override
+  String get descriptionOptional => 'Descripción (opcional)';
+
+  @override
+  String get donateBitcoin => 'Donar Bitcoin';
+
+  @override
+  String get donateCoffee => 'Buy Me a Coffee';
+
+  @override
+  String get donateDescription =>
+      'Si te gusta esta aplicación, puedes apoyar su desarrollo con una donación:';
+
+  @override
+  String get donateTitle => 'Apoyar el Desarrollo';
+
+  @override
+  String get duration => 'Duración';
+
+  @override
+  String durationDays(Object days) {
+    return '$days días';
+  }
+
+  @override
+  String durationDaysLabel(Object days) {
+    return 'Duración (días)';
+  }
+
+  @override
+  String get durationRequired => 'La duración es requerida';
+
+  @override
+  String get editSlotVariant => 'Editar Variante de Slot';
+
+  @override
+  String get editSlotVariantDialog => 'Editar Variante de Slot';
+
+  @override
+  String get encryptionActive => 'Cifrado activo';
+
+  @override
+  String get enterBitcoinTxIdPrompt =>
+      'Ingresa el ID de transacción Bitcoin (TX-Hash) después de enviar el pago:';
+
+  @override
+  String get enterDuration => 'Duración (días)';
+
+  @override
+  String get enterMaxListings => 'Máx. anuncios';
+
+  @override
+  String get enterPriceBTC => 'Precio en BTC';
+
+  @override
+  String get enterPriceUSD => 'Precio en USD';
+
+  @override
+  String get enterVariantName => 'Ingresar nombre de variante';
+
+  @override
+  String get extendSlotPrompt =>
+      'Elige una variante de slot para extender tu slot. La duración se agregará a la fecha de expiración actual.';
+
+  @override
+  String featureInMilestone(Object milestone, Object title) {
+    return '$title se implementará en el hito $milestone.';
+  }
+
+  @override
+  String get freeLabel => 'GRATIS';
+
+  @override
+  String get freeVariantDescription =>
+      'La variante es gratuita (para slots promocionales)';
+
+  @override
+  String fullDateTimeFormat(
+      Object day, Object hour, Object minute, Object month, Object year) {
+    return '$day.$month.$year a las $hour:$minute';
+  }
+
+  @override
+  String hoursAgo(Object hours) {
+    return 'hace ${hours}h';
+  }
+
+  @override
+  String get inactiveSlotVariants => 'Inactivas';
+
+  @override
+  String get justNow => 'Justo ahora';
+
+  @override
+  String get listing => 'Oferta';
+
+  @override
+  String get listingDeactivated => 'La oferta ha sido desactivada';
+
+  @override
+  String listingId(Object id) {
+    return 'Oferta #$id';
+  }
+
+  @override
+  String get listingReports => 'Ofertas';
+
+  @override
+  String listingsWithCount(Object count) {
+    return 'Ofertas ($count)';
+  }
+
+  @override
+  String get manageCategories => 'Gestionar categorías';
+
+  @override
+  String get manageSlotVariants => 'Gestionar variantes de slot';
+
+  @override
+  String get manageUsersRoles => 'Gestionar usuarios y asignar roles';
+
+  @override
+  String get markAsCompleted => 'Marcar como Completado';
+
+  @override
+  String get markAsFailed => 'Marcar como Fallido';
+
+  @override
+  String get markAsProcessing => 'Marcar como Procesando';
+
+  @override
+  String get markAsResolved => 'Marcar como Resuelto';
+
+  @override
+  String get maxListings => 'Máx. Anuncios';
+
+  @override
+  String get maxListingsRequired => 'El máx. de anuncios es requerido';
+
+  @override
+  String memberSince(Object date) {
+    return 'Miembro desde $date';
+  }
+
+  @override
+  String get method => 'Método';
+
+  @override
+  String minutesAgo(Object minutes) {
+    return 'hace ${minutes}m';
+  }
+
+  @override
+  String get moderatorPanelScreen => 'Panel de Moderador';
+
+  @override
+  String get nameHint => 'p.ej. Estándar, Premium';
+
+  @override
+  String get newSlotVariant => 'Nueva variante de slot';
+
+  @override
+  String get noActiveListings => 'Sin ofertas activas';
+
+  @override
+  String get noPgpKeyAvailable => 'Sin clave PGP disponible';
+
+  @override
+  String get noRatings => 'Sin calificaciones';
+
+  @override
+  String get noReportsDescription => 'Actualmente no hay reportes';
+
+  @override
+  String get noSlotVariants => 'No hay Variantes de Slot';
+
+  @override
+  String get noSlotVariantsMessage => 'Aún no se han creado variantes de slot.';
+
+  @override
+  String get noUsers => 'No hay Usuarios';
+
+  @override
+  String get noUsersFound => 'No se Encontraron Usuarios';
+
+  @override
+  String get noUsersMessage => 'No se encontraron usuarios.';
+
+  @override
+  String get notYetAssigned => 'Aún no asignado';
+
+  @override
+  String get noteCannotBeEmpty => 'La nota no puede estar vacía';
+
+  @override
+  String openReportsCount(Object count) {
+    return '$count abiertos';
+  }
+
+  @override
+  String order(Object id) {
+    return 'Pedido #$id';
+  }
+
+  @override
+  String paymentDetailsTitle(Object number) {
+    return 'Detalles de pago #$number';
+  }
+
+  @override
+  String get paymentMarkedCompleted => 'Pago marcado como completado';
+
+  @override
+  String get paymentMarkedFailed => 'Pago marcado como fallido';
+
+  @override
+  String get paymentMarkedProcessing => 'Pago marcado como procesando';
+
+  @override
+  String get payments => 'Pagos';
+
+  @override
+  String get paypalBitcoinSlots => 'PayPal y Bitcoin para compra de slots';
+
+  @override
+  String get paypalEmail => 'Email PayPal';
+
+  @override
+  String get paypalInstructions =>
+      'Por favor envía el monto a la dirección PayPal proporcionada e incluye la referencia.';
+
+  @override
+  String get paypalInstructionsDetailed =>
+      'Por favor envía el monto a la dirección PayPal proporcionada e incluye la referencia. Tu slot se activará automáticamente después de recibir el pago.';
+
+  @override
+  String get priceBTC => 'Precio (BTC)';
+
+  @override
+  String get priceBTCRequired => 'El precio en BTC es requerido';
+
+  @override
+  String get priceUSD => 'Precio (USD)';
+
+  @override
+  String get priceUSDRequired => 'El precio en USD es requerido';
+
+  @override
+  String get priceUsd => 'Precio (USD)';
+
+  @override
+  String get profile => 'Perfil';
+
+  @override
+  String ratingCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count calificaciones',
+      one: '1 calificación',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ratingsWithCount(Object count) {
+    return 'Calificaciones ($count)';
+  }
+
+  @override
+  String get report => 'Reportar';
+
+  @override
+  String get reportAlreadyReported => 'Ya has reportado esto';
+
+  @override
+  String get reportAssignedToYou => 'El reporte ha sido asignado a ti';
+
+  @override
+  String get reportDetails => 'Detalles del Reporte';
+
+  @override
+  String get reportDetailsHint => 'Describe el problema...';
+
+  @override
+  String get reportDetailsOptional => 'Detalles Adicionales (opcional)';
+
+  @override
+  String get reportNotFound => 'Reporte no encontrado';
+
+  @override
+  String get reportReasonFraud => 'Oferta Fraudulenta';
+
+  @override
+  String get reportReasonLabel => 'Motivo del reporte:';
+
+  @override
+  String get reportSelectReason => 'Por favor selecciona un motivo';
+
+  @override
+  String get reportStatusDismissed => 'DESESTIMADO';
+
+  @override
+  String get reportStatusOpen => 'ABIERTO';
+
+  @override
+  String get reportStatusResolved => 'RESUELTO';
+
+  @override
+  String get reportStatusReviewing => 'EN REVISIÓN';
+
+  @override
+  String get reportSubmitError => 'Error al enviar el reporte';
+
+  @override
+  String get reportSubmittedSuccessfully => 'Reporte enviado con éxito';
+
+  @override
+  String get reportTargetListing => 'Oferta';
+
+  @override
+  String get reportTargetNotFound => 'Entrada no encontrada';
+
+  @override
+  String get reportTargetUser => 'Usuario';
+
+  @override
+  String reportTitle(Object targetType) {
+    return 'Reportar $targetType';
+  }
+
+  @override
+  String get reportUser => 'Reportar Usuario';
+
+  @override
+  String reportYouAreReporting(Object targetName) {
+    return 'Estás reportando: \"$targetName\"';
+  }
+
+  @override
+  String get reportedOn => 'Reportado el';
+
+  @override
+  String get reportedUserProfile => 'Perfil de Usuario Reportado';
+
+  @override
+  String reporterUser(Object id) {
+    return 'Usuario #$id';
+  }
+
+  @override
+  String get reviewPendingOrders => 'Revisar y confirmar pedidos pendientes';
+
+  @override
+  String get searchUsers => 'Buscar usuarios...';
+
+  @override
+  String get sectionDonate => 'Apoyar al Desarrollador';
+
+  @override
+  String get sendMessage => 'Enviar Mensaje';
+
+  @override
+  String get slotVariantCreated => 'Variante de slot creada';
+
+  @override
+  String get slotVariantDeleted => 'Variante de slot eliminada';
+
+  @override
+  String get slotVariantUpdated => 'Variante de slot actualizada';
+
+  @override
+  String get slotVariantsScreen => 'Variantes de Slot';
+
+  @override
+  String get slots => 'Slots';
+
+  @override
+  String get staff => 'Personal';
+
+  @override
+  String get statusUpdated => 'El estado ha sido actualizado';
+
+  @override
+  String get systemUserManagement => 'Gestión de sistema y usuarios';
+
+  @override
+  String get txId => 'TX-ID';
+
+  @override
+  String get unban => 'Desbanear';
+
+  @override
+  String get unknown => 'Desconocido';
+
+  @override
+  String get user => 'Usuario';
+
+  @override
+  String get userManagementScreen => 'Gestión de Usuarios';
+
+  @override
+  String get userNotFound => 'Usuario no encontrado';
+
+  @override
+  String get userReports => 'Usuarios';
+
+  @override
+  String get users => 'Usuarios';
+
+  @override
+  String get variant => 'Variante';
+
+  @override
+  String get variantName => 'Nombre';
+
+  @override
+  String get variantNameRequired => 'El nombre es requerido';
+
+  @override
+  String get variantStatus => 'Estado';
+
+  @override
+  String get viewUser => 'Ver Usuario';
+
+  @override
+  String get listings => 'Angebote';
 }

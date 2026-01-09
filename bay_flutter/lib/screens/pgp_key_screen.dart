@@ -183,7 +183,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               _buildInfoRow(l10n.keySize, '${serverKey.keySize} Bit'),
               _buildInfoRow(l10n.identity, serverKey.keyIdentity),
               _buildInfoRow(
-                l10n.created,
+                l10n.createdAt,
                 _formatDate(serverKey.createdAt),
               ),
             ],

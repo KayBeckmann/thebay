@@ -1,71 +1,57 @@
 {
   "@@locale": "de",
-
   "appTitle": "Bay",
   "@appTitle": {
     "description": "Der Anwendungstitel"
   },
-
   "loginTitle": "Willkommen zurück",
   "@loginTitle": {
     "description": "Login-Bildschirm Titel"
   },
-
   "loginSubtitle": "Melde dich an um fortzufahren",
   "@loginSubtitle": {
     "description": "Login-Bildschirm Untertitel"
   },
-
   "username": "Benutzername",
   "@username": {
     "description": "Benutzername Label"
   },
-
   "usernameRequired": "Bitte gib deinen Benutzernamen ein",
   "@usernameRequired": {
     "description": "Benutzername erforderlich Validierung"
   },
-
   "password": "Passwort",
   "@password": {
     "description": "Passwort Label"
   },
-
   "passwordRequired": "Bitte gib dein Passwort ein",
   "@passwordRequired": {
     "description": "Passwort erforderlich Validierung"
   },
-
   "stayLoggedIn": "Angemeldet bleiben",
   "@stayLoggedIn": {
     "description": "Angemeldet bleiben Checkbox"
   },
-
   "signIn": "Anmelden",
   "@signIn": {
     "description": "Anmelden Button"
   },
-
   "dontHaveAccount": "Noch kein Konto? ",
   "@dontHaveAccount": {
     "description": "Registrierung Link Text"
   },
-
   "signUp": "Registrieren",
   "@signUp": {
     "description": "Registrieren Link"
   },
-
   "loginFailed": "Anmeldung fehlgeschlagen",
   "@loginFailed": {
     "description": "Login fehlgeschlagen Fehler"
   },
-
   "connectionError": "Verbindungsfehler. Bitte versuche es erneut.",
   "@connectionError": {
     "description": "Verbindungsfehler Nachricht"
   },
-
   "tryAgainInSeconds": "Versuche es in {seconds} Sekunden erneut",
   "@tryAgainInSeconds": {
     "description": "Rate-Limit Fehlermeldung",
@@ -76,117 +62,94 @@
       }
     }
   },
-
   "registerTitle": "Konto erstellen",
   "@registerTitle": {
     "description": "Registrierung Titel"
   },
-
   "registerSubtitle": "Registriere dich um loszulegen",
   "@registerSubtitle": {
     "description": "Registrierung Untertitel"
   },
-
   "usernameHelper": "3-20 Zeichen, Buchstaben, Zahlen, Unterstriche",
   "@usernameHelper": {
     "description": "Benutzername Hilfetext"
   },
-
   "usernameMinLength": "Benutzername muss mindestens 3 Zeichen lang sein",
   "@usernameMinLength": {
     "description": "Benutzername zu kurz Validierung"
   },
-
   "usernameMaxLength": "Benutzername darf maximal 20 Zeichen lang sein",
   "@usernameMaxLength": {
     "description": "Benutzername zu lang Validierung"
   },
-
   "usernameInvalidChars": "Nur Buchstaben, Zahlen und Unterstriche erlaubt",
   "@usernameInvalidChars": {
     "description": "Ungültige Zeichen im Benutzernamen"
   },
-
   "passwordHelper": "Mind. 8 Zeichen, Großbuchst., Kleinbuchst., Ziffer",
   "@passwordHelper": {
     "description": "Passwort Hilfetext"
   },
-
-  "passwordMinLength": "Passwort muss mindestens 8 Zeichen lang sein",
+  "passwordMinLength": "Passwort muss mindestens 8 Zeichen haben",
   "@passwordMinLength": {
-    "description": "Passwort zu kurz Validierung"
+    "description": "Passwort Mindestlänge Validierung"
   },
-
   "passwordNeedsUppercase": "Passwort muss einen Großbuchstaben enthalten",
   "@passwordNeedsUppercase": {
     "description": "Passwort benötigt Großbuchstaben"
   },
-
   "passwordNeedsLowercase": "Passwort muss einen Kleinbuchstaben enthalten",
   "@passwordNeedsLowercase": {
     "description": "Passwort benötigt Kleinbuchstaben"
   },
-
   "passwordNeedsDigit": "Passwort muss eine Ziffer enthalten",
   "@passwordNeedsDigit": {
     "description": "Passwort benötigt Ziffer"
   },
-
   "confirmPassword": "Passwort bestätigen",
   "@confirmPassword": {
     "description": "Passwort bestätigen Label"
   },
-
   "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
   "@passwordsDoNotMatch": {
     "description": "Passwörter stimmen nicht überein Validierung"
   },
-
   "agreeToTerms": "Ich stimme den ",
   "@agreeToTerms": {
     "description": "AGBs akzeptieren Text"
   },
-
   "termsOfService": "Nutzungsbedingungen",
   "@termsOfService": {
     "description": "Nutzungsbedingungen Link"
   },
-
   "close": "Schließen",
   "@close": {
     "description": "Schließen Button"
   },
-
   "createAccount": "Konto erstellen",
   "@createAccount": {
     "description": "Konto erstellen Button"
   },
-
   "alreadyHaveAccount": "Bereits ein Konto? ",
   "@alreadyHaveAccount": {
     "description": "Login Link Text"
   },
-
   "mustAcceptTerms": "Du musst die Nutzungsbedingungen akzeptieren",
   "@mustAcceptTerms": {
     "description": "AGBs müssen akzeptiert werden Fehler"
   },
-
   "registrationFailed": "Registrierung fehlgeschlagen",
   "@registrationFailed": {
     "description": "Registrierung fehlgeschlagen Fehler"
   },
-
-  "generatingKey": "Sicherheitsschlüssel wird erstellt...",
+  "generatingKey": "Schlüssel wird generiert...",
   "@generatingKey": {
-    "description": "Schlüsselgenerierung Dialog Titel"
+    "description": "Schlüssel wird generiert Status"
   },
-
   "generatingKeyMessage": "Dein persönlicher Verschlüsselungsschlüssel wird generiert.\nDies dauert nur wenige Sekunden.",
   "@generatingKeyMessage": {
     "description": "Schlüsselgenerierung Dialog Nachricht"
   },
-
   "keyGenerationFailed": "Schlüssel konnte nicht generiert werden: {error}\nDu kannst ihn später in den Einstellungen erstellen.",
   "@keyGenerationFailed": {
     "description": "Schlüsselgenerierung fehlgeschlagen Nachricht",
@@ -197,7 +160,6 @@
       }
     }
   },
-
   "elapsedTime": "Verstrichene Zeit: {time}",
   "@elapsedTime": {
     "description": "Verstrichene Zeit Label",
@@ -208,162 +170,130 @@
       }
     }
   },
-
   "navDashboard": "Dashboard",
   "@navDashboard": {
     "description": "Dashboard Navigation Label"
   },
-
   "navMessages": "Nachrichten",
   "@navMessages": {
     "description": "Nachrichten Navigation Label"
   },
-
   "navSearch": "Suchen",
   "@navSearch": {
     "description": "Suchen Navigation Label"
   },
-
   "navSell": "Verkaufen",
   "@navSell": {
     "description": "Verkaufen Navigation Label"
   },
-
   "navTransactions": "Transaktionen",
   "@navTransactions": {
     "description": "Transaktionen Navigation Label"
   },
-
   "navSettings": "Einstellungen",
   "@navSettings": {
     "description": "Einstellungen Navigation Label"
   },
-
   "navModeration": "Moderation",
   "@navModeration": {
     "description": "Moderation Navigation Label"
   },
-
   "navNews": "News",
   "@navNews": {
     "description": "News Navigation Label"
   },
-
   "navAdmin": "Admin",
   "@navAdmin": {
     "description": "Admin Navigation Label"
   },
-
   "drawerUserFallback": "Benutzer",
   "@drawerUserFallback": {
     "description": "Drawer Benutzer Fallback Name"
   },
-
   "drawerModerationSection": "Moderation",
   "@drawerModerationSection": {
     "description": "Drawer Moderation Section Header"
   },
-
   "drawerAdminSection": "Administration",
   "@drawerAdminSection": {
     "description": "Drawer Administration Section Header"
   },
-
-  "roleAdmin": "Administrator",
+  "roleAdmin": "Admin",
   "@roleAdmin": {
     "description": "Administrator Rolle"
   },
-
   "roleModerator": "Moderator",
   "@roleModerator": {
     "description": "Moderator Rolle"
   },
-
-  "roleUser": "Benutzer",
+  "roleUser": "Nutzer",
   "@roleUser": {
     "description": "Benutzer Rolle"
   },
-
   "settingsTitle": "Einstellungen",
   "@settingsTitle": {
     "description": "Einstellungen Screen Titel"
   },
-
   "sectionPaymentInfo": "Zahlungsinformationen",
   "@sectionPaymentInfo": {
     "description": "Zahlungsinformationen Section Header"
   },
-
   "sectionDisplay": "Anzeige",
   "@sectionDisplay": {
     "description": "Anzeige Section Header"
   },
-
   "sectionSecurity": "Sicherheit",
   "@sectionSecurity": {
     "description": "Sicherheit Section Header"
   },
-
   "sectionAccount": "Konto",
   "@sectionAccount": {
     "description": "Konto Section Header"
   },
-
   "paypalAddress": "PayPal-Adresse",
   "@paypalAddress": {
     "description": "PayPal-Adresse Label"
   },
-
   "bitcoinWallet": "Bitcoin-Wallet",
   "@bitcoinWallet": {
     "description": "Bitcoin-Wallet Label"
   },
-
   "notSpecified": "Nicht angegeben",
   "@notSpecified": {
     "description": "Nicht angegeben Text"
   },
-
   "emailAddress": "E-Mail-Adresse",
   "@emailAddress": {
     "description": "E-Mail-Adresse Label"
   },
-
   "emailHint": "deine@email.com",
   "@emailHint": {
     "description": "E-Mail Hint"
   },
-
   "walletAddress": "Wallet-Adresse",
   "@walletAddress": {
     "description": "Wallet-Adresse Label"
   },
-
   "walletHint": "bc1q...",
   "@walletHint": {
     "description": "Wallet Hint"
   },
-
   "cancel": "Abbrechen",
   "@cancel": {
     "description": "Abbrechen Button"
   },
-
   "save": "Speichern",
   "@save": {
     "description": "Speichern Button"
   },
-
   "paypalAddressSaved": "PayPal-Adresse gespeichert",
   "@paypalAddressSaved": {
     "description": "PayPal-Adresse gespeichert Message"
   },
-
   "bitcoinWalletSaved": "Bitcoin-Wallet gespeichert",
   "@bitcoinWalletSaved": {
     "description": "Bitcoin-Wallet gespeichert Message"
   },
-
   "errorSaving": "Fehler beim Speichern: {error}",
   "@errorSaving": {
     "description": "Fehler beim Speichern Message",
@@ -373,12 +303,10 @@
       }
     }
   },
-
   "itemsPerPage": "Elemente pro Seite",
   "@itemsPerPage": {
     "description": "Elemente pro Seite Label"
   },
-
   "itemsCount": "{count} Elemente",
   "@itemsCount": {
     "description": "Elemente Anzahl",
@@ -388,127 +316,102 @@
       }
     }
   },
-
   "displayCurrency": "Anzeigewährung",
   "@displayCurrency": {
     "description": "Anzeigewährung Label"
   },
-
   "language": "Sprache",
   "@language": {
     "description": "Sprache Label"
   },
-
   "languageChanged": "Sprache geändert. Bitte starte die App neu, um die Änderung zu übernehmen.",
   "@languageChanged": {
     "description": "Sprache geändert Nachricht"
   },
-
   "langEnglish": "English",
   "@langEnglish": {
     "description": "Englisch Sprach-Label"
   },
-
   "langGerman": "Deutsch",
   "@langGerman": {
     "description": "Deutsch Sprach-Label"
   },
-
   "langFrench": "Français",
   "@langFrench": {
     "description": "Französisch Sprach-Label"
   },
-
   "langSpanish": "Español",
   "@langSpanish": {
     "description": "Spanisch Sprach-Label"
   },
-
   "pgpKey": "PGP-Schlüssel",
   "@pgpKey": {
     "description": "PGP-Schlüssel Label"
   },
-
   "configured": "Eingerichtet",
   "@configured": {
     "description": "Eingerichtet Status"
   },
-
   "notConfigured": "Noch nicht eingerichtet",
   "@notConfigured": {
     "description": "Noch nicht eingerichtet Status"
   },
-
   "changePassword": "Passwort ändern",
   "@changePassword": {
     "description": "Passwort ändern Label"
   },
-
   "currentPassword": "Aktuelles Passwort",
   "@currentPassword": {
     "description": "Aktuelles Passwort Label"
   },
-
   "newPassword": "Neues Passwort",
   "@newPassword": {
     "description": "Neues Passwort Label"
   },
-
   "passwordsMismatch": "Passwörter stimmen nicht überein",
   "@passwordsMismatch": {
     "description": "Passwörter stimmen nicht überein Fehler"
   },
-
   "passwordChangeSuccess": "Passwort erfolgreich geändert",
   "@passwordChangeSuccess": {
     "description": "Passwort erfolgreich geändert"
   },
-
   "passwordChangeError": "Fehler beim Ändern des Passworts",
   "@passwordChangeError": {
     "description": "Fehler beim Ändern des Passworts"
   },
-
   "changeButton": "Ändern",
   "@changeButton": {
     "description": "Ändern Button"
   },
-
   "logout": "Abmelden",
   "@logout": {
     "description": "Abmelden Label"
   },
-
   "logoutConfirm": "Möchtest du dich wirklich abmelden?",
   "@logoutConfirm": {
     "description": "Abmelden Bestätigungstext"
   },
-
   "deleteAccount": "Konto löschen",
   "@deleteAccount": {
     "description": "Konto löschen Label"
   },
-
   "deleteAccountWarning": "Diese Aktion kann nicht rückgängig gemacht werden. Alle deine Daten werden unwiderruflich gelöscht.",
   "@deleteAccountWarning": {
     "description": "Konto löschen Warnung"
   },
-
   "passwordConfirmation": "Passwort zur Bestätigung",
   "@passwordConfirmation": {
     "description": "Passwort zur Bestätigung Label"
   },
-
-  "pleaseEnterPassword": "Bitte gib dein Passwort ein",
+  "pleaseEnterPassword": "Bitte gib das Passwort ein",
   "@pleaseEnterPassword": {
-    "description": "Bitte gib dein Passwort ein Fehler"
+    "description": "Passwort eingeben Validierung"
   },
-
   "deleteAccountError": "Fehler beim Löschen des Kontos",
   "@deleteAccountError": {
     "description": "Fehler beim Löschen des Kontos"
   },
-
   "genericError": "Fehler: {error}",
   "@genericError": {
     "description": "Allgemeiner Fehler",
@@ -518,12 +421,10 @@
       }
     }
   },
-
   "dashboardTitle": "Dashboard",
   "@dashboardTitle": {
     "description": "Dashboard Screen Titel"
   },
-
   "welcomeUser": "Willkommen, {username}!",
   "@welcomeUser": {
     "description": "Willkommensgruß",
@@ -533,47 +434,38 @@
       }
     }
   },
-
   "userFallback": "Benutzer",
   "@userFallback": {
     "description": "Benutzer Fallback Name"
   },
-
   "whatTodayQuestion": "Was möchtest du heute tun?",
   "@whatTodayQuestion": {
     "description": "Was möchtest du heute tun Frage"
   },
-
   "sectionPendingRatings": "Ausstehende Bewertungen",
   "@sectionPendingRatings": {
     "description": "Ausstehende Bewertungen Section"
   },
-
   "sectionNews": "Neuigkeiten",
   "@sectionNews": {
     "description": "Neuigkeiten Section"
   },
-
   "sectionSlotWarnings": "Slot-Warnungen",
   "@sectionSlotWarnings": {
     "description": "Slot-Warnungen Section"
   },
-
   "sectionRecentListings": "Neueste Angebote",
   "@sectionRecentListings": {
     "description": "Neueste Angebote Section"
   },
-
   "noNews": "Keine Neuigkeiten",
   "@noNews": {
     "description": "Keine Neuigkeiten Titel"
   },
-
   "noNewsMessage": "Aktuell gibt es keine Neuigkeiten. Schau später wieder vorbei!",
   "@noNewsMessage": {
     "description": "Keine Neuigkeiten Nachricht"
   },
-
   "pendingRatingsCount": "{count, plural, =1{Du hast 1 ausstehende Bewertung} other{Du hast {count} ausstehende Bewertungen}}",
   "@pendingRatingsCount": {
     "description": "Ausstehende Bewertungen Anzahl",
@@ -583,7 +475,6 @@
       }
     }
   },
-
   "transactionNumber": "Transaktion #{id}",
   "@transactionNumber": {
     "description": "Transaktionsnummer",
@@ -593,7 +484,6 @@
       }
     }
   },
-
   "viewAllPendingRatings": "Alle {count} ausstehenden Bewertungen anzeigen",
   "@viewAllPendingRatings": {
     "description": "Alle ausstehenden Bewertungen anzeigen",
@@ -603,12 +493,10 @@
       }
     }
   },
-
   "noSlotsExpiring": "Keine Slots laufen in den nächsten 3 Tagen ab.",
   "@noSlotsExpiring": {
     "description": "Keine Slots laufen ab"
   },
-
   "slotsExpiringSoon": "{count, plural, =1{1 Slot läuft bald ab} other{{count} Slots laufen bald ab}}",
   "@slotsExpiringSoon": {
     "description": "Slots laufen bald ab",
@@ -618,7 +506,6 @@
       }
     }
   },
-
   "slotNumber": "Slot #{id}",
   "@slotNumber": {
     "description": "Slot-Nummer",
@@ -628,7 +515,6 @@
       }
     }
   },
-
   "listingNumber": "Listing #{id}",
   "@listingNumber": {
     "description": "Listing-Nummer",
@@ -638,12 +524,10 @@
       }
     }
   },
-
   "noListingLinked": "Kein Listing verknüpft",
   "@noListingLinked": {
     "description": "Kein Listing verknüpft"
   },
-
   "moreCount": "+{count} weitere",
   "@moreCount": {
     "description": "Weitere Anzahl",
@@ -653,1162 +537,346 @@
       }
     }
   },
-
   "noListingsYet": "Noch keine Angebote",
   "@noListingsYet": {
     "description": "Noch keine Angebote Titel"
   },
-
-  "noListingsMessage": "Hier werden die neuesten Angebote angezeigt.",
+  "noListingsMessage": "Du hast noch keine Angebote erstellt.",
   "@noListingsMessage": {
     "description": "Noch keine Angebote Nachricht"
   },
-
   "unitPiece": "Stück",
   "@unitPiece": {
     "description": "Mengeneinheit Stück"
   },
-
   "unitKg": "kg",
   "@unitKg": {
     "description": "Mengeneinheit Kilogramm"
   },
-
   "unitGram": "g",
   "@unitGram": {
     "description": "Mengeneinheit Gramm"
   },
-
   "unitMeter": "m",
   "@unitMeter": {
     "description": "Mengeneinheit Meter"
   },
-
   "unitLiter": "L",
   "@unitLiter": {
     "description": "Mengeneinheit Liter"
   },
-
   "edit": "Bearbeiten",
   "@edit": {
     "description": "Bearbeiten Button"
   },
-
   "delete": "Löschen",
   "@delete": {
     "description": "Löschen Button"
   },
-
   "create": "Erstellen",
   "@create": {
     "description": "Erstellen Button"
   },
-
   "active": "Aktiv",
   "@active": {
     "description": "Aktiv Status"
   },
-
   "inactive": "Inaktiv",
   "@inactive": {
     "description": "Inaktiv Status"
   },
-
   "required": "Erforderlich",
   "@required": {
     "description": "Erforderliches Feld Validierung"
   },
-
   "invalidInput": "Ungültige Eingabe",
   "@invalidInput": {
     "description": "Ungültige Eingabe Validierung"
   },
-
   "shipping": "Versand",
   "@shipping": {
     "description": "Versand Label"
   },
-
   "shippingMethod": "Versandart",
   "@shippingMethod": {
     "description": "Versandart Label"
   },
-
   "shippingCost": "Versandkosten",
   "@shippingCost": {
     "description": "Versandkosten Label"
   },
-
   "searchTitle": "Suchen",
   "@searchTitle": {
     "description": "Suchen Screen Titel"
   },
-
   "favorites": "Favoriten",
   "@favorites": {
     "description": "Favoriten Label"
   },
-
   "searchListingsHint": "Angebote suchen...",
   "@searchListingsHint": {
     "description": "Angebote suchen Hinweistext"
   },
-
   "category": "Kategorie",
   "@category": {
     "description": "Kategorie Label"
   },
-
   "subcategory": "Subkategorie",
   "@subcategory": {
     "description": "Subkategorie Label"
   },
-
   "paymentMethod": "Bezahlart",
   "@paymentMethod": {
     "description": "Bezahlart Label"
   },
-
   "clearFilters": "Filter löschen",
   "@clearFilters": {
     "description": "Filter löschen Button"
   },
-
   "noResults": "Keine Ergebnisse",
   "@noResults": {
     "description": "Keine Ergebnisse Titel"
   },
-
   "browseListings": "Angebote durchsuchen",
   "@browseListings": {
     "description": "Angebote durchsuchen Text"
   },
-
   "paypal": "PayPal",
   "@paypal": {
     "description": "PayPal Zahlungsmethode"
   },
-
   "bitcoin": "Bitcoin",
   "@bitcoin": {
     "description": "Bitcoin Zahlungsmethode"
   },
-
   "listingDetailTitle": "Angebotsdetails",
   "@listingDetailTitle": {
     "description": "Angebotsdetails Screen Titel"
   },
-
   "description": "Beschreibung",
   "@description": {
     "description": "Beschreibung Label"
   },
-
   "details": "Details",
   "@details": {
     "description": "Details Label"
   },
-
   "acceptedPaymentMethods": "Akzeptierte Zahlungsmethoden",
   "@acceptedPaymentMethods": {
     "description": "Akzeptierte Zahlungsmethoden Label"
   },
-
   "quantity": "Menge",
   "@quantity": {
     "description": "Menge Label"
   },
-
-  "pricePerUnit": "Preis pro Einheit",
+  "pricePerUnit": "{price} pro {unit}",
   "@pricePerUnit": {
     "description": "Preis pro Einheit Label"
   },
-
   "createdAt": "Erstellt am",
   "@createdAt": {
     "description": "Erstellt am Label"
   },
-
   "expiresAt": "Läuft ab am",
   "@expiresAt": {
     "description": "Läuft ab am Label"
   },
-
   "listingNotFound": "Angebot nicht gefunden",
   "@listingNotFound": {
     "description": "Angebot nicht gefunden Fehler"
   },
-
   "tryAgain": "Erneut versuchen",
   "@tryAgain": {
     "description": "Erneut versuchen Button"
   },
-
   "buyNow": "Jetzt kaufen",
   "@buyNow": {
     "description": "Jetzt kaufen Button"
   },
-
   "contactSeller": "Verkäufer kontaktieren",
   "@contactSeller": {
     "description": "Verkäufer kontaktieren Button"
   },
-
   "createListingTitle": "Neues Angebot",
   "@createListingTitle": {
     "description": "Neues Angebot Screen Titel"
   },
-
   "editListingTitle": "Angebot bearbeiten",
   "@editListingTitle": {
     "description": "Angebot bearbeiten Screen Titel"
   },
-
   "title": "Titel",
   "@title": {
     "description": "Titel Label"
   },
-
   "titleHint": "Gib einen Titel ein",
   "@titleHint": {
     "description": "Titel Hinweistext"
   },
-
   "titleRequired": "Titel ist erforderlich",
   "@titleRequired": {
     "description": "Titel erforderlich Validierung"
   },
-
   "descriptionHint": "Beschreibe dein Angebot...",
   "@descriptionHint": {
     "description": "Beschreibung Hinweistext"
   },
-
   "descriptionRequired": "Beschreibung ist erforderlich",
   "@descriptionRequired": {
     "description": "Beschreibung erforderlich Validierung"
   },
-
   "price": "Preis",
   "@price": {
     "description": "Preis Label"
   },
-
   "priceHint": "0.00",
   "@priceHint": {
     "description": "Preis Hinweistext"
   },
-
   "priceRequired": "Preis ist erforderlich",
   "@priceRequired": {
     "description": "Preis erforderlich Validierung"
   },
-
   "priceInvalid": "Preis muss größer als 0 sein",
   "@priceInvalid": {
     "description": "Ungültiger Preis Validierung"
   },
-
   "quantityHint": "1",
   "@quantityHint": {
     "description": "Menge Hinweistext"
   },
-
   "quantityRequired": "Menge ist erforderlich",
   "@quantityRequired": {
     "description": "Menge erforderlich Validierung"
   },
-
   "quantityInvalid": "Menge muss größer als 0 sein",
   "@quantityInvalid": {
     "description": "Ungültige Menge Validierung"
   },
-
   "unit": "Einheit",
   "@unit": {
     "description": "Einheit Label"
   },
-
   "selectCategory": "Kategorie wählen",
   "@selectCategory": {
     "description": "Kategorie wählen Text"
   },
-
   "selectSubcategory": "Subkategorie wählen",
   "@selectSubcategory": {
     "description": "Subkategorie wählen Text"
   },
-
   "categoryRequired": "Kategorie ist erforderlich",
   "@categoryRequired": {
     "description": "Kategorie erforderlich Validierung"
   },
-
   "images": "Bilder",
   "@images": {
     "description": "Bilder Label"
   },
-
   "addImages": "Bilder hinzufügen",
   "@addImages": {
     "description": "Bilder hinzufügen Button"
   },
-
   "selectPaymentMethods": "Zahlungsmethoden wählen",
   "@selectPaymentMethods": {
     "description": "Zahlungsmethoden wählen Label"
   },
-
   "atLeastOnePaymentMethod": "Mindestens eine Zahlungsmethode erforderlich",
   "@atLeastOnePaymentMethod": {
     "description": "Mindestens eine Zahlungsmethode Validierung"
   },
-
   "shippingOptions": "Versandoptionen",
   "@shippingOptions": {
     "description": "Versandoptionen Label"
   },
-
   "shippingAvailable": "Versand verfügbar",
   "@shippingAvailable": {
     "description": "Versand verfügbar Checkbox"
   },
-
   "shippingCostHint": "5.00",
   "@shippingCostHint": {
     "description": "Versandkosten Hinweistext"
   },
-
   "listingCreated": "Angebot erstellt",
   "@listingCreated": {
     "description": "Angebot erstellt Nachricht"
   },
-
   "listingUpdated": "Angebot aktualisiert",
   "@listingUpdated": {
     "description": "Angebot aktualisiert Nachricht"
   },
-
   "errorCreatingListing": "Fehler beim Erstellen des Angebots",
   "@errorCreatingListing": {
     "description": "Fehler beim Erstellen des Angebots"
   },
-
   "errorUpdatingListing": "Fehler beim Aktualisieren des Angebots",
   "@errorUpdatingListing": {
     "description": "Fehler beim Aktualisieren des Angebots"
   },
-
   "deleteListing": "Angebot löschen",
   "@deleteListing": {
-    "description": "Angebot löschen Label"
+    "description": "Angebot löschen Button"
   },
-
   "deleteListingConfirm": "Möchtest du dieses Angebot wirklich löschen?",
   "@deleteListingConfirm": {
     "description": "Angebot löschen Bestätigung"
   },
-
   "listingDeleted": "Angebot gelöscht",
   "@listingDeleted": {
     "description": "Angebot gelöscht Nachricht"
   },
-
   "errorDeletingListing": "Fehler beim Löschen des Angebots",
   "@errorDeletingListing": {
     "description": "Fehler beim Löschen des Angebots"
   },
-
   "slot": "Slot",
   "@slot": {
     "description": "Slot Label"
   },
-
   "selectSlot": "Slot wählen",
   "@selectSlot": {
     "description": "Slot wählen Label"
   },
-
   "slotRequired": "Slot ist erforderlich",
   "@slotRequired": {
     "description": "Slot erforderlich Validierung"
   },
-
   "noSlotsAvailable": "Keine Slots verfügbar",
   "@noSlotsAvailable": {
     "description": "Keine Slots verfügbar Nachricht"
   },
-
   "loading": "Lädt...",
   "@loading": {
     "description": "Lädt Status"
   },
-
   "retry": "Wiederholen",
   "@retry": {
     "description": "Wiederholen Button"
   },
-
   "searchEmptyStateMessage": "Gib einen Suchbegriff ein oder wähle Filter aus, um Angebote zu finden.",
   "@searchEmptyStateMessage": {
     "description": "Suchleer-Status Nachricht"
   },
-
   "noResultsMessage": "Versuche andere Suchbegriffe oder passe die Filter an.",
   "@noResultsMessage": {
     "description": "Keine Ergebnisse Nachricht"
   },
-
   "resetFilters": "Filter zurücksetzen",
   "@resetFilters": {
     "description": "Filter zurücksetzen Button"
   },
-
   "noCategory": "Keine Kategorie",
   "@noCategory": {
     "description": "Keine Kategorie Auswahl"
   },
-
   "allSubcategories": "Alle Subkategorien",
   "@allSubcategories": {
     "description": "Alle Subkategorien Auswahl"
   },
-
   "allPaymentMethods": "Alle Bezahlarten",
   "@allPaymentMethods": {
     "description": "Alle Bezahlarten Auswahl"
   },
-
-  "searchError": "Fehler bei der Suche: {error}",
-  "@searchError": {
-    "description": "Suchfehler Nachricht",
-    "placeholders": {
-      "error": {
-        "type": "String"
-      }
-    }
-  },
-
-  "resultsCount": "{count, plural, =1{1 Ergebnis} other{{count} Ergebnisse}}",
-  "@resultsCount": {
-    "description": "Anzahl der Suchergebnisse",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-
-  "transactions": "Transaktionen",
-  "@transactions": {
-    "description": "Transaktionen Screen Titel"
-  },
-
-  "purchases": "Käufe ({count})",
-  "@purchases": {
-    "description": "Käufe Tab mit Anzahl",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-
-  "sales": "Verkäufe ({count})",
-  "@sales": {
-    "description": "Verkäufe Tab mit Anzahl",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-
-  "refresh": "Aktualisieren",
-  "@refresh": {
-    "description": "Aktualisieren Tooltip"
-  },
-
-  "noPurchasesYet": "Noch keine Käufe",
-  "@noPurchasesYet": {
-    "description": "Leerzustand für Käufe Titel"
-  },
-
-  "noSalesYet": "Noch keine Verkäufe",
-  "@noSalesYet": {
-    "description": "Leerzustand für Verkäufe Titel"
-  },
-
-  "yourPurchasesWillAppearHere": "Deine Käufe werden hier angezeigt",
-  "@yourPurchasesWillAppearHere": {
-    "description": "Leerzustand für Käufe Nachricht"
-  },
-
-  "yourSalesWillAppearHere": "Deine Verkäufe werden hier angezeigt",
-  "@yourSalesWillAppearHere": {
-    "description": "Leerzustand für Verkäufe Nachricht"
-  },
-
-  "statusOpen": "Offen",
-  "@statusOpen": {
-    "description": "Transaktionsstatus Offen"
-  },
-
-  "statusPaid": "Bezahlt",
-  "@statusPaid": {
-    "description": "Transaktionsstatus Bezahlt"
-  },
-
-  "statusShipped": "Versendet",
-  "@statusShipped": {
-    "description": "Transaktionsstatus Versendet"
-  },
-
-  "statusReceived": "Erhalten",
-  "@statusReceived": {
-    "description": "Transaktionsstatus Erhalten"
-  },
-
-  "statusCompleted": "Abgeschlossen",
-  "@statusCompleted": {
-    "description": "Transaktionsstatus Abgeschlossen"
-  },
-
-  "statusDisputed": "Umstritten",
-  "@statusDisputed": {
-    "description": "Transaktionsstatus Umstritten"
-  },
-
-  "statusCancelled": "Abgebrochen",
-  "@statusCancelled": {
-    "description": "Transaktionsstatus Abgebrochen"
-  },
-
-  "transactionNumber": "Transaktion #{id}",
-  "@transactionNumber": {
-    "description": "Transaktionsnummer",
-    "placeholders": {
-      "id": {
-        "type": "int"
-      }
-    }
-  },
-
-  "autoCompletesToday": "Wird heute automatisch abgeschlossen",
-  "@autoCompletesToday": {
-    "description": "Auto-Abschluss heute Warnung"
-  },
-
-  "autoCompletesInDays": "Wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen",
-  "@autoCompletesInDays": {
-    "description": "Auto-Abschluss in X Tagen",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-
-  "transaction": "Transaktion",
-  "@transaction": {
-    "description": "Transaktion Label"
-  },
-
-  "rateThisTransaction": "Bewerte diese Transaktion",
-  "@rateThisTransaction": {
-    "description": "Bewertungsaufforderung Titel"
-  },
-
-  "shareYourExperience": "Teile deine Erfahrung mit {username}",
-  "@shareYourExperience": {
-    "description": "Bewertungsaufforderung Text",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-
-  "rateNow": "Jetzt bewerten",
-  "@rateNow": {
-    "description": "Jetzt bewerten Button"
-  },
-
-  "alreadyRated": "Du hast diese Transaktion bereits bewertet",
-  "@alreadyRated": {
-    "description": "Bereits bewertet Nachricht"
-  },
-
-  "statusOpenDesc": "Warte auf Zahlung des Käufers",
-  "@statusOpenDesc": {
-    "description": "Status Offen Beschreibung"
-  },
-
-  "statusPaidDesc": "Zahlung gesendet, warte auf Versand durch Verkäufer",
-  "@statusPaidDesc": {
-    "description": "Status Bezahlt Beschreibung"
-  },
-
-  "statusShippedDesc": "Artikel wurde versendet, warte auf Zustellung",
-  "@statusShippedDesc": {
-    "description": "Status Versendet Beschreibung"
-  },
-
-  "statusReceivedDesc": "Käufer hat den Artikel erhalten",
-  "@statusReceivedDesc": {
-    "description": "Status Erhalten Beschreibung"
-  },
-
-  "statusCompletedDesc": "Transaktion erfolgreich abgeschlossen",
-  "@statusCompletedDesc": {
-    "description": "Status Abgeschlossen Beschreibung"
-  },
-
-  "statusDisputedDesc": "Ein Streitfall wurde eröffnet",
-  "@statusDisputedDesc": {
-    "description": "Status Umstritten Beschreibung"
-  },
-
-  "statusCancelledDesc": "Transaktion wurde abgebrochen",
-  "@statusCancelledDesc": {
-    "description": "Status Abgebrochen Beschreibung"
-  },
-
-  "timeline": "Zeitverlauf",
-  "@timeline": {
-    "description": "Zeitverlauf Titel"
-  },
-
-  "created": "Erstellt",
-  "@created": {
-    "description": "Erstellt Label"
-  },
-
-  "paid": "Bezahlt",
-  "@paid": {
-    "description": "Bezahlt Label"
-  },
-
-  "paymentSent": "Zahlung gesendet",
-  "@paymentSent": {
-    "description": "Zahlung gesendet Label"
-  },
-
-  "waitingForBuyer": "Warte auf Käufer",
-  "@waitingForBuyer": {
-    "description": "Warte auf Käufer Status"
-  },
-
-  "shipped": "Versendet",
-  "@shipped": {
-    "description": "Versendet Label"
-  },
-
-  "waitingForSeller": "Warte auf Verkäufer",
-  "@waitingForSeller": {
-    "description": "Warte auf Verkäufer Status"
-  },
-
-  "received": "Erhalten",
-  "@received": {
-    "description": "Erhalten Label"
-  },
-
-  "completed": "Abgeschlossen",
-  "@completed": {
-    "description": "Abgeschlossen Label"
-  },
-
-  "cancelled": "Abgebrochen",
-  "@cancelled": {
-    "description": "Abgebrochen Label"
-  },
-
-  "pending": "Ausstehend",
-  "@pending": {
-    "description": "Ausstehend Label"
-  },
-
-  "markAsShipped": "Als versendet markieren",
-  "@markAsShipped": {
-    "description": "Als versendet markieren Button"
-  },
-
-  "markAsPaid": "Als bezahlt markieren",
-  "@markAsPaid": {
-    "description": "Als bezahlt markieren Button"
-  },
-
-  "markAsReceived": "Als erhalten markieren",
-  "@markAsReceived": {
-    "description": "Als erhalten markieren Button"
-  },
-
-  "cancelTransaction": "Transaktion abbrechen",
-  "@cancelTransaction": {
-    "description": "Transaktion abbrechen Button"
-  },
-
-  "openDispute": "Streitfall eröffnen",
-  "@openDispute": {
-    "description": "Streitfall eröffnen Button"
-  },
-
-  "actions": "Aktionen",
-  "@actions": {
-    "description": "Aktionen Titel"
-  },
-
-  "confirmShipment": "Bestätige, dass du den Artikel versendet hast. Der Käufer hat 14 Tage Zeit, den Erhalt zu bestätigen oder einen Streitfall zu eröffnen.",
-  "@confirmShipment": {
-    "description": "Versandbestätigung Dialog Text"
-  },
-
-  "confirm": "Bestätigen",
-  "@confirm": {
-    "description": "Bestätigen Button"
-  },
-
-  "transactionMarkedAsShipped": "Transaktion als versendet markiert",
-  "@transactionMarkedAsShipped": {
-    "description": "Als versendet markiert Nachricht"
-  },
-
-  "confirmPayment": "Bestätige, dass du die Zahlung an den Verkäufer gesendet hast.",
-  "@confirmPayment": {
-    "description": "Zahlungsbestätigung Dialog Text"
-  },
-
-  "paymentMarkedAsSent": "Zahlung als gesendet markiert",
-  "@paymentMarkedAsSent": {
-    "description": "Zahlung als gesendet markiert Nachricht"
-  },
-
-  "confirmReceipt": "Bestätige, dass du den Artikel erhalten hast. Dies wird die Transaktion abschließen.",
-  "@confirmReceipt": {
-    "description": "Erhaltbestätigung Dialog Text"
-  },
-
-  "transactionCompleted": "Transaktion abgeschlossen",
-  "@transactionCompleted": {
-    "description": "Transaktion abgeschlossen Nachricht"
-  },
-
-  "cancelTransactionConfirm": "Möchtest du diese Transaktion wirklich abbrechen? Diese Aktion kann nicht rückgängig gemacht werden.",
-  "@cancelTransactionConfirm": {
-    "description": "Transaktionsabbruch Bestätigung"
-  },
-
-  "keep": "Behalten",
-  "@keep": {
-    "description": "Behalten Button"
-  },
-
-  "transactionCancelled": "Transaktion abgebrochen",
-  "@transactionCancelled": {
-    "description": "Transaktion abgebrochen Nachricht"
-  },
-
-  "describeIssue": "Bitte beschreibe das Problem mit dieser Transaktion. Ein Moderator wird deinen Streitfall prüfen.",
-  "@describeIssue": {
-    "description": "Streitfall-Beschreibung Aufforderung"
-  },
-
-  "reason": "Grund",
-  "@reason": {
-    "description": "Grund Label"
-  },
-
-  "describeProblem": "Beschreibe das Problem...",
-  "@describeProblem": {
-    "description": "Problem beschreiben Hinweis"
-  },
-
-  "pleaseEnterReason": "Bitte gib einen Grund an",
-  "@pleaseEnterReason": {
-    "description": "Grund erforderlich Validierung"
-  },
-
-  "disputeOpened": "Streitfall eröffnet",
-  "@disputeOpened": {
-    "description": "Streitfall eröffnet Nachricht"
-  },
-
-  "transactionNotFound": "Transaktion nicht gefunden",
-  "@transactionNotFound": {
-    "description": "Transaktion nicht gefunden Fehler"
-  },
-
-  "transactionId": "Transaktions-ID",
-  "@transactionId": {
-    "description": "Transaktions-ID Label"
-  },
-
-  "totalPrice": "Gesamtpreis",
-  "@totalPrice": {
-    "description": "Gesamtpreis Label"
-  },
-
-  "parties": "Parteien",
-  "@parties": {
-    "description": "Parteien Titel"
-  },
-
-  "buyer": "Käufer",
-  "@buyer": {
-    "description": "Käufer Label"
-  },
-
-  "seller": "Verkäufer",
-  "@seller": {
-    "description": "Verkäufer Label"
-  },
-
-  "you": "Du",
-  "@you": {
-    "description": "Du Label"
-  },
-
-  "viewListingDetails": "Angebotsdetails anzeigen",
-  "@viewListingDetails": {
-    "description": "Angebotsdetails anzeigen Link"
-  },
-
-  "buyerNote": "Käufernotiz",
-  "@buyerNote": {
-    "description": "Käufernotiz Titel"
-  },
-
-  "autoCompleteWarning": "Auto-Abschluss Warnung",
-  "@autoCompleteWarning": {
-    "description": "Auto-Abschluss Warnung Titel"
-  },
-
-  "autoCompleteToday": "Diese Transaktion wird heute automatisch abgeschlossen, wenn kein Streitfall eröffnet wird.",
-  "@autoCompleteToday": {
-    "description": "Auto-Abschluss heute Nachricht"
-  },
-
-  "autoCompleteInDays": "Diese Transaktion wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen, wenn keine Aktion erfolgt.",
-  "@autoCompleteInDays": {
-    "description": "Auto-Abschluss in X Tagen Nachricht",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-
-  "disputeOpen": "Streitfall offen",
-  "@disputeOpen": {
-    "description": "Streitfall offen Titel"
-  },
-
-  "disputeReason": "Grund: {reason}",
-  "@disputeReason": {
-    "description": "Streitfall-Grund",
-    "placeholders": {
-      "reason": {
-        "type": "String"
-      }
-    }
-  },
-
-  "disputeOpenedDate": "Eröffnet: {date}",
-  "@disputeOpenedDate": {
-    "description": "Streitfall eröffnet am",
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-
-  "moderatorReviewing": "Ein Moderator prüft diesen Streitfall.",
-  "@moderatorReviewing": {
-    "description": "Moderator prüft Nachricht"
-  },
-
-  "paymentInformation": "Zahlungsinformationen",
-  "@paymentInformation": {
-    "description": "Zahlungsinformationen Titel"
-  },
-
-  "sendPaymentTo": "Bitte sende die Zahlung an den Verkäufer mit den folgenden Details:",
-  "@sendPaymentTo": {
-    "description": "Zahlungsanweisung"
-  },
-
-  "includeTransactionId": "Der Verkäufer wird den Artikel versenden, sobald die Zahlung eingegangen ist. Bitte gib deine Transaktions-ID in der Zahlungsnotiz an.",
-  "@includeTransactionId": {
-    "description": "Transaktions-ID in Zahlung Hinweis"
-  },
-
-  "messages": "Nachrichten",
-  "@messages": {
-    "description": "Nachrichten Screen Titel"
-  },
-
-  "inbox": "Posteingang",
-  "@inbox": {
-    "description": "Posteingang Tab"
-  },
-
-  "sent": "Gesendet",
-  "@sent": {
-    "description": "Gesendet Tab"
-  },
-
-  "drafts": "Entwürfe",
-  "@drafts": {
-    "description": "Entwürfe Tab"
-  },
-
-  "newMessage": "Neue Nachricht",
-  "@newMessage": {
-    "description": "Neue Nachricht Button"
-  },
-
-  "noMessages": "Keine Nachrichten",
-  "@noMessages": {
-    "description": "Keine Nachrichten Titel"
-  },
-
-  "inboxEmpty": "Dein Posteingang ist leer.",
-  "@inboxEmpty": {
-    "description": "Posteingang leer Nachricht"
-  },
-
-  "noSentMessages": "Keine gesendeten Nachrichten",
-  "@noSentMessages": {
-    "description": "Keine gesendeten Nachrichten Titel"
-  },
-
-  "noSentMessagesYet": "Du hast noch keine Nachrichten gesendet.",
-  "@noSentMessagesYet": {
-    "description": "Noch keine gesendeten Nachrichten Nachricht"
-  },
-
-  "noDrafts": "Keine Entwürfe",
-  "@noDrafts": {
-    "description": "Keine Entwürfe Titel"
-  },
-
-  "noSavedDrafts": "Du hast keine gespeicherten Entwürfe.",
-  "@noSavedDrafts": {
-    "description": "Keine gespeicherten Entwürfe Nachricht"
-  },
-
-  "errorLoadingTitle": "Fehler beim Laden",
-  "@errorLoadingTitle": {
-    "description": "Fehler beim Laden Titel"
-  },
-
-  "from": "Von: {username}",
-  "@from": {
-    "description": "Von Label",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-
-  "to": "An: {username}",
-  "@to": {
-    "description": "An Label",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-
-  "yesterday": "Gestern",
-  "@yesterday": {
-    "description": "Gestern Label"
-  },
-
-  "monday": "Mo",
-  "@monday": {
-    "description": "Montag Abkürzung"
-  },
-
-  "tuesday": "Di",
-  "@tuesday": {
-    "description": "Dienstag Abkürzung"
-  },
-
-  "wednesday": "Mi",
-  "@wednesday": {
-    "description": "Mittwoch Abkürzung"
-  },
-
-  "thursday": "Do",
-  "@thursday": {
-    "description": "Donnerstag Abkürzung"
-  },
-
-  "friday": "Fr",
-  "@friday": {
-    "description": "Freitag Abkürzung"
-  },
-
-  "saturday": "Sa",
-  "@saturday": {
-    "description": "Samstag Abkürzung"
-  },
-
-  "sunday": "So",
-  "@sunday": {
-    "description": "Sonntag Abkürzung"
-  },
-
-  "userNumber": "Benutzer #{id}",
-  "@userNumber": {
-    "description": "Benutzer Nummer",
-    "placeholders": {
-      "id": {
-        "type": "int"
-      }
-    }
-  },
-
-  "noRecipient": "Kein Empfänger",
-  "@noRecipient": {
-    "description": "Kein Empfänger Label"
-  },
-
-  "lastEdited": "Zuletzt bearbeitet: {date}",
-  "@lastEdited": {
-    "description": "Zuletzt bearbeitet",
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-
-  "deleteMessage": "Nachricht löschen?",
-  "@deleteMessage": {
-    "description": "Nachricht löschen Bestätigung Titel"
-  },
-
-  "actionCannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden.",
-  "@actionCannotBeUndone": {
-    "description": "Aktion nicht rückgängig machbar Warnung"
-  },
-
-  "deleteDraft": "Entwurf löschen?",
-  "@deleteDraft": {
-    "description": "Entwurf löschen Bestätigung Titel"
-  },
-
-  "reply": "Antworten",
-  "@reply": {
-    "description": "Antworten Button"
-  },
-
-  "decryptingMessage": "Nachricht wird entschlüsselt...",
-  "@decryptingMessage": {
-    "description": "Entschlüsselung läuft Nachricht"
-  },
-
-  "decryptionFailed": "Entschlüsselung fehlgeschlagen",
-  "@decryptionFailed": {
-    "description": "Entschlüsselung fehlgeschlagen Fehler"
-  },
-
-  "endToEndEncrypted": "Ende-zu-Ende verschlüsselt",
-  "@endToEndEncrypted": {
-    "description": "Ende-zu-Ende verschlüsselt Label"
-  },
-
-  "fromUser": "Von: {username}",
-  "@fromUser": {
-    "description": "Von Benutzer Label",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-
-  "dateLabel": "Datum: {date}",
-  "@dateLabel": {
-    "description": "Datum Label",
-    "placeholders": {
-      "date": {
-        "type": "String"
-      }
-    }
-  },
-
-  "subject": "Betreff",
-  "@subject": {
-    "description": "Betreff Label"
-  },
-
-  "noSubject": "[Kein Betreff]",
-  "@noSubject": {
-    "description": "Kein Betreff Platzhalter"
-  },
-
-  "message": "Nachricht",
-  "@message": {
-    "description": "Nachricht Label"
-  },
-
-  "noContent": "[Kein Inhalt]",
-  "@noContent": {
-    "description": "Kein Inhalt Platzhalter"
-  },
-
-  "editDraft": "Entwurf bearbeiten",
-  "@editDraft": {
-    "description": "Entwurf bearbeiten Titel"
-  },
-
-  "draft": "Entwurf",
-  "@draft": {
-    "description": "Entwurf Button"
-  },
-
-  "send": "Senden",
-  "@send": {
-    "description": "Senden Button"
-  },
-
-  "recipient": "Empfänger",
-  "@recipient": {
-    "description": "Empfänger Label"
-  },
-
-  "enterUsername": "Benutzername eingeben",
-  "@enterUsername": {
-    "description": "Benutzername eingeben Hinweis"
-  },
-
-  "messageWillBeEncrypted": "Nachricht wird verschlüsselt",
-  "@messageWillBeEncrypted": {
-    "description": "Nachricht wird verschlüsselt Hinweis"
-  },
-
-  "clickToVerifyRecipient": "Klicke auf das Such-Icon um den Empfänger zu prüfen",
-  "@clickToVerifyRecipient": {
-    "description": "Empfänger prüfen Hinweis"
-  },
-
-  "userNotFoundOrNoKey": "Benutzer \"{username}\" nicht gefunden oder hat keinen PGP-Schlüssel",
-  "@userNotFoundOrNoKey": {
-    "description": "Benutzer nicht gefunden Fehler",
-    "placeholders": {
-      "username": {
-        "type": "String"
-      }
-    }
-  },
-
   "searchError": "Fehler bei der Suche: {error}",
   "@searchError": {
     "description": "Suchfehler",
@@ -1818,27 +886,605 @@
       }
     }
   },
-
+  "resultsCount": "{count, plural, =1{1 Ergebnis} other{{count} Ergebnisse}}",
+  "@resultsCount": {
+    "description": "Anzahl der Suchergebnisse",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "transactions": "Transaktionen",
+  "@transactions": {
+    "description": "Transaktionen Screen Titel"
+  },
+  "purchases": "Käufe ({count})",
+  "@purchases": {
+    "description": "Käufe Tab mit Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "sales": "Verkäufe ({count})",
+  "@sales": {
+    "description": "Verkäufe Tab mit Anzahl",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "refresh": "Aktualisieren",
+  "@refresh": {
+    "description": "Aktualisieren Tooltip"
+  },
+  "noPurchasesYet": "Noch keine Käufe",
+  "@noPurchasesYet": {
+    "description": "Leerzustand für Käufe Titel"
+  },
+  "noSalesYet": "Noch keine Verkäufe",
+  "@noSalesYet": {
+    "description": "Leerzustand für Verkäufe Titel"
+  },
+  "yourPurchasesWillAppearHere": "Deine Käufe werden hier angezeigt",
+  "@yourPurchasesWillAppearHere": {
+    "description": "Leerzustand für Käufe Nachricht"
+  },
+  "yourSalesWillAppearHere": "Deine Verkäufe werden hier angezeigt",
+  "@yourSalesWillAppearHere": {
+    "description": "Leerzustand für Verkäufe Nachricht"
+  },
+  "statusOpen": "Offen",
+  "@statusOpen": {
+    "description": "Transaktionsstatus Offen"
+  },
+  "statusPaid": "Bezahlt",
+  "@statusPaid": {
+    "description": "Transaktionsstatus Bezahlt"
+  },
+  "statusShipped": "Versendet",
+  "@statusShipped": {
+    "description": "Transaktionsstatus Versendet"
+  },
+  "statusReceived": "Erhalten",
+  "@statusReceived": {
+    "description": "Transaktionsstatus Erhalten"
+  },
+  "statusCompleted": "Abgeschlossen",
+  "@statusCompleted": {
+    "description": "Transaktionsstatus Abgeschlossen"
+  },
+  "statusDisputed": "Umstritten",
+  "@statusDisputed": {
+    "description": "Transaktionsstatus Umstritten"
+  },
+  "statusCancelled": "Abgebrochen",
+  "@statusCancelled": {
+    "description": "Transaktionsstatus Abgebrochen"
+  },
+  "autoCompletesToday": "Wird heute automatisch abgeschlossen",
+  "@autoCompletesToday": {
+    "description": "Auto-Abschluss heute Warnung"
+  },
+  "autoCompletesInDays": "Wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen",
+  "@autoCompletesInDays": {
+    "description": "Auto-Abschluss in X Tagen",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "transaction": "Transaktion",
+  "@transaction": {
+    "description": "Transaktion Label"
+  },
+  "rateThisTransaction": "Bewerte diese Transaktion",
+  "@rateThisTransaction": {
+    "description": "Bewertungsaufforderung Titel"
+  },
+  "shareYourExperience": "Teile deine Erfahrung mit {username}",
+  "@shareYourExperience": {
+    "description": "Bewertungsaufforderung Text",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "rateNow": "Jetzt bewerten",
+  "@rateNow": {
+    "description": "Jetzt bewerten Button"
+  },
+  "alreadyRated": "Du hast diese Transaktion bereits bewertet",
+  "@alreadyRated": {
+    "description": "Bereits bewertet Nachricht"
+  },
+  "statusOpenDesc": "Warte auf Zahlung des Käufers",
+  "@statusOpenDesc": {
+    "description": "Status Offen Beschreibung"
+  },
+  "statusPaidDesc": "Zahlung gesendet, warte auf Versand durch Verkäufer",
+  "@statusPaidDesc": {
+    "description": "Status Bezahlt Beschreibung"
+  },
+  "statusShippedDesc": "Artikel wurde versendet, warte auf Zustellung",
+  "@statusShippedDesc": {
+    "description": "Status Versendet Beschreibung"
+  },
+  "statusReceivedDesc": "Käufer hat den Artikel erhalten",
+  "@statusReceivedDesc": {
+    "description": "Status Erhalten Beschreibung"
+  },
+  "statusCompletedDesc": "Transaktion erfolgreich abgeschlossen",
+  "@statusCompletedDesc": {
+    "description": "Status Abgeschlossen Beschreibung"
+  },
+  "statusDisputedDesc": "Ein Streitfall wurde eröffnet",
+  "@statusDisputedDesc": {
+    "description": "Status Umstritten Beschreibung"
+  },
+  "statusCancelledDesc": "Transaktion wurde abgebrochen",
+  "@statusCancelledDesc": {
+    "description": "Status Abgebrochen Beschreibung"
+  },
+  "timeline": "Zeitverlauf",
+  "@timeline": {
+    "description": "Zeitverlauf Titel"
+  },
+  "created": "Erstellt am {date}",
+  "@created": {
+    "description": "Erstellt Label"
+  },
+  "paid": "Bezahlt",
+  "@paid": {
+    "description": "Bezahlt Label"
+  },
+  "paymentSent": "Zahlung gesendet",
+  "@paymentSent": {
+    "description": "Zahlung gesendet Label"
+  },
+  "waitingForBuyer": "Warte auf Käufer",
+  "@waitingForBuyer": {
+    "description": "Warte auf Käufer Status"
+  },
+  "shipped": "Versendet",
+  "@shipped": {
+    "description": "Versendet Label"
+  },
+  "waitingForSeller": "Warte auf Verkäufer",
+  "@waitingForSeller": {
+    "description": "Warte auf Verkäufer Status"
+  },
+  "received": "Erhalten",
+  "@received": {
+    "description": "Erhalten Label"
+  },
+  "completed": "Abgeschlossen",
+  "@completed": {
+    "description": "Abgeschlossen Label"
+  },
+  "cancelled": "Abgebrochen",
+  "@cancelled": {
+    "description": "Abgebrochen Label"
+  },
+  "pending": "Ausstehend",
+  "@pending": {
+    "description": "Ausstehend Label"
+  },
+  "markAsShipped": "Als versendet markieren",
+  "@markAsShipped": {
+    "description": "Als versendet markieren Button"
+  },
+  "markAsPaid": "Als bezahlt markieren",
+  "@markAsPaid": {
+    "description": "Als bezahlt markieren Button"
+  },
+  "markAsReceived": "Als erhalten markieren",
+  "@markAsReceived": {
+    "description": "Als erhalten markieren Button"
+  },
+  "cancelTransaction": "Transaktion abbrechen",
+  "@cancelTransaction": {
+    "description": "Transaktion abbrechen Button"
+  },
+  "openDispute": "Streitfall eröffnen",
+  "@openDispute": {
+    "description": "Streitfall eröffnen Button"
+  },
+  "actions": "Aktionen",
+  "@actions": {
+    "description": "Aktionen Titel"
+  },
+  "confirmShipment": "Bestätige, dass du den Artikel versendet hast. Der Käufer hat 14 Tage Zeit, den Erhalt zu bestätigen oder einen Streitfall zu eröffnen.",
+  "@confirmShipment": {
+    "description": "Versandbestätigung Dialog Text"
+  },
+  "confirm": "Bestätigen",
+  "@confirm": {
+    "description": "Bestätigen Button"
+  },
+  "transactionMarkedAsShipped": "Transaktion als versendet markiert",
+  "@transactionMarkedAsShipped": {
+    "description": "Als versendet markiert Nachricht"
+  },
+  "confirmPayment": "Bestätige, dass du die Zahlung an den Verkäufer gesendet hast.",
+  "@confirmPayment": {
+    "description": "Zahlungsbestätigung Dialog Text"
+  },
+  "paymentMarkedAsSent": "Zahlung als gesendet markiert",
+  "@paymentMarkedAsSent": {
+    "description": "Zahlung als gesendet markiert Nachricht"
+  },
+  "confirmReceipt": "Bestätige, dass du den Artikel erhalten hast. Dies wird die Transaktion abschließen.",
+  "@confirmReceipt": {
+    "description": "Erhaltbestätigung Dialog Text"
+  },
+  "transactionCompleted": "Transaktion abgeschlossen",
+  "@transactionCompleted": {
+    "description": "Transaktion abgeschlossen Nachricht"
+  },
+  "cancelTransactionConfirm": "Möchtest du diese Transaktion wirklich abbrechen? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "@cancelTransactionConfirm": {
+    "description": "Transaktionsabbruch Bestätigung"
+  },
+  "keep": "Behalten",
+  "@keep": {
+    "description": "Behalten Button"
+  },
+  "transactionCancelled": "Transaktion abgebrochen",
+  "@transactionCancelled": {
+    "description": "Transaktion abgebrochen Nachricht"
+  },
+  "describeIssue": "Bitte beschreibe das Problem mit dieser Transaktion. Ein Moderator wird deinen Streitfall prüfen.",
+  "@describeIssue": {
+    "description": "Streitfall-Beschreibung Aufforderung"
+  },
+  "reason": "Grund",
+  "@reason": {
+    "description": "Grund Label"
+  },
+  "describeProblem": "Beschreibe das Problem...",
+  "@describeProblem": {
+    "description": "Problem beschreiben Hinweis"
+  },
+  "pleaseEnterReason": "Bitte gib einen Grund an",
+  "@pleaseEnterReason": {
+    "description": "Grund erforderlich Validierung"
+  },
+  "disputeOpened": "Streitfall eröffnet",
+  "@disputeOpened": {
+    "description": "Streitfall eröffnet Nachricht"
+  },
+  "transactionNotFound": "Transaktion nicht gefunden",
+  "@transactionNotFound": {
+    "description": "Transaktion nicht gefunden Fehler"
+  },
+  "transactionId": "Transaktions-ID",
+  "@transactionId": {
+    "description": "Transaktions-ID Label"
+  },
+  "totalPrice": "Gesamtpreis",
+  "@totalPrice": {
+    "description": "Gesamtpreis Label"
+  },
+  "parties": "Parteien",
+  "@parties": {
+    "description": "Parteien Titel"
+  },
+  "buyer": "Käufer",
+  "@buyer": {
+    "description": "Käufer Label"
+  },
+  "seller": "Verkäufer",
+  "@seller": {
+    "description": "Verkäufer Label"
+  },
+  "you": "Du",
+  "@you": {
+    "description": "Du Label"
+  },
+  "viewListingDetails": "Angebotsdetails anzeigen",
+  "@viewListingDetails": {
+    "description": "Angebotsdetails anzeigen Link"
+  },
+  "buyerNote": "Käufernotiz",
+  "@buyerNote": {
+    "description": "Käufernotiz Titel"
+  },
+  "autoCompleteWarning": "Auto-Abschluss Warnung",
+  "@autoCompleteWarning": {
+    "description": "Auto-Abschluss Warnung Titel"
+  },
+  "autoCompleteToday": "Diese Transaktion wird heute automatisch abgeschlossen, wenn kein Streitfall eröffnet wird.",
+  "@autoCompleteToday": {
+    "description": "Auto-Abschluss heute Nachricht"
+  },
+  "autoCompleteInDays": "Diese Transaktion wird in {count} {count, plural, =1{Tag} other{Tagen}} automatisch abgeschlossen, wenn keine Aktion erfolgt.",
+  "@autoCompleteInDays": {
+    "description": "Auto-Abschluss in X Tagen Nachricht",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "disputeOpen": "Streitfall offen",
+  "@disputeOpen": {
+    "description": "Streitfall offen Titel"
+  },
+  "disputeReason": "Grund: {reason}",
+  "@disputeReason": {
+    "description": "Streitfall-Grund",
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "disputeOpenedDate": "Eröffnet: {date}",
+  "@disputeOpenedDate": {
+    "description": "Streitfall eröffnet am",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "moderatorReviewing": "Ein Moderator prüft diesen Streitfall.",
+  "@moderatorReviewing": {
+    "description": "Moderator prüft Nachricht"
+  },
+  "paymentInformation": "Zahlungsinformationen",
+  "@paymentInformation": {
+    "description": "Zahlungsinformationen Titel"
+  },
+  "sendPaymentTo": "Bitte sende die Zahlung an den Verkäufer mit den folgenden Details:",
+  "@sendPaymentTo": {
+    "description": "Zahlungsanweisung"
+  },
+  "includeTransactionId": "Der Verkäufer wird den Artikel versenden, sobald die Zahlung eingegangen ist. Bitte gib deine Transaktions-ID in der Zahlungsnotiz an.",
+  "@includeTransactionId": {
+    "description": "Transaktions-ID in Zahlung Hinweis"
+  },
+  "messages": "Nachrichten",
+  "@messages": {
+    "description": "Nachrichten Screen Titel"
+  },
+  "inbox": "Posteingang",
+  "@inbox": {
+    "description": "Posteingang Tab"
+  },
+  "sent": "Gesendet",
+  "@sent": {
+    "description": "Gesendet Tab"
+  },
+  "drafts": "Entwürfe",
+  "@drafts": {
+    "description": "Entwürfe Tab"
+  },
+  "newMessage": "Neue Nachricht",
+  "@newMessage": {
+    "description": "Neue Nachricht Button"
+  },
+  "noMessages": "Keine Nachrichten",
+  "@noMessages": {
+    "description": "Keine Nachrichten Titel"
+  },
+  "inboxEmpty": "Dein Posteingang ist leer.",
+  "@inboxEmpty": {
+    "description": "Posteingang leer Nachricht"
+  },
+  "noSentMessages": "Keine gesendeten Nachrichten",
+  "@noSentMessages": {
+    "description": "Keine gesendeten Nachrichten Titel"
+  },
+  "noSentMessagesYet": "Du hast noch keine Nachrichten gesendet.",
+  "@noSentMessagesYet": {
+    "description": "Noch keine gesendeten Nachrichten Nachricht"
+  },
+  "noDrafts": "Keine Entwürfe",
+  "@noDrafts": {
+    "description": "Keine Entwürfe Titel"
+  },
+  "noSavedDrafts": "Du hast keine gespeicherten Entwürfe.",
+  "@noSavedDrafts": {
+    "description": "Keine gespeicherten Entwürfe Nachricht"
+  },
+  "errorLoadingTitle": "Fehler beim Laden",
+  "@errorLoadingTitle": {
+    "description": "Fehler beim Laden Titel"
+  },
+  "from": "Von: {username}",
+  "@from": {
+    "description": "Von Label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "to": "An: {username}",
+  "@to": {
+    "description": "An Label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "yesterday": "Gestern",
+  "@yesterday": {
+    "description": "Gestern Label"
+  },
+  "monday": "Mo",
+  "@monday": {
+    "description": "Montag Abkürzung"
+  },
+  "tuesday": "Di",
+  "@tuesday": {
+    "description": "Dienstag Abkürzung"
+  },
+  "wednesday": "Mi",
+  "@wednesday": {
+    "description": "Mittwoch Abkürzung"
+  },
+  "thursday": "Do",
+  "@thursday": {
+    "description": "Donnerstag Abkürzung"
+  },
+  "friday": "Fr",
+  "@friday": {
+    "description": "Freitag Abkürzung"
+  },
+  "saturday": "Sa",
+  "@saturday": {
+    "description": "Samstag Abkürzung"
+  },
+  "sunday": "So",
+  "@sunday": {
+    "description": "Sonntag Abkürzung"
+  },
+  "userNumber": "Benutzer #{id}",
+  "@userNumber": {
+    "description": "Benutzer Nummer",
+    "placeholders": {
+      "id": {
+        "type": "int"
+      }
+    }
+  },
+  "noRecipient": "Kein Empfänger",
+  "@noRecipient": {
+    "description": "Kein Empfänger Label"
+  },
+  "lastEdited": "Zuletzt bearbeitet: {date}",
+  "@lastEdited": {
+    "description": "Zuletzt bearbeitet",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteMessage": "Nachricht löschen?",
+  "@deleteMessage": {
+    "description": "Nachricht löschen Bestätigung Titel"
+  },
+  "actionCannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden.",
+  "@actionCannotBeUndone": {
+    "description": "Aktion nicht rückgängig machbar Warnung"
+  },
+  "deleteDraft": "Entwurf löschen?",
+  "@deleteDraft": {
+    "description": "Entwurf löschen Bestätigung Titel"
+  },
+  "reply": "Antworten",
+  "@reply": {
+    "description": "Antworten Button"
+  },
+  "decryptingMessage": "Nachricht wird entschlüsselt...",
+  "@decryptingMessage": {
+    "description": "Entschlüsselung läuft Nachricht"
+  },
+  "decryptionFailed": "[Entschlüsselung fehlgeschlagen]",
+  "@decryptionFailed": {
+    "description": "Entschlüsselung fehlgeschlagen Fallback"
+  },
+  "endToEndEncrypted": "Ende-zu-Ende verschlüsselt",
+  "@endToEndEncrypted": {
+    "description": "Ende-zu-Ende verschlüsselt Label"
+  },
+  "fromUser": "Von: {username}",
+  "@fromUser": {
+    "description": "Von Benutzer Label",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "dateLabel": "Datum: {date}",
+  "@dateLabel": {
+    "description": "Datum Label",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subject": "Betreff",
+  "@subject": {
+    "description": "Betreff Label"
+  },
+  "noSubject": "[Kein Betreff]",
+  "@noSubject": {
+    "description": "Kein Betreff Platzhalter"
+  },
+  "message": "Nachricht",
+  "@message": {
+    "description": "Nachricht Label"
+  },
+  "noContent": "[Kein Inhalt]",
+  "@noContent": {
+    "description": "Kein Inhalt Platzhalter"
+  },
+  "editDraft": "Entwurf bearbeiten",
+  "@editDraft": {
+    "description": "Entwurf bearbeiten Titel"
+  },
+  "draft": "Entwurf",
+  "@draft": {
+    "description": "Entwurf Button"
+  },
+  "send": "Senden",
+  "@send": {
+    "description": "Senden Button"
+  },
+  "recipient": "Empfänger",
+  "@recipient": {
+    "description": "Empfänger Label"
+  },
+  "enterUsername": "Benutzername eingeben",
+  "@enterUsername": {
+    "description": "Benutzername eingeben Hinweis"
+  },
+  "messageWillBeEncrypted": "Nachricht wird verschlüsselt",
+  "@messageWillBeEncrypted": {
+    "description": "Nachricht wird verschlüsselt Hinweis"
+  },
+  "clickToVerifyRecipient": "Klicke auf das Such-Icon um den Empfänger zu prüfen",
+  "@clickToVerifyRecipient": {
+    "description": "Empfänger prüfen Hinweis"
+  },
+  "userNotFoundOrNoKey": "Benutzer \"{username}\" nicht gefunden oder hat keinen PGP-Schlüssel",
+  "@userNotFoundOrNoKey": {
+    "description": "Benutzer nicht gefunden Fehler",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
   "pleaseSelectRecipient": "Bitte wähle einen Empfänger",
   "@pleaseSelectRecipient": {
     "description": "Empfänger wählen Validierung"
   },
-
   "recipientNotVerified": "Empfänger nicht verifiziert oder kein PGP-Schlüssel vorhanden. Bitte Empfänger prüfen.",
   "@recipientNotVerified": {
     "description": "Empfänger nicht verifiziert Fehler"
   },
-
   "pleaseEnterSubject": "Bitte gib einen Betreff ein",
   "@pleaseEnterSubject": {
     "description": "Betreff eingeben Validierung"
   },
-
   "pleaseEnterMessage": "Bitte gib eine Nachricht ein",
   "@pleaseEnterMessage": {
     "description": "Nachricht eingeben Validierung"
   },
-
   "errorSending": "Fehler beim Senden: {error}",
   "@errorSending": {
     "description": "Sendefehler",
@@ -1848,12 +1494,10 @@
       }
     }
   },
-
   "draftSaved": "Entwurf gespeichert",
   "@draftSaved": {
     "description": "Entwurf gespeichert Nachricht"
   },
-
   "errorSavingDraft": "Fehler beim Speichern: {error}",
   "@errorSavingDraft": {
     "description": "Entwurf speichern Fehler",
@@ -1863,237 +1507,182 @@
       }
     }
   },
-
   "pgpKeys": "PGP-Schlüssel",
   "@pgpKeys": {
     "description": "PGP-Schlüssel Titel"
   },
-
   "keyInformation": "Schlüssel-Informationen",
   "@keyInformation": {
     "description": "Schlüsselinformationen Titel"
   },
-
   "generateNewKey": "Neuen Schlüssel generieren",
   "@generateNewKey": {
     "description": "Schlüssel generieren Titel"
   },
-
   "exportKey": "Schlüssel exportieren",
   "@exportKey": {
     "description": "Schlüssel exportieren Titel"
   },
-
   "importKey": "Schlüssel importieren",
   "@importKey": {
     "description": "Schlüssel importieren Titel"
   },
-
   "serverBackup": "Server-Backup",
   "@serverBackup": {
     "description": "Server-Backup Titel"
   },
-
   "securityNotices": "Sicherheitshinweise",
   "@securityNotices": {
     "description": "Sicherheitshinweise Titel"
   },
-
   "setBackupPassword": "Backup-Passwort festlegen",
   "@setBackupPassword": {
     "description": "Backup-Passwort Dialog Titel"
   },
-
   "generateKey": "Schlüssel generieren",
   "@generateKey": {
     "description": "Schlüssel generieren Aktion"
   },
-
   "privateKeyExport": "Private Key Export",
   "@privateKeyExport": {
     "description": "Private Key Export Titel"
   },
-
   "importPrivateKey": "Private Key importieren",
   "@importPrivateKey": {
     "description": "Private Key importieren Titel"
   },
-
   "keyConfigured": "Schlüssel eingerichtet",
   "@keyConfigured": {
     "description": "Schlüssel eingerichtet Status"
   },
-
   "keyIncomplete": "Schlüssel nicht vollständig",
   "@keyIncomplete": {
     "description": "Schlüssel nicht vollständig Status"
   },
-
   "canSendEncryptedMessages": "Du kannst verschlüsselte Nachrichten senden und empfangen.",
   "@canSendEncryptedMessages": {
     "description": "Kann Nachrichten senden"
   },
-
   "generateOrImportKey": "Generiere einen neuen Schlüssel oder importiere einen vorhandenen.",
   "@generateOrImportKey": {
     "description": "Schlüssel generieren oder importieren"
   },
-
   "privateKeyLocalPublicKeyMissing": "Private Key vorhanden, aber Public Key nicht auf dem Server.",
   "@privateKeyLocalPublicKeyMissing": {
     "description": "Private Key lokal, Public Key fehlt"
   },
-
   "publicKeyOnServerPrivateKeyMissing": "Public Key auf Server, aber Private Key fehlt lokal.",
   "@publicKeyOnServerPrivateKeyMissing": {
     "description": "Public Key auf Server, Private Key fehlt"
   },
-
   "keysMismatch": "Schlüssel stimmen nicht überein.",
   "@keysMismatch": {
     "description": "Schlüssel stimmen nicht überein"
   },
-
   "exportPrivateKeyForBackup": "Exportiere deinen Private Key für ein Backup. Bewahre ihn sicher auf!",
   "@exportPrivateKeyForBackup": {
     "description": "Private Key exportieren Beschreibung"
   },
-
   "importExistingPrivateKey": "Importiere einen vorhandenen Private Key (z.B. von einem Backup oder anderem Gerät).",
   "@importExistingPrivateKey": {
     "description": "Private Key importieren Beschreibung"
   },
-
   "storePrivateKeyEncryptedOnServer": "Speichere deinen Private Key verschlüsselt auf dem Server. So kannst du ihn auf einem anderen Gerät wiederherstellen.",
   "@storePrivateKeyEncryptedOnServer": {
     "description": "Server-Backup Beschreibung"
   },
-
   "securityWarning": "Sicherheitshinweis",
   "@securityWarning": {
     "description": "Sicherheitshinweis Dialog Titel"
   },
-
   "aboutToStorePrivateKeyOnServer": "Du bist dabei, deinen Private Key auf dem Server zu speichern.",
   "@aboutToStorePrivateKeyOnServer": {
     "description": "Private Key auf Server speichern Warnung"
   },
-
   "keyWillBeEncryptedBeforeUpload": "Der Key wird mit einem Passwort verschlüsselt, bevor er hochgeladen wird. Trotzdem solltest du folgendes beachten:",
   "@keyWillBeEncryptedBeforeUpload": {
     "description": "Verschlüsselung vor Upload Hinweis"
   },
-
   "chooseStrongUniquePassword": "Wähle ein starkes, einzigartiges Passwort",
   "@chooseStrongUniquePassword": {
     "description": "Starkes Passwort wählen"
   },
-
   "passwordCannotBeReset": "Dieses Passwort kann NICHT zurückgesetzt werden",
   "@passwordCannotBeReset": {
     "description": "Passwort kann nicht zurückgesetzt werden"
   },
-
   "backupWorthlessWithoutPassword": "Ohne Passwort ist das Backup wertlos",
   "@backupWorthlessWithoutPassword": {
     "description": "Backup ohne Passwort wertlos"
   },
-
   "serverOperatorMightGuessPassword": "Der Server-Betreiber könnte versuchen, das Passwort zu erraten",
   "@serverOperatorMightGuessPassword": {
     "description": "Server-Betreiber könnte Passwort erraten"
   },
-
   "chooseStrongPasswordForBackup": "Wähle ein starkes Passwort für dein Backup. Du brauchst es, um den Key wiederherzustellen.",
   "@chooseStrongPasswordForBackup": {
     "description": "Starkes Passwort für Backup"
   },
-
-  "confirmPassword": "Passwort bestätigen",
-  "@confirmPassword": {
-    "description": "Passwort bestätigen Label"
-  },
-
   "passwordsDontMatch": "Passwörter stimmen nicht überein",
   "@passwordsDontMatch": {
     "description": "Passwörter stimmen nicht überein Fehler"
   },
-
   "pleaseEnterName": "Bitte gib einen Namen ein",
   "@pleaseEnterName": {
     "description": "Namen eingeben Validierung"
   },
-
   "enterPasswordForBackup": "Gib das Passwort ein, mit dem du das Backup verschlüsselt hast:",
   "@enterPasswordForBackup": {
     "description": "Backup-Passwort eingeben"
   },
-
   "decryptingAndImporting": "Entschlüssele und importiere...",
   "@decryptingAndImporting": {
     "description": "Entschlüsselung und Import läuft"
   },
-
   "decryptionFailedWrongPassword": "Entschlüsselung fehlgeschlagen. Falsches Passwort?",
   "@decryptionFailedWrongPassword": {
     "description": "Entschlüsselung fehlgeschlagen Fehler"
   },
-
   "understandProceed": "Ich verstehe, fortfahren",
   "@understandProceed": {
     "description": "Ich verstehe, fortfahren Button"
   },
-
   "uploadPublicKey": "Public Key hochladen",
   "@uploadPublicKey": {
     "description": "Public Key hochladen Button"
   },
-
   "generating": "Generiere...",
   "@generating": {
     "description": "Generiere läuft"
   },
-
   "exportPrivateKey": "Private Key exportieren",
   "@exportPrivateKey": {
     "description": "Private Key exportieren Button"
   },
-
   "pastePrivateKey": "Private Key einfügen",
   "@pastePrivateKey": {
     "description": "Private Key einfügen Button"
   },
-
   "loadFromServerBackup": "Vom Server-Backup laden",
   "@loadFromServerBackup": {
     "description": "Vom Server-Backup laden Button"
   },
-
   "createEncryptedBackup": "Verschlüsseltes Backup erstellen",
   "@createEncryptedBackup": {
     "description": "Verschlüsseltes Backup erstellen Button"
   },
-
   "copyFingerprint": "Fingerprint kopieren",
   "@copyFingerprint": {
     "description": "Fingerprint kopieren Button"
   },
-
   "createBackup": "Backup erstellen",
   "@createBackup": {
     "description": "Backup erstellen Button"
   },
-
   "restore": "Wiederherstellen",
   "@restore": {
     "description": "Wiederherstellen Button"
   },
-
-  "close": "Schließen",
-  "@close": {
-    "description": "Schließen Button"
-  },
-
   "errorLoading": "Fehler beim Laden: {error}",
   "@errorLoading": {
     "description": "Fehler beim Laden",
@@ -2103,32 +1692,26 @@
       }
     }
   },
-
   "existingKeyWillBeReplaced": "Der vorhandene Schlüssel wird ersetzt!",
   "@existingKeyWillBeReplaced": {
     "description": "Schlüssel wird ersetzt Warnung"
   },
-
   "invalidKeyAfterDecryption": "Ungültiger Key nach Entschlüsselung",
   "@invalidKeyAfterDecryption": {
     "description": "Ungültiger Key Fehler"
   },
-
   "noPrivateKey": "Kein Private Key vorhanden",
   "@noPrivateKey": {
     "description": "Kein Private Key Fehler"
   },
-
   "noFingerprint": "Kein Fingerprint vorhanden",
   "@noFingerprint": {
     "description": "Kein Fingerprint Fehler"
   },
-
   "backupSuccessfullySaved": "Backup erfolgreich auf Server gespeichert!",
   "@backupSuccessfullySaved": {
     "description": "Backup gespeichert Erfolg"
   },
-
   "errorBackup": "Fehler beim Backup: {error}",
   "@errorBackup": {
     "description": "Backup Fehler",
@@ -2138,12 +1721,10 @@
       }
     }
   },
-
   "noBackupOnServer": "Kein Backup auf dem Server gefunden.",
   "@noBackupOnServer": {
     "description": "Kein Backup gefunden"
   },
-
   "errorGeneration": "Fehler bei der Generierung: {error}",
   "@errorGeneration": {
     "description": "Generierung Fehler",
@@ -2153,12 +1734,10 @@
       }
     }
   },
-
   "keySuccessfullyGenerated": "Schlüssel erfolgreich generiert und hochgeladen!",
   "@keySuccessfullyGenerated": {
     "description": "Schlüssel generiert Erfolg"
   },
-
   "errorUploading": "Fehler beim Hochladen: {error}",
   "@errorUploading": {
     "description": "Upload Fehler",
@@ -2168,157 +1747,118 @@
       }
     }
   },
-
   "privateKeyNeverLeavesDevice": "Dein Private Key verlässt niemals dieses Gerät",
   "@privateKeyNeverLeavesDevice": {
     "description": "Private Key verlässt Gerät nie"
   },
-
   "onlyPublicKeyStoredOnServer": "Nur der Public Key wird auf dem Server gespeichert",
   "@onlyPublicKeyStoredOnServer": {
     "description": "Nur Public Key auf Server"
   },
-
   "regularBackupsRecommended": "Erstelle regelmäßig Backups deines Private Keys",
   "@regularBackupsRecommended": {
     "description": "Regelmäßige Backups empfohlen"
   },
-
   "lostKeyCannotDecryptOldMessages": "Bei Verlust des Keys können alte Nachrichten nicht entschlüsselt werden",
   "@lostKeyCannotDecryptOldMessages": {
     "description": "Verlorener Key kann Nachrichten nicht entschlüsseln"
   },
-
   "createsNewEd25519Key": "Erstellt einen neuen Ed25519/Curve25519 Schlüssel. Dies dauert nur wenige Sekunden.",
   "@createsNewEd25519Key": {
     "description": "Ed25519 Schlüssel erstellen Beschreibung"
   },
-
   "generatingEd25519Key": "Ed25519/Curve25519 Schlüssel wird erstellt. Dies dauert nur wenige Sekunden.",
   "@generatingEd25519Key": {
     "description": "Ed25519 Schlüssel wird erstellt"
   },
-
   "keySuccessfullyRestored": "Schlüssel erfolgreich wiederhergestellt!",
   "@keySuccessfullyRestored": {
     "description": "Schlüssel wiederhergestellt Erfolg"
   },
-
-  "password": "Passwort",
-  "@password": {
-    "description": "Passwort Label"
-  },
-
   "protectWithPassphrase": "Mit Passphrase schützen",
   "@protectWithPassphrase": {
     "description": "Mit Passphrase schützen Checkbox"
   },
-
   "recommendedForSecurity": "Empfohlen für zusätzliche Sicherheit",
   "@recommendedForSecurity": {
     "description": "Empfohlen für Sicherheit"
   },
-
   "passphrase": "Passphrase",
   "@passphrase": {
     "description": "Passphrase Label"
   },
-
   "enterSecurePassphrase": "Sichere Passphrase eingeben",
   "@enterSecurePassphrase": {
     "description": "Sichere Passphrase eingeben Hint"
   },
-
   "name": "Name",
   "@name": {
     "description": "Name Label"
   },
-
   "yourName": "Dein Name",
   "@yourName": {
     "description": "Dein Name Hint"
   },
-
   "emailOptional": "E-Mail (optional)",
   "@emailOptional": {
     "description": "E-Mail optional Label"
   },
-
   "yourEmailCom": "deine@email.com",
   "@yourEmailCom": {
     "description": "E-Mail Hint"
   },
-
   "fingerprint": "Fingerprint",
   "@fingerprint": {
     "description": "Fingerprint Label"
   },
-
   "algorithm": "Algorithmus",
   "@algorithm": {
     "description": "Algorithmus Label"
   },
-
   "keySize": "Schlüsselgröße",
   "@keySize": {
     "description": "Schlüsselgröße Label"
   },
-
   "identity": "Identität",
   "@identity": {
     "description": "Identität Label"
   },
-
-  "created": "Erstellt",
-  "@created": {
-    "description": "Erstellt Label"
-  },
-
   "keepKeySafe": "Bewahre diesen Schlüssel sicher auf! Teile ihn niemals mit anderen.",
   "@keepKeySafe": {
     "description": "Schlüssel sicher aufbewahren Warnung"
   },
-
   "pastePrivateKeyInPgpFormat": "Füge deinen Private Key im PGP-Armor Format ein:",
   "@pastePrivateKeyInPgpFormat": {
     "description": "Private Key einfügen Anleitung"
   },
-
   "beginPgpPrivateKeyBlock": "-----BEGIN PGP PRIVATE KEY BLOCK-----",
   "@beginPgpPrivateKeyBlock": {
     "description": "PGP Private Key Block Anfang"
   },
-
   "pleasePasteKey": "Bitte füge einen Key ein",
   "@pleasePasteKey": {
     "description": "Key einfügen Validierung"
   },
-
   "invalidKeyFormat": "Ungültiges Key-Format",
   "@invalidKeyFormat": {
     "description": "Ungültiges Key-Format Fehler"
   },
-
   "privateKeySuccessfullyImported": "Private Key erfolgreich importiert!",
   "@privateKeySuccessfullyImported": {
     "description": "Private Key importiert Erfolg"
   },
-
   "selectBackupToRestore": "Wähle das Backup aus, das du wiederherstellen möchtest:",
   "@selectBackupToRestore": {
     "description": "Backup auswählen Anleitung"
   },
-
   "selectBackup": "Backup auswählen",
   "@selectBackup": {
     "description": "Backup auswählen Titel"
   },
-
   "decryptBackup": "Backup entschlüsseln",
   "@decryptBackup": {
     "description": "Backup entschlüsseln Titel"
   },
-
   "copiedToClipboard": "{label} in die Zwischenablage kopiert",
   "@copiedToClipboard": {
     "description": "In Zwischenablage kopiert Nachricht",
@@ -2328,657 +1868,502 @@
       }
     }
   },
-
-  "generatingKey": "Schlüssel wird generiert...",
-  "@generatingKey": {
-    "description": "Schlüssel wird generiert Status"
-  },
-
   "publicKeySuccessfullyUploaded": "Public Key erfolgreich hochgeladen!",
   "@publicKeySuccessfullyUploaded": {
     "description": "Public Key hochgeladen Erfolg"
   },
-
-  "passwordMinLength": "Passwort muss mindestens 8 Zeichen haben",
-  "@passwordMinLength": {
-    "description": "Passwort Mindestlänge Validierung"
-  },
-
-  "pleaseEnterPassword": "Bitte gib das Passwort ein",
-  "@pleaseEnterPassword": {
-    "description": "Passwort eingeben Validierung"
-  },
-
   "backupPassword": "Backup-Passwort",
   "@backupPassword": {
     "description": "Backup-Passwort Label"
   },
-
   "keyGenerationTooLong": "Schlüsselgenerierung dauert zu lange. Bitte versuche es erneut oder starte die App neu.",
   "@keyGenerationTooLong": {
     "description": "Schlüsselgenerierung Timeout Fehler"
   },
-
   "noOwnPgpKey": "Kein eigener PGP-Schlüssel vorhanden. Bitte lade deinen Public Key hoch.",
   "@noOwnPgpKey": {
     "description": "Kein eigener PGP-Schlüssel Fehler"
   },
-
   "recipientHasNoPgpKey": "Empfänger hat keinen PGP-Schlüssel",
   "@recipientHasNoPgpKey": {
     "description": "Empfänger hat keinen PGP-Schlüssel Fehler"
   },
-
-  "decryptionFailed": "[Entschlüsselung fehlgeschlagen]",
-  "@decryptionFailed": {
-    "description": "Entschlüsselung fehlgeschlagen Fallback"
-  },
-
   "adminPanel": "Admin-Panel",
   "@adminPanel": {
     "description": "Admin-Panel Titel"
   },
-
   "adminPanelWelcome": "Willkommen im Admin-Bereich",
   "@adminPanelWelcome": {
     "description": "Admin-Panel Willkommensnachricht"
   },
-
   "userManagement": "Benutzerverwaltung",
   "@userManagement": {
     "description": "Benutzerverwaltung Label"
   },
-
   "categoryManagement": "Kategorienverwaltung",
   "@categoryManagement": {
     "description": "Kategorienverwaltung Label"
   },
-
   "newsManagement": "News-Verwaltung",
   "@newsManagement": {
     "description": "News-Verwaltung Label"
   },
-
   "paymentSettings": "Zahlungseinstellungen",
   "@paymentSettings": {
     "description": "Zahlungseinstellungen Label"
   },
-
   "pendingPayments": "Ausstehende Zahlungen",
   "@pendingPayments": {
     "description": "Ausstehende Zahlungen Label"
   },
-
   "slotVariants": "Slot-Varianten",
   "@slotVariants": {
     "description": "Slot-Varianten Label"
   },
-
   "moderatorPanel": "Moderator-Panel",
   "@moderatorPanel": {
     "description": "Moderator-Panel Titel"
   },
-
   "moderatorPanelWelcome": "Willkommen im Moderations-Bereich",
   "@moderatorPanelWelcome": {
     "description": "Moderator-Panel Willkommensnachricht"
   },
-
   "reports": "Meldungen",
   "@reports": {
     "description": "Meldungen Label"
   },
-
   "disputes": "Streitfälle",
   "@disputes": {
     "description": "Streitfälle Label"
   },
-
   "allReports": "Alle Meldungen",
   "@allReports": {
     "description": "Alle Meldungen Tab"
   },
-
   "openReports": "Offen",
   "@openReports": {
     "description": "Offene Meldungen Tab"
   },
-
   "inReviewReports": "In Prüfung",
   "@inReviewReports": {
     "description": "In Prüfung Meldungen Tab"
   },
-
   "resolvedReports": "Gelöst",
   "@resolvedReports": {
     "description": "Gelöste Meldungen Tab"
   },
-
   "dismissedReports": "Abgewiesen",
   "@dismissedReports": {
     "description": "Abgewiesene Meldungen Tab"
   },
-
   "statusReportOpen": "OFFEN",
   "@statusReportOpen": {
     "description": "Meldungsstatus Offen"
   },
-
   "statusReportInReview": "IN PRÜFUNG",
   "@statusReportInReview": {
     "description": "Meldungsstatus In Prüfung"
   },
-
   "statusReportResolved": "GELÖST",
   "@statusReportResolved": {
     "description": "Meldungsstatus Gelöst"
   },
-
   "statusReportDismissed": "ABGEWIESEN",
   "@statusReportDismissed": {
     "description": "Meldungsstatus Abgewiesen"
   },
-
   "reportedBy": "Gemeldet von",
   "@reportedBy": {
     "description": "Gemeldet von Label"
   },
-
   "reportedUser": "Gemeldeter Benutzer",
   "@reportedUser": {
     "description": "Gemeldeter Benutzer Label"
   },
-
   "reportedListing": "Gemeldetes Angebot",
   "@reportedListing": {
     "description": "Gemeldetes Angebot Label"
   },
-
   "reportReason": "Grund",
   "@reportReason": {
     "description": "Meldegrund Label"
   },
-
   "reportReasonSpam": "Spam",
   "@reportReasonSpam": {
     "description": "Meldegrund Spam"
   },
-
   "reportReasonInappropriate": "Unangemessener Inhalt",
   "@reportReasonInappropriate": {
     "description": "Meldegrund Unangemessener Inhalt"
   },
-
   "reportReasonScam": "Betrug/Scam",
   "@reportReasonScam": {
     "description": "Meldegrund Betrug"
   },
-
   "reportReasonHarassment": "Belästigung",
   "@reportReasonHarassment": {
     "description": "Meldegrund Belästigung"
   },
-
   "reportReasonFakeInfo": "Falsche Informationen",
   "@reportReasonFakeInfo": {
     "description": "Meldegrund Falsche Informationen"
   },
-
   "reportReasonOther": "Sonstiges",
   "@reportReasonOther": {
     "description": "Meldegrund Sonstiges"
   },
-
   "noReports": "Keine Meldungen",
   "@noReports": {
     "description": "Keine Meldungen Titel"
   },
-
   "noReportsMessage": "Es gibt aktuell keine Meldungen zu prüfen.",
   "@noReportsMessage": {
     "description": "Keine Meldungen Nachricht"
   },
-
   "viewReport": "Meldung ansehen",
   "@viewReport": {
     "description": "Meldung ansehen Button"
   },
-
   "reportDetail": "Meldungsdetails",
   "@reportDetail": {
     "description": "Meldungsdetails Titel"
   },
-
   "reportId": "Meldungs-ID",
   "@reportId": {
     "description": "Meldungs-ID Label"
   },
-
   "reportType": "Typ",
   "@reportType": {
     "description": "Meldungstyp Label"
   },
-
   "reportTypeUser": "Benutzer",
   "@reportTypeUser": {
     "description": "Meldungstyp Benutzer"
   },
-
   "reportTypeListing": "Angebot",
   "@reportTypeListing": {
     "description": "Meldungstyp Angebot"
   },
-
   "reportedAt": "Gemeldet am",
   "@reportedAt": {
     "description": "Gemeldet am Label"
   },
-
   "reportDescription": "Beschreibung",
   "@reportDescription": {
     "description": "Meldungsbeschreibung Label"
   },
-
   "moderatorNotes": "Moderator-Notizen",
   "@moderatorNotes": {
     "description": "Moderator-Notizen Label"
   },
-
   "addNote": "Notiz hinzufügen",
   "@addNote": {
     "description": "Notiz hinzufügen Button"
   },
-
   "internalNotesOnly": "Nur für Moderatoren sichtbar",
   "@internalNotesOnly": {
     "description": "Interne Notizen Hinweis"
   },
-
   "enterNote": "Notiz eingeben...",
   "@enterNote": {
     "description": "Notiz eingeben Hint"
   },
-
   "noteSaved": "Notiz gespeichert",
   "@noteSaved": {
     "description": "Notiz gespeichert Nachricht"
   },
-
-  "actions": "Aktionen",
-  "@actions": {
-    "description": "Aktionen Titel"
-  },
-
   "takeAction": "Maßnahme ergreifen",
   "@takeAction": {
     "description": "Maßnahme ergreifen Button"
   },
-
   "markAsInReview": "Als in Prüfung markieren",
   "@markAsInReview": {
     "description": "Als in Prüfung markieren Button"
   },
-
   "resolveReport": "Meldung lösen",
   "@resolveReport": {
     "description": "Meldung lösen Button"
   },
-
   "dismissReport": "Meldung abweisen",
   "@dismissReport": {
     "description": "Meldung abweisen Button"
   },
-
   "viewReportedUser": "Gemeldeten Benutzer ansehen",
   "@viewReportedUser": {
     "description": "Gemeldeten Benutzer ansehen Button"
   },
-
   "viewReportedListing": "Gemeldetes Angebot ansehen",
   "@viewReportedListing": {
     "description": "Gemeldetes Angebot ansehen Button"
   },
-
   "warnUser": "Benutzer verwarnen",
   "@warnUser": {
     "description": "Benutzer verwarnen Button"
   },
-
   "banUser": "Benutzer sperren",
   "@banUser": {
     "description": "Benutzer sperren Button"
   },
-
-  "deleteListing": "Angebot löschen",
-  "@deleteListing": {
-    "description": "Angebot löschen Button"
-  },
-
   "reportMarkedInReview": "Meldung als in Prüfung markiert",
   "@reportMarkedInReview": {
     "description": "Als in Prüfung markiert Nachricht"
   },
-
   "reportResolved": "Meldung gelöst",
   "@reportResolved": {
     "description": "Meldung gelöst Nachricht"
   },
-
   "reportDismissed": "Meldung abgewiesen",
   "@reportDismissed": {
     "description": "Meldung abgewiesen Nachricht"
   },
-
   "confirmResolveReport": "Möchtest du diese Meldung als gelöst markieren?",
   "@confirmResolveReport": {
     "description": "Meldung lösen Bestätigung"
   },
-
   "confirmDismissReport": "Möchtest du diese Meldung abweisen?",
   "@confirmDismissReport": {
     "description": "Meldung abweisen Bestätigung"
   },
-
   "resolve": "Lösen",
   "@resolve": {
     "description": "Lösen Button"
   },
-
   "dismiss": "Abweisen",
   "@dismiss": {
     "description": "Abweisen Button"
   },
-
   "userDetail": "Benutzerdetails",
   "@userDetail": {
     "description": "Benutzerdetails Titel"
   },
-
   "userId": "Benutzer-ID",
   "@userId": {
     "description": "Benutzer-ID Label"
   },
-
   "registeredAt": "Registriert am",
   "@registeredAt": {
     "description": "Registriert am Label"
   },
-
   "lastActive": "Zuletzt aktiv",
   "@lastActive": {
     "description": "Zuletzt aktiv Label"
   },
-
   "totalListings": "Angebote gesamt",
   "@totalListings": {
     "description": "Angebote gesamt Label"
   },
-
   "totalTransactions": "Transaktionen gesamt",
   "@totalTransactions": {
     "description": "Transaktionen gesamt Label"
   },
-
   "userRating": "Bewertung",
   "@userRating": {
     "description": "Bewertung Label"
   },
-
   "userStatus": "Status",
   "@userStatus": {
     "description": "Benutzerstatus Label"
   },
-
   "userStatusActive": "Aktiv",
   "@userStatusActive": {
     "description": "Benutzerstatus Aktiv"
   },
-
   "userStatusBanned": "Gesperrt",
   "@userStatusBanned": {
     "description": "Benutzerstatus Gesperrt"
   },
-
   "userStatusWarned": "Verwarnt",
   "@userStatusWarned": {
     "description": "Benutzerstatus Verwarnt"
   },
-
   "banUserDialog": "Benutzer sperren",
   "@banUserDialog": {
     "description": "Benutzer sperren Dialog Titel"
   },
-
   "banReason": "Sperrgrund",
   "@banReason": {
     "description": "Sperrgrund Label"
   },
-
   "selectBanReason": "Sperrgrund wählen",
   "@selectBanReason": {
     "description": "Sperrgrund wählen Label"
   },
-
   "banReasonSpam": "Spam",
   "@banReasonSpam": {
     "description": "Sperrgrund Spam"
   },
-
   "banReasonScam": "Betrug",
   "@banReasonScam": {
     "description": "Sperrgrund Betrug"
   },
-
   "banReasonHarassment": "Belästigung",
   "@banReasonHarassment": {
     "description": "Sperrgrund Belästigung"
   },
-
   "banReasonIllegalContent": "Illegaler Inhalt",
   "@banReasonIllegalContent": {
     "description": "Sperrgrund Illegaler Inhalt"
   },
-
   "banReasonMultipleViolations": "Mehrfache Verstöße",
   "@banReasonMultipleViolations": {
     "description": "Sperrgrund Mehrfache Verstöße"
   },
-
   "banReasonOther": "Sonstiges",
   "@banReasonOther": {
     "description": "Sperrgrund Sonstiges"
   },
-
   "banDuration": "Sperrdauer",
   "@banDuration": {
     "description": "Sperrdauer Label"
   },
-
   "banDuration24h": "24 Stunden",
   "@banDuration24h": {
     "description": "Sperrdauer 24 Stunden"
   },
-
   "banDuration7d": "7 Tage",
   "@banDuration7d": {
     "description": "Sperrdauer 7 Tage"
   },
-
   "banDuration30d": "30 Tage",
   "@banDuration30d": {
     "description": "Sperrdauer 30 Tage"
   },
-
   "banDurationPermanent": "Permanent",
   "@banDurationPermanent": {
     "description": "Sperrdauer Permanent"
   },
-
   "additionalNotes": "Zusätzliche Notizen",
   "@additionalNotes": {
     "description": "Zusätzliche Notizen Label"
   },
-
   "optionalNotes": "Optional: Zusätzliche Informationen...",
   "@optionalNotes": {
     "description": "Optionale Notizen Hint"
   },
-
   "confirmBanUser": "Möchtest du diesen Benutzer wirklich sperren?",
   "@confirmBanUser": {
     "description": "Benutzer sperren Bestätigung"
   },
-
   "ban": "Sperren",
   "@ban": {
     "description": "Sperren Button"
   },
-
   "userBanned": "Benutzer gesperrt",
   "@userBanned": {
     "description": "Benutzer gesperrt Nachricht"
   },
-
   "userWarned": "Benutzer verwarnt",
   "@userWarned": {
     "description": "Benutzer verwarnt Nachricht"
   },
-
   "newsManagementScreen": "News-Verwaltung",
   "@newsManagementScreen": {
     "description": "News-Verwaltung Screen Titel"
   },
-
   "allNews": "Alle News",
   "@allNews": {
     "description": "Alle News Tab"
   },
-
   "publishedNews": "Veröffentlicht",
   "@publishedNews": {
     "description": "Veröffentlichte News Tab"
   },
-
   "draftNews": "Entwürfe",
   "@draftNews": {
     "description": "News-Entwürfe Tab"
   },
-
   "createNews": "News erstellen",
   "@createNews": {
     "description": "News erstellen Button"
   },
-
   "noNewsItems": "Keine News vorhanden",
   "@noNewsItems": {
     "description": "Keine News Titel"
   },
-
   "noNewsItemsMessage": "Es wurden noch keine News erstellt.",
   "@noNewsItemsMessage": {
     "description": "Keine News Nachricht"
   },
-
   "newsTitle": "Titel",
   "@newsTitle": {
     "description": "News-Titel Label"
   },
-
   "newsContent": "Inhalt",
   "@newsContent": {
     "description": "News-Inhalt Label"
   },
-
   "newsStatus": "Status",
   "@newsStatus": {
     "description": "News-Status Label"
   },
-
   "newsStatusPublished": "Veröffentlicht",
   "@newsStatusPublished": {
     "description": "News-Status Veröffentlicht"
   },
-
   "newsStatusDraft": "Entwurf",
   "@newsStatusDraft": {
     "description": "News-Status Entwurf"
   },
-
   "publishedAt": "Veröffentlicht am",
   "@publishedAt": {
     "description": "Veröffentlicht am Label"
   },
-
   "editNews": "News bearbeiten",
   "@editNews": {
     "description": "News bearbeiten Button"
   },
-
   "deleteNews": "News löschen",
   "@deleteNews": {
     "description": "News löschen Button"
   },
-
   "createNewsItem": "News erstellen",
   "@createNewsItem": {
     "description": "News erstellen Dialog Titel"
   },
-
   "editNewsItem": "News bearbeiten",
   "@editNewsItem": {
     "description": "News bearbeiten Dialog Titel"
   },
-
   "enterNewsTitle": "News-Titel eingeben",
   "@enterNewsTitle": {
     "description": "News-Titel Hint"
   },
-
   "enterNewsContent": "News-Inhalt eingeben...",
   "@enterNewsContent": {
     "description": "News-Inhalt Hint"
   },
-
   "newsTitleRequired": "Titel ist erforderlich",
   "@newsTitleRequired": {
     "description": "News-Titel erforderlich Validierung"
   },
-
   "newsContentRequired": "Inhalt ist erforderlich",
   "@newsContentRequired": {
     "description": "News-Inhalt erforderlich Validierung"
   },
-
   "publish": "Veröffentlichen",
   "@publish": {
     "description": "Veröffentlichen Button"
   },
-
   "saveAsDraft": "Als Entwurf speichern",
   "@saveAsDraft": {
     "description": "Als Entwurf speichern Button"
   },
-
   "newsCreated": "News erstellt",
   "@newsCreated": {
     "description": "News erstellt Nachricht"
   },
-
   "newsUpdated": "News aktualisiert",
   "@newsUpdated": {
     "description": "News aktualisiert Nachricht"
   },
-
   "newsDeleted": "News gelöscht",
   "@newsDeleted": {
     "description": "News gelöscht Nachricht"
   },
-
   "confirmDeleteNews": "Möchtest du diese News wirklich löschen?",
   "@confirmDeleteNews": {
     "description": "News löschen Bestätigung"
   },
-
   "confirmDeleteNewsWithTitle": "Möchtest du \"{title}\" wirklich löschen?",
   "@confirmDeleteNewsWithTitle": {
     "description": "News löschen Bestätigung mit Titel",
@@ -2988,22 +2373,18 @@
       }
     }
   },
-
   "deleteExpired": "Abgelaufene löschen",
   "@deleteExpired": {
     "description": "Abgelaufene löschen Button"
   },
-
   "deleteExpiredNews": "Abgelaufene News löschen",
   "@deleteExpiredNews": {
     "description": "Abgelaufene News löschen Dialog Titel"
   },
-
   "confirmDeleteExpiredNews": "Möchtest du alle abgelaufenen News löschen?",
   "@confirmDeleteExpiredNews": {
     "description": "Abgelaufene News löschen Bestätigung"
   },
-
   "expiredNewsDeleted": "{count} abgelaufene News gelöscht",
   "@expiredNewsDeleted": {
     "description": "Abgelaufene News gelöscht Nachricht",
@@ -3013,12 +2394,10 @@
       }
     }
   },
-
   "newsStatusExpired": "Abgelaufen",
   "@newsStatusExpired": {
     "description": "News-Status Abgelaufen"
   },
-
   "createdLabel": "Erstellt: {date}",
   "@createdLabel": {
     "description": "Erstellt Label mit Datum",
@@ -3028,7 +2407,6 @@
       }
     }
   },
-
   "expiresLabel": "Läuft ab: {date}",
   "@expiresLabel": {
     "description": "Läuft ab Label mit Datum",
@@ -3038,47 +2416,38 @@
       }
     }
   },
-
   "markdownSupported": "Markdown wird unterstützt",
   "@markdownSupported": {
     "description": "Markdown wird unterstützt Hinweis"
   },
-
   "lifetimeDays": "Lebenszeit (Tage)",
   "@lifetimeDays": {
     "description": "Lebenszeit in Tagen Label"
   },
-
   "defaultLifetimeDays": "Standard: 14 Tage",
   "@defaultLifetimeDays": {
     "description": "Standard Lebenszeit Hinweis"
   },
-
   "expiryDate": "Ablaufdatum",
   "@expiryDate": {
     "description": "Ablaufdatum Label"
   },
-
   "noExpiryDate": "Kein Ablaufdatum",
   "@noExpiryDate": {
     "description": "Kein Ablaufdatum Text"
   },
-
   "publishNewsMessage": "News wird auf dem Dashboard angezeigt",
   "@publishNewsMessage": {
     "description": "Veröffentlichen News Nachricht"
   },
-
   "titleContentRequired": "Titel und Inhalt dürfen nicht leer sein",
   "@titleContentRequired": {
     "description": "Titel und Inhalt erforderlich Validierung"
   },
-
   "createFirstNews": "Erstelle die erste News mit dem + Button.",
   "@createFirstNews": {
     "description": "Erstelle erste News Nachricht"
   },
-
   "errorDeleting": "Fehler beim Löschen: {error}",
   "@errorDeleting": {
     "description": "Fehler beim Löschen Nachricht",
@@ -3088,127 +2457,102 @@
       }
     }
   },
-
   "categoryManagementScreen": "Kategorienverwaltung",
   "@categoryManagementScreen": {
     "description": "Kategorienverwaltung Screen Titel"
   },
-
   "categories": "Kategorien",
   "@categories": {
     "description": "Kategorien Tab"
   },
-
   "subcategories": "Subkategorien",
   "@subcategories": {
     "description": "Subkategorien Tab"
   },
-
   "createCategory": "Kategorie erstellen",
   "@createCategory": {
     "description": "Kategorie erstellen Button"
   },
-
   "createSubcategory": "Subkategorie erstellen",
   "@createSubcategory": {
     "description": "Subkategorie erstellen Button"
   },
-
   "noCategories": "Keine Kategorien",
   "@noCategories": {
     "description": "Keine Kategorien Titel"
   },
-
   "noCategoriesMessage": "Es wurden noch keine Kategorien erstellt.",
   "@noCategoriesMessage": {
     "description": "Keine Kategorien Nachricht"
   },
-
   "noSubcategories": "Keine Subkategorien",
   "@noSubcategories": {
     "description": "Keine Subkategorien Titel"
   },
-
   "noSubcategoriesMessage": "Es wurden noch keine Subkategorien erstellt.",
   "@noSubcategoriesMessage": {
     "description": "Keine Subkategorien Nachricht"
   },
-
   "categoryName": "Name",
   "@categoryName": {
     "description": "Kategoriename Label"
   },
-
   "categoryDescription": "Beschreibung",
   "@categoryDescription": {
     "description": "Kategoriebeschreibung Label"
   },
-
   "parentCategory": "Übergeordnete Kategorie",
   "@parentCategory": {
     "description": "Übergeordnete Kategorie Label"
   },
-
   "listingsCount": "Angebote",
   "@listingsCount": {
     "description": "Anzahl Angebote Label"
   },
-
   "editCategory": "Kategorie bearbeiten",
   "@editCategory": {
     "description": "Kategorie bearbeiten Button"
   },
-
   "deleteCategory": "Kategorie löschen",
   "@deleteCategory": {
     "description": "Kategorie löschen Button"
   },
-
   "createCategoryDialog": "Kategorie erstellen",
   "@createCategoryDialog": {
     "description": "Kategorie erstellen Dialog Titel"
   },
-
   "editCategoryDialog": "Kategorie bearbeiten",
   "@editCategoryDialog": {
     "description": "Kategorie bearbeiten Dialog Titel"
   },
-
   "enterCategoryName": "Kategoriename eingeben",
   "@enterCategoryName": {
     "description": "Kategoriename Hint"
   },
-
   "enterCategoryDescription": "Beschreibung eingeben (optional)",
   "@enterCategoryDescription": {
     "description": "Kategoriebeschreibung Hint"
   },
-
   "categoryNameRequired": "Name ist erforderlich",
   "@categoryNameRequired": {
     "description": "Kategoriename erforderlich Validierung"
   },
-
   "categoryCreated": "Kategorie erstellt",
   "@categoryCreated": {
     "description": "Kategorie erstellt Nachricht"
   },
-
   "categoryUpdated": "Kategorie aktualisiert",
   "@categoryUpdated": {
     "description": "Kategorie aktualisiert Nachricht"
   },
-
   "categoryDeleted": "Kategorie gelöscht",
   "@categoryDeleted": {
     "description": "Kategorie gelöscht Nachricht"
   },
-
   "confirmDeleteCategory": "Möchtest du diese Kategorie wirklich löschen? Alle zugehörigen Subkategorien werden ebenfalls gelöscht.",
   "@confirmDeleteCategory": {
     "description": "Kategorie löschen Bestätigung"
   },
-
   "confirmDeleteCategoryWithName": "Möchtest du \"{name}\" wirklich löschen?",
   "@confirmDeleteCategoryWithName": {
     "description": "Kategorie löschen Bestätigung mit Name",
@@ -3218,22 +2562,18 @@
       }
     }
   },
-
   "newCategory": "Neue Kategorie",
   "@newCategory": {
     "description": "Neue Kategorie Dialog Titel"
   },
-
   "addSubcategory": "Unterkategorie hinzufügen",
   "@addSubcategory": {
     "description": "Unterkategorie hinzufügen Tooltip"
   },
-
   "createFirstCategory": "Erstelle die erste Kategorie mit dem + Button.",
   "@createFirstCategory": {
     "description": "Erstelle erste Kategorie Nachricht"
   },
-
   "subcategoriesCount": "{count} Unterkategorien • Sortierung: {sortOrder}",
   "@subcategoriesCount": {
     "description": "Unterkategorien Anzahl mit Sortierung",
@@ -3246,12 +2586,10 @@
       }
     }
   },
-
   "sorting": "Sortierung",
   "@sorting": {
     "description": "Sortierung"
   },
-
   "sortingLabel": "Sortierung: {sortOrder}",
   "@sortingLabel": {
     "description": "Sortierung Label",
@@ -3261,17 +2599,14 @@
       }
     }
   },
-
   "sortingHint": "0",
   "@sortingHint": {
     "description": "Sortierung Hinweis"
   },
-
   "categoryShownToUsers": "Kategorie wird Benutzern angezeigt",
   "@categoryShownToUsers": {
     "description": "Kategorie aktiv Nachricht"
   },
-
   "categoryHasSubcategories": "Diese Kategorie hat {count} Unterkategorien, die ebenfalls gelöscht werden!",
   "@categoryHasSubcategories": {
     "description": "Kategorie hat Unterkategorien Warnung",
@@ -3281,212 +2616,166 @@
       }
     }
   },
-
   "nameRequired": "Name darf nicht leer sein",
   "@nameRequired": {
     "description": "Name erforderlich Validierung"
   },
-
   "paymentSettingsScreen": "Zahlungseinstellungen",
   "@paymentSettingsScreen": {
     "description": "Zahlungseinstellungen Screen Titel"
   },
-
   "paymentMethods": "Zahlungsmethoden",
   "@paymentMethods": {
     "description": "Zahlungsmethoden Label"
   },
-
   "fees": "Gebühren",
   "@fees": {
     "description": "Gebühren Label"
   },
-
   "paypalEnabled": "PayPal aktiviert",
   "@paypalEnabled": {
     "description": "PayPal aktiviert Label"
   },
-
   "bitcoinEnabled": "Bitcoin aktiviert",
   "@bitcoinEnabled": {
     "description": "Bitcoin aktiviert Label"
   },
-
   "transactionFee": "Transaktionsgebühr",
   "@transactionFee": {
     "description": "Transaktionsgebühr Label"
   },
-
   "platformFee": "Plattformgebühr",
   "@platformFee": {
     "description": "Plattformgebühr Label"
   },
-
   "feePercentage": "Prozentsatz",
   "@feePercentage": {
     "description": "Gebührenprozentsatz Label"
   },
-
   "minimumFee": "Mindestgebühr",
   "@minimumFee": {
     "description": "Mindestgebühr Label"
   },
-
   "maximumFee": "Höchstgebühr",
   "@maximumFee": {
     "description": "Höchstgebühr Label"
   },
-
   "settingsSaved": "Einstellungen gespeichert",
   "@settingsSaved": {
     "description": "Einstellungen gespeichert Nachricht"
   },
-
   "saveSettings": "Einstellungen speichern",
   "@saveSettings": {
     "description": "Einstellungen speichern Button"
   },
-
   "paymentSettingsInfo": "Diese Einstellungen bestimmen, wie Benutzer für Slots bezahlen können.",
   "@paymentSettingsInfo": {
     "description": "Zahlungseinstellungen Info"
   },
-
   "enablePaypal": "PayPal aktivieren",
   "@enablePaypal": {
     "description": "PayPal aktivieren"
   },
-
   "paypalPaymentDescription": "Benutzer können mit PayPal bezahlen",
   "@paypalPaymentDescription": {
     "description": "PayPal Bezahlung Beschreibung"
   },
-
   "paypalEmailAddress": "PayPal E-Mail-Adresse",
   "@paypalEmailAddress": {
     "description": "PayPal E-Mail-Adresse Label"
   },
-
   "paypalEmailHint": "zahlungen@beispiel.com",
   "@paypalEmailHint": {
     "description": "PayPal E-Mail Hinweis"
   },
-
   "enableBitcoin": "Bitcoin aktivieren",
   "@enableBitcoin": {
     "description": "Bitcoin aktivieren"
   },
-
   "bitcoinPaymentDescription": "Benutzer können mit Bitcoin bezahlen",
   "@bitcoinPaymentDescription": {
     "description": "Bitcoin Bezahlung Beschreibung"
   },
-
   "bitcoinWalletAddress": "Bitcoin Wallet-Adresse",
   "@bitcoinWalletAddress": {
     "description": "Bitcoin Wallet-Adresse Label"
   },
-
   "bitcoinWalletHint": "bc1q...",
   "@bitcoinWalletHint": {
     "description": "Bitcoin Wallet Hinweis"
   },
-
   "pendingPaymentsScreen": "Ausstehende Zahlungen",
   "@pendingPaymentsScreen": {
     "description": "Ausstehende Zahlungen Screen Titel"
   },
-
   "allPendingPayments": "Alle",
   "@allPendingPayments": {
     "description": "Alle ausstehenden Zahlungen Tab"
   },
-
   "paypalPayments": "PayPal",
   "@paypalPayments": {
     "description": "PayPal-Zahlungen Tab"
   },
-
   "bitcoinPayments": "Bitcoin",
   "@bitcoinPayments": {
     "description": "Bitcoin-Zahlungen Tab"
   },
-
   "noPendingPayments": "Keine ausstehenden Zahlungen",
   "@noPendingPayments": {
     "description": "Keine ausstehenden Zahlungen Titel"
   },
-
   "noPendingPaymentsMessage": "Es gibt aktuell keine ausstehenden Zahlungen zu bearbeiten.",
   "@noPendingPaymentsMessage": {
     "description": "Keine ausstehenden Zahlungen Nachricht"
   },
-
   "paymentId": "Zahlungs-ID",
   "@paymentId": {
     "description": "Zahlungs-ID Label"
   },
-
   "amount": "Betrag",
   "@amount": {
     "description": "Betrag Label"
   },
-
   "requestedAt": "Angefordert am",
   "@requestedAt": {
     "description": "Angefordert am Label"
   },
-
   "paymentStatus": "Status",
   "@paymentStatus": {
     "description": "Zahlungsstatus Label"
   },
-
   "paymentStatusPending": "Ausstehend",
   "@paymentStatusPending": {
     "description": "Zahlungsstatus Ausstehend"
   },
-
   "paymentStatusProcessing": "In Bearbeitung",
   "@paymentStatusProcessing": {
     "description": "Zahlungsstatus In Bearbeitung"
   },
-
   "paymentStatusCompleted": "Abgeschlossen",
   "@paymentStatusCompleted": {
     "description": "Zahlungsstatus Abgeschlossen"
   },
-
   "paymentStatusFailed": "Fehlgeschlagen",
   "@paymentStatusFailed": {
     "description": "Zahlungsstatus Fehlgeschlagen"
   },
-
   "processPayment": "Zahlung bearbeiten",
   "@processPayment": {
     "description": "Zahlung bearbeiten Button"
   },
-
   "checkBitcoinPayments": "Bitcoin-Zahlungen prüfen",
   "@checkBitcoinPayments": {
     "description": "Bitcoin-Zahlungen prüfen Tooltip"
   },
-
   "expireOldOrders": "Alte Bestellungen ablaufen lassen",
   "@expireOldOrders": {
     "description": "Alte Bestellungen ablaufen lassen Tooltip"
   },
-
-  "refresh": "Aktualisieren",
-  "@refresh": {
-    "description": "Aktualisieren Tooltip"
-  },
-
   "confirmPaymentTitle": "Zahlung bestätigen",
   "@confirmPaymentTitle": {
     "description": "Zahlung bestätigen Dialog Titel"
   },
-
   "confirmPaymentMessage": "Möchten Sie die Zahlung für Bestellung #{orderId} wirklich bestätigen?\n\nBetrag: {amount}\nMethode: {method}",
   "@confirmPaymentMessage": {
     "description": "Zahlung bestätigen Dialog Nachricht",
@@ -3502,17 +2791,10 @@
       }
     }
   },
-
-  "confirm": "Bestätigen",
-  "@confirm": {
-    "description": "Bestätigen Button"
-  },
-
   "paymentConfirmedSlotActivated": "Zahlung bestätigt und Slot aktiviert",
   "@paymentConfirmedSlotActivated": {
     "description": "Zahlung bestätigt Nachricht"
   },
-
   "bitcoinPaymentsProcessed": "{count} Bitcoin-Zahlungen verarbeitet",
   "@bitcoinPaymentsProcessed": {
     "description": "Bitcoin-Zahlungen verarbeitet Nachricht",
@@ -3522,22 +2804,18 @@
       }
     }
   },
-
   "expireOldOrdersTitle": "Alte Bestellungen ablaufen lassen",
   "@expireOldOrdersTitle": {
     "description": "Alte Bestellungen ablaufen Dialog Titel"
   },
-
   "expireOldOrdersMessage": "Möchten Sie alle ausstehenden Bestellungen, die älter als 24 Stunden sind, als abgelaufen markieren?",
   "@expireOldOrdersMessage": {
     "description": "Alte Bestellungen ablaufen Dialog Nachricht"
   },
-
   "expireAction": "Ablaufen lassen",
   "@expireAction": {
     "description": "Ablaufen lassen Button"
   },
-
   "ordersExpired": "{count} Bestellungen als abgelaufen markiert",
   "@ordersExpired": {
     "description": "Bestellungen abgelaufen Nachricht",
@@ -3547,12 +2825,10 @@
       }
     }
   },
-
   "allPaymentsProcessed": "Alle Zahlungen wurden verarbeitet",
   "@allPaymentsProcessed": {
     "description": "Alle Zahlungen verarbeitet Nachricht"
   },
-
   "sell": "Verkaufen",
   "myListings": "Meine Angebote ({count})",
   "mySlots": "Meine Slots ({count})",
@@ -3561,7 +2837,6 @@
   "noSlotsMessage": "Um ein Angebot zu erstellen, benötigst du einen verfügbaren Slot. Kaufe zuerst einen Slot im \"Meine Slots\" Tab.",
   "showSlots": "Slots anzeigen",
   "noListings": "Keine Angebote",
-  "noListingsMessage": "Du hast noch keine Angebote erstellt.",
   "createFirstListing": "Erstes Angebot erstellen",
   "buySlots": "Slots kaufen",
   "available": "Verfügbar",
@@ -3669,7 +2944,6 @@
   "unbanReason": "Grund für Entbannung",
   "userUnbanned": "Nutzer wurde entbannt",
   "information": "Informationen",
-  "created": "Erstellt am {date}",
   "lastLogin": "Letzter Login",
   "never": "Nie",
   "status": "Status",
@@ -3683,9 +2957,6 @@
   "roleDescriptionAdmin": "Vollzugriff",
   "roleDescriptionModerator": "Moderationsrechte",
   "roleDescriptionUser": "Normale Nutzerrechte",
-  "roleAdmin": "Admin",
-  "roleModerator": "Moderator",
-  "roleUser": "Nutzer",
   "errorLoadingRatings": "Fehler beim Laden der Bewertungen",
   "noRatingsYet": "Noch keine Bewertungen",
   "noRatingsDescription": "Dieser Nutzer hat noch keine Bewertungen erhalten",
@@ -3697,14 +2968,168 @@
   "banReasonInappropriate": "Unangemessener Inhalt",
   "banReasonTosViolation": "Verstoß gegen AGB",
   "banReasonMultipleAccounts": "Multiple Accounts",
-  "banReasonSpam": "Spam",
   "banReasonIllegal": "Illegale Aktivitäten",
-  "banReasonHarassment": "Belästigung",
   "banReasonRequired": "Bitte gib einen Grund an",
   "enterBanReason": "Grund für Ban eingeben",
   "presetReasons": "Vorgegebene Gründe",
   "reasonRequired": "Grund (erforderlich)",
   "describeBanReason": "Beschreibe den Grund für den Ban",
   "banWarning": "Dieser Nutzer wird sofort gesperrt und kann sich nicht mehr einloggen.",
-  "banAction": "Nutzer bannen"
+  "banAction": "Nutzer bannen",
+  "activeSlotVariants": "Actives",
+  "activeUsers": "Actifs",
+  "activeVariantDescription": "La variante peut être achetée",
+  "addInternalNotes": "Ajouter des notes internes...",
+  "administration": "Administration",
+  "allUsers": "Tous les Utilisateurs",
+  "assignToMe": "M'assigner",
+  "assigned": "Assigné",
+  "assignedToModerator": "Assigné au modérateur #{id}",
+  "atLeastOnePaymentMethodRequired": "Au moins une méthode de paiement doit être activée",
+  "banned": "BANNI",
+  "bannedUsers": "Bannis",
+  "bitcoinAddressCopied": "Adresse Bitcoin copiée !",
+  "bitcoinInstructions": "Veuillez envoyer le montant BTC à l'adresse fournie et inclure la référence (Memo). Après le paiement, saisissez le TX-ID.",
+  "bitcoinInstructionsDetailed": "Scannez le code QR ou envoyez le montant BTC à l'adresse fournie et incluez la référence (Memo). Votre slot sera activé automatiquement après au moins 1 confirmation sur la blockchain.",
+  "configureSlotTypes": "Configurer les types et prix de slots",
+  "confirmDeleteSlotVariant": "Voulez-vous vraiment supprimer cette variante de slot ?",
+  "confirmDeleteSlotVariantWithName": "Voulez-vous vraiment supprimer \"{name}\" ?",
+  "confirmUnbanUser": "Voulez-vous vraiment débannir cet utilisateur ?",
+  "createCategoriesSubcategories": "Créer des catégories et sous-catégories",
+  "createFirstSlotVariant": "Créez la première variante de slot avec le bouton +.",
+  "createSlotVariant": "Créer une Variante de Slot",
+  "createSlotVariantDialog": "Créer une Variante de Slot",
+  "currency": "Devise",
+  "daysAgo": "il y a {days}j",
+  "deactivate": "Désactiver",
+  "deactivateListing": "Désactiver l'Annonce",
+  "deactivateListingConfirm": "Voulez-vous vraiment désactiver cette annonce ? Cette action ne peut pas être annulée.",
+  "deleteSlotVariant": "Supprimer la Variante de Slot",
+  "descriptionOptional": "Description (facultatif)",
+  "donateBitcoin": "Faire un Don Bitcoin",
+  "donateCoffee": "Buy Me a Coffee",
+  "donateDescription": "Si vous aimez cette application, vous pouvez soutenir son développement avec un don :",
+  "donateTitle": "Soutenir le Développement",
+  "duration": "Durée",
+  "durationDays": "{days} jours",
+  "durationDaysLabel": "Durée (jours)",
+  "durationRequired": "La durée est requise",
+  "editSlotVariant": "Modifier la Variante de Slot",
+  "editSlotVariantDialog": "Modifier la Variante de Slot",
+  "encryptionActive": "Chiffrement actif",
+  "enterBitcoinTxIdPrompt": "Saisissez l'ID de transaction Bitcoin (TX-Hash) après avoir envoyé le paiement:",
+  "enterDuration": "Durée (jours)",
+  "enterMaxListings": "Max. annonces",
+  "enterPriceBTC": "Prix en BTC",
+  "enterPriceUSD": "Prix en USD",
+  "enterVariantName": "Entrer le nom de la variante",
+  "extendSlotPrompt": "Choisissez une variante de slot pour prolonger votre slot. La durée sera ajoutée à la date d'expiration actuelle.",
+  "featureInMilestone": "{title} wird in Meilenstein {milestone} implementiert.",
+  "freeLabel": "GRATUIT",
+  "freeVariantDescription": "La variante est gratuite (pour les emplacements promotionnels)",
+  "fullDateTimeFormat": "{day}.{month}.{year} à {hour}:{minute}",
+  "hoursAgo": "il y a {hours}h",
+  "inactiveSlotVariants": "Inactives",
+  "justNow": "À l'instant",
+  "listing": "Annonce",
+  "listingDeactivated": "L'annonce a été désactivée",
+  "listingId": "Annonce #{id}",
+  "listingReports": "Annonces",
+  "listingsWithCount": "Annonces ({count})",
+  "manageCategories": "Gérer les catégories",
+  "manageSlotVariants": "Gérer les variantes de slot",
+  "manageUsersRoles": "Gérer les utilisateurs et attribuer des rôles",
+  "markAsCompleted": "Marquer comme Terminé",
+  "markAsFailed": "Marquer comme Échoué",
+  "markAsProcessing": "Marquer comme En Traitement",
+  "markAsResolved": "Marquer comme Résolu",
+  "maxListings": "Max. Annonces",
+  "maxListingsRequired": "Le max. d'annonces est requis",
+  "memberSince": "Membre depuis {date}",
+  "method": "Méthode",
+  "minutesAgo": "il y a {minutes}m",
+  "moderatorPanelScreen": "Panneau de Modérateur",
+  "nameHint": "par ex. Standard, Premium",
+  "newSlotVariant": "Nouvelle variante de slot",
+  "noActiveListings": "Aucune annonce active",
+  "noPgpKeyAvailable": "Aucune clé PGP disponible",
+  "noRatings": "Aucune évaluation",
+  "noReportsDescription": "Il n'y a actuellement aucun signalement",
+  "noSlotVariants": "Aucune Variante de Slot",
+  "noSlotVariantsMessage": "Aucune variante de slot n'a encore été créée.",
+  "noUsers": "Aucun Utilisateur",
+  "noUsersFound": "Aucun Utilisateur Trouvé",
+  "noUsersMessage": "Aucun utilisateur trouvé.",
+  "notYetAssigned": "Pas encore assigné",
+  "noteCannotBeEmpty": "La note ne peut pas être vide",
+  "openReportsCount": "{count} ouverts",
+  "order": "Commande #{id}",
+  "paymentDetailsTitle": "Détails du paiement #{number}",
+  "paymentMarkedCompleted": "Paiement marqué comme terminé",
+  "paymentMarkedFailed": "Paiement marqué comme échoué",
+  "paymentMarkedProcessing": "Paiement marqué comme en traitement",
+  "payments": "Paiements",
+  "paypalBitcoinSlots": "PayPal et Bitcoin pour l'achat de slots",
+  "paypalEmail": "Email PayPal",
+  "paypalInstructions": "Veuillez envoyer le montant à l'adresse PayPal fournie et inclure la référence.",
+  "paypalInstructionsDetailed": "Veuillez envoyer le montant à l'adresse PayPal fournie et inclure la référence. Votre slot sera activé automatiquement après réception du paiement.",
+  "priceBTC": "Prix (BTC)",
+  "priceBTCRequired": "Le prix en BTC est requis",
+  "priceUSD": "Prix (USD)",
+  "priceUSDRequired": "Le prix en USD est requis",
+  "priceUsd": "Prix (USD)",
+  "profile": "Profil",
+  "ratingCount": "{count, plural, =1{1 évaluation} other{{count} évaluations}}",
+  "ratingsWithCount": "Évaluations ({count})",
+  "report": "Signaler",
+  "reportAlreadyReported": "Vous avez déjà signalé ceci",
+  "reportAssignedToYou": "Le signalement vous a été assigné",
+  "reportDetails": "Détails du Signalement",
+  "reportDetailsHint": "Décrivez le problème...",
+  "reportDetailsOptional": "Détails Supplémentaires (facultatif)",
+  "reportNotFound": "Signalement non trouvé",
+  "reportReasonFraud": "Offre Frauduleuse",
+  "reportReasonLabel": "Raison du signalement :",
+  "reportSelectReason": "Veuillez sélectionner une raison",
+  "reportStatusDismissed": "REJETÉ",
+  "reportStatusOpen": "OUVERT",
+  "reportStatusResolved": "RÉSOLU",
+  "reportStatusReviewing": "EN EXAMEN",
+  "reportSubmitError": "Erreur lors de l'envoi du signalement",
+  "reportSubmittedSuccessfully": "Signalement soumis avec succès",
+  "reportTargetListing": "Annonce",
+  "reportTargetNotFound": "Entrée non trouvée",
+  "reportTargetUser": "Utilisateur",
+  "reportTitle": "Signaler {targetType}",
+  "reportUser": "Signaler l'Utilisateur",
+  "reportYouAreReporting": "Vous signalez : \"{targetName}\"",
+  "reportedOn": "Signalé le",
+  "reportedUserProfile": "Profil Utilisateur Signalé",
+  "reporterUser": "Utilisateur #{id}",
+  "reviewPendingOrders": "Examiner et confirmer les commandes en attente",
+  "searchUsers": "Rechercher des utilisateurs...",
+  "sectionDonate": "Soutenir le Développeur",
+  "sendMessage": "Envoyer un Message",
+  "slotVariantCreated": "Variante de slot créée",
+  "slotVariantDeleted": "Variante de slot supprimée",
+  "slotVariantUpdated": "Variante de slot mise à jour",
+  "slotVariantsScreen": "Variantes de Slot",
+  "slots": "Slots",
+  "staff": "Personnel",
+  "statusUpdated": "Le statut a été mis à jour",
+  "systemUserManagement": "Gestion du système et des utilisateurs",
+  "txId": "TX-ID",
+  "unban": "Débannir",
+  "unknown": "Inconnu",
+  "user": "Utilisateur",
+  "userManagementScreen": "Gestion des Utilisateurs",
+  "userNotFound": "Utilisateur non trouvé",
+  "userReports": "Utilisateurs",
+  "users": "Utilisateurs",
+  "variant": "Variante",
+  "variantName": "Nom",
+  "variantNameRequired": "Le nom est requis",
+  "variantStatus": "Statut",
+  "viewUser": "Voir l'Utilisateur",
+  "listings": "Angebote"
 }

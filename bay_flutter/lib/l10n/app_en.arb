@@ -1,6 +1,5 @@
 {
   "@@locale": "en",
-
   "appTitle": "Bay",
   "loginTitle": "Welcome Back",
   "loginSubtitle": "Sign in to continue",
@@ -39,7 +38,6 @@
   "generatingKeyMessage": "Your personal encryption key is being generated.\nThis will only take a few seconds.",
   "keyGenerationFailed": "Key could not be generated: {error}\nYou can create it later in settings.",
   "elapsedTime": "Elapsed time: {time}",
-
   "navDashboard": "Dashboard",
   "navMessages": "Messages",
   "navSearch": "Search",
@@ -52,10 +50,9 @@
   "drawerUserFallback": "User",
   "drawerModerationSection": "Moderation",
   "drawerAdminSection": "Administration",
-  "roleAdmin": "Administrator",
+  "roleAdmin": "Admin",
   "roleModerator": "Moderator",
   "roleUser": "User",
-
   "settingsTitle": "Settings",
   "sectionPaymentInfo": "Payment Information",
   "sectionDisplay": "Display",
@@ -100,7 +97,6 @@
   "pleaseEnterPassword": "Please enter your password",
   "deleteAccountError": "Error deleting account",
   "genericError": "Error: {error}",
-
   "dashboardTitle": "Dashboard",
   "welcomeUser": "Welcome, {username}!",
   "userFallback": "User",
@@ -121,13 +117,12 @@
   "noListingLinked": "No listing linked",
   "moreCount": "+{count} more",
   "noListingsYet": "No listings yet",
-  "noListingsMessage": "Recent listings will be displayed here.",
+  "noListingsMessage": "You haven't created any listings yet. Create your first listing now!",
   "unitPiece": "piece",
   "unitKg": "kg",
   "unitGram": "g",
   "unitMeter": "m",
   "unitLiter": "L",
-
   "edit": "Edit",
   "delete": "Delete",
   "create": "Create",
@@ -154,7 +149,7 @@
   "details": "Details",
   "acceptedPaymentMethods": "Accepted payment methods",
   "quantity": "Quantity",
-  "pricePerUnit": "Price per unit",
+  "pricePerUnit": "{price} per {unit}",
   "createdAt": "Created at",
   "expiresAt": "Expires at",
   "listingNotFound": "Listing not found",
@@ -200,7 +195,6 @@
   "noSlotsAvailable": "No slots available",
   "loading": "Loading...",
   "retry": "Retry",
-
   "searchEmptyStateMessage": "Enter a search term or select filters to find listings.",
   "noResultsMessage": "Try different search terms or adjust the filters.",
   "resetFilters": "Reset filters",
@@ -209,12 +203,10 @@
   "allPaymentMethods": "All payment methods",
   "searchError": "Search error: {error}",
   "resultsCount": "{count, plural, =1{1 result} other{{count} results}}",
-
   "transactions": "Transactions",
   "@transactions": {
     "description": "Transactions screen title"
   },
-
   "purchases": "Purchases ({count})",
   "@purchases": {
     "description": "Purchases tab with count",
@@ -224,7 +216,6 @@
       }
     }
   },
-
   "sales": "Sales ({count})",
   "@sales": {
     "description": "Sales tab with count",
@@ -234,68 +225,54 @@
       }
     }
   },
-
   "refresh": "Refresh",
   "@refresh": {
     "description": "Refresh tooltip"
   },
-
   "noPurchasesYet": "No purchases yet",
   "@noPurchasesYet": {
     "description": "Empty state for purchases title"
   },
-
   "noSalesYet": "No sales yet",
   "@noSalesYet": {
     "description": "Empty state for sales title"
   },
-
   "yourPurchasesWillAppearHere": "Your purchases will appear here",
   "@yourPurchasesWillAppearHere": {
     "description": "Empty state for purchases message"
   },
-
   "yourSalesWillAppearHere": "Your sales will appear here",
   "@yourSalesWillAppearHere": {
     "description": "Empty state for sales message"
   },
-
   "statusOpen": "Open",
   "@statusOpen": {
     "description": "Transaction status Open"
   },
-
   "statusPaid": "Paid",
   "@statusPaid": {
     "description": "Transaction status Paid"
   },
-
   "statusShipped": "Shipped",
   "@statusShipped": {
     "description": "Transaction status Shipped"
   },
-
   "statusReceived": "Received",
   "@statusReceived": {
     "description": "Transaction status Received"
   },
-
   "statusCompleted": "Completed",
   "@statusCompleted": {
     "description": "Transaction status Completed"
   },
-
   "statusDisputed": "Disputed",
   "@statusDisputed": {
     "description": "Transaction status Disputed"
   },
-
   "statusCancelled": "Cancelled",
   "@statusCancelled": {
     "description": "Transaction status Cancelled"
   },
-
-  "transactionNumber": "Transaction #{id}",
   "@transactionNumber": {
     "description": "Transaction number",
     "placeholders": {
@@ -304,12 +281,10 @@
       }
     }
   },
-
   "autoCompletesToday": "Auto-completes today",
   "@autoCompletesToday": {
     "description": "Auto-complete today warning"
   },
-
   "autoCompletesInDays": "Auto-completes in {count} {count, plural, =1{day} other{days}}",
   "@autoCompletesInDays": {
     "description": "Auto-complete in X days",
@@ -319,17 +294,14 @@
       }
     }
   },
-
   "transaction": "Transaction",
   "@transaction": {
     "description": "Transaction label"
   },
-
   "rateThisTransaction": "Rate this transaction",
   "@rateThisTransaction": {
     "description": "Rating prompt title"
   },
-
   "shareYourExperience": "Share your experience with {username}",
   "@shareYourExperience": {
     "description": "Rating prompt text",
@@ -339,267 +311,214 @@
       }
     }
   },
-
   "rateNow": "Rate now",
   "@rateNow": {
     "description": "Rate now button"
   },
-
   "alreadyRated": "You have already rated this transaction",
   "@alreadyRated": {
     "description": "Already rated message"
   },
-
   "statusOpenDesc": "Waiting for buyer's payment",
   "@statusOpenDesc": {
     "description": "Status Open description"
   },
-
   "statusPaidDesc": "Payment sent, waiting for seller to ship",
   "@statusPaidDesc": {
     "description": "Status Paid description"
   },
-
   "statusShippedDesc": "Item has been shipped, waiting for delivery",
   "@statusShippedDesc": {
     "description": "Status Shipped description"
   },
-
   "statusReceivedDesc": "Buyer has received the item",
   "@statusReceivedDesc": {
     "description": "Status Received description"
   },
-
   "statusCompletedDesc": "Transaction completed successfully",
   "@statusCompletedDesc": {
     "description": "Status Completed description"
   },
-
   "statusDisputedDesc": "A dispute has been opened",
   "@statusDisputedDesc": {
     "description": "Status Disputed description"
   },
-
   "statusCancelledDesc": "Transaction was cancelled",
   "@statusCancelledDesc": {
     "description": "Status Cancelled description"
   },
-
   "timeline": "Timeline",
   "@timeline": {
     "description": "Timeline title"
   },
-
-  "created": "Created",
+  "created": "Created on {date}",
   "@created": {
     "description": "Created label"
   },
-
   "paid": "Paid",
   "@paid": {
     "description": "Paid label"
   },
-
   "paymentSent": "Payment sent",
   "@paymentSent": {
     "description": "Payment sent label"
   },
-
   "waitingForBuyer": "Waiting for buyer",
   "@waitingForBuyer": {
     "description": "Waiting for buyer status"
   },
-
   "shipped": "Shipped",
   "@shipped": {
     "description": "Shipped label"
   },
-
   "waitingForSeller": "Waiting for seller",
   "@waitingForSeller": {
     "description": "Waiting for seller status"
   },
-
   "received": "Received",
   "@received": {
     "description": "Received label"
   },
-
   "completed": "Completed",
   "@completed": {
     "description": "Completed label"
   },
-
   "cancelled": "Cancelled",
   "@cancelled": {
     "description": "Cancelled label"
   },
-
   "pending": "Pending",
   "@pending": {
     "description": "Pending label"
   },
-
   "markAsShipped": "Mark as shipped",
   "@markAsShipped": {
     "description": "Mark as shipped button"
   },
-
   "markAsPaid": "Mark as paid",
   "@markAsPaid": {
     "description": "Mark as paid button"
   },
-
   "markAsReceived": "Mark as received",
   "@markAsReceived": {
     "description": "Mark as received button"
   },
-
   "cancelTransaction": "Cancel transaction",
   "@cancelTransaction": {
     "description": "Cancel transaction button"
   },
-
   "openDispute": "Open dispute",
   "@openDispute": {
     "description": "Open dispute button"
   },
-
   "actions": "Actions",
   "@actions": {
     "description": "Actions title"
   },
-
   "confirmShipment": "Confirm that you have shipped the item. The buyer will have 14 days to confirm receipt or open a dispute.",
   "@confirmShipment": {
     "description": "Shipment confirmation dialog text"
   },
-
   "confirm": "Confirm",
   "@confirm": {
     "description": "Confirm button"
   },
-
   "transactionMarkedAsShipped": "Transaction marked as shipped",
   "@transactionMarkedAsShipped": {
     "description": "Marked as shipped message"
   },
-
   "confirmPayment": "Confirm that you have sent the payment to the seller.",
   "@confirmPayment": {
     "description": "Payment confirmation dialog text"
   },
-
   "paymentMarkedAsSent": "Payment marked as sent",
   "@paymentMarkedAsSent": {
     "description": "Payment marked as sent message"
   },
-
   "confirmReceipt": "Confirm that you have received the item. This will complete the transaction.",
   "@confirmReceipt": {
     "description": "Receipt confirmation dialog text"
   },
-
   "transactionCompleted": "Transaction completed",
   "@transactionCompleted": {
     "description": "Transaction completed message"
   },
-
   "cancelTransactionConfirm": "Do you really want to cancel this transaction? This action cannot be undone.",
   "@cancelTransactionConfirm": {
     "description": "Transaction cancellation confirmation"
   },
-
   "keep": "Keep",
   "@keep": {
     "description": "Keep button"
   },
-
   "transactionCancelled": "Transaction cancelled",
   "@transactionCancelled": {
     "description": "Transaction cancelled message"
   },
-
   "describeIssue": "Please describe the issue with this transaction. A moderator will review your dispute.",
   "@describeIssue": {
     "description": "Dispute description prompt"
   },
-
   "reason": "Reason",
   "@reason": {
     "description": "Reason label"
   },
-
   "describeProblem": "Describe the problem...",
   "@describeProblem": {
     "description": "Describe problem hint"
   },
-
   "pleaseEnterReason": "Please enter a reason",
   "@pleaseEnterReason": {
     "description": "Reason required validation"
   },
-
   "disputeOpened": "Dispute opened",
   "@disputeOpened": {
     "description": "Dispute opened message"
   },
-
   "transactionNotFound": "Transaction not found",
   "@transactionNotFound": {
     "description": "Transaction not found error"
   },
-
   "transactionId": "Transaction ID",
   "@transactionId": {
     "description": "Transaction ID label"
   },
-
   "totalPrice": "Total price",
   "@totalPrice": {
     "description": "Total price label"
   },
-
   "parties": "Parties",
   "@parties": {
     "description": "Parties title"
   },
-
   "buyer": "Buyer",
   "@buyer": {
     "description": "Buyer label"
   },
-
   "seller": "Seller",
   "@seller": {
     "description": "Seller label"
   },
-
   "you": "You",
   "@you": {
     "description": "You label"
   },
-
   "viewListingDetails": "View listing details",
   "@viewListingDetails": {
     "description": "View listing details link"
   },
-
   "buyerNote": "Buyer note",
   "@buyerNote": {
     "description": "Buyer note title"
   },
-
   "autoCompleteWarning": "Auto-complete warning",
   "@autoCompleteWarning": {
     "description": "Auto-complete warning title"
   },
-
   "autoCompleteToday": "This transaction will auto-complete today if no dispute is opened.",
   "@autoCompleteToday": {
     "description": "Auto-complete today message"
   },
-
   "autoCompleteInDays": "This transaction will auto-complete in {count} {count, plural, =1{day} other{days}} if no action is taken.",
   "@autoCompleteInDays": {
     "description": "Auto-complete in X days message",
@@ -609,12 +528,10 @@
       }
     }
   },
-
   "disputeOpen": "Dispute open",
   "@disputeOpen": {
     "description": "Dispute open title"
   },
-
   "disputeReason": "Reason: {reason}",
   "@disputeReason": {
     "description": "Dispute reason",
@@ -624,7 +541,6 @@
       }
     }
   },
-
   "disputeOpenedDate": "Opened: {date}",
   "@disputeOpenedDate": {
     "description": "Dispute opened on",
@@ -634,92 +550,74 @@
       }
     }
   },
-
   "moderatorReviewing": "A moderator is reviewing this dispute.",
   "@moderatorReviewing": {
     "description": "Moderator reviewing message"
   },
-
   "paymentInformation": "Payment information",
   "@paymentInformation": {
     "description": "Payment information title"
   },
-
   "sendPaymentTo": "Please send payment to the seller with the following details:",
   "@sendPaymentTo": {
     "description": "Payment instruction"
   },
-
   "includeTransactionId": "The seller will ship the item once payment is received. Please include your transaction ID in the payment note.",
   "@includeTransactionId": {
     "description": "Transaction ID in payment hint"
   },
-
   "messages": "Messages",
   "@messages": {
     "description": "Messages screen title"
   },
-
   "inbox": "Inbox",
   "@inbox": {
     "description": "Inbox tab"
   },
-
   "sent": "Sent",
   "@sent": {
     "description": "Sent tab"
   },
-
   "drafts": "Drafts",
   "@drafts": {
     "description": "Drafts tab"
   },
-
   "newMessage": "New message",
   "@newMessage": {
     "description": "New message button"
   },
-
   "noMessages": "No messages",
   "@noMessages": {
     "description": "No messages title"
   },
-
   "inboxEmpty": "Your inbox is empty.",
   "@inboxEmpty": {
     "description": "Inbox empty message"
   },
-
   "noSentMessages": "No sent messages",
   "@noSentMessages": {
     "description": "No sent messages title"
   },
-
   "noSentMessagesYet": "You haven't sent any messages yet.",
   "@noSentMessagesYet": {
     "description": "No sent messages yet message"
   },
-
   "noDrafts": "No drafts",
   "@noDrafts": {
     "description": "No drafts title"
   },
-
   "noSavedDrafts": "You have no saved drafts.",
   "@noSavedDrafts": {
     "description": "No saved drafts message"
   },
-
   "errorLoading": "Error loading",
   "@errorLoading": {
     "description": "Error loading title"
   },
-
   "errorLoadingTitle": "Error loading",
   "@errorLoadingTitle": {
     "description": "Error loading title"
   },
-
   "from": "From: {username}",
   "@from": {
     "description": "From label",
@@ -729,7 +627,6 @@
       }
     }
   },
-
   "to": "To: {username}",
   "@to": {
     "description": "To label",
@@ -739,47 +636,38 @@
       }
     }
   },
-
   "yesterday": "Yesterday",
   "@yesterday": {
     "description": "Yesterday label"
   },
-
   "monday": "Mon",
   "@monday": {
     "description": "Monday abbreviation"
   },
-
   "tuesday": "Tue",
   "@tuesday": {
     "description": "Tuesday abbreviation"
   },
-
   "wednesday": "Wed",
   "@wednesday": {
     "description": "Wednesday abbreviation"
   },
-
   "thursday": "Thu",
   "@thursday": {
     "description": "Thursday abbreviation"
   },
-
   "friday": "Fri",
   "@friday": {
     "description": "Friday abbreviation"
   },
-
   "saturday": "Sat",
   "@saturday": {
     "description": "Saturday abbreviation"
   },
-
   "sunday": "Sun",
   "@sunday": {
     "description": "Sunday abbreviation"
   },
-
   "userNumber": "User #{id}",
   "@userNumber": {
     "description": "User number",
@@ -789,12 +677,10 @@
       }
     }
   },
-
   "noRecipient": "No recipient",
   "@noRecipient": {
     "description": "No recipient label"
   },
-
   "lastEdited": "Last edited: {date}",
   "@lastEdited": {
     "description": "Last edited",
@@ -804,42 +690,34 @@
       }
     }
   },
-
   "deleteMessage": "Delete message?",
   "@deleteMessage": {
     "description": "Delete message confirmation title"
   },
-
   "actionCannotBeUndone": "This action cannot be undone.",
   "@actionCannotBeUndone": {
     "description": "Action cannot be undone warning"
   },
-
   "deleteDraft": "Delete draft?",
   "@deleteDraft": {
     "description": "Delete draft confirmation title"
   },
-
   "reply": "Reply",
   "@reply": {
     "description": "Reply button"
   },
-
   "decryptingMessage": "Decrypting message...",
   "@decryptingMessage": {
     "description": "Decryption in progress message"
   },
-
   "decryptionFailed": "Decryption failed",
   "@decryptionFailed": {
     "description": "Decryption failed error"
   },
-
   "endToEndEncrypted": "End-to-end encrypted",
   "@endToEndEncrypted": {
     "description": "End-to-end encrypted label"
   },
-
   "fromUser": "From: {username}",
   "@fromUser": {
     "description": "From user label",
@@ -849,7 +727,6 @@
       }
     }
   },
-
   "dateLabel": "Date: {date}",
   "@dateLabel": {
     "description": "Date label",
@@ -859,62 +736,50 @@
       }
     }
   },
-
   "subject": "Subject",
   "@subject": {
     "description": "Subject label"
   },
-
   "noSubject": "[No subject]",
   "@noSubject": {
     "description": "No subject placeholder"
   },
-
   "message": "Message",
   "@message": {
     "description": "Message label"
   },
-
   "noContent": "[No content]",
   "@noContent": {
     "description": "No content placeholder"
   },
-
   "editDraft": "Edit draft",
   "@editDraft": {
     "description": "Edit draft title"
   },
-
   "draft": "Draft",
   "@draft": {
     "description": "Draft button"
   },
-
   "send": "Send",
   "@send": {
     "description": "Send button"
   },
-
   "recipient": "Recipient",
   "@recipient": {
     "description": "Recipient label"
   },
-
   "enterUsername": "Enter username",
   "@enterUsername": {
     "description": "Enter username hint"
   },
-
   "messageWillBeEncrypted": "Message will be encrypted",
   "@messageWillBeEncrypted": {
     "description": "Message will be encrypted hint"
   },
-
   "clickToVerifyRecipient": "Click the search icon to verify recipient",
   "@clickToVerifyRecipient": {
     "description": "Verify recipient hint"
   },
-
   "userNotFoundOrNoKey": "User \"{username}\" not found or has no PGP key",
   "@userNotFoundOrNoKey": {
     "description": "User not found error",
@@ -924,8 +789,6 @@
       }
     }
   },
-
-  "searchError": "Search error: {error}",
   "@searchError": {
     "description": "Search error",
     "placeholders": {
@@ -934,27 +797,22 @@
       }
     }
   },
-
   "pleaseSelectRecipient": "Please select a recipient",
   "@pleaseSelectRecipient": {
     "description": "Select recipient validation"
   },
-
   "recipientNotVerified": "Recipient not verified or no PGP key available. Please verify recipient.",
   "@recipientNotVerified": {
     "description": "Recipient not verified error"
   },
-
   "pleaseEnterSubject": "Please enter a subject",
   "@pleaseEnterSubject": {
     "description": "Enter subject validation"
   },
-
   "pleaseEnterMessage": "Please enter a message",
   "@pleaseEnterMessage": {
     "description": "Enter message validation"
   },
-
   "errorSending": "Error sending: {error}",
   "@errorSending": {
     "description": "Send error",
@@ -964,12 +822,10 @@
       }
     }
   },
-
   "draftSaved": "Draft saved",
   "@draftSaved": {
     "description": "Draft saved message"
   },
-
   "errorSavingDraft": "Error saving: {error}",
   "@errorSavingDraft": {
     "description": "Draft save error",
@@ -979,252 +835,202 @@
       }
     }
   },
-
   "pgpKeys": "PGP Keys",
   "@pgpKeys": {
     "description": "PGP Keys title"
   },
-
   "keyInformation": "Key Information",
   "@keyInformation": {
     "description": "Key information title"
   },
-
   "generateNewKey": "Generate New Key",
   "@generateNewKey": {
     "description": "Generate key title"
   },
-
   "exportKey": "Export Key",
   "@exportKey": {
     "description": "Export key title"
   },
-
   "importKey": "Import Key",
   "@importKey": {
     "description": "Import key title"
   },
-
   "serverBackup": "Server Backup",
   "@serverBackup": {
     "description": "Server backup title"
   },
-
   "securityNotices": "Security Notices",
   "@securityNotices": {
     "description": "Security notices title"
   },
-
   "setBackupPassword": "Set Backup Password",
   "@setBackupPassword": {
     "description": "Backup password dialog title"
   },
-
   "generateKey": "Generate Key",
   "@generateKey": {
     "description": "Generate key action"
   },
-
   "privateKeyExport": "Private Key Export",
   "@privateKeyExport": {
     "description": "Private Key export title"
   },
-
   "importPrivateKey": "Import Private Key",
   "@importPrivateKey": {
     "description": "Import Private Key title"
   },
-
   "keyConfigured": "Key Configured",
   "@keyConfigured": {
     "description": "Key configured status"
   },
-
   "keyIncomplete": "Key Incomplete",
   "@keyIncomplete": {
     "description": "Key incomplete status"
   },
-
   "canSendEncryptedMessages": "You can send and receive encrypted messages.",
   "@canSendEncryptedMessages": {
     "description": "Can send messages"
   },
-
   "generateOrImportKey": "Generate a new key or import an existing one.",
   "@generateOrImportKey": {
     "description": "Generate or import key"
   },
-
   "privateKeyLocalPublicKeyMissing": "Private Key exists locally, but Public Key not on server.",
   "@privateKeyLocalPublicKeyMissing": {
     "description": "Private Key local, Public Key missing"
   },
-
   "publicKeyOnServerPrivateKeyMissing": "Public Key on server, but Private Key missing locally.",
   "@publicKeyOnServerPrivateKeyMissing": {
     "description": "Public Key on server, Private Key missing"
   },
-
   "keysMismatch": "Keys do not match.",
   "@keysMismatch": {
     "description": "Keys do not match"
   },
-
   "exportPrivateKeyForBackup": "Export your Private Key for backup. Keep it safe!",
   "@exportPrivateKeyForBackup": {
     "description": "Export Private Key description"
   },
-
   "importExistingPrivateKey": "Import an existing Private Key (e.g., from a backup or another device).",
   "@importExistingPrivateKey": {
     "description": "Import Private Key description"
   },
-
   "storePrivateKeyEncryptedOnServer": "Store your Private Key encrypted on the server. This allows you to restore it on another device.",
   "@storePrivateKeyEncryptedOnServer": {
     "description": "Server backup description"
   },
-
   "securityWarning": "Security Warning",
   "@securityWarning": {
     "description": "Security warning dialog title"
   },
-
   "aboutToStorePrivateKeyOnServer": "You are about to store your Private Key on the server.",
   "@aboutToStorePrivateKeyOnServer": {
     "description": "Store Private Key on server warning"
   },
-
   "keyWillBeEncryptedBeforeUpload": "The key will be encrypted with a password before upload. However, you should note the following:",
   "@keyWillBeEncryptedBeforeUpload": {
     "description": "Encryption before upload notice"
   },
-
   "chooseStrongUniquePassword": "Choose a strong, unique password",
   "@chooseStrongUniquePassword": {
     "description": "Choose strong password"
   },
-
   "passwordCannotBeReset": "This password CANNOT be reset",
   "@passwordCannotBeReset": {
     "description": "Password cannot be reset"
   },
-
   "backupWorthlessWithoutPassword": "Without the password, the backup is worthless",
   "@backupWorthlessWithoutPassword": {
     "description": "Backup worthless without password"
   },
-
   "serverOperatorMightGuessPassword": "The server operator might attempt to guess the password",
   "@serverOperatorMightGuessPassword": {
     "description": "Server operator might guess password"
   },
-
   "chooseStrongPasswordForBackup": "Choose a strong password for your backup. You will need it to restore the key.",
   "@chooseStrongPasswordForBackup": {
     "description": "Strong password for backup"
   },
-
   "passwordsDontMatch": "Passwords do not match",
   "@passwordsDontMatch": {
     "description": "Passwords do not match error"
   },
-
   "pleaseEnterName": "Please enter a name",
   "@pleaseEnterName": {
     "description": "Enter name validation"
   },
-
   "enterPasswordForBackup": "Enter the password you used to encrypt the backup:",
   "@enterPasswordForBackup": {
     "description": "Enter backup password"
   },
-
   "decryptingAndImporting": "Decrypting and importing...",
   "@decryptingAndImporting": {
     "description": "Decryption and import in progress"
   },
-
   "decryptionFailedWrongPassword": "Decryption failed. Wrong password?",
   "@decryptionFailedWrongPassword": {
     "description": "Decryption failed error"
   },
-
   "understandProceed": "I understand, proceed",
   "@understandProceed": {
     "description": "I understand, proceed button"
   },
-
   "uploadPublicKey": "Upload Public Key",
   "@uploadPublicKey": {
     "description": "Upload Public Key button"
   },
-
   "generating": "Generating...",
   "@generating": {
     "description": "Generating in progress"
   },
-
   "exportPrivateKey": "Export Private Key",
   "@exportPrivateKey": {
     "description": "Export Private Key button"
   },
-
   "pastePrivateKey": "Paste Private Key",
   "@pastePrivateKey": {
     "description": "Paste Private Key button"
   },
-
   "loadFromServerBackup": "Load from Server Backup",
   "@loadFromServerBackup": {
     "description": "Load from server backup button"
   },
-
   "createEncryptedBackup": "Create Encrypted Backup",
   "@createEncryptedBackup": {
     "description": "Create encrypted backup button"
   },
-
   "copyFingerprint": "Copy Fingerprint",
   "@copyFingerprint": {
     "description": "Copy fingerprint button"
   },
-
   "createBackup": "Create Backup",
   "@createBackup": {
     "description": "Create backup button"
   },
-
   "restore": "Restore",
   "@restore": {
     "description": "Restore button"
   },
-
   "existingKeyWillBeReplaced": "The existing key will be replaced!",
   "@existingKeyWillBeReplaced": {
     "description": "Key will be replaced warning"
   },
-
   "invalidKeyAfterDecryption": "Invalid key after decryption",
   "@invalidKeyAfterDecryption": {
     "description": "Invalid key error"
   },
-
   "noPrivateKey": "No Private Key available",
   "@noPrivateKey": {
     "description": "No Private Key error"
   },
-
   "noFingerprint": "No fingerprint available",
   "@noFingerprint": {
     "description": "No fingerprint error"
   },
-
   "backupSuccessfullySaved": "Backup successfully saved to server!",
   "@backupSuccessfullySaved": {
     "description": "Backup saved success"
   },
-
   "errorBackup": "Error during backup: {error}",
   "@errorBackup": {
     "description": "Backup error",
@@ -1234,12 +1040,10 @@
       }
     }
   },
-
   "noBackupOnServer": "No backup found on server.",
   "@noBackupOnServer": {
     "description": "No backup found"
   },
-
   "errorGeneration": "Error during generation: {error}",
   "@errorGeneration": {
     "description": "Generation error",
@@ -1249,12 +1053,10 @@
       }
     }
   },
-
   "keySuccessfullyGenerated": "Key successfully generated and uploaded!",
   "@keySuccessfullyGenerated": {
     "description": "Key generated success"
   },
-
   "errorUploading": "Error uploading: {error}",
   "@errorUploading": {
     "description": "Upload error",
@@ -1264,147 +1066,118 @@
       }
     }
   },
-
   "privateKeyNeverLeavesDevice": "Your Private Key never leaves this device",
   "@privateKeyNeverLeavesDevice": {
     "description": "Private Key never leaves device"
   },
-
   "onlyPublicKeyStoredOnServer": "Only the Public Key is stored on the server",
   "@onlyPublicKeyStoredOnServer": {
     "description": "Only Public Key on server"
   },
-
   "regularBackupsRecommended": "Create regular backups of your Private Key",
   "@regularBackupsRecommended": {
     "description": "Regular backups recommended"
   },
-
   "lostKeyCannotDecryptOldMessages": "If you lose your key, old messages cannot be decrypted",
   "@lostKeyCannotDecryptOldMessages": {
     "description": "Lost key cannot decrypt messages"
   },
-
   "createsNewEd25519Key": "Creates a new Ed25519/Curve25519 key. This takes only a few seconds.",
   "@createsNewEd25519Key": {
     "description": "Create Ed25519 key description"
   },
-
   "generatingEd25519Key": "Creating Ed25519/Curve25519 key. This takes only a few seconds.",
   "@generatingEd25519Key": {
     "description": "Creating Ed25519 key"
   },
-
   "keySuccessfullyRestored": "Key successfully restored!",
   "@keySuccessfullyRestored": {
     "description": "Key restored success"
   },
-
   "protectWithPassphrase": "Protect with passphrase",
   "@protectWithPassphrase": {
     "description": "Protect with passphrase checkbox"
   },
-
   "recommendedForSecurity": "Recommended for additional security",
   "@recommendedForSecurity": {
     "description": "Recommended for security"
   },
-
   "passphrase": "Passphrase",
   "@passphrase": {
     "description": "Passphrase label"
   },
-
   "enterSecurePassphrase": "Enter a secure passphrase",
   "@enterSecurePassphrase": {
     "description": "Enter secure passphrase hint"
   },
-
   "name": "Name",
   "@name": {
     "description": "Name label"
   },
-
   "yourName": "Your name",
   "@yourName": {
     "description": "Your name hint"
   },
-
   "emailOptional": "Email (optional)",
   "@emailOptional": {
     "description": "Email optional label"
   },
-
   "yourEmailCom": "your@email.com",
   "@yourEmailCom": {
     "description": "Email hint"
   },
-
   "fingerprint": "Fingerprint",
   "@fingerprint": {
     "description": "Fingerprint label"
   },
-
   "algorithm": "Algorithm",
   "@algorithm": {
     "description": "Algorithm label"
   },
-
   "keySize": "Key Size",
   "@keySize": {
     "description": "Key size label"
   },
-
   "identity": "Identity",
   "@identity": {
     "description": "Identity label"
   },
-
   "keepKeySafe": "Keep this key safe! Never share it with others.",
   "@keepKeySafe": {
     "description": "Keep key safe warning"
   },
-
   "pastePrivateKeyInPgpFormat": "Paste your Private Key in PGP armor format:",
   "@pastePrivateKeyInPgpFormat": {
     "description": "Paste Private Key instruction"
   },
-
   "beginPgpPrivateKeyBlock": "-----BEGIN PGP PRIVATE KEY BLOCK-----",
   "@beginPgpPrivateKeyBlock": {
     "description": "PGP Private Key Block begin"
   },
-
   "pleasePasteKey": "Please paste a key",
   "@pleasePasteKey": {
     "description": "Paste key validation"
   },
-
   "invalidKeyFormat": "Invalid key format",
   "@invalidKeyFormat": {
     "description": "Invalid key format error"
   },
-
   "privateKeySuccessfullyImported": "Private Key successfully imported!",
   "@privateKeySuccessfullyImported": {
     "description": "Private Key imported success"
   },
-
   "selectBackupToRestore": "Select the backup you want to restore:",
   "@selectBackupToRestore": {
     "description": "Select backup instruction"
   },
-
   "selectBackup": "Select Backup",
   "@selectBackup": {
     "description": "Select backup title"
   },
-
   "decryptBackup": "Decrypt Backup",
   "@decryptBackup": {
     "description": "Decrypt backup title"
   },
-
   "copiedToClipboard": "{label} copied to clipboard",
   "@copiedToClipboard": {
     "description": "Copied to clipboard message",
@@ -1414,627 +1187,502 @@
       }
     }
   },
-
   "publicKeySuccessfullyUploaded": "Public Key successfully uploaded!",
   "@publicKeySuccessfullyUploaded": {
     "description": "Public Key uploaded success"
   },
-
   "backupPassword": "Backup Password",
   "@backupPassword": {
     "description": "Backup password label"
   },
-
   "keyGenerationTooLong": "Key generation is taking too long. Please try again or restart the app.",
   "@keyGenerationTooLong": {
     "description": "Key generation timeout error"
   },
-
   "noOwnPgpKey": "No own PGP key available. Please upload your Public Key.",
   "@noOwnPgpKey": {
     "description": "No own PGP key error"
   },
-
   "recipientHasNoPgpKey": "Recipient has no PGP key",
   "@recipientHasNoPgpKey": {
     "description": "Recipient has no PGP key error"
   },
-
   "adminPanel": "Admin Panel",
   "@adminPanel": {
     "description": "Admin Panel title"
   },
-
   "adminPanelWelcome": "Welcome to the Admin Area",
   "@adminPanelWelcome": {
     "description": "Admin Panel welcome message"
   },
-
   "userManagement": "User Management",
   "@userManagement": {
     "description": "User Management label"
   },
-
   "categoryManagement": "Category Management",
   "@categoryManagement": {
     "description": "Category Management label"
   },
-
   "newsManagement": "News Management",
   "@newsManagement": {
     "description": "News Management label"
   },
-
   "paymentSettings": "Payment Settings",
   "@paymentSettings": {
     "description": "Payment Settings label"
   },
-
   "pendingPayments": "Pending Payments",
   "@pendingPayments": {
     "description": "Pending Payments label"
   },
-
   "slotVariants": "Slot Variants",
   "@slotVariants": {
     "description": "Slot Variants label"
   },
-
   "moderatorPanel": "Moderator Panel",
   "@moderatorPanel": {
     "description": "Moderator Panel title"
   },
-
   "moderatorPanelWelcome": "Welcome to the Moderation Area",
   "@moderatorPanelWelcome": {
     "description": "Moderator Panel welcome message"
   },
-
   "reports": "Reports",
   "@reports": {
     "description": "Reports label"
   },
-
   "disputes": "Disputes",
   "@disputes": {
     "description": "Disputes label"
   },
-
   "allReports": "All Reports",
   "@allReports": {
     "description": "All Reports tab"
   },
-
   "openReports": "Open",
   "@openReports": {
     "description": "Open Reports tab"
   },
-
   "inReviewReports": "In Review",
   "@inReviewReports": {
     "description": "In Review Reports tab"
   },
-
   "resolvedReports": "Resolved",
   "@resolvedReports": {
     "description": "Resolved Reports tab"
   },
-
   "dismissedReports": "Dismissed",
   "@dismissedReports": {
     "description": "Dismissed Reports tab"
   },
-
   "statusReportOpen": "OPEN",
   "@statusReportOpen": {
     "description": "Report status Open"
   },
-
   "statusReportInReview": "IN REVIEW",
   "@statusReportInReview": {
     "description": "Report status In Review"
   },
-
   "statusReportResolved": "RESOLVED",
   "@statusReportResolved": {
     "description": "Report status Resolved"
   },
-
   "statusReportDismissed": "DISMISSED",
   "@statusReportDismissed": {
     "description": "Report status Dismissed"
   },
-
   "reportedBy": "Reported by",
   "@reportedBy": {
     "description": "Reported by label"
   },
-
   "reportedUser": "Reported User",
   "@reportedUser": {
     "description": "Reported User label"
   },
-
   "reportedListing": "Reported Listing",
   "@reportedListing": {
     "description": "Reported Listing label"
   },
-
   "reportReason": "Reason",
   "@reportReason": {
     "description": "Report reason label"
   },
-
   "reportReasonSpam": "Spam",
   "@reportReasonSpam": {
     "description": "Report reason Spam"
   },
-
   "reportReasonInappropriate": "Inappropriate Content",
   "@reportReasonInappropriate": {
     "description": "Report reason Inappropriate Content"
   },
-
   "reportReasonScam": "Scam/Fraud",
   "@reportReasonScam": {
     "description": "Report reason Scam"
   },
-
   "reportReasonHarassment": "Harassment",
   "@reportReasonHarassment": {
     "description": "Report reason Harassment"
   },
-
   "reportReasonFakeInfo": "False Information",
   "@reportReasonFakeInfo": {
     "description": "Report reason False Information"
   },
-
   "reportReasonOther": "Other",
   "@reportReasonOther": {
     "description": "Report reason Other"
   },
-
   "noReports": "No Reports",
   "@noReports": {
     "description": "No reports title"
   },
-
   "noReportsMessage": "There are currently no reports to review.",
   "@noReportsMessage": {
     "description": "No reports message"
   },
-
   "viewReport": "View Report",
   "@viewReport": {
     "description": "View report button"
   },
-
   "reportDetail": "Report Details",
   "@reportDetail": {
     "description": "Report details title"
   },
-
   "reportId": "Report ID",
   "@reportId": {
     "description": "Report ID label"
   },
-
   "reportType": "Type",
   "@reportType": {
     "description": "Report type label"
   },
-
   "reportTypeUser": "User",
   "@reportTypeUser": {
     "description": "Report type User"
   },
-
   "reportTypeListing": "Listing",
   "@reportTypeListing": {
     "description": "Report type Listing"
   },
-
   "reportedAt": "Reported at",
   "@reportedAt": {
     "description": "Reported at label"
   },
-
   "reportDescription": "Description",
   "@reportDescription": {
     "description": "Report description label"
   },
-
   "moderatorNotes": "Moderator Notes",
   "@moderatorNotes": {
     "description": "Moderator notes label"
   },
-
   "addNote": "Add Note",
   "@addNote": {
     "description": "Add note button"
   },
-
   "internalNotesOnly": "Visible to moderators only",
   "@internalNotesOnly": {
     "description": "Internal notes hint"
   },
-
   "enterNote": "Enter note...",
   "@enterNote": {
     "description": "Enter note hint"
   },
-
   "noteSaved": "Note saved",
   "@noteSaved": {
     "description": "Note saved message"
   },
-
   "takeAction": "Take Action",
   "@takeAction": {
     "description": "Take action button"
   },
-
   "markAsInReview": "Mark as In Review",
   "@markAsInReview": {
     "description": "Mark as in review button"
   },
-
   "resolveReport": "Resolve Report",
   "@resolveReport": {
     "description": "Resolve report button"
   },
-
   "dismissReport": "Dismiss Report",
   "@dismissReport": {
     "description": "Dismiss report button"
   },
-
   "viewReportedUser": "View Reported User",
   "@viewReportedUser": {
     "description": "View reported user button"
   },
-
   "viewReportedListing": "View Reported Listing",
   "@viewReportedListing": {
     "description": "View reported listing button"
   },
-
   "warnUser": "Warn User",
   "@warnUser": {
     "description": "Warn user button"
   },
-
   "banUser": "Ban User",
   "@banUser": {
     "description": "Ban user button"
   },
-
   "reportMarkedInReview": "Report marked as in review",
   "@reportMarkedInReview": {
     "description": "Marked as in review message"
   },
-
   "reportResolved": "Report resolved",
   "@reportResolved": {
     "description": "Report resolved message"
   },
-
   "reportDismissed": "Report dismissed",
   "@reportDismissed": {
     "description": "Report dismissed message"
   },
-
   "confirmResolveReport": "Do you want to mark this report as resolved?",
   "@confirmResolveReport": {
     "description": "Resolve report confirmation"
   },
-
   "confirmDismissReport": "Do you want to dismiss this report?",
   "@confirmDismissReport": {
     "description": "Dismiss report confirmation"
   },
-
   "resolve": "Resolve",
   "@resolve": {
     "description": "Resolve button"
   },
-
   "dismiss": "Dismiss",
   "@dismiss": {
     "description": "Dismiss button"
   },
-
   "userDetail": "User Details",
   "@userDetail": {
     "description": "User details title"
   },
-
   "userId": "User ID",
   "@userId": {
     "description": "User ID label"
   },
-
   "registeredAt": "Registered at",
   "@registeredAt": {
     "description": "Registered at label"
   },
-
   "lastActive": "Last active",
   "@lastActive": {
     "description": "Last active label"
   },
-
   "totalListings": "Total listings",
   "@totalListings": {
     "description": "Total listings label"
   },
-
   "totalTransactions": "Total transactions",
   "@totalTransactions": {
     "description": "Total transactions label"
   },
-
   "userRating": "Rating",
   "@userRating": {
     "description": "Rating label"
   },
-
   "userStatus": "Status",
   "@userStatus": {
     "description": "User status label"
   },
-
   "userStatusActive": "Active",
   "@userStatusActive": {
     "description": "User status Active"
   },
-
   "userStatusBanned": "Banned",
   "@userStatusBanned": {
     "description": "User status Banned"
   },
-
   "userStatusWarned": "Warned",
   "@userStatusWarned": {
     "description": "User status Warned"
   },
-
   "banUserDialog": "Ban User",
   "@banUserDialog": {
     "description": "Ban user dialog title"
   },
-
   "banReason": "Ban Reason",
   "@banReason": {
     "description": "Ban reason label"
   },
-
   "selectBanReason": "Select ban reason",
   "@selectBanReason": {
     "description": "Select ban reason label"
   },
-
   "banReasonSpam": "Spam",
   "@banReasonSpam": {
     "description": "Ban reason Spam"
   },
-
   "banReasonScam": "Scam",
   "@banReasonScam": {
     "description": "Ban reason Scam"
   },
-
   "banReasonHarassment": "Harassment",
   "@banReasonHarassment": {
     "description": "Ban reason Harassment"
   },
-
   "banReasonIllegalContent": "Illegal Content",
   "@banReasonIllegalContent": {
     "description": "Ban reason Illegal Content"
   },
-
   "banReasonMultipleViolations": "Multiple Violations",
   "@banReasonMultipleViolations": {
     "description": "Ban reason Multiple Violations"
   },
-
   "banReasonOther": "Other",
   "@banReasonOther": {
     "description": "Ban reason Other"
   },
-
   "banDuration": "Ban Duration",
   "@banDuration": {
     "description": "Ban duration label"
   },
-
   "banDuration24h": "24 Hours",
   "@banDuration24h": {
     "description": "Ban duration 24 hours"
   },
-
   "banDuration7d": "7 Days",
   "@banDuration7d": {
     "description": "Ban duration 7 days"
   },
-
   "banDuration30d": "30 Days",
   "@banDuration30d": {
     "description": "Ban duration 30 days"
   },
-
   "banDurationPermanent": "Permanent",
   "@banDurationPermanent": {
     "description": "Ban duration Permanent"
   },
-
   "additionalNotes": "Additional Notes",
   "@additionalNotes": {
     "description": "Additional notes label"
   },
-
   "optionalNotes": "Optional: Additional information...",
   "@optionalNotes": {
     "description": "Optional notes hint"
   },
-
   "confirmBanUser": "Do you really want to ban this user?",
   "@confirmBanUser": {
     "description": "Ban user confirmation"
   },
-
   "ban": "Ban",
   "@ban": {
     "description": "Ban button"
   },
-
   "userBanned": "User banned",
   "@userBanned": {
     "description": "User banned message"
   },
-
   "userWarned": "User warned",
   "@userWarned": {
     "description": "User warned message"
   },
-
   "newsManagementScreen": "News Management",
   "@newsManagementScreen": {
     "description": "News Management screen title"
   },
-
   "allNews": "All News",
   "@allNews": {
     "description": "All News tab"
   },
-
   "publishedNews": "Published",
   "@publishedNews": {
     "description": "Published News tab"
   },
-
   "draftNews": "Drafts",
   "@draftNews": {
     "description": "Draft News tab"
   },
-
   "createNews": "Create News",
   "@createNews": {
     "description": "Create news button"
   },
-
   "noNewsItems": "No News Items",
   "@noNewsItems": {
     "description": "No news title"
   },
-
   "noNewsItemsMessage": "No news items have been created yet.",
   "@noNewsItemsMessage": {
     "description": "No news message"
   },
-
   "newsTitle": "Title",
   "@newsTitle": {
     "description": "News title label"
   },
-
   "newsContent": "Content",
   "@newsContent": {
     "description": "News content label"
   },
-
   "newsStatus": "Status",
   "@newsStatus": {
     "description": "News status label"
   },
-
   "newsStatusPublished": "Published",
   "@newsStatusPublished": {
     "description": "News status Published"
   },
-
   "newsStatusDraft": "Draft",
   "@newsStatusDraft": {
     "description": "News status Draft"
   },
-
   "publishedAt": "Published at",
   "@publishedAt": {
     "description": "Published at label"
   },
-
   "editNews": "Edit News",
   "@editNews": {
     "description": "Edit news button"
   },
-
   "deleteNews": "Delete News",
   "@deleteNews": {
     "description": "Delete news button"
   },
-
   "createNewsItem": "Create News",
   "@createNewsItem": {
     "description": "Create news dialog title"
   },
-
   "editNewsItem": "Edit News",
   "@editNewsItem": {
     "description": "Edit news dialog title"
   },
-
   "enterNewsTitle": "Enter news title",
   "@enterNewsTitle": {
     "description": "News title hint"
   },
-
   "enterNewsContent": "Enter news content...",
   "@enterNewsContent": {
     "description": "News content hint"
   },
-
   "newsTitleRequired": "Title is required",
   "@newsTitleRequired": {
     "description": "News title required validation"
   },
-
   "newsContentRequired": "Content is required",
   "@newsContentRequired": {
     "description": "News content required validation"
   },
-
   "publish": "Publish",
   "@publish": {
     "description": "Publish button"
   },
-
   "saveAsDraft": "Save as Draft",
   "@saveAsDraft": {
     "description": "Save as draft button"
   },
-
   "newsCreated": "News created",
   "@newsCreated": {
     "description": "News created message"
   },
-
   "newsUpdated": "News updated",
   "@newsUpdated": {
     "description": "News updated message"
   },
-
   "newsDeleted": "News deleted",
   "@newsDeleted": {
     "description": "News deleted message"
   },
-
   "confirmDeleteNews": "Do you really want to delete this news item?",
   "@confirmDeleteNews": {
     "description": "Delete news confirmation"
   },
-
   "confirmDeleteNewsWithTitle": "Do you really want to delete \"{title}\"?",
   "@confirmDeleteNewsWithTitle": {
     "description": "Delete news confirmation with title",
@@ -2044,22 +1692,18 @@
       }
     }
   },
-
   "deleteExpired": "Delete expired",
   "@deleteExpired": {
     "description": "Delete expired button"
   },
-
   "deleteExpiredNews": "Delete expired news",
   "@deleteExpiredNews": {
     "description": "Delete expired news dialog title"
   },
-
   "confirmDeleteExpiredNews": "Do you want to delete all expired news?",
   "@confirmDeleteExpiredNews": {
     "description": "Delete expired news confirmation"
   },
-
   "expiredNewsDeleted": "{count} expired news deleted",
   "@expiredNewsDeleted": {
     "description": "Expired news deleted message",
@@ -2069,12 +1713,10 @@
       }
     }
   },
-
   "newsStatusExpired": "Expired",
   "@newsStatusExpired": {
     "description": "News status expired"
   },
-
   "createdLabel": "Created: {date}",
   "@createdLabel": {
     "description": "Created label with date",
@@ -2084,7 +1726,6 @@
       }
     }
   },
-
   "expiresLabel": "Expires: {date}",
   "@expiresLabel": {
     "description": "Expires label with date",
@@ -2094,47 +1735,38 @@
       }
     }
   },
-
   "markdownSupported": "Markdown is supported",
   "@markdownSupported": {
     "description": "Markdown is supported note"
   },
-
   "lifetimeDays": "Lifetime (days)",
   "@lifetimeDays": {
     "description": "Lifetime in days label"
   },
-
   "defaultLifetimeDays": "Default: 14 days",
   "@defaultLifetimeDays": {
     "description": "Default lifetime note"
   },
-
   "expiryDate": "Expiry date",
   "@expiryDate": {
     "description": "Expiry date label"
   },
-
   "noExpiryDate": "No expiry date",
   "@noExpiryDate": {
     "description": "No expiry date text"
   },
-
   "publishNewsMessage": "News will be displayed on the dashboard",
   "@publishNewsMessage": {
     "description": "Publish news message"
   },
-
   "titleContentRequired": "Title and content must not be empty",
   "@titleContentRequired": {
     "description": "Title and content required validation"
   },
-
   "createFirstNews": "Create the first news with the + button.",
   "@createFirstNews": {
     "description": "Create first news message"
   },
-
   "errorDeleting": "Error deleting: {error}",
   "@errorDeleting": {
     "description": "Error deleting message",
@@ -2144,127 +1776,102 @@
       }
     }
   },
-
   "categoryManagementScreen": "Category Management",
   "@categoryManagementScreen": {
     "description": "Category Management screen title"
   },
-
   "categories": "Categories",
   "@categories": {
     "description": "Categories tab"
   },
-
   "subcategories": "Subcategories",
   "@subcategories": {
     "description": "Subcategories tab"
   },
-
   "createCategory": "Create Category",
   "@createCategory": {
     "description": "Create category button"
   },
-
   "createSubcategory": "Create Subcategory",
   "@createSubcategory": {
     "description": "Create subcategory button"
   },
-
   "noCategories": "No Categories",
   "@noCategories": {
     "description": "No categories title"
   },
-
   "noCategoriesMessage": "No categories have been created yet.",
   "@noCategoriesMessage": {
     "description": "No categories message"
   },
-
   "noSubcategories": "No Subcategories",
   "@noSubcategories": {
     "description": "No subcategories title"
   },
-
   "noSubcategoriesMessage": "No subcategories have been created yet.",
   "@noSubcategoriesMessage": {
     "description": "No subcategories message"
   },
-
   "categoryName": "Name",
   "@categoryName": {
     "description": "Category name label"
   },
-
   "categoryDescription": "Description",
   "@categoryDescription": {
     "description": "Category description label"
   },
-
   "parentCategory": "Parent Category",
   "@parentCategory": {
     "description": "Parent category label"
   },
-
   "listingsCount": "Listings",
   "@listingsCount": {
     "description": "Listings count label"
   },
-
   "editCategory": "Edit Category",
   "@editCategory": {
     "description": "Edit category button"
   },
-
   "deleteCategory": "Delete Category",
   "@deleteCategory": {
     "description": "Delete category button"
   },
-
   "createCategoryDialog": "Create Category",
   "@createCategoryDialog": {
     "description": "Create category dialog title"
   },
-
   "editCategoryDialog": "Edit Category",
   "@editCategoryDialog": {
     "description": "Edit category dialog title"
   },
-
   "enterCategoryName": "Enter category name",
   "@enterCategoryName": {
     "description": "Category name hint"
   },
-
   "enterCategoryDescription": "Enter description (optional)",
   "@enterCategoryDescription": {
     "description": "Category description hint"
   },
-
   "categoryNameRequired": "Name is required",
   "@categoryNameRequired": {
     "description": "Category name required validation"
   },
-
   "categoryCreated": "Category created",
   "@categoryCreated": {
     "description": "Category created message"
   },
-
   "categoryUpdated": "Category updated",
   "@categoryUpdated": {
     "description": "Category updated message"
   },
-
   "categoryDeleted": "Category deleted",
   "@categoryDeleted": {
     "description": "Category deleted message"
   },
-
   "confirmDeleteCategory": "Do you really want to delete this category? All associated subcategories will also be deleted.",
   "@confirmDeleteCategory": {
     "description": "Delete category confirmation"
   },
-
   "confirmDeleteCategoryWithName": "Do you really want to delete \"{name}\"?",
   "@confirmDeleteCategoryWithName": {
     "description": "Delete category confirmation with name",
@@ -2274,22 +1881,18 @@
       }
     }
   },
-
   "newCategory": "New category",
   "@newCategory": {
     "description": "New category dialog title"
   },
-
   "addSubcategory": "Add subcategory",
   "@addSubcategory": {
     "description": "Add subcategory tooltip"
   },
-
   "createFirstCategory": "Create the first category with the + button.",
   "@createFirstCategory": {
     "description": "Create first category message"
   },
-
   "subcategoriesCount": "{count} Subcategories • Sorting: {sortOrder}",
   "@subcategoriesCount": {
     "description": "Subcategories count with sorting",
@@ -2302,12 +1905,10 @@
       }
     }
   },
-
   "sorting": "Sorting",
   "@sorting": {
     "description": "Sorting"
   },
-
   "sortingLabel": "Sorting: {sortOrder}",
   "@sortingLabel": {
     "description": "Sorting label",
@@ -2317,17 +1918,14 @@
       }
     }
   },
-
   "sortingHint": "0",
   "@sortingHint": {
     "description": "Sorting hint"
   },
-
   "categoryShownToUsers": "Category is shown to users",
   "@categoryShownToUsers": {
     "description": "Category active message"
   },
-
   "categoryHasSubcategories": "This category has {count} subcategories that will also be deleted!",
   "@categoryHasSubcategories": {
     "description": "Category has subcategories warning",
@@ -2337,212 +1935,166 @@
       }
     }
   },
-
   "nameRequired": "Name must not be empty",
   "@nameRequired": {
     "description": "Name required validation"
   },
-
   "paymentSettingsScreen": "Payment Settings",
   "@paymentSettingsScreen": {
     "description": "Payment Settings screen title"
   },
-
   "paymentMethods": "Payment Methods",
   "@paymentMethods": {
     "description": "Payment methods label"
   },
-
   "fees": "Fees",
   "@fees": {
     "description": "Fees label"
   },
-
   "paypalEnabled": "PayPal Enabled",
   "@paypalEnabled": {
     "description": "PayPal enabled label"
   },
-
   "bitcoinEnabled": "Bitcoin Enabled",
   "@bitcoinEnabled": {
     "description": "Bitcoin enabled label"
   },
-
   "transactionFee": "Transaction Fee",
   "@transactionFee": {
     "description": "Transaction fee label"
   },
-
   "platformFee": "Platform Fee",
   "@platformFee": {
     "description": "Platform fee label"
   },
-
   "feePercentage": "Percentage",
   "@feePercentage": {
     "description": "Fee percentage label"
   },
-
   "minimumFee": "Minimum Fee",
   "@minimumFee": {
     "description": "Minimum fee label"
   },
-
   "maximumFee": "Maximum Fee",
   "@maximumFee": {
     "description": "Maximum fee label"
   },
-
   "settingsSaved": "Settings saved",
   "@settingsSaved": {
     "description": "Settings saved message"
   },
-
   "saveSettings": "Save settings",
   "@saveSettings": {
     "description": "Save settings button"
   },
-
   "paymentSettingsInfo": "These settings determine how users can pay for slots.",
   "@paymentSettingsInfo": {
     "description": "Payment settings info"
   },
-
   "enablePaypal": "Enable PayPal",
   "@enablePaypal": {
     "description": "Enable PayPal"
   },
-
   "paypalPaymentDescription": "Users can pay with PayPal",
   "@paypalPaymentDescription": {
     "description": "PayPal payment description"
   },
-
   "paypalEmailAddress": "PayPal email address",
   "@paypalEmailAddress": {
     "description": "PayPal email address label"
   },
-
   "paypalEmailHint": "payments@example.com",
   "@paypalEmailHint": {
     "description": "PayPal email hint"
   },
-
   "enableBitcoin": "Enable Bitcoin",
   "@enableBitcoin": {
     "description": "Enable Bitcoin"
   },
-
   "bitcoinPaymentDescription": "Users can pay with Bitcoin",
   "@bitcoinPaymentDescription": {
     "description": "Bitcoin payment description"
   },
-
   "bitcoinWalletAddress": "Bitcoin wallet address",
   "@bitcoinWalletAddress": {
     "description": "Bitcoin wallet address label"
   },
-
   "bitcoinWalletHint": "bc1q...",
   "@bitcoinWalletHint": {
     "description": "Bitcoin wallet hint"
   },
-
   "pendingPaymentsScreen": "Pending Payments",
   "@pendingPaymentsScreen": {
     "description": "Pending Payments screen title"
   },
-
   "allPendingPayments": "All",
   "@allPendingPayments": {
     "description": "All pending payments tab"
   },
-
   "paypalPayments": "PayPal",
   "@paypalPayments": {
     "description": "PayPal payments tab"
   },
-
   "bitcoinPayments": "Bitcoin",
   "@bitcoinPayments": {
     "description": "Bitcoin payments tab"
   },
-
   "noPendingPayments": "No Pending Payments",
   "@noPendingPayments": {
     "description": "No pending payments title"
   },
-
   "noPendingPaymentsMessage": "There are currently no pending payments to process.",
   "@noPendingPaymentsMessage": {
     "description": "No pending payments message"
   },
-
   "paymentId": "Payment ID",
   "@paymentId": {
     "description": "Payment ID label"
   },
-
   "amount": "Amount",
   "@amount": {
     "description": "Amount label"
   },
-
   "requestedAt": "Requested at",
   "@requestedAt": {
     "description": "Requested at label"
   },
-
   "paymentStatus": "Status",
   "@paymentStatus": {
     "description": "Payment status label"
   },
-
   "paymentStatusPending": "Pending",
   "@paymentStatusPending": {
     "description": "Payment status Pending"
   },
-
   "paymentStatusProcessing": "Processing",
   "@paymentStatusProcessing": {
     "description": "Payment status Processing"
   },
-
   "paymentStatusCompleted": "Completed",
   "@paymentStatusCompleted": {
     "description": "Payment status Completed"
   },
-
   "paymentStatusFailed": "Failed",
   "@paymentStatusFailed": {
     "description": "Payment status Failed"
   },
-
   "processPayment": "Process Payment",
   "@processPayment": {
     "description": "Process payment button"
   },
-
   "checkBitcoinPayments": "Check Bitcoin payments",
   "@checkBitcoinPayments": {
     "description": "Check Bitcoin payments button"
   },
-
   "expireOldOrders": "Expire old orders",
   "@expireOldOrders": {
     "description": "Expire old orders button"
   },
-
-  "refresh": "Refresh",
-  "@refresh": {
-    "description": "Refresh tooltip"
-  },
-
   "confirmPaymentTitle": "Confirm payment",
   "@confirmPaymentTitle": {
     "description": "Confirm payment dialog title"
   },
-
   "confirmPaymentMessage": "Do you really want to confirm the payment for order #{orderId}?\n\nAmount: {amount}\nMethod: {method}",
   "@confirmPaymentMessage": {
     "description": "Confirm payment dialog message",
@@ -2558,17 +2110,10 @@
       }
     }
   },
-
-  "confirm": "Confirm",
-  "@confirm": {
-    "description": "Confirm button"
-  },
-
   "paymentConfirmedSlotActivated": "Payment confirmed and slot activated",
   "@paymentConfirmedSlotActivated": {
     "description": "Payment confirmed and slot activated message"
   },
-
   "bitcoinPaymentsProcessed": "{count} Bitcoin payments processed",
   "@bitcoinPaymentsProcessed": {
     "description": "Bitcoin payments processed message",
@@ -2578,22 +2123,18 @@
       }
     }
   },
-
   "expireOldOrdersTitle": "Expire old orders",
   "@expireOldOrdersTitle": {
     "description": "Expire old orders dialog title"
   },
-
   "expireOldOrdersMessage": "Do you want to mark all pending orders older than 24 hours as expired?",
   "@expireOldOrdersMessage": {
     "description": "Expire old orders dialog message"
   },
-
   "expireAction": "Expire",
   "@expireAction": {
     "description": "Expire button"
   },
-
   "ordersExpired": "{count} orders marked as expired",
   "@ordersExpired": {
     "description": "Orders marked as expired message",
@@ -2603,12 +2144,10 @@
       }
     }
   },
-
   "allPaymentsProcessed": "All payments have been processed",
   "@allPaymentsProcessed": {
     "description": "All payments processed message"
   },
-
   "sell": "Sell",
   "myListings": "My Listings ({count})",
   "mySlots": "My Slots ({count})",
@@ -2617,7 +2156,6 @@
   "noSlotsMessage": "You don't have any slots to create a listing. Buy slots first.",
   "showSlots": "Show Slots",
   "noListings": "No listings",
-  "noListingsMessage": "You haven't created any listings yet. Create your first listing now!",
   "createFirstListing": "Create first listing",
   "buySlots": "Buy Slots",
   "available": "Available",
@@ -2725,7 +2263,6 @@
   "unbanReason": "Reason for unbanning",
   "userUnbanned": "User has been unbanned",
   "information": "Information",
-  "created": "Created on {date}",
   "lastLogin": "Last Login",
   "never": "Never",
   "status": "Status",
@@ -2739,9 +2276,6 @@
   "roleDescriptionAdmin": "Full access",
   "roleDescriptionModerator": "Moderation rights",
   "roleDescriptionUser": "Normal user rights",
-  "roleAdmin": "Admin",
-  "roleModerator": "Moderator",
-  "roleUser": "User",
   "errorLoadingRatings": "Error loading ratings",
   "noRatingsYet": "No ratings yet",
   "noRatingsDescription": "This user has not received any ratings yet",
@@ -2753,14 +2287,168 @@
   "banReasonInappropriate": "Inappropriate content",
   "banReasonTosViolation": "Terms of Service violation",
   "banReasonMultipleAccounts": "Multiple accounts",
-  "banReasonSpam": "Spam",
   "banReasonIllegal": "Illegal activities",
-  "banReasonHarassment": "Harassment",
   "banReasonRequired": "Please provide a reason",
   "enterBanReason": "Enter ban reason",
   "presetReasons": "Preset reasons",
   "reasonRequired": "Reason (required)",
   "describeBanReason": "Describe the reason for the ban",
   "banWarning": "This user will be immediately blocked and won't be able to log in.",
-  "banAction": "Ban User"
+  "banAction": "Ban User",
+  "activeSlotVariants": "Active",
+  "activeUsers": "Active",
+  "activeVariantDescription": "Variant can be purchased",
+  "addInternalNotes": "Add internal notes...",
+  "administration": "Administration",
+  "allUsers": "All Users",
+  "assignToMe": "Assign to Me",
+  "assigned": "Assigned",
+  "assignedToModerator": "Assigned to moderator #{id}",
+  "atLeastOnePaymentMethodRequired": "Au moins une méthode de paiement doit être activée",
+  "banned": "BANNED",
+  "bannedUsers": "Banned",
+  "bitcoinAddressCopied": "Adresse Bitcoin copiée !",
+  "bitcoinInstructions": "Please send the BTC amount to the provided address and include the reference in the transaction comment",
+  "bitcoinInstructionsDetailed": "Scan the QR code or send the BTC amount to the provided address and include the reference in the transaction comment. After the transaction is confirmed, the slot will be activated automatically.",
+  "configureSlotTypes": "Configurer les types et prix de slots",
+  "confirmDeleteSlotVariant": "Do you really want to delete this slot variant?",
+  "confirmDeleteSlotVariantWithName": "Do you really want to delete \"{name}\"?",
+  "confirmUnbanUser": "Do you really want to unban this user?",
+  "createCategoriesSubcategories": "Créer des catégories et sous-catégories",
+  "createFirstSlotVariant": "Create the first slot variant with the + button.",
+  "createSlotVariant": "Create Slot Variant",
+  "createSlotVariantDialog": "Create Slot Variant",
+  "currency": "Currency",
+  "daysAgo": "{days}d ago",
+  "deactivate": "Deactivate",
+  "deactivateListing": "Deactivate Listing",
+  "deactivateListingConfirm": "Do you really want to deactivate this listing? This action cannot be undone.",
+  "deleteSlotVariant": "Delete Slot Variant",
+  "descriptionOptional": "Description (optional)",
+  "donateBitcoin": "Faire un Don Bitcoin",
+  "donateCoffee": "Buy Me a Coffee",
+  "donateDescription": "Si vous aimez cette application, vous pouvez soutenir son développement avec un don :",
+  "donateTitle": "Soutenir le Développement",
+  "duration": "Duration",
+  "durationDays": "{days} days runtime",
+  "durationDaysLabel": "{days} Days",
+  "durationRequired": "Duration (days) required",
+  "editSlotVariant": "Edit Slot Variant",
+  "editSlotVariantDialog": "Modifier la Variante de Slot",
+  "encryptionActive": "Chiffrement actif",
+  "enterBitcoinTxIdPrompt": "Saisissez l'ID de transaction Bitcoin (TX-Hash) après avoir envoyé le paiement:",
+  "enterDuration": "Durée (jours)",
+  "enterMaxListings": "Max. annonces",
+  "enterPriceBTC": "Prix en BTC",
+  "enterPriceUSD": "Prix en USD",
+  "enterVariantName": "Entrer le nom de la variante",
+  "extendSlotPrompt": "Choisissez une variante de slot pour prolonger votre slot. La durée sera ajoutée à la date d'expiration actuelle.",
+  "featureInMilestone": "{title} will be implemented in Milestone {milestone}.",
+  "freeLabel": "Free",
+  "freeVariantDescription": "La variante est gratuite (pour les emplacements promotionnels)",
+  "fullDateTimeFormat": "{day}.{month}.{year} à {hour}:{minute}",
+  "hoursAgo": "{hours}h ago",
+  "inactiveSlotVariants": "Inactive",
+  "justNow": "Just now",
+  "listing": "Listing",
+  "listingDeactivated": "L'annonce a été désactivée",
+  "listingId": "Annonce #{id}",
+  "listingReports": "Listing Reports",
+  "listingsWithCount": "Annonces ({count})",
+  "manageCategories": "Gérer les catégories",
+  "manageSlotVariants": "Manage Slot Variants",
+  "manageUsersRoles": "Gérer les utilisateurs et attribuer des rôles",
+  "markAsCompleted": "Marquer comme Terminé",
+  "markAsFailed": "Marquer comme Échoué",
+  "markAsProcessing": "Marquer comme En Traitement",
+  "markAsResolved": "Marquer comme Résolu",
+  "maxListings": "Max. Annonces",
+  "maxListingsRequired": "Le max. d'annonces est requis",
+  "memberSince": "Membre depuis {date}",
+  "method": "Méthode",
+  "minutesAgo": "{minutes}m ago",
+  "moderatorPanelScreen": "Moderator Panel",
+  "nameHint": "Name",
+  "newSlotVariant": "New Slot Variant",
+  "noActiveListings": "Aucune annonce active",
+  "noPgpKeyAvailable": "Aucune clé PGP disponible",
+  "noRatings": "Aucune évaluation",
+  "noReportsDescription": "There are no reports to review at this time.",
+  "noSlotVariants": "No Slot Variants",
+  "noSlotVariantsMessage": "Aucune variante de slot n'a encore été créée.",
+  "noUsers": "Aucun Utilisateur",
+  "noUsersFound": "Aucun Utilisateur Trouvé",
+  "noUsersMessage": "Aucun utilisateur trouvé.",
+  "notYetAssigned": "Pas encore assigné",
+  "noteCannotBeEmpty": "La note ne peut pas être vide",
+  "openReportsCount": "{count} open reports",
+  "order": "Commande #{id}",
+  "paymentDetailsTitle": "Détails du paiement #{number}",
+  "paymentMarkedCompleted": "Paiement marqué comme terminé",
+  "paymentMarkedFailed": "Paiement marqué comme échoué",
+  "paymentMarkedProcessing": "Paiement marqué comme en traitement",
+  "payments": "Paiements",
+  "paypalBitcoinSlots": "PayPal et Bitcoin pour l'achat de slots",
+  "paypalEmail": "Email PayPal",
+  "paypalInstructions": "Veuillez envoyer le montant à l'adresse PayPal fournie et inclure la référence.",
+  "paypalInstructionsDetailed": "Veuillez envoyer le montant à l'adresse PayPal fournie et inclure la référence. Votre slot sera activé automatiquement après réception du paiement.",
+  "priceBTC": "Prix (BTC)",
+  "priceBTCRequired": "Le prix en BTC est requis",
+  "priceUSD": "Prix (USD)",
+  "priceUSDRequired": "Le prix en USD est requis",
+  "priceUsd": "Prix (USD)",
+  "profile": "Profil",
+  "ratingCount": "{count, plural, =1{1 évaluation} other{{count} évaluations}}",
+  "ratingsWithCount": "Évaluations ({count})",
+  "report": "Signaler",
+  "reportAlreadyReported": "Vous avez déjà signalé ceci",
+  "reportAssignedToYou": "Le signalement vous a été assigné",
+  "reportDetails": "Détails du Signalement",
+  "reportDetailsHint": "Décrivez le problème...",
+  "reportDetailsOptional": "Détails Supplémentaires (facultatif)",
+  "reportNotFound": "Signalement non trouvé",
+  "reportReasonFraud": "Fraud",
+  "reportReasonLabel": "Raison du signalement :",
+  "reportSelectReason": "Veuillez sélectionner une raison",
+  "reportStatusDismissed": "Dismissed",
+  "reportStatusOpen": "Open",
+  "reportStatusResolved": "Resolved",
+  "reportStatusReviewing": "Reviewing",
+  "reportSubmitError": "Erreur lors de l'envoi du signalement",
+  "reportSubmittedSuccessfully": "Signalement soumis avec succès",
+  "reportTargetListing": "Annonce",
+  "reportTargetNotFound": "Entrée non trouvée",
+  "reportTargetUser": "Utilisateur",
+  "reportTitle": "Signaler {targetType}",
+  "reportUser": "Signaler l'Utilisateur",
+  "reportYouAreReporting": "Vous signalez : \"{targetName}\"",
+  "reportedOn": "Signalé le",
+  "reportedUserProfile": "Profil Utilisateur Signalé",
+  "reporterUser": "Utilisateur #{id}",
+  "reviewPendingOrders": "Examiner et confirmer les commandes en attente",
+  "searchUsers": "Rechercher des utilisateurs...",
+  "sectionDonate": "Soutenir le Développeur",
+  "sendMessage": "Envoyer un Message",
+  "slotVariantCreated": "Variante de slot créée",
+  "slotVariantDeleted": "Variante de slot supprimée",
+  "slotVariantUpdated": "Variante de slot mise à jour",
+  "slotVariantsScreen": "Variantes de Slot",
+  "slots": "Slots",
+  "staff": "Personnel",
+  "statusUpdated": "Le statut a été mis à jour",
+  "systemUserManagement": "Gestion du système et des utilisateurs",
+  "txId": "TX-ID",
+  "unban": "Débannir",
+  "unknown": "Inconnu",
+  "user": "User",
+  "userManagementScreen": "Gestion des Utilisateurs",
+  "userNotFound": "Utilisateur non trouvé",
+  "userReports": "User Reports",
+  "users": "Utilisateurs",
+  "variant": "Variante",
+  "variantName": "Nom",
+  "variantNameRequired": "Le nom est requis",
+  "variantStatus": "Statut",
+  "viewUser": "Voir l'Utilisateur",
+  "listings": "Listings"
 }
