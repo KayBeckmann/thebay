@@ -645,7 +645,7 @@
 - [x] Alle übersehenen Widgets übersetzen (start_transaction_dialog.dart ~21 Strings, sell_screen.dart ~60 Strings)
 - [x] Übersetzungen auf Konsistenz prüfen (alle 4 Sprachen vollständig, 0 fehlende Übersetzungen)
 - [ ] Native Speaker Reviews durchführen
-- [ ] Alle Sprach-Kombinationen testen
+- [x] Alle Sprach-Kombinationen testen
 - [ ] Dokumentation aktualisieren
 
 ### 15.9 Qualitätssicherung
@@ -673,4 +673,4 @@
 ---
 
 *Erstellt am: 2025-12-09*
-*Aktualisiert am: 2026-01-03*
+*Aktualisiert am: 2026-01-09*
