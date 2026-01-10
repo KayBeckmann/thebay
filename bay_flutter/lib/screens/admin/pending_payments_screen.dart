@@ -4,6 +4,7 @@ import 'package:bay_client/bay_client.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart';
+import '../../utils/date_formatter.dart';
 
 /// Admin screen for managing pending payments.
 class PendingPaymentsScreen extends StatefulWidget {
@@ -265,11 +266,6 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
     );
   }
 
-  String _formatDateTime(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year} '
-        '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
-  }
-
   Widget _buildOrderCard(SlotOrder order) {
     final l10n = AppLocalizations.of(context)!;
     final user = _users[order.id];
@@ -321,7 +317,7 @@ class _PendingPaymentsScreenState extends State<PendingPaymentsScreen> {
                                   ),
                             ),
                             Text(
-                              _formatDateTime(order.createdAt),
+                              DateFormatter.formatDate(context,order.createdAt),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall

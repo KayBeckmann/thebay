@@ -7,6 +7,7 @@ import 'package:openpgp/openpgp.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/pgp_key_service.dart';
+import '../utils/date_formatter.dart';
 
 /// Screen für PGP Key Management.
 /// Ermöglicht Key-Generierung, Export, Import und Server-Synchronisation.
@@ -184,7 +185,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
               _buildInfoRow(l10n.identity, serverKey.keyIdentity),
               _buildInfoRow(
                 l10n.createdAt,
-                _formatDate(serverKey.createdAt),
+                DateFormatter.formatDate(context, serverKey.createdAt),
               ),
             ],
             const SizedBox(height: 8),
@@ -789,7 +790,7 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
                         style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
                       ),
                       subtitle: Text(
-                        'Erstellt: ${_formatBackupDate(backup.createdAt)}',
+                        'Erstellt: ${DateFormatter.formatDate(context, backup.createdAt)}',
                       ),
                       trailing: const Icon(Icons.chevron_right),
                       onTap: () {
@@ -978,12 +979,6 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       return '${clean.substring(0, 8)}...${clean.substring(clean.length - 8)}';
     }
     return clean;
-  }
-
-  String _formatBackupDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.'
-        '${date.month.toString().padLeft(2, '0')}.'
-        '${date.year}';
   }
 
   void _showGenerateDialog() {
@@ -1430,12 +1425,6 @@ class _PgpKeyScreenState extends State<PgpKeyScreen> {
       return '${parts.sublist(0, 5).join(' ')}  ${parts.sublist(5).join(' ')}';
     }
     return parts.join(' ');
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.'
-        '${date.month.toString().padLeft(2, '0')}.'
-        '${date.year}';
   }
 }
 

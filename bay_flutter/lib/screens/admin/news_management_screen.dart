@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart';
+import '../../utils/date_formatter.dart';
 
 /// Admin screen for managing news articles.
 class NewsManagementScreen extends StatefulWidget {
@@ -45,11 +46,6 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
         });
       }
     }
-  }
-
-  String _formatDate(DateTime? date) {
-    if (date == null) return '-';
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 
   bool _isExpired(News news) {
@@ -197,7 +193,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                     color: Theme.of(context).colorScheme.onSurfaceVariant),
                 const SizedBox(width: 4),
                 Text(
-                  l10n.createdLabel(_formatDate(news.createdAt)),
+                  l10n.createdLabel(DateFormatter.formatDate(context,news.createdAt)),
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const SizedBox(width: 16),
@@ -209,7 +205,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                           : Theme.of(context).colorScheme.onSurfaceVariant),
                   const SizedBox(width: 4),
                   Text(
-                    l10n.expiresLabel(_formatDate(news.expiresAt)),
+                    l10n.expiresLabel(news.expiresAt != null ? DateFormatter.formatDate(context, news.expiresAt!) : l10n.noExpiryDate),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: isExpired
                               ? Theme.of(context).colorScheme.error
@@ -307,7 +303,7 @@ class _NewsManagementScreenState extends State<NewsManagementScreen> {
                   if (isEditing)
                     ListTile(
                       title: Text(l10n.expiryDate),
-                      subtitle: Text(expiresAt != null ? _formatDate(expiresAt) : l10n.noExpiryDate),
+                      subtitle: Text(expiresAt != null ? DateFormatter.formatDate(context, expiresAt!) : l10n.noExpiryDate),
                       trailing: IconButton(
                         icon: const Icon(Icons.calendar_month),
                         onPressed: () async {

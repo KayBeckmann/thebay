@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
+import '../../utils/date_formatter.dart';
 
 /// Widget zur Anzeige einer Liste von Bewertungen für einen Benutzer.
 class RatingsListWidget extends StatefulWidget {
@@ -434,7 +435,7 @@ class _RatingCardState extends State<_RatingCard> {
                         ],
                       ),
                       Text(
-                        _formatDate(widget.rating.createdAt),
+                        DateFormatter.formatDate(context,widget.rating.createdAt),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -501,10 +502,6 @@ class _RatingCardState extends State<_RatingCard> {
           color: Colors.red,
         );
     }
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 }
 

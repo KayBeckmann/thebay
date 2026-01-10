@@ -5,6 +5,7 @@ import '../l10n/app_localizations.dart';
 import '../main.dart' show messageService, pgpKeyService;
 import '../services/message_service.dart';
 import '../services/pgp_key_service.dart';
+import '../utils/date_formatter.dart';
 
 /// Öffnet den Dialog zum Verfassen einer Nachricht.
 /// Kann von anderen Screens aufgerufen werden.
@@ -660,7 +661,7 @@ class _MessageListTile extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          _formatDate(context, message.createdAt),
+          DateFormatter.formatDate(context, message.createdAt),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         trailing: isUnread
@@ -676,31 +677,6 @@ class _MessageListTile extends StatelessWidget {
         onTap: onTap,
       ),
     );
-  }
-
-  String _formatDate(BuildContext context, DateTime date) {
-    final l10n = AppLocalizations.of(context)!;
-    final now = DateTime.now();
-    final diff = now.difference(date);
-
-    if (diff.inDays == 0) {
-      return '${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
-    } else if (diff.inDays == 1) {
-      return l10n.yesterday;
-    } else if (diff.inDays < 7) {
-      final days = [
-        l10n.monday,
-        l10n.tuesday,
-        l10n.wednesday,
-        l10n.thursday,
-        l10n.friday,
-        l10n.saturday,
-        l10n.sunday
-      ];
-      return days[date.weekday - 1];
-    } else {
-      return '${date.day}.${date.month}.${date.year}';
-    }
   }
 }
 
@@ -747,17 +723,13 @@ class _DraftListTile extends StatelessWidget {
           style: const TextStyle(fontStyle: FontStyle.italic),
         ),
         subtitle: Text(
-          AppLocalizations.of(context)!.lastEdited(_formatDate(draft.updatedAt)),
+          AppLocalizations.of(context)!.lastEdited(DateFormatter.formatDate(context,draft.updatedAt)),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         trailing: const Icon(Icons.chevron_right),
         onTap: onTap,
       ),
     );
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day}.${date.month}.${date.year} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
   }
 }
 
@@ -911,7 +883,7 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    AppLocalizations.of(context)!.dateLabel(_formatDate(widget.message.createdAt)),
+                    AppLocalizations.of(context)!.dateLabel(DateFormatter.formatDate(context,widget.message.createdAt)),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -949,10 +921,6 @@ class _MessageDetailScreenState extends State<_MessageDetailScreen> {
         ],
       ),
     );
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day}.${date.month}.${date.year} um ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
   }
 }
 

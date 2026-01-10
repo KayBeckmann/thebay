@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
+import '../../utils/date_formatter.dart';
 import 'transaction_detail_screen.dart';
 
 /// Screen für die Transaktionsübersicht mit Tabs für Käufe und Verkäufe.
@@ -256,7 +257,7 @@ class _TransactionCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    _formatDate(transaction.createdAt),
+                    DateFormatter.formatDate(context,transaction.createdAt),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
@@ -435,10 +436,6 @@ class _TransactionCard extends StatelessWidget {
 
   String _formatPrice(int cents) {
     return '\$${(cents / 100).toStringAsFixed(2)}';
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 }
 

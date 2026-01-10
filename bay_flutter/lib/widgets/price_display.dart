@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bay_client/bay_client.dart';
 
+import '../l10n/app_localizations.dart';
 import '../main.dart' show client;
 import '../services/currency_service.dart';
 
@@ -59,12 +60,16 @@ class _PriceDisplayState extends State<PriceDisplay> {
     });
 
     try {
+      // Get the current locale
+      final locale = Localizations.localeOf(context).toString();
+
       // If no user currency or same as price currency, just format
       if (widget.userCurrency == null ||
           widget.userCurrency!.toUpperCase() == widget.priceCurrency.toUpperCase()) {
         final formatted = _currencyService.formatPrice(
           priceInCents: widget.priceInCents,
           currency: widget.priceCurrency,
+          locale: locale,
         );
 
         if (mounted) {
@@ -81,6 +86,7 @@ class _PriceDisplayState extends State<PriceDisplay> {
         priceInCents: widget.priceInCents,
         priceCurrency: widget.priceCurrency,
         userCurrency: widget.userCurrency!,
+        locale: locale,
         showOriginal: widget.showOriginal,
       );
 
@@ -96,9 +102,11 @@ class _PriceDisplayState extends State<PriceDisplay> {
           _hasError = true;
           _isLoading = false;
           // Fallback to original price
+          final locale = Localizations.localeOf(context).toString();
           _displayText = _currencyService.formatPrice(
             priceInCents: widget.priceInCents,
             currency: widget.priceCurrency,
+            locale: locale,
           );
         });
       }
@@ -143,18 +151,20 @@ class PricePerUnitDisplay extends StatelessWidget {
     this.showOriginal = false,
   });
 
-  String _getQuantityUnitLabel(QuantityUnit unit) {
+  String _getQuantityUnitLabel(BuildContext context, QuantityUnit unit) {
+    final l10n = AppLocalizations.of(context)!;
+
     switch (unit) {
       case QuantityUnit.piece:
-        return 'Stück';
+        return l10n.unitPiece;
       case QuantityUnit.kg:
-        return 'kg';
+        return l10n.unitKg;
       case QuantityUnit.gram:
-        return 'g';
+        return l10n.unitGram;
       case QuantityUnit.meter:
-        return 'm';
+        return l10n.unitMeter;
       case QuantityUnit.liter:
-        return 'L';
+        return l10n.unitLiter;
       case QuantityUnit.none:
         return '';
     }
@@ -162,7 +172,7 @@ class PricePerUnitDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final unitLabel = _getQuantityUnitLabel(quantityUnit);
+    final unitLabel = _getQuantityUnitLabel(context, quantityUnit);
 
     return Row(
       mainAxisSize: MainAxisSize.min,

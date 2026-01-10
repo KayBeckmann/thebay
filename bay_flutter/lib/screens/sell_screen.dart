@@ -4,6 +4,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 import '../l10n/app_localizations.dart';
 import '../main.dart';
+import '../utils/date_formatter.dart';
 import 'listings/create_listing_screen.dart';
 import 'listings/edit_listing_screen.dart';
 import 'listings/listing_card.dart';
@@ -571,7 +572,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  l10n.createdLabel(_formatDate(order.createdAt)),
+                  l10n.createdLabel(DateFormatter.formatDate(context,order.createdAt)),
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -877,7 +878,7 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    l10n.expiresOn(_formatDate(slot.expiresAt)),
+                    l10n.expiresOn(DateFormatter.formatDate(context,slot.expiresAt)),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: isExpiringSoon
                               ? Theme.of(context).colorScheme.error
@@ -1286,10 +1287,6 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
       // Kaufe einen neuen Slot mit dieser Variante (funktioniert wie normaler Kauf)
       _buySlot(variant);
     }
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 }
 

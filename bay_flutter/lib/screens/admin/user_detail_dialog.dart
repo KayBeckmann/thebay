@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client, authService;
+import '../../utils/date_formatter.dart';
 import 'ban_user_dialog.dart';
 
 /// Dialog showing user details with admin actions
@@ -397,13 +398,13 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
             ),
             const SizedBox(height: 12),
             _buildInfoRow(Icons.calendar_today, l10n.createdAt,
-                _formatDate(_user.createdAt)),
+                DateFormatter.formatDate(context,_user.createdAt)),
             const SizedBox(height: 8),
             _buildInfoRow(
               Icons.login,
               l10n.lastLogin,
               _user.lastLoginAt != null
-                  ? _formatDate(_user.lastLoginAt!)
+                  ? DateFormatter.formatDate(context,_user.lastLoginAt!)
                   : l10n.never,
             ),
             const SizedBox(height: 8),
@@ -417,7 +418,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
               _buildInfoRow(
                 Icons.block,
                 l10n.bannedSince,
-                _user.bannedAt != null ? _formatDate(_user.bannedAt!) : '-',
+                _user.bannedAt != null ? DateFormatter.formatDate(context,_user.bannedAt!) : '-',
               ),
               if (_user.bannedReason != null) ...[
                 const SizedBox(height: 8),
@@ -581,7 +582,7 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
                                 style: Theme.of(context).textTheme.bodySmall,
                               ),
                             Text(
-                              _formatDate(log.createdAt),
+                              DateFormatter.formatDate(context,log.createdAt),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -654,13 +655,5 @@ class _UserDetailDialogState extends State<UserDetailDialog> {
         return l10n.roleDescriptionUser;
     }
   }
-
-  String _formatDate(DateTime date) {
-    final day = date.day.toString().padLeft(2, '0');
-    final month = date.month.toString().padLeft(2, '0');
-    final year = date.year;
-    final hour = date.hour.toString().padLeft(2, '0');
-    final minute = date.minute.toString().padLeft(2, '0');
-    return '$day.$month.$year $hour:$minute';
-  }
 }
+

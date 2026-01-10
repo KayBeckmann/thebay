@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/app_localizations.dart';
 import '../main.dart' show client, authService;
+import '../utils/date_formatter.dart';
 import '../widgets/report_dialog.dart';
 import 'listings/listing_card.dart';
 import 'messages_screen.dart' show showComposeMessageDialog;
@@ -345,7 +346,7 @@ class _UserProfileScreenState extends State<UserProfileScreen>
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  l10n.memberSince(_formatDate(_profile!.memberSince, l10n)),
+                  l10n.memberSince(DateFormatter.formatDate(context, _profile!.memberSince)),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurfaceVariant,
                       ),
@@ -600,14 +601,5 @@ class _UserProfileScreenState extends State<UserProfileScreen>
         targetName: _profile!.username,
       ),
     );
-  }
-
-  String _formatDate(DateTime date, AppLocalizations l10n) {
-    final months = [
-      l10n.monthJan, l10n.monthFeb, l10n.monthMar, l10n.monthApr,
-      l10n.monthMay, l10n.monthJun, l10n.monthJul, l10n.monthAug,
-      l10n.monthSep, l10n.monthOct, l10n.monthNov, l10n.monthDec,
-    ];
-    return '${months[date.month - 1]} ${date.year}';
   }
 }

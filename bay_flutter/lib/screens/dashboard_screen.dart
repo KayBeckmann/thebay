@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../main.dart';
 import '../services/auth_service.dart';
+import '../utils/date_formatter.dart';
 import 'listings/listing_detail_screen.dart';
 import 'transactions/transaction_detail_screen.dart';
 
@@ -507,7 +508,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        '${l10n.slotNumber(slot.id!)} • $listingInfo • ${_formatDate(slot.expiresAt)}',
+                        '${l10n.slotNumber(slot.id!)} • $listingInfo • ${DateFormatter.formatDate(context,slot.expiresAt)}',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -586,10 +587,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       children:
           _recentListings.map((listing) => _buildRecentListingRow(listing)).toList(),
     );
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 
   Widget _buildRecentListingRow(Listing listing) {

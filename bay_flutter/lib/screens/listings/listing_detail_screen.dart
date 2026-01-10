@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:bay_client/bay_client.dart';
 import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
+import '../../utils/date_formatter.dart';
 
 import '../../main.dart' show client, authService;
 import '../../widgets/report_dialog.dart';
@@ -540,9 +541,9 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
             const SizedBox(height: 12),
             _buildDetailRow(l10n.quantity, '${_listing!.quantity} ${_getQuantityUnitLabel(context, _listing!.quantityUnit)}'),
             _buildDetailRow(l10n.price, _formatPrice(_listing!.pricePerUnit)),
-            _buildDetailRow(l10n.createdAt, _formatDate(_listing!.createdAt)),
+            _buildDetailRow(l10n.createdAt, DateFormatter.formatDate(context,_listing!.createdAt)),
             if (_listing!.expiresAt != null)
-              _buildDetailRow(l10n.expiresAt, _formatDate(_listing!.expiresAt!)),
+              _buildDetailRow(l10n.expiresAt, DateFormatter.formatDate(context,_listing!.expiresAt!)),
           ],
         ),
       ),
@@ -570,10 +571,6 @@ class _ListingDetailScreenState extends State<ListingDetailScreen> {
         ],
       ),
     );
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year}';
   }
 
   Widget _buildPaymentSection() {

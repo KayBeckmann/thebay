@@ -27,29 +27,6 @@ class ListingCard extends StatelessWidget {
     this.userCurrency,
   });
 
-  String _formatPrice(int cents) {
-    return '\$${(cents / 100).toStringAsFixed(2)}';
-  }
-
-  String _getQuantityUnitLabel(BuildContext context, QuantityUnit unit) {
-    final l10n = AppLocalizations.of(context)!;
-
-    switch (unit) {
-      case QuantityUnit.piece:
-        return l10n.unitPiece;
-      case QuantityUnit.kg:
-        return l10n.unitKg;
-      case QuantityUnit.gram:
-        return l10n.unitGram;
-      case QuantityUnit.meter:
-        return l10n.unitMeter;
-      case QuantityUnit.liter:
-        return l10n.unitLiter;
-      case QuantityUnit.none:
-        return '';
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -171,9 +148,13 @@ class ListingCard extends StatelessWidget {
         children: [
           Icon(icon, size: 12, color: effectiveColor),
           const SizedBox(width: 4),
-          Text(
-            label,
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(color: effectiveColor),
+          Flexible(
+            child: Text(
+              label,
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(color: effectiveColor),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

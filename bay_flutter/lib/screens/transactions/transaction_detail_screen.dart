@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client, authService;
+import '../../utils/date_formatter.dart';
 import '../user_profile_screen.dart';
 import '../listings/listing_detail_screen.dart';
 import '../ratings/submit_rating_dialog.dart';
@@ -405,7 +406,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
     final steps = <_TimelineStep>[
       _TimelineStep(
         title: l10n.createdAt,
-        subtitle: _formatDateTime(_transaction!.createdAt),
+        subtitle: DateFormatter.formatDate(context,_transaction!.createdAt),
         isCompleted: true,
         icon: Icons.add_circle,
       ),
@@ -418,7 +419,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       _TimelineStep(
         title: l10n.shipped,
         subtitle: _transaction!.shippedAt != null
-            ? _formatDateTime(_transaction!.shippedAt!)
+            ? DateFormatter.formatDate(context,_transaction!.shippedAt!)
             : l10n.waitingForSeller,
         isCompleted: _transaction!.shippedAt != null,
         icon: Icons.local_shipping,
@@ -426,7 +427,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       _TimelineStep(
         title: l10n.received,
         subtitle: _transaction!.receivedAt != null
-            ? _formatDateTime(_transaction!.receivedAt!)
+            ? DateFormatter.formatDate(context,_transaction!.receivedAt!)
             : l10n.waitingForBuyer,
         isCompleted: _transaction!.receivedAt != null,
         icon: Icons.inbox,
@@ -434,7 +435,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
       _TimelineStep(
         title: l10n.completed,
         subtitle: _transaction!.completedAt != null
-            ? _formatDateTime(_transaction!.completedAt!)
+            ? DateFormatter.formatDate(context,_transaction!.completedAt!)
             : _transaction!.status == TransactionStatus.cancelled
                 ? l10n.cancelled
                 : l10n.pending,
@@ -628,7 +629,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              l10n.disputeOpenedDate(_formatDateTime(_dispute!.createdAt)),
+              l10n.disputeOpenedDate(DateFormatter.formatDate(context,_dispute!.createdAt)),
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onErrorContainer,
                 fontSize: 12,
@@ -1036,7 +1037,7 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
                   ? l10n.paypal
                   : l10n.bitcoin,
             ),
-            _buildDetailRow(l10n.createdAt, _formatDateTime(_transaction!.createdAt)),
+            _buildDetailRow(l10n.createdAt, DateFormatter.formatDate(context,_transaction!.createdAt)),
           ],
         ),
       ),
@@ -1462,10 +1463,6 @@ class _TransactionDetailScreenState extends State<TransactionDetailScreen> {
 
   String _formatPrice(int cents) {
     return '\$${(cents / 100).toStringAsFixed(2)}';
-  }
-
-  String _formatDateTime(DateTime date) {
-    return '${date.day.toString().padLeft(2, '0')}.${date.month.toString().padLeft(2, '0')}.${date.year} ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
   }
 }
 

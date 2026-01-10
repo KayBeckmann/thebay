@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
 import '../../main.dart' show client;
+import '../../utils/date_formatter.dart';
 import 'report_detail_screen.dart';
 
 /// Moderator panel for managing reports
@@ -304,7 +305,7 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    _formatDate(report.createdAt),
+                    DateFormatter.formatDate(context,report.createdAt),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
@@ -376,26 +377,6 @@ class _ModeratorPanelScreenState extends State<ModeratorPanelScreen>
         return l10n.reportReasonHarassment;
       case ReportReason.other:
         return l10n.reportReasonOther;
-    }
-  }
-
-  String _formatDate(DateTime date) {
-    final l10n = AppLocalizations.of(context)!;
-    final now = DateTime.now();
-    final difference = now.difference(date);
-
-    if (difference.inMinutes < 1) {
-      return l10n.justNow;
-    } else if (difference.inHours < 1) {
-      return l10n.minutesAgo(difference.inMinutes);
-    } else if (difference.inDays < 1) {
-      return l10n.hoursAgo(difference.inHours);
-    } else if (difference.inDays < 7) {
-      return l10n.daysAgo(difference.inDays);
-    } else {
-      final day = date.day.toString().padLeft(2, '0');
-      final month = date.month.toString().padLeft(2, '0');
-      return '$day.$month.${date.year}';
     }
   }
 }

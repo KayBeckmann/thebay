@@ -1,4 +1,5 @@
 import 'package:bay_client/bay_client.dart';
+import 'package:intl/intl.dart';
 
 /// Service for currency conversion and formatting
 class CurrencyService {
@@ -88,32 +89,42 @@ class CurrencyService {
     return (converted * 100).round();
   }
 
-  /// Format price with currency symbol
+  /// Format price with currency symbol using localized number formatting
   String formatPrice({
     required int priceInCents,
     required String currency,
+    String? locale, // Optional locale, defaults to 'en_US' if not provided
     bool showSymbol = true,
   }) {
     final price = priceInCents / 100.0;
     final currencyUpper = currency.toUpperCase();
+    final effectiveLocale = locale ?? 'en_US';
 
     // Format based on currency
-    String formatted;
     if (currencyUpper == 'BTC') {
       // BTC with 8 decimal places
-      formatted = price.toStringAsFixed(8);
-      if (showSymbol) {
-        formatted = '₿$formatted';
-      }
+      final formatter = NumberFormat('#,##0.00000000', effectiveLocale);
+      final formatted = formatter.format(price);
+      return showSymbol ? '₿$formatted' : formatted;
     } else {
-      // Fiat with 2 decimal places
-      formatted = price.toStringAsFixed(2);
+      // Fiat currencies with localized formatting
       if (showSymbol) {
-        formatted = '${_getCurrencySymbol(currencyUpper)}$formatted';
+        final symbol = _getCurrencySymbol(currencyUpper);
+        final formatter = NumberFormat.currency(
+          locale: effectiveLocale,
+          symbol: symbol,
+          decimalDigits: 2,
+        );
+        return formatter.format(price);
+      } else {
+        final formatter = NumberFormat.currency(
+          locale: effectiveLocale,
+          symbol: '',
+          decimalDigits: 2,
+        );
+        return formatter.format(price).trim();
       }
     }
-
-    return formatted;
   }
 
   /// Format price with conversion to user's preferred currency
@@ -121,6 +132,7 @@ class CurrencyService {
     required int priceInCents,
     required String priceCurrency,
     required String userCurrency,
+    String? locale, // Optional locale for number formatting
     bool showOriginal = false,
   }) async {
     final priceCurrencyUpper = priceCurrency.toUpperCase();
@@ -131,6 +143,7 @@ class CurrencyService {
       return formatPrice(
         priceInCents: priceInCents,
         currency: priceCurrency,
+        locale: locale,
       );
     }
 
@@ -145,12 +158,14 @@ class CurrencyService {
       final convertedFormatted = formatPrice(
         priceInCents: convertedCents,
         currency: userCurrency,
+        locale: locale,
       );
 
       if (showOriginal) {
         final originalFormatted = formatPrice(
           priceInCents: priceInCents,
           currency: priceCurrency,
+          locale: locale,
         );
         return '$convertedFormatted ($originalFormatted)';
       }
@@ -161,6 +176,7 @@ class CurrencyService {
       return formatPrice(
         priceInCents: priceInCents,
         currency: priceCurrency,
+        locale: locale,
       );
     }
   }
