@@ -123,6 +123,8 @@ services:
     build:
       context: .
       dockerfile: bay_flutter/Dockerfile
+      args:
+        SERVER_URL: /api/
     container_name: bay_frontend
     restart: always
     expose:
