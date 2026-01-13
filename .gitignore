@@ -43,3 +43,5 @@ bay_server/uploads/
 # Test coverage
 coverage/
 bay_flutter/untranslated.json
+
+backups/
