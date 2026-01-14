@@ -32,3 +32,6 @@ bay_server/test/
 .env
 .env.*
 *.log
+
+# Backups (root-owned, exclude from build context)
+backups/
