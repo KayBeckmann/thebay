@@ -13,8 +13,8 @@ COPY . .
 RUN dart pub get --offline
 RUN dart compile exe bin/main.dart -o bin/server
 
-# Final stage
-FROM alpine:latest
+# Final stage - Use Debian-based image for glibc compatibility
+FROM debian:bookworm-slim
 
 # Environment variables
 ENV runmode=production
@@ -23,8 +23,12 @@ ENV logging=normal
 ENV role=monolith
 ENV apply_migrations=true
 
-# Copy runtime dependencies
-COPY --from=build /runtime/ /
+# Install runtime dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create app directory
 WORKDIR /app
@@ -36,7 +40,10 @@ COPY --from=build /app/bin/server server
 COPY --from=build /app/config/ config/
 COPY --from=build /app/web/ web/
 COPY --from=build /app/migrations/ migrations/
-# Note: passwords.yaml is included in config/ directory
+
+# Copy entrypoint script
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/docker-entrypoint.sh
 
 # This file is required to enable the endpoint log filter in Insights.
 COPY --from=build /app/lib/src/generated/protocol.yaml lib/src/generated/protocol.yaml
@@ -54,4 +61,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 
 # Define the entrypoint command
-ENTRYPOINT ./server --mode=$runmode --server-id=$serverid --logging=$logging --role=$role --apply-migrations
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["--mode=production", "--server-id=default", "--logging=normal", "--role=monolith", "--apply-migrations"]
