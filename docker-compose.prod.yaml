@@ -124,7 +124,7 @@ services:
       context: .
       dockerfile: bay_flutter/Dockerfile
       args:
-        SERVER_URL: /api/
+        SERVER_URL: http://10.10.2.94/api/
     container_name: bay_frontend
     restart: always
     expose:
