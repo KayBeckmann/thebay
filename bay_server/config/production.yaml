@@ -5,21 +5,21 @@
 apiServer:
   port: 8080
   publicHost: ${API_HOST}
-  publicPort: 8080
+  publicPort: 80
   publicScheme: http
 
 # Configuration for the Insights server.
 insightsServer:
   port: 8081
   publicHost: ${API_HOST}
-  publicPort: 8081
+  publicPort: 80
   publicScheme: http
 
 # Configuration for the web server.
 webServer:
   port: 8082
   publicHost: ${API_HOST}
-  publicPort: 8082
+  publicPort: 80
   publicScheme: http
 
 # This is the database setup for Docker environment.
