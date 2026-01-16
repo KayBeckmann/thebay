@@ -31,6 +31,19 @@
 
   <title>bay_flutter</title>
   <link rel="manifest" href="manifest.json">
+  <script>
+    if (!window.isSecureContext) {
+      console.warn('Insecure context detected. Stubbing Service Worker to prevent crash.');
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register = function() {
+          return new Promise((resolve) => {
+            console.log('Service Worker registration stubbed.');
+            resolve({});
+          });
+        };
+      }
+    }
+  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>

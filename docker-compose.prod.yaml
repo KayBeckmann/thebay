@@ -74,6 +74,7 @@ services:
       SERVERPOD_SERVICE_SECRET: ${SERVERPOD_SERVICE_SECRET}
       ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      API_HOST: 10.10.2.94
     depends_on:
       postgres:
         condition: service_healthy
