@@ -18,11 +18,10 @@ class SlotVariantEndpoint extends Endpoint {
   }
 
   /// Get only active slot variants (public).
-  /// Free promotional slots are excluded from this list.
   Future<List<SlotVariant>> getActive(Session session) async {
     return await SlotVariant.db.find(
       session,
-      where: (t) => t.isActive.equals(true) & t.isFree.equals(false),
+      where: (t) => t.isActive.equals(true),
       orderBy: (t) => t.sortOrder,
     );
   }

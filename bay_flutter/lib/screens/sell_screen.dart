@@ -1012,13 +1012,31 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
                     ],
                   ),
                 ),
-                Text(
-                  '\$${(variant.priceUsdCents / 100).toStringAsFixed(2)}',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
+                variant.isFree
+                    ? Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          l10n.free,
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      )
+                    : Text(
+                        '\$${(variant.priceUsdCents / 100).toStringAsFixed(2)}',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
-                ),
               ],
             ),
             const SizedBox(height: 12),
@@ -1085,7 +1103,59 @@ class _SellScreenState extends State<SellScreen> with SingleTickerProviderStateM
 
   Future<void> _buySlot(SlotVariant variant) async {
     final l10n = AppLocalizations.of(context)!;
-    // Bestimme verfügbare Zahlungsmethoden
+
+    // Kostenlose Slots: Direkt aktivieren nach Bestätigung
+    if (variant.isFree) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(l10n.activateSlot),
+          content: Text(
+            '${variant.name}\n${l10n.daysValidity(variant.durationDays)}',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: Text(l10n.cancel),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: Text(l10n.activateSlot),
+            ),
+          ],
+        ),
+      );
+
+      if (confirmed != true) return;
+
+      try {
+        // Erstelle Bestellung (wird automatisch aktiviert für kostenlose Slots)
+        final order = await client.slotOrder.create(
+          slotVariantId: variant.id!,
+          paymentMethod: PaymentMethod.paypal, // Wird ignoriert für kostenlose Slots
+        );
+
+        if (order != null && mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('${variant.name} ${l10n.slotVariantCreated}'),
+              backgroundColor: Colors.green,
+            ),
+          );
+          // Aktualisiere die Ansicht
+          await _loadMySlots();
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Fehler: $e')),
+          );
+        }
+      }
+      return;
+    }
+
+    // Kostenpflichtige Slots: Zahlungsdialog
     final List<PaymentMethod> availableMethods = [];
     if (variant.allowPaypal) availableMethods.add(PaymentMethod.paypal);
     if (variant.allowBitcoin) availableMethods.add(PaymentMethod.bitcoin);

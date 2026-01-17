@@ -39,12 +39,14 @@ class SlotOrderEndpoint extends Endpoint {
       throw Exception('Slot-Variante nicht verfügbar');
     }
 
-    // Prüfe ob Zahlungsmethode erlaubt ist
-    if (paymentMethod == PaymentMethod.paypal && !variant.allowPaypal) {
-      throw Exception('PayPal nicht erlaubt für diese Variante');
-    }
-    if (paymentMethod == PaymentMethod.bitcoin && !variant.allowBitcoin) {
-      throw Exception('Bitcoin nicht erlaubt für diese Variante');
+    // Prüfe ob Zahlungsmethode erlaubt ist (nicht für kostenlose Slots)
+    if (!variant.isFree) {
+      if (paymentMethod == PaymentMethod.paypal && !variant.allowPaypal) {
+        throw Exception('PayPal nicht erlaubt für diese Variante');
+      }
+      if (paymentMethod == PaymentMethod.bitcoin && !variant.allowBitcoin) {
+        throw Exception('Bitcoin nicht erlaubt für diese Variante');
+      }
     }
 
     final now = DateTime.now();
@@ -60,9 +62,9 @@ class SlotOrderEndpoint extends Endpoint {
 
     final createdOrder = await SlotOrder.db.insertRow(session, order);
 
-    // Automatisch aktivieren für 0€-Slots (kostenlose Promotion-Slots)
-    if (variant.priceUsdCents == 0) {
-      session.log('0€-Bestellung erkannt, aktiviere Slot automatisch für Bestellung ${createdOrder.id}');
+    // Automatisch aktivieren für kostenlose Slots
+    if (variant.isFree) {
+      session.log('Kostenloser Slot erkannt, aktiviere automatisch für Bestellung ${createdOrder.id}');
 
       // Erstelle den Slot sofort
       final expiresAt = now.add(Duration(days: variant.durationDays));
