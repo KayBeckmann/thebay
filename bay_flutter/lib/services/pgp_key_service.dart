@@ -37,8 +37,26 @@ class PgpKeyService {
 
   /// Initialisiert den Service und lädt gecachte Keys.
   Future<void> initialize() async {
+    if (kIsWeb) {
+      // Bei Web: Prüfe zuerst, ob Daten in SharedPreferences existieren
+      // (von einem früheren Fallback). Wenn ja, verwende SharedPreferences.
+      final prefs = await SharedPreferences.getInstance();
+      final hasPrefsData = prefs.getString(_privateKeyKey) != null;
+      if (hasPrefsData) {
+        print('[PgpKeyService] Web: Verwende SharedPreferences (Daten vorhanden)');
+        _useWebFallback = true;
+        _webPrefs = prefs;
+      }
+    }
+
     _cachedPrivateKey = await _readSecure(_privateKeyKey);
     _cachedFingerprint = await _readSecure(_fingerprintKey);
+
+    if (_cachedPrivateKey != null) {
+      print('[PgpKeyService] Private Key aus Speicher geladen (${_cachedPrivateKey!.length} Zeichen)');
+    } else {
+      print('[PgpKeyService] Kein Private Key im Speicher gefunden');
+    }
   }
 
   /// Prüft ob ein Private Key lokal gespeichert ist.
@@ -71,17 +89,20 @@ class PgpKeyService {
   Future<void> _writeSecure(String key, String value) async {
     if (_useWebFallback && kIsWeb) {
       _webPrefs ??= await SharedPreferences.getInstance();
-      await _webPrefs?.setString(key, value);
+      final success = await _webPrefs?.setString(key, value) ?? false;
+      print('[PgpKeyService] SharedPreferences write "$key": $success (${value.length} Zeichen)');
       return;
     }
     try {
       await _secureStorage.write(key: key, value: value);
+      print('[PgpKeyService] SecureStorage write "$key" erfolgreich (${value.length} Zeichen)');
     } catch (e) {
       if (kIsWeb) {
         print('[PgpKeyService] Fallback auf SharedPreferences für Schreiben: $e');
         _useWebFallback = true;
         _webPrefs ??= await SharedPreferences.getInstance();
-        await _webPrefs?.setString(key, value);
+        final success = await _webPrefs?.setString(key, value) ?? false;
+        print('[PgpKeyService] SharedPreferences fallback write "$key": $success (${value.length} Zeichen)');
         return;
       }
       rethrow;
