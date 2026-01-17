@@ -2652,7 +2652,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get atLeastOnePaymentMethodRequired =>
-      'Au moins une méthode de paiement doit être activée';
+      'At least one payment method must be enabled';
 
   @override
   String get banned => 'BANNED';
@@ -2661,7 +2661,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bannedUsers => 'Banned';
 
   @override
-  String get bitcoinAddressCopied => 'Adresse Bitcoin copiée !';
+  String get bitcoinAddressCopied => 'Bitcoin address copied!';
 
   @override
   String get bitcoinInstructions =>
@@ -2672,7 +2672,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Scan the QR code or send the BTC amount to the provided address and include the reference in the transaction comment. After the transaction is confirmed, the slot will be activated automatically.';
 
   @override
-  String get configureSlotTypes => 'Configurer les types et prix de slots';
+  String get configureSlotTypes => 'Configure slot types and prices';
 
   @override
   String get confirmDeleteSlotVariant =>
@@ -2688,7 +2688,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get createCategoriesSubcategories =>
-      'Créer des catégories et sous-catégories';
+      'Create categories and subcategories';
 
   @override
   String get createFirstSlotVariant =>
@@ -2725,17 +2725,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get descriptionOptional => 'Description (optional)';
 
   @override
-  String get donateBitcoin => 'Faire un Don Bitcoin';
+  String get donateBitcoin => 'Donate Bitcoin';
 
   @override
   String get donateCoffee => 'Buy Me a Coffee';
 
   @override
   String get donateDescription =>
-      'Si vous aimez cette application, vous pouvez soutenir son développement avec un don :';
+      'If you like this app, you can support its development with a donation:';
 
   @override
-  String get donateTitle => 'Soutenir le Développement';
+  String get donateTitle => 'Support Development';
 
   @override
   String get duration => 'Duration';
@@ -2757,33 +2757,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get editSlotVariant => 'Edit Slot Variant';
 
   @override
-  String get editSlotVariantDialog => 'Modifier la Variante de Slot';
+  String get editSlotVariantDialog => 'Edit Slot Variant';
 
   @override
-  String get encryptionActive => 'Chiffrement actif';
+  String get encryptionActive => 'Encryption active';
 
   @override
   String get enterBitcoinTxIdPrompt =>
-      'Saisissez l\'ID de transaction Bitcoin (TX-Hash) après avoir envoyé le paiement:';
+      'Enter the Bitcoin transaction ID (TX-Hash) after sending the payment:';
 
   @override
-  String get enterDuration => 'Durée (jours)';
+  String get enterDuration => 'Duration (days)';
 
   @override
-  String get enterMaxListings => 'Max. annonces';
+  String get enterMaxListings => 'Max. listings';
 
   @override
-  String get enterPriceBTC => 'Prix en BTC';
+  String get enterPriceBTC => 'Price in BTC';
 
   @override
-  String get enterPriceUSD => 'Prix en USD';
+  String get enterPriceUSD => 'Price in USD';
 
   @override
-  String get enterVariantName => 'Entrer le nom de la variante';
+  String get enterVariantName => 'Enter variant name';
 
   @override
   String get extendSlotPrompt =>
-      'Choisissez une variante de slot pour prolonger votre slot. La durée sera ajoutée à la date d\'expiration actuelle.';
+      'Choose a slot variant to extend your slot. The duration will be added to the current expiry date.';
 
   @override
   String featureInMilestone(Object milestone, Object title) {
@@ -2795,12 +2795,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get freeVariantDescription =>
-      'La variante est gratuite (pour les emplacements promotionnels)';
+      'Variant is free (for promotional slots)';
 
   @override
   String fullDateTimeFormat(
       Object day, Object hour, Object minute, Object month, Object year) {
-    return '$day.$month.$year à $hour:$minute';
+    return '$day.$month.$year at $hour:$minute';
   }
 
   @override
@@ -2818,11 +2818,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get listing => 'Listing';
 
   @override
-  String get listingDeactivated => 'L\'annonce a été désactivée';
+  String get listingDeactivated => 'Listing has been deactivated';
 
   @override
   String listingId(Object id) {
-    return 'Annonce #$id';
+    return 'Listing #$id';
   }
 
   @override
@@ -2830,44 +2830,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String listingsWithCount(Object count) {
-    return 'Annonces ($count)';
+    return 'Listings ($count)';
   }
 
   @override
-  String get manageCategories => 'Gérer les catégories';
+  String get manageCategories => 'Manage categories';
 
   @override
   String get manageSlotVariants => 'Manage Slot Variants';
 
   @override
-  String get manageUsersRoles =>
-      'Gérer les utilisateurs et attribuer des rôles';
+  String get manageUsersRoles => 'Manage users and assign roles';
 
   @override
-  String get markAsCompleted => 'Marquer comme Terminé';
+  String get markAsCompleted => 'Mark as Completed';
 
   @override
-  String get markAsFailed => 'Marquer comme Échoué';
+  String get markAsFailed => 'Mark as Failed';
 
   @override
-  String get markAsProcessing => 'Marquer comme En Traitement';
+  String get markAsProcessing => 'Mark as Processing';
 
   @override
-  String get markAsResolved => 'Marquer comme Résolu';
+  String get markAsResolved => 'Mark as Resolved';
 
   @override
-  String get maxListings => 'Max. Annonces';
+  String get maxListings => 'Max. Listings';
 
   @override
-  String get maxListingsRequired => 'Le max. d\'annonces est requis';
+  String get maxListingsRequired => 'Max. listings is required';
 
   @override
   String memberSince(Object date) {
-    return 'Membre depuis $date';
+    return 'Member since $date';
   }
 
   @override
-  String get method => 'Méthode';
+  String get method => 'Method';
 
   @override
   String minutesAgo(Object minutes) {
@@ -2884,13 +2883,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newSlotVariant => 'New Slot Variant';
 
   @override
-  String get noActiveListings => 'Aucune annonce active';
+  String get noActiveListings => 'No active listings';
 
   @override
-  String get noPgpKeyAvailable => 'Aucune clé PGP disponible';
+  String get noPgpKeyAvailable => 'No PGP key available';
 
   @override
-  String get noRatings => 'Aucune évaluation';
+  String get noRatings => 'No ratings';
 
   @override
   String get noReportsDescription =>
@@ -2900,23 +2899,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noSlotVariants => 'No Slot Variants';
 
   @override
-  String get noSlotVariantsMessage =>
-      'Aucune variante de slot n\'a encore été créée.';
+  String get noSlotVariantsMessage => 'No slot variants have been created yet.';
 
   @override
-  String get noUsers => 'Aucun Utilisateur';
+  String get noUsers => 'No Users';
 
   @override
-  String get noUsersFound => 'Aucun Utilisateur Trouvé';
+  String get noUsersFound => 'No Users Found';
 
   @override
-  String get noUsersMessage => 'Aucun utilisateur trouvé.';
+  String get noUsersMessage => 'No users found.';
 
   @override
-  String get notYetAssigned => 'Pas encore assigné';
+  String get notYetAssigned => 'Not yet assigned';
 
   @override
-  String get noteCannotBeEmpty => 'La note ne peut pas être vide';
+  String get noteCannotBeEmpty => 'Note cannot be empty';
 
   @override
   String openReportsCount(Object count) {
@@ -2925,103 +2923,103 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String order(Object id) {
-    return 'Commande #$id';
+    return 'Order #$id';
   }
 
   @override
   String paymentDetailsTitle(Object number) {
-    return 'Détails du paiement #$number';
+    return 'Payment details #$number';
   }
 
   @override
-  String get paymentMarkedCompleted => 'Paiement marqué comme terminé';
+  String get paymentMarkedCompleted => 'Payment marked as completed';
 
   @override
-  String get paymentMarkedFailed => 'Paiement marqué comme échoué';
+  String get paymentMarkedFailed => 'Payment marked as failed';
 
   @override
-  String get paymentMarkedProcessing => 'Paiement marqué comme en traitement';
+  String get paymentMarkedProcessing => 'Payment marked as processing';
 
   @override
-  String get payments => 'Paiements';
+  String get payments => 'Payments';
 
   @override
-  String get paypalBitcoinSlots => 'PayPal et Bitcoin pour l\'achat de slots';
+  String get paypalBitcoinSlots => 'PayPal and Bitcoin for slot purchases';
 
   @override
-  String get paypalEmail => 'Email PayPal';
+  String get paypalEmail => 'PayPal Email';
 
   @override
   String get paypalInstructions =>
-      'Veuillez envoyer le montant à l\'adresse PayPal fournie et inclure la référence.';
+      'Please send the amount to the provided PayPal address and include the reference.';
 
   @override
   String get paypalInstructionsDetailed =>
-      'Veuillez envoyer le montant à l\'adresse PayPal fournie et inclure la référence. Votre slot sera activé automatiquement après réception du paiement.';
+      'Please send the amount to the provided PayPal address and include the reference. Your slot will be activated automatically after payment is received.';
 
   @override
-  String get priceBTC => 'Prix (BTC)';
+  String get priceBTC => 'Price (BTC)';
 
   @override
-  String get priceBTCRequired => 'Le prix en BTC est requis';
+  String get priceBTCRequired => 'Price in BTC is required';
 
   @override
-  String get priceUSD => 'Prix (USD)';
+  String get priceUSD => 'Price (USD)';
 
   @override
-  String get priceUSDRequired => 'Le prix en USD est requis';
+  String get priceUSDRequired => 'Price in USD is required';
 
   @override
-  String get priceUsd => 'Prix (USD)';
+  String get priceUsd => 'Price (USD)';
 
   @override
-  String get profile => 'Profil';
+  String get profile => 'Profile';
 
   @override
   String ratingCount(num count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count évaluations',
-      one: '1 évaluation',
+      other: '$count ratings',
+      one: '1 rating',
     );
     return '$_temp0';
   }
 
   @override
   String ratingsWithCount(Object count) {
-    return 'Évaluations ($count)';
+    return 'Ratings ($count)';
   }
 
   @override
-  String get report => 'Signaler';
+  String get report => 'Report';
 
   @override
-  String get reportAlreadyReported => 'Vous avez déjà signalé ceci';
+  String get reportAlreadyReported => 'You have already reported this';
 
   @override
-  String get reportAssignedToYou => 'Le signalement vous a été assigné';
+  String get reportAssignedToYou => 'Report has been assigned to you';
 
   @override
-  String get reportDetails => 'Détails du Signalement';
+  String get reportDetails => 'Report Details';
 
   @override
-  String get reportDetailsHint => 'Décrivez le problème...';
+  String get reportDetailsHint => 'Describe the problem...';
 
   @override
-  String get reportDetailsOptional => 'Détails Supplémentaires (facultatif)';
+  String get reportDetailsOptional => 'Additional Details (optional)';
 
   @override
-  String get reportNotFound => 'Signalement non trouvé';
+  String get reportNotFound => 'Report not found';
 
   @override
   String get reportReasonFraud => 'Fraud';
 
   @override
-  String get reportReasonLabel => 'Raison du signalement :';
+  String get reportReasonLabel => 'Reason for report:';
 
   @override
-  String get reportSelectReason => 'Veuillez sélectionner une raison';
+  String get reportSelectReason => 'Please select a reason';
 
   @override
   String get reportStatusDismissed => 'Dismissed';
@@ -3036,119 +3034,118 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reportStatusReviewing => 'Reviewing';
 
   @override
-  String get reportSubmitError => 'Erreur lors de l\'envoi du signalement';
+  String get reportSubmitError => 'Error submitting report';
 
   @override
-  String get reportSubmittedSuccessfully => 'Signalement soumis avec succès';
+  String get reportSubmittedSuccessfully => 'Report submitted successfully';
 
   @override
-  String get reportTargetListing => 'Annonce';
+  String get reportTargetListing => 'Listing';
 
   @override
-  String get reportTargetNotFound => 'Entrée non trouvée';
+  String get reportTargetNotFound => 'Entry not found';
 
   @override
-  String get reportTargetUser => 'Utilisateur';
+  String get reportTargetUser => 'User';
 
   @override
   String reportTitle(Object targetType) {
-    return 'Signaler $targetType';
+    return 'Report $targetType';
   }
 
   @override
-  String get reportUser => 'Signaler l\'Utilisateur';
+  String get reportUser => 'Report User';
 
   @override
   String reportYouAreReporting(Object targetName) {
-    return 'Vous signalez : \"$targetName\"';
+    return 'You are reporting: \"$targetName\"';
   }
 
   @override
-  String get reportedOn => 'Signalé le';
+  String get reportedOn => 'Reported on';
 
   @override
-  String get reportedUserProfile => 'Profil Utilisateur Signalé';
+  String get reportedUserProfile => 'Reported User Profile';
 
   @override
   String reporterUser(Object id) {
-    return 'Utilisateur #$id';
+    return 'User #$id';
   }
 
   @override
-  String get reviewPendingOrders =>
-      'Examiner et confirmer les commandes en attente';
+  String get reviewPendingOrders => 'Review and confirm pending orders';
 
   @override
-  String get searchUsers => 'Rechercher des utilisateurs...';
+  String get searchUsers => 'Search users...';
 
   @override
-  String get sectionDonate => 'Soutenir le Développeur';
+  String get sectionDonate => 'Support the Developer';
 
   @override
-  String get sendMessage => 'Envoyer un Message';
+  String get sendMessage => 'Send Message';
 
   @override
-  String get slotVariantCreated => 'Variante de slot créée';
+  String get slotVariantCreated => 'Slot variant created';
 
   @override
-  String get slotVariantDeleted => 'Variante de slot supprimée';
+  String get slotVariantDeleted => 'Slot variant deleted';
 
   @override
-  String get slotVariantUpdated => 'Variante de slot mise à jour';
+  String get slotVariantUpdated => 'Slot variant updated';
 
   @override
-  String get slotVariantsScreen => 'Variantes de Slot';
+  String get slotVariantsScreen => 'Slot Variants';
 
   @override
   String get slots => 'Slots';
 
   @override
-  String get staff => 'Personnel';
+  String get staff => 'Staff';
 
   @override
-  String get statusUpdated => 'Le statut a été mis à jour';
+  String get statusUpdated => 'Status has been updated';
 
   @override
-  String get systemUserManagement => 'Gestion du système et des utilisateurs';
+  String get systemUserManagement => 'System and user management';
 
   @override
   String get txId => 'TX-ID';
 
   @override
-  String get unban => 'Débannir';
+  String get unban => 'Unban';
 
   @override
-  String get unknown => 'Inconnu';
+  String get unknown => 'Unknown';
 
   @override
   String get user => 'User';
 
   @override
-  String get userManagementScreen => 'Gestion des Utilisateurs';
+  String get userManagementScreen => 'User Management';
 
   @override
-  String get userNotFound => 'Utilisateur non trouvé';
+  String get userNotFound => 'User not found';
 
   @override
   String get userReports => 'User Reports';
 
   @override
-  String get users => 'Utilisateurs';
+  String get users => 'Users';
 
   @override
-  String get variant => 'Variante';
+  String get variant => 'Variant';
 
   @override
-  String get variantName => 'Nom';
+  String get variantName => 'Name';
 
   @override
-  String get variantNameRequired => 'Le nom est requis';
+  String get variantNameRequired => 'Name is required';
 
   @override
-  String get variantStatus => 'Statut';
+  String get variantStatus => 'Status';
 
   @override
-  String get viewUser => 'Voir l\'Utilisateur';
+  String get viewUser => 'View User';
 
   @override
   String get listings => 'Listings';

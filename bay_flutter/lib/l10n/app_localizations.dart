@@ -4845,25 +4845,25 @@ abstract class AppLocalizations {
   /// No description provided for @activeSlotVariants.
   ///
   /// In de, this message translates to:
-  /// **'Actives'**
+  /// **'Aktiv'**
   String get activeSlotVariants;
 
   /// No description provided for @activeUsers.
   ///
   /// In de, this message translates to:
-  /// **'Actifs'**
+  /// **'Aktiv'**
   String get activeUsers;
 
   /// No description provided for @activeVariantDescription.
   ///
   /// In de, this message translates to:
-  /// **'La variante peut être achetée'**
+  /// **'Variante kann gekauft werden'**
   String get activeVariantDescription;
 
   /// No description provided for @addInternalNotes.
   ///
   /// In de, this message translates to:
-  /// **'Ajouter des notes internes...'**
+  /// **'Interne Notizen hinzufügen...'**
   String get addInternalNotes;
 
   /// No description provided for @administration.
@@ -4875,259 +4875,259 @@ abstract class AppLocalizations {
   /// No description provided for @allUsers.
   ///
   /// In de, this message translates to:
-  /// **'Tous les Utilisateurs'**
+  /// **'Alle Benutzer'**
   String get allUsers;
 
   /// No description provided for @assignToMe.
   ///
   /// In de, this message translates to:
-  /// **'M\'assigner'**
+  /// **'Mir zuweisen'**
   String get assignToMe;
 
   /// No description provided for @assigned.
   ///
   /// In de, this message translates to:
-  /// **'Assigné'**
+  /// **'Zugewiesen'**
   String get assigned;
 
   /// No description provided for @assignedToModerator.
   ///
   /// In de, this message translates to:
-  /// **'Assigné au modérateur #{id}'**
+  /// **'Moderator #{id} zugewiesen'**
   String assignedToModerator(Object id);
 
   /// No description provided for @atLeastOnePaymentMethodRequired.
   ///
   /// In de, this message translates to:
-  /// **'Au moins une méthode de paiement doit être activée'**
+  /// **'Mindestens eine Zahlungsmethode muss aktiviert sein'**
   String get atLeastOnePaymentMethodRequired;
 
   /// No description provided for @banned.
   ///
   /// In de, this message translates to:
-  /// **'BANNI'**
+  /// **'GESPERRT'**
   String get banned;
 
   /// No description provided for @bannedUsers.
   ///
   /// In de, this message translates to:
-  /// **'Bannis'**
+  /// **'Gesperrt'**
   String get bannedUsers;
 
   /// No description provided for @bitcoinAddressCopied.
   ///
   /// In de, this message translates to:
-  /// **'Adresse Bitcoin copiée !'**
+  /// **'Bitcoin-Adresse kopiert!'**
   String get bitcoinAddressCopied;
 
   /// No description provided for @bitcoinInstructions.
   ///
   /// In de, this message translates to:
-  /// **'Veuillez envoyer le montant BTC à l\'adresse fournie et inclure la référence (Memo). Après le paiement, saisissez le TX-ID.'**
+  /// **'Bitte sende den BTC-Betrag an die angegebene Adresse und füge die Referenz (Memo) hinzu. Nach der Zahlung gib die TX-ID ein.'**
   String get bitcoinInstructions;
 
   /// No description provided for @bitcoinInstructionsDetailed.
   ///
   /// In de, this message translates to:
-  /// **'Scannez le code QR ou envoyez le montant BTC à l\'adresse fournie et incluez la référence (Memo). Votre slot sera activé automatiquement après au moins 1 confirmation sur la blockchain.'**
+  /// **'Scanne den QR-Code oder sende den BTC-Betrag an die angegebene Adresse und füge die Referenz (Memo) hinzu. Dein Slot wird automatisch aktiviert nach mindestens 1 Bestätigung auf der Blockchain.'**
   String get bitcoinInstructionsDetailed;
 
   /// No description provided for @configureSlotTypes.
   ///
   /// In de, this message translates to:
-  /// **'Configurer les types et prix de slots'**
+  /// **'Slot-Typen und Preise konfigurieren'**
   String get configureSlotTypes;
 
   /// No description provided for @confirmDeleteSlotVariant.
   ///
   /// In de, this message translates to:
-  /// **'Voulez-vous vraiment supprimer cette variante de slot ?'**
+  /// **'Möchtest du diese Slot-Variante wirklich löschen?'**
   String get confirmDeleteSlotVariant;
 
   /// No description provided for @confirmDeleteSlotVariantWithName.
   ///
   /// In de, this message translates to:
-  /// **'Voulez-vous vraiment supprimer \"{name}\" ?'**
+  /// **'Möchtest du \"{name}\" wirklich löschen?'**
   String confirmDeleteSlotVariantWithName(Object name);
 
   /// No description provided for @confirmUnbanUser.
   ///
   /// In de, this message translates to:
-  /// **'Voulez-vous vraiment débannir cet utilisateur ?'**
+  /// **'Möchtest du diesen Benutzer wirklich entsperren?'**
   String get confirmUnbanUser;
 
   /// No description provided for @createCategoriesSubcategories.
   ///
   /// In de, this message translates to:
-  /// **'Créer des catégories et sous-catégories'**
+  /// **'Kategorien und Unterkategorien erstellen'**
   String get createCategoriesSubcategories;
 
   /// No description provided for @createFirstSlotVariant.
   ///
   /// In de, this message translates to:
-  /// **'Créez la première variante de slot avec le bouton +.'**
+  /// **'Erstelle die erste Slot-Variante mit dem + Button.'**
   String get createFirstSlotVariant;
 
   /// No description provided for @createSlotVariant.
   ///
   /// In de, this message translates to:
-  /// **'Créer une Variante de Slot'**
+  /// **'Slot-Variante erstellen'**
   String get createSlotVariant;
 
   /// No description provided for @createSlotVariantDialog.
   ///
   /// In de, this message translates to:
-  /// **'Créer une Variante de Slot'**
+  /// **'Slot-Variante erstellen'**
   String get createSlotVariantDialog;
 
   /// No description provided for @currency.
   ///
   /// In de, this message translates to:
-  /// **'Devise'**
+  /// **'Währung'**
   String get currency;
 
   /// No description provided for @daysAgo.
   ///
   /// In de, this message translates to:
-  /// **'il y a {days}j'**
+  /// **'vor {days}T'**
   String daysAgo(Object days);
 
   /// No description provided for @deactivate.
   ///
   /// In de, this message translates to:
-  /// **'Désactiver'**
+  /// **'Deaktivieren'**
   String get deactivate;
 
   /// No description provided for @deactivateListing.
   ///
   /// In de, this message translates to:
-  /// **'Désactiver l\'Annonce'**
+  /// **'Angebot deaktivieren'**
   String get deactivateListing;
 
   /// No description provided for @deactivateListingConfirm.
   ///
   /// In de, this message translates to:
-  /// **'Voulez-vous vraiment désactiver cette annonce ? Cette action ne peut pas être annulée.'**
+  /// **'Möchtest du dieses Angebot wirklich deaktivieren? Diese Aktion kann nicht rückgängig gemacht werden.'**
   String get deactivateListingConfirm;
 
   /// No description provided for @deleteSlotVariant.
   ///
   /// In de, this message translates to:
-  /// **'Supprimer la Variante de Slot'**
+  /// **'Slot-Variante löschen'**
   String get deleteSlotVariant;
 
   /// No description provided for @descriptionOptional.
   ///
   /// In de, this message translates to:
-  /// **'Description (facultatif)'**
+  /// **'Beschreibung (optional)'**
   String get descriptionOptional;
 
   /// No description provided for @donateBitcoin.
   ///
   /// In de, this message translates to:
-  /// **'Faire un Don Bitcoin'**
+  /// **'Bitcoin spenden'**
   String get donateBitcoin;
 
   /// No description provided for @donateCoffee.
   ///
   /// In de, this message translates to:
-  /// **'Buy Me a Coffee'**
+  /// **'Kaffee ausgeben'**
   String get donateCoffee;
 
   /// No description provided for @donateDescription.
   ///
   /// In de, this message translates to:
-  /// **'Si vous aimez cette application, vous pouvez soutenir son développement avec un don :'**
+  /// **'Wenn dir diese App gefällt, kannst du die Entwicklung mit einer Spende unterstützen:'**
   String get donateDescription;
 
   /// No description provided for @donateTitle.
   ///
   /// In de, this message translates to:
-  /// **'Soutenir le Développement'**
+  /// **'Entwicklung unterstützen'**
   String get donateTitle;
 
   /// No description provided for @duration.
   ///
   /// In de, this message translates to:
-  /// **'Durée'**
+  /// **'Dauer'**
   String get duration;
 
   /// No description provided for @durationDays.
   ///
   /// In de, this message translates to:
-  /// **'{days} jours'**
+  /// **'{days} Tage Laufzeit'**
   String durationDays(Object days);
 
   /// No description provided for @durationDaysLabel.
   ///
   /// In de, this message translates to:
-  /// **'Durée (jours)'**
+  /// **'{days} Tage'**
   String durationDaysLabel(Object days);
 
   /// No description provided for @durationRequired.
   ///
   /// In de, this message translates to:
-  /// **'La durée est requise'**
+  /// **'Dauer (Tage) ist erforderlich'**
   String get durationRequired;
 
   /// No description provided for @editSlotVariant.
   ///
   /// In de, this message translates to:
-  /// **'Modifier la Variante de Slot'**
+  /// **'Slot-Variante bearbeiten'**
   String get editSlotVariant;
 
   /// No description provided for @editSlotVariantDialog.
   ///
   /// In de, this message translates to:
-  /// **'Modifier la Variante de Slot'**
+  /// **'Slot-Variante bearbeiten'**
   String get editSlotVariantDialog;
 
   /// No description provided for @encryptionActive.
   ///
   /// In de, this message translates to:
-  /// **'Chiffrement actif'**
+  /// **'Verschlüsselung aktiv'**
   String get encryptionActive;
 
   /// No description provided for @enterBitcoinTxIdPrompt.
   ///
   /// In de, this message translates to:
-  /// **'Saisissez l\'ID de transaction Bitcoin (TX-Hash) après avoir envoyé le paiement:'**
+  /// **'Gib die Bitcoin-Transaktions-ID (TX-Hash) ein, nachdem du die Zahlung gesendet hast:'**
   String get enterBitcoinTxIdPrompt;
 
   /// No description provided for @enterDuration.
   ///
   /// In de, this message translates to:
-  /// **'Durée (jours)'**
+  /// **'Dauer (Tage)'**
   String get enterDuration;
 
   /// No description provided for @enterMaxListings.
   ///
   /// In de, this message translates to:
-  /// **'Max. annonces'**
+  /// **'Max. Angebote'**
   String get enterMaxListings;
 
   /// No description provided for @enterPriceBTC.
   ///
   /// In de, this message translates to:
-  /// **'Prix en BTC'**
+  /// **'Preis in BTC'**
   String get enterPriceBTC;
 
   /// No description provided for @enterPriceUSD.
   ///
   /// In de, this message translates to:
-  /// **'Prix en USD'**
+  /// **'Preis in USD'**
   String get enterPriceUSD;
 
   /// No description provided for @enterVariantName.
   ///
   /// In de, this message translates to:
-  /// **'Entrer le nom de la variante'**
+  /// **'Variantenname eingeben'**
   String get enterVariantName;
 
   /// No description provided for @extendSlotPrompt.
   ///
   /// In de, this message translates to:
-  /// **'Choisissez une variante de slot pour prolonger votre slot. La durée sera ajoutée à la date d\'expiration actuelle.'**
+  /// **'Wähle eine Slot-Variante, um deinen Slot zu verlängern. Die Dauer wird zum aktuellen Ablaufdatum hinzugefügt.'**
   String get extendSlotPrompt;
 
   /// No description provided for @featureInMilestone.
@@ -5139,320 +5139,320 @@ abstract class AppLocalizations {
   /// No description provided for @freeLabel.
   ///
   /// In de, this message translates to:
-  /// **'GRATUIT'**
+  /// **'KOSTENLOS'**
   String get freeLabel;
 
   /// No description provided for @freeVariantDescription.
   ///
   /// In de, this message translates to:
-  /// **'La variante est gratuite (pour les emplacements promotionnels)'**
+  /// **'Variante ist kostenlos (für Werbe-Slots)'**
   String get freeVariantDescription;
 
   /// No description provided for @fullDateTimeFormat.
   ///
   /// In de, this message translates to:
-  /// **'{day}.{month}.{year} à {hour}:{minute}'**
+  /// **'{day}.{month}.{year} um {hour}:{minute}'**
   String fullDateTimeFormat(
       Object day, Object hour, Object minute, Object month, Object year);
 
   /// No description provided for @hoursAgo.
   ///
   /// In de, this message translates to:
-  /// **'il y a {hours}h'**
+  /// **'vor {hours}h'**
   String hoursAgo(Object hours);
 
   /// No description provided for @inactiveSlotVariants.
   ///
   /// In de, this message translates to:
-  /// **'Inactives'**
+  /// **'Inaktiv'**
   String get inactiveSlotVariants;
 
   /// No description provided for @justNow.
   ///
   /// In de, this message translates to:
-  /// **'À l\'instant'**
+  /// **'Gerade eben'**
   String get justNow;
 
   /// No description provided for @listing.
   ///
   /// In de, this message translates to:
-  /// **'Annonce'**
+  /// **'Angebot'**
   String get listing;
 
   /// No description provided for @listingDeactivated.
   ///
   /// In de, this message translates to:
-  /// **'L\'annonce a été désactivée'**
+  /// **'Angebot wurde deaktiviert'**
   String get listingDeactivated;
 
   /// No description provided for @listingId.
   ///
   /// In de, this message translates to:
-  /// **'Annonce #{id}'**
+  /// **'Angebot #{id}'**
   String listingId(Object id);
 
   /// No description provided for @listingReports.
   ///
   /// In de, this message translates to:
-  /// **'Annonces'**
+  /// **'Angebots-Meldungen'**
   String get listingReports;
 
   /// No description provided for @listingsWithCount.
   ///
   /// In de, this message translates to:
-  /// **'Annonces ({count})'**
+  /// **'Angebote ({count})'**
   String listingsWithCount(Object count);
 
   /// No description provided for @manageCategories.
   ///
   /// In de, this message translates to:
-  /// **'Gérer les catégories'**
+  /// **'Kategorien verwalten'**
   String get manageCategories;
 
   /// No description provided for @manageSlotVariants.
   ///
   /// In de, this message translates to:
-  /// **'Gérer les variantes de slot'**
+  /// **'Slot-Varianten verwalten'**
   String get manageSlotVariants;
 
   /// No description provided for @manageUsersRoles.
   ///
   /// In de, this message translates to:
-  /// **'Gérer les utilisateurs et attribuer des rôles'**
+  /// **'Benutzer verwalten und Rollen zuweisen'**
   String get manageUsersRoles;
 
   /// No description provided for @markAsCompleted.
   ///
   /// In de, this message translates to:
-  /// **'Marquer comme Terminé'**
+  /// **'Als abgeschlossen markieren'**
   String get markAsCompleted;
 
   /// No description provided for @markAsFailed.
   ///
   /// In de, this message translates to:
-  /// **'Marquer comme Échoué'**
+  /// **'Als fehlgeschlagen markieren'**
   String get markAsFailed;
 
   /// No description provided for @markAsProcessing.
   ///
   /// In de, this message translates to:
-  /// **'Marquer comme En Traitement'**
+  /// **'Als in Bearbeitung markieren'**
   String get markAsProcessing;
 
   /// No description provided for @markAsResolved.
   ///
   /// In de, this message translates to:
-  /// **'Marquer comme Résolu'**
+  /// **'Als gelöst markieren'**
   String get markAsResolved;
 
   /// No description provided for @maxListings.
   ///
   /// In de, this message translates to:
-  /// **'Max. Annonces'**
+  /// **'Max. Angebote'**
   String get maxListings;
 
   /// No description provided for @maxListingsRequired.
   ///
   /// In de, this message translates to:
-  /// **'Le max. d\'annonces est requis'**
+  /// **'Max. Angebote ist erforderlich'**
   String get maxListingsRequired;
 
   /// No description provided for @memberSince.
   ///
   /// In de, this message translates to:
-  /// **'Membre depuis {date}'**
+  /// **'Mitglied seit {date}'**
   String memberSince(Object date);
 
   /// No description provided for @method.
   ///
   /// In de, this message translates to:
-  /// **'Méthode'**
+  /// **'Methode'**
   String get method;
 
   /// No description provided for @minutesAgo.
   ///
   /// In de, this message translates to:
-  /// **'il y a {minutes}m'**
+  /// **'vor {minutes}m'**
   String minutesAgo(Object minutes);
 
   /// No description provided for @moderatorPanelScreen.
   ///
   /// In de, this message translates to:
-  /// **'Panneau de Modérateur'**
+  /// **'Moderator-Bereich'**
   String get moderatorPanelScreen;
 
   /// No description provided for @nameHint.
   ///
   /// In de, this message translates to:
-  /// **'par ex. Standard, Premium'**
+  /// **'z.B. Standard, Premium'**
   String get nameHint;
 
   /// No description provided for @newSlotVariant.
   ///
   /// In de, this message translates to:
-  /// **'Nouvelle variante de slot'**
+  /// **'Neue Slot-Variante'**
   String get newSlotVariant;
 
   /// No description provided for @noActiveListings.
   ///
   /// In de, this message translates to:
-  /// **'Aucune annonce active'**
+  /// **'Keine aktiven Angebote'**
   String get noActiveListings;
 
   /// No description provided for @noPgpKeyAvailable.
   ///
   /// In de, this message translates to:
-  /// **'Aucune clé PGP disponible'**
+  /// **'Kein PGP-Schlüssel verfügbar'**
   String get noPgpKeyAvailable;
 
   /// No description provided for @noRatings.
   ///
   /// In de, this message translates to:
-  /// **'Aucune évaluation'**
+  /// **'Keine Bewertungen'**
   String get noRatings;
 
   /// No description provided for @noReportsDescription.
   ///
   /// In de, this message translates to:
-  /// **'Il n\'y a actuellement aucun signalement'**
+  /// **'Es gibt derzeit keine Meldungen zu bearbeiten.'**
   String get noReportsDescription;
 
   /// No description provided for @noSlotVariants.
   ///
   /// In de, this message translates to:
-  /// **'Aucune Variante de Slot'**
+  /// **'Keine Slot-Varianten'**
   String get noSlotVariants;
 
   /// No description provided for @noSlotVariantsMessage.
   ///
   /// In de, this message translates to:
-  /// **'Aucune variante de slot n\'a encore été créée.'**
+  /// **'Es wurden noch keine Slot-Varianten erstellt.'**
   String get noSlotVariantsMessage;
 
   /// No description provided for @noUsers.
   ///
   /// In de, this message translates to:
-  /// **'Aucun Utilisateur'**
+  /// **'Keine Benutzer'**
   String get noUsers;
 
   /// No description provided for @noUsersFound.
   ///
   /// In de, this message translates to:
-  /// **'Aucun Utilisateur Trouvé'**
+  /// **'Keine Benutzer gefunden'**
   String get noUsersFound;
 
   /// No description provided for @noUsersMessage.
   ///
   /// In de, this message translates to:
-  /// **'Aucun utilisateur trouvé.'**
+  /// **'Keine Benutzer gefunden.'**
   String get noUsersMessage;
 
   /// No description provided for @notYetAssigned.
   ///
   /// In de, this message translates to:
-  /// **'Pas encore assigné'**
+  /// **'Noch nicht zugewiesen'**
   String get notYetAssigned;
 
   /// No description provided for @noteCannotBeEmpty.
   ///
   /// In de, this message translates to:
-  /// **'La note ne peut pas être vide'**
+  /// **'Notiz darf nicht leer sein'**
   String get noteCannotBeEmpty;
 
   /// No description provided for @openReportsCount.
   ///
   /// In de, this message translates to:
-  /// **'{count} ouverts'**
+  /// **'{count} offene Meldungen'**
   String openReportsCount(Object count);
 
   /// No description provided for @order.
   ///
   /// In de, this message translates to:
-  /// **'Commande #{id}'**
+  /// **'Bestellung #{id}'**
   String order(Object id);
 
   /// No description provided for @paymentDetailsTitle.
   ///
   /// In de, this message translates to:
-  /// **'Détails du paiement #{number}'**
+  /// **'Zahlungsdetails #{number}'**
   String paymentDetailsTitle(Object number);
 
   /// No description provided for @paymentMarkedCompleted.
   ///
   /// In de, this message translates to:
-  /// **'Paiement marqué comme terminé'**
+  /// **'Zahlung als abgeschlossen markiert'**
   String get paymentMarkedCompleted;
 
   /// No description provided for @paymentMarkedFailed.
   ///
   /// In de, this message translates to:
-  /// **'Paiement marqué comme échoué'**
+  /// **'Zahlung als fehlgeschlagen markiert'**
   String get paymentMarkedFailed;
 
   /// No description provided for @paymentMarkedProcessing.
   ///
   /// In de, this message translates to:
-  /// **'Paiement marqué comme en traitement'**
+  /// **'Zahlung als in Bearbeitung markiert'**
   String get paymentMarkedProcessing;
 
   /// No description provided for @payments.
   ///
   /// In de, this message translates to:
-  /// **'Paiements'**
+  /// **'Zahlungen'**
   String get payments;
 
   /// No description provided for @paypalBitcoinSlots.
   ///
   /// In de, this message translates to:
-  /// **'PayPal et Bitcoin pour l\'achat de slots'**
+  /// **'PayPal und Bitcoin für Slot-Käufe'**
   String get paypalBitcoinSlots;
 
   /// No description provided for @paypalEmail.
   ///
   /// In de, this message translates to:
-  /// **'Email PayPal'**
+  /// **'PayPal E-Mail'**
   String get paypalEmail;
 
   /// No description provided for @paypalInstructions.
   ///
   /// In de, this message translates to:
-  /// **'Veuillez envoyer le montant à l\'adresse PayPal fournie et inclure la référence.'**
+  /// **'Bitte sende den Betrag an die angegebene PayPal-Adresse und füge die Referenz hinzu.'**
   String get paypalInstructions;
 
   /// No description provided for @paypalInstructionsDetailed.
   ///
   /// In de, this message translates to:
-  /// **'Veuillez envoyer le montant à l\'adresse PayPal fournie et inclure la référence. Votre slot sera activé automatiquement après réception du paiement.'**
+  /// **'Bitte sende den Betrag an die angegebene PayPal-Adresse und füge die Referenz hinzu. Dein Slot wird automatisch aktiviert, nachdem die Zahlung eingegangen ist.'**
   String get paypalInstructionsDetailed;
 
   /// No description provided for @priceBTC.
   ///
   /// In de, this message translates to:
-  /// **'Prix (BTC)'**
+  /// **'Preis (BTC)'**
   String get priceBTC;
 
   /// No description provided for @priceBTCRequired.
   ///
   /// In de, this message translates to:
-  /// **'Le prix en BTC est requis'**
+  /// **'Preis in BTC ist erforderlich'**
   String get priceBTCRequired;
 
   /// No description provided for @priceUSD.
   ///
   /// In de, this message translates to:
-  /// **'Prix (USD)'**
+  /// **'Preis (USD)'**
   String get priceUSD;
 
   /// No description provided for @priceUSDRequired.
   ///
   /// In de, this message translates to:
-  /// **'Le prix en USD est requis'**
+  /// **'Preis in USD ist erforderlich'**
   String get priceUSDRequired;
 
   /// No description provided for @priceUsd.
   ///
   /// In de, this message translates to:
-  /// **'Prix (USD)'**
+  /// **'Preis (USD)'**
   String get priceUsd;
 
   /// No description provided for @profile.
@@ -5464,211 +5464,211 @@ abstract class AppLocalizations {
   /// No description provided for @ratingCount.
   ///
   /// In de, this message translates to:
-  /// **'{count, plural, =1{1 évaluation} other{{count} évaluations}}'**
+  /// **'{count, plural, =1{1 Bewertung} other{{count} Bewertungen}}'**
   String ratingCount(num count);
 
   /// No description provided for @ratingsWithCount.
   ///
   /// In de, this message translates to:
-  /// **'Évaluations ({count})'**
+  /// **'Bewertungen ({count})'**
   String ratingsWithCount(Object count);
 
   /// No description provided for @report.
   ///
   /// In de, this message translates to:
-  /// **'Signaler'**
+  /// **'Melden'**
   String get report;
 
   /// No description provided for @reportAlreadyReported.
   ///
   /// In de, this message translates to:
-  /// **'Vous avez déjà signalé ceci'**
+  /// **'Du hast dies bereits gemeldet'**
   String get reportAlreadyReported;
 
   /// No description provided for @reportAssignedToYou.
   ///
   /// In de, this message translates to:
-  /// **'Le signalement vous a été assigné'**
+  /// **'Meldung wurde dir zugewiesen'**
   String get reportAssignedToYou;
 
   /// No description provided for @reportDetails.
   ///
   /// In de, this message translates to:
-  /// **'Détails du Signalement'**
+  /// **'Meldungsdetails'**
   String get reportDetails;
 
   /// No description provided for @reportDetailsHint.
   ///
   /// In de, this message translates to:
-  /// **'Décrivez le problème...'**
+  /// **'Beschreibe das Problem...'**
   String get reportDetailsHint;
 
   /// No description provided for @reportDetailsOptional.
   ///
   /// In de, this message translates to:
-  /// **'Détails Supplémentaires (facultatif)'**
+  /// **'Zusätzliche Details (optional)'**
   String get reportDetailsOptional;
 
   /// No description provided for @reportNotFound.
   ///
   /// In de, this message translates to:
-  /// **'Signalement non trouvé'**
+  /// **'Meldung nicht gefunden'**
   String get reportNotFound;
 
   /// No description provided for @reportReasonFraud.
   ///
   /// In de, this message translates to:
-  /// **'Offre Frauduleuse'**
+  /// **'Betrügerisches Angebot'**
   String get reportReasonFraud;
 
   /// No description provided for @reportReasonLabel.
   ///
   /// In de, this message translates to:
-  /// **'Raison du signalement :'**
+  /// **'Grund für die Meldung:'**
   String get reportReasonLabel;
 
   /// No description provided for @reportSelectReason.
   ///
   /// In de, this message translates to:
-  /// **'Veuillez sélectionner une raison'**
+  /// **'Bitte wähle einen Grund'**
   String get reportSelectReason;
 
   /// No description provided for @reportStatusDismissed.
   ///
   /// In de, this message translates to:
-  /// **'REJETÉ'**
+  /// **'ABGELEHNT'**
   String get reportStatusDismissed;
 
   /// No description provided for @reportStatusOpen.
   ///
   /// In de, this message translates to:
-  /// **'OUVERT'**
+  /// **'OFFEN'**
   String get reportStatusOpen;
 
   /// No description provided for @reportStatusResolved.
   ///
   /// In de, this message translates to:
-  /// **'RÉSOLU'**
+  /// **'GELÖST'**
   String get reportStatusResolved;
 
   /// No description provided for @reportStatusReviewing.
   ///
   /// In de, this message translates to:
-  /// **'EN EXAMEN'**
+  /// **'IN PRÜFUNG'**
   String get reportStatusReviewing;
 
   /// No description provided for @reportSubmitError.
   ///
   /// In de, this message translates to:
-  /// **'Erreur lors de l\'envoi du signalement'**
+  /// **'Fehler beim Senden der Meldung'**
   String get reportSubmitError;
 
   /// No description provided for @reportSubmittedSuccessfully.
   ///
   /// In de, this message translates to:
-  /// **'Signalement soumis avec succès'**
+  /// **'Meldung erfolgreich gesendet'**
   String get reportSubmittedSuccessfully;
 
   /// No description provided for @reportTargetListing.
   ///
   /// In de, this message translates to:
-  /// **'Annonce'**
+  /// **'Angebot'**
   String get reportTargetListing;
 
   /// No description provided for @reportTargetNotFound.
   ///
   /// In de, this message translates to:
-  /// **'Entrée non trouvée'**
+  /// **'Eintrag nicht gefunden'**
   String get reportTargetNotFound;
 
   /// No description provided for @reportTargetUser.
   ///
   /// In de, this message translates to:
-  /// **'Utilisateur'**
+  /// **'Benutzer'**
   String get reportTargetUser;
 
   /// No description provided for @reportTitle.
   ///
   /// In de, this message translates to:
-  /// **'Signaler {targetType}'**
+  /// **'{targetType} melden'**
   String reportTitle(Object targetType);
 
   /// No description provided for @reportUser.
   ///
   /// In de, this message translates to:
-  /// **'Signaler l\'Utilisateur'**
+  /// **'Benutzer melden'**
   String get reportUser;
 
   /// No description provided for @reportYouAreReporting.
   ///
   /// In de, this message translates to:
-  /// **'Vous signalez : \"{targetName}\"'**
+  /// **'Du meldest: \"{targetName}\"'**
   String reportYouAreReporting(Object targetName);
 
   /// No description provided for @reportedOn.
   ///
   /// In de, this message translates to:
-  /// **'Signalé le'**
+  /// **'Gemeldet am'**
   String get reportedOn;
 
   /// No description provided for @reportedUserProfile.
   ///
   /// In de, this message translates to:
-  /// **'Profil Utilisateur Signalé'**
+  /// **'Gemeldetes Benutzerprofil'**
   String get reportedUserProfile;
 
   /// No description provided for @reporterUser.
   ///
   /// In de, this message translates to:
-  /// **'Utilisateur #{id}'**
+  /// **'Benutzer #{id}'**
   String reporterUser(Object id);
 
   /// No description provided for @reviewPendingOrders.
   ///
   /// In de, this message translates to:
-  /// **'Examiner et confirmer les commandes en attente'**
+  /// **'Ausstehende Bestellungen prüfen und bestätigen'**
   String get reviewPendingOrders;
 
   /// No description provided for @searchUsers.
   ///
   /// In de, this message translates to:
-  /// **'Rechercher des utilisateurs...'**
+  /// **'Benutzer suchen...'**
   String get searchUsers;
 
   /// No description provided for @sectionDonate.
   ///
   /// In de, this message translates to:
-  /// **'Soutenir le Développeur'**
+  /// **'Entwickler unterstützen'**
   String get sectionDonate;
 
   /// No description provided for @sendMessage.
   ///
   /// In de, this message translates to:
-  /// **'Envoyer un Message'**
+  /// **'Nachricht senden'**
   String get sendMessage;
 
   /// No description provided for @slotVariantCreated.
   ///
   /// In de, this message translates to:
-  /// **'Variante de slot créée'**
+  /// **'Slot-Variante erstellt'**
   String get slotVariantCreated;
 
   /// No description provided for @slotVariantDeleted.
   ///
   /// In de, this message translates to:
-  /// **'Variante de slot supprimée'**
+  /// **'Slot-Variante gelöscht'**
   String get slotVariantDeleted;
 
   /// No description provided for @slotVariantUpdated.
   ///
   /// In de, this message translates to:
-  /// **'Variante de slot mise à jour'**
+  /// **'Slot-Variante aktualisiert'**
   String get slotVariantUpdated;
 
   /// No description provided for @slotVariantsScreen.
   ///
   /// In de, this message translates to:
-  /// **'Variantes de Slot'**
+  /// **'Slot-Varianten'**
   String get slotVariantsScreen;
 
   /// No description provided for @slots.
@@ -5680,19 +5680,19 @@ abstract class AppLocalizations {
   /// No description provided for @staff.
   ///
   /// In de, this message translates to:
-  /// **'Personnel'**
+  /// **'Mitarbeiter'**
   String get staff;
 
   /// No description provided for @statusUpdated.
   ///
   /// In de, this message translates to:
-  /// **'Le statut a été mis à jour'**
+  /// **'Status wurde aktualisiert'**
   String get statusUpdated;
 
   /// No description provided for @systemUserManagement.
   ///
   /// In de, this message translates to:
-  /// **'Gestion du système et des utilisateurs'**
+  /// **'System- und Benutzerverwaltung'**
   String get systemUserManagement;
 
   /// No description provided for @txId.
@@ -5704,43 +5704,43 @@ abstract class AppLocalizations {
   /// No description provided for @unban.
   ///
   /// In de, this message translates to:
-  /// **'Débannir'**
+  /// **'Entsperren'**
   String get unban;
 
   /// No description provided for @unknown.
   ///
   /// In de, this message translates to:
-  /// **'Inconnu'**
+  /// **'Unbekannt'**
   String get unknown;
 
   /// No description provided for @user.
   ///
   /// In de, this message translates to:
-  /// **'Utilisateur'**
+  /// **'Benutzer'**
   String get user;
 
   /// No description provided for @userManagementScreen.
   ///
   /// In de, this message translates to:
-  /// **'Gestion des Utilisateurs'**
+  /// **'Benutzerverwaltung'**
   String get userManagementScreen;
 
   /// No description provided for @userNotFound.
   ///
   /// In de, this message translates to:
-  /// **'Utilisateur non trouvé'**
+  /// **'Benutzer nicht gefunden'**
   String get userNotFound;
 
   /// No description provided for @userReports.
   ///
   /// In de, this message translates to:
-  /// **'Utilisateurs'**
+  /// **'Benutzer-Meldungen'**
   String get userReports;
 
   /// No description provided for @users.
   ///
   /// In de, this message translates to:
-  /// **'Utilisateurs'**
+  /// **'Benutzer'**
   String get users;
 
   /// No description provided for @variant.
@@ -5752,25 +5752,25 @@ abstract class AppLocalizations {
   /// No description provided for @variantName.
   ///
   /// In de, this message translates to:
-  /// **'Nom'**
+  /// **'Name'**
   String get variantName;
 
   /// No description provided for @variantNameRequired.
   ///
   /// In de, this message translates to:
-  /// **'Le nom est requis'**
+  /// **'Name ist erforderlich'**
   String get variantNameRequired;
 
   /// No description provided for @variantStatus.
   ///
   /// In de, this message translates to:
-  /// **'Statut'**
+  /// **'Status'**
   String get variantStatus;
 
   /// No description provided for @viewUser.
   ///
   /// In de, this message translates to:
-  /// **'Voir l\'Utilisateur'**
+  /// **'Benutzer anzeigen'**
   String get viewUser;
 
   /// No description provided for @listings.
