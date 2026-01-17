@@ -231,7 +231,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget _buildDonateCard(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    const btcAddress = '12QBn6eba71FtAUM4HFmSGgTY9iTPfRKLx';
+    const btcAddress = '1NLF5aChT4iWR2EULuxmz1Gf76WgLkx2SV';
     const coffeeUrl = 'https://www.buymeacoffee.com/snuppedelua';
 
     return Card(
