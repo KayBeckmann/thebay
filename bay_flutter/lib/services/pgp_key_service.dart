@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:bay_client/bay_client.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:openpgp/openpgp.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Service für PGP Key Management.
 /// Verwaltet Key-Generierung, sichere Speicherung und Server-Synchronisation.
@@ -19,6 +21,10 @@ class PgpKeyService {
   String? _cachedFingerprint;
   UserPublicKey? _cachedServerKey;
 
+  // Für Web-Fallback im unsicheren Kontext
+  SharedPreferences? _webPrefs;
+  bool _useWebFallback = false;
+
   PgpKeyService(this._client)
       : _secureStorage = const FlutterSecureStorage(
           aOptions: AndroidOptions(
@@ -31,15 +37,76 @@ class PgpKeyService {
 
   /// Initialisiert den Service und lädt gecachte Keys.
   Future<void> initialize() async {
-    _cachedPrivateKey = await _secureStorage.read(key: _privateKeyKey);
-    _cachedFingerprint = await _secureStorage.read(key: _fingerprintKey);
+    _cachedPrivateKey = await _readSecure(_privateKeyKey);
+    _cachedFingerprint = await _readSecure(_fingerprintKey);
   }
 
   /// Prüft ob ein Private Key lokal gespeichert ist.
   Future<bool> hasPrivateKey() async {
     if (_cachedPrivateKey != null) return true;
-    final key = await _secureStorage.read(key: _privateKeyKey);
+    final key = await _readSecure(_privateKeyKey);
     return key != null && key.isNotEmpty;
+  }
+
+  /// Interne Hilfsmethode für sicheres Lesen (mit Web-Fallback).
+  Future<String?> _readSecure(String key) async {
+    if (_useWebFallback && kIsWeb) {
+      _webPrefs ??= await SharedPreferences.getInstance();
+      return _webPrefs?.getString(key);
+    }
+    try {
+      return await _secureStorage.read(key: key);
+    } catch (e) {
+      if (kIsWeb) {
+        print('[PgpKeyService] Fallback auf SharedPreferences für Lesen: $e');
+        _useWebFallback = true;
+        _webPrefs ??= await SharedPreferences.getInstance();
+        return _webPrefs?.getString(key);
+      }
+      rethrow;
+    }
+  }
+
+  /// Interne Hilfsmethode für sicheres Schreiben (mit Web-Fallback).
+  Future<void> _writeSecure(String key, String value) async {
+    if (_useWebFallback && kIsWeb) {
+      _webPrefs ??= await SharedPreferences.getInstance();
+      await _webPrefs?.setString(key, value);
+      return;
+    }
+    try {
+      await _secureStorage.write(key: key, value: value);
+    } catch (e) {
+      if (kIsWeb) {
+        print('[PgpKeyService] Fallback auf SharedPreferences für Schreiben: $e');
+        _useWebFallback = true;
+        _webPrefs ??= await SharedPreferences.getInstance();
+        await _webPrefs?.setString(key, value);
+        return;
+      }
+      rethrow;
+    }
+  }
+
+  /// Interne Hilfsmethode für sicheres Löschen (mit Web-Fallback).
+  Future<void> _deleteSecure(String key) async {
+    if (_useWebFallback && kIsWeb) {
+      _webPrefs ??= await SharedPreferences.getInstance();
+      await _webPrefs?.remove(key);
+      return;
+    }
+    try {
+      await _secureStorage.delete(key: key);
+    } catch (e) {
+      if (kIsWeb) {
+        print('[PgpKeyService] Fallback auf SharedPreferences für Löschen: $e');
+        _useWebFallback = true;
+        _webPrefs ??= await SharedPreferences.getInstance();
+        await _webPrefs?.remove(key);
+        return;
+      }
+      rethrow;
+    }
   }
 
   /// Generiert ein neues PGP Keypair.
@@ -119,8 +186,8 @@ class PgpKeyService {
 
   /// Speichert den Private Key sicher auf dem Gerät.
   Future<void> storePrivateKey(String privateKeyArmored, String fingerprint) async {
-    await _secureStorage.write(key: _privateKeyKey, value: privateKeyArmored);
-    await _secureStorage.write(key: _fingerprintKey, value: fingerprint);
+    await _writeSecure(_privateKeyKey, privateKeyArmored);
+    await _writeSecure(_fingerprintKey, fingerprint);
     _cachedPrivateKey = privateKeyArmored;
     _cachedFingerprint = fingerprint;
   }
@@ -128,22 +195,22 @@ class PgpKeyService {
   /// Ruft den lokal gespeicherten Private Key ab.
   Future<String?> getPrivateKey() async {
     if (_cachedPrivateKey != null) return _cachedPrivateKey;
-    _cachedPrivateKey = await _secureStorage.read(key: _privateKeyKey);
+    _cachedPrivateKey = await _readSecure(_privateKeyKey);
     return _cachedPrivateKey;
   }
 
   /// Ruft den lokalen Fingerprint ab.
   Future<String?> getFingerprint() async {
     if (_cachedFingerprint != null) return _cachedFingerprint;
-    _cachedFingerprint = await _secureStorage.read(key: _fingerprintKey);
+    _cachedFingerprint = await _readSecure(_fingerprintKey);
     return _cachedFingerprint;
   }
 
   /// Löscht den Private Key vom Gerät.
   Future<void> deletePrivateKey() async {
-    await _secureStorage.delete(key: _privateKeyKey);
-    await _secureStorage.delete(key: _fingerprintKey);
-    await _secureStorage.delete(key: _passphraseKey);
+    await _deleteSecure(_privateKeyKey);
+    await _deleteSecure(_fingerprintKey);
+    await _deleteSecure(_passphraseKey);
     _cachedPrivateKey = null;
     _cachedFingerprint = null;
     _cachedServerKey = null;
