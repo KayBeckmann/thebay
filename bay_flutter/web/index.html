@@ -35,20 +35,42 @@
     if (!window.isSecureContext) {
       console.warn('Insecure context detected. Stubbing Service Worker to prevent crash.');
       
-      // If navigator.serviceWorker is undefined (common in insecure contexts in some browsers),
-      // we need to define it to prevent Flutter from throwing "Service Worker API unavailable".
+      const mockServiceWorker = {
+        scriptURL: 'mock_service_worker.js',
+        state: 'activated',
+        postMessage: function() {},
+        addEventListener: function() {},
+        removeEventListener: function() {},
+      };
+
+      const mockRegistration = {
+        active: mockServiceWorker,
+        installing: null,
+        waiting: null,
+        scope: '/',
+        unregister: function() { return Promise.resolve(true); },
+        update: function() { return Promise.resolve(); },
+        onupdatefound: null,
+        pushManager: {
+          getSubscription: function() { return Promise.resolve(null); },
+          subscribe: function() { return Promise.reject(new Error('Stubbed')); },
+          permissionState: function() { return Promise.resolve('denied'); },
+        },
+      };
+
+      // If navigator.serviceWorker is undefined
       if (!navigator.serviceWorker) {
         try {
           Object.defineProperty(navigator, 'serviceWorker', {
             value: {
               register: function() {
                 console.log('Service Worker registration stubbed (API missing).');
-                return Promise.resolve({});
+                return Promise.resolve(mockRegistration);
               },
               getRegistrations: function() {
                 return Promise.resolve([]);
               },
-              ready: new Promise(function() {}), // Never resolves, mimicking no active SW
+              ready: new Promise(function() {}), 
               controller: null,
               addEventListener: function() {},
               removeEventListener: function() {},
@@ -60,13 +82,17 @@
           console.error('Failed to stub navigator.serviceWorker:', e);
         }
       } else {
-        // If the API exists but we want to prevent actual registration
+        // If the API exists
         navigator.serviceWorker.register = function() {
           return new Promise((resolve) => {
             console.log('Service Worker registration stubbed (API present).');
-            resolve({});
+            resolve(mockRegistration);
           });
         };
+        // Mock getRegistrations too to be safe
+         navigator.serviceWorker.getRegistrations = function() {
+           return Promise.resolve([]);
+         };
       }
     }
   </script>
