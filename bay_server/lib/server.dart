@@ -18,6 +18,8 @@ import 'package:bay_server/src/future_calls/rating_auto_creation_call.dart'
     show RatingAutoCreationService;
 import 'package:bay_server/src/future_calls/bitcoin_payment_check_call.dart'
     show BitcoinPaymentCheckService;
+import 'package:bay_server/src/future_calls/btc_rate_update_call.dart'
+    show BtcRateUpdateService;
 
 import 'src/generated/protocol.dart';
 import 'src/generated/endpoints.dart';
@@ -66,6 +68,9 @@ void run(List<String> args) async {
 
   // Start periodic rating auto-creation check
   await RatingAutoCreationService.start(pod);
+
+  // Start periodic BTC/USD rate updates (before Bitcoin payment check)
+  await BtcRateUpdateService.start(pod);
 
   // Start periodic Bitcoin payment verification
   await BitcoinPaymentCheckService.start(pod);

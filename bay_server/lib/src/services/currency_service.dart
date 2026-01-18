@@ -163,7 +163,7 @@ class CurrencyService {
 
       // Fallback to approximate BTC/USD rate if API fails
       if ((base == 'BTC' && target == 'USD') || (base == 'USD' && target == 'BTC')) {
-        final fallbackRate = 95000.0; // Approximate BTC/USD rate
+        const fallbackRate = 100000.0; // Fallback BTC/USD rate
         session.log('Using fallback BTC/USD rate: $fallbackRate', level: LogLevel.warning);
         return base == 'BTC' ? fallbackRate : 1.0 / fallbackRate;
       }

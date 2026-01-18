@@ -211,7 +211,7 @@ class PaymentEndpoint extends Endpoint {
 
   /// Holt den aktuellen BTC/USD-Kurs.
   Future<double?> getBtcUsdRate(Session session) async {
-    final btcPerUsd = await PaymentService.convertUsdToBtc(1.0);
+    final btcPerUsd = PaymentService.convertUsdToBtc(1.0);
     return 1 / btcPerUsd;
   }
 }

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:serverpod/serverpod.dart';
 
+import '../future_calls/btc_rate_update_call.dart';
 import '../generated/protocol.dart';
 
 /// Service für Zahlungsverarbeitung (PayPal, Bitcoin).
@@ -241,8 +242,8 @@ class PaymentService {
       };
     } else {
       final bitcoinWallet = await _getBitcoinWallet(session);
-      // Berechne BTC-Betrag (vereinfacht - in Produktion sollte ein aktueller Kurs verwendet werden)
-      final btcAmount = await convertUsdToBtc(order.amountCents / 100);
+      // Berechne BTC-Betrag mit aktuellem Kurs vom BtcRateUpdateService
+      final btcAmount = convertUsdToBtc(order.amountCents / 100);
       return {
         'method': 'bitcoin',
         'address': bitcoinWallet ?? '',
@@ -274,27 +275,9 @@ class PaymentService {
   }
 
   /// Konvertiert USD zu BTC.
-  /// Holt den aktuellen Kurs von CoinGecko.
-  static Future<double> convertUsdToBtc(double usd) async {
-    try {
-      // Hole aktuellen BTC-Preis von CoinGecko
-      final response = await http.get(
-        Uri.parse(
-          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
-        ),
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body) as Map<String, dynamic>;
-        final btcPrice = data['bitcoin']['usd'] as num;
-        return usd / btcPrice;
-      }
-    } catch (e) {
-      // Fallback: Verwende einen geschätzten Preis
-    }
-
-    // Fallback-Preis (sollte in Produktion nicht verwendet werden)
-    return usd / 40000;
+  /// Verwendet den gecachten Kurs vom BtcRateUpdateService.
+  static double convertUsdToBtc(double usd) {
+    return BtcRateUpdateService.convertUsdToBtc(usd);
   }
 
   static Future<Map<String, dynamic>?> _checkBitcoinTransactionViaElectrum(
