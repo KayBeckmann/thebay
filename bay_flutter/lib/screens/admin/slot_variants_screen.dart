@@ -424,7 +424,8 @@ class _SlotVariantsScreenState extends State<SlotVariantsScreen> {
         return;
       }
 
-      if (!allowPaypal && !allowBitcoin) {
+      // At least one payment method required (except for free slots)
+      if (!isFree && !allowPaypal && !allowBitcoin) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(l10n.atLeastOnePaymentMethodRequired)),
         );
