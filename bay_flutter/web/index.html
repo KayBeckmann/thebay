@@ -49,7 +49,7 @@
         waiting: null,
         scope: '/',
         unregister: function() { return Promise.resolve(true); },
-        update: function() { return Promise.resolve(); },
+        update: function() { return Promise.resolve(this); },
         onupdatefound: null,
         pushManager: {
           getSubscription: function() { return Promise.resolve(null); },
@@ -67,8 +67,11 @@
                 console.log('Service Worker registration stubbed (API missing).');
                 return Promise.resolve(mockRegistration);
               },
+              getRegistration: function() {
+                return Promise.resolve(mockRegistration);
+              },
               getRegistrations: function() {
-                return Promise.resolve([]);
+                return Promise.resolve([mockRegistration]);
               },
               ready: new Promise(function() {}), 
               controller: null,
@@ -92,6 +95,9 @@
         // Mock getRegistrations too to be safe
          navigator.serviceWorker.getRegistrations = function() {
            return Promise.resolve([]);
+         };
+         navigator.serviceWorker.getRegistration = function() {
+           return Promise.resolve(mockRegistration);
          };
       }
     }
