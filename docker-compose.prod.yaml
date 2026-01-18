@@ -106,8 +106,10 @@ services:
       - bay_nginx_cache:/var/cache/nginx
       - bay_nginx_logs:/var/log/nginx
     depends_on:
-      - serverpod
-      - frontend
+      serverpod:
+        condition: service_healthy
+      frontend:
+        condition: service_started
     networks:
       - backend
       - frontend

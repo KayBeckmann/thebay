@@ -34,10 +34,36 @@
   <script>
     if (!window.isSecureContext) {
       console.warn('Insecure context detected. Stubbing Service Worker to prevent crash.');
-      if (navigator.serviceWorker) {
+      
+      // If navigator.serviceWorker is undefined (common in insecure contexts in some browsers),
+      // we need to define it to prevent Flutter from throwing "Service Worker API unavailable".
+      if (!navigator.serviceWorker) {
+        try {
+          Object.defineProperty(navigator, 'serviceWorker', {
+            value: {
+              register: function() {
+                console.log('Service Worker registration stubbed (API missing).');
+                return Promise.resolve({});
+              },
+              getRegistrations: function() {
+                return Promise.resolve([]);
+              },
+              ready: new Promise(function() {}), // Never resolves, mimicking no active SW
+              controller: null,
+              addEventListener: function() {},
+              removeEventListener: function() {},
+              dispatchEvent: function() { return false; },
+            },
+            configurable: true,
+          });
+        } catch (e) {
+          console.error('Failed to stub navigator.serviceWorker:', e);
+        }
+      } else {
+        // If the API exists but we want to prevent actual registration
         navigator.serviceWorker.register = function() {
           return new Promise((resolve) => {
-            console.log('Service Worker registration stubbed.');
+            console.log('Service Worker registration stubbed (API present).');
             resolve({});
           });
         };
