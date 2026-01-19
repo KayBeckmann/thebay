@@ -51,29 +51,18 @@ void run(List<String> args) async {
   // Start the server.
   await pod.start();
 
-  // Create admin account on first startup
-  await _createAdminAccount(pod);
-
-  // Start periodic slot expiration check
-  await SlotExpirationService.start(pod);
-
-  // Start periodic draft expiration check
-  await DraftExpirationService.start(pod);
-
-  // Start periodic news expiration check
-  await NewsExpirationService.start(pod);
-
-  // Start periodic transaction auto-complete check
-  await TransactionAutoCompleteService.start(pod);
-
-  // Start periodic rating auto-creation check
-  await RatingAutoCreationService.start(pod);
-
-  // Start periodic BTC/USD rate updates (before Bitcoin payment check)
-  await BtcRateUpdateService.start(pod);
-
-  // Start periodic Bitcoin payment verification
-  await BitcoinPaymentCheckService.start(pod);
+  // Run startup maintenance tasks in parallel to avoid blocking
+  // and ensure faster readiness for API requests.
+  await Future.wait([
+    _createAdminAccount(pod),
+    SlotExpirationService.start(pod),
+    DraftExpirationService.start(pod),
+    NewsExpirationService.start(pod),
+    TransactionAutoCompleteService.start(pod),
+    RatingAutoCreationService.start(pod),
+    BtcRateUpdateService.start(pod),
+    BitcoinPaymentCheckService.start(pod),
+  ]);
 }
 
 /// Creates the admin account from environment variables if it doesn't exist.
